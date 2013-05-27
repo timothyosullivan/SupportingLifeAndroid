@@ -11,7 +11,7 @@
 *.jar
 *.war
 
-# Ignored Folders         #
+# Ignore folders          #
 ###########################
 bin/
 target/

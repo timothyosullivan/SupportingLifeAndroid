@@ -40,10 +40,6 @@
 				<groupId>com.jayway.maven.plugins.android.generation2</groupId>
 				<artifactId>android-maven-plugin</artifactId>
 				<configuration>
-					<sdk>
-					    <path>/Users/timothyosullivan/Documents/SDKs</path>
-						<platform>16</platform>
-					</sdk>
 				</configuration>
 			</plugin>
 		</plugins>

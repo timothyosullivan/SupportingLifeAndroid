@@ -1,6 +1,5 @@
 package ie.ucc.bis;
 
-import ie.bis.ucc.R;
 import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
@@ -23,7 +22,7 @@ public class HelloAndroidActivity extends Activity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
 	// Inflate the menu; this adds items to the action bar if it is present.
-	getMenuInflater().inflate(ie.bis.ucc.R.menu.main, menu);
+	getMenuInflater().inflate(ie.ucc.bis.R.menu.main, menu);
 	return true;
     }
 
