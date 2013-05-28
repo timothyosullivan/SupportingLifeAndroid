@@ -11,7 +11,7 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<platform.version> 4.1.1.4
-			</platform.version>
+		</platform.version>
 		<android.plugin.version>3.5.3</android.plugin.version>
 	</properties>
 
@@ -21,6 +21,11 @@
 			<artifactId>android</artifactId>
 			<version>${platform.version}</version>
 			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.google.android</groupId>
+			<artifactId>support-v4</artifactId>
+			<version>r7</version>
 		</dependency>
 	</dependencies>
 	<build>

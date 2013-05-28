@@ -1,12 +1,16 @@
 package ie.ucc.bis;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
+import android.view.View;
+import android.widget.EditText;
 
-public class HelloAndroidActivity extends Activity {
+public class MainActivity extends Activity {
 
+	public final static String EXTRA_MESSAGE = "ie.ucc.bis.supportinglife.MESSAGE";
+	
     /**
      * Called when the activity is first created.
      * @param savedInstanceState If the activity is being re-initialized after 
@@ -25,6 +29,24 @@ public class HelloAndroidActivity extends Activity {
 	getMenuInflater().inflate(ie.ucc.bis.R.menu.main, menu);
 	return true;
     }
+    
+    /**
+     * Method invoked when the user clicks the Submit button
+     * 
+     * @param view
+     */
+    public void sendMessage(View view) {
+        // start DisplayMessageActivity
+    	Intent intent = new Intent(this, DisplayMessageActivity.class);
+    	
+    	// attach contents of Message textfield in data bundle to DisplayMessageActivity
+    	EditText editText = (EditText) findViewById(R.id.edit_message);
+    	String message = editText.getText().toString();
+    	intent.putExtra(EXTRA_MESSAGE, message);
+    	startActivity(intent);
+    }
 
+    
+    
 }
 
