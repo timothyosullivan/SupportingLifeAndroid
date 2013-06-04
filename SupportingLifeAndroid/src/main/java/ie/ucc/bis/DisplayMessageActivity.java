@@ -39,30 +39,8 @@ public class DisplayMessageActivity extends Activity {
 		TextView textView = new TextView(this);
 		textView.setTextSize(300);
 
-		// invoke web service to retrieve patient details
-		//    	HttpHeaders requestHeaders = new HttpHeaders();
-		//    	requestHeaders.setContentType(new MediaType("text", "plain"));
-		//    	HttpEntity<String> requestEntity = new HttpEntity<String>(requestHeaders);
-		//    	
-		//    	RestTemplate restTemplate = new RestTemplate();
-		//    	String url = "http://10.145.107.95:8080/SupportingLife/patients/7";
-		//    	ResponseEntity<String> responseEntity = restTemplate.exchange(url, HttpMethod.GET, requestEntity, String.class);
-		//    	String result = responseEntity.getBody();
-
-
-		//        long patientId = 7;
-		//        try {
-		//        	restTemplate.getMessageConverters().add(new MappingJacksonHttpMessageConverter());
-		//        	Patient patientResult = restTemplate.getForObject(url, Patient.class, patientId);
-		//        	textView.setText(message + " " + patientResult.getName());
-		//        } catch (ResourceAccessException ex) {
-		//            System.out.println("OFF");
-		//        } catch (RestClientException ex) {
-		//            System.out.println("Error");
-		//        }
-
 		// instigate network communication to retrieve patient record
-		new NetworkCommunicator().execute();
+		new NetworkCommunicator().execute(message);
 
 	}
 
@@ -91,29 +69,18 @@ public class DisplayMessageActivity extends Activity {
 
 	private class NetworkCommunicator extends AsyncTask<String, Void, String> {
 
+		private static final String AMAZON_WEB_SERVICE_URL = "http://ec2-54-226-94-252.compute-1.amazonaws.com/SupportingLife/patients/{id}";
+		
 		@Override
 		protected String doInBackground(String... params) {
 
 			RestTemplate restTemplate = new RestTemplate();
-			String url = "http://ec2-54-226-94-252.compute-1.amazonaws.com/SupportingLife/patients/{id}";
-			// Set the Accept header
-			//			HttpHeaders requestHeaders = new HttpHeaders();
-			//			requestHeaders.setAccept(Collections.singletonList(new MediaType("application","json")));
-			//			HttpEntity<?> requestEntity = new HttpEntity<Object>(requestHeaders);
-			//			
-			//			// Add the Jackson message converter
-			//			restTemplate.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
-			//			
-			//			// Make the HTTP GET request, marshaling the response from JSON to an array of Events
-			//			ResponseEntity<Event[]> responseEntity = restTemplate.exchange(url, HttpMethod.GET, requestEntity, Event[].class);
-			//			Event[] events = responseEntity.getBody();
-			//			return "Executed";
-
+			
 			long patientId = 7;
 			try {
 				restTemplate.getMessageConverters().add(new MappingJacksonHttpMessageConverter());
-				Patient patientResult = restTemplate.getForObject(url, Patient.class, patientId);
-				return patientResult.getName();
+				Patient patientResult = restTemplate.getForObject(AMAZON_WEB_SERVICE_URL, Patient.class, patientId);
+				return patientResult.getName() + " " + params[0];
 			} catch (ResourceAccessException ex) {
 				System.out.println("OFF");
 			} catch (RestClientException ex) {
