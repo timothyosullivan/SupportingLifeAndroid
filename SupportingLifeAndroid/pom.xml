@@ -10,8 +10,7 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<platform.version> 4.1.1.4
-		</platform.version>
+		<platform.version>4.1.1.4</platform.version>
 		<android.plugin.version>3.5.3</android.plugin.version>
 	</properties>
 
@@ -27,7 +26,25 @@
 			<artifactId>support-v4</artifactId>
 			<version>r7</version>
 		</dependency>
+		<!-- Spring Rest Android -->
+		<dependency>
+			<groupId>org.springframework.android</groupId>
+			<artifactId>spring-android-rest-template</artifactId>
+			<version>1.0.1.RELEASE</version>
+		</dependency>
+		<!-- Jackson JSON Processor -->
+		<dependency>
+			<groupId>org.codehaus.jackson</groupId>
+			<artifactId>jackson-mapper-asl</artifactId>
+			<version>1.9.12</version>
+		</dependency>
+		<dependency>
+			<groupId>org.codehaus.jackson</groupId>
+			<artifactId>jackson-core-asl</artifactId>
+			<version>1.9.12</version>
+		</dependency>
 	</dependencies>
+	
 	<build>
 		<finalName>${project.artifactId}</finalName>
 		<pluginManagement>

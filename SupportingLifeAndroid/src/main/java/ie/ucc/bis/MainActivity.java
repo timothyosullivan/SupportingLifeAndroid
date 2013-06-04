@@ -39,11 +39,11 @@ public class MainActivity extends Activity {
         // start DisplayMessageActivity
     	Intent intent = new Intent(this, DisplayMessageActivity.class);
     	
-    	// attach contents of Message textfield in data bundle to DisplayMessageActivity
+    	// attach contents of Message textfield in data bundle to DisplayMessageActivity    	
     	EditText editText = (EditText) findViewById(R.id.edit_message);
     	String message = editText.getText().toString();
     	intent.putExtra(EXTRA_MESSAGE, message);
-    	startActivity(intent);
+    	startActivity(intent);    	
     }
 
     
