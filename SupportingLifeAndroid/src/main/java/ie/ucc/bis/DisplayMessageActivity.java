@@ -76,11 +76,11 @@ public class DisplayMessageActivity extends Activity {
 
 			RestTemplate restTemplate = new RestTemplate();
 			
-			long patientId = 7;
+			long patientId = Long.parseLong(params[0]);
 			try {
 				restTemplate.getMessageConverters().add(new MappingJacksonHttpMessageConverter());
 				Patient patientResult = restTemplate.getForObject(AMAZON_WEB_SERVICE_URL, Patient.class, patientId);
-				return patientResult.getName() + " " + params[0];
+				return patientResult.getFirstName() + " " + patientResult.getSurname();
 			} catch (ResourceAccessException ex) {
 				System.out.println("OFF");
 			} catch (RestClientException ex) {
@@ -92,7 +92,7 @@ public class DisplayMessageActivity extends Activity {
 		@Override
 		protected void onPostExecute(String result) {
 			TextView txt = (TextView) findViewById(R.id.network_comm_result);
-			txt.setText("Patient Name: " + " " + result);
+			txt.setText("Patient Name:" + " " + result);
 		}
 
 		@Override

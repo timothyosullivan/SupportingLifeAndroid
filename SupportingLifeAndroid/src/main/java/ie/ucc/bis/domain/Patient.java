@@ -1,32 +1,29 @@
 package ie.ucc.bis.domain;
 
-public class Patient {
+import java.io.Serializable;
+
+
+public class Patient implements Serializable {
+	
+	private static final long serialVersionUID = 1L;
 
 	private long patientId;
-	private String name;
 	
-	public Patient() {
-		
-	}
+	private String firstName;
+
+	private String surname;	
+	
+	public Patient() {}
 	
 	/**
 	 * Constructor
 	 * 
 	 * @param name
 	 */
-	public Patient(long patientId, String name) {
+	public Patient(long patientId, String firstName, String surname) {
 		this.setPatientId(patientId);
-		this.setName(name);
-	}
-
-
-	public String getName() {
-		return name;
-	}
-
-
-	public void setName(String name) {
-		this.name = name;
+		this.setFirstName(firstName);
+		this.setSurname(surname);
 	}
 
 	public long getPatientId() {
@@ -37,5 +34,19 @@ public class Patient {
 		this.patientId = patientId;
 	}
 	
-	
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getSurname() {
+		return surname;
+	}
+
+	public void setSurname(String surname) {
+		this.surname = surname;
+	}	
 }
