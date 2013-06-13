@@ -2,11 +2,18 @@
 <resources>
 
     <string name="app_name">Supporting Life</string>
-    <string name="edit_message">Enter a message</string>
+    
+    <!-- START: Register Patient Details Screen -->
+    <string name="first_name_label">First Name:</string>
+    <string name="surname_label">Surname:</string>
     <string name="button_send">Submit</string>
+    <!-- END: Register Patient Details Screen -->
+    
     <string name="action_settings">Settings</string>
     <string name="title_activity_main">MainActivity</string>
+    <string name="title_activity_submit_patient_record">Patient Record Submission</string>
     <string name="title_activity_display_message">Display Message</string>
-    <string name="hello_world">Hello world!</string>
 
+    <string name="hello_world">hello world</string>
+    
 </resources>

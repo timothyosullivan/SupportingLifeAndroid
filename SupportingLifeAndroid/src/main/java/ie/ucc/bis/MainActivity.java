@@ -1,5 +1,6 @@
 package ie.ucc.bis;
 
+import ie.ucc.bis.domain.Patient;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -30,6 +31,14 @@ public class MainActivity extends Activity {
 	return true;
     }
     
+    @Override
+    public void onResume() {
+    	super.onResume();
+    	// Ensure Screen is refreshed if back button is pressed
+    	setContentView(R.layout.activity_main);
+    	
+    }
+    
     /**
      * Method invoked when the user clicks the Submit button
      * 
@@ -37,16 +46,19 @@ public class MainActivity extends Activity {
      */
     public void sendMessage(View view) {
         // start DisplayMessageActivity
-    	Intent intent = new Intent(this, DisplayMessageActivity.class);
+    	Intent intent = new Intent(this, SubmitPatientRecordActivity.class);
     	
-    	// attach contents of Message textfield in data bundle to DisplayMessageActivity    	
-    	EditText editText = (EditText) findViewById(R.id.edit_message);
-    	String message = editText.getText().toString();
-    	intent.putExtra(EXTRA_MESSAGE, message);
+    	// attach contents of completed Patient text entries in data bundle to DisplayMessageActivity    	
+    	// patient first name 	
+    	EditText editText = (EditText) findViewById(R.id.first_name_text);
+    	String firstName = editText.getText().toString();
+    	
+    	// patient surname
+    	editText = (EditText) findViewById(R.id.surname_text);
+    	String surname = editText.getText().toString();
+    	
+    	Patient patient = new Patient(firstName, surname);
+    	intent.putExtra(EXTRA_MESSAGE, patient);
     	startActivity(intent);    	
-    }
-
-    
-    
+    }   
 }
-

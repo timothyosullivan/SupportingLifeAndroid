@@ -4,14 +4,35 @@
     android:layout_height="match_parent"
     android:orientation="horizontal" >
 
-    <!-- Message Textfield -->
+    <!-- FirstName Label -->    
+    <TextView android:id="@+id/first_name_label"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="@string/first_name_label" />
+    
+    <!-- FirstName Textfield -->
     <EditText
-        android:id="@+id/edit_message"
+        android:id="@+id/first_name_text"
         android:layout_weight="1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="@string/edit_message" />
+        android:hint="" />
 
+    <!-- Surname Label -->    
+    <TextView android:id="@+id/surname_label"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="@string/surname_label" />
+    
+    <!-- Surname Textfield -->
+    <EditText
+        android:id="@+id/surname_text"
+        android:layout_weight="1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="" />
+    
+    
     <!-- Submit Button -->
     <Button
         android:layout_width="wrap_content"

@@ -14,6 +14,16 @@ public class Patient implements Serializable {
 	private String surname;	
 	
 	public Patient() {}
+
+	/**
+	 * Constructor
+	 * 
+	 * @param name
+	 */
+	public Patient(String firstName, String surname) {
+		this.setFirstName(firstName);
+		this.setSurname(surname);
+	}	
 	
 	/**
 	 * Constructor
