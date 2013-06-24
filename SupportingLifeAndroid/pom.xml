@@ -12,6 +12,9 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<platform.version>4.1.1.4</platform.version>
 		<android.plugin.version>3.5.3</android.plugin.version>
+		<google.android.version>r7</google.android.version>
+		<spring.version>1.0.1.RELEASE</spring.version>
+		<json.version>1.9.12</json.version>
 	</properties>
 
 	<dependencies>
@@ -24,24 +27,24 @@
 		<dependency>
 			<groupId>com.google.android</groupId>
 			<artifactId>support-v4</artifactId>
-			<version>r7</version>
+			<version>${google.android.version}</version>
 		</dependency>
 		<!-- Spring Rest Android -->
 		<dependency>
 			<groupId>org.springframework.android</groupId>
 			<artifactId>spring-android-rest-template</artifactId>
-			<version>1.0.1.RELEASE</version>
+			<version>${spring.version}</version>
 		</dependency>
 		<!-- Jackson JSON Processor -->
 		<dependency>
 			<groupId>org.codehaus.jackson</groupId>
 			<artifactId>jackson-mapper-asl</artifactId>
-			<version>1.9.12</version>
+			<version>${json.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.codehaus.jackson</groupId>
 			<artifactId>jackson-core-asl</artifactId>
-			<version>1.9.12</version>
+			<version>${json.version}</version>
 		</dependency>
 	</dependencies>
 	
