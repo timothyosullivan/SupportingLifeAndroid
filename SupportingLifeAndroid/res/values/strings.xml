@@ -14,6 +14,7 @@
     <string name="title_activity_submit_patient_record">Patient Record Submission</string>
     <string name="title_activity_display_message">Display Message</string>
 
-    <string name="hello_world">hello world</string>
+    <string name="submissionInfoStatus">Submitting Patient Record..</string>
+    <string name="retrievalInfoStatus">Retrieving Patient Record..</string>
     
 </resources>

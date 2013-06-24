@@ -8,7 +8,7 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.EditText;
 
-public class MainActivity extends Activity {
+public class RecordPatientDetailsActivity extends Activity {
 
 	public final static String EXTRA_MESSAGE = "ie.ucc.bis.supportinglife.MESSAGE";
 	
@@ -21,7 +21,7 @@ public class MainActivity extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_record_patient_details);
     }
 
     @Override
@@ -35,7 +35,7 @@ public class MainActivity extends Activity {
     public void onResume() {
     	super.onResume();
     	// Ensure Screen is refreshed if back button is pressed
-    	setContentView(R.layout.activity_main);
+    	setContentView(R.layout.activity_record_patient_details);
     	
     }
     

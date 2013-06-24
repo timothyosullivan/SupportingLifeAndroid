@@ -37,7 +37,7 @@ public class SubmitPatientRecordActivity extends Activity {
 		
 		// extract the patient record sent by the main activity
 		Intent intent = getIntent();
-		Patient patient= (Patient) intent.getSerializableExtra(MainActivity.EXTRA_MESSAGE);
+		Patient patient= (Patient) intent.getSerializableExtra(RecordPatientDetailsActivity.EXTRA_MESSAGE);
 
 		// instigate network communication to retrieve patient record
 		task = new NetworkCommunicationAsyncTask();
@@ -95,6 +95,7 @@ public class SubmitPatientRecordActivity extends Activity {
 				// call sometimes returning a null object and sometimes returning a correctly populated object.
 				// Doubling the read timeout led to more reliability in obtaining a correctly populated object.
 				// default timeout is 60 * 1000
+				((HttpComponentsClientHttpRequestFactory)restTemplate.getRequestFactory()).setConnectTimeout(120 * 1000);
 				((HttpComponentsClientHttpRequestFactory)restTemplate.getRequestFactory()).setReadTimeout(120 * 1000);
 				restTemplate.getMessageConverters().add(new MappingJacksonHttpMessageConverter());
 				
@@ -102,8 +103,12 @@ public class SubmitPatientRecordActivity extends Activity {
 				return submittedPatient;
 			} catch (ResourceAccessException ex) {
 				System.out.println("OFF");
+				// TODO need to add logging capability to catch stack trace
+				ex.printStackTrace();
 			} catch (RestClientException ex) {
 				System.out.println("Error");
+				// TODO need to add logging capability to catch stack trace
+				ex.printStackTrace();
 			}
 			return null;
 		}

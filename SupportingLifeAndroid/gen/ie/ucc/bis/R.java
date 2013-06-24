@@ -33,7 +33,7 @@ public final class R {
     }
     public static final class layout {
         public static final int activity_display_message=0x7f030000;
-        public static final int activity_main=0x7f030001;
+        public static final int activity_record_patient_details=0x7f030001;
         public static final int activity_submit_patient_record=0x7f030002;
     }
     public static final class menu {
@@ -49,7 +49,8 @@ public final class R {
         /**  START: Register Patient Details Screen 
          */
         public static final int first_name_label=0x7f050001;
-        public static final int hello_world=0x7f050008;
+        public static final int retrievalInfoStatus=0x7f050009;
+        public static final int submissionInfoStatus=0x7f050008;
         public static final int surname_label=0x7f050002;
         public static final int title_activity_display_message=0x7f050007;
         public static final int title_activity_main=0x7f050005;

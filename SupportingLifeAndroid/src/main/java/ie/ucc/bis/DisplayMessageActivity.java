@@ -33,7 +33,7 @@ public class DisplayMessageActivity extends Activity {
 
 		// extract the message sent by the main activity
 		Intent intent = getIntent();
-		String message = intent.getStringExtra(MainActivity.EXTRA_MESSAGE);
+		String message = intent.getStringExtra(RecordPatientDetailsActivity.EXTRA_MESSAGE);
 
 		// create a TextView to display the message
 		TextView textView = new TextView(this);
