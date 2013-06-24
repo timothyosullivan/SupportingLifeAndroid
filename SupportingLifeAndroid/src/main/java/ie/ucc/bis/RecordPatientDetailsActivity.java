@@ -1,14 +1,12 @@
 package ie.ucc.bis;
 
 import ie.ucc.bis.domain.Patient;
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
 import android.view.View;
 import android.widget.EditText;
 
-public class RecordPatientDetailsActivity extends Activity {
+public class RecordPatientDetailsActivity extends SupportingLifeActivity {
 
 	public final static String EXTRA_MESSAGE = "ie.ucc.bis.supportinglife.MESSAGE";
 	
@@ -24,13 +22,13 @@ public class RecordPatientDetailsActivity extends Activity {
         setContentView(R.layout.activity_record_patient_details);
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-	// Inflate the menu; this adds items to the action bar if it is present.
-	getMenuInflater().inflate(ie.ucc.bis.R.menu.main, menu);
-	return true;
-    }
-    
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//	// Inflate the menu; this adds items to the action bar if it is present.
+//	//getMenuInflater().inflate(ie.ucc.bis.R.menu.main, menu);
+//	return true;
+//    }
+//    
     @Override
     public void onResume() {
     	super.onResume();
