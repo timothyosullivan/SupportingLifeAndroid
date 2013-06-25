@@ -26,14 +26,7 @@ public class RecordPatientDetailsActivity extends SupportingLifeBaseActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_record_patient_details);
-    }
-
-    @Override
-    public void onResume() {
-    	super.onResume();
-    	// Ensure Screen is refreshed if back button is pressed
-    	setContentView(R.layout.activity_record_patient_details);
-    	
+        setTitleFromActivityLabel(R.id.title_text);
     }
     
     /**

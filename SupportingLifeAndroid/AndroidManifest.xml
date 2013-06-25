@@ -24,12 +24,12 @@
         </activity>
         
         <activity android:name="ie.ucc.bis.RecordPatientDetailsActivity"
-            android:label="@string/title_activity_record_patient_details"
+            android:label="@string/title_record_patient_details"
             android:theme="@android:style/Theme.Light.NoTitleBar">
         </activity>
         
         <activity android:name="ie.ucc.bis.SubmitPatientRecordActivity"
-            android:label="@string/title_activity_submit_patient_record"
+            android:label="@string/title_submit_patient_record"
             android:theme="@android:style/Theme.Light.NoTitleBar">
         </activity>
         

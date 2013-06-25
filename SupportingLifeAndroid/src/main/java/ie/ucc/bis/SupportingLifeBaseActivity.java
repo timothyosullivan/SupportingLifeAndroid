@@ -155,25 +155,6 @@ public abstract class SupportingLifeBaseActivity extends Activity {
 	}
 	
 	/**
-	 * Click Handler: Handler the click of a feature button
-	 * 
-	 * @param view View
-	 * @return void
-	 */
-	public void onClickFeature(View view) {
-		int id = view.getId();
-		switch(id) {
-			case R.id.home_btn_record_patient_details_feature :
-				startActivity(new Intent(getApplicationContext(), RecordPatientDetailsActivity.class));
-			case R.id.home_btn_about_feature :
-				startActivity(new Intent(getApplicationContext(), AboutActivity.class));
-			default : 
-				break;
-		} // end of switch
-	}
-	
-	
-	/**
 	 * Method to use the activity label to set the text in the activity's title text view.
 	 * The argument gives the name of the view.
 	 * 

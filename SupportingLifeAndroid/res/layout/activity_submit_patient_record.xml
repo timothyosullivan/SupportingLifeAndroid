@@ -8,6 +8,34 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".SubmitPatientRecordActivity" >
 
+	<!-- Title Bar -->
+    <LinearLayout style="@style/TitleBar" >
+        <ImageButton
+            style="@style/TitleBarAction"
+            android:contentDescription="@string/description_home"
+            android:onClick="onClickHome"
+            android:src="@drawable/title_home" />
+
+        <ImageView
+            style="@style/TitleBarSeparator"
+            android:contentDescription="@string/title_bar_separator_description" />
+
+        <TextView style="@style/TitleBarText" />
+
+        <ImageButton
+            style="@style/TitleBarAction"
+            android:contentDescription="@string/description_about"
+            android:onClick="onClickAbout"
+            android:src="@drawable/title_about" />
+
+        <ImageButton
+            style="@style/TitleBarAction"
+            android:contentDescription="@string/description_search"
+            android:onClick="onClickSearch"
+            android:src="@drawable/title_search" />
+    </LinearLayout>    
+    
+    <!-- Patient Submission Result -->
     <TextView
         android:id="@+id/network_comm_result"
         android:layout_width="wrap_content"

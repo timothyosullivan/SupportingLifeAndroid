@@ -38,29 +38,30 @@ public final class R {
         public static final int title_height=0x7f050002;
     }
     public static final class drawable {
-        public static final int btn_bg_pressed=0x7f020000;
-        public static final int btn_bg_selected=0x7f020001;
-        public static final int home_button1=0x7f020002;
-        public static final int home_button2=0x7f020003;
-        public static final int ic_launcher=0x7f020004;
-        public static final int light_bulb_default=0x7f020005;
-        public static final int light_bulb_pressed=0x7f020006;
-        public static final int light_bulb_selected=0x7f020007;
-        public static final int stack_default=0x7f020008;
-        public static final int stack_pressed=0x7f020009;
-        public static final int stack_selected=0x7f02000a;
-        public static final int title_about=0x7f02000b;
-        public static final int title_about_alt=0x7f02000c;
-        public static final int title_about_default=0x7f02000d;
-        public static final int title_button=0x7f02000e;
-        public static final int title_home=0x7f02000f;
-        public static final int title_home_alt=0x7f020010;
-        public static final int title_home_default=0x7f020011;
-        public static final int title_logo=0x7f020012;
-        public static final int title_logo_default=0x7f020013;
-        public static final int title_search=0x7f020014;
-        public static final int title_search_alt=0x7f020015;
-        public static final int title_search_default=0x7f020016;
+        public static final int about_content=0x7f020000;
+        public static final int btn_bg_pressed=0x7f020001;
+        public static final int btn_bg_selected=0x7f020002;
+        public static final int home_button1=0x7f020003;
+        public static final int home_button2=0x7f020004;
+        public static final int ic_launcher=0x7f020005;
+        public static final int light_bulb_default=0x7f020006;
+        public static final int light_bulb_pressed=0x7f020007;
+        public static final int light_bulb_selected=0x7f020008;
+        public static final int stack_default=0x7f020009;
+        public static final int stack_pressed=0x7f02000a;
+        public static final int stack_selected=0x7f02000b;
+        public static final int title_about=0x7f02000c;
+        public static final int title_about_alt=0x7f02000d;
+        public static final int title_about_default=0x7f02000e;
+        public static final int title_button=0x7f02000f;
+        public static final int title_home=0x7f020010;
+        public static final int title_home_alt=0x7f020011;
+        public static final int title_home_default=0x7f020012;
+        public static final int title_logo=0x7f020013;
+        public static final int title_logo_default=0x7f020014;
+        public static final int title_search=0x7f020015;
+        public static final int title_search_alt=0x7f020016;
+        public static final int title_search_default=0x7f020017;
     }
     public static final class id {
         public static final int blocks_now=0x7f060007;
@@ -87,10 +88,13 @@ public final class R {
         public static final int activity_submit_patient_record=0x7f030003;
     }
     public static final class string {
-        public static final int about_intro=0x7f07000c;
+        public static final int about_content_image=0x7f070014;
+        /**  START: About Screen 
+         */
+        public static final int about_intro=0x7f070013;
         /**  END: Dashboard 
          */
-        public static final int action_settings=0x7f07000f;
+        public static final int action_settings=0x7f070010;
         public static final int app_name=0x7f070000;
         public static final int button_send=0x7f070003;
         /**  END: Register Patient Details Screen 
@@ -103,20 +107,19 @@ public final class R {
         /**  START: Register Patient Details Screen 
          */
         public static final int first_name_label=0x7f070001;
-        public static final int retrievalInfoStatus=0x7f070014;
-        public static final int submissionInfoStatus=0x7f070013;
+        public static final int retrievalInfoStatus=0x7f070012;
+        public static final int submissionInfoStatus=0x7f070011;
         public static final int surname_label=0x7f070002;
         public static final int title_about=0x7f070008;
-        public static final int title_about_feature=0x7f07000e;
-        public static final int title_activity_display_message=0x7f070012;
-        public static final int title_activity_record_patient_details=0x7f070010;
-        public static final int title_activity_submit_patient_record=0x7f070011;
-        public static final int title_bar_separator_description=0x7f07000b;
+        public static final int title_about_feature=0x7f07000f;
+        public static final int title_bar_separator_description=0x7f07000d;
         public static final int title_home=0x7f070009;
+        public static final int title_record_patient_details=0x7f07000b;
         /**  dashboard button titles 
          */
-        public static final int title_record_patient_details_feature=0x7f07000d;
+        public static final int title_record_patient_details_feature=0x7f07000e;
         public static final int title_search=0x7f07000a;
+        public static final int title_submit_patient_record=0x7f07000c;
     }
     public static final class style {
         /** 

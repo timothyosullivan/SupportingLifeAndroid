@@ -34,6 +34,7 @@ public class SubmitPatientRecordActivity extends SupportingLifeBaseActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_submit_patient_record);
+		setTitleFromActivityLabel(R.id.title_text);
 
 		// extract the patient record sent by the main activity
 		Intent intent = getIntent();
@@ -44,11 +45,6 @@ public class SubmitPatientRecordActivity extends SupportingLifeBaseActivity {
 		task.execute(patient);
 	}
 	
-
-	@Override
-	public void onResume() {
-		super.onResume();
-	}
 	
 	@Override
 	protected void onPause() {

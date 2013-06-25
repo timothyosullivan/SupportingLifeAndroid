@@ -1,6 +1,8 @@
 package ie.ucc.bis;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 /**
  * This is a simple activity that demonstrates the Supporting LIFE dashboard user interface.
@@ -112,4 +114,24 @@ public class HomeActivity extends SupportingLifeBaseActivity {
 	protected void onStop () {
 		super.onStop ();
 	}
+	
+	/**
+	 * Click Handler: Handler the click of a feature button
+	 * 
+	 * @param view View
+	 * @return void
+	 */
+	public void onClickFeature(View view) {
+		int id = view.getId();
+		switch(id) {
+			case R.id.home_btn_record_patient_details_feature :
+				startActivity(new Intent(getApplicationContext(), RecordPatientDetailsActivity.class));
+				break;
+			case R.id.home_btn_about_feature :
+				startActivity(new Intent(getApplicationContext(), AboutActivity.class));
+				break;
+			default : 
+				break;
+		} // end of switch
+	}	
 } // end class
