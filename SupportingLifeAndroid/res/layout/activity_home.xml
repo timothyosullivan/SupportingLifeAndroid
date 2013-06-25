@@ -7,16 +7,15 @@
 
     <LinearLayout style="@style/TitleBar" >
 
-        <ImageView style="@style/TitleBarSeparator" 
-            android:contentDescription="@string/title_bar_separator_description"/>
-
         <ImageView
             style="@style/TitleBarLogo"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="@dimen/text_size_small"
             android:contentDescription="@string/description_logo"
             android:src="@drawable/title_logo" />
-
+        
         <TextView style="@style/TitleBarText" />
 
         <ImageButton

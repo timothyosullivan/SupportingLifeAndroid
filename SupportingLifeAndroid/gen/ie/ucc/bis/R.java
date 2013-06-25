@@ -58,11 +58,9 @@ public final class R {
         public static final int title_home_default=0x7f020011;
         public static final int title_logo=0x7f020012;
         public static final int title_logo_default=0x7f020013;
-        public static final int title_logo_pressed=0x7f020014;
-        public static final int title_logo_selected=0x7f020015;
-        public static final int title_search=0x7f020016;
-        public static final int title_search_alt=0x7f020017;
-        public static final int title_search_default=0x7f020018;
+        public static final int title_search=0x7f020014;
+        public static final int title_search_alt=0x7f020015;
+        public static final int title_search_default=0x7f020016;
     }
     public static final class id {
         public static final int blocks_now=0x7f060007;
