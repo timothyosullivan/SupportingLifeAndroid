@@ -18,6 +18,8 @@ public final class R {
         public static final int foreground2=0x7f040004;
         public static final int title_background=0x7f040000;
         public static final int title_separator=0x7f040008;
+        /**  Green 
+         */
         public static final int title_text=0x7f040001;
         public static final int title_text_alt=0x7f040002;
     }
@@ -65,27 +67,26 @@ public final class R {
     public static final class id {
         public static final int blocks_now=0x7f060007;
         public static final int blocks_ruler=0x7f060006;
-        public static final int db1_root=0x7f060009;
+        public static final int db1_root=0x7f060008;
         public static final int dialog_discard_confirm=0x7f060003;
         public static final int dialog_moderator=0x7f060004;
         public static final int dialog_wave=0x7f060005;
-        public static final int first_name_label=0x7f06000c;
-        public static final int first_name_text=0x7f06000d;
-        public static final int home_btn_about_feature=0x7f06000b;
-        public static final int home_btn_record_patient_details_feature=0x7f06000a;
-        public static final int network_comm_result=0x7f060008;
-        public static final int surname_label=0x7f06000e;
-        public static final int surname_text=0x7f06000f;
+        public static final int first_name_label=0x7f06000b;
+        public static final int first_name_text=0x7f06000c;
+        public static final int home_btn_about_feature=0x7f06000a;
+        public static final int home_btn_record_patient_details_feature=0x7f060009;
+        public static final int network_comm_result=0x7f06000f;
+        public static final int surname_label=0x7f06000d;
+        public static final int surname_text=0x7f06000e;
         public static final int title_container=0x7f060000;
         public static final int title_logo=0x7f060001;
         public static final int title_text=0x7f060002;
     }
     public static final class layout {
         public static final int activity_about=0x7f030000;
-        public static final int activity_display_message=0x7f030001;
-        public static final int activity_home=0x7f030002;
-        public static final int activity_record_patient_details=0x7f030003;
-        public static final int activity_submit_patient_record=0x7f030004;
+        public static final int activity_home=0x7f030001;
+        public static final int activity_record_patient_details=0x7f030002;
+        public static final int activity_submit_patient_record=0x7f030003;
     }
     public static final class string {
         public static final int about_intro=0x7f07000c;

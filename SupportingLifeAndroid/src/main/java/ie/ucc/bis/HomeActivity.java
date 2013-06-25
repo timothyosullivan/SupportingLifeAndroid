@@ -7,7 +7,7 @@ import android.os.Bundle;
  *
  */
 
-public class HomeActivity extends SupportingLifeActivity {
+public class HomeActivity extends SupportingLifeBaseActivity {
 
 	/**
 	 * OnCreate method is called when the activity is first created.
@@ -20,7 +20,8 @@ public class HomeActivity extends SupportingLifeActivity {
 	 * 
 	 * This method is always followed by onStart().
 	 * 
-	 */ 
+	 */
+	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_home);
@@ -34,7 +35,8 @@ public class HomeActivity extends SupportingLifeActivity {
 	 * instance of the activity to save space). These two scenarios can be
 	 * distinguished with the isFinishing() method.
 	 * 
-	 */	
+	 */
+	@Override
 	protected void onDestroy () {
 		super.onDestroy ();
 	}
@@ -53,6 +55,7 @@ public class HomeActivity extends SupportingLifeActivity {
 	 * front, or onStop() if the activity becomes invisible to the user.
 	 * 
 	 */
+	@Override
 	protected void onPause () {
 		super.onPause ();
 	}
@@ -66,6 +69,7 @@ public class HomeActivity extends SupportingLifeActivity {
 	 * This method is always followed by onPause().
 	 * 	
 	 */
+	@Override
 	protected void onRestart ()	{
 		super.onRestart ();
 	}
@@ -78,6 +82,7 @@ public class HomeActivity extends SupportingLifeActivity {
 	 * This method is always followed by onPause().
 	 *
 	 */
+	@Override
 	protected void onResume () {
 		super.onResume ();
 	}
@@ -87,7 +92,8 @@ public class HomeActivity extends SupportingLifeActivity {
 	 * 
 	 * This method is followed by onResume() if the activity comes to the foreground.
 	 * 
-	 */	
+	 */
+	@Override
 	protected void onStart () {
 		super.onStart ();
 	}
@@ -102,6 +108,7 @@ public class HomeActivity extends SupportingLifeActivity {
 	 * This method is followed by either onRestart() if this activity is coming back to interact with the user, 
 	 * or onDestroy() if this activity is going away.
 	 */
+	@Override
 	protected void onStop () {
 		super.onStop ();
 	}

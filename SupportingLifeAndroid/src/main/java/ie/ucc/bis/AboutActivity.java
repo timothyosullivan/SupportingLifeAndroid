@@ -13,7 +13,7 @@ import android.os.Bundle;
  * @author timothyosullivan
  *
  */
-public class AboutActivity extends SupportingLifeActivity {
+public class AboutActivity extends SupportingLifeBaseActivity {
 
 	/**
 	 * onCreate method
@@ -23,6 +23,7 @@ public class AboutActivity extends SupportingLifeActivity {
 	 * 
 	 * @param savedInstanceState Bundle
 	 */
+	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		

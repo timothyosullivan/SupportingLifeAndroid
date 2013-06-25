@@ -14,28 +14,28 @@
     <application android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
-        <activity android:name="ie.ucc.bis.HomeActivity" >
+        android:theme="@style/AppTheme">
+        <activity android:name="ie.ucc.bis.HomeActivity"
+            android:theme="@android:style/Theme.Light.NoTitleBar">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         
         <activity android:name="ie.ucc.bis.RecordPatientDetailsActivity"
-            android:label="@string/title_activity_record_patient_details">
+            android:label="@string/title_activity_record_patient_details"
+            android:theme="@android:style/Theme.Light.NoTitleBar">
         </activity>
         
         <activity android:name="ie.ucc.bis.SubmitPatientRecordActivity"
-            android:label="@string/title_activity_submit_patient_record">
-        </activity>
-        
-        <activity android:name="ie.ucc.bis.DisplayMessageActivity"
-            android:label="@string/title_activity_display_message">
+            android:label="@string/title_activity_submit_patient_record"
+            android:theme="@android:style/Theme.Light.NoTitleBar">
         </activity>
         
         <activity android:name="ie.ucc.bis.AboutActivity"
-            android:label="@string/title_about">
+            android:label="@string/title_about"
+            android:theme="@android:style/Theme.Light.NoTitleBar">
         </activity>         
         
     </application>

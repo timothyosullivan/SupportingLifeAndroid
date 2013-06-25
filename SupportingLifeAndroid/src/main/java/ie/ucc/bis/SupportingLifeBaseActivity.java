@@ -23,7 +23,7 @@ import android.widget.Toast;
  * @author Tim O Sullivan
  *
  */
-public abstract class SupportingLifeActivity extends Activity {
+public abstract class SupportingLifeBaseActivity extends Activity {
 	
 	/**
 	 * OnCreate method is called when the activity is first created.
@@ -37,6 +37,7 @@ public abstract class SupportingLifeActivity extends Activity {
 	 * This method is always followed by onStart().
 	 * 
 	 */
+	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 	}
@@ -51,6 +52,7 @@ public abstract class SupportingLifeActivity extends Activity {
 	 * distinguished with the isFinishing() method.
 	 * 
 	 */	
+	@Override
 	protected void onDestroy() {
 		super.onDestroy();
 	}
@@ -69,6 +71,7 @@ public abstract class SupportingLifeActivity extends Activity {
 	 * front, or onStop() if the activity becomes invisible to the user.
 	 * 
 	 */
+	@Override
 	protected void onPause() {
 		super.onPause();
 	}
@@ -82,6 +85,7 @@ public abstract class SupportingLifeActivity extends Activity {
 	 * This method is always followed by onPause().
 	 * 	
 	 */
+	@Override
 	protected void onRestart() {
 		super.onRestart();
 	}
@@ -91,7 +95,8 @@ public abstract class SupportingLifeActivity extends Activity {
 	 * 
 	 * This method is followed by onResume() if the activity comes to the foreground.
 	 * 
-	 */	
+	 */
+	@Override
 	protected void onStart() {
 		super.onStart();
 	}
@@ -101,7 +106,8 @@ public abstract class SupportingLifeActivity extends Activity {
 	 * 
 	 * This method is followed by onResume() if the activity comes to the foreground.
 	 * 
-	 */	
+	 */
+	@Override
 	protected void onStop() {
 		super.onStop();
 	}

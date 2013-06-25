@@ -7,13 +7,15 @@
 
     <LinearLayout style="@style/TitleBar" >
 
-        <ImageView
-            style="@style/TitleBarLogo"
-            android:contentDescription="@string/description_logo"
-            android:src="@drawable/title_logo" />
-
         <ImageView style="@style/TitleBarSeparator" 
             android:contentDescription="@string/title_bar_separator_description"/>
+
+        <ImageView
+            style="@style/TitleBarLogo"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:contentDescription="@string/description_logo"
+            android:src="@drawable/title_logo" />
 
         <TextView style="@style/TitleBarText" />
 
@@ -56,6 +58,7 @@
                 android:drawableTop="@drawable/home_button2"
                 android:onClick="onClickFeature"
                 android:text="@string/title_about_feature" />
+
         </LinearLayout>
     </LinearLayout>
 
