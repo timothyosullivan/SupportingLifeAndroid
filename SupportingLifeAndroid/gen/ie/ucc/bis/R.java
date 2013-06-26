@@ -38,45 +38,56 @@ public final class R {
         public static final int title_height=0x7f050002;
     }
     public static final class drawable {
-        public static final int about_content=0x7f020000;
-        public static final int btn_bg_pressed=0x7f020001;
-        public static final int btn_bg_selected=0x7f020002;
-        public static final int home_button1=0x7f020003;
-        public static final int home_button2=0x7f020004;
-        public static final int ic_launcher=0x7f020005;
-        public static final int light_bulb_default=0x7f020006;
-        public static final int light_bulb_pressed=0x7f020007;
-        public static final int light_bulb_selected=0x7f020008;
-        public static final int stack_default=0x7f020009;
-        public static final int stack_pressed=0x7f02000a;
-        public static final int stack_selected=0x7f02000b;
-        public static final int title_about=0x7f02000c;
-        public static final int title_about_alt=0x7f02000d;
-        public static final int title_about_default=0x7f02000e;
-        public static final int title_button=0x7f02000f;
-        public static final int title_home=0x7f020010;
-        public static final int title_home_alt=0x7f020011;
-        public static final int title_home_default=0x7f020012;
-        public static final int title_logo=0x7f020013;
-        public static final int title_logo_default=0x7f020014;
-        public static final int title_search=0x7f020015;
-        public static final int title_search_alt=0x7f020016;
-        public static final int title_search_default=0x7f020017;
+        public static final int about_content_1=0x7f020000;
+        public static final int about_content_2=0x7f020001;
+        public static final int about_content_3=0x7f020002;
+        public static final int about_content_4=0x7f020003;
+        public static final int about_content_5=0x7f020004;
+        public static final int about_content_6=0x7f020005;
+        public static final int btn_bg_pressed=0x7f020006;
+        public static final int btn_bg_selected=0x7f020007;
+        public static final int home_button1=0x7f020008;
+        public static final int home_button2=0x7f020009;
+        public static final int ic_launcher=0x7f02000a;
+        public static final int light_bulb_default=0x7f02000b;
+        public static final int light_bulb_pressed=0x7f02000c;
+        public static final int light_bulb_selected=0x7f02000d;
+        public static final int spin_animation=0x7f02000e;
+        public static final int stack_default=0x7f02000f;
+        public static final int stack_pressed=0x7f020010;
+        public static final int stack_selected=0x7f020011;
+        public static final int supporting_life_tree=0x7f020012;
+        public static final int title_about=0x7f020013;
+        public static final int title_about_alt=0x7f020014;
+        public static final int title_about_default=0x7f020015;
+        public static final int title_button=0x7f020016;
+        public static final int title_home=0x7f020017;
+        public static final int title_home_alt=0x7f020018;
+        public static final int title_home_default=0x7f020019;
+        public static final int title_logo=0x7f02001a;
+        public static final int title_logo_default=0x7f02001b;
+        public static final int title_search=0x7f02001c;
+        public static final int title_search_alt=0x7f02001d;
+        public static final int title_search_default=0x7f02001e;
     }
     public static final class id {
+        public static final int about_text_content=0x7f06000a;
         public static final int blocks_now=0x7f060007;
         public static final int blocks_ruler=0x7f060006;
-        public static final int db1_root=0x7f060008;
+        public static final int db1_root=0x7f06000b;
         public static final int dialog_discard_confirm=0x7f060003;
         public static final int dialog_moderator=0x7f060004;
         public static final int dialog_wave=0x7f060005;
-        public static final int first_name_label=0x7f06000b;
-        public static final int first_name_text=0x7f06000c;
-        public static final int home_btn_about_feature=0x7f06000a;
-        public static final int home_btn_record_patient_details_feature=0x7f060009;
-        public static final int network_comm_result=0x7f06000f;
-        public static final int surname_label=0x7f06000d;
-        public static final int surname_text=0x7f06000e;
+        public static final int first_name_label=0x7f06000e;
+        public static final int first_name_text=0x7f06000f;
+        public static final int home_btn_about_feature=0x7f06000d;
+        public static final int home_btn_record_patient_details_feature=0x7f06000c;
+        public static final int network_comm_result=0x7f060012;
+        public static final int spinning_wheel_image=0x7f060009;
+        public static final int supporting_life_animation_list=0x7f060013;
+        public static final int supporting_life_tree_image=0x7f060008;
+        public static final int surname_label=0x7f060010;
+        public static final int surname_text=0x7f060011;
         public static final int title_container=0x7f060000;
         public static final int title_logo=0x7f060001;
         public static final int title_text=0x7f060002;
@@ -88,7 +99,6 @@ public final class R {
         public static final int activity_submit_patient_record=0x7f030003;
     }
     public static final class string {
-        public static final int about_content_image=0x7f070014;
         /**  START: About Screen 
          */
         public static final int about_intro=0x7f070013;
@@ -108,7 +118,9 @@ public final class R {
          */
         public static final int first_name_label=0x7f070001;
         public static final int retrievalInfoStatus=0x7f070012;
+        public static final int spinning_wheel_image=0x7f070015;
         public static final int submissionInfoStatus=0x7f070011;
+        public static final int supporting_life_tree_image=0x7f070014;
         public static final int surname_label=0x7f070002;
         public static final int title_about=0x7f070008;
         public static final int title_about_feature=0x7f07000f;

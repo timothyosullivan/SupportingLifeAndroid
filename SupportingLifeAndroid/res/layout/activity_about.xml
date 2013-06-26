@@ -32,15 +32,33 @@
     </LinearLayout>
 
     <ImageView
+        android:id="@+id/supporting_life_tree_image"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:contentDescription="@string/about_content_image"
-        android:src="@drawable/about_content" />
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/background1"
+        android:contentDescription="@string/supporting_life_tree_image"
+        android:src="@drawable/supporting_life_tree" />
 
+    <ImageView
+        android:id="@+id/spinning_wheel_image"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_gravity="fill_vertical"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:visibility="invisible"
+        android:contentDescription="@string/spinning_wheel_image"/>
+    
     <TextView
+        android:id="@+id/about_text_content"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/about_intro" />
+        android:scrollbarStyle="insideOverlay"
+        android:maxLines = "10"
+        android:scrollbars="vertical"
+        android:text="@string/about_intro"
+        android:textAlignment="inherit" />
 
 </LinearLayout>
