@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
+<LinearLayout android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:orientation="vertical" >
+    android:orientation="vertical" xmlns:android="http://schemas.android.com/apk/res/android">
 
     <LinearLayout style="@style/TitleBar" >
 
@@ -54,19 +53,20 @@
     <!-- Notes:
     	android:fadeScrollbars="false" : keeps scrollbar visible on view
     -->
+
     <TextView
         android:id="@+id/about_text_content"
         style="@style/AppTheme"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="fill_horizontal"
+        android:layout_gravity="right"
         android:layout_marginBottom="15dp"
         android:background="@color/title_background"
-        android:gravity="center_horizontal|fill_horizontal"
+        android:fadeScrollbars="false"
+        android:gravity="fill_horizontal"
         android:maxLines="15"
         android:scrollbarAlwaysDrawVerticalTrack="true"
         android:scrollbarStyle="insideInset"
-        android:fadeScrollbars="false"
         android:scrollbars="vertical"
         android:text="@string/about_intro"
         android:textColor="@color/title_text" />

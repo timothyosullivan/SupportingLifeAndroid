@@ -1,5 +1,6 @@
-package ie.ucc.bis;
+package ie.ucc.bis.activity;
 
+import ie.ucc.bis.R;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -129,6 +130,9 @@ public class HomeActivity extends SupportingLifeBaseActivity {
 				break;
 			case R.id.home_btn_about_feature :
 				startActivity(new Intent(getApplicationContext(), AboutActivity.class));
+				break;
+			case R.id.home_btn_record_patient_details_wizard_feature :
+				startActivity(new Intent(getApplicationContext(), RecordPatientDetailsWizardActivity.class));
 				break;
 			default : 
 				break;

@@ -78,16 +78,17 @@ public final class R {
         public static final int dialog_discard_confirm=0x7f060003;
         public static final int dialog_moderator=0x7f060004;
         public static final int dialog_wave=0x7f060005;
-        public static final int first_name_label=0x7f06000e;
-        public static final int first_name_text=0x7f06000f;
+        public static final int first_name_label=0x7f06000f;
+        public static final int first_name_text=0x7f060010;
         public static final int home_btn_about_feature=0x7f06000d;
         public static final int home_btn_record_patient_details_feature=0x7f06000c;
-        public static final int network_comm_result=0x7f060012;
+        public static final int home_btn_record_patient_details_wizard_feature=0x7f06000e;
+        public static final int network_comm_result=0x7f060013;
         public static final int spinning_wheel_image=0x7f060009;
-        public static final int supporting_life_animation_list=0x7f060013;
+        public static final int supporting_life_animation_list=0x7f060014;
         public static final int supporting_life_tree_image=0x7f060008;
-        public static final int surname_label=0x7f060010;
-        public static final int surname_text=0x7f060011;
+        public static final int surname_label=0x7f060011;
+        public static final int surname_text=0x7f060012;
         public static final int title_container=0x7f060000;
         public static final int title_logo=0x7f060001;
         public static final int title_text=0x7f060002;
@@ -96,15 +97,17 @@ public final class R {
         public static final int activity_about=0x7f030000;
         public static final int activity_home=0x7f030001;
         public static final int activity_record_patient_details=0x7f030002;
-        public static final int activity_submit_patient_record=0x7f030003;
+        public static final int activity_record_patient_details_wizard=0x7f030003;
+        public static final int activity_submit_patient_record=0x7f030004;
     }
     public static final class string {
-        /**  START: About Screen 
+        /**  END: Record Patient Details Wizard Screen 
+ START: About Screen 
          */
-        public static final int about_intro=0x7f070013;
+        public static final int about_intro=0x7f070015;
         /**  END: Dashboard 
          */
-        public static final int action_settings=0x7f070010;
+        public static final int action_settings=0x7f070011;
         public static final int app_name=0x7f070000;
         public static final int button_send=0x7f070003;
         /**  END: Register Patient Details Screen 
@@ -117,10 +120,10 @@ public final class R {
         /**  START: Register Patient Details Screen 
          */
         public static final int first_name_label=0x7f070001;
-        public static final int retrievalInfoStatus=0x7f070012;
-        public static final int spinning_wheel_image=0x7f070015;
-        public static final int submissionInfoStatus=0x7f070011;
-        public static final int supporting_life_tree_image=0x7f070014;
+        public static final int retrievalInfoStatus=0x7f070013;
+        public static final int spinning_wheel_image=0x7f070017;
+        public static final int submissionInfoStatus=0x7f070012;
+        public static final int supporting_life_tree_image=0x7f070016;
         public static final int surname_label=0x7f070002;
         public static final int title_about=0x7f070008;
         public static final int title_about_feature=0x7f07000f;
@@ -130,6 +133,10 @@ public final class R {
         /**  dashboard button titles 
          */
         public static final int title_record_patient_details_feature=0x7f07000e;
+        /**  START: Record Patient Details Wizard Screen 
+         */
+        public static final int title_record_patient_details_wizard=0x7f070014;
+        public static final int title_record_patient_details_wizard_feature=0x7f070010;
         public static final int title_search=0x7f07000a;
         public static final int title_submit_patient_record=0x7f07000c;
     }

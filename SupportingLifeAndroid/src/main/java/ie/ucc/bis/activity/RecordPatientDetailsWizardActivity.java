@@ -1,12 +1,13 @@
-package ie.ucc.bis;
+package ie.ucc.bis.activity;
 
+import ie.ucc.bis.R;
 import ie.ucc.bis.domain.Patient;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 
-public class RecordPatientDetailsActivity extends SupportingLifeBaseActivity {
+public class RecordPatientDetailsWizardActivity extends SupportingLifeBaseActivity {
 
 	public final static String EXTRA_MESSAGE = "ie.ucc.bis.supportinglife.MESSAGE";
 	

@@ -1,4 +1,4 @@
-package ie.ucc.bis;
+package ie.ucc.bis.activity;
 
 import android.app.Activity;
 import android.content.Context;

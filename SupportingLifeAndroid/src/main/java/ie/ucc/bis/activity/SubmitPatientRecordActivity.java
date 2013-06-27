@@ -1,5 +1,6 @@
-package ie.ucc.bis;
+package ie.ucc.bis.activity;
 
+import ie.ucc.bis.R;
 import ie.ucc.bis.domain.Patient;
 
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
