@@ -1,10 +1,7 @@
 package ie.ucc.bis.activity;
 
 import ie.ucc.bis.R;
-import ie.ucc.bis.helper.ImageHelper;
-import android.graphics.Bitmap;
 import android.graphics.drawable.AnimationDrawable;
-import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
 import android.view.View;

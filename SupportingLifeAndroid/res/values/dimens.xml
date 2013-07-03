@@ -9,4 +9,10 @@
     <dimen name="text_size_small">14sp</dimen>
     <dimen name="text_size_medium">18sp</dimen>
     <dimen name="text_size_large">22sp</dimen>
+    
+    <!-- START: Breadcrumb Wizard UI -->
+    <dimen name="step_pager_tab_width">32dp</dimen>
+    <dimen name="step_pager_tab_height">3dp</dimen>
+    <dimen name="step_pager_tab_spacing">4dp</dimen>
+    <!-- END: Breadcrumb Wizard UI -->
 </resources>

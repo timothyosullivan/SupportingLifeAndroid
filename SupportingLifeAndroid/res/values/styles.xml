@@ -1,35 +1,31 @@
 <resources>
-
-    <!--
-        Base application theme, dependent on API level. This theme is replaced
-        by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
-    -->
-    <style name="AppBaseTheme" parent="android:Theme.Light">
-        <!--
-            Theme customizations available in newer API levels can go in
-            res/values-vXX/styles.xml, while customizations related to
-            backward-compatibility can go here.
-        -->
+    <!-- Application theme. -->
+    <style name="AppTheme" parent="android:Theme.Light">
+        <item name="textAppearanceFinish">@style/TextAppearanceFinish</item>
     </style>
     
-    <!-- Application theme. -->
-    <style name="AppTheme" parent="AppBaseTheme">
-        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+    <!-- START: Breadcrumb UI Wizard -->
+    <style name="TextAppearanceFinish" parent="android:TextAppearance.Medium">
+        <item name="android:textColor">#fff</item>
     </style>
+    <!-- END: Breadcrumb UI Wizard -->
 
     <!-- Variation on the Light theme that turns off the title -->
     <style name="Theme.D1t" parent="android:style/Theme.Light">
         <item name="android:windowNoTitle">false</item>
         <item name="android:windowContentOverlay">@null</item>
     </style>
+
     <style name="Theme.D1" parent="android:style/Theme.Light">
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowContentOverlay">@null</item>
     </style>
+
     <style name="Theme.D1dialog" parent="android:style/Theme.Dialog">
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowContentOverlay">@null</item>
     </style>
+
     <style name="Theme.D1tranlucent" parent="android:style/Theme.Translucent">
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowContentOverlay">@null</item>
@@ -58,7 +54,7 @@
     <style name="TitleBarAction">
         <item name="android:layout_width">@dimen/title_height</item>
         <item name="android:layout_height">fill_parent</item>
-        <!--- <item name="android:background">@null</item> -->
+        <!-- - <item name="android:background">@null</item> -->
         <item name="android:background">@drawable/title_button</item>
     </style>
 
@@ -68,7 +64,7 @@
         <item name="android:layout_marginLeft">14dip</item>
         <item name="android:layout_marginRight">15dip</item>
         <item name="android:layout_marginTop">14dip</item>
-        <item name="android:indeterminate">true</item> 
+        <item name="android:indeterminate">true</item>
     </style>
 
     <style name="TitleBarSeparator">
@@ -110,4 +106,32 @@
         <item name="android:lineSpacingMultiplier">1.1</item>
         <item name="android:textColor">@android:color/secondary_text_light</item>
     </style>
+
+    <style name="WizardPageContainer">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:paddingLeft">16dp</item>
+        <item name="android:paddingRight">16dp</item>
+    </style>
+
+    <style name="WizardPageTitle">
+        <item name="android:id">@android:id/title</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginBottom">8dp</item>
+        <item name="android:textSize">36sp</item>
+        <item name="android:textColor">#ff0099cc</item>
+    </style>
+
+    <style name="WizardFormLabel">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginBottom">0dp</item>
+        <item name="android:textColor">@color/text_light</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:paddingLeft">12dp</item>
+        <item name="android:paddingRight">12dp</item>
+    </style>
+
 </resources>

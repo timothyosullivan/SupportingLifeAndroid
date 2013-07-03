@@ -1,9 +1,9 @@
 package ie.ucc.bis.activity;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
@@ -23,7 +23,7 @@ import android.widget.Toast;
  * @author Tim O Sullivan
  *
  */
-public abstract class SupportingLifeBaseActivity extends Activity {
+public abstract class SupportingLifeBaseActivity extends FragmentActivity {
 	
 	/**
 	 * OnCreate method is called when the activity is first created.
