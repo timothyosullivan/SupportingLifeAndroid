@@ -13,8 +13,8 @@ import android.widget.TextView;
  * 
  * This is the About activity in the Supporting LIFE application.
  * 
- * The purpose of the class is to display information text about the application and
- * also provides a way to get back to the home activity.
+ * The purpose of the activity is to display textual and pictorial content
+ * about the application.
  * 
  * @author timothyosullivan
  *

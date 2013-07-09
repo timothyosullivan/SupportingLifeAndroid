@@ -34,17 +34,16 @@
 
     <!-- START: Record Patient Details Wizard Screen -->
     <string name="title_record_patient_details_wizard">e-IMCI Assessment</string>
-
     <string name="next">Next</string>
     <string name="prev">Previous</string>
     <string name="finish">Submit order</string>
     <string name="review">Review</string>
-
+    <string name="breadcrumb_previous_button">Previous</string>
+    <string name="breadcrumb_next_button">Next</string>
     <string name="label_your_name">Name</string>
     <string name="label_your_email">Email</string>
     <string name="hint_your_name">e.g. Larry</string>
     <string name="hint_your_email">Optional</string>
-
     <string name="submit_confirm_message">Place the order with the deli? You will receive an email
         confirmation.</string>
     <string name="submit_confirm_button">Submit Patient Record</string>

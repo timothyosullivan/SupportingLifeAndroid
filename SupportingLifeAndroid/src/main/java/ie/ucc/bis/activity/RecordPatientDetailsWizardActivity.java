@@ -149,7 +149,7 @@ public class RecordPatientDetailsWizardActivity extends SupportingLifeBaseActivi
             mNextButton.setText(mEditingAfterReview
                     ? "review"
                     : "next");
-            mNextButton.setBackgroundResource(R.drawable.selectable_item_background);
+            mNextButton.setBackgroundResource(R.drawable.breadcrumb_next_button);
             TypedValue v = new TypedValue();
             getTheme().resolveAttribute(android.R.attr.textAppearanceMedium, v, true);
             mNextButton.setTextAppearance(this, v.resourceId);

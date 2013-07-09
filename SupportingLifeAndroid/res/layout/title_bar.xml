@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ============================================================ -->
+<!-- TITLE BAR -->
+<!-- ============================================================ -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/TitleBar"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal" >
+
+    <!-- Home Button -->
+
+    <ImageButton
+        style="@style/TitleBarAction"
+        android:contentDescription="@string/description_home"
+        android:onClick="onClickHome"
+        android:src="@drawable/title_home" />
+
+    <ImageView
+        style="@style/TitleBarSeparator"
+        android:contentDescription="@string/title_bar_separator_description" />
+
+    <TextView style="@style/TitleBarText" />
+
+    <!-- About Button -->
+
+    <ImageButton
+        style="@style/TitleBarAction"
+        android:contentDescription="@string/description_about"
+        android:onClick="onClickAbout"
+        android:src="@drawable/title_about" />
+
+    <!-- Search Button -->
+
+    <ImageButton
+        style="@style/TitleBarAction"
+        android:contentDescription="@string/description_search"
+        android:onClick="onClickSearch"
+        android:src="@drawable/title_search" />
+
+</LinearLayout>

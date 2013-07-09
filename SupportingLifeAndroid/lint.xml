@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<lint>
+    <issue id="ButtonStyle">
+        <ignore path="res/layout/activity_record_patient_details_wizard.xml" />
+    </issue>
+</lint>

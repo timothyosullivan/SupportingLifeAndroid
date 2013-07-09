@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- ============================================================ -->
+<!-- DASHBOARD SCREEN -->
+<!-- ============================================================ -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/db1_root"
     android:layout_width="fill_parent"
@@ -6,31 +9,15 @@
     android:background="@drawable/windblown_tree"
     android:orientation="vertical" >
 
-    <LinearLayout style="@style/TitleBar" >
+    <!-- ============================================================ -->
+    <!-- TITLE BAR -->
+    <!-- ============================================================ -->
 
-        <ImageView
-            style="@style/TitleBarLogo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginLeft="@dimen/text_size_small"
-            android:contentDescription="@string/description_logo"
-            android:src="@drawable/title_logo" />
-
-        <TextView style="@style/TitleBarText" />
-
-        <ImageButton
-            style="@style/TitleBarAction"
-            android:contentDescription="@string/description_about"
-            android:onClick="onClickAbout"
-            android:src="@drawable/title_about" />
-
-        <ImageButton
-            style="@style/TitleBarAction"
-            android:contentDescription="@string/description_search"
-            android:onClick="onClickSearch"
-            android:src="@drawable/title_search" />
-    </LinearLayout>
+    <include
+        android:id="@+id/title_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        layout="@layout/title_bar" />
 
     <LinearLayout
         android:layout_width="fill_parent"
@@ -39,13 +26,21 @@
         android:orientation="vertical"
         android:padding="6dip" >
 
+        <!-- ============================================================ -->
+        <!-- E-IMCI ASSESSMENT BUTTON -->
+        <!-- ============================================================ -->
+
         <Button
             android:id="@+id/home_btn_record_patient_details_feature"
             style="@style/HomeButton"
+            android:background="@null"
             android:drawableTop="@drawable/home_button1"
             android:onClick="onClickFeature"
-            android:text="@string/title_record_patient_details_feature"
-            android:background="@null" />
+            android:text="@string/title_record_patient_details_feature" />
+
+        <!-- ============================================================ -->
+        <!-- ABOUT BUTTON -->
+        <!-- ============================================================ -->
 
         <Button
             android:id="@+id/home_btn_about_feature"
@@ -53,7 +48,11 @@
             android:drawableTop="@drawable/home_button2"
             android:onClick="onClickFeature"
             android:text="@string/title_about_feature" />
-        
+
+        <!-- ============================================================ -->
+        <!-- E-IMCI WIZARD ASSESSMENT BUTTON -->
+        <!-- ============================================================ -->
+
         <Button
             android:id="@+id/home_btn_record_patient_details_wizard_feature"
             style="@style/HomeButton"

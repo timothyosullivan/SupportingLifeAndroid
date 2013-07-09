@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ============================================================ -->
+<!-- GREEN BUTTON -->
+<!-- ============================================================ -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/green_button" >
+
+    <solid android:color="#F000" />
+
+    <stroke
+        android:width="1px"
+        android:color="#BB000000" />
+
+    <padding
+        android:bottom="7dp"
+        android:left="10dp"
+        android:right="10dp"
+        android:top="7dp" />
+
+    <corners
+        android:bottomLeftRadius="5dp"
+        android:bottomRightRadius="5dp"
+        android:topLeftRadius="5dp"
+        android:topRightRadius="5dp" />
+
+    <gradient
+        android:angle="90"
+        android:centerColor="#86a621"
+        android:endColor="#9cc126"
+        android:startColor="#739312"
+        android:type="linear" />
+
+</shape>
