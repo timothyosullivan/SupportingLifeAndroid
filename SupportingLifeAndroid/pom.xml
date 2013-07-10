@@ -11,10 +11,11 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<platform.version>4.1.1.4</platform.version>
-		<android.plugin.version>3.5.3</android.plugin.version>
+		<android.plugin.version>3.6.0</android.plugin.version>
 		<google.android.version>r7</google.android.version>
 		<spring.version>1.0.1.RELEASE</spring.version>
 		<json.version>1.9.12</json.version>
+		<android.api.level>17</android.api.level>
 	</properties>
 
 	<dependencies>
@@ -65,6 +66,9 @@
 				<groupId>com.jayway.maven.plugins.android.generation2</groupId>
 				<artifactId>android-maven-plugin</artifactId>
 				<configuration>
+					<sdk>
+	                    <platform>${android.api.level}</platform>
+	                </sdk>
 				</configuration>
 			</plugin>
 		</plugins>
