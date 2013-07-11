@@ -1,5 +1,6 @@
 package ie.ucc.bis.activity;
 
+import ie.ucc.bis.R;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -100,16 +101,33 @@ public abstract class SupportingLifeBaseActivity extends FragmentActivity {
 	protected void onStart() {
 		super.onStart();
 	}
-
+	
 	/**
-	 * onStop method is called when the activity is becoming visible to the user.
+	 * onResume method is called when the activity will start interacting with the user.
 	 * 
-	 * This method is followed by onResume() if the activity comes to the foreground.
+	 * At this point your activity is at the top of the activity stack, with user input going to it.
 	 * 
+	 * This method is always followed by onPause().
+	 *
 	 */
 	@Override
-	protected void onStop() {
-		super.onStop();
+	protected void onResume () {
+		super.onResume ();
+	}
+
+	/**
+	 * onStop method is called when the activity is no longer visible to the user
+	 * because another activity has been resumed and is covering this one.
+	 * 
+	 * This may happen either because a new activity is being started, an existing one 
+	 * is being brought in front of this one, or this one is being destroyed.
+	 *
+	 * This method is followed by either onRestart() if this activity is coming back to interact with the user, 
+	 * or onDestroy() if this activity is going away.
+	 */
+	@Override
+	protected void onStop () {
+		super.onStop ();
 	}
 	
 	/**
@@ -122,6 +140,9 @@ public abstract class SupportingLifeBaseActivity extends FragmentActivity {
 		final Intent intent = new Intent(context, HomeActivity.class);
 		intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 		context.startActivity(intent);
+		
+		// configure the activity animation transition effect
+		overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
 	}
 	
 	/**
@@ -142,6 +163,9 @@ public abstract class SupportingLifeBaseActivity extends FragmentActivity {
 	 */
 	public void onClickSearch(View view) {
 //		startActivity(new Intent(getApplicationContext(), SearchActivity.class));
+		
+		// configure the activity animation transition effect
+		// overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
 	}
 	
 	/**
@@ -152,6 +176,9 @@ public abstract class SupportingLifeBaseActivity extends FragmentActivity {
 	 */
 	public void onClickAbout(View view) {
 		startActivity(new Intent(getApplicationContext(), AboutActivity.class));
+		
+		// configure the activity animation transition effect
+		overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
 	}
 	
 	/**

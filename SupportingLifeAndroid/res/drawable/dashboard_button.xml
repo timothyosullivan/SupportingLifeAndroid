@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ============================================================ -->
+<!-- DASHBOARD BUTTON -->
+<!-- Transparent button displayed which switches to -->
+<!-- light blue when clicked -->
+<!-- ============================================================ -->
+<selector xmlns:android="http://schemas.android.com/apk/res/android" android:id="@+id/breadcrumb_next_button">
+    <item android:drawable="@drawable/green_button" android:state_pressed="true"/>
+    <item android:drawable="@drawable/green_button" android:state_focused="true"/>
+    <item android:drawable="@drawable/transparent_button" android:state_pressed="false"/>
+</selector>

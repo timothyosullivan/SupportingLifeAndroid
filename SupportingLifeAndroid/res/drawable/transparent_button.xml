@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ============================================================ -->
+<!-- TRANSPARENT BUTTON -->
+<!-- ============================================================ -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/transparent_button" >
+
+    <!-- TRANSPARENCY NOTES -->
+    <!-- #FF000000 will get you a solid black whereas 
+    	 #00000000 will get you a 100% transparency  
+    -->
+    <solid android:color="#08000000" />
+
+    <!-- white coloured boundary -->
+    <stroke
+        android:width="4px"
+        android:color="#FFFFFF" />
+
+    <padding
+        android:bottom="7dp"
+        android:left="10dp"
+        android:right="10dp"
+        android:top="7dp" />
+
+    <corners
+        android:bottomLeftRadius="5dp"
+        android:bottomRightRadius="5dp"
+        android:topLeftRadius="5dp"
+        android:topRightRadius="5dp" />
+
+    <gradient
+        android:angle="90"
+        android:centerColor="#777"
+        android:endColor="#BBB"
+        android:startColor="#777"
+        android:type="linear" />
+
+</shape>

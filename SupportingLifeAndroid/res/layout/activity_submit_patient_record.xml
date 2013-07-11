@@ -4,32 +4,15 @@
     android:layout_height="fill_parent"
     android:orientation="vertical">
 
-	<!-- Title Bar -->
-    <LinearLayout style="@style/TitleBar" >
-        <ImageButton
-            style="@style/TitleBarAction"
-            android:contentDescription="@string/description_home"
-            android:onClick="onClickHome"
-            android:src="@drawable/title_home" />
+    <!-- ============================================================ -->
+    <!-- TITLE BAR -->
+    <!-- ============================================================ -->
 
-        <ImageView
-            style="@style/TitleBarSeparator"
-            android:contentDescription="@string/title_bar_separator_description" />
-
-        <TextView style="@style/TitleBarText" />
-
-        <ImageButton
-            style="@style/TitleBarAction"
-            android:contentDescription="@string/description_about"
-            android:onClick="onClickAbout"
-            android:src="@drawable/title_about" />
-
-        <ImageButton
-            style="@style/TitleBarAction"
-            android:contentDescription="@string/description_search"
-            android:onClick="onClickSearch"
-            android:src="@drawable/title_search" />
-    </LinearLayout>    
+    <include
+        android:id="@+id/title_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        layout="@layout/title_bar" />
     
     <!-- Patient Submission Result -->
     <TextView

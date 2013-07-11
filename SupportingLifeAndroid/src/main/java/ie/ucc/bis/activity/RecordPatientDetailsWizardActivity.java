@@ -142,13 +142,15 @@ public class RecordPatientDetailsWizardActivity extends SupportingLifeBaseActivi
     private void updateBottomBar() {
         int position = mPager.getCurrentItem();
         if (position == mCurrentPageSequence.size()) {
-            mNextButton.setText("finish");
-            mNextButton.setBackgroundResource(R.drawable.finish_background);
+            // change text and colour on the next button to indicate
+        	// assessment data entry is complete
+            mNextButton.setText(R.string.assessment_wizard_finish_button);
+            mNextButton.setBackgroundResource(R.drawable.blue_button);
             mNextButton.setTextAppearance(this, R.style.TextAppearanceFinish);
         } else {
             mNextButton.setText(mEditingAfterReview
-                    ? "review"
-                    : "next");
+                    ? R.string.assessment_wizard_review_button
+                    : R.string.assessment_wizard_next_button);
             mNextButton.setBackgroundResource(R.drawable.breadcrumb_next_button);
             TypedValue v = new TypedValue();
             getTheme().resolveAttribute(android.R.attr.textAppearanceMedium, v, true);
