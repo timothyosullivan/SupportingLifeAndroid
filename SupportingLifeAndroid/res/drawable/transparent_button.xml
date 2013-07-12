@@ -14,7 +14,7 @@
     <!-- white coloured boundary -->
     <stroke
         android:width="4px"
-        android:color="#FFFFFF" />
+        android:color="@color/White" />
 
     <padding
         android:bottom="7dp"

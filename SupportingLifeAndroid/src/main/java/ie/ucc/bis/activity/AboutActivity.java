@@ -63,7 +63,7 @@ public class AboutActivity extends SupportingLifeBaseActivity {
 		final ImageView supportingLifeImageView = (ImageView)findViewById(R.id.spinning_wheel_image);
 		// set ImageView to visible
 		supportingLifeImageView.setVisibility(View.VISIBLE);
-		supportingLifeImageView.setBackgroundResource(R.drawable.spin_animation);
+		supportingLifeImageView.setBackgroundResource(R.anim.spin_animation);
 
 		supportingLifeImageView.post(new Runnable() {
 			public void run() {

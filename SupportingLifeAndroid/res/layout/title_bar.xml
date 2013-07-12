@@ -14,7 +14,7 @@
         style="@style/TitleBarAction"
         android:contentDescription="@string/titlebar_home_description"
         android:onClick="onClickHome"
-        android:src="@drawable/title_home" />
+        android:src="@drawable/titlebar_home_button" />
 
     <ImageView
         style="@style/TitleBarSeparator"
@@ -28,7 +28,7 @@
         style="@style/TitleBarAction"
         android:contentDescription="@string/titlebar_about_description"
         android:onClick="onClickAbout"
-        android:src="@drawable/title_about" />
+        android:src="@drawable/titlebar_about_button" />
 
     <!-- Search Button -->
 
@@ -36,6 +36,6 @@
         style="@style/TitleBarAction"
         android:contentDescription="@string/titlebar_search_description"
         android:onClick="onClickSearch"
-        android:src="@drawable/title_search" />
+        android:src="@drawable/titlebar_search_button" />
 
 </LinearLayout>

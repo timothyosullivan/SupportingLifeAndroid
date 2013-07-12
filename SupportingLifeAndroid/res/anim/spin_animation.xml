@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ============================================================ -->
+<!-- IMAGE ANIMATION FOR DISPLAYING IMAGE GALLERY ON ABOUT SCREEN -->
+<!-- ============================================================ -->
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/supporting_life_animation_list"
+    android:oneshot="false" >
+
+    <item
+        android:drawable="@drawable/about_screen_image_1"
+        android:duration="5000"/>
+    <item
+        android:drawable="@drawable/about_screen_image_2"
+        android:duration="5000"/>
+    <item
+        android:drawable="@drawable/about_screen_image_3"
+        android:duration="5000"/>
+    <item
+        android:drawable="@drawable/about_screen_image_4"
+        android:duration="5000"/>
+    <item
+        android:drawable="@drawable/about_screen_image_5"
+        android:duration="5000"/>
+    <item
+        android:drawable="@drawable/about_screen_image_6"
+        android:duration="5000"/>
+
+</animation-list>

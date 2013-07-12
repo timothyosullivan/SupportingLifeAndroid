@@ -40,7 +40,7 @@
             android:layout_row="9"
             android:background="@drawable/dashboard_button"
             android:onClick="onClickDashboardButton"
-            android:textColor="@color/White"
+            android:textColor="@color/Black"
             android:text="@string/dashboard_assessment_button" />
 
         <!-- ============================================================ -->
@@ -56,7 +56,7 @@
             android:layout_row="9"
             android:background="@drawable/dashboard_button"
             android:onClick="onClickDashboardButton"
-            android:textColor="@color/White"
+            android:textColor="@color/Black"
             android:text="@string/dashboard_assessment_wizard_button" />
 
         <!-- ============================================================ -->
@@ -72,7 +72,7 @@
             android:layout_row="9"
             android:background="@drawable/dashboard_button"
             android:onClick="onClickDashboardButton"
-            android:textColor="@color/White"
+            android:textColor="@color/Black"
             android:text="@string/dashboard_about_button" />
 
     </GridLayout>
