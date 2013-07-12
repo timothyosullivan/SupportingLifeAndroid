@@ -196,23 +196,24 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int icon_launcher=0x7f02000c;
         public static final int item_focused=0x7f02000d;
         public static final int item_pressed=0x7f02000e;
-        public static final int supporting_life_tree=0x7f02000f;
-        public static final int titlebar_about_button=0x7f020010;
-        public static final int titlebar_about_button_alt=0x7f020011;
-        public static final int titlebar_about_button_default=0x7f020012;
-        public static final int titlebar_btn_bg_pressed=0x7f020013;
-        public static final int titlebar_btn_bg_selected=0x7f020014;
-        public static final int titlebar_generic_button=0x7f020015;
-        public static final int titlebar_home_button=0x7f020016;
-        public static final int titlebar_home_button_alt=0x7f020017;
-        public static final int titlebar_home_button_default=0x7f020018;
-        public static final int titlebar_logo=0x7f020019;
-        public static final int titlebar_logo_default=0x7f02001a;
-        public static final int titlebar_search_button=0x7f02001b;
-        public static final int titlebar_search_button_alt=0x7f02001c;
-        public static final int titlebar_search_button_default=0x7f02001d;
-        public static final int transparent_button=0x7f02001e;
-        public static final int windblown_tree=0x7f02001f;
+        public static final int splash_screen_image=0x7f02000f;
+        public static final int supporting_life_tree=0x7f020010;
+        public static final int titlebar_about_button=0x7f020011;
+        public static final int titlebar_about_button_alt=0x7f020012;
+        public static final int titlebar_about_button_default=0x7f020013;
+        public static final int titlebar_btn_bg_pressed=0x7f020014;
+        public static final int titlebar_btn_bg_selected=0x7f020015;
+        public static final int titlebar_generic_button=0x7f020016;
+        public static final int titlebar_home_button=0x7f020017;
+        public static final int titlebar_home_button_alt=0x7f020018;
+        public static final int titlebar_home_button_default=0x7f020019;
+        public static final int titlebar_logo=0x7f02001a;
+        public static final int titlebar_logo_default=0x7f02001b;
+        public static final int titlebar_search_button=0x7f02001c;
+        public static final int titlebar_search_button_alt=0x7f02001d;
+        public static final int titlebar_search_button_default=0x7f02001e;
+        public static final int transparent_button=0x7f02001f;
+        public static final int windblown_tree=0x7f020020;
     }
     public static final class id {
         public static final int about_text_content=0x7f07000b;
@@ -258,11 +259,12 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int activity_home=0x7f030001;
         public static final int activity_record_patient_details=0x7f030002;
         public static final int activity_record_patient_details_wizard=0x7f030003;
-        public static final int activity_submit_patient_record=0x7f030004;
-        public static final int fragment_page=0x7f030005;
-        public static final int fragment_page_customer_info=0x7f030006;
-        public static final int list_item_review=0x7f030007;
-        public static final int title_bar=0x7f030008;
+        public static final int activity_splash=0x7f030004;
+        public static final int activity_submit_patient_record=0x7f030005;
+        public static final int fragment_page=0x7f030006;
+        public static final int fragment_page_customer_info=0x7f030007;
+        public static final int list_item_review=0x7f030008;
+        public static final int title_bar=0x7f030009;
     }
     public static final class string {
         /**  END: Record Patient Details Wizard Screen 
@@ -311,6 +313,9 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int label_your_name=0x7f090015;
         public static final int retrievalInfoStatus=0x7f090010;
         public static final int spinning_wheel_image=0x7f09001d;
+        /**  END: Register Patient Details Screen 
+         */
+        public static final int splash_screen_image=0x7f090021;
         public static final int submissionInfoStatus=0x7f09000f;
         public static final int submit_confirm_button=0x7f09001a;
         public static final int submit_confirm_message=0x7f090019;

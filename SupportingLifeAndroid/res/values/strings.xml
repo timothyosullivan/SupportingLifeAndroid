@@ -82,4 +82,6 @@ children in developing countries.</string>
     <string name="button_send">Submit</string>
     <!-- END: Register Patient Details Screen -->
 
+    <string name="splash_screen_image">Supporting LIFE Splash Screen</string>
+
 </resources>
