@@ -8,8 +8,9 @@
     android:layout_height="wrap_content"
     android:orientation="horizontal" >
 
-    <!-- Home Button -->
-
+	<!-- ============================================================ -->
+	<!-- HOME BUTTON -->
+	<!-- ============================================================ -->
     <ImageButton
         style="@style/TitleBarAction"
         android:contentDescription="@string/titlebar_home_description"
@@ -20,9 +21,16 @@
         style="@style/TitleBarSeparator"
         android:contentDescription="@string/titlebar_separator_description" />
 
-    <TextView style="@style/TitleBarText" />
+	<!-- ============================================================ -->
+	<!-- TEXTUAL APP NAME ON TOOLBAR -->
+	<!-- ============================================================ -->    
+    
+    <TextView style="@style/TitleBarText" 
+        	android:text="@string/app_name"/>
 
-    <!-- About Button -->
+	<!-- ============================================================ -->
+	<!-- ABOUT BUTTON -->
+	<!-- ============================================================ -->
 
     <ImageButton
         style="@style/TitleBarAction"
@@ -30,8 +38,9 @@
         android:onClick="onClickAbout"
         android:src="@drawable/titlebar_about_button" />
 
-    <!-- Search Button -->
-
+	<!-- ============================================================ -->
+	<!-- SEARCH BUTTON -->
+	<!-- ============================================================ -->
     <ImageButton
         style="@style/TitleBarAction"
         android:contentDescription="@string/titlebar_search_description"

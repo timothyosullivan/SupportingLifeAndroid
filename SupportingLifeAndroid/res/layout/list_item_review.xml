@@ -8,7 +8,7 @@
 
     <TextView android:id="@android:id/text1"
         style="?android:textAppearanceSmall"
-        android:textColor="@color/text_light"
+        android:textColor="@color/LightCoral"
         android:textStyle="bold"
         android:ellipsize="end"
         android:layout_width="100sp"

@@ -8,6 +8,11 @@
 package ie.ucc.bis;
 
 public final class R {
+    public static final class anim {
+        public static final int fade_in=0x7f040000;
+        public static final int fade_out=0x7f040001;
+        public static final int spin_animation=0x7f040002;
+    }
     public static final class attr {
         /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
@@ -15,25 +20,146 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int textAppearanceFinish=0x7f010000;
     }
     public static final class color {
-        public static final int background1=0x7f040005;
-        public static final int background2=0x7f040006;
-        public static final int background3=0x7f040007;
-        public static final int foreground1=0x7f040003;
-        public static final int foreground2=0x7f040004;
-        public static final int review_green=0x7f04000d;
-        public static final int step_pager_next_tab_color=0x7f04000c;
-        /**  START: Breadcrumb Wizard Colours 
-         */
-        public static final int step_pager_previous_tab_color=0x7f040009;
-        public static final int step_pager_selected_last_tab_color=0x7f04000b;
-        public static final int step_pager_selected_tab_color=0x7f04000a;
-        public static final int text_light=0x7f04000e;
-        public static final int title_background=0x7f040000;
-        public static final int title_separator=0x7f040008;
-        /**  Green 
-         */
-        public static final int title_text=0x7f040001;
-        public static final int title_text_alt=0x7f040002;
+        public static final int AliceBlue=0x7f05002c;
+        public static final int AntiqueWhite=0x7f050022;
+        public static final int Aqua=0x7f05007c;
+        public static final int Aquamarine=0x7f050061;
+        public static final int Azure=0x7f05002a;
+        public static final int Beige=0x7f050027;
+        public static final int Bisque=0x7f05000d;
+        public static final int Black=0x7f05008b;
+        public static final int BlanchedAlmond=0x7f05000b;
+        public static final int Blue=0x7f050087;
+        public static final int BlueViolet=0x7f05005a;
+        public static final int Brown=0x7f05004e;
+        public static final int BurlyWood=0x7f050034;
+        public static final int CadetBlue=0x7f05006c;
+        public static final int Chartreuse=0x7f050062;
+        public static final int Chocolate=0x7f05003e;
+        public static final int Coral=0x7f050017;
+        public static final int CornflowerBlue=0x7f05006b;
+        public static final int Cornsilk=0x7f050007;
+        public static final int Crimson=0x7f050037;
+        public static final int Cyan=0x7f05007d;
+        public static final int DarkBlue=0x7f050089;
+        public static final int DarkCyan=0x7f050083;
+        public static final int DarkGoldenrod=0x7f050046;
+        public static final int DarkGray=0x7f05004d;
+        public static final int DarkGreen=0x7f050086;
+        public static final int DarkKhaki=0x7f050043;
+        public static final int DarkMagenta=0x7f050058;
+        public static final int DarkOliveGreen=0x7f05006d;
+        public static final int DarkOrange=0x7f050016;
+        public static final int DarkOrchid=0x7f050051;
+        public static final int DarkRed=0x7f050059;
+        public static final int DarkSalmon=0x7f050031;
+        public static final int DarkSeaGreen=0x7f050056;
+        public static final int DarkSlateBlue=0x7f050070;
+        public static final int DarkSlateGray=0x7f050076;
+        public static final int DarkTurquoise=0x7f050081;
+        public static final int DarkViolet=0x7f050053;
+        public static final int DeepPink=0x7f05001b;
+        public static final int DeepSkyBlue=0x7f050082;
+        public static final int DimGray=0x7f050069;
+        public static final int DodgerBlue=0x7f05007a;
+        public static final int FireBrick=0x7f050047;
+        public static final int FloralWhite=0x7f050005;
+        public static final int ForestGreen=0x7f050078;
+        public static final int Fuchsia=0x7f05001c;
+        public static final int Gainsboro=0x7f050036;
+        public static final int GhostWhite=0x7f050024;
+        public static final int Gold=0x7f050011;
+        public static final int Goldenrod=0x7f050039;
+        public static final int Gray=0x7f05005d;
+        public static final int Green=0x7f050085;
+        public static final int GreenYellow=0x7f05004b;
+        public static final int Honeydew=0x7f05002b;
+        public static final int HotPink=0x7f050018;
+        public static final int IndianRed=0x7f050040;
+        public static final int Indigo=0x7f05006e;
+        public static final int Ivory=0x7f050001;
+        public static final int Khaki=0x7f05002d;
+        public static final int Lavender=0x7f050032;
+        public static final int LavenderBlush=0x7f050009;
+        public static final int LawnGreen=0x7f050063;
+        public static final int LemonChiffon=0x7f050006;
+        public static final int LightBlue=0x7f05004c;
+        public static final int LightCoral=0x7f05002e;
+        public static final int LightCyan=0x7f050033;
+        public static final int LightGoldenrodYellow=0x7f050020;
+        public static final int LightGreen=0x7f050055;
+        public static final int LightGrey=0x7f05003c;
+        public static final int LightPink=0x7f050013;
+        public static final int LightSalmon=0x7f050015;
+        public static final int LightSeaGreen=0x7f050079;
+        public static final int LightSkyBlue=0x7f05005b;
+        public static final int LightSlateGray=0x7f050065;
+        public static final int LightSteelBlue=0x7f050049;
+        public static final int LightYellow=0x7f050002;
+        public static final int Lime=0x7f05007f;
+        public static final int LimeGreen=0x7f050075;
+        public static final int Linen=0x7f050021;
+        public static final int Magenta=0x7f05001d;
+        public static final int Maroon=0x7f050060;
+        public static final int MediumAquamarine=0x7f05006a;
+        public static final int MediumBlue=0x7f050088;
+        public static final int MediumOrchid=0x7f050045;
+        public static final int MediumPurple=0x7f050054;
+        public static final int MediumSeaGreen=0x7f050074;
+        public static final int MediumSlateBlue=0x7f050064;
+        public static final int MediumSpringGreen=0x7f050080;
+        public static final int MediumTurquoise=0x7f05006f;
+        public static final int MediumVioletRed=0x7f050041;
+        public static final int MidnightBlue=0x7f05007b;
+        public static final int MintCream=0x7f050025;
+        public static final int MistyRose=0x7f05000c;
+        public static final int Moccasin=0x7f05000e;
+        public static final int NavajoWhite=0x7f05000f;
+        public static final int Navy=0x7f05008a;
+        public static final int OldLace=0x7f05001f;
+        public static final int Olive=0x7f05005e;
+        public static final int OliveDrab=0x7f050067;
+        public static final int Orange=0x7f050014;
+        public static final int OrangeRed=0x7f05001a;
+        public static final int Orchid=0x7f05003a;
+        public static final int PaleGoldenrod=0x7f05002f;
+        public static final int PaleGreen=0x7f050052;
+        public static final int PaleTurquoise=0x7f05004a;
+        public static final int PaleVioletRed=0x7f050038;
+        public static final int PapayaWhip=0x7f05000a;
+        public static final int PeachPuff=0x7f050010;
+        public static final int Peru=0x7f05003f;
+        public static final int Pink=0x7f050012;
+        public static final int Plum=0x7f050035;
+        public static final int PowderBlue=0x7f050048;
+        public static final int Purple=0x7f05005f;
+        public static final int Red=0x7f05001e;
+        public static final int RosyBrown=0x7f050044;
+        public static final int RoyalBlue=0x7f050072;
+        public static final int SaddleBrown=0x7f050057;
+        public static final int Salmon=0x7f050023;
+        public static final int SandyBrown=0x7f050029;
+        public static final int SeaGreen=0x7f050077;
+        public static final int Seashell=0x7f050008;
+        public static final int Sienna=0x7f05004f;
+        public static final int Silver=0x7f050042;
+        public static final int SkyBlue=0x7f05005c;
+        public static final int SlateBlue=0x7f050068;
+        public static final int SlateGray=0x7f050066;
+        public static final int Snow=0x7f050004;
+        public static final int SpringGreen=0x7f05007e;
+        public static final int SteelBlue=0x7f050071;
+        public static final int Tan=0x7f05003d;
+        public static final int Teal=0x7f050084;
+        public static final int Thistle=0x7f05003b;
+        public static final int Tomato=0x7f050019;
+        public static final int Turquoise=0x7f050073;
+        public static final int Violet=0x7f050030;
+        public static final int Wheat=0x7f050028;
+        public static final int White=0x7f050000;
+        public static final int WhiteSmoke=0x7f050026;
+        public static final int Yellow=0x7f050003;
+        public static final int YellowGreen=0x7f050050;
     }
     public static final class dimen {
         /**  Default screen margins, per the Android Design guidelines. 
@@ -42,95 +168,90 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
          screen margins) for sw720dp devices (e.g. 10" tablets) in landscape here.
     
          */
-        public static final int activity_horizontal_margin=0x7f050000;
-        public static final int activity_vertical_margin=0x7f050001;
-        public static final int step_pager_tab_height=0x7f050007;
-        public static final int step_pager_tab_spacing=0x7f050008;
+        public static final int activity_horizontal_margin=0x7f060000;
+        public static final int activity_vertical_margin=0x7f060001;
+        public static final int step_pager_tab_height=0x7f060007;
+        public static final int step_pager_tab_spacing=0x7f060008;
         /**  START: Breadcrumb Wizard UI 
          */
-        public static final int step_pager_tab_width=0x7f050006;
-        public static final int text_size_large=0x7f050005;
-        public static final int text_size_medium=0x7f050004;
-        public static final int text_size_small=0x7f050003;
-        public static final int title_height=0x7f050002;
+        public static final int step_pager_tab_width=0x7f060006;
+        public static final int text_size_large=0x7f060005;
+        public static final int text_size_medium=0x7f060004;
+        public static final int text_size_small=0x7f060003;
+        public static final int title_height=0x7f060002;
     }
     public static final class drawable {
-        public static final int about_content_1=0x7f020000;
-        public static final int about_content_2=0x7f020001;
-        public static final int about_content_3=0x7f020002;
-        public static final int about_content_4=0x7f020003;
-        public static final int about_content_5=0x7f020004;
-        public static final int about_content_6=0x7f020005;
+        public static final int about_screen_image_1=0x7f020000;
+        public static final int about_screen_image_2=0x7f020001;
+        public static final int about_screen_image_3=0x7f020002;
+        public static final int about_screen_image_4=0x7f020003;
+        public static final int about_screen_image_5=0x7f020004;
+        public static final int about_screen_image_6=0x7f020005;
         public static final int blue_button=0x7f020006;
         public static final int breadcrumb_next_button=0x7f020007;
         public static final int breadcrumb_previous_button=0x7f020008;
-        public static final int btn_bg_pressed=0x7f020009;
-        public static final int btn_bg_selected=0x7f02000a;
-        public static final int finish_background=0x7f02000b;
-        public static final int green_button=0x7f02000c;
-        public static final int grey_button=0x7f02000d;
-        public static final int home_button1=0x7f02000e;
-        public static final int home_button2=0x7f02000f;
-        public static final int ic_launcher=0x7f020010;
-        public static final int item_focused=0x7f020011;
-        public static final int item_pressed=0x7f020012;
-        public static final int light_bulb_default=0x7f020013;
-        public static final int light_bulb_pressed=0x7f020014;
-        public static final int light_bulb_selected=0x7f020015;
-        public static final int selectable_item_background=0x7f020016;
-        public static final int spin_animation=0x7f020017;
-        public static final int stack_default=0x7f020018;
-        public static final int stack_pressed=0x7f020019;
-        public static final int stack_selected=0x7f02001a;
-        public static final int supporting_life_tree=0x7f02001b;
-        public static final int title_about=0x7f02001c;
-        public static final int title_about_alt=0x7f02001d;
-        public static final int title_about_default=0x7f02001e;
-        public static final int title_button=0x7f02001f;
-        public static final int title_home=0x7f020020;
-        public static final int title_home_alt=0x7f020021;
-        public static final int title_home_default=0x7f020022;
-        public static final int title_logo=0x7f020023;
-        public static final int title_logo_default=0x7f020024;
-        public static final int title_search=0x7f020025;
-        public static final int title_search_alt=0x7f020026;
-        public static final int title_search_default=0x7f020027;
-        public static final int windblown_tree=0x7f020028;
+        public static final int dashboard_button=0x7f020009;
+        public static final int green_button=0x7f02000a;
+        public static final int grey_button=0x7f02000b;
+        public static final int icon_launcher=0x7f02000c;
+        public static final int item_focused=0x7f02000d;
+        public static final int item_pressed=0x7f02000e;
+        public static final int supporting_life_tree=0x7f02000f;
+        public static final int titlebar_about_button=0x7f020010;
+        public static final int titlebar_about_button_alt=0x7f020011;
+        public static final int titlebar_about_button_default=0x7f020012;
+        public static final int titlebar_btn_bg_pressed=0x7f020013;
+        public static final int titlebar_btn_bg_selected=0x7f020014;
+        public static final int titlebar_generic_button=0x7f020015;
+        public static final int titlebar_home_button=0x7f020016;
+        public static final int titlebar_home_button_alt=0x7f020017;
+        public static final int titlebar_home_button_default=0x7f020018;
+        public static final int titlebar_logo=0x7f020019;
+        public static final int titlebar_logo_default=0x7f02001a;
+        public static final int titlebar_search_button=0x7f02001b;
+        public static final int titlebar_search_button_alt=0x7f02001c;
+        public static final int titlebar_search_button_default=0x7f02001d;
+        public static final int transparent_button=0x7f02001e;
+        public static final int windblown_tree=0x7f02001f;
     }
     public static final class id {
-        public static final int about_text_content=0x7f06000b;
-        public static final int blocks_now=0x7f060007;
-        public static final int blocks_ruler=0x7f060006;
-        public static final int blue_button=0x7f06001c;
-        public static final int breadcrumb_next_button=0x7f06001d;
-        public static final int db1_root=0x7f06000c;
-        public static final int dialog_discard_confirm=0x7f060003;
-        public static final int dialog_moderator=0x7f060004;
-        public static final int dialog_wave=0x7f060005;
-        public static final int divider=0x7f060016;
-        public static final int first_name_label=0x7f060010;
-        public static final int first_name_text=0x7f060011;
-        public static final int green_button=0x7f06001e;
-        public static final int grey_button=0x7f06001f;
-        public static final int home_btn_about_feature=0x7f06000e;
-        public static final int home_btn_record_patient_details_feature=0x7f06000d;
-        public static final int home_btn_record_patient_details_wizard_feature=0x7f06000f;
-        public static final int network_comm_result=0x7f060019;
-        public static final int next_button=0x7f060018;
-        public static final int pager=0x7f060015;
-        public static final int prev_button=0x7f060017;
-        public static final int spinning_wheel_image=0x7f06000a;
-        public static final int strip=0x7f060014;
-        public static final int supporting_life_animation_list=0x7f060020;
-        public static final int supporting_life_tree_image=0x7f060009;
-        public static final int surname_label=0x7f060012;
-        public static final int surname_text=0x7f060013;
-        public static final int title_bar=0x7f060008;
-        public static final int title_container=0x7f060000;
-        public static final int title_logo=0x7f060001;
-        public static final int title_text=0x7f060002;
-        public static final int your_email=0x7f06001b;
-        public static final int your_name=0x7f06001a;
+        public static final int about_text_content=0x7f07000b;
+        public static final int blocks_now=0x7f070007;
+        public static final int blocks_ruler=0x7f070006;
+        public static final int blue_button=0x7f07001d;
+        public static final int breadcrumb_next_button=0x7f07001e;
+        public static final int dashboard_about_button=0x7f07000f;
+        public static final int dashboard_assessment_button=0x7f07000d;
+        public static final int dashboard_assessment_wizard_button=0x7f07000e;
+        public static final int db1_root=0x7f07000c;
+        public static final int dialog_discard_confirm=0x7f070003;
+        public static final int dialog_moderator=0x7f070004;
+        public static final int dialog_wave=0x7f070005;
+        public static final int divider=0x7f070016;
+        public static final int first_name_label=0x7f070010;
+        public static final int first_name_text=0x7f070011;
+        public static final int green_button=0x7f07001f;
+        public static final int grey_button=0x7f070020;
+        public static final int network_comm_result=0x7f070019;
+        public static final int next_button=0x7f070018;
+        public static final int pager=0x7f070015;
+        public static final int prev_button=0x7f070017;
+        public static final int spinning_wheel_image=0x7f07000a;
+        public static final int strip=0x7f070014;
+        public static final int supporting_life_animation_list=0x7f07001c;
+        public static final int supporting_life_tree_image=0x7f070009;
+        public static final int surname_label=0x7f070012;
+        public static final int surname_text=0x7f070013;
+        public static final int title_bar=0x7f070008;
+        public static final int title_container=0x7f070000;
+        public static final int title_logo=0x7f070001;
+        public static final int title_text=0x7f070002;
+        public static final int transparent_button=0x7f070021;
+        public static final int your_email=0x7f07001b;
+        public static final int your_name=0x7f07001a;
+    }
+    public static final class integer {
+        public static final int dashboard_grid_column_count=0x7f080000;
     }
     public static final class layout {
         public static final int activity_about=0x7f030000;
@@ -145,55 +266,64 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
     }
     public static final class string {
         /**  END: Record Patient Details Wizard Screen 
- START: About Screen 
+ ============================================================ 
+ ABOUT SCREEN 
+ ============================================================ 
          */
-        public static final int about_intro=0x7f070021;
-        /**  END: Dashboard 
+        public static final int about_intro=0x7f09001b;
+        public static final int action_settings=0x7f09000e;
+        public static final int activity_title_about=0x7f090003;
+        /**  ============================================================ 
+ ACTIVITY TITLES 
+ ============================================================ 
          */
-        public static final int action_settings=0x7f070011;
-        public static final int app_name=0x7f070000;
-        public static final int breadcrumb_next_button=0x7f07001a;
-        public static final int breadcrumb_previous_button=0x7f070019;
-        public static final int button_send=0x7f070003;
-        /**  END: Register Patient Details Screen 
- START: Dashboard 
+        public static final int activity_title_home=0x7f090001;
+        public static final int activity_title_record_patient_details=0x7f090004;
+        public static final int activity_title_record_patient_details_wizard=0x7f090006;
+        public static final int activity_title_search=0x7f090002;
+        public static final int activity_title_submit_patient_record=0x7f090005;
+        /**  ============================================================ 
+ GENERAL APPLICATION DETAILS 
+ ============================================================ 
          */
-        public static final int description_about=0x7f070004;
-        public static final int description_home=0x7f070005;
-        public static final int description_logo=0x7f070007;
-        public static final int description_search=0x7f070006;
-        public static final int finish=0x7f070017;
-        /**  START: Register Patient Details Screen 
-         */
-        public static final int first_name_label=0x7f070001;
-        public static final int hint_your_email=0x7f07001e;
-        public static final int hint_your_name=0x7f07001d;
-        public static final int label_your_email=0x7f07001c;
-        public static final int label_your_name=0x7f07001b;
-        public static final int next=0x7f070015;
-        public static final int prev=0x7f070016;
-        public static final int retrievalInfoStatus=0x7f070013;
-        public static final int review=0x7f070018;
-        public static final int spinning_wheel_image=0x7f070023;
-        public static final int submissionInfoStatus=0x7f070012;
-        public static final int submit_confirm_button=0x7f070020;
-        public static final int submit_confirm_message=0x7f07001f;
-        public static final int supporting_life_tree_image=0x7f070022;
-        public static final int surname_label=0x7f070002;
-        public static final int title_about=0x7f070008;
-        public static final int title_about_feature=0x7f07000f;
-        public static final int title_bar_separator_description=0x7f07000d;
-        public static final int title_home=0x7f070009;
-        public static final int title_record_patient_details=0x7f07000b;
-        /**  dashboard button titles 
-         */
-        public static final int title_record_patient_details_feature=0x7f07000e;
+        public static final int app_name=0x7f090000;
+        public static final int assessment_wizard_finish_button=0x7f090013;
+        public static final int assessment_wizard_next_button=0x7f090012;
         /**  START: Record Patient Details Wizard Screen 
          */
-        public static final int title_record_patient_details_wizard=0x7f070014;
-        public static final int title_record_patient_details_wizard_feature=0x7f070010;
-        public static final int title_search=0x7f07000a;
-        public static final int title_submit_patient_record=0x7f07000c;
+        public static final int assessment_wizard_previous_button=0x7f090011;
+        public static final int assessment_wizard_review_button=0x7f090014;
+        public static final int button_send=0x7f090020;
+        public static final int dashboard_about_button=0x7f09000c;
+        /**  ============================================================ 
+ DASHBOARD 
+ ============================================================ 
+         */
+        public static final int dashboard_assessment_button=0x7f09000b;
+        public static final int dashboard_assessment_wizard_button=0x7f09000d;
+        /**  END: About Screen 
+ START: Register Patient Details Screen 
+         */
+        public static final int first_name_label=0x7f09001e;
+        public static final int hint_your_email=0x7f090018;
+        public static final int hint_your_name=0x7f090017;
+        public static final int label_your_email=0x7f090016;
+        public static final int label_your_name=0x7f090015;
+        public static final int retrievalInfoStatus=0x7f090010;
+        public static final int spinning_wheel_image=0x7f09001d;
+        public static final int submissionInfoStatus=0x7f09000f;
+        public static final int submit_confirm_button=0x7f09001a;
+        public static final int submit_confirm_message=0x7f090019;
+        public static final int supporting_life_tree_image=0x7f09001c;
+        public static final int surname_label=0x7f09001f;
+        public static final int titlebar_about_description=0x7f090008;
+        /**  ============================================================ 
+ TITLE BAR 
+ ============================================================ 
+         */
+        public static final int titlebar_home_description=0x7f090007;
+        public static final int titlebar_search_description=0x7f090009;
+        public static final int titlebar_separator_description=0x7f09000a;
     }
     public static final class style {
         /** 
@@ -208,32 +338,32 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
     
  API 14 theme customizations can go here. 
          */
-        public static final int AppBaseTheme=0x7f080012;
+        public static final int AppBaseTheme=0x7f0a0012;
         /**  Application theme. 
          */
-        public static final int AppTheme=0x7f080000;
-        public static final int HomeButton=0x7f080006;
+        public static final int AppTheme=0x7f0a0000;
+        public static final int HomeButton=0x7f0a0006;
         /**  START: Breadcrumb UI Wizard 
          */
-        public static final int TextAppearanceFinish=0x7f080001;
-        public static final int TextBody=0x7f08000e;
-        public static final int Theme_D1=0x7f080003;
-        public static final int Theme_D1dialog=0x7f080004;
+        public static final int TextAppearanceFinish=0x7f0a0001;
+        public static final int TextBody=0x7f0a000e;
+        public static final int Theme_D1=0x7f0a0003;
+        public static final int Theme_D1dialog=0x7f0a0004;
         /**  END: Breadcrumb UI Wizard 
  Variation on the Light theme that turns off the title 
          */
-        public static final int Theme_D1t=0x7f080002;
-        public static final int Theme_D1tranlucent=0x7f080005;
-        public static final int TitleBar=0x7f080007;
-        public static final int TitleBarAction=0x7f080008;
-        public static final int TitleBarLogo=0x7f08000b;
-        public static final int TitleBarProgressIndicator=0x7f080009;
-        public static final int TitleBarSeparator=0x7f08000a;
-        public static final int TitleBarSpring=0x7f08000c;
-        public static final int TitleBarText=0x7f08000d;
-        public static final int WizardFormLabel=0x7f080011;
-        public static final int WizardPageContainer=0x7f08000f;
-        public static final int WizardPageTitle=0x7f080010;
+        public static final int Theme_D1t=0x7f0a0002;
+        public static final int Theme_D1tranlucent=0x7f0a0005;
+        public static final int TitleBar=0x7f0a0007;
+        public static final int TitleBarAction=0x7f0a0008;
+        public static final int TitleBarLogo=0x7f0a000b;
+        public static final int TitleBarProgressIndicator=0x7f0a0009;
+        public static final int TitleBarSeparator=0x7f0a000a;
+        public static final int TitleBarSpring=0x7f0a000c;
+        public static final int TitleBarText=0x7f0a000d;
+        public static final int WizardFormLabel=0x7f0a0011;
+        public static final int WizardPageContainer=0x7f0a000f;
+        public static final int WizardPageTitle=0x7f0a0010;
     }
     public static final class styleable {
         /** Attributes that can be used with a AppTheme.

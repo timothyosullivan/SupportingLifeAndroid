@@ -42,6 +42,9 @@
             android:paddingBottom="8dp"
             android:paddingTop="16dp" />
 
+        <!-- ============================================================ -->
+        <!-- PAGE SWIPING UI -->
+        <!-- ============================================================ -->        
         <android.support.v4.view.ViewPager
             android:id="@+id/pager"
             android:layout_width="match_parent"

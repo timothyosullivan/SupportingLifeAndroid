@@ -57,16 +57,16 @@ public class StepPagerStrip extends View {
         mTabSpacing = res.getDimensionPixelSize(R.dimen.step_pager_tab_spacing);
 
         mPrevTabPaint = new Paint();
-        mPrevTabPaint.setColor(res.getColor(R.color.step_pager_previous_tab_color));
+        mPrevTabPaint.setColor(res.getColor(R.color.SlateGray));
 
         mSelectedTabPaint = new Paint();
-        mSelectedTabPaint.setColor(res.getColor(R.color.step_pager_selected_tab_color));
+        mSelectedTabPaint.setColor(res.getColor(R.color.DarkGreen));
 
         mSelectedLastTabPaint = new Paint();
-        mSelectedLastTabPaint.setColor(res.getColor(R.color.step_pager_selected_last_tab_color));
+        mSelectedLastTabPaint.setColor(res.getColor(R.color.DarkGreen));
 
         mNextTabPaint = new Paint();
-        mNextTabPaint.setColor(res.getColor(R.color.step_pager_next_tab_color));
+        mNextTabPaint.setColor(res.getColor(R.color.LightSteelBlue));
     }
 
     public void setOnPageSelectedListener(OnPageSelectedListener onPageSelectedListener) {
