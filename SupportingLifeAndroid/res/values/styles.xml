@@ -1,14 +1,16 @@
 <resources>
+
     <!-- Application theme. -->
     <style name="AppTheme" parent="android:Theme.Light">
         <item name="textAppearanceFinish">@style/TextAppearanceFinish</item>
     </style>
-    
+
     <!-- START: Breadcrumb UI Wizard -->
     <style name="TextAppearanceFinish" parent="android:TextAppearance.Medium">
         <item name="android:textColor">#fff</item>
     </style>
     <!-- END: Breadcrumb UI Wizard -->
+
 
     <!-- Variation on the Light theme that turns off the title -->
     <style name="Theme.D1t" parent="android:style/Theme.Light">
@@ -132,6 +134,18 @@
         <item name="android:textStyle">bold</item>
         <item name="android:paddingLeft">12dp</item>
         <item name="android:paddingRight">12dp</item>
+    </style>
+
+    <!-- ============================================================ -->
+    <!-- SPLASH SCREEN STYLE THEME -->
+    <!-- ============================================================ -->
+    <style name="Theme.Transparent" parent="android:Theme">
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:backgroundDimEnabled">false</item>
     </style>
 
 </resources>
