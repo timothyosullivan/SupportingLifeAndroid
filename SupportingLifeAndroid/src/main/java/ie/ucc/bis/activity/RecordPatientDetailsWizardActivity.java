@@ -146,7 +146,7 @@ public class RecordPatientDetailsWizardActivity extends SupportingLifeBaseActivi
         	// assessment data entry is complete
             mNextButton.setText(R.string.assessment_wizard_finish_button);
             mNextButton.setBackgroundResource(R.drawable.blue_button);
-            mNextButton.setTextAppearance(this, R.style.TextAppearanceFinish);
+            mNextButton.setTextAppearance(this, R.style.BreadcrumbTextAppearanceFinish);
         } else {
             mNextButton.setText(mEditingAfterReview
                     ? R.string.assessment_wizard_review_button

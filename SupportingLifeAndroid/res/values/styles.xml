@@ -1,50 +1,20 @@
 <resources>
-
-    <!-- Application theme. -->
-    <style name="AppTheme" parent="android:Theme.Light">
-        <item name="textAppearanceFinish">@style/TextAppearanceFinish</item>
-    </style>
-
-    <!-- START: Breadcrumb UI Wizard -->
-    <style name="TextAppearanceFinish" parent="android:TextAppearance.Medium">
-        <item name="android:textColor">#fff</item>
-    </style>
-    <!-- END: Breadcrumb UI Wizard -->
-
-
-    <!-- Variation on the Light theme that turns off the title -->
-    <style name="Theme.D1t" parent="android:style/Theme.Light">
-        <item name="android:windowNoTitle">false</item>
+    
+    <!-- ============================================================ -->
+    <!-- SPLASH SCREEN STYLE THEME -->
+    <!-- ============================================================ -->
+    <style name="Theme.Transparent" parent="android:Theme">
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
         <item name="android:windowContentOverlay">@null</item>
-    </style>
-
-    <style name="Theme.D1" parent="android:style/Theme.Light">
         <item name="android:windowNoTitle">true</item>
-        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:backgroundDimEnabled">false</item>
     </style>
 
-    <style name="Theme.D1dialog" parent="android:style/Theme.Dialog">
-        <item name="android:windowNoTitle">true</item>
-        <item name="android:windowContentOverlay">@null</item>
-    </style>
-
-    <style name="Theme.D1tranlucent" parent="android:style/Theme.Translucent">
-        <item name="android:windowNoTitle">true</item>
-        <item name="android:windowContentOverlay">@null</item>
-    </style>
-
-    <style name="HomeButton">
-        <item name="android:layout_gravity">center_vertical</item>
-        <item name="android:layout_width">fill_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_weight">1</item>
-        <item name="android:gravity">center_horizontal</item>
-        <item name="android:textSize">@dimen/text_size_medium</item>
-        <item name="android:textStyle">normal</item>
-        <item name="android:textColor">@color/LightCoral</item>
-        <item name="android:background">@null</item>
-    </style>
-
+    <!-- ============================================================ -->
+    <!-- TITLE BAR STYLE -->
+    <!-- ============================================================ -->    
     <style name="TitleBar">
         <item name="android:id">@id/title_container</item>
         <item name="android:layout_width">fill_parent</item>
@@ -52,42 +22,28 @@
         <item name="android:orientation">horizontal</item>
         <item name="android:background">@color/DarkGreen</item>
     </style>
-
+    
+    <!-- ============================================================ -->
+    <!-- TITLE BAR BUTTON STYLE -->
+    <!-- ============================================================ --> 
     <style name="TitleBarAction">
         <item name="android:layout_width">@dimen/title_height</item>
         <item name="android:layout_height">fill_parent</item>
-        <!-- - <item name="android:background">@null</item> -->
         <item name="android:background">@drawable/titlebar_generic_button</item>
     </style>
 
-    <style name="TitleBarProgressIndicator" parent="@android:style/Widget.ProgressBar.Small">
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_marginLeft">14dip</item>
-        <item name="android:layout_marginRight">15dip</item>
-        <item name="android:layout_marginTop">14dip</item>
-        <item name="android:indeterminate">true</item>
-    </style>
-
+    <!-- ============================================================ -->
+    <!-- TITLE BAR SEPARATOR STYLE -->
+    <!-- ============================================================ -->     
     <style name="TitleBarSeparator">
         <item name="android:layout_width">1dp</item>
         <item name="android:layout_height">fill_parent</item>
         <item name="android:background">@color/White</item>
     </style>
 
-    <style name="TitleBarLogo">
-        <item name="android:id">@id/title_logo</item>
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">fill_parent</item>
-        <item name="android:clickable">true</item>
-    </style>
-
-    <style name="TitleBarSpring">
-        <item name="android:layout_width">0dp</item>
-        <item name="android:layout_height">fill_parent</item>
-        <item name="android:layout_weight">1</item>
-    </style>
-
+    <!-- ============================================================ -->
+    <!-- TITLE BAR TEXT STYLE -->
+    <!-- ============================================================ -->       
     <style name="TitleBarText">
         <item name="android:id">@id/title_text</item>
         <item name="android:layout_width">0dp</item>
@@ -103,12 +59,9 @@
         <item name="android:ellipsize">end</item>
     </style>
 
-    <style name="TextBody">
-        <item name="android:textSize">15sp</item>
-        <item name="android:lineSpacingMultiplier">1.1</item>
-        <item name="android:textColor">@android:color/secondary_text_light</item>
-    </style>
-
+    <!-- ============================================================ -->
+    <!-- BREADCRUMB WIZARD PAGE STYLE -->
+    <!-- ============================================================ -->     
     <style name="WizardPageContainer">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">match_parent</item>
@@ -117,6 +70,9 @@
         <item name="android:paddingRight">16dp</item>
     </style>
 
+    <!-- ============================================================ -->
+    <!-- BREADCRUMB WIZARD PAGE TITLE STYLE -->
+    <!-- ============================================================ -->         
     <style name="WizardPageTitle">
         <item name="android:id">@android:id/title</item>
         <item name="android:layout_width">match_parent</item>
@@ -126,6 +82,16 @@
         <item name="android:textColor">#ff0099cc</item>
     </style>
 
+    <!-- ============================================================ -->
+    <!-- BREADCRUMB WIZARD TEXT STYLE -->
+    <!-- ============================================================ -->    
+    <style name="BreadcrumbTextAppearanceFinish" parent="android:TextAppearance.Medium">
+        <item name="android:textColor">@color/White</item>
+    </style>
+
+    <!-- ============================================================ -->
+    <!-- BREADCRUMB WIZARD FORM LABEL STYLE -->
+    <!-- ============================================================ -->        
     <style name="WizardFormLabel">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
@@ -134,18 +100,6 @@
         <item name="android:textStyle">bold</item>
         <item name="android:paddingLeft">12dp</item>
         <item name="android:paddingRight">12dp</item>
-    </style>
-
-    <!-- ============================================================ -->
-    <!-- SPLASH SCREEN STYLE THEME -->
-    <!-- ============================================================ -->
-    <style name="Theme.Transparent" parent="android:Theme">
-        <item name="android:windowIsTranslucent">true</item>
-        <item name="android:windowBackground">@android:color/transparent</item>
-        <item name="android:windowContentOverlay">@null</item>
-        <item name="android:windowNoTitle">true</item>
-        <item name="android:windowIsFloating">true</item>
-        <item name="android:backgroundDimEnabled">false</item>
     </style>
 
 </resources>
