@@ -10,73 +10,187 @@ import android.os.Bundle;
  * Represents a wizard model, including the pages/steps in the wizard, their dependencies, and their
  * currently populated choices/values/selections.
  *
- * To create the SupportingLIFE breadcrumb wizard, extend this class and implement {@link #onNewRootPageList()}.
+ * To create the SupportingLIFE breadcrumb UI wizard, extend this class 
+ * and implement {@link #configurePageList()}.
+ * 
  */
 public abstract class AbstractWizardModel implements ModelCallbacks {
-    protected Context mContext;
+	protected Context applicationContext;
+	private List<ModelCallbacks> modelListeners = new ArrayList<ModelCallbacks>();
+    private PageList assessmentPages;
 
-    private List<ModelCallbacks> mListeners = new ArrayList<ModelCallbacks>();
-    private PageList mRootPageList;
-
+	/**
+	 * Abstract Method: configurePageList
+	 * 
+	 * Override this method to define a new wizard model.
+	 */
+    protected abstract PageList configurePageList();
+    
+	/**
+	 * Constructor
+	 * 
+	 * @param context Context
+	 */
     public AbstractWizardModel(Context context) {
-        mContext = context;
-        mRootPageList = onNewRootPageList();
+    	setApplicationContext(context);
+        setAssessmentPages(configurePageList());
     }
 
-    /**
-     * Override this to define a new wizard model.
-     */
-    protected abstract PageList onNewRootPageList();
-
-    public void onPageDataChanged(Page page) {
-        // can't use for each because of concurrent modification (review fragment
-        // can get added or removed and will register itself as a listener)
-        for (int i = 0; i < mListeners.size(); i++) {
-            mListeners.get(i).onPageDataChanged(page);
-        }
+	/**
+	 * onPageDataChanged method
+	 * 
+	 * Notify model listeners of a 'pageDataChanged' event
+	 * 
+	 * @param page Page
+	 */
+    public void onPageDataChanged(AbstractPage page) {
+    	for (ModelCallbacks modelCallback : getModelListeners()) {
+    		modelCallback.onPageDataChanged(page);
+    	}
     }
 
+	/**
+	 * onPageTreeChanged method
+	 * 
+	 * Notify model listeners of a 'pageTreeChanged' event
+	 * 
+	 */    
     public void onPageTreeChanged() {
-        // can't use for each because of concurrent modification (review fragment
-        // can get added or removed and will register itself as a listener)
-        for (int i = 0; i < mListeners.size(); i++) {
-            mListeners.get(i).onPageTreeChanged();
+    	for (ModelCallbacks modelCallback : getModelListeners()) {
+    		modelCallback.onPageTreeChanged();
         }
     }
 
-    public Page findByKey(String key) {
-        return mRootPageList.findByKey(key);
+	/**
+	 * findPageByKey method
+	 * 
+	 * Utility method to retrieve a bread-crumb UI Wizard
+	 * page based on the key
+	 * 
+	 * @param key : String
+	 * @return Page
+	 *  
+	 */ 
+    public AbstractPage findPageByKey(String key) {
+        return getAssessmentPages().findPageByKey(key);
     }
 
+	/**
+	 * load method
+	 * 
+	 * TODO: Add description
+	 * 
+	 * @param savedValues : Bundle
+	 * @return void
+	 *  
+	 */     
     public void load(Bundle savedValues) {
         for (String key : savedValues.keySet()) {
-            mRootPageList.findByKey(key).resetData(savedValues.getBundle(key));
+        	getAssessmentPages().findPageByKey(key).resetData(savedValues.getBundle(key));
         }
     }
 
-    public void registerListener(ModelCallbacks listener) {
-        mListeners.add(listener);
-    }
-
+	/**
+	 * save method
+	 * 
+	 * TODO: Add description
+	 * 
+	 * @return Bundle
+	 *  
+	 */       
     public Bundle save() {
         Bundle bundle = new Bundle();
-        for (Page page : getCurrentPageSequence()) {
+        for (AbstractPage page : getCurrentPageSequence()) {
             bundle.putBundle(page.getKey(), page.getData());
         }
         return bundle;
     }
+    
+	/**
+	 * registerListener method
+	 * 
+	 * Facilitates the registration of model listeners
+	 * (e.g. RecordPatientDetailsWizardActivity)
+	 * 
+	 * This ensures the model listener will be informed of 
+	 * 'onPageDataChanged' and 'onPageTreeChanged' events
+	 * 
+	 * @param listener : ModelCallbacks
+	 */
+    public void registerListener(ModelCallbacks listener) {
+        getModelListeners().add(listener);
+    }
 
+	/**
+	 * unregisterListener method
+	 * 
+	 * Facilitates the de-registering of model listeners
+	 * (e.g. RecordPatientDetailsWizardActivity)
+	 * 
+	 * This ensures the model listener will no longer be informed of 
+	 * 'onPageDataChanged' and 'onPageTreeChanged' events
+	 * 
+	 * @param listener : ModelCallbacks
+	 */ 
+    public void unregisterListener(ModelCallbacks listener) {
+    	getModelListeners().remove(listener);
+    }    
+    
     /**
      * Gets the current list of wizard steps, flattening nested (dependent) pages based on the
      * user's choices.
      */
-    public List<Page> getCurrentPageSequence() {
-        ArrayList<Page> flattened = new ArrayList<Page>();
-        mRootPageList.flattenCurrentPageSequence(flattened);
+    public List<AbstractPage> getCurrentPageSequence() {
+        ArrayList<AbstractPage> flattened = new ArrayList<AbstractPage>();
+        getAssessmentPages().flattenCurrentPageSequence(flattened);
         return flattened;
     }
 
-    public void unregisterListener(ModelCallbacks listener) {
-        mListeners.remove(listener);
-    }
+	/**
+	 * Getter Method: getApplicationContext()
+	 * 
+	 */
+    public Context getApplicationContext() {
+		return applicationContext;
+	}
+
+	/**
+	 * Setter Method: setApplicationContext()
+	 * 
+	 */    
+	public void setApplicationContext(Context applicationContext) {
+		this.applicationContext = applicationContext;
+	}
+    
+	/**
+	 * Getter Method: getAssessmentPages()
+	 * 
+	 */	
+	public PageList getAssessmentPages() {
+		return assessmentPages;
+	}
+
+	/**
+	 * Setter Method: setAssessmentPages()
+	 * 
+	 */    	
+	public void setAssessmentPages(PageList assessmentPages) {
+		this.assessmentPages = assessmentPages;
+	}
+
+	/**
+	 * Getter Method: getModelListeners()
+	 * 
+	 */		
+	public List<ModelCallbacks> getModelListeners() {
+		return modelListeners;
+	}
+
+	/**
+	 * Setter Method: setModelListeners()
+	 * 
+	 */   	
+	public void setModelListeners(List<ModelCallbacks> modelListeners) {
+		this.modelListeners = modelListeners;
+	}
 }

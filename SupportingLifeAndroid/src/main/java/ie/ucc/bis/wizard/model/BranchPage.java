@@ -10,7 +10,7 @@ import java.util.List;
  * A page representing a branching point in the wizard. Depending on which choice is selected, the
  * next set of steps in the wizard may change.
  */
-public class BranchPage extends Page {
+public class BranchPage extends AbstractPage {
     private List<Branch> mBranches = new ArrayList<Branch>();
 
     public BranchPage(ModelCallbacks callbacks, String title) {
@@ -18,13 +18,13 @@ public class BranchPage extends Page {
     }
 
     @Override
-    public Page findByKey(String key) {
+    public AbstractPage findPageByKey(String key) {
         if (getKey().equals(key)) {
             return this;
         }
 
         for (Branch branch : mBranches) {
-            Page found = branch.childPageList.findByKey(key);
+            AbstractPage found = branch.childPageList.findPageByKey(key);
             if (found != null) {
                 return found;
             }
@@ -34,19 +34,19 @@ public class BranchPage extends Page {
     }
 
     @Override
-    public void flattenCurrentPageSequence(ArrayList<Page> destination) {
+    public void flattenCurrentPageSequence(ArrayList<AbstractPage> destination) {
         super.flattenCurrentPageSequence(destination);
         for (Branch branch : mBranches) {
-            if (branch.choice.equals(mData.getString(Page.SIMPLE_DATA_KEY))) {
+            if (branch.choice.equals(mData.getString(AbstractPage.SIMPLE_DATA_KEY))) {
                 branch.childPageList.flattenCurrentPageSequence(destination);
                 break;
             }
         }
     }
 
-    public BranchPage addBranch(String choice, Page... childPages) {
+    public BranchPage addBranch(String choice, AbstractPage... childPages) {
         PageList childPageList = new PageList(childPages);
-        for (Page page : childPageList) {
+        for (AbstractPage page : childPageList) {
             page.setParentKey(choice);
         }
         mBranches.add(new Branch(choice, childPageList));
@@ -72,9 +72,16 @@ public class BranchPage extends Page {
         return mBranches.size();
     }
 
+	/**
+	 * Method: getReviewItems
+	 * 
+	 * Define the review items associated with the branch page.
+	 * 
+	 * @param reviewItems : ArrayList<ReviewItem>
+	 */
     @Override
-    public void getReviewItems(ArrayList<ReviewItem> dest) {
-        dest.add(new ReviewItem(getTitle(), mData.getString(SIMPLE_DATA_KEY), getKey()));
+    public void getReviewItems(ArrayList<ReviewItem> reviewItems) {
+    	reviewItems.add(new ReviewItem(getTitle(), mData.getString(SIMPLE_DATA_KEY), getKey()));
     }
 
     @Override
@@ -84,7 +91,7 @@ public class BranchPage extends Page {
 
     @Override
     public void notifyDataChanged() {
-        mCallbacks.onPageTreeChanged();
+        getModelCallbacks().onPageTreeChanged();
         super.notifyDataChanged();
     }
 

@@ -3,7 +3,7 @@ package ie.ucc.bis.activity;
 import ie.ucc.bis.R;
 import ie.ucc.bis.wizard.model.AbstractWizardModel;
 import ie.ucc.bis.wizard.model.ModelCallbacks;
-import ie.ucc.bis.wizard.model.Page;
+import ie.ucc.bis.wizard.model.AbstractPage;
 import ie.ucc.bis.wizard.model.SupportingLifeBreadcrumbWizardModel;
 import ie.ucc.bis.wizard.ui.PageFragmentCallbacks;
 import ie.ucc.bis.wizard.ui.ReviewFragment;
@@ -38,7 +38,7 @@ public class RecordPatientDetailsWizardActivity extends SupportingLifeBaseActivi
     private Button mNextButton;
     private Button mPrevButton;
 
-    private List<Page> mCurrentPageSequence;
+    private List<AbstractPage> mCurrentPageSequence;
     private StepPagerStrip mStepPagerStrip;
     
 	/**
@@ -189,7 +189,7 @@ public class RecordPatientDetailsWizardActivity extends SupportingLifeBaseActivi
         }
     }
 
-    public void onPageDataChanged(Page page) {
+    public void onPageDataChanged(AbstractPage page) {
         if (page.isRequired()) {
             if (recalculateCutOffPage()) {
                 mPagerAdapter.notifyDataSetChanged();
@@ -198,15 +198,15 @@ public class RecordPatientDetailsWizardActivity extends SupportingLifeBaseActivi
         }
     }
 
-    public Page onGetPage(String key) {
-        return mWizardModel.findByKey(key);
+    public AbstractPage onGetPage(String key) {
+        return mWizardModel.findPageByKey(key);
     }
 
     private boolean recalculateCutOffPage() {
         // Cut off the pager adapter at first required page that isn't completed
         int cutOffPage = mCurrentPageSequence.size() + 1;
         for (int i = 0; i < mCurrentPageSequence.size(); i++) {
-            Page page = mCurrentPageSequence.get(i);
+            AbstractPage page = mCurrentPageSequence.get(i);
             if (page.isRequired() && !page.isCompleted()) {
                 cutOffPage = i;
                 break;

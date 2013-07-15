@@ -6,15 +6,15 @@ import android.support.v4.app.Fragment;
 import java.util.ArrayList;
 
 /**
- * Represents a single page in the wizard.
+ * Represents a single page in the bread-crumb UI wizard.
  */
-public abstract class Page implements PageTreeNode {
+public abstract class AbstractPage implements PageTreeNode {
     /**
      * The key into {@link #getData()} used for wizards with simple (single) values.
      */
     public static final String SIMPLE_DATA_KEY = "_";
 
-    protected ModelCallbacks mCallbacks;
+    protected ModelCallbacks modelCallbacks;
 
     /**
      * Current wizard values/selections.
@@ -24,8 +24,23 @@ public abstract class Page implements PageTreeNode {
     protected boolean mRequired = false;
     protected String mParentKey;
 
-    protected Page(ModelCallbacks callbacks, String title) {
-        mCallbacks = callbacks;
+	/**
+	 * Abstract Method: getReviewItems
+	 * 
+	 * Override this method to define the review items
+	 * associated with the page.
+	 * 
+	 * @param reviewItems : ArrayList<ReviewItem>
+	 */
+    public abstract void getReviewItems(ArrayList<ReviewItem> reviewItems);
+
+	/**
+	 * Constructor
+	 * 
+	 * @param context Context
+	 */    
+    protected AbstractPage(ModelCallbacks callbacks, String title) {
+    	setModelCallbacks(callbacks);
         mTitle = title;
     }
 
@@ -45,11 +60,11 @@ public abstract class Page implements PageTreeNode {
         mParentKey = parentKey;
     }
     
-    public Page findByKey(String key) {
+    public AbstractPage findPageByKey(String key) {
         return getKey().equals(key) ? this : null;
     }
 
-    public void flattenCurrentPageSequence(ArrayList<Page> dest) {
+    public void flattenCurrentPageSequence(ArrayList<AbstractPage> dest) {
         dest.add(this);
     }
 
@@ -58,8 +73,6 @@ public abstract class Page implements PageTreeNode {
     public String getKey() {
         return (mParentKey != null) ? mParentKey + ":" + mTitle : mTitle;
     }
-
-    public abstract void getReviewItems(ArrayList<ReviewItem> dest);
 
     public boolean isCompleted() {
         return true;
@@ -71,11 +84,27 @@ public abstract class Page implements PageTreeNode {
     }
 
     public void notifyDataChanged() {
-        mCallbacks.onPageDataChanged(this);
+    	getModelCallbacks().onPageDataChanged(this);
     }
 
-    public Page setRequired(boolean required) {
+    public AbstractPage setRequired(boolean required) {
         mRequired = required;
         return this;
     }
+
+	/**
+	 * Getter Method: getModelCallbacks()
+	 * 
+	 */		    
+	public ModelCallbacks getModelCallbacks() {
+		return modelCallbacks;
+	}
+
+	/**
+	 * Setter Method: setModelCallbacks()
+	 * 
+	 */  	
+	public void setModelCallbacks(ModelCallbacks modelCallbacks) {
+		this.modelCallbacks = modelCallbacks;
+	}
 }

@@ -4,7 +4,7 @@ package ie.ucc.bis.wizard.ui;
 import ie.ucc.bis.R;
 import ie.ucc.bis.wizard.model.AbstractWizardModel;
 import ie.ucc.bis.wizard.model.ModelCallbacks;
-import ie.ucc.bis.wizard.model.Page;
+import ie.ucc.bis.wizard.model.AbstractPage;
 import ie.ucc.bis.wizard.model.ReviewItem;
 
 import java.util.ArrayList;
@@ -87,9 +87,9 @@ public class ReviewFragment extends ListFragment implements ModelCallbacks {
         mWizardModel.unregisterListener(this);
     }
 
-    public void onPageDataChanged(Page changedPage) {
+    public void onPageDataChanged(AbstractPage changedPage) {
         ArrayList<ReviewItem> reviewItems = new ArrayList<ReviewItem>();
-        for (Page page : mWizardModel.getCurrentPageSequence()) {
+        for (AbstractPage page : mWizardModel.getCurrentPageSequence()) {
             page.getReviewItems(reviewItems);
         }
         Collections.sort(reviewItems, new Comparator<ReviewItem>() {

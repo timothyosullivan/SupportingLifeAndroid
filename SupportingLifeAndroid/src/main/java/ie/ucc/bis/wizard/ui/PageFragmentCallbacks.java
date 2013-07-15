@@ -1,7 +1,7 @@
 package ie.ucc.bis.wizard.ui;
 
-import ie.ucc.bis.wizard.model.Page;
+import ie.ucc.bis.wizard.model.AbstractPage;
 
 public interface PageFragmentCallbacks {
-    Page onGetPage(String key);
+    AbstractPage onGetPage(String key);
 }
