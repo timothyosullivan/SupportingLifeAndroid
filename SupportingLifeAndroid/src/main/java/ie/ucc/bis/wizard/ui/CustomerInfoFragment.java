@@ -41,7 +41,7 @@ public class CustomerInfoFragment extends Fragment {
 
         Bundle args = getArguments();
         mKey = args.getString(ARG_KEY);
-        mPage = (CustomerInfoPage) mCallbacks.onGetPage(mKey);
+        mPage = (CustomerInfoPage) mCallbacks.getPage(mKey);
     }
 
     @Override

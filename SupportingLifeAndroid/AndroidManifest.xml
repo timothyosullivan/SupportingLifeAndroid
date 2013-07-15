@@ -45,7 +45,7 @@
             android:theme="@android:style/Theme.Light.NoTitleBar" >
         </activity>
         <activity
-            android:name="ie.ucc.bis.activity.RecordPatientDetailsWizardActivity"
+            android:name="ie.ucc.bis.activity.AssessmentWizardActivity"
             android:label="@string/activity_title_record_patient_details_wizard"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Light.NoTitleBar" >

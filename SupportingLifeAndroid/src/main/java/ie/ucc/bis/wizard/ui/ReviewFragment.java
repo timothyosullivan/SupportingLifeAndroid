@@ -1,6 +1,5 @@
 package ie.ucc.bis.wizard.ui;
 
-
 import ie.ucc.bis.R;
 import ie.ucc.bis.wizard.model.AbstractWizardModel;
 import ie.ucc.bis.wizard.model.ModelCallbacks;
@@ -24,7 +23,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 public class ReviewFragment extends ListFragment implements ModelCallbacks {
-    private Callbacks mCallbacks;
+    private ReviewFragmentCallbacks reviewFragmentCallbacks;
     private AbstractWizardModel mWizardModel;
     private List<ReviewItem> mCurrentReviewItems;
 
@@ -63,13 +62,13 @@ public class ReviewFragment extends ListFragment implements ModelCallbacks {
     public void onAttach(Activity activity) {
         super.onAttach(activity);
 
-        if (!(activity instanceof Callbacks)) {
+        if (!(activity instanceof ReviewFragmentCallbacks)) {
             throw new ClassCastException("Activity must implement fragment's callbacks");
         }
 
-        mCallbacks = (Callbacks) activity;
+        setReviewFragmentCallbacks((ReviewFragmentCallbacks) activity);
 
-        mWizardModel = mCallbacks.onGetModel();
+        mWizardModel = getReviewFragmentCallbacks().getWizardModel();
         mWizardModel.registerListener(this);
         onPageTreeChanged();
     }
@@ -82,7 +81,7 @@ public class ReviewFragment extends ListFragment implements ModelCallbacks {
     @Override
     public void onDetach() {
         super.onDetach();
-        mCallbacks = null;
+        setReviewFragmentCallbacks(null);
 
         mWizardModel.unregisterListener(this);
     }
@@ -106,13 +105,9 @@ public class ReviewFragment extends ListFragment implements ModelCallbacks {
 
     @Override
     public void onListItemClick(ListView l, View v, int position, long id) {
-        mCallbacks.onEditScreenAfterReview(mCurrentReviewItems.get(position).getPageKey());
+        getReviewFragmentCallbacks().onEditScreenAfterReview(mCurrentReviewItems.get(position).getPageKey());
     }
 
-    public interface Callbacks {
-        AbstractWizardModel onGetModel();
-        void onEditScreenAfterReview(String pageKey);
-    }
 
     private class ReviewAdapter extends BaseAdapter {
         @Override
@@ -161,4 +156,21 @@ public class ReviewFragment extends ListFragment implements ModelCallbacks {
             return mCurrentReviewItems.size();
         }
     }
+
+	/**
+	 * Getter Method: getReviewFragmentCallbacks()
+	 * 
+	 */		 
+	public ReviewFragmentCallbacks getReviewFragmentCallbacks() {
+		return reviewFragmentCallbacks;
+	}
+
+	/**
+	 * Setter Method: setReviewFragmentCallbacks()
+	 * 
+	 */  	
+	public void setReviewFragmentCallbacks(
+			ReviewFragmentCallbacks reviewFragmentCallbacks) {
+		this.reviewFragmentCallbacks = reviewFragmentCallbacks;
+	}
 }

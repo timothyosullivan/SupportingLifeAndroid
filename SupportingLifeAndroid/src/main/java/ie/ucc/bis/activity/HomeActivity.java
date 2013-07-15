@@ -46,7 +46,7 @@ public class HomeActivity extends SupportingLifeBaseActivity {
 				startActivity(new Intent(getApplicationContext(), AboutActivity.class));
 				break;
 			case R.id.dashboard_assessment_wizard_button :
-				startActivity(new Intent(getApplicationContext(), RecordPatientDetailsWizardActivity.class));
+				startActivity(new Intent(getApplicationContext(), AssessmentWizardActivity.class));
 				break;
 			default : 
 				break;

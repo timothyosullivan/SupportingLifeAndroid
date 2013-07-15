@@ -41,7 +41,7 @@ public abstract class AbstractWizardModel implements ModelCallbacks {
 	 * 
 	 * Notify model listeners of a 'pageDataChanged' event
 	 * 
-	 * @param page Page
+	 * @param page : Page
 	 */
     public void onPageDataChanged(AbstractPage page) {
     	for (ModelCallbacks modelCallback : getModelListeners()) {
@@ -110,7 +110,7 @@ public abstract class AbstractWizardModel implements ModelCallbacks {
 	 * registerListener method
 	 * 
 	 * Facilitates the registration of model listeners
-	 * (e.g. RecordPatientDetailsWizardActivity)
+	 * (e.g. AssessmentWizardActivity)
 	 * 
 	 * This ensures the model listener will be informed of 
 	 * 'onPageDataChanged' and 'onPageTreeChanged' events
@@ -125,7 +125,7 @@ public abstract class AbstractWizardModel implements ModelCallbacks {
 	 * unregisterListener method
 	 * 
 	 * Facilitates the de-registering of model listeners
-	 * (e.g. RecordPatientDetailsWizardActivity)
+	 * (e.g. AssessmentWizardActivity)
 	 * 
 	 * This ensures the model listener will no longer be informed of 
 	 * 'onPageDataChanged' and 'onPageTreeChanged' events

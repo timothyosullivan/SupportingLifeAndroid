@@ -2,7 +2,6 @@ package ie.ucc.bis.wizard.model;
 
 import android.content.Context;
 
-
 public class SupportingLifeBreadcrumbWizardModel extends AbstractWizardModel {
 
 	/**
