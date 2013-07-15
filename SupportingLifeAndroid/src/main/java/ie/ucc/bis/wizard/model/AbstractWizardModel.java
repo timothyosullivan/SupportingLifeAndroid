@@ -93,7 +93,9 @@ public abstract class AbstractWizardModel implements ModelCallbacks {
 	/**
 	 * save method
 	 * 
-	 * TODO: Add description
+	 * Invoked by the 'AssessmentWizardActivity' when saving instance
+	 * state. Method will capture the data associated with each page
+	 * in the wizard and store in bundle.
 	 * 
 	 * @return Bundle
 	 *  

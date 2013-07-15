@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MotionEvent;
 
-
 /**
  * 
  * This is the Splash activity in the Supporting LIFE application.

@@ -33,8 +33,8 @@ public class AssessmentWizardActivity extends SupportingLifeBaseActivity impleme
     private boolean mEditingAfterReview;
     private boolean mConsumePageSelectedEvent;
 
-    private Button mNextButton;
-    private Button mPrevButton;
+    private Button nextButton;
+	private Button prevButton;
     
 	/**
 	 * OnCreate method is called when the activity is first created.
@@ -75,8 +75,8 @@ public class AssessmentWizardActivity extends SupportingLifeBaseActivity impleme
             }
         });
 
-        mNextButton = (Button) findViewById(R.id.next_button);
-        mPrevButton = (Button) findViewById(R.id.prev_button);
+        setNextButton((Button) findViewById(R.id.next_button));
+        setPrevButton((Button) findViewById(R.id.prev_button));
 
         getViewPager().setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
             @Override
@@ -93,9 +93,11 @@ public class AssessmentWizardActivity extends SupportingLifeBaseActivity impleme
             }
         });
 
-        mNextButton.setOnClickListener(new View.OnClickListener() {
+        // configure button click listener on nextButton       
+        getNextButton().setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 if (getViewPager().getCurrentItem() == getCurrentPageSequence().size()) {
+                	// we're currently on the review pane so display confirmation dialog
                     DialogFragment dg = new DialogFragment() {
                         @Override
                         public Dialog onCreateDialog(Bundle savedInstanceState) {
@@ -106,7 +108,7 @@ public class AssessmentWizardActivity extends SupportingLifeBaseActivity impleme
                                     .create();
                         }
                     };
-                    dg.show(getSupportFragmentManager(), "place_order_dialog");
+                    dg.show(getSupportFragmentManager(), "Submit Assessment");
                 } else {
                     if (mEditingAfterReview) {
                     	getViewPager().setCurrentItem(getSuppLifeWizardPagerAdapter().getCount() - 1);
@@ -117,7 +119,7 @@ public class AssessmentWizardActivity extends SupportingLifeBaseActivity impleme
             }
         });
 
-        mPrevButton.setOnClickListener(new View.OnClickListener() {
+        getPrevButton().setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
             	getViewPager().setCurrentItem(getViewPager().getCurrentItem() - 1);
             }
@@ -136,26 +138,33 @@ public class AssessmentWizardActivity extends SupportingLifeBaseActivity impleme
         updateBottomBar();
     }
 
+	/**
+	 * Method: updateBottomBar
+	 * 
+	 * Responsible for configuring the display of buttons (i.e. previous;
+	 * next; review;) on the Assessment wizard screens
+	 * 
+	 */      
     private void updateBottomBar() {
         int position = getViewPager().getCurrentItem();
         if (position == getCurrentPageSequence().size()) {
             // change text and colour on the next button to indicate
         	// assessment data entry is complete
-            mNextButton.setText(R.string.assessment_wizard_finish_button);
-            mNextButton.setBackgroundResource(R.drawable.blue_button);
-            mNextButton.setTextAppearance(this, R.style.BreadcrumbTextAppearanceFinish);
+            getNextButton().setText(R.string.assessment_wizard_finish_button);
+            getNextButton().setBackgroundResource(R.drawable.blue_button);
+            getNextButton().setTextAppearance(this, R.style.BreadcrumbTextAppearanceFinish);
         } else {
-            mNextButton.setText(mEditingAfterReview
+        	getNextButton().setText(mEditingAfterReview
                     ? R.string.assessment_wizard_review_button
                     : R.string.assessment_wizard_next_button);
-            mNextButton.setBackgroundResource(R.drawable.breadcrumb_next_button);
+        	getNextButton().setBackgroundResource(R.drawable.breadcrumb_next_button);
             TypedValue v = new TypedValue();
             getTheme().resolveAttribute(android.R.attr.textAppearanceMedium, v, true);
-            mNextButton.setTextAppearance(this, v.resourceId);
-            mNextButton.setEnabled(position != getSuppLifeWizardPagerAdapter().getCutOffPage());
+            getNextButton().setTextAppearance(this, v.resourceId);
+            getNextButton().setEnabled(position != getSuppLifeWizardPagerAdapter().getCutOffPage());
         }
 
-        mPrevButton.setVisibility(position <= 0 ? View.INVISIBLE : View.VISIBLE);
+        getPrevButton().setVisibility(position <= 0 ? View.INVISIBLE : View.VISIBLE);
     }
 
     @Override
@@ -305,5 +314,37 @@ public class AssessmentWizardActivity extends SupportingLifeBaseActivity impleme
 	 */  
 	public void setStepPagerStrip(StepPagerStrip stepPagerStrip) {
 		this.stepPagerStrip = stepPagerStrip;
-	}    
+	}
+
+	/**
+	 * Getter Method: getNextButton()
+	 * 
+	 */		
+    public Button getNextButton() {
+		return nextButton;
+	}
+
+	/**
+	 * Setter Method: setNextButton()
+	 * 
+	 */  
+	public void setNextButton(Button nextButton) {
+		this.nextButton = nextButton;
+	}
+
+	/**
+	 * Getter Method: getPrevButton()
+	 * 
+	 */	
+	public Button getPrevButton() {
+		return prevButton;
+	}
+
+	/**
+	 * Setter Method: setPrevButton()
+	 * 
+	 */  
+	public void setPrevButton(Button prevButton) {
+		this.prevButton = prevButton;
+	}
 }
