@@ -8,18 +8,18 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 import android.view.ViewGroup;
 
 /**
- * SupportingLifeWizardPagerAdapter uses a Fragment to manage each page. 
+ * AssessmentWizardPagerAdapter uses a Fragment to manage each page. 
  * This class also handles saving and restoring of fragment's state.
  * 
  * @author timothyosullivan
  *
  */
-public class SupportingLifeWizardPagerAdapter extends FragmentStatePagerAdapter {
+public class AssessmentWizardPagerAdapter extends FragmentStatePagerAdapter {
     private int mCutOffPage;
     private Fragment mPrimaryItem;
     private AssessmentWizardActivity assessmentWizardActivity;
 
-    public SupportingLifeWizardPagerAdapter(AssessmentWizardActivity assessmentWizardActivity, FragmentManager fm) {
+    public AssessmentWizardPagerAdapter(AssessmentWizardActivity assessmentWizardActivity, FragmentManager fm) {
         super(fm);
         setAssessmentWizardActivity(assessmentWizardActivity);
     }

@@ -4,8 +4,8 @@ import ie.ucc.bis.R;
 import ie.ucc.bis.wizard.model.AbstractPage;
 import ie.ucc.bis.wizard.model.AbstractWizardModel;
 import ie.ucc.bis.wizard.model.ModelCallbacks;
-import ie.ucc.bis.wizard.model.SupportingLifeBreadcrumbWizardModel;
-import ie.ucc.bis.wizard.model.SupportingLifeWizardPagerAdapter;
+import ie.ucc.bis.wizard.model.AssessmentWizardModel;
+import ie.ucc.bis.wizard.model.AssessmentWizardPagerAdapter;
 import ie.ucc.bis.wizard.ui.PageFragmentCallbacks;
 import ie.ucc.bis.wizard.ui.PageSelectedListener;
 import ie.ucc.bis.wizard.ui.ReviewFragmentCallbacks;
@@ -15,6 +15,7 @@ import java.util.List;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.view.ViewPager;
@@ -25,9 +26,9 @@ import android.widget.Button;
 public class AssessmentWizardActivity extends SupportingLifeBaseActivity implements PageFragmentCallbacks, ReviewFragmentCallbacks, ModelCallbacks {
 
     private ViewPager viewPager;
-    private SupportingLifeWizardPagerAdapter suppLifeWizardPagerAdapter;
+    private AssessmentWizardPagerAdapter suppLifeWizardPagerAdapter;
     private List<AbstractPage> currentPageSequence;
-    private AbstractWizardModel supportingLifeWizardModel = new SupportingLifeBreadcrumbWizardModel(this);    
+    private AbstractWizardModel supportingLifeWizardModel = new AssessmentWizardModel(this);    
     private StepPagerStrip stepPagerStrip;
     
     private boolean mEditingAfterReview;
@@ -53,14 +54,14 @@ public class AssessmentWizardActivity extends SupportingLifeBaseActivity impleme
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_assessment_wizard);
         setTitleFromActivityLabel(R.id.title_text);
-
+        
         if (savedInstanceState != null) {
         	getSupportingLifeWizardModel().load(savedInstanceState.getBundle("model"));
         }
 
         getSupportingLifeWizardModel().registerListener(this);
 
-        setSuppLifeWizardPagerAdapter(new SupportingLifeWizardPagerAdapter(this, getSupportFragmentManager()));
+        setSuppLifeWizardPagerAdapter(new AssessmentWizardPagerAdapter(this, getSupportFragmentManager()));
         setViewPager((ViewPager) findViewById(R.id.pager));
         getViewPager().setAdapter(getSuppLifeWizardPagerAdapter());
         setStepPagerStrip((StepPagerStrip) findViewById(R.id.strip));
@@ -203,6 +204,11 @@ public class AssessmentWizardActivity extends SupportingLifeBaseActivity impleme
             }
         }
     }
+    
+    public Resources getActivityResources() {
+    	return getResources();
+    }
+    
 
 	/**
 	 * Method: getPage
@@ -256,7 +262,7 @@ public class AssessmentWizardActivity extends SupportingLifeBaseActivity impleme
 	 * Getter Method: getSuppLifeWizardPagerAdapter()
 	 * 
 	 */			
-	public SupportingLifeWizardPagerAdapter getSuppLifeWizardPagerAdapter() {
+	public AssessmentWizardPagerAdapter getSuppLifeWizardPagerAdapter() {
 		return suppLifeWizardPagerAdapter;
 	}
 
@@ -264,7 +270,7 @@ public class AssessmentWizardActivity extends SupportingLifeBaseActivity impleme
 	 * Setter Method: setSuppLifeWizardPagerAdapter()
 	 * 
 	 */   	
-	public void setSuppLifeWizardPagerAdapter(SupportingLifeWizardPagerAdapter suppLifeWizardPagerAdapter) {
+	public void setSuppLifeWizardPagerAdapter(AssessmentWizardPagerAdapter suppLifeWizardPagerAdapter) {
 		this.suppLifeWizardPagerAdapter = suppLifeWizardPagerAdapter;
 	}
 

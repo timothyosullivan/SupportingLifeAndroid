@@ -48,7 +48,7 @@ public abstract class AbstractWizardModel implements ModelCallbacks {
     		modelCallback.onPageDataChanged(page);
     	}
     }
-
+    
 	/**
 	 * onPageTreeChanged method
 	 * 

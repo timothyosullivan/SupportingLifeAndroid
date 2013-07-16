@@ -1,0 +1,46 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/WizardPageContainer">
+<!-- ============================================================ -->
+<!-- ASSESSMENT BREAD-CRUMB WIZARD UI -->
+<!-- ASSESSMENT PAGE: GENERAL PATIENT DETAILS -->
+<!-- ============================================================ -->
+    <TextView style="@style/WizardPageTitle" />
+
+    <ScrollView android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+			<!-- ============================================================ -->
+			<!-- FIRST NAME -->
+			<!-- ============================================================ --> 
+            <TextView style="@style/WizardFormLabel"
+                android:text="@string/general_patient_details_first_name" />
+
+            <EditText android:id="@+id/general_patient_details_first_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:saveEnabled="false"
+                android:inputType="textCapWords"
+                android:hint="@string/general_patient_details_first_name_hint"
+                android:layout_marginBottom="16dp" />
+
+			<!-- ============================================================ -->
+			<!-- SURNAME -->
+			<!-- ============================================================ -->             
+            <TextView style="@style/WizardFormLabel"
+                android:text="@string/general_patient_details_surname" />
+
+            <EditText android:id="@+id/general_patient_details_surname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:saveEnabled="false"
+                android:inputType="textCapWords"
+                android:hint="@string/general_patient_details_surname_hint" />
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
