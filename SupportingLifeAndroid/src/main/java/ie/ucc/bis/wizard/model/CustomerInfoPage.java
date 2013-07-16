@@ -32,12 +32,12 @@ public class CustomerInfoPage extends AbstractPage {
 	 */      
     @Override
     public void getReviewItems(ArrayList<ReviewItem> reviewItems) {
-    	reviewItems.add(new ReviewItem("Your name", mData.getString(NAME_DATA_KEY), getKey(), -1));
-    	reviewItems.add(new ReviewItem("Your email", mData.getString(EMAIL_DATA_KEY), getKey(), -1));
+    	reviewItems.add(new ReviewItem("Your name", getPageData().getString(NAME_DATA_KEY), getKey(), -1));
+    	reviewItems.add(new ReviewItem("Your email", getPageData().getString(EMAIL_DATA_KEY), getKey(), -1));
     }
 
     @Override
     public boolean isCompleted() {
-        return !TextUtils.isEmpty(mData.getString(NAME_DATA_KEY));
+        return !TextUtils.isEmpty(getPageData().getString(NAME_DATA_KEY));
     }
 }

@@ -86,7 +86,7 @@ public abstract class AbstractWizardModel implements ModelCallbacks {
 	 */     
     public void load(Bundle savedValues) {
         for (String key : savedValues.keySet()) {
-        	getAssessmentPages().findPageByKey(key).resetData(savedValues.getBundle(key));
+        	getAssessmentPages().findPageByKey(key).resetPageData(savedValues.getBundle(key));
         }
     }
 
@@ -103,7 +103,7 @@ public abstract class AbstractWizardModel implements ModelCallbacks {
     public Bundle save() {
         Bundle bundle = new Bundle();
         for (AbstractPage page : getCurrentPageSequence()) {
-            bundle.putBundle(page.getKey(), page.getData());
+            bundle.putBundle(page.getKey(), page.getPageData());
         }
         return bundle;
     }

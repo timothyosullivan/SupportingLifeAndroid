@@ -1,74 +1,58 @@
-/*
- * Copyright 2012 Roman Nurik
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 package ie.ucc.bis.wizard.model;
 
 /**
  * Represents a single line item on the final review page.
  *
- * @see com.example.android.wizardpager.wizard.ui.ReviewFragment
+ * @see ie.ucc.bis.wizard.ui.ReviewFragment
  */
 public class ReviewItem {
     public static final int DEFAULT_WEIGHT = 0;
 
-    private int mWeight;
-    private String mTitle;
-    private String mDisplayValue;
-    private String mPageKey;
+    private int weight;
+    private String title;
+    private String displayValue;
+    private String pageKey;
 
     public ReviewItem(String title, String displayValue, String pageKey) {
         this(title, displayValue, pageKey, DEFAULT_WEIGHT);
     }
 
     public ReviewItem(String title, String displayValue, String pageKey, int weight) {
-        mTitle = title;
-        mDisplayValue = displayValue;
-        mPageKey = pageKey;
-        mWeight = weight;
+        setTitle(title);
+        setDisplayValue(displayValue);
+        setPageKey(pageKey);
+        setWeight(weight);
     }
 
     public String getDisplayValue() {
-        return mDisplayValue;
+        return this.displayValue;
     }
 
     public void setDisplayValue(String displayValue) {
-        mDisplayValue = displayValue;
+        this.displayValue = displayValue;
     }
 
     public String getPageKey() {
-        return mPageKey;
+        return this.pageKey;
     }
 
     public void setPageKey(String pageKey) {
-        mPageKey = pageKey;
+        this.pageKey = pageKey;
     }
 
     public String getTitle() {
-        return mTitle;
+        return this.title;
     }
 
     public void setTitle(String title) {
-        mTitle = title;
+        this.title = title;
     }
 
     public int getWeight() {
-        return mWeight;
+        return this.weight;
     }
 
     public void setWeight(int weight) {
-        mWeight = weight;
+        this.weight = weight;
     }
 }

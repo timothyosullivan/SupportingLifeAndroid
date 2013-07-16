@@ -19,10 +19,10 @@ public abstract class AbstractPage implements PageTreeNode {
     /**
      * Current wizard values/selections.
      */
-    protected Bundle mData = new Bundle();
-    protected String mTitle;
-    protected boolean mRequired = false;
-    protected String mParentKey;
+    protected Bundle pageData = new Bundle();
+    protected String title;
+    protected boolean required = false;
+    protected String parentKey;
 
 	/**
 	 * Abstract Method: getReviewItems
@@ -41,57 +41,97 @@ public abstract class AbstractPage implements PageTreeNode {
 	 */    
     protected AbstractPage(ModelCallbacks callbacks, String title) {
     	setModelCallbacks(callbacks);
-        mTitle = title;
-    }
-
-    public Bundle getData() {
-        return mData;
-    }
-
-    public String getTitle() {
-        return mTitle;
-    }
-
-    public boolean isRequired() {
-        return mRequired;
-    }
-
-    void setParentKey(String parentKey) {
-        mParentKey = parentKey;
+        setTitle(title);
     }
     
     public AbstractPage findPageByKey(String key) {
         return getKey().equals(key) ? this : null;
     }
 
-    public void flattenCurrentPageSequence(ArrayList<AbstractPage> dest) {
-        dest.add(this);
+    public void flattenCurrentPageSequence(ArrayList<AbstractPage> pages) {
+    	pages.add(this);
     }
 
     public abstract Fragment createFragment();
 
     public String getKey() {
-        return (mParentKey != null) ? mParentKey + ":" + mTitle : mTitle;
+        return (getParentKey() != null) ? getParentKey() + ":" + getTitle() : getTitle();
     }
 
     public boolean isCompleted() {
         return true;
     }
 
-    public void resetData(Bundle data) {
-        mData = data;
+    public void resetPageData(Bundle pageData) {
+        setPageData(pageData);
         notifyDataChanged();
     }
 
     public void notifyDataChanged() {
     	getModelCallbacks().onPageDataChanged(this);
     }
+    
+	/**
+	 * Setter Method: setData()
+	 * 
+	 */      
+    public void setPageData(Bundle pageData) {
+        this.pageData = pageData;
+    }
 
+	/**
+	 * Getter Method: getData()
+	 * 
+	 */	   
+    public Bundle getPageData() {
+        return this.pageData;
+    }
+
+	/**
+	 * Setter Method: setTitle()
+	 * 
+	 */      
+    public void setTitle(String title) {
+    	this.title = title;
+    }
+    
+	/**
+	 * Getter Method: getTitle()
+	 * 
+	 */	      
+    public String getTitle() {
+        return this.title;
+    }
+
+	/**
+	 * Setter Method: setParentKey()
+	 * 
+	 */  	     
+    public void setParentKey(String parentKey) {
+        this.parentKey = parentKey;
+    }
+
+	/**
+	 * Getter Method: getParentKey()
+	 * 
+	 */	    
+    public String getParentKey() {
+        return this.parentKey;
+    }
+
+	/**
+	 * Setter Method: setRequired()
+	 * 
+	 */  	    
     public AbstractPage setRequired(boolean required) {
-        mRequired = required;
+        this.required = required;
         return this;
     }
 
+    public boolean isRequired() {
+        return this.required;
+    }    
+    
 	/**
 	 * Getter Method: getModelCallbacks()
 	 * 
