@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 import android.support.v4.app.Fragment;
 import android.text.TextUtils;
+import android.widget.RadioButton;
 
 /**
  * Page Title: General Patient Details
@@ -18,6 +19,7 @@ import android.text.TextUtils;
 public class GeneralPatientDetailsPage extends AbstractPage {
     public static final String FIRST_NAME_DATA_KEY = "FIRST_NAME";
     public static final String SURNAME_DATA_KEY = "SURNAME";
+    public static final String GENDER_DATA_KEY = "GENDER";
     
     private GeneralPatientDetailsFragment generalPatientDetailsFragment;
 
@@ -40,11 +42,23 @@ public class GeneralPatientDetailsPage extends AbstractPage {
 	 */      
     @Override
     public void getReviewItems(ArrayList<ReviewItem> reviewItems) {
+    	// first name
     	String firstNameLabel = getGeneralPatientDetailsFragment().getResources().getString(R.string.general_patient_details_review_first_name);
-    	String surnameLabel = getGeneralPatientDetailsFragment().getResources().getString(R.string.general_patient_details_review_surname);
-    	
     	reviewItems.add(new ReviewItem(firstNameLabel, getPageData().getString(FIRST_NAME_DATA_KEY), getKey(), -1));
+    	
+    	// surname
+    	String surnameLabel = getGeneralPatientDetailsFragment().getResources().getString(R.string.general_patient_details_review_surname);
     	reviewItems.add(new ReviewItem(surnameLabel, getPageData().getString(SURNAME_DATA_KEY), getKey(), -1));
+    	
+    	// gender
+    	String genderLabel = getGeneralPatientDetailsFragment().getResources().getString(R.string.general_patient_details_review_gender);
+    	String genderType = null;
+    	if (getPageData().containsKey(GENDER_DATA_KEY)) {
+			RadioButton radioButton = (RadioButton) getGeneralPatientDetailsFragment().getView().findViewById(getPageData().getInt(GENDER_DATA_KEY));
+	    	genderType = radioButton.getText().toString();
+    	}
+    	reviewItems.add(new ReviewItem(genderLabel, genderType, getKey(), -1));
+    	
     }
 
     @Override

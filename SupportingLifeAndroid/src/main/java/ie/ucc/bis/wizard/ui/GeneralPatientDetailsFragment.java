@@ -1,16 +1,16 @@
 package ie.ucc.bis.wizard.ui;
 
 import ie.ucc.bis.R;
+import ie.ucc.bis.wizard.model.AssessmentWizardRadioGroupListener;
 import ie.ucc.bis.wizard.model.AssessmentWizardTextWatcher;
 import ie.ucc.bis.wizard.model.GeneralPatientDetailsPage;
 import android.app.Activity;
-import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.inputmethod.InputMethodManager;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 public class GeneralPatientDetailsFragment extends Fragment {
@@ -22,7 +22,7 @@ public class GeneralPatientDetailsFragment extends Fragment {
     private String pageKey;
     private TextView firstNameTextView;
     private TextView surnameTextView;
-
+    private RadioGroup genderRadioGroup;
     
     public static GeneralPatientDetailsFragment create(String pageKey) {
         Bundle args = new Bundle();
@@ -54,11 +54,19 @@ public class GeneralPatientDetailsFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_wizard_page_general_patient_details, container, false);
         ((TextView) rootView.findViewById(android.R.id.title)).setText(getGeneralPatientDetailsPage().getTitle());
 
-        setFirstNameTextView(((TextView) rootView.findViewById(R.id.general_patient_details_first_name)));
+        // first name
+        setFirstNameTextView(((TextView) rootView.findViewById(R.id.first_name)));
         getFirstNameTextView().setText(getGeneralPatientDetailsPage().getPageData().getString(GeneralPatientDetailsPage.FIRST_NAME_DATA_KEY));
 
-        setSurnameTextView(((TextView) rootView.findViewById(R.id.general_patient_details_surname)));
+        // surname
+        setSurnameTextView(((TextView) rootView.findViewById(R.id.surname)));
         getSurnameTextView().setText(getGeneralPatientDetailsPage().getPageData().getString(GeneralPatientDetailsPage.SURNAME_DATA_KEY));
+        
+        // gender
+        setGenderRadioGroup((RadioGroup) rootView.findViewById(R.id.radio_gender));
+        getGenderRadioGroup().check(getGeneralPatientDetailsPage()
+        		.getPageData().getInt(GeneralPatientDetailsPage.GENDER_DATA_KEY));
+
         return rootView;
     }
 
@@ -69,7 +77,7 @@ public class GeneralPatientDetailsFragment extends Fragment {
         if (!(activity instanceof PageFragmentCallbacks)) {
             throw new ClassCastException("Activity must implement PageFragmentCallbacks");
         }
-
+        
         setPageFragmentCallbacks((PageFragmentCallbacks) activity);
     }
 
@@ -90,26 +98,14 @@ public class GeneralPatientDetailsFragment extends Fragment {
         getSurnameTextView().addTextChangedListener(
         		new AssessmentWizardTextWatcher(getGeneralPatientDetailsPage(), 
         				GeneralPatientDetailsPage.SURNAME_DATA_KEY));
-    }
-
-    @Override
-    public void setMenuVisibility(boolean menuVisible) {
-        super.setMenuVisibility(menuVisible);
-
-        // In a future update to the support library, this should override setUserVisibleHint
-        // instead of setMenuVisibility.
-        if (getFirstNameTextView() != null) {
-            InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(
-                    Context.INPUT_METHOD_SERVICE);
-            if (!menuVisible) {
-                imm.hideSoftInputFromWindow(getView().getWindowToken(), 0);
-            }
-        }
+        
+        getGenderRadioGroup().setOnCheckedChangeListener(
+        		new AssessmentWizardRadioGroupListener(getGeneralPatientDetailsPage(),
+        				GeneralPatientDetailsPage.GENDER_DATA_KEY));
     }
 
 	/**
 	 * Getter Method: getGeneralPatientDetailsPage()
-	 * 
 	 */
 	public GeneralPatientDetailsPage getGeneralPatientDetailsPage() {
 		return generalPatientDetailsPage;
@@ -117,7 +113,6 @@ public class GeneralPatientDetailsFragment extends Fragment {
 
 	/**
 	 * Setter Method: setGeneralPatientDetailsPage()
-	 * 
 	 */   	
 	public void setGeneralPatientDetailsPage(GeneralPatientDetailsPage generalPatientDetailsPage) {
 		this.generalPatientDetailsPage = generalPatientDetailsPage;
@@ -125,7 +120,6 @@ public class GeneralPatientDetailsFragment extends Fragment {
 
 	/**
 	 * Getter Method: getPageFragmentCallbacks()
-	 * 
 	 */
 	public PageFragmentCallbacks getPageFragmentCallbacks() {
 		return pageFragmentCallbacks;
@@ -133,7 +127,6 @@ public class GeneralPatientDetailsFragment extends Fragment {
 
 	/**
 	 * Setter Method: setPageFragmentCallbacks()
-	 * 
 	 */
 	public void setPageFragmentCallbacks(PageFragmentCallbacks pageFragmentCallbacks) {
 		this.pageFragmentCallbacks = pageFragmentCallbacks;
@@ -141,7 +134,6 @@ public class GeneralPatientDetailsFragment extends Fragment {
 	
 	/**
 	 * Getter Method: getPageKey()
-	 * 
 	 */	
 	public String getPageKey() {
 		return pageKey;
@@ -149,7 +141,6 @@ public class GeneralPatientDetailsFragment extends Fragment {
 
 	/**
 	 * Setter Method: setPageKey()
-	 * 
 	 */	
 	public void setPageKey(String pageKey) {
 		this.pageKey = pageKey;
@@ -157,7 +148,6 @@ public class GeneralPatientDetailsFragment extends Fragment {
 
 	/**
 	 * Getter Method: getFirstNameTextView()
-	 * 
 	 */		
 	public TextView getFirstNameTextView() {
 		return firstNameTextView;
@@ -165,7 +155,6 @@ public class GeneralPatientDetailsFragment extends Fragment {
 
 	/**
 	 * Setter Method: setFirstNameTextView()
-	 * 
 	 */		
 	public void setFirstNameTextView(TextView firstNameTextView) {
 		this.firstNameTextView = firstNameTextView;
@@ -173,7 +162,6 @@ public class GeneralPatientDetailsFragment extends Fragment {
 
 	/**
 	 * Getter Method: getSurnameTextView()
-	 * 
 	 */		
 	public TextView getSurnameTextView() {
 		return surnameTextView;
@@ -181,10 +169,22 @@ public class GeneralPatientDetailsFragment extends Fragment {
 
 	/**
 	 * Setter Method: setSurnameTextView()
-	 * 
 	 */		
 	public void setSurnameTextView(TextView surnameTextView) {
 		this.surnameTextView = surnameTextView;
 	}
 
+	/**
+	 * Getter Method: getGenderRadioGroup()
+	 */	
+	public RadioGroup getGenderRadioGroup() {
+		return genderRadioGroup;
+	}
+
+	/**
+	 * Setter Method: setGenderRadioGroup()
+	 */			
+	public void setGenderRadioGroup(RadioGroup genderRadioGroup) {
+		this.genderRadioGroup = genderRadioGroup;
+	}
 }

@@ -20,7 +20,7 @@
             <TextView style="@style/WizardFormLabel"
                 android:text="@string/general_patient_details_first_name" />
 
-            <EditText android:id="@+id/general_patient_details_first_name"
+            <EditText android:id="@+id/first_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:saveEnabled="false"
@@ -34,13 +34,36 @@
             <TextView style="@style/WizardFormLabel"
                 android:text="@string/general_patient_details_surname" />
 
-            <EditText android:id="@+id/general_patient_details_surname"
+            <EditText android:id="@+id/surname"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:saveEnabled="false"
                 android:inputType="textCapWords"
                 android:hint="@string/general_patient_details_surname_hint" />
 
+			<!-- ============================================================ -->
+			<!-- GENDER -->
+			<!-- ============================================================ -->               
+			
+			<TextView style="@style/WizardFormLabel"
+                android:text="@string/general_patient_details_radio_gender" />
+			
+			<RadioGroup android:id="@+id/radio_gender"
+			    android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                
+ 				<RadioButton android:id="@+id/radio_gender_male"
+				    android:layout_width="match_parent"
+				    android:layout_height="wrap_content"
+				    android:text="@string/general_patient_details_radio_gender_male" 
+				    android:checked="true" />
+				
+				<RadioButton android:id="@+id/radio_gender_female"
+				    android:layout_width="match_parent"
+				    android:layout_height="wrap_content"
+				    android:text="@string/general_patient_details_radio_gender_female" />
+			</RadioGroup>
+			   
         </LinearLayout>
     </ScrollView>
 </LinearLayout>
