@@ -44,6 +44,7 @@
         <activity
             android:name="ie.ucc.bis.activity.AssessmentWizardActivity"
             android:label="@string/activity_title_record_patient_details_wizard"
+            android:windowSoftInputMode="stateHidden"
             android:screenOrientation="portrait">
         </activity>
         <activity
