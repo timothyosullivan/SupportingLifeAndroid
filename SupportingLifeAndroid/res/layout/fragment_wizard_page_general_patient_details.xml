@@ -1,5 +1,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    style="@style/WizardPageContainer">
+    style="@style/WizardPageContainer"
+    android:layout_height="match_parent" >
+
 <!-- ============================================================ -->
 <!-- ASSESSMENT BREAD-CRUMB WIZARD UI -->
 <!-- ASSESSMENT PAGE: GENERAL PATIENT DETAILS -->
@@ -10,9 +12,10 @@
         android:layout_height="0dp"
         android:layout_weight="1">
 
-        <LinearLayout android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="218dp"
+            android:orientation="vertical" >
 
 			<!-- ============================================================ -->
 			<!-- FIRST NAME -->
@@ -39,29 +42,43 @@
                 android:layout_height="wrap_content"
                 android:saveEnabled="false"
                 android:inputType="textCapWords"
+                android:layout_marginBottom="10dp"
                 android:hint="@string/general_patient_details_surname_hint" />
 
 			<!-- ============================================================ -->
 			<!-- GENDER -->
 			<!-- ============================================================ -->               
 			
-			<TextView style="@style/WizardFormLabel"
-                android:text="@string/general_patient_details_radio_gender" />
-			
-			<RadioGroup android:id="@+id/radio_gender"
+			<TextView
+			    style="@style/WizardFormLabel"
 			    android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                
- 				<RadioButton android:id="@+id/radio_gender_male"
-				    android:layout_width="match_parent"
-				    android:layout_height="wrap_content"
-				    android:text="@string/general_patient_details_radio_gender_male" 
-				    android:checked="true" />
-				
-				<RadioButton android:id="@+id/radio_gender_female"
-				    android:layout_width="match_parent"
-				    android:layout_height="wrap_content"
-				    android:text="@string/general_patient_details_radio_gender_female" />
+			    android:layout_height="match_parent"
+			    android:layout_gravity="bottom"
+			    android:text="@string/general_patient_details_radio_gender" />
+			
+			<RadioGroup
+			    android:id="@+id/radio_gender"
+			    android:layout_width="match_parent"
+			    android:layout_height="wrap_content"
+			    android:orientation="horizontal" >
+
+			    <RadioButton
+			        android:id="@+id/radio_gender_male"
+			        android:layout_width="112dp"
+			        android:layout_height="wrap_content"
+			        android:layout_weight="0.67"
+			        android:checked="false"
+			        android:text="@string/general_patient_details_radio_gender_male" />
+
+			    <RadioButton
+			        android:id="@+id/radio_gender_female"
+			        android:layout_width="118dp"
+			        android:layout_height="wrap_content"
+			        android:layout_gravity="top"
+			        android:layout_weight="0.32"
+			        android:checked="false"
+			        android:text="@string/general_patient_details_radio_gender_female" />
+
 			</RadioGroup>
 			   
         </LinearLayout>

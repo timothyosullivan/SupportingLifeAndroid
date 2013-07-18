@@ -1,15 +1,14 @@
-<resources>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
     
     <!-- ============================================================ -->
-    <!-- SPLASH SCREEN STYLE THEME -->
+    <!-- APPLICATION STYLE THEME -->
     <!-- ============================================================ -->
-    <style name="Theme.Transparent" parent="android:Theme">
+    <style name="Theme.Transparent" parent="android:Theme.Light">
         <item name="android:windowIsTranslucent">true</item>
-        <item name="android:windowBackground">@android:color/transparent</item>
         <item name="android:windowContentOverlay">@null</item>
         <item name="android:windowNoTitle">true</item>
-        <item name="android:windowIsFloating">true</item>
         <item name="android:backgroundDimEnabled">false</item>
+        <item name="android:radioButtonStyle">@style/RadioButton</item>
     </style>
 
     <!-- ============================================================ -->
@@ -95,11 +94,19 @@
     <style name="WizardFormLabel">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_marginBottom">0dp</item>
+        <item name="android:layout_marginBottom">3dp</item>
         <item name="android:textColor">@color/LightCoral</item>
         <item name="android:textStyle">bold</item>
-        <item name="android:paddingLeft">12dp</item>
+        <item name="android:paddingLeft">4dp</item>
         <item name="android:paddingRight">12dp</item>
     </style>
 
+    <!-- ============================================================ -->
+    <!-- BREADCRUMB WIZARD RADIO BUTTON STYLE -->
+    <!-- ============================================================ -->        
+ 	<style name="RadioButton" parent="@android:style/Widget.CompoundButton.RadioButton">
+ 	    <item name="android:button">@drawable/radio_button</item>
+ 	    <item name="android:paddingLeft">5dp</item>
+    </style>
+    
 </resources>
