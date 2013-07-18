@@ -41,7 +41,8 @@
 		<!-- ============================================================ -->
 		<!-- ASSESSMENT WIZARD BREAD-CRUMB UI -->
 		<!-- STAGE 1: GENERAL PATIENT DETAILS -->
-		<!-- ============================================================ -->   
+		<!-- ============================================================ -->
+		<string name="general_patient_details_title">Patient Details</string>
 	    <string name="general_patient_details_first_name">First Name:</string>
 	    <string name="general_patient_details_surname">Surname:</string>
 	    <string name="general_patient_details_radio_gender">Gender:</string>
@@ -60,19 +61,29 @@
 		<!-- ASSESSMENT WIZARD BREAD-CRUMB UI -->
 		<!-- STAGE 2: GENERAL DANGER SIGNS -->
 		<!-- ============================================================ -->   
+		<string name="general_danger_signs_title">Danger Signs</string>
 
-	    <string name="label_your_name">Name</string>
-	    <string name="label_your_email">Email</string>
-	    <string name="hint_your_name">e.g. Larry</string>
-	    <string name="hint_your_email">Optional</string>
-	    <string name="submit_confirm_message">Place the order with the deli? You will receive an email
-	        confirmation.</string>
+		<string name="general_danger_signs_radio_drinkBreastfeed">Not able to Drink or Breastfeed:</string>
+		<string name="general_danger_signs_radio_vomits">Vomits Everything:</string>
+		<string name="general_danger_signs_radio_convulsions">History of Convulsions:</string>
+		
+		<string name="general_danger_signs_review_drinkBreastfeed">Not able to Drink or Breastfeed</string>
+		<string name="general_danger_signs_review_vomits">Vomits Everything</string>
+		<string name="general_danger_signs_review_convulsions">History of Convulsions</string>
+		
+		<!-- ============================================================ -->
+		<!-- ASSESSMENT WIZARD BREAD-CRUMB UI -->
+		<!-- STAGE 3: ??? -->
+		<!-- ============================================================ -->   				
+		<string name="submit_confirm_message">Perform Medical Assessment</string>
 	    <string name="submit_confirm_button">Submit Patient Record</string>
 	   
 		<!-- ============================================================ -->
 		<!-- ASSESSMENT WIZARD BREAD-CRUMB UI -->
 		<!-- UNIVERSAL COMPONENTS -->
 		<!-- ============================================================ -->   
+		<string name="assessment_wizard_radio_yes">Yes</string>
+	    <string name="assessment_wizard_radio_no">No</string>
 		<string name="assessment_wizard_previous_button">Previous</string>
 	    <string name="assessment_wizard_next_button">Next</string>
 	    <string name="assessment_wizard_finish_button">Finish</string>

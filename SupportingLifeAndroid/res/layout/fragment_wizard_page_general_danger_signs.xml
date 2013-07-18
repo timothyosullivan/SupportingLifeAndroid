@@ -1,0 +1,130 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/WizardPageContainer"
+    android:layout_height="match_parent" >
+
+<!-- ============================================================ -->
+<!-- ASSESSMENT BREAD-CRUMB WIZARD UI -->
+<!-- ASSESSMENT PAGE: GENERAL DANGER SIGNS -->
+<!-- ============================================================ -->
+    <TextView style="@style/WizardPageTitle" />
+
+    <ScrollView android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="218dp"
+            android:orientation="vertical" >
+
+			<!-- ============================================================ -->
+			<!-- DRINK OR BREASTFEED RADIO BUTTON GROUP -->
+			<!-- ============================================================ -->               
+			
+			<TextView
+			    style="@style/WizardFormLabel"
+			    android:layout_width="match_parent"
+			    android:layout_height="match_parent"
+			    android:layout_gravity="bottom"
+			    android:text="@string/general_danger_signs_radio_drinkBreastfeed" />
+			
+			<RadioGroup
+			    android:id="@+id/radio_drinkBreastfeed"
+			    android:layout_width="match_parent"
+			    android:layout_height="wrap_content"
+			    android:orientation="horizontal" >
+
+			    <RadioButton
+			        android:id="@+id/radio_drinkBreastfeed_yes"
+			        android:layout_width="112dp"
+			        android:layout_height="wrap_content"
+			        android:layout_weight="0.67"
+			        android:checked="false"
+			        android:text="@string/assessment_wizard_radio_yes" />
+
+			    <RadioButton
+			        android:id="@+id/radio_drinkBreastfeed_no"
+			        android:layout_width="118dp"
+			        android:layout_height="wrap_content"
+			        android:layout_gravity="top"
+			        android:layout_weight="0.32"
+			        android:checked="false"
+			        android:text="@string/assessment_wizard_radio_no" />
+
+			</RadioGroup>
+
+			<!-- ============================================================ -->
+			<!-- VOMITS EVERYTHINGS RADIO BUTTON GROUP -->
+			<!-- ============================================================ -->               
+			
+			<TextView
+			    style="@style/WizardFormLabel"
+			    android:layout_width="match_parent"
+			    android:layout_height="match_parent"
+			    android:layout_gravity="bottom"
+			    android:text="@string/general_danger_signs_radio_vomits" />
+			
+			<RadioGroup
+			    android:id="@+id/radio_vomits"
+			    android:layout_width="match_parent"
+			    android:layout_height="wrap_content"
+			    android:orientation="horizontal" >
+
+			    <RadioButton
+			        android:id="@+id/radio_vomits_yes"
+			        android:layout_width="112dp"
+			        android:layout_height="wrap_content"
+			        android:layout_weight="0.67"
+			        android:checked="false"
+			        android:text="@string/assessment_wizard_radio_yes" />
+
+			    <RadioButton
+			        android:id="@+id/radio_vomits_no"
+			        android:layout_width="118dp"
+			        android:layout_height="wrap_content"
+			        android:layout_gravity="top"
+			        android:layout_weight="0.32"
+			        android:checked="false"
+			        android:text="@string/assessment_wizard_radio_no" />
+
+			</RadioGroup>
+
+			<!-- ============================================================ -->
+			<!-- HISTORY OF CONVULSIONS RADIO BUTTON GROUP -->
+			<!-- ============================================================ -->               
+			
+			<TextView
+			    style="@style/WizardFormLabel"
+			    android:layout_width="match_parent"
+			    android:layout_height="match_parent"
+			    android:layout_gravity="bottom"
+			    android:text="@string/general_danger_signs_radio_convulsions" />
+			
+			<RadioGroup
+			    android:id="@+id/radio_convulsions"
+			    android:layout_width="match_parent"
+			    android:layout_height="wrap_content"
+			    android:orientation="horizontal" >
+
+			    <RadioButton
+			        android:id="@+id/radio_convulsions_yes"
+			        android:layout_width="112dp"
+			        android:layout_height="wrap_content"
+			        android:layout_weight="0.67"
+			        android:checked="false"
+			        android:text="@string/assessment_wizard_radio_yes" />
+
+			    <RadioButton
+			        android:id="@+id/radio_convulsions_no"
+			        android:layout_width="118dp"
+			        android:layout_height="wrap_content"
+			        android:layout_gravity="top"
+			        android:layout_weight="0.32"
+			        android:checked="false"
+			        android:text="@string/assessment_wizard_radio_no" />
+
+			</RadioGroup>	
+						   
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

@@ -1,5 +1,6 @@
 package ie.ucc.bis.wizard.model;
 
+import ie.ucc.bis.R;
 import android.content.Context;
 
 public class AssessmentWizardModel extends AbstractWizardModel {
@@ -15,7 +16,9 @@ public class AssessmentWizardModel extends AbstractWizardModel {
 
 	@Override
 	protected PageList configurePageList() {
-		return new PageList(new GeneralPatientDetailsPage(this, "Patient Details").setRequired(true),
-							new GeneralPatientDetailsPage(this, "Second Info").setRequired(true));
+		return new PageList(new GeneralPatientDetailsPage(this, 
+				getApplicationContext().getResources().getString(R.string.general_patient_details_title)).setRequired(true),
+							new GeneralDangerSignsPage(this, 
+									getApplicationContext().getResources().getString(R.string.general_danger_signs_title)).setRequired(true));
 	}
 }
