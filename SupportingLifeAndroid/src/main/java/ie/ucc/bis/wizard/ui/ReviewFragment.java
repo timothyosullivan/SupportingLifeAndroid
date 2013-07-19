@@ -91,6 +91,7 @@ public class ReviewFragment extends ListFragment implements ModelCallbacks {
         for (AbstractPage page : mWizardModel.getCurrentPageSequence()) {
             page.getReviewItems(reviewItems);
         }
+        
         Collections.sort(reviewItems, new Comparator<ReviewItem>() {
             public int compare(ReviewItem a, ReviewItem b) {
                 return a.getWeight() > b.getWeight() ? +1 : a.getWeight() < b.getWeight() ? -1 : 0;

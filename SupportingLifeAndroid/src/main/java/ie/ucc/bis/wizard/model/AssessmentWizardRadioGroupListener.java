@@ -1,5 +1,6 @@
 package ie.ucc.bis.wizard.model;
 
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
 
@@ -14,7 +15,8 @@ public class AssessmentWizardRadioGroupListener implements OnCheckedChangeListen
 	}
 	
 	public void onCheckedChanged(RadioGroup group, int checkedId) {
-    	getPage().getPageData().putInt(dataKey, checkedId);
+		RadioButton radioButton = (RadioButton) group.findViewById(checkedId);
+    	getPage().getPageData().putString(dataKey, radioButton.getText().toString());
     	getPage().notifyDataChanged();
 	}
 

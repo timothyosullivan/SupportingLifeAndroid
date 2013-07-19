@@ -55,7 +55,7 @@ public class AssessmentWizardActivity extends SupportingLifeBaseActivity impleme
         setContentView(R.layout.activity_assessment_wizard);
         setTitleFromActivityLabel(R.id.title_text);
         
-        // instantiate SupportingLife Wizard if not previously initialised
+        // only instantiate SupportingLife Wizard if not previously initialised
         if (supportingLifeWizardModel == null) {
         	supportingLifeWizardModel = new AssessmentWizardModel(this);
         }

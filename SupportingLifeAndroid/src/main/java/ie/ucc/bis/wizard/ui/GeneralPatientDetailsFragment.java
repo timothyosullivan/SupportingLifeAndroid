@@ -13,6 +13,13 @@ import android.view.ViewGroup;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
+/**
+ * Responsible for UI fragment to display general 
+ * patient details assessment form
+ * 
+ * @author timothyosullivan
+ * 
+ */
 public class GeneralPatientDetailsFragment extends Fragment {
 	
     private static final String ARG_PAGE_KEY = "PAGE_KEY";

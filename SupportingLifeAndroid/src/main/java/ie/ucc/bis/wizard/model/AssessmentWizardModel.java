@@ -16,9 +16,23 @@ public class AssessmentWizardModel extends AbstractWizardModel {
 
 	@Override
 	protected PageList configurePageList() {
+		/*
+		 * Assessment Wizard Pages are as follows:
+		 * 
+		 * 1. General Patient Details Page
+		 * 2. General Danger Signs Page
+		 * 3. Cough / Breathing Assessment Page
+		 */
+//		return new PageList(new GeneralPatientDetailsPage(this, 
+//									getApplicationContext().getResources().getString(R.string.general_patient_details_title)).setRequired(true),
+//							new GeneralDangerSignsPage(this, 
+//									getApplicationContext().getResources().getString(R.string.general_danger_signs_title)).setRequired(true));
+		
 		return new PageList(new GeneralPatientDetailsPage(this, 
 				getApplicationContext().getResources().getString(R.string.general_patient_details_title)).setRequired(true),
-							new GeneralDangerSignsPage(this, 
-									getApplicationContext().getResources().getString(R.string.general_danger_signs_title)).setRequired(true));
+		new GeneralDangerSignsPage(this, 
+				getApplicationContext().getResources().getString(R.string.general_danger_signs_title)).setRequired(true),
+		new BreathingAssessmentPage(this, 
+				getApplicationContext().getResources().getString(R.string.breathing_assessment_title)).setRequired(true));		
 	}
 }

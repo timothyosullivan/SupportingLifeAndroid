@@ -5,8 +5,8 @@ import ie.ucc.bis.wizard.ui.GeneralDangerSignsFragment;
 
 import java.util.ArrayList;
 
+import android.content.res.Resources;
 import android.support.v4.app.Fragment;
-import android.widget.RadioButton;
 
 /**
  * Page Title: General Danger Signs
@@ -42,33 +42,19 @@ public class GeneralDangerSignsPage extends AbstractPage {
 	 */      
     @Override
     public void getReviewItems(ArrayList<ReviewItem> reviewItems) {
+    	Resources resources = ((AbstractWizardModel) getModelCallbacks()).applicationContext.getResources();
 
     	// not able to drink or breastfeed
-    	String drinkBreastfeedLabel = getGeneralDangerSignsFragment().getResources().getString(R.string.general_danger_signs_review_drinkBreastfeed);
-    	String drinkBreastfeedType = null;
-    	if (getPageData().containsKey(DRINK_BREASTFEED_DATA_KEY)) {
-			RadioButton radioButton = (RadioButton) getGeneralDangerSignsFragment().getView().findViewById(getPageData().getInt(DRINK_BREASTFEED_DATA_KEY));
-			drinkBreastfeedType = radioButton.getText().toString();
-    	}
-    	reviewItems.add(new ReviewItem(drinkBreastfeedLabel, drinkBreastfeedType, getKey(), -1));    	
+    	String drinkBreastfeedLabel = resources.getString(R.string.general_danger_signs_review_drink_breastfeed);
+    	reviewItems.add(new ReviewItem(drinkBreastfeedLabel, getPageData().getString(DRINK_BREASTFEED_DATA_KEY), getKey(), -1));    	
     	
     	// vomits everythings
-    	String vomitsLabel = getGeneralDangerSignsFragment().getResources().getString(R.string.general_danger_signs_review_vomits);
-    	String vomitsType = null;
-    	if (getPageData().containsKey(VOMITS_EVERYTHING_DATA_KEY)) {
-			RadioButton radioButton = (RadioButton) getGeneralDangerSignsFragment().getView().findViewById(getPageData().getInt(VOMITS_EVERYTHING_DATA_KEY));
-			vomitsType = radioButton.getText().toString();
-    	}
-    	reviewItems.add(new ReviewItem(vomitsLabel, vomitsType, getKey(), -1));
+    	String vomitsLabel = resources.getString(R.string.general_danger_signs_review_vomits);
+    	reviewItems.add(new ReviewItem(vomitsLabel, getPageData().getString(VOMITS_EVERYTHING_DATA_KEY), getKey(), -1));
     	
     	// history of convulsions
-    	String convulsionsLabel = getGeneralDangerSignsFragment().getResources().getString(R.string.general_danger_signs_review_convulsions);
-    	String convulsionsType = null;
-    	if (getPageData().containsKey(HISTORY_OF_CONVULSIONS_DATA_KEY)) {
-			RadioButton radioButton = (RadioButton) getGeneralDangerSignsFragment().getView().findViewById(getPageData().getInt(HISTORY_OF_CONVULSIONS_DATA_KEY));
-			convulsionsType = radioButton.getText().toString();
-    	}
-    	reviewItems.add(new ReviewItem(convulsionsLabel, convulsionsType, getKey(), -1));
+    	String convulsionsLabel = resources.getString(R.string.general_danger_signs_review_convulsions);
+    	reviewItems.add(new ReviewItem(convulsionsLabel, getPageData().getString(HISTORY_OF_CONVULSIONS_DATA_KEY), getKey(), -1));
     }
 
 	/**

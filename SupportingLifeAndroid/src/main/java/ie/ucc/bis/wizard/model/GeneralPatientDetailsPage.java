@@ -5,9 +5,9 @@ import ie.ucc.bis.wizard.ui.GeneralPatientDetailsFragment;
 
 import java.util.ArrayList;
 
+import android.content.res.Resources;
 import android.support.v4.app.Fragment;
 import android.text.TextUtils;
-import android.widget.RadioButton;
 
 /**
  * Page Title: General Patient Details
@@ -42,23 +42,19 @@ public class GeneralPatientDetailsPage extends AbstractPage {
 	 */      
     @Override
     public void getReviewItems(ArrayList<ReviewItem> reviewItems) {
+    	Resources resources = ((AbstractWizardModel) getModelCallbacks()).applicationContext.getResources();
+    	
     	// first name
-    	String firstNameLabel = getGeneralPatientDetailsFragment().getResources().getString(R.string.general_patient_details_review_first_name);
+    	String firstNameLabel = resources.getString(R.string.general_patient_details_review_first_name);
     	reviewItems.add(new ReviewItem(firstNameLabel, getPageData().getString(FIRST_NAME_DATA_KEY), getKey(), -1));
     	
     	// surname
-    	String surnameLabel = getGeneralPatientDetailsFragment().getResources().getString(R.string.general_patient_details_review_surname);
+    	String surnameLabel = resources.getString(R.string.general_patient_details_review_surname);
     	reviewItems.add(new ReviewItem(surnameLabel, getPageData().getString(SURNAME_DATA_KEY), getKey(), -1));
     	
     	// gender
-    	String genderLabel = getGeneralPatientDetailsFragment().getResources().getString(R.string.general_patient_details_review_gender);
-    	String genderType = null;
-    	if (getPageData().containsKey(GENDER_DATA_KEY)) {
-			RadioButton radioButton = (RadioButton) getGeneralPatientDetailsFragment().getView().findViewById(getPageData().getInt(GENDER_DATA_KEY));
-	    	genderType = radioButton.getText().toString();
-    	}
-    	reviewItems.add(new ReviewItem(genderLabel, genderType, getKey(), -1));
-    	
+    	String genderLabel = resources.getString(R.string.general_patient_details_review_gender);
+    	reviewItems.add(new ReviewItem(genderLabel, getPageData().getString(GENDER_DATA_KEY), getKey(), -1));
     }
 
     @Override

@@ -12,6 +12,13 @@ import android.view.ViewGroup;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
+/**
+ * Responsible for UI fragment to display general 
+ * danger signs assessment of a patient
+ * 
+ * @author timothyosullivan
+ * 
+ */
 public class GeneralDangerSignsFragment extends Fragment {
 	
     private static final String ARG_PAGE_KEY = "PAGE_KEY";
@@ -54,7 +61,7 @@ public class GeneralDangerSignsFragment extends Fragment {
         ((TextView) rootView.findViewById(android.R.id.title)).setText(getGeneralDangerSignsPage().getTitle());
 
         // not able to drink or breastfeed
-        setDrinkBreastfeedRadioGroup((RadioGroup) rootView.findViewById(R.id.radio_drinkBreastfeed));
+        setDrinkBreastfeedRadioGroup((RadioGroup) rootView.findViewById(R.id.radio_drink_breastfeed));
         getDrinkBreastfeedRadioGroup().check(getGeneralDangerSignsPage()
         		.getPageData().getInt(GeneralDangerSignsPage.DRINK_BREASTFEED_DATA_KEY));
         
