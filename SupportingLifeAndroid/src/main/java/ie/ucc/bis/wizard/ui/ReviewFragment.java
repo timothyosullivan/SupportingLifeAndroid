@@ -69,8 +69,16 @@ public class ReviewFragment extends ListFragment implements ModelCallbacks {
         setReviewFragmentCallbacks((ReviewFragmentCallbacks) activity);
 
         mWizardModel = getReviewFragmentCallbacks().getWizardModel();
-        mWizardModel.registerListener(this);
-        onPageTreeChanged();
+        try {
+        	mWizardModel.registerListener(this);
+        	onPageTreeChanged();
+        } // end of try 
+        catch (NullPointerException ex) {
+        	// TODO Add log output here to detail exception
+        	// Have found exception is thrown here when the Supporting LIFE
+        	// app is dormant for a few hours and then re-woken
+        	ex.printStackTrace();
+        } // end of catch
     }
 
    
