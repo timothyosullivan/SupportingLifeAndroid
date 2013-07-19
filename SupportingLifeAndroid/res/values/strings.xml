@@ -75,7 +75,7 @@
 		<!-- ASSESSMENT WIZARD BREAD-CRUMB UI -->
 		<!-- STAGE 3: Cough / Breathing Assessment -->
 		<!-- ============================================================ -->
-		<string name="breathing_assessment_title">Cough \\ Breathing Assessment</string>
+		<string name="breathing_assessment_title">Cough \\ Breathing</string>
 
 		<string name="breathing_assessment_radio_cough_difficult_breathing">Does the child have cough or difficult breathing?</string>
 		<string name="breathing_assessment_radio_chest_indrawing">Chest indrawing:</string>	
