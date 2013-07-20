@@ -32,7 +32,6 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
             android:layout_marginTop="10dp"
-            android:background="@color/DarkGreen"
             android:contentDescription="@string/supporting_life_tree_image"
             android:src="@drawable/supporting_life_tree" />
 
@@ -60,7 +59,6 @@
             android:layout_height="match_parent"
             android:layout_gravity="right"
             android:layout_marginBottom="15dp"
-            android:background="@color/DarkGreen"
             android:fadeScrollbars="false"
             android:gravity="fill_horizontal"
             android:maxLines="15"
@@ -68,7 +66,7 @@
             android:scrollbarStyle="insideInset"
             android:scrollbars="vertical"
             android:text="@string/about_intro"
-            android:textColor="@color/White" />
+            android:textColor="@color/Black" />
     </LinearLayout>
 
 </LinearLayout>

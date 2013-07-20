@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ============================================================ -->
+<!-- TRAINING SCREEN -->
+<!-- ============================================================ -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <!-- ============================================================ -->
+    <!-- TITLE BAR -->
+    <!-- ============================================================ -->
+
+    <include
+        android:id="@+id/title_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        layout="@layout/title_bar" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <!-- ============================================================ -->
+        <!-- BACKGROUND IMAGE -->
+        <!-- ============================================================ -->
+
+        <ImageView
+            android:id="@+id/supporting_life_tree_image"
+            android:layout_width="319dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/White"
+            android:contentDescription="@string/supporting_life_tree_image"
+            android:src="@drawable/supporting_life_tree" />
+    </LinearLayout>
+
+</LinearLayout>

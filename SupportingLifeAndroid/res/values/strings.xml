@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<!-- ============================================================ -->
-	<!-- GENERAL APPLICATION DETAILS -->
-	<!-- ============================================================ -->
+
+    <!-- ============================================================ -->
+    <!-- GENERAL APPLICATION DETAILS -->
+    <!-- ============================================================ -->
     <string name="app_name">Supporting LIFE</string>
-    
-	<!-- ============================================================ -->
-	<!-- ACTIVITY TITLES -->
-	<!-- ============================================================ -->
+
+    <!-- ============================================================ -->
+    <!-- ACTIVITY TITLES -->
+    <!-- ============================================================ -->
     <string name="activity_title_home">Home</string>
     <string name="activity_title_search">Search</string>
     <string name="activity_title_about">About</string>
@@ -15,90 +16,86 @@
     <string name="activity_title_submit_patient_record">Submission</string>
     <string name="activity_title_record_patient_details_wizard">e-IMCI Assessment</string>
 
-	<!-- ============================================================ -->
-	<!-- TITLE BAR -->
-	<!-- ============================================================ -->
+    <!-- ============================================================ -->
+    <!-- TITLE BAR -->
+    <!-- ============================================================ -->
     <string name="titlebar_home_description">Home</string>
     <string name="titlebar_about_description">About</string>
     <string name="titlebar_search_description">Search</string>
     <string name="titlebar_separator_description">Title Bar</string>
-    
-	<!-- ============================================================ -->
-	<!-- DASHBOARD -->
-	<!-- ============================================================ -->
+
+    <!-- ============================================================ -->
+    <!-- DASHBOARD -->
+    <!-- ============================================================ -->
     <string name="dashboard_assessment_button">e-IMCI Assessment</string>
     <string name="dashboard_about_button">About</string>
     <string name="dashboard_assessment_wizard_button">e-IMCI Assessment Wizard</string>
-
+    <string name="dashboard_training_button">Training</string>
     <string name="action_settings">Settings</string>
     <string name="submissionInfoStatus">Submitting Patient Record..</string>
     <string name="retrievalInfoStatus">Retrieving Patient Record..</string>
 
-	<!-- ============================================================ -->
-	<!-- ASSESSMENT WIZARD BREAD-CRUMB UI -->
-	<!-- ============================================================ -->
-	
-		<!-- ============================================================ -->
-		<!-- ASSESSMENT WIZARD BREAD-CRUMB UI -->
-		<!-- STAGE 1: GENERAL PATIENT DETAILS -->
-		<!-- ============================================================ -->
-		<string name="general_patient_details_title">Patient Details</string>
-	    <string name="general_patient_details_first_name">First Name:</string>
-	    <string name="general_patient_details_surname">Surname:</string>
-	    <string name="general_patient_details_radio_gender">Gender:</string>
-	    <string name="general_patient_details_radio_gender_male">Male</string>
-	    <string name="general_patient_details_radio_gender_female">Female</string>
-	    
-	    <string name="general_patient_details_review_first_name">First Name</string>
-	    <string name="general_patient_details_review_surname">Surname</string>
-	    <string name="general_patient_details_review_gender">Gender</string>
-	    
-	    <!-- HINTS -->
-	    <string name="general_patient_details_first_name_hint">Enter your first name</string>
-	    <string name="general_patient_details_surname_hint">Enter your surname</string>
-	    
-		<!-- ============================================================ -->
-		<!-- ASSESSMENT WIZARD BREAD-CRUMB UI -->
-		<!-- STAGE 2: GENERAL DANGER SIGNS -->
-		<!-- ============================================================ -->   
-		<string name="general_danger_signs_title">Danger Signs</string>
+    <!-- ============================================================ -->
+    <!-- ASSESSMENT WIZARD BREAD-CRUMB UI -->
+    <!-- ============================================================ -->
 
-		<string name="general_danger_signs_radio_drink_breastfeed">Not able to Drink or Breastfeed:</string>
-		<string name="general_danger_signs_radio_vomits">Vomits Everything:</string>
-		<string name="general_danger_signs_radio_convulsions">History of Convulsions:</string>
-		
-		<string name="general_danger_signs_review_drink_breastfeed">Not able to Drink or Breastfeed</string>
-		<string name="general_danger_signs_review_vomits">Vomits Everything</string>
-		<string name="general_danger_signs_review_convulsions">History of Convulsions</string>
-		
-		<!-- ============================================================ -->
-		<!-- ASSESSMENT WIZARD BREAD-CRUMB UI -->
-		<!-- STAGE 3: Cough / Breathing Assessment -->
-		<!-- ============================================================ -->
-		<string name="breathing_assessment_title">Cough \\ Breathing</string>
 
-		<string name="breathing_assessment_radio_cough_difficult_breathing">Does the child have cough or difficult breathing?</string>
-		<string name="breathing_assessment_radio_chest_indrawing">Chest indrawing:</string>	
-		
-		<string name="breathing_assessment_review_cough_difficult_breathing">Cough or Difficult Breathing</string>
-		<string name="breathing_assessment_review_chest_indrawing">Chest Indrawing</string>
-   
-		<!-- ============================================================ -->
-		<!-- ASSESSMENT WIZARD BREAD-CRUMB UI -->
-		<!-- UNIVERSAL COMPONENTS -->
-		<!-- ============================================================ -->
-		<string name="assessment_wizard_radio_yes">Yes</string>
-	    <string name="assessment_wizard_radio_no">No</string>
-		<string name="assessment_wizard_previous_button">Previous</string>
-	    <string name="assessment_wizard_next_button">Next</string>
-	    <string name="assessment_wizard_finish_button">Finish</string>
-	    <string name="assessment_wizard_review_button">Review</string>
-		<string name="submit_confirm_message">Perform Medical Assessment</string>
-	    <string name="submit_confirm_button">Submit Patient Record</string>
-	    
-	<!-- ============================================================ -->
-	<!-- ABOUT SCREEN -->
-	<!-- ============================================================ -->
+    <!-- ============================================================ -->
+    <!-- ASSESSMENT WIZARD BREAD-CRUMB UI -->
+    <!-- STAGE 1: GENERAL PATIENT DETAILS -->
+    <!-- ============================================================ -->
+    <string name="general_patient_details_title">Patient Details</string>
+    <string name="general_patient_details_first_name">First Name:</string>
+    <string name="general_patient_details_surname">Surname:</string>
+    <string name="general_patient_details_radio_gender">Gender:</string>
+    <string name="general_patient_details_radio_gender_male">Male</string>
+    <string name="general_patient_details_radio_gender_female">Female</string>
+    <string name="general_patient_details_review_first_name">First Name</string>
+    <string name="general_patient_details_review_surname">Surname</string>
+    <string name="general_patient_details_review_gender">Gender</string>
+
+    <!-- HINTS -->
+    <string name="general_patient_details_first_name_hint">Enter your first name</string>
+    <string name="general_patient_details_surname_hint">Enter your surname</string>
+
+    <!-- ============================================================ -->
+    <!-- ASSESSMENT WIZARD BREAD-CRUMB UI -->
+    <!-- STAGE 2: GENERAL DANGER SIGNS -->
+    <!-- ============================================================ -->
+    <string name="general_danger_signs_title">Danger Signs</string>
+    <string name="general_danger_signs_radio_drink_breastfeed">Not able to Drink or Breastfeed:</string>
+    <string name="general_danger_signs_radio_vomits">Vomits Everything:</string>
+    <string name="general_danger_signs_radio_convulsions">History of Convulsions:</string>
+    <string name="general_danger_signs_review_drink_breastfeed">Not able to Drink or Breastfeed</string>
+    <string name="general_danger_signs_review_vomits">Vomits Everything</string>
+    <string name="general_danger_signs_review_convulsions">History of Convulsions</string>
+
+    <!-- ============================================================ -->
+    <!-- ASSESSMENT WIZARD BREAD-CRUMB UI -->
+    <!-- STAGE 3: Cough / Breathing Assessment -->
+    <!-- ============================================================ -->
+    <string name="breathing_assessment_title">Cough \\ Breathing</string>
+    <string name="breathing_assessment_radio_cough_difficult_breathing">Does the child have cough or difficult breathing?</string>
+    <string name="breathing_assessment_radio_chest_indrawing">Chest indrawing:</string>
+    <string name="breathing_assessment_review_cough_difficult_breathing">Cough or Difficult Breathing</string>
+    <string name="breathing_assessment_review_chest_indrawing">Chest Indrawing</string>
+
+    <!-- ============================================================ -->
+    <!-- ASSESSMENT WIZARD BREAD-CRUMB UI -->
+    <!-- UNIVERSAL COMPONENTS -->
+    <!-- ============================================================ -->
+    <string name="assessment_wizard_radio_yes">Yes</string>
+    <string name="assessment_wizard_radio_no">No</string>
+    <string name="assessment_wizard_previous_button">Previous</string>
+    <string name="assessment_wizard_next_button">Next</string>
+    <string name="assessment_wizard_finish_button">Finish</string>
+    <string name="assessment_wizard_review_button">Review</string>
+    <string name="submit_confirm_message">Perform Medical Assessment</string>
+    <string name="submit_confirm_button">Submit Patient Record</string>
+
+    <!-- ============================================================ -->
+    <!-- ABOUT SCREEN -->
+    <!-- ============================================================ -->
     <string name="about_intro">The Supporting LIFE project (Supporting Low-cost Intervention For disEase control) 
 is designed to provide low-cost, effective, and targeted interventions in remote and resource-poor 
 settings in order to overcome inadequate healthcare infrastructures in Malawi, Southern Africa. 
@@ -121,6 +118,7 @@ children in developing countries.</string>
     <string name="spinning_wheel_image">Supporting Life Image Animation</string>
 
     <!-- END: About Screen -->
+
 
     <!-- START: Register Patient Details Screen -->
     <string name="first_name_label">First Name:</string>
