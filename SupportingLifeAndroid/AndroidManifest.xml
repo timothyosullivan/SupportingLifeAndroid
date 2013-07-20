@@ -19,7 +19,7 @@
         <activity
             android:name="ie.ucc.bis.activity.SplashActivity"
             android:label="@string/app_name"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -29,7 +29,7 @@
         <activity
             android:name="ie.ucc.bis.activity.HomeActivity"
             android:launchMode="singleTop"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -39,23 +39,23 @@
         <activity
             android:name="ie.ucc.bis.activity.RecordPatientDetailsActivity"
             android:label="@string/activity_title_record_patient_details"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name="ie.ucc.bis.activity.AssessmentWizardActivity"
             android:label="@string/activity_title_record_patient_details_wizard"
-            android:windowSoftInputMode="stateHidden"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden" >
         </activity>
         <activity
             android:name="ie.ucc.bis.activity.SubmitPatientRecordActivity"
             android:label="@string/activity_title_submit_patient_record"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name="ie.ucc.bis.activity.AboutActivity"
             android:label="@string/activity_title_about"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait" >
         </activity>
     </application>
 

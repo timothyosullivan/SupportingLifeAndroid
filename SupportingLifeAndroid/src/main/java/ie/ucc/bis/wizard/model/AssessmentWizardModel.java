@@ -1,6 +1,5 @@
 package ie.ucc.bis.wizard.model;
 
-import ie.ucc.bis.R;
 import android.content.Context;
 
 public class AssessmentWizardModel extends AbstractWizardModel {
@@ -27,12 +26,19 @@ public class AssessmentWizardModel extends AbstractWizardModel {
 //									getApplicationContext().getResources().getString(R.string.general_patient_details_title)).setRequired(true),
 //							new GeneralDangerSignsPage(this, 
 //									getApplicationContext().getResources().getString(R.string.general_danger_signs_title)).setRequired(true));
+
+//		return new PageList(new GeneralPatientDetailsPage(this, 
+//				getApplicationContext().getResources().getString(R.string.general_patient_details_title)).setRequired(true),
+//		new GeneralDangerSignsPage(this, 
+//				getApplicationContext().getResources().getString(R.string.general_danger_signs_title)).setRequired(true),
+//		new BreathingAssessmentPage(this, 
+//				getApplicationContext().getResources().getString(R.string.breathing_assessment_title)).setRequired(true));				
 		
 		return new PageList(new GeneralPatientDetailsPage(this, 
-				getApplicationContext().getResources().getString(R.string.general_patient_details_title)).setRequired(true),
+				"Patient Details").setRequired(true),
 		new GeneralDangerSignsPage(this, 
-				getApplicationContext().getResources().getString(R.string.general_danger_signs_title)).setRequired(true),
+				"Danger Signs").setRequired(true),
 		new BreathingAssessmentPage(this, 
-				getApplicationContext().getResources().getString(R.string.breathing_assessment_title)).setRequired(true));		
+				"Breathing Assessment").setRequired(true));		
 	}
 }

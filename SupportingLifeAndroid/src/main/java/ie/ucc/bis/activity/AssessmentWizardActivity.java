@@ -28,7 +28,7 @@ public class AssessmentWizardActivity extends SupportingLifeBaseActivity impleme
     private ViewPager viewPager;
     private AssessmentWizardPagerAdapter suppLifeWizardPagerAdapter;
     private List<AbstractPage> currentPageSequence;
-    private AbstractWizardModel supportingLifeWizardModel;
+    private AbstractWizardModel supportingLifeWizardModel = new AssessmentWizardModel(this);;
     private StepPagerStrip stepPagerStrip;
     
     private boolean mEditingAfterReview;
@@ -54,11 +54,6 @@ public class AssessmentWizardActivity extends SupportingLifeBaseActivity impleme
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_assessment_wizard);
         setTitleFromActivityLabel(R.id.title_text);
-        
-        // only instantiate SupportingLife Wizard if not previously initialised
-        if (supportingLifeWizardModel == null) {
-        	supportingLifeWizardModel = new AssessmentWizardModel(this);
-        }
         
         if (savedInstanceState != null) {
         	getSupportingLifeWizardModel().load(savedInstanceState.getBundle("model"));

@@ -5,6 +5,7 @@ import ie.ucc.bis.wizard.ui.GeneralDangerSignsFragment;
 
 import java.util.ArrayList;
 
+import android.content.Context;
 import android.content.res.Resources;
 import android.support.v4.app.Fragment;
 
@@ -42,19 +43,23 @@ public class GeneralDangerSignsPage extends AbstractPage {
 	 */      
     @Override
     public void getReviewItems(ArrayList<ReviewItem> reviewItems) {
-    	Resources resources = ((AbstractWizardModel) getModelCallbacks()).applicationContext.getResources();
+    	Context appContext = ((AbstractWizardModel) getModelCallbacks()).applicationContext;
+    	Resources resources = appContext.getResources();
 
     	// not able to drink or breastfeed
     	String drinkBreastfeedLabel = resources.getString(R.string.general_danger_signs_review_drink_breastfeed);
-    	reviewItems.add(new ReviewItem(drinkBreastfeedLabel, getPageData().getString(DRINK_BREASTFEED_DATA_KEY), getKey(), -1));    	
+    	String drinkBreastfeedValue = getPageData().getString(DRINK_BREASTFEED_DATA_KEY + AssessmentWizardRadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
+    	reviewItems.add(new ReviewItem(drinkBreastfeedLabel, drinkBreastfeedValue, getKey(), -1));    	
     	
     	// vomits everythings
     	String vomitsLabel = resources.getString(R.string.general_danger_signs_review_vomits);
-    	reviewItems.add(new ReviewItem(vomitsLabel, getPageData().getString(VOMITS_EVERYTHING_DATA_KEY), getKey(), -1));
+    	String vomitsValue = getPageData().getString(VOMITS_EVERYTHING_DATA_KEY + AssessmentWizardRadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
+    	reviewItems.add(new ReviewItem(vomitsLabel, vomitsValue, getKey(), -1));
     	
     	// history of convulsions
     	String convulsionsLabel = resources.getString(R.string.general_danger_signs_review_convulsions);
-    	reviewItems.add(new ReviewItem(convulsionsLabel, getPageData().getString(HISTORY_OF_CONVULSIONS_DATA_KEY), getKey(), -1));
+    	String convulsionsValue = getPageData().getString(HISTORY_OF_CONVULSIONS_DATA_KEY + AssessmentWizardRadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
+    	reviewItems.add(new ReviewItem(convulsionsLabel, convulsionsValue, getKey(), -1));
     }
 
 	/**

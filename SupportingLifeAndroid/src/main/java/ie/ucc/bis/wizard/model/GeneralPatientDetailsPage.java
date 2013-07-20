@@ -54,7 +54,8 @@ public class GeneralPatientDetailsPage extends AbstractPage {
     	
     	// gender
     	String genderLabel = resources.getString(R.string.general_patient_details_review_gender);
-    	reviewItems.add(new ReviewItem(genderLabel, getPageData().getString(GENDER_DATA_KEY), getKey(), -1));
+    	String genderValue = getPageData().getString(GENDER_DATA_KEY + AssessmentWizardRadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
+    	reviewItems.add(new ReviewItem(genderLabel, genderValue, getKey(), -1));
     }
 
     @Override

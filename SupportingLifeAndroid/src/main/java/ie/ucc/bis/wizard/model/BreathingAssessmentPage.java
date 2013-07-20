@@ -46,11 +46,13 @@ public class BreathingAssessmentPage extends AbstractPage {
     	
     	// does the child have cough or difficult breathing?
     	String coughDifficultBreathingLabel = resources.getString(R.string.breathing_assessment_review_cough_difficult_breathing);
-    	reviewItems.add(new ReviewItem(coughDifficultBreathingLabel, getPageData().getString(COUGH_DIFFICULT_BREATHING_DATA_KEY), getKey(), -1));    	
+    	String coughDifficultBreathingValue = getPageData().getString(COUGH_DIFFICULT_BREATHING_DATA_KEY + AssessmentWizardRadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
+    	reviewItems.add(new ReviewItem(coughDifficultBreathingLabel, coughDifficultBreathingValue, getKey(), -1));    	
     	
     	// chest indrawing
     	String chestIndrawingLabel = resources.getString(R.string.breathing_assessment_review_chest_indrawing);
-    	reviewItems.add(new ReviewItem(chestIndrawingLabel, getPageData().getString(CHEST_INDRAWING_DATA_KEY), getKey(), -1));    	
+    	String chestIndrawingValue = getPageData().getString(CHEST_INDRAWING_DATA_KEY + AssessmentWizardRadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
+    	reviewItems.add(new ReviewItem(chestIndrawingLabel, chestIndrawingValue, getKey(), -1));    	
     }
 
 
