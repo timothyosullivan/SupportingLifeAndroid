@@ -104,7 +104,11 @@
 			        android:text="@string/fever_assessment_radio_malaria_risk_no" />
 
 			</RadioGroup>
-						   
+
+  			<!-- ============================================================ -->
+			<!-- DURATION (FOR HOW LONG?) SPINNER -->
+			<!-- ============================================================ -->    									
+			
         </LinearLayout>
     </ScrollView>
 </LinearLayout>
