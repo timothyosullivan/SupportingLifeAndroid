@@ -1,14 +1,17 @@
 package ie.ucc.bis.wizard.ui;
 
 import ie.ucc.bis.R;
+import ie.ucc.bis.ui.custom.ToggleButtonGroupTableLayout;
 import ie.ucc.bis.wizard.model.AssessmentWizardRadioGroupListener;
 import ie.ucc.bis.wizard.model.FeverAssessmentPage;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
@@ -26,7 +29,7 @@ public class FeverAssessmentFragment extends Fragment {
     private FeverAssessmentPage feverAssessmentPage;    
     private PageFragmentCallbacks pageFragmentCallbacks;
     private String pageKey;
-    private RadioGroup feverRadioGroup;
+    private ToggleButtonGroupTableLayout feverCustomRadioGroup;
     private RadioGroup malariaRiskRadioGroup;
     
     public static FeverAssessmentFragment create(String pageKey) {
@@ -58,10 +61,16 @@ public class FeverAssessmentFragment extends Fragment {
             Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_wizard_page_fever_assessment, container, false);
         ((TextView) rootView.findViewById(android.R.id.title)).setText(getFeverAssessmentPage().getTitle());
-
+        
+        // need to add superscript text to the degree Celsius label of a 
+        // fever radio button
+        RadioButton feverTempRadioButton = (RadioButton) rootView.findViewById(R.id.fever_assessment_radio_fever_temperature);
+        feverTempRadioButton.setText(Html.fromHtml(getText(R.string.fever_assessment_radio_fever_temperature) + "<sup>o</sup>" + "C"));
+        
+        
         // fever
-        setFeverRadioGroup((RadioGroup) rootView.findViewById(R.id.radio_fever));
-        getFeverRadioGroup().check(getFeverAssessmentPage()
+        setFeverCustomRadioGroup((ToggleButtonGroupTableLayout) rootView.findViewById(R.id.radio_fever));
+        getFeverCustomRadioGroup().check(getFeverAssessmentPage()
         		.getPageData().getInt(FeverAssessmentPage.FEVER_DATA_KEY));
         
         // malaria risk
@@ -93,11 +102,10 @@ public class FeverAssessmentFragment extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        // add listener to fever radio group
-        getFeverRadioGroup().setOnCheckedChangeListener(
-        		new AssessmentWizardRadioGroupListener(getFeverAssessmentPage(),
-        				FeverAssessmentPage.FEVER_DATA_KEY));        
-        
+        // configure page and data key for radio button listener in 'custom fever toggle group'
+        getFeverCustomRadioGroup().setPage(getFeverAssessmentPage());
+        getFeverCustomRadioGroup().setDataKey(FeverAssessmentPage.FEVER_DATA_KEY);
+
         // add listener to malaria risk radio group
         getMalariaRiskRadioGroup().setOnCheckedChangeListener(
         		new AssessmentWizardRadioGroupListener(getFeverAssessmentPage(),
@@ -147,17 +155,17 @@ public class FeverAssessmentFragment extends Fragment {
 	}
 
 	/**
-	 * Getter Method: getFeverRadioGroup()
+	 * Getter Method: getFeverCustomRadioGroup()
 	 */	
-	public RadioGroup getFeverRadioGroup() {
-		return feverRadioGroup;
+	public ToggleButtonGroupTableLayout getFeverCustomRadioGroup() {
+		return feverCustomRadioGroup;
 	}
 
 	/**
-	 * Setter Method: setFeverRadioGroup()
+	 * Setter Method: setFeverCustomRadioGroup()
 	 */	
-	public void setFeverRadioGroup(RadioGroup feverRadioGroup) {
-		this.feverRadioGroup = feverRadioGroup;
+	public void setFeverCustomRadioGroup(ToggleButtonGroupTableLayout feverCustomRadioGroup) {
+		this.feverCustomRadioGroup = feverCustomRadioGroup;
 	}
 
 	/**

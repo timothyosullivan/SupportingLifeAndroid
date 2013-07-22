@@ -1,6 +1,7 @@
 package ie.ucc.bis.wizard.model;
 
 import ie.ucc.bis.R;
+import ie.ucc.bis.ui.custom.ToggleButtonGroupTableLayout;
 import ie.ucc.bis.wizard.ui.FeverAssessmentFragment;
 
 import java.util.ArrayList;
@@ -47,7 +48,7 @@ public class FeverAssessmentPage extends AbstractPage {
 
     	// fever
     	String feverLabel = resources.getString(R.string.fever_assessment_review_fever);
-    	String feverValue = getPageData().getString(FEVER_DATA_KEY + AssessmentWizardRadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
+    	String feverValue = getPageData().getString(FEVER_DATA_KEY + ToggleButtonGroupTableLayout.TOGGLE_BUTTON_TEXT_DATA_KEY);
     	reviewItems.add(new ReviewItem(feverLabel, feverValue, getKey(), -1));    	
     	
     	// malaria risk

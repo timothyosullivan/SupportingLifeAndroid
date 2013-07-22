@@ -100,7 +100,13 @@
     <!-- STAGE 5: Fever Assessment -->
     <!-- ============================================================ -->
     <string name="fever_assessment_title">Fever</string>
+    
+    <!-- Fever -->
     <string name="fever_assessment_radio_fever">Does the child have fever?</string>
+	<string name="fever_assessment_radio_fever_no">No</string>
+	<string name="fever_assessment_radio_fever_history">History</string>
+	<string name="fever_assessment_radio_fever_feels_hot">Feels Hot</string>
+	<string name="fever_assessment_radio_fever_temperature">Temperature > 37.5</string>
     
     <!-- Malaria Risk -->
     <string name="fever_assessment_radio_malaria_risk">Malaria Risk</string>
@@ -116,6 +122,7 @@
     <!-- ASSESSMENT WIZARD BREAD-CRUMB UI -->
     <!-- UNIVERSAL COMPONENTS -->
     <!-- ============================================================ -->
+    <string name="assessment_wizard_review_title">Review</string>
     <string name="assessment_wizard_radio_yes">Yes</string>
     <string name="assessment_wizard_radio_no">No</string>
     <string name="assessment_wizard_previous_button">Previous</string>
