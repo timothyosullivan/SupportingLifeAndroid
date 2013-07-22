@@ -12,6 +12,7 @@
     <string name="activity_title_home">Home</string>
     <string name="activity_title_search">Search</string>
     <string name="activity_title_about">About</string>
+    <string name="activity_title_training">Training</string>
     <string name="activity_title_record_patient_details">Assessment</string>
     <string name="activity_title_submit_patient_record">Submission</string>
     <string name="activity_title_record_patient_details_wizard">e-IMCI Assessment</string>
@@ -92,6 +93,10 @@
     <string name="assessment_wizard_review_button">Review</string>
     <string name="submit_confirm_message">Perform Medical Assessment</string>
     <string name="submit_confirm_button">Submit Patient Record</string>
+    
+    <!-- ============================================================ -->
+    <!-- TRAINING SCREEN -->
+    <!-- ============================================================ -->
 
     <!-- ============================================================ -->
     <!-- ABOUT SCREEN -->

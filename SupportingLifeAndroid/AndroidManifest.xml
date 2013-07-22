@@ -57,6 +57,11 @@
             android:label="@string/activity_title_about"
             android:screenOrientation="portrait" >
         </activity>
+        <activity
+            android:name="ie.ucc.bis.activity.TrainingActivity"
+            android:label="@string/activity_title_training"
+            android:screenOrientation="portrait" >
+        </activity>
     </application>
 
 </manifest>
