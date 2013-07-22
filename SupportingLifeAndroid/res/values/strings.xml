@@ -40,7 +40,6 @@
     <!-- ASSESSMENT WIZARD BREAD-CRUMB UI -->
     <!-- ============================================================ -->
 
-
     <!-- ============================================================ -->
     <!-- ASSESSMENT WIZARD BREAD-CRUMB UI -->
     <!-- STAGE 1: GENERAL PATIENT DETAILS -->
@@ -51,13 +50,14 @@
     <string name="general_patient_details_radio_gender">Gender:</string>
     <string name="general_patient_details_radio_gender_male">Male</string>
     <string name="general_patient_details_radio_gender_female">Female</string>
+    <!-- Patient Details Review -->
     <string name="general_patient_details_review_first_name">First Name</string>
     <string name="general_patient_details_review_surname">Surname</string>
     <string name="general_patient_details_review_gender">Gender</string>
 
     <!-- HINTS -->
-    <string name="general_patient_details_first_name_hint">Enter your first name</string>
-    <string name="general_patient_details_surname_hint">Enter your surname</string>
+    <string name="general_patient_details_first_name_hint">Please enter your first name</string>
+    <string name="general_patient_details_surname_hint">Please enter your surname</string>
 
     <!-- ============================================================ -->
     <!-- ASSESSMENT WIZARD BREAD-CRUMB UI -->
@@ -67,6 +67,7 @@
     <string name="general_danger_signs_radio_drink_breastfeed">Not able to Drink or Breastfeed:</string>
     <string name="general_danger_signs_radio_vomits">Vomits Everything:</string>
     <string name="general_danger_signs_radio_convulsions">History of Convulsions:</string>
+    <!-- Danger Signs Review -->
     <string name="general_danger_signs_review_drink_breastfeed">Not able to Drink or Breastfeed</string>
     <string name="general_danger_signs_review_vomits">Vomits Everything</string>
     <string name="general_danger_signs_review_convulsions">History of Convulsions</string>
@@ -78,9 +79,21 @@
     <string name="breathing_assessment_title">Cough \\ Breathing</string>
     <string name="breathing_assessment_radio_cough_difficult_breathing">Does the child have cough or difficult breathing?</string>
     <string name="breathing_assessment_radio_chest_indrawing">Chest indrawing:</string>
+    <!-- Cough / Breathing Review -->
     <string name="breathing_assessment_review_cough_difficult_breathing">Cough or Difficult Breathing</string>
     <string name="breathing_assessment_review_chest_indrawing">Chest Indrawing</string>
-
+    
+    <!-- ============================================================ -->
+    <!-- ASSESSMENT WIZARD BREAD-CRUMB UI -->
+    <!-- STAGE 4: Diarrhoea Assessment -->
+    <!-- ============================================================ -->
+    <string name="diarrhoea_assessment_title">Diarrhoea</string>
+    <string name="diarrhoea_assessment_radio_diarrhoea">Does the child have diarrhoea?</string>
+    <string name="diarrhoea_assessment_radio_blood_stools">Is there blood in the stools?</string>
+    <!-- Diarrhoea Review -->
+    <string name="diarrhoea_assessment_review_diarrhoea">Diarrhoea</string>
+    <string name="diarrhoea_assessment_review_blood_stools">Blood in the Stools</string>
+    
     <!-- ============================================================ -->
     <!-- ASSESSMENT WIZARD BREAD-CRUMB UI -->
     <!-- UNIVERSAL COMPONENTS -->

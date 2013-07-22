@@ -1,0 +1,94 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/WizardPageContainer"
+    android:layout_height="match_parent" >
+
+<!-- ============================================================ -->
+<!-- ASSESSMENT BREAD-CRUMB WIZARD UI -->
+<!-- ASSESSMENT PAGE: DIARRHOEA ASSESSMENT -->
+<!-- ============================================================ -->
+    <TextView style="@style/WizardPageTitle" />
+
+    <ScrollView android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="218dp"
+            android:orientation="vertical" >
+
+			<!-- ============================================================ -->
+			<!-- DIARRHOEA RADIO BUTTON GROUP -->
+			<!-- ============================================================ -->               
+			
+			<TextView
+			    style="@style/WizardFormLabel"
+			    android:layout_width="match_parent"
+			    android:layout_height="match_parent"
+			    android:layout_gravity="bottom"
+			    android:text="@string/diarrhoea_assessment_radio_diarrhoea" />
+			
+			<RadioGroup
+			    android:id="@+id/radio_diarrhoea"
+			    android:layout_width="match_parent"
+			    android:layout_height="wrap_content"
+			    android:orientation="horizontal" >
+
+			    <RadioButton
+			        android:id="@+id/radio_diarrhoea_yes"
+			        android:layout_width="112dp"
+			        android:layout_height="wrap_content"
+			        android:layout_weight="0.67"
+			        android:checked="false"
+			        android:text="@string/assessment_wizard_radio_yes" />
+
+			    <RadioButton
+			        android:id="@+id/radio_diarrhoea_no"
+			        android:layout_width="118dp"
+			        android:layout_height="wrap_content"
+			        android:layout_gravity="top"
+			        android:layout_weight="0.32"
+			        android:checked="false"
+			        android:text="@string/assessment_wizard_radio_no" />
+
+			</RadioGroup>
+
+			<!-- ============================================================ -->
+			<!-- BLOOD IN THE STOOLS RADIO BUTTON GROUP -->
+			<!-- ============================================================ -->               
+			
+			<TextView
+			    style="@style/WizardFormLabel"
+			    android:layout_width="match_parent"
+			    android:layout_height="match_parent"
+			    android:layout_gravity="bottom"
+			    android:text="@string/diarrhoea_assessment_radio_blood_stools" />
+			
+			<RadioGroup
+			    android:id="@+id/radio_blood_stools"
+			    android:layout_width="match_parent"
+			    android:layout_height="wrap_content"
+			    android:orientation="horizontal" >
+
+			    <RadioButton
+			        android:id="@+id/radio_blood_stools_yes"
+			        android:layout_width="112dp"
+			        android:layout_height="wrap_content"
+			        android:layout_weight="0.67"
+			        android:checked="false"
+			        android:text="@string/assessment_wizard_radio_yes" />
+
+			    <RadioButton
+			        android:id="@+id/radio_blood_stools_no"
+			        android:layout_width="118dp"
+			        android:layout_height="wrap_content"
+			        android:layout_gravity="top"
+			        android:layout_weight="0.32"
+			        android:checked="false"
+			        android:text="@string/assessment_wizard_radio_no" />
+
+			</RadioGroup>
+						   
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
