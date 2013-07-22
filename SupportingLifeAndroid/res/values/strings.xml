@@ -90,9 +90,27 @@
     <string name="diarrhoea_assessment_title">Diarrhoea</string>
     <string name="diarrhoea_assessment_radio_diarrhoea">Does the child have diarrhoea?</string>
     <string name="diarrhoea_assessment_radio_blood_stools">Is there blood in the stools?</string>
+    
     <!-- Diarrhoea Review -->
     <string name="diarrhoea_assessment_review_diarrhoea">Diarrhoea</string>
     <string name="diarrhoea_assessment_review_blood_stools">Blood in the Stools</string>
+    
+    <!-- ============================================================ -->
+    <!-- ASSESSMENT WIZARD BREAD-CRUMB UI -->
+    <!-- STAGE 5: Fever Assessment -->
+    <!-- ============================================================ -->
+    <string name="fever_assessment_title">Fever</string>
+    <string name="fever_assessment_radio_fever">Does the child have fever?</string>
+    
+    <!-- Malaria Risk -->
+    <string name="fever_assessment_radio_malaria_risk">Malaria Risk</string>
+    <string name="fever_assessment_radio_malaria_risk_high">High</string>
+    <string name="fever_assessment_radio_malaria_risk_low">Low</string>
+    <string name="fever_assessment_radio_malaria_risk_no">No</string>
+
+    <!-- Fever Review -->
+    <string name="fever_assessment_review_fever">Fever</string>
+    <string name="fever_assessment_review_malaria_risk">Malaria Risk</string>
     
     <!-- ============================================================ -->
     <!-- ASSESSMENT WIZARD BREAD-CRUMB UI -->

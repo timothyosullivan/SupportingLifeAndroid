@@ -1,0 +1,103 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/WizardPageContainer"
+    android:layout_height="match_parent" >
+
+<!-- ============================================================ -->
+<!-- ASSESSMENT BREAD-CRUMB WIZARD UI -->
+<!-- ASSESSMENT PAGE: FEVER ASSESSMENT -->
+<!-- ============================================================ -->
+    <TextView style="@style/WizardPageTitle" />
+
+    <ScrollView android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="218dp"
+            android:orientation="vertical" >
+
+			<!-- ============================================================ -->
+			<!-- FEVER RADIO BUTTON GROUP -->
+			<!-- ============================================================ -->               
+			
+			<TextView
+			    style="@style/WizardFormLabel"
+			    android:layout_width="match_parent"
+			    android:layout_height="match_parent"
+			    android:layout_gravity="bottom"
+			    android:text="@string/fever_assessment_radio_fever" />
+			
+			<RadioGroup
+			    android:id="@+id/radio_fever"
+			    android:layout_width="match_parent"
+			    android:layout_height="wrap_content"
+			    android:orientation="horizontal" >
+
+			    <RadioButton
+			        android:id="@+id/radio_fever_yes"
+			        android:layout_width="112dp"
+			        android:layout_height="wrap_content"
+			        android:layout_weight="0.67"
+			        android:checked="false"
+			        android:text="@string/assessment_wizard_radio_yes" />
+
+			    <RadioButton
+			        android:id="@+id/radio_fever_no"
+			        android:layout_width="118dp"
+			        android:layout_height="wrap_content"
+			        android:layout_gravity="top"
+			        android:layout_weight="0.32"
+			        android:checked="false"
+			        android:text="@string/assessment_wizard_radio_no" />
+
+			</RadioGroup>
+
+			<!-- ============================================================ -->
+			<!-- MALARIA RISK RADIO BUTTON GROUP -->
+			<!-- ============================================================ -->               
+			
+			<TextView
+			    style="@style/WizardFormLabel"
+			    android:layout_width="match_parent"
+			    android:layout_height="match_parent"
+			    android:layout_gravity="bottom"
+			    android:text="@string/fever_assessment_radio_malaria_risk" />
+			
+			<RadioGroup
+			    android:id="@+id/radio_malaria_risk"
+			    android:layout_width="match_parent"
+			    android:layout_height="wrap_content"
+			    android:orientation="horizontal" >
+
+			    <RadioButton
+			        android:id="@+id/radio_malaria_risk_high"
+			        android:layout_width="112dp"
+			        android:layout_height="wrap_content"
+			        android:layout_weight="0.67"
+			        android:checked="false"
+			        android:text="@string/fever_assessment_radio_malaria_risk_high" />
+
+			    <RadioButton
+			        android:id="@+id/radio_malaria_risk_low"
+			        android:layout_width="118dp"
+			        android:layout_height="wrap_content"
+			        android:layout_gravity="top"
+			        android:layout_weight="0.32"
+			        android:checked="false"
+			        android:text="@string/fever_assessment_radio_malaria_risk_low" />
+			    
+			    <RadioButton
+			        android:id="@+id/radio_malaria_risk_no"
+			        android:layout_width="118dp"
+			        android:layout_height="match_parent"
+			        android:layout_gravity="top"
+			        android:layout_weight="0.19"
+			        android:checked="false"
+			        android:text="@string/fever_assessment_radio_malaria_risk_no" />
+
+			</RadioGroup>
+						   
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

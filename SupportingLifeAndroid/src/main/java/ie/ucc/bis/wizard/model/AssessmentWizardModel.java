@@ -21,7 +21,8 @@ public class AssessmentWizardModel extends AbstractWizardModel {
 		 * 1. General Patient Details Page
 		 * 2. General Danger Signs Page
 		 * 3. Cough / Breathing Assessment Page
-		 * 4. Diarrhoea Assessmemnt Page
+		 * 4. Diarrhoea Assessment Page
+		 * 5. Fever Assessment Page
 		 */	
 		return new PageList(new GeneralPatientDetailsPage(this, 
 				"Patient Details").setRequired(true),
@@ -30,6 +31,8 @@ public class AssessmentWizardModel extends AbstractWizardModel {
 		new BreathingAssessmentPage(this, 
 				"Breathing Assessment").setRequired(true),
 		new DiarrhoeaAssessmentPage(this,
-				"Diarrhoea Assessment").setRequired(true));		
+				"Diarrhoea Assessment").setRequired(true),
+		new FeverAssessmentPage(this, 
+				"Fever Assessment").setRequired(true));		
 	}
 }
