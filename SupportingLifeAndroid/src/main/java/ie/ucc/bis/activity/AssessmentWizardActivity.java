@@ -51,8 +51,13 @@ public class AssessmentWizardActivity extends SupportingLifeBaseActivity impleme
 	 */
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+        super.onCreate(savedInstanceState);        
         setContentView(R.layout.activity_assessment_wizard);
+        
+		// add soft keyboard handler - essentially hiding soft
+		// keyboard when an EditText is not in focus
+		addSoftKeyboardHandling(this.findViewById(android.R.id.content));
+		
         setTitleFromActivityLabel(R.id.title_text);
         
         if (savedInstanceState != null) {

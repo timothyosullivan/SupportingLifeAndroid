@@ -142,7 +142,7 @@ public class ReviewFragment extends ListFragment implements ModelCallbacks {
             ReviewItem reviewItem = mCurrentReviewItems.get(position);
             String value = reviewItem.getDisplayValue();
             if (TextUtils.isEmpty(value)) {
-                value = "(None)";
+                value = "--------";
             }
             ((TextView) rootView.findViewById(android.R.id.text1)).setText(reviewItem.getTitle());  
             ((TextView) rootView.findViewById(android.R.id.text2)).setText(value);

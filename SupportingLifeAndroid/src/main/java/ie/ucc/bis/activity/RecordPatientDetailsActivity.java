@@ -27,6 +27,11 @@ public class RecordPatientDetailsActivity extends SupportingLifeBaseActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_record_patient_details);
+        
+		// add soft keyboard handler - essentially hiding soft
+		// keyboard when an EditText is not in focus
+		addSoftKeyboardHandling(this.findViewById(android.R.id.content));
+		
         setTitleFromActivityLabel(R.id.title_text);
     }
     

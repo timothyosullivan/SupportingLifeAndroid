@@ -15,15 +15,16 @@ public class AssessmentWizardTextWatcher implements TextWatcher {
 	
 	
 	public void afterTextChanged(Editable editable) {
-    	getPage().getPageData().putString(dataKey,
+		getPage().getPageData().putString(dataKey,
                 (editable != null) ? editable.toString() : null);
     	getPage().notifyDataChanged();
 	}
 
+	
 	public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
 
 	public void onTextChanged(CharSequence s, int start, int before, int count) {}
-	
+		
 	/**
 	 * Getter Method: getPage()
 	 * 

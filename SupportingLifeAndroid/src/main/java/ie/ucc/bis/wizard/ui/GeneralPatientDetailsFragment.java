@@ -10,6 +10,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
@@ -27,8 +28,8 @@ public class GeneralPatientDetailsFragment extends Fragment {
     private GeneralPatientDetailsPage generalPatientDetailsPage;    
     private PageFragmentCallbacks pageFragmentCallbacks;
     private String pageKey;
-    private TextView firstNameTextView;
-    private TextView surnameTextView;
+    private EditText firstNameEditText;
+    private EditText surnameEditText;
     private RadioGroup genderRadioGroup;
     
     public static GeneralPatientDetailsFragment create(String pageKey) {
@@ -62,15 +63,15 @@ public class GeneralPatientDetailsFragment extends Fragment {
         ((TextView) rootView.findViewById(android.R.id.title)).setText(getGeneralPatientDetailsPage().getTitle());
 
         // first name
-        setFirstNameTextView(((TextView) rootView.findViewById(R.id.first_name)));
-        getFirstNameTextView().setText(getGeneralPatientDetailsPage().getPageData().getString(GeneralPatientDetailsPage.FIRST_NAME_DATA_KEY));
+        setFirstNameEditText(((EditText) rootView.findViewById(R.id.general_patient_details_first_name)));
+        getFirstNameEditText().setText(getGeneralPatientDetailsPage().getPageData().getString(GeneralPatientDetailsPage.FIRST_NAME_DATA_KEY));
 
         // surname
-        setSurnameTextView(((TextView) rootView.findViewById(R.id.surname)));
-        getSurnameTextView().setText(getGeneralPatientDetailsPage().getPageData().getString(GeneralPatientDetailsPage.SURNAME_DATA_KEY));
+        setSurnameEditText(((EditText) rootView.findViewById(R.id.general_patient_details_surname)));
+        getSurnameEditText().setText(getGeneralPatientDetailsPage().getPageData().getString(GeneralPatientDetailsPage.SURNAME_DATA_KEY));
         
         // gender
-        setGenderRadioGroup((RadioGroup) rootView.findViewById(R.id.radio_gender));
+        setGenderRadioGroup((RadioGroup) rootView.findViewById(R.id.general_patient_details_radio_gender));
         getGenderRadioGroup().check(getGeneralPatientDetailsPage()
         		.getPageData().getInt(GeneralPatientDetailsPage.GENDER_DATA_KEY));
 
@@ -98,11 +99,11 @@ public class GeneralPatientDetailsFragment extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        getFirstNameTextView().addTextChangedListener(
+        getFirstNameEditText().addTextChangedListener(
         		new AssessmentWizardTextWatcher(getGeneralPatientDetailsPage(), 
         				GeneralPatientDetailsPage.FIRST_NAME_DATA_KEY));  
 
-        getSurnameTextView().addTextChangedListener(
+        getSurnameEditText().addTextChangedListener(
         		new AssessmentWizardTextWatcher(getGeneralPatientDetailsPage(), 
         				GeneralPatientDetailsPage.SURNAME_DATA_KEY));
         
@@ -154,31 +155,31 @@ public class GeneralPatientDetailsFragment extends Fragment {
 	}
 
 	/**
-	 * Getter Method: getFirstNameTextView()
+	 * Getter Method: getFirstNameEditText()
 	 */		
-	public TextView getFirstNameTextView() {
-		return firstNameTextView;
+	public EditText getFirstNameEditText() {
+		return firstNameEditText;
 	}
 
 	/**
-	 * Setter Method: setFirstNameTextView()
+	 * Setter Method: setFirstNameEditText()
 	 */		
-	public void setFirstNameTextView(TextView firstNameTextView) {
-		this.firstNameTextView = firstNameTextView;
+	public void setFirstNameEditText(EditText firstNameEditText) {
+		this.firstNameEditText = firstNameEditText;
 	}
 
 	/**
-	 * Getter Method: getSurnameTextView()
+	 * Getter Method: getSurnameEditText()
 	 */		
-	public TextView getSurnameTextView() {
-		return surnameTextView;
+	public EditText getSurnameEditText() {
+		return surnameEditText;
 	}
 
 	/**
-	 * Setter Method: setSurnameTextView()
+	 * Setter Method: setSurnameEditText()
 	 */		
-	public void setSurnameTextView(TextView surnameTextView) {
-		this.surnameTextView = surnameTextView;
+	public void setSurnameEditText(EditText surnameEditText) {
+		this.surnameEditText = surnameEditText;
 	}
 
 	/**

@@ -1,12 +1,18 @@
 package ie.ucc.bis.activity;
 
 import ie.ucc.bis.R;
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.OnTouchListener;
+import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -154,20 +160,7 @@ public abstract class SupportingLifeBaseActivity extends FragmentActivity {
 	public void onClickHome(View view) {
 		goHome(this);
 	}
-	
-	/**
-	 * Click Handler: Handle the click on the search button
-	 * 
-	 * @param view View
-	 * @return void
-	 */
-	public void onClickSearch(View view) {
-//		startActivity(new Intent(getApplicationContext(), SearchActivity.class));
 		
-		// configure the activity animation transition effect
-		// overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
-	}
-	
 	/**
 	 * Click Handler: Handle the click on the about button
 	 * 
@@ -215,5 +208,44 @@ public abstract class SupportingLifeBaseActivity extends FragmentActivity {
 	public void trace(String msg) {
 		Log.d("Supporting LIFE", msg);
 		toast(msg);
+	}
+
+	/**
+	 * Utility method (recursive) to add a touch listener to each non-EditText UI
+	 * component such that the keyboard is hidden once this component is touched.
+	 * This facilitates cleaner user interaction as the keyboard is hidden automatically
+	 * saving the user an additional click operation.
+	 *  
+	 * @param view
+	 */
+	public void addSoftKeyboardHandling(View view) {
+	    //Set up touch listener for non-text box views to hide keyboard.
+	    if(!(view instanceof EditText)) {
+	        view.setOnTouchListener(new OnTouchListener() {
+	        	
+	            public boolean onTouch(View v, MotionEvent event) {
+	                hideSoftKeyboard();
+	                return false;
+	            }
+	        });
+	    }
+
+	    //If a layout container, iterate over children and seed recursion.
+	    if (view instanceof ViewGroup) {
+	        for (int i = 0; i < ((ViewGroup) view).getChildCount(); i++) {
+	            View innerView = ((ViewGroup) view).getChildAt(i);
+	            addSoftKeyboardHandling(innerView);
+	        }
+	    }
+	}
+	
+	/**
+	 * Utility method to hide the soft keyboard from window
+	 *  
+	 * @param view
+	 */	
+	public void hideSoftKeyboard() {
+	    InputMethodManager inputMethodManager = (InputMethodManager)  getSystemService(Activity.INPUT_METHOD_SERVICE);
+	    inputMethodManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
 	}
 }

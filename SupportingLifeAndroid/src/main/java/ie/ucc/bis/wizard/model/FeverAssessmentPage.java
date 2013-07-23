@@ -21,6 +21,7 @@ import android.support.v4.app.Fragment;
 public class FeverAssessmentPage extends AbstractPage {
     public static final String FEVER_DATA_KEY = "FEVER";
     public static final String MALARIA_RISK_DATA_KEY = "MALARIA_RISK";
+    public static final String DURATION_DATA_KEY = "DURATION";
     
     private FeverAssessmentFragment feverAssessmentFragment;
 
@@ -55,6 +56,10 @@ public class FeverAssessmentPage extends AbstractPage {
     	String malariaRiskLabel = resources.getString(R.string.fever_assessment_review_malaria_risk);
     	String malariaRiskValue = getPageData().getString(MALARIA_RISK_DATA_KEY + AssessmentWizardRadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
     	reviewItems.add(new ReviewItem(malariaRiskLabel, malariaRiskValue, getKey(), -1));
+    	
+    	// duration
+    	String durationLabel = resources.getString(R.string.fever_assessment_review_duration);
+    	reviewItems.add(new ReviewItem(durationLabel, getPageData().getString(DURATION_DATA_KEY), getKey(), -1));
     }
 
 	/**

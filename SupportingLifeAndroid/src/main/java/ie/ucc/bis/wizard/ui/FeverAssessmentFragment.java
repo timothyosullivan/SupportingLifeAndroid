@@ -3,6 +3,7 @@ package ie.ucc.bis.wizard.ui;
 import ie.ucc.bis.R;
 import ie.ucc.bis.ui.custom.ToggleButtonGroupTableLayout;
 import ie.ucc.bis.wizard.model.AssessmentWizardRadioGroupListener;
+import ie.ucc.bis.wizard.model.AssessmentWizardTextWatcher;
 import ie.ucc.bis.wizard.model.FeverAssessmentPage;
 import android.app.Activity;
 import android.os.Bundle;
@@ -11,6 +12,7 @@ import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -31,6 +33,7 @@ public class FeverAssessmentFragment extends Fragment {
     private String pageKey;
     private ToggleButtonGroupTableLayout feverCustomRadioGroup;
     private RadioGroup malariaRiskRadioGroup;
+    private EditText durationEditText;
     
     public static FeverAssessmentFragment create(String pageKey) {
         Bundle args = new Bundle();
@@ -44,7 +47,7 @@ public class FeverAssessmentFragment extends Fragment {
 	/**
 	 * Constructor
 	 *
-	 */        
+	 */
     public FeverAssessmentFragment() {}
 
     @Override
@@ -66,22 +69,25 @@ public class FeverAssessmentFragment extends Fragment {
         // fever radio button
         RadioButton feverTempRadioButton = (RadioButton) rootView.findViewById(R.id.fever_assessment_radio_fever_temperature);
         feverTempRadioButton.setText(Html.fromHtml(getText(R.string.fever_assessment_radio_fever_temperature) + "<sup>o</sup>" + "C"));
-        
-        
+                
         // fever
-        setFeverCustomRadioGroup((ToggleButtonGroupTableLayout) rootView.findViewById(R.id.radio_fever));
+        setFeverCustomRadioGroup((ToggleButtonGroupTableLayout) rootView.findViewById(R.id.fever_assessment_radio_fever));
         getFeverCustomRadioGroup().check(getFeverAssessmentPage()
         		.getPageData().getInt(FeverAssessmentPage.FEVER_DATA_KEY));
         
         // malaria risk
-        setMalariaRiskRadioGroup((RadioGroup) rootView.findViewById(R.id.radio_malaria_risk));
+        setMalariaRiskRadioGroup((RadioGroup) rootView.findViewById(R.id.fever_assessment_radio_malaria_risk));
         getMalariaRiskRadioGroup().check(getFeverAssessmentPage()
         		.getPageData().getInt(FeverAssessmentPage.MALARIA_RISK_DATA_KEY));
+        
+        // duration
+        setDurationEditText((EditText) rootView.findViewById(R.id.fever_assessment_text_duration));
         
         return rootView;
     }
 
-    @Override
+
+	@Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
 
@@ -110,7 +116,13 @@ public class FeverAssessmentFragment extends Fragment {
         getMalariaRiskRadioGroup().setOnCheckedChangeListener(
         		new AssessmentWizardRadioGroupListener(getFeverAssessmentPage(),
         				FeverAssessmentPage.MALARIA_RISK_DATA_KEY));
+        
+        // listener to duration
+        getDurationEditText().addTextChangedListener(
+        		new AssessmentWizardTextWatcher(getFeverAssessmentPage(), 
+        				FeverAssessmentPage.DURATION_DATA_KEY));  
     }
+    
 
 	/**
 	 * Getter Method: getPageFragmentCallbacks()
@@ -180,5 +192,19 @@ public class FeverAssessmentFragment extends Fragment {
 	 */	
 	public void setMalariaRiskRadioGroup(RadioGroup malariaRiskRadioGroup) {
 		this.malariaRiskRadioGroup = malariaRiskRadioGroup;
+	}
+
+	/**
+	 * Getter Method: getDurationEditText()
+	 */		
+	public EditText getDurationEditText() {
+		return durationEditText;
+	}
+
+	/**
+	 * Setter Method: setDurationEditText()
+	 */			
+	public void setDurationEditText(EditText durationEditText) {
+		this.durationEditText = durationEditText;
 	}
 }

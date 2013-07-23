@@ -61,17 +61,17 @@ public class GeneralDangerSignsFragment extends Fragment {
         ((TextView) rootView.findViewById(android.R.id.title)).setText(getGeneralDangerSignsPage().getTitle());
 
         // not able to drink or breastfeed
-        setDrinkBreastfeedRadioGroup((RadioGroup) rootView.findViewById(R.id.radio_drink_breastfeed));
+        setDrinkBreastfeedRadioGroup((RadioGroup) rootView.findViewById(R.id.general_danger_signs_radio_drink_breastfeed));
         getDrinkBreastfeedRadioGroup().check(getGeneralDangerSignsPage()
         		.getPageData().getInt(GeneralDangerSignsPage.DRINK_BREASTFEED_DATA_KEY));
         
         // vomits everything
-        setVomitsRadioGroup((RadioGroup) rootView.findViewById(R.id.radio_vomits));
+        setVomitsRadioGroup((RadioGroup) rootView.findViewById(R.id.general_danger_signs_radio_vomits));
         getVomitsRadioGroup().check(getGeneralDangerSignsPage()
         		.getPageData().getInt(GeneralDangerSignsPage.VOMITS_EVERYTHING_DATA_KEY));
         
         // history of convulsions
-        setConvulsionsRadioGroup((RadioGroup) rootView.findViewById(R.id.radio_convulsions));
+        setConvulsionsRadioGroup((RadioGroup) rootView.findViewById(R.id.general_danger_signs_radio_convulsions));
         getConvulsionsRadioGroup().check(getGeneralDangerSignsPage()
         		.getPageData().getInt(GeneralDangerSignsPage.HISTORY_OF_CONVULSIONS_DATA_KEY));
 

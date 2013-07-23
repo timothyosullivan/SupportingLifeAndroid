@@ -61,12 +61,12 @@ public class BreathingAssessmentFragment extends Fragment {
         ((TextView) rootView.findViewById(android.R.id.title)).setText(getBreathingAssessmentPage().getTitle());
 
         // does the child have cough or difficult breathing?
-        setCoughDifficultBreathingRadioGroup((RadioGroup) rootView.findViewById(R.id.radio_cough_difficult_breathing));
+        setCoughDifficultBreathingRadioGroup((RadioGroup) rootView.findViewById(R.id.breathing_assessment_radio_cough_difficult_breathing));
         getCoughDifficultBreathingRadioGroup().check(getBreathingAssessmentPage()
         		.getPageData().getInt(BreathingAssessmentPage.COUGH_DIFFICULT_BREATHING_DATA_KEY));
         
         // chest indrawing
-        setChestIndrawingRadioGroup((RadioGroup) rootView.findViewById(R.id.radio_chest_indrawing));
+        setChestIndrawingRadioGroup((RadioGroup) rootView.findViewById(R.id.breathing_assessment_radio_chest_indrawing));
         getChestIndrawingRadioGroup().check(getBreathingAssessmentPage()
         		.getPageData().getInt(BreathingAssessmentPage.CHEST_INDRAWING_DATA_KEY));
         

@@ -1,6 +1,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     style="@style/WizardPageContainer"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent"
+    android:layout_width="match_parent" >
 
 <!-- ============================================================ -->
 <!-- ASSESSMENT BREAD-CRUMB WIZARD UI -->
@@ -9,8 +10,7 @@
     <TextView style="@style/WizardPageTitle" />
 
     <ScrollView android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1">
+        android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -29,13 +29,13 @@
 			    android:text="@string/breathing_assessment_radio_cough_difficult_breathing" />
 			
 			<RadioGroup
-			    android:id="@+id/radio_cough_difficult_breathing"
+			    android:id="@+id/breathing_assessment_radio_cough_difficult_breathing"
 			    android:layout_width="match_parent"
 			    android:layout_height="wrap_content"
 			    android:orientation="horizontal" >
 
 			    <RadioButton
-			        android:id="@+id/radio_cough_difficult_breathing_yes"
+			        android:id="@+id/breathing_assessment_radio_cough_difficult_breathing_yes"
 			        android:layout_width="112dp"
 			        android:layout_height="wrap_content"
 			        android:layout_weight="0.67"
@@ -43,7 +43,7 @@
 			        android:text="@string/assessment_wizard_radio_yes" />
 
 			    <RadioButton
-			        android:id="@+id/radio_cough_difficult_breathing_no"
+			        android:id="@+id/breathing_assessment_radio_cough_difficult_breathing_no"
 			        android:layout_width="118dp"
 			        android:layout_height="wrap_content"
 			        android:layout_gravity="top"
@@ -65,13 +65,13 @@
 			    android:text="@string/breathing_assessment_radio_chest_indrawing" />
 			
 			<RadioGroup
-			    android:id="@+id/radio_chest_indrawing"
+			    android:id="@+id/breathing_assessment_radio_chest_indrawing"
 			    android:layout_width="match_parent"
 			    android:layout_height="wrap_content"
 			    android:orientation="horizontal" >
 
 			    <RadioButton
-			        android:id="@+id/radio_chest_indrawing_yes"
+			        android:id="@+id/breathing_assessment_radio_chest_indrawing_yes"
 			        android:layout_width="112dp"
 			        android:layout_height="wrap_content"
 			        android:layout_weight="0.67"
@@ -79,7 +79,7 @@
 			        android:text="@string/assessment_wizard_radio_yes" />
 
 			    <RadioButton
-			        android:id="@+id/radio_chest_indrawing_no"
+			        android:id="@+id/breathing_assessment_radio_chest_indrawing_no"
 			        android:layout_width="118dp"
 			        android:layout_height="wrap_content"
 			        android:layout_gravity="top"

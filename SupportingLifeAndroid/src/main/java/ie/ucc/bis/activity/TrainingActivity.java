@@ -17,9 +17,8 @@ public class TrainingActivity extends SupportingLifeBaseActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
-		setContentView(R.layout.activity_training);
+		setContentView(R.layout.activity_training);	
 		setTitleFromActivityLabel(R.id.title_text);
-		
 	}
 
 

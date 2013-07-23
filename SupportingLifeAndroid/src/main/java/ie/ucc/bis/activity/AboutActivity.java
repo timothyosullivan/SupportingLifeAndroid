@@ -35,7 +35,7 @@ public class AboutActivity extends SupportingLifeBaseActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
-		setContentView(R.layout.activity_about);
+		setContentView(R.layout.activity_about);		
 		setTitleFromActivityLabel(R.id.title_text);
 		
 		// configure a scroll bar on the about screen

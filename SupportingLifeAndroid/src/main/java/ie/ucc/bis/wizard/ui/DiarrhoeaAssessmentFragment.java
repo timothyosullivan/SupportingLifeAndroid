@@ -60,12 +60,12 @@ public class DiarrhoeaAssessmentFragment extends Fragment {
         ((TextView) rootView.findViewById(android.R.id.title)).setText(getDiarrhoeaAssessmentPage().getTitle());
 
         // diarrhoea
-        setDiarrhoeaRadioGroup((RadioGroup) rootView.findViewById(R.id.radio_diarrhoea));
+        setDiarrhoeaRadioGroup((RadioGroup) rootView.findViewById(R.id.diarrhoea_assessment_radio_diarrhoea));
         getDiarrhoeaRadioGroup().check(getDiarrhoeaAssessmentPage()
         		.getPageData().getInt(DiarrhoeaAssessmentPage.DIARRHOEA_DATA_KEY));
         
         // blood in the stools
-        setBloodStoolsRadioGroup((RadioGroup) rootView.findViewById(R.id.radio_blood_stools));
+        setBloodStoolsRadioGroup((RadioGroup) rootView.findViewById(R.id.diarrhoea_assessment_radio_blood_stools));
         getBloodStoolsRadioGroup().check(getDiarrhoeaAssessmentPage()
         		.getPageData().getInt(DiarrhoeaAssessmentPage.BLOOD_STOOLS_DATA_KEY));
         

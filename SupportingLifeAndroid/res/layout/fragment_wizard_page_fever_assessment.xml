@@ -1,6 +1,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     style="@style/WizardPageContainer"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"  >
 
 <!-- ============================================================ -->
 <!-- ASSESSMENT BREAD-CRUMB WIZARD UI -->
@@ -8,107 +9,127 @@
 <!-- ============================================================ -->
     <TextView style="@style/WizardPageTitle" />
 
-    <ScrollView android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1">
+    <ScrollView android:layout_height="match_parent"
+    	android:layout_width="match_parent" >
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="218dp"
             android:orientation="vertical" >
 
-			<!-- ============================================================ -->
-			<!-- FEVER RADIO BUTTON GROUP -->
-			<!-- ============================================================ -->               
-			
-			<TextView
-			    style="@style/WizardFormLabel"
-			    android:layout_width="match_parent"
-			    android:layout_height="match_parent"
-			    android:layout_gravity="bottom"
-			    android:text="@string/fever_assessment_radio_fever" />
-      				
-      			<ie.ucc.bis.ui.custom.ToggleButtonGroupTableLayout android:id="@+id/radio_fever"
-      			    android:layout_width="match_parent"
-			    	android:layout_height="match_parent">
-			    	
-			    	<TableRow android:layout_width="match_parent"
-					    	android:layout_height="match_parent">		
-					
-						<RadioButton android:id="@+id/fever_assessment_radio_fever_no"
-						    android:layout_weight="0.67"
-							android:checked="false"
-							android:text="@string/fever_assessment_radio_fever_no" />
+            <!-- ============================================================ -->
+            <!-- FEVER RADIO BUTTON GROUP -->
+            <!-- ============================================================ -->
 
-						<RadioButton android:id="@+id/fever_assessment_radio_fever_history"
-						    android:layout_weight="0.67"
-						    android:checked="false"
-						    android:text="@string/fever_assessment_radio_fever_history" />
-					    
-					</TableRow>
-					<TableRow android:layout_width="match_parent"
-					    	android:layout_height="match_parent">							
-						
-						<RadioButton android:id="@+id/fever_assessment_radio_fever_feels_hot"
-						    android:layout_weight="0.67"
-						    android:checked="false"
-						    android:text="@string/fever_assessment_radio_fever_feels_hot" />
-						
-						<RadioButton android:id="@+id/fever_assessment_radio_fever_temperature"
-						    android:layout_weight="0.67"
-						    android:checked="false"
-						    android:text="@string/fever_assessment_radio_fever_temperature" />
-					</TableRow>
-				</ie.ucc.bis.ui.custom.ToggleButtonGroupTableLayout>
-  			<!-- ============================================================ -->
-			<!-- MALARIA RISK RADIO BUTTON GROUP -->
-			<!-- ============================================================ -->               
-			
-			<TextView
-			    style="@style/WizardFormLabel"
-			    android:layout_width="match_parent"
-			    android:layout_height="match_parent"
-			    android:layout_gravity="bottom"
-			    android:text="@string/fever_assessment_radio_malaria_risk" />
-			
-			<RadioGroup
-			    android:id="@+id/radio_malaria_risk"
-			    android:layout_width="match_parent"
-			    android:layout_height="wrap_content"
-			    android:orientation="horizontal" >
+            <TextView
+                style="@style/WizardFormLabel"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="bottom"
+                android:text="@string/fever_assessment_radio_fever" />
 
-			    <RadioButton
-			        android:id="@+id/radio_malaria_risk_high"
-			        android:layout_width="112dp"
-			        android:layout_height="wrap_content"
-			        android:layout_weight="0.67"
-			        android:checked="false"
-			        android:text="@string/fever_assessment_radio_malaria_risk_high" />
+            <ie.ucc.bis.ui.custom.ToggleButtonGroupTableLayout
+                android:id="@+id/fever_assessment_radio_fever"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" >
 
-			    <RadioButton
-			        android:id="@+id/radio_malaria_risk_low"
-			        android:layout_width="118dp"
-			        android:layout_height="wrap_content"
-			        android:layout_gravity="top"
-			        android:layout_weight="0.32"
-			        android:checked="false"
-			        android:text="@string/fever_assessment_radio_malaria_risk_low" />
-			    
-			    <RadioButton
-			        android:id="@+id/radio_malaria_risk_no"
-			        android:layout_width="118dp"
-			        android:layout_height="match_parent"
-			        android:layout_gravity="top"
-			        android:layout_weight="0.19"
-			        android:checked="false"
-			        android:text="@string/fever_assessment_radio_malaria_risk_no" />
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" >
 
-			</RadioGroup>
+                    <RadioButton
+                        android:id="@+id/fever_assessment_radio_fever_no"
+                        android:layout_weight="0.67"
+                        android:checked="false"
+                        android:text="@string/fever_assessment_radio_fever_no" />
 
-  			<!-- ============================================================ -->
-			<!-- DURATION (FOR HOW LONG?) SPINNER -->
-			<!-- ============================================================ -->    									
-			
+                    <RadioButton
+                        android:id="@+id/fever_assessment_radio_fever_history"
+                        android:layout_weight="0.67"
+                        android:checked="false"
+                        android:text="@string/fever_assessment_radio_fever_history" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" >
+
+                    <RadioButton
+                        android:id="@+id/fever_assessment_radio_fever_feels_hot"
+                        android:layout_weight="0.67"
+                        android:checked="false"
+                        android:text="@string/fever_assessment_radio_fever_feels_hot" />
+
+                    <RadioButton
+                        android:id="@+id/fever_assessment_radio_fever_temperature"
+                        android:layout_weight="0.67"
+                        android:checked="false"
+                        android:text="@string/fever_assessment_radio_fever_temperature" />
+                </TableRow>
+            </ie.ucc.bis.ui.custom.ToggleButtonGroupTableLayout>
+            <!-- ============================================================ -->
+            <!-- MALARIA RISK RADIO BUTTON GROUP -->
+            <!-- ============================================================ -->
+
+            <TextView
+                style="@style/WizardFormLabel"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="bottom"
+                android:text="@string/fever_assessment_radio_malaria_risk" />
+
+            <RadioGroup
+                android:id="@+id/fever_assessment_radio_malaria_risk"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+
+                <RadioButton
+                    android:id="@+id/fever_assessment_radio_malaria_risk_high"
+                    android:layout_width="112dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.67"
+                    android:checked="false"
+                    android:text="@string/fever_assessment_radio_malaria_risk_high" />
+
+                <RadioButton
+                    android:id="@+id/fever_assessment_radio_malaria_risk_low"
+                    android:layout_width="118dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="top"
+                    android:layout_weight="0.32"
+                    android:checked="false"
+                    android:text="@string/fever_assessment_radio_malaria_risk_low" />
+
+                <RadioButton
+                    android:id="@+id/fever_assessment_radio_malaria_risk_no"
+                    android:layout_width="118dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="top"
+                    android:layout_weight="0.19"
+                    android:checked="false"
+                    android:text="@string/fever_assessment_radio_malaria_risk_no" />
+            </RadioGroup>
+
+            <!-- ============================================================ -->
+            <!-- DURATION (FOR HOW LONG?) Text -->
+            <!-- ============================================================ -->
+
+            <TextView
+                style="@style/WizardFormLabel"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="bottom"
+                android:text="@string/fever_assessment_duration" />
+
+            <EditText
+                android:id="@+id/fever_assessment_text_duration"
+                android:layout_width="174dp"
+                android:layout_height="match_parent"
+                android:inputType="number"
+                android:maxLength="3" />
+
         </LinearLayout>
+
     </ScrollView>
 </LinearLayout>
