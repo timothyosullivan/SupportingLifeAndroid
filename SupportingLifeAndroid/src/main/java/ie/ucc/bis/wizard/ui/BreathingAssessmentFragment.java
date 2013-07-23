@@ -1,6 +1,7 @@
 package ie.ucc.bis.wizard.ui;
 
 import ie.ucc.bis.R;
+import ie.ucc.bis.activity.SupportingLifeBaseActivity;
 import ie.ucc.bis.wizard.model.AssessmentWizardRadioGroupListener;
 import ie.ucc.bis.wizard.model.BreathingAssessmentPage;
 import android.app.Activity;
@@ -69,6 +70,10 @@ public class BreathingAssessmentFragment extends Fragment {
         setChestIndrawingRadioGroup((RadioGroup) rootView.findViewById(R.id.breathing_assessment_radio_chest_indrawing));
         getChestIndrawingRadioGroup().check(getBreathingAssessmentPage()
         		.getPageData().getInt(BreathingAssessmentPage.CHEST_INDRAWING_DATA_KEY));
+        
+		// add soft keyboard handler - essentially hiding soft
+		// keyboard when an EditText is not in focus
+		((SupportingLifeBaseActivity) getActivity()).addSoftKeyboardHandling(rootView);
         
         return rootView;
     }

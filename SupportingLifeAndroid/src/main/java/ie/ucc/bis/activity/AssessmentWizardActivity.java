@@ -54,10 +54,6 @@ public class AssessmentWizardActivity extends SupportingLifeBaseActivity impleme
         super.onCreate(savedInstanceState);        
         setContentView(R.layout.activity_assessment_wizard);
         
-		// add soft keyboard handler - essentially hiding soft
-		// keyboard when an EditText is not in focus
-		addSoftKeyboardHandling(this.findViewById(android.R.id.content));
-		
         setTitleFromActivityLabel(R.id.title_text);
         
         if (savedInstanceState != null) {
@@ -132,7 +128,7 @@ public class AssessmentWizardActivity extends SupportingLifeBaseActivity impleme
         });
 
         onPageTreeChanged();
-        updateBottomBar();        
+        updateBottomBar();
     }
 
 

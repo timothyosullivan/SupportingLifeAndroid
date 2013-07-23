@@ -1,6 +1,7 @@
 package ie.ucc.bis.wizard.ui;
 
 import ie.ucc.bis.R;
+import ie.ucc.bis.activity.SupportingLifeBaseActivity;
 import ie.ucc.bis.ui.custom.ToggleButtonGroupTableLayout;
 import ie.ucc.bis.wizard.model.AssessmentWizardRadioGroupListener;
 import ie.ucc.bis.wizard.model.AssessmentWizardTextWatcher;
@@ -82,6 +83,10 @@ public class FeverAssessmentFragment extends Fragment {
         
         // duration
         setDurationEditText((EditText) rootView.findViewById(R.id.fever_assessment_text_duration));
+        
+		// add soft keyboard handler - essentially hiding soft
+		// keyboard when an EditText is not in focus
+		((SupportingLifeBaseActivity) getActivity()).addSoftKeyboardHandling(rootView);
         
         return rootView;
     }

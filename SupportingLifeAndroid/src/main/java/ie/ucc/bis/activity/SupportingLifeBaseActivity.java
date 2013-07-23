@@ -243,9 +243,11 @@ public abstract class SupportingLifeBaseActivity extends FragmentActivity {
 	 * Utility method to hide the soft keyboard from window
 	 *  
 	 * @param view
-	 */	
+	 */
 	public void hideSoftKeyboard() {
 	    InputMethodManager inputMethodManager = (InputMethodManager)  getSystemService(Activity.INPUT_METHOD_SERVICE);
-	    inputMethodManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
+	    if (getCurrentFocus() != null) {
+	    	inputMethodManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
+	    }
 	}
 }

@@ -1,6 +1,7 @@
 package ie.ucc.bis.wizard.ui;
 
 import ie.ucc.bis.R;
+import ie.ucc.bis.activity.SupportingLifeBaseActivity;
 import ie.ucc.bis.wizard.model.AssessmentWizardRadioGroupListener;
 import ie.ucc.bis.wizard.model.DiarrhoeaAssessmentPage;
 import android.app.Activity;
@@ -68,6 +69,10 @@ public class DiarrhoeaAssessmentFragment extends Fragment {
         setBloodStoolsRadioGroup((RadioGroup) rootView.findViewById(R.id.diarrhoea_assessment_radio_blood_stools));
         getBloodStoolsRadioGroup().check(getDiarrhoeaAssessmentPage()
         		.getPageData().getInt(DiarrhoeaAssessmentPage.BLOOD_STOOLS_DATA_KEY));
+        
+		// add soft keyboard handler - essentially hiding soft
+		// keyboard when an EditText is not in focus
+		((SupportingLifeBaseActivity) getActivity()).addSoftKeyboardHandling(rootView);
         
         return rootView;
     }

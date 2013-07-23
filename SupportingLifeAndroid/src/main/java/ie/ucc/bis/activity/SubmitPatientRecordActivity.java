@@ -35,11 +35,6 @@ public class SubmitPatientRecordActivity extends SupportingLifeBaseActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_submit_patient_record);
-		
-		// add soft keyboard handler - essentially hiding soft
-		// keyboard when an EditText is not in focus
-		addSoftKeyboardHandling(this.findViewById(android.R.id.content));		
-		
 		setTitleFromActivityLabel(R.id.title_text);
 
 		// extract the patient record sent by the main activity

@@ -1,6 +1,7 @@
 package ie.ucc.bis.wizard.ui;
 
 import ie.ucc.bis.R;
+import ie.ucc.bis.activity.SupportingLifeBaseActivity;
 import ie.ucc.bis.wizard.model.AssessmentWizardRadioGroupListener;
 import ie.ucc.bis.wizard.model.GeneralDangerSignsPage;
 import android.app.Activity;
@@ -74,6 +75,10 @@ public class GeneralDangerSignsFragment extends Fragment {
         setConvulsionsRadioGroup((RadioGroup) rootView.findViewById(R.id.general_danger_signs_radio_convulsions));
         getConvulsionsRadioGroup().check(getGeneralDangerSignsPage()
         		.getPageData().getInt(GeneralDangerSignsPage.HISTORY_OF_CONVULSIONS_DATA_KEY));
+        
+		// add soft keyboard handler - essentially hiding soft
+		// keyboard when an EditText is not in focus
+		((SupportingLifeBaseActivity) getActivity()).addSoftKeyboardHandling(rootView);
 
         return rootView;
     }

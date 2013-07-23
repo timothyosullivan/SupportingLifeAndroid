@@ -1,6 +1,7 @@
 package ie.ucc.bis.wizard.ui;
 
 import ie.ucc.bis.R;
+import ie.ucc.bis.activity.SupportingLifeBaseActivity;
 import ie.ucc.bis.wizard.model.AssessmentWizardRadioGroupListener;
 import ie.ucc.bis.wizard.model.AssessmentWizardTextWatcher;
 import ie.ucc.bis.wizard.model.GeneralPatientDetailsPage;
@@ -74,6 +75,10 @@ public class GeneralPatientDetailsFragment extends Fragment {
         setGenderRadioGroup((RadioGroup) rootView.findViewById(R.id.general_patient_details_radio_gender));
         getGenderRadioGroup().check(getGeneralPatientDetailsPage()
         		.getPageData().getInt(GeneralPatientDetailsPage.GENDER_DATA_KEY));
+        
+		// add soft keyboard handler - essentially hiding soft
+		// keyboard when an EditText is not in focus
+		((SupportingLifeBaseActivity) getActivity()).addSoftKeyboardHandling(rootView);
 
         return rootView;
     }
