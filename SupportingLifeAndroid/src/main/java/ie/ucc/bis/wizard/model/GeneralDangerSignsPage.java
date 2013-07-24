@@ -45,21 +45,23 @@ public class GeneralDangerSignsPage extends AbstractPage {
     public void getReviewItems(ArrayList<ReviewItem> reviewItems) {
     	Context appContext = ((AbstractWizardModel) getModelCallbacks()).applicationContext;
     	Resources resources = appContext.getResources();
+    	String reviewItemLabel = null;
+    	String reviewItemValue = null;
 
     	// not able to drink or breastfeed
-    	String drinkBreastfeedLabel = resources.getString(R.string.general_danger_signs_review_drink_breastfeed);
-    	String drinkBreastfeedValue = getPageData().getString(DRINK_BREASTFEED_DATA_KEY + AssessmentWizardRadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
-    	reviewItems.add(new ReviewItem(drinkBreastfeedLabel, drinkBreastfeedValue, getKey(), -1));    	
+    	reviewItemLabel = resources.getString(R.string.general_danger_signs_review_drink_breastfeed);
+    	reviewItemValue = getPageData().getString(DRINK_BREASTFEED_DATA_KEY + AssessmentWizardRadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
+    	reviewItems.add(new ReviewItem(reviewItemLabel, reviewItemValue, getKey(), -1));    	
     	
     	// vomits everythings
-    	String vomitsLabel = resources.getString(R.string.general_danger_signs_review_vomits);
-    	String vomitsValue = getPageData().getString(VOMITS_EVERYTHING_DATA_KEY + AssessmentWizardRadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
-    	reviewItems.add(new ReviewItem(vomitsLabel, vomitsValue, getKey(), -1));
+    	reviewItemLabel = resources.getString(R.string.general_danger_signs_review_vomits);
+    	reviewItemValue = getPageData().getString(VOMITS_EVERYTHING_DATA_KEY + AssessmentWizardRadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
+    	reviewItems.add(new ReviewItem(reviewItemLabel, reviewItemValue, getKey(), -1));
     	
     	// history of convulsions
-    	String convulsionsLabel = resources.getString(R.string.general_danger_signs_review_convulsions);
-    	String convulsionsValue = getPageData().getString(HISTORY_OF_CONVULSIONS_DATA_KEY + AssessmentWizardRadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
-    	reviewItems.add(new ReviewItem(convulsionsLabel, convulsionsValue, getKey(), -1));
+    	reviewItemLabel = resources.getString(R.string.general_danger_signs_review_convulsions);
+    	reviewItemValue = getPageData().getString(HISTORY_OF_CONVULSIONS_DATA_KEY + AssessmentWizardRadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
+    	reviewItems.add(new ReviewItem(reviewItemLabel, reviewItemValue, getKey(), -1));
     }
 
 	/**

@@ -46,20 +46,22 @@ public class FeverAssessmentPage extends AbstractPage {
     public void getReviewItems(ArrayList<ReviewItem> reviewItems) {
     	Context appContext = ((AbstractWizardModel) getModelCallbacks()).applicationContext;
     	Resources resources = appContext.getResources();
+    	String reviewItemLabel = null;
+    	String reviewItemValue = null;
 
     	// fever
-    	String feverLabel = resources.getString(R.string.fever_assessment_review_fever);
-    	String feverValue = getPageData().getString(FEVER_DATA_KEY + ToggleButtonGroupTableLayout.TOGGLE_BUTTON_TEXT_DATA_KEY);
-    	reviewItems.add(new ReviewItem(feverLabel, feverValue, getKey(), -1));    	
+    	reviewItemLabel = resources.getString(R.string.fever_assessment_review_fever);
+    	reviewItemValue = getPageData().getString(FEVER_DATA_KEY + ToggleButtonGroupTableLayout.TOGGLE_BUTTON_TEXT_DATA_KEY);
+    	reviewItems.add(new ReviewItem(reviewItemLabel, reviewItemValue, getKey(), -1));    	
     	
     	// malaria risk
-    	String malariaRiskLabel = resources.getString(R.string.fever_assessment_review_malaria_risk);
-    	String malariaRiskValue = getPageData().getString(MALARIA_RISK_DATA_KEY + AssessmentWizardRadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
-    	reviewItems.add(new ReviewItem(malariaRiskLabel, malariaRiskValue, getKey(), -1));
+    	reviewItemLabel = resources.getString(R.string.fever_assessment_review_malaria_risk);
+    	reviewItemValue = getPageData().getString(MALARIA_RISK_DATA_KEY + AssessmentWizardRadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
+    	reviewItems.add(new ReviewItem(reviewItemLabel, reviewItemValue, getKey(), -1));
     	
     	// duration
-    	String durationLabel = resources.getString(R.string.fever_assessment_review_duration);
-    	reviewItems.add(new ReviewItem(durationLabel, getPageData().getString(DURATION_DATA_KEY), getKey(), -1));
+    	reviewItemLabel = resources.getString(R.string.fever_assessment_review_duration);
+    	reviewItems.add(new ReviewItem(reviewItemLabel, getPageData().getString(DURATION_DATA_KEY), getKey(), -1));
     }
 
 	/**

@@ -137,6 +137,20 @@
 
     <!-- ============================================================ -->
     <!-- ASSESSMENT WIZARD BREAD-CRUMB UI -->
+    <!-- STAGE 7: Malnutrition and Anaemia Assessment -->
+    <!-- ============================================================ -->
+    <string name="malnutrition_assessment_title">Malnutrition and Anaemia</string>
+    <string name="malnutrition_assessment_radio_oedema">Oedema of both feet</string>
+    <string name="malnutrition_assessment_radio_weight_for_age">Weight for Age</string>
+    <string name="malnutrition_assessment_radio_visible_severe_wasting">Visible Severe Wasting</string>
+
+    <!-- Malnutrition and Anaemia Review -->
+    <string name="malnutrition_assessment_review_oedema">Oedema of both feet</string>
+    <string name="malnutrition_assessment_review_weight_for_age">Weight for Age</string>
+    <string name="malnutrition_assessment_review_visible_severe_wasting">Visible Severe Wasting</string>
+
+    <!-- ============================================================ -->
+    <!-- ASSESSMENT WIZARD BREAD-CRUMB UI -->
     <!-- UNIVERSAL COMPONENTS -->
     <!-- ============================================================ -->
     <string name="assessment_wizard_review_title">Review</string>

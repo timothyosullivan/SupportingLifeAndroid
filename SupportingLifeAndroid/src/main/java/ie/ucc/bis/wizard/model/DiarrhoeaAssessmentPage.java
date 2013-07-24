@@ -44,16 +44,18 @@ public class DiarrhoeaAssessmentPage extends AbstractPage {
     public void getReviewItems(ArrayList<ReviewItem> reviewItems) {
     	Context appContext = ((AbstractWizardModel) getModelCallbacks()).applicationContext;
     	Resources resources = appContext.getResources();
+    	String reviewItemLabel = null;
+    	String reviewItemValue = null;
 
     	// diarrhoea
-    	String diarrhoeaLabel = resources.getString(R.string.diarrhoea_assessment_review_diarrhoea);
-    	String diarrhoeaValue = getPageData().getString(DIARRHOEA_DATA_KEY + AssessmentWizardRadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
-    	reviewItems.add(new ReviewItem(diarrhoeaLabel, diarrhoeaValue, getKey(), -1));    	
+    	reviewItemLabel = resources.getString(R.string.diarrhoea_assessment_review_diarrhoea);
+    	reviewItemValue = getPageData().getString(DIARRHOEA_DATA_KEY + AssessmentWizardRadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
+    	reviewItems.add(new ReviewItem(reviewItemLabel, reviewItemValue, getKey(), -1));    	
     	
     	// blood in the stools
-    	String bloodStoolsLabel = resources.getString(R.string.diarrhoea_assessment_review_blood_stools);
-    	String bloodStoolsValue = getPageData().getString(BLOOD_STOOLS_DATA_KEY + AssessmentWizardRadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
-    	reviewItems.add(new ReviewItem(bloodStoolsLabel, bloodStoolsValue, getKey(), -1));
+    	reviewItemLabel = resources.getString(R.string.diarrhoea_assessment_review_blood_stools);
+    	reviewItemValue = getPageData().getString(BLOOD_STOOLS_DATA_KEY + AssessmentWizardRadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
+    	reviewItems.add(new ReviewItem(reviewItemLabel, reviewItemValue, getKey(), -1));
     }
 
 	/**

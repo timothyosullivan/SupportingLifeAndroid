@@ -43,16 +43,18 @@ public class BreathingAssessmentPage extends AbstractPage {
     @Override
     public void getReviewItems(ArrayList<ReviewItem> reviewItems) {
     	Resources resources = ((AbstractWizardModel) getModelCallbacks()).applicationContext.getResources();
+    	String reviewItemLabel = null;
+    	String reviewItemValue = null;
     	
     	// does the child have cough or difficult breathing?
-    	String coughDifficultBreathingLabel = resources.getString(R.string.breathing_assessment_review_cough_difficult_breathing);
-    	String coughDifficultBreathingValue = getPageData().getString(COUGH_DIFFICULT_BREATHING_DATA_KEY + AssessmentWizardRadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
-    	reviewItems.add(new ReviewItem(coughDifficultBreathingLabel, coughDifficultBreathingValue, getKey(), -1));    	
+    	reviewItemLabel = resources.getString(R.string.breathing_assessment_review_cough_difficult_breathing);
+    	reviewItemValue = getPageData().getString(COUGH_DIFFICULT_BREATHING_DATA_KEY + AssessmentWizardRadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
+    	reviewItems.add(new ReviewItem(reviewItemLabel, reviewItemValue, getKey(), -1));    	
     	
     	// chest indrawing
-    	String chestIndrawingLabel = resources.getString(R.string.breathing_assessment_review_chest_indrawing);
-    	String chestIndrawingValue = getPageData().getString(CHEST_INDRAWING_DATA_KEY + AssessmentWizardRadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
-    	reviewItems.add(new ReviewItem(chestIndrawingLabel, chestIndrawingValue, getKey(), -1));    	
+    	reviewItemLabel = resources.getString(R.string.breathing_assessment_review_chest_indrawing);
+    	reviewItemValue = getPageData().getString(CHEST_INDRAWING_DATA_KEY + AssessmentWizardRadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
+    	reviewItems.add(new ReviewItem(reviewItemLabel, reviewItemValue, getKey(), -1));    	
     }
 
 

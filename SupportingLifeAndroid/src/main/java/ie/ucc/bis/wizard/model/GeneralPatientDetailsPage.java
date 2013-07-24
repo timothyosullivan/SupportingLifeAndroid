@@ -43,19 +43,21 @@ public class GeneralPatientDetailsPage extends AbstractPage {
     @Override
     public void getReviewItems(ArrayList<ReviewItem> reviewItems) {
     	Resources resources = ((AbstractWizardModel) getModelCallbacks()).applicationContext.getResources();
+    	String reviewItemLabel = null;
+    	String reviewItemValue = null;
     	
     	// first name
-    	String firstNameLabel = resources.getString(R.string.general_patient_details_review_first_name);
-    	reviewItems.add(new ReviewItem(firstNameLabel, getPageData().getString(FIRST_NAME_DATA_KEY), getKey(), -1));
+    	reviewItemLabel = resources.getString(R.string.general_patient_details_review_first_name);
+    	reviewItems.add(new ReviewItem(reviewItemLabel, getPageData().getString(FIRST_NAME_DATA_KEY), getKey(), -1));
     	
     	// surname
-    	String surnameLabel = resources.getString(R.string.general_patient_details_review_surname);
-    	reviewItems.add(new ReviewItem(surnameLabel, getPageData().getString(SURNAME_DATA_KEY), getKey(), -1));
+    	reviewItemLabel = resources.getString(R.string.general_patient_details_review_surname);
+    	reviewItems.add(new ReviewItem(reviewItemLabel, getPageData().getString(SURNAME_DATA_KEY), getKey(), -1));
     	
     	// gender
-    	String genderLabel = resources.getString(R.string.general_patient_details_review_gender);
-    	String genderValue = getPageData().getString(GENDER_DATA_KEY + AssessmentWizardRadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
-    	reviewItems.add(new ReviewItem(genderLabel, genderValue, getKey(), -1));
+    	reviewItemLabel = resources.getString(R.string.general_patient_details_review_gender);
+    	reviewItemValue = getPageData().getString(GENDER_DATA_KEY + AssessmentWizardRadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
+    	reviewItems.add(new ReviewItem(reviewItemLabel, reviewItemValue, getKey(), -1));
     }
 
     @Override
