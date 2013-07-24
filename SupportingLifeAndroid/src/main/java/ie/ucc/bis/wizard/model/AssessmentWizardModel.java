@@ -4,6 +4,14 @@ import android.content.Context;
 
 public class AssessmentWizardModel extends AbstractWizardModel {
 
+	private static final String GENERAL_PATIENT_DETAILS_PAGE_TITLE = "Patient Details";
+	private static final String DANGER_SIGNS_PAGE_TITLE = "Danger Signs";
+	private static final String BREATHING_ASSESSMENT_PAGE_TITLE = "Breathing Assessment";
+	private static final String DIARRHOEA_ASSESSMENT_PAGE_TITLE = "Diarrhoea Assessment";
+	private static final String FEVER_ASSESSMENT_PAGE_TITLE = "Fever Assessment";
+	private static final String EAR_ASSESSMENT_PAGE_TITLE = "Ear Assessment";
+	
+	
 	/**
 	 * Constructor
 	 * 
@@ -23,16 +31,19 @@ public class AssessmentWizardModel extends AbstractWizardModel {
 		 * 3. Cough / Breathing Assessment Page
 		 * 4. Diarrhoea Assessment Page
 		 * 5. Fever Assessment Page
+		 * 6. Ear Assessment Page
 		 */	
 		return new PageList(new GeneralPatientDetailsPage(this, 
-				"Patient Details").setRequired(true),
+				GENERAL_PATIENT_DETAILS_PAGE_TITLE).setRequired(true),
 		new GeneralDangerSignsPage(this, 
-				"Danger Signs").setRequired(true),
+				DANGER_SIGNS_PAGE_TITLE).setRequired(true),
 		new BreathingAssessmentPage(this, 
-				"Breathing Assessment").setRequired(true),
+				BREATHING_ASSESSMENT_PAGE_TITLE).setRequired(true),
 		new DiarrhoeaAssessmentPage(this,
-				"Diarrhoea Assessment").setRequired(true),
+				DIARRHOEA_ASSESSMENT_PAGE_TITLE).setRequired(true),
 		new FeverAssessmentPage(this, 
-				"Fever Assessment").setRequired(true));		
+				FEVER_ASSESSMENT_PAGE_TITLE).setRequired(true),
+		new EarAssessmentPage(this,
+				EAR_ASSESSMENT_PAGE_TITLE).setRequired(true));		
 	}
 }

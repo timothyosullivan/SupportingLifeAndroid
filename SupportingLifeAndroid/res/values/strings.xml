@@ -40,6 +40,7 @@
     <!-- ASSESSMENT WIZARD BREAD-CRUMB UI -->
     <!-- ============================================================ -->
 
+
     <!-- ============================================================ -->
     <!-- ASSESSMENT WIZARD BREAD-CRUMB UI -->
     <!-- STAGE 1: GENERAL PATIENT DETAILS -->
@@ -82,7 +83,7 @@
     <!-- Cough / Breathing Review -->
     <string name="breathing_assessment_review_cough_difficult_breathing">Cough or Difficult Breathing</string>
     <string name="breathing_assessment_review_chest_indrawing">Chest Indrawing</string>
-    
+
     <!-- ============================================================ -->
     <!-- ASSESSMENT WIZARD BREAD-CRUMB UI -->
     <!-- STAGE 4: Diarrhoea Assessment -->
@@ -90,37 +91,50 @@
     <string name="diarrhoea_assessment_title">Diarrhoea</string>
     <string name="diarrhoea_assessment_radio_diarrhoea">Does the child have diarrhoea?</string>
     <string name="diarrhoea_assessment_radio_blood_stools">Is there blood in the stools?</string>
-    
+
     <!-- Diarrhoea Review -->
     <string name="diarrhoea_assessment_review_diarrhoea">Diarrhoea</string>
     <string name="diarrhoea_assessment_review_blood_stools">Blood in the Stools</string>
-    
+
     <!-- ============================================================ -->
     <!-- ASSESSMENT WIZARD BREAD-CRUMB UI -->
     <!-- STAGE 5: Fever Assessment -->
     <!-- ============================================================ -->
     <string name="fever_assessment_title">Fever</string>
-    
+
     <!-- Fever -->
     <string name="fever_assessment_radio_fever">Does the child have fever?</string>
-	<string name="fever_assessment_radio_fever_no">No</string>
-	<string name="fever_assessment_radio_fever_history">History</string>
-	<string name="fever_assessment_radio_fever_feels_hot">Feels Hot</string>
-	<string name="fever_assessment_radio_fever_temperature">Temperature > 37.5</string>
-    
+    <string name="fever_assessment_radio_fever_no">No</string>
+    <string name="fever_assessment_radio_fever_history">History</string>
+    <string name="fever_assessment_radio_fever_feels_hot">Feels Hot</string>
+    <string name="fever_assessment_radio_fever_temperature">Temperature > 37.5</string>
+
     <!-- Malaria Risk -->
     <string name="fever_assessment_radio_malaria_risk">Malaria Risk</string>
     <string name="fever_assessment_radio_malaria_risk_high">High</string>
     <string name="fever_assessment_radio_malaria_risk_low">Low</string>
     <string name="fever_assessment_radio_malaria_risk_no">No</string>
-    
     <string name="fever_assessment_duration">For how long? (days)</string>
 
     <!-- Fever Review -->
     <string name="fever_assessment_review_fever">Fever</string>
     <string name="fever_assessment_review_malaria_risk">Malaria Risk</string>
     <string name="fever_assessment_review_duration">For how long? (days)</string>
-    
+
+    <!-- ============================================================ -->
+    <!-- ASSESSMENT WIZARD BREAD-CRUMB UI -->
+    <!-- STAGE 6: Ear Assessment -->
+    <!-- ============================================================ -->
+    <string name="ear_assessment_title">Ear</string>
+    <string name="ear_assessment_radio_ear_problem">Does the child have an ear problem?</string>
+    <string name="ear_assessment_radio_ear_pain">Is there ear pain?</string>
+    <string name="ear_assessment_radio_ear_discharge">Is there ear discharge?</string>
+
+    <!-- Ear Review -->
+    <string name="ear_assessment_review_ear_problem">Ear Problem</string>
+    <string name="ear_assessment_review_ear_pain">Ear Pain</string>
+    <string name="ear_assessment_review_ear_discharge">Ear Discharge</string>
+
     <!-- ============================================================ -->
     <!-- ASSESSMENT WIZARD BREAD-CRUMB UI -->
     <!-- UNIVERSAL COMPONENTS -->
@@ -134,10 +148,11 @@
     <string name="assessment_wizard_review_button">Review</string>
     <string name="submit_confirm_message">Perform Medical Assessment</string>
     <string name="submit_confirm_button">Submit Patient Record</string>
-    
+
     <!-- ============================================================ -->
     <!-- TRAINING SCREEN -->
     <!-- ============================================================ -->
+
 
     <!-- ============================================================ -->
     <!-- ABOUT SCREEN -->
