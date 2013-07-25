@@ -3,9 +3,9 @@ package ie.ucc.bis.activity;
 import ie.ucc.bis.R;
 import ie.ucc.bis.wizard.model.AbstractPage;
 import ie.ucc.bis.wizard.model.AbstractWizardModel;
-import ie.ucc.bis.wizard.model.ModelCallbacks;
 import ie.ucc.bis.wizard.model.AssessmentWizardModel;
 import ie.ucc.bis.wizard.model.AssessmentWizardPagerAdapter;
+import ie.ucc.bis.wizard.model.ModelCallbacks;
 import ie.ucc.bis.wizard.ui.PageFragmentCallbacks;
 import ie.ucc.bis.wizard.ui.PageSelectedListener;
 import ie.ucc.bis.wizard.ui.ReviewFragmentCallbacks;
@@ -19,7 +19,6 @@ import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.view.ViewPager;
-import android.util.TypedValue;
 import android.view.View;
 import android.widget.Button;
 
@@ -154,19 +153,16 @@ public class AssessmentWizardActivity extends SupportingLifeBaseActivity impleme
     private void updateBottomBar() {
         int position = getViewPager().getCurrentItem();
         if (position == getCurrentPageSequence().size()) {
-            // change text and colour on the next button to indicate
+            // change text on the next button to indicate
         	// assessment data entry is complete
             getNextButton().setText(R.string.assessment_wizard_finish_button);
-            getNextButton().setBackgroundResource(R.drawable.blue_button);
-            getNextButton().setTextAppearance(this, R.style.BreadcrumbTextAppearanceFinish);
         } else {
         	getNextButton().setText(mEditingAfterReview
                     ? R.string.assessment_wizard_review_button
                     : R.string.assessment_wizard_next_button);
         	getNextButton().setBackgroundResource(R.drawable.breadcrumb_next_button);
-            TypedValue v = new TypedValue();
-            getTheme().resolveAttribute(android.R.attr.textAppearanceMedium, v, true);
-            getNextButton().setTextAppearance(this, v.resourceId);
+        	getNextButton().setTextColor(getResources().getColor(R.color.White));
+
             getNextButton().setEnabled(position != getSuppLifeWizardPagerAdapter().getCutOffPage());
         }
 

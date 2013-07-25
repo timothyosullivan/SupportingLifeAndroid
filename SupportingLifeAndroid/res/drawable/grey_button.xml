@@ -3,7 +3,7 @@
 <!-- GREY BUTTON -->
 <!-- ============================================================ -->
 <shape xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/grey_button" >
+    android:id="@+id/grey_button" style="?android:attr/borderlessButtonStyle" >
 
     <solid android:color="#F000" />
 

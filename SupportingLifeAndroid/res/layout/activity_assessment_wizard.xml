@@ -68,19 +68,21 @@
 
             <Button
                 android:id="@+id/prev_button"
+                style="@style/BreadcrumbTextAppearanceFinish" 
                 android:layout_width="0dp"
                 android:layout_height="fill_parent"
                 android:layout_weight="1"
                 android:background="@drawable/breadcrumb_previous_button"
-                android:text="@string/assessment_wizard_previous_button" />
+                android:text="@string/assessment_wizard_previous_button"/>
 
             <Button
                 android:id="@+id/next_button"
+                style="@style/BreadcrumbTextAppearanceFinish" 
                 android:layout_width="0dp"
                 android:layout_height="fill_parent"
                 android:layout_weight="1"
                 android:background="@drawable/breadcrumb_next_button"
-                android:text="@string/assessment_wizard_next_button" />
+                android:text="@string/assessment_wizard_next_button"/>
         </LinearLayout>
     </LinearLayout>
 
