@@ -129,6 +129,10 @@ public class AssessmentWizardActivity extends SupportingLifeBaseActivity impleme
 
         onPageTreeChanged();
         updateBottomBar();
+        
+		// add soft keyboard handler - essentially hiding soft
+		// keyboard when an EditText is not in focus
+		 addSoftKeyboardHandling(findViewById(R.id.assessment_wizard));
     }
 
 
