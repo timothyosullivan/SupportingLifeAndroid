@@ -245,9 +245,19 @@ public abstract class SupportingLifeBaseActivity extends FragmentActivity {
 	 * @param view
 	 */
 	public void hideSoftKeyboard() {
-	    InputMethodManager inputMethodManager = (InputMethodManager)  getSystemService(Activity.INPUT_METHOD_SERVICE);
-	    if (getCurrentFocus() != null) {
+	    if ((getCurrentFocus() != null) && (getCurrentFocus() instanceof EditText)) {
+	    	InputMethodManager inputMethodManager = (InputMethodManager)  getSystemService(Activity.INPUT_METHOD_SERVICE);
 	    	inputMethodManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
+	    	
+	    	// editText has just been left by user so want to remove focus
+	    	// [orange highlight and flashing cursor will be removed]
+	    	
+	    	// 1. To achieve this set the following attribute on the parent
+	    	// layout view - android:focusableInTouchMode="true" 
+	    	// This allows this view to receive focus
+	    	
+	    	// 2. Have the parent layout request focus
+	    	((ViewGroup) getWindow().getDecorView()).getChildAt(0).requestFocus();
 	    }
 	}
 }
