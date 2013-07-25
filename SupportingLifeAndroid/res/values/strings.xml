@@ -141,7 +141,12 @@
     <!-- ============================================================ -->
     <string name="malnutrition_assessment_title">Malnutrition and Anaemia</string>
     <string name="malnutrition_assessment_radio_oedema">Oedema of both feet</string>
+    
+    <!-- Weight for Age -->
     <string name="malnutrition_assessment_radio_weight_for_age">Weight for Age</string>
+    <string name="malnutrition_assessment_radio_weight_for_age_very_low">Very Low</string>
+    <string name="malnutrition_assessment_radio_weight_for_age_not_very_low">Not Very Low</string>    
+    
     <string name="malnutrition_assessment_radio_visible_severe_wasting">Visible Severe Wasting</string>
 
     <!-- Malnutrition and Anaemia Review -->

@@ -72,21 +72,21 @@
                 android:orientation="horizontal" >
 
                 <RadioButton
-                    android:id="@+id/malnutrition_assessment_radio_weight_for_age_yes"
+                    android:id="@+id/malnutrition_assessment_radio_weight_for_age_very_low"
                     android:layout_width="112dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.67"
                     android:checked="false"
-                    android:text="@string/assessment_wizard_radio_yes" />
+                    android:text="@string/malnutrition_assessment_radio_weight_for_age_very_low" />
 
                 <RadioButton
-                    android:id="@+id/malnutrition_assessment_radio_weight_for_age_no"
+                    android:id="@+id/malnutrition_assessment_radio_weight_for_age_not_very_low"
                     android:layout_width="118dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="top"
                     android:layout_weight="0.32"
                     android:checked="false"
-                    android:text="@string/assessment_wizard_radio_no" />
+                    android:text="@string/malnutrition_assessment_radio_weight_for_age_not_very_low" />
             </RadioGroup>
 
             <!-- ============================================================ -->
