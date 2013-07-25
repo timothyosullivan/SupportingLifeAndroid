@@ -11,10 +11,10 @@
     -->
     <solid android:color="#08000000" />
 
-    <!-- white coloured boundary -->
+    <!-- green coloured boundary -->
     <stroke
-        android:width="4px"
-        android:color="@color/White" />
+        android:width="5px"
+        android:color="@color/DarkGreen" />
 
     <padding
         android:bottom="7dp"

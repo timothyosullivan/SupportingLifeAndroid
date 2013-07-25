@@ -10,7 +10,7 @@ public class AssessmentWizardModel extends AbstractWizardModel {
 	private static final String DIARRHOEA_ASSESSMENT_PAGE_TITLE = "Diarrhoea Assessment";
 	private static final String FEVER_ASSESSMENT_PAGE_TITLE = "Fever Assessment";
 	private static final String EAR_ASSESSMENT_PAGE_TITLE = "Ear Assessment";
-	private static final String MALNUTRITION_ASSESSMENT_PAGE_TITLE = "Malnutrition and Anaemia Assessment";
+	private static final String MALNUTRITION_ASSESSMENT_PAGE_TITLE = "Malnutrition Assessment";
 	
 	
 	/**
