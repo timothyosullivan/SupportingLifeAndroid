@@ -11,6 +11,7 @@ public class AssessmentWizardModel extends AbstractWizardModel {
 	private static final String FEVER_ASSESSMENT_PAGE_TITLE = "Fever Assessment";
 	private static final String EAR_ASSESSMENT_PAGE_TITLE = "Ear Assessment";
 	private static final String MALNUTRITION_ASSESSMENT_PAGE_TITLE = "Malnutrition Assessment";
+	private static final String IMMUNIZATION_ASSESSMENT_PAGE_TITLE = "Immunization Assessment";
 	
 	
 	/**
@@ -34,6 +35,7 @@ public class AssessmentWizardModel extends AbstractWizardModel {
 		 * 5. Fever Assessment Page
 		 * 6. Ear Assessment Page
 		 * 7. Malnutrition and Anaemia Page
+		 * 8. Immunization Status Page
 		 * 
 		 */	
 		return new PageList(new GeneralPatientDetailsPage(this, 
@@ -49,6 +51,8 @@ public class AssessmentWizardModel extends AbstractWizardModel {
 		new EarAssessmentPage(this,
 				EAR_ASSESSMENT_PAGE_TITLE).setRequired(true),
 		new MalnutritionAssessmentPage(this,
-				MALNUTRITION_ASSESSMENT_PAGE_TITLE).setRequired(true));		
+				MALNUTRITION_ASSESSMENT_PAGE_TITLE).setRequired(true),
+		new ImmunizationAssessmentPage(this,
+				IMMUNIZATION_ASSESSMENT_PAGE_TITLE).setRequired(true));		
 	}
 }

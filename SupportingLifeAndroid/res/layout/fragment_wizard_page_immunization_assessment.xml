@@ -1,0 +1,95 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/SupportingLifePage"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <!-- ============================================================ -->
+    <!-- ASSESSMENT BREAD-CRUMB WIZARD UI -->
+    <!-- ASSESSMENT PAGE: IMMUNIZATION STATUS ASSESSMENT -->
+    <!-- ============================================================ -->
+
+    <TextView style="@style/WizardPageTitle" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="218dp"
+            android:orientation="vertical" >
+
+            <!-- ============================================================ -->
+            <!-- BCG VACCINE RADIO BUTTON GROUP -->
+            <!-- ============================================================ -->
+
+            <TextView
+                style="@style/WizardFormLabel"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="bottom"
+                android:text="@string/immunization_assessment_radio_vaccine_bcg" />
+
+            <RadioGroup
+                android:id="@+id/immunization_assessment_radio_vaccine_bcg"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+
+                <RadioButton
+                    android:id="@+id/immunization_assessment_radio_vaccine_bcg_already_received"
+                    android:layout_width="112dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.67"
+                    android:checked="false"
+                    android:text="@string/immunization_assessment_radio_vaccine_already_received" />
+
+                <RadioButton
+                    android:id="@+id/immunization_assessment_radio_vaccine_bcg_receive_today"
+                    android:layout_width="118dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="top"
+                    android:layout_weight="0.32"
+                    android:checked="false"
+                    android:text="@string/immunization_assessment_radio_vaccine_receive_today" />
+            </RadioGroup>
+
+            <!-- ============================================================ -->
+            <!-- MEASLES VACCINE RADIO BUTTON GROUP -->
+            <!-- ============================================================ -->
+
+            <TextView
+                style="@style/WizardFormLabel"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="bottom"
+                android:text="@string/immunization_assessment_radio_vaccine_measles" />
+
+            <RadioGroup
+                android:id="@+id/immunization_assessment_radio_vaccine_measles"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+
+                <RadioButton
+                    android:id="@+id/immunization_assessment_radio_vaccine_measles_already_received"
+                    android:layout_width="112dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.67"
+                    android:checked="false"
+                    android:text="@string/immunization_assessment_radio_vaccine_already_received" />
+
+                <RadioButton
+                    android:id="@+id/immunization_assessment_radio_vaccine_measles_receive_today"
+                    android:layout_width="118dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="top"
+                    android:layout_weight="0.32"
+                    android:checked="false"
+                    android:text="@string/immunization_assessment_radio_vaccine_receive_today" />
+            </RadioGroup>
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

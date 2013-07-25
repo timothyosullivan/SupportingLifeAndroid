@@ -156,6 +156,22 @@
 
     <!-- ============================================================ -->
     <!-- ASSESSMENT WIZARD BREAD-CRUMB UI -->
+    <!-- STAGE 8: Immunization Status Assessment -->
+    <!-- ============================================================ -->
+    <string name="immunization_assessment_title">Immunization Status</string>
+    <string name="immunization_assessment_radio_vaccine_bcg">BCG</string>
+    <string name="immunization_assessment_radio_vaccine_measles">Measles</string>
+    
+    <!-- Vaccine Categories -->
+    <string name="immunization_assessment_radio_vaccine_already_received">Already Received</string>
+    <string name="immunization_assessment_radio_vaccine_receive_today">Receive Today</string>
+ 
+    <!-- Immunization Status Review -->
+    <string name="immunization_assessment_review_vaccine_bcg">Vaccine: BCG</string>
+    <string name="immunization_assessment_review_vaccine_measles">Vaccine: Measles</string>
+    
+    <!-- ============================================================ -->
+    <!-- ASSESSMENT WIZARD BREAD-CRUMB UI -->
     <!-- UNIVERSAL COMPONENTS -->
     <!-- ============================================================ -->
     <string name="assessment_wizard_review_title">Review</string>
