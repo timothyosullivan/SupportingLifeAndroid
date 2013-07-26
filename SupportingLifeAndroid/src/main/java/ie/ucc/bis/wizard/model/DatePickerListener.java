@@ -28,11 +28,9 @@ public class DatePickerListener implements OnFocusChangeListener {
 	}
 
 	public void onFocusChange(View v, boolean hasFocus) {
-		if (hasFocus) {
-			FragmentTransaction fragmentTransaction = getInvokingFragment().getFragmentManager().beginTransaction();
-			DialogFragment dialogFragment = DatePickerDialogFragment.create((EditText) v, getPage(), getDataKey());		
-			dialogFragment.show(fragmentTransaction, "date_dialog");		
-		}	
+		FragmentTransaction fragmentTransaction = getInvokingFragment().getFragmentManager().beginTransaction();
+		DialogFragment dialogFragment = DatePickerDialogFragment.create((EditText) v, getPage(), getDataKey());		
+		dialogFragment.show(fragmentTransaction, "date_dialog");
 	}
 	
 	/**

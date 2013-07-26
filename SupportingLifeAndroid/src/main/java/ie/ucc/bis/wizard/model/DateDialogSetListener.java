@@ -1,7 +1,11 @@
 package ie.ucc.bis.wizard.model;
 
 import ie.ucc.bis.wizard.ui.DatePickerDialogFragment;
+
+import java.util.Calendar;
+
 import android.app.DatePickerDialog.OnDateSetListener;
+import java.text.DateFormat;
 import android.widget.DatePicker;
 
 public class DateDialogSetListener implements OnDateSetListener {
@@ -19,13 +23,21 @@ public class DateDialogSetListener implements OnDateSetListener {
 
 
 	public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+
+		final Calendar calendar = Calendar.getInstance();
+		calendar.set(year, monthOfYear, dayOfMonth);
+		
+		DateFormat dateFormt = android.text.format.DateFormat.getLongDateFormat(getDatePickerDialogFragment().getActivity().getApplicationContext());
+		
+		String dateString = dateFormt.format(calendar.getTime()).toString();
+		
 		// update data record associated with this page
 		getDatePickerDialogFragment().getPage().getPageData().putString(getDatePickerDialogFragment().getDataKey(),
-                (Integer.toString(dayOfMonth) != null) ? Integer.toString(dayOfMonth) : null);
+                (dateString != null) ? dateString : null);
 		getDatePickerDialogFragment().getPage().notifyDataChanged();
 		
 		// update view
-		getDatePickerDialogFragment().getDateEditText().setText(Integer.toString(dayOfMonth) + " " + Integer.toString(monthOfYear));
+		getDatePickerDialogFragment().getDateEditText().setText(dateString);
 	}
 
 	/**
