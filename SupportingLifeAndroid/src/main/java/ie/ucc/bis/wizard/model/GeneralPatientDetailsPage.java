@@ -19,6 +19,7 @@ import android.text.TextUtils;
 public class GeneralPatientDetailsPage extends AbstractPage {
     public static final String FIRST_NAME_DATA_KEY = "FIRST_NAME";
     public static final String SURNAME_DATA_KEY = "SURNAME";
+    public static final String DATE_OF_BIRTH_DATA_KEY = "DATE_OF_BIRTH";   
     public static final String GENDER_DATA_KEY = "GENDER";
     
     private GeneralPatientDetailsFragment generalPatientDetailsFragment;

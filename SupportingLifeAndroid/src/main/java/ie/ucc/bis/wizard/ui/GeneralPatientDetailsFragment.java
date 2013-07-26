@@ -4,10 +4,12 @@ import ie.ucc.bis.R;
 import ie.ucc.bis.activity.SupportingLifeBaseActivity;
 import ie.ucc.bis.wizard.model.AssessmentWizardRadioGroupListener;
 import ie.ucc.bis.wizard.model.AssessmentWizardTextWatcher;
+import ie.ucc.bis.wizard.model.DatePickerListener;
 import ie.ucc.bis.wizard.model.GeneralPatientDetailsPage;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.text.InputType;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,6 +33,7 @@ public class GeneralPatientDetailsFragment extends Fragment {
     private String pageKey;
     private EditText firstNameEditText;
     private EditText surnameEditText;
+    private EditText dateBirthEditText;
     private RadioGroup genderRadioGroup;
     
     public static GeneralPatientDetailsFragment create(String pageKey) {
@@ -71,6 +74,10 @@ public class GeneralPatientDetailsFragment extends Fragment {
         setSurnameEditText(((EditText) rootView.findViewById(R.id.general_patient_details_surname)));
         getSurnameEditText().setText(getGeneralPatientDetailsPage().getPageData().getString(GeneralPatientDetailsPage.SURNAME_DATA_KEY));
         
+        // date of birth
+        setDateBirthEditText((EditText) rootView.findViewById(R.id.general_patient_details_date_of_birth));
+        getDateBirthEditText().setText(getGeneralPatientDetailsPage().getPageData().getString(GeneralPatientDetailsPage.DATE_OF_BIRTH_DATA_KEY));
+                        
         // gender
         setGenderRadioGroup((RadioGroup) rootView.findViewById(R.id.general_patient_details_radio_gender));
         getGenderRadioGroup().check(getGeneralPatientDetailsPage()
@@ -81,7 +88,7 @@ public class GeneralPatientDetailsFragment extends Fragment {
 		((SupportingLifeBaseActivity) getActivity()).addSoftKeyboardHandling(rootView);
 
         return rootView;
-    }
+    } 
 
     @Override
     public void onAttach(Activity activity) {
@@ -111,6 +118,12 @@ public class GeneralPatientDetailsFragment extends Fragment {
         getSurnameEditText().addTextChangedListener(
         		new AssessmentWizardTextWatcher(getGeneralPatientDetailsPage(), 
         				GeneralPatientDetailsPage.SURNAME_DATA_KEY));
+        
+        getDateBirthEditText().setOnFocusChangeListener(new DatePickerListener(this, getGeneralPatientDetailsPage(), 
+				GeneralPatientDetailsPage.DATE_OF_BIRTH_DATA_KEY));
+        
+        // turn off soft keyboard input method for 'Date of Birth' EditText
+        getDateBirthEditText().setInputType(InputType.TYPE_NULL); 
         
         getGenderRadioGroup().setOnCheckedChangeListener(
         		new AssessmentWizardRadioGroupListener(getGeneralPatientDetailsPage(),
@@ -199,5 +212,19 @@ public class GeneralPatientDetailsFragment extends Fragment {
 	 */			
 	public void setGenderRadioGroup(RadioGroup genderRadioGroup) {
 		this.genderRadioGroup = genderRadioGroup;
+	}
+
+	/**
+	 * Getter Method: getDateBirthEditText()
+	 */	
+	public EditText getDateBirthEditText() {
+		return dateBirthEditText;
+	}
+
+	/**
+	 * Setter Method: setDateBirthEditText()
+	 */	
+	public void setDateBirthEditText(EditText dateBirthEditText) {
+		this.dateBirthEditText = dateBirthEditText;
 	}
 }

@@ -48,12 +48,15 @@
     <string name="general_patient_details_title">Patient Details</string>
     <string name="general_patient_details_first_name">First Name:</string>
     <string name="general_patient_details_surname">Surname:</string>
+    <string name="general_patient_details_date_of_birth">Date of Birth: </string>
     <string name="general_patient_details_radio_gender">Gender:</string>
     <string name="general_patient_details_radio_gender_male">Male</string>
     <string name="general_patient_details_radio_gender_female">Female</string>
+    
     <!-- Patient Details Review -->
     <string name="general_patient_details_review_first_name">First Name</string>
     <string name="general_patient_details_review_surname">Surname</string>
+    <string name="general_patient_details_review_date_of_birth">Date of Birth</string>
     <string name="general_patient_details_review_gender">Gender</string>
 
     <!-- HINTS -->
