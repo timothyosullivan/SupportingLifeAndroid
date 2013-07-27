@@ -49,6 +49,10 @@ public class MalnutritionAssessmentPage extends AbstractPage {
     	String reviewItemLabel = null;
     	String reviewItemValue = null;
     	
+    	// review header
+    	reviewItemLabel = resources.getString(R.string.malnutrition_assessment_title);
+    	reviewItems.add(new ReviewItem(reviewItemLabel, null, getKey(), -1, true));
+    	
     	// oedema of both feet
     	reviewItemLabel = resources.getString(R.string.malnutrition_assessment_review_oedema);
     	reviewItemValue = getPageData().getString(OEDEMA_DATA_KEY + AssessmentWizardRadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);

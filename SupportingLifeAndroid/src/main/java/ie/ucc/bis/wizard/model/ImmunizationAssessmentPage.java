@@ -48,6 +48,10 @@ public class ImmunizationAssessmentPage extends AbstractPage {
     	String reviewItemLabel = null;
     	String reviewItemValue = null;
     	
+    	// review header
+    	reviewItemLabel = resources.getString(R.string.immunization_assessment_title);
+    	reviewItems.add(new ReviewItem(reviewItemLabel, null, getKey(), -1, true));
+    	
     	// BCG vaccine
     	reviewItemLabel = resources.getString(R.string.immunization_assessment_review_vaccine_bcg);
     	reviewItemValue = getPageData().getString(BCG_VACCINE_DATA_KEY + AssessmentWizardRadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);

@@ -50,6 +50,10 @@ public class GeneralPatientDetailsPage extends AbstractPage {
     	String reviewItemLabel = null;
     	String reviewItemValue = null;
     	
+    	// review header
+    	reviewItemLabel = resources.getString(R.string.general_patient_details_title);
+    	reviewItems.add(new ReviewItem(reviewItemLabel, null, getKey(), -1, true));	
+    	
     	// first name
     	reviewItemLabel = resources.getString(R.string.general_patient_details_review_first_name);
     	reviewItems.add(new ReviewItem(reviewItemLabel, getPageData().getString(FIRST_NAME_DATA_KEY), getKey(), -1));

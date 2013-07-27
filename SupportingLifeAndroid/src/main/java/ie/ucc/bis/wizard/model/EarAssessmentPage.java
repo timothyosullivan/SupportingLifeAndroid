@@ -48,6 +48,10 @@ public class EarAssessmentPage extends AbstractPage {
     	String reviewItemLabel = null;
     	String reviewItemValue = null;
     	
+    	// review header
+    	reviewItemLabel = resources.getString(R.string.ear_assessment_title);
+    	reviewItems.add(new ReviewItem(reviewItemLabel, null, getKey(), -1, true));
+    	
     	// ear problem
     	reviewItemLabel = resources.getString(R.string.ear_assessment_review_ear_problem);
     	reviewItemValue = getPageData().getString(EAR_PROBLEM_DATA_KEY + AssessmentWizardRadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);

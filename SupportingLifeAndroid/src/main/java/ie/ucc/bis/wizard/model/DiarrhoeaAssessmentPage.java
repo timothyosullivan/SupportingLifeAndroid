@@ -46,6 +46,10 @@ public class DiarrhoeaAssessmentPage extends AbstractPage {
     	Resources resources = appContext.getResources();
     	String reviewItemLabel = null;
     	String reviewItemValue = null;
+    	
+    	// review header
+    	reviewItemLabel = resources.getString(R.string.diarrhoea_assessment_title);
+    	reviewItems.add(new ReviewItem(reviewItemLabel, null, getKey(), -1, true));	
 
     	// diarrhoea
     	reviewItemLabel = resources.getString(R.string.diarrhoea_assessment_review_diarrhoea);

@@ -107,6 +107,11 @@ public class ReviewFragment extends ListFragment implements ModelCallbacks {
 
 
     private class ReviewAdapter extends BaseAdapter {
+    	private static final int HEADER_ITEM_TYPE = 0;
+    	private static final int SIMPLE_ITEM_TYPE = 1;
+    	private static final int MAX_TYPE_COUNT = 2;
+    	private static final String DEFAULT_ITEM_VALUE = "--------";
+    	
         @Override
         public boolean hasStableIds() {
             return true;
@@ -114,12 +119,20 @@ public class ReviewFragment extends ListFragment implements ModelCallbacks {
 
         @Override
         public int getItemViewType(int position) {
-            return 0;
+        	// need to ascertain if we are dealing with a header
+        	// or just a simple list item
+        	ReviewItem reviewItem = mCurrentReviewItems.get(position);
+        	if (reviewItem.isHeaderItem()) {
+        		return HEADER_ITEM_TYPE;
+        	}
+        	else {
+        		return SIMPLE_ITEM_TYPE;
+        	}
         }
 
         @Override
         public int getViewTypeCount() {
-            return 1;
+            return MAX_TYPE_COUNT;
         }
 
         @Override
@@ -137,15 +150,29 @@ public class ReviewFragment extends ListFragment implements ModelCallbacks {
 
         public View getView(int position, View view, ViewGroup container) {
             LayoutInflater inflater = LayoutInflater.from(getActivity());
-            View rootView = inflater.inflate(R.layout.list_item_review, container, false);
-
+            int itemType = getItemViewType(position);
+            View rootView = null;
+            String displayItemValue = null;
+            
             ReviewItem reviewItem = mCurrentReviewItems.get(position);
-            String value = reviewItem.getDisplayValue();
-            if (TextUtils.isEmpty(value)) {
-                value = "--------";
-            }
-            ((TextView) rootView.findViewById(android.R.id.text1)).setText(reviewItem.getTitle());  
-            ((TextView) rootView.findViewById(android.R.id.text2)).setText(value);
+            
+            switch (itemType) {
+            	case HEADER_ITEM_TYPE : 
+            			rootView = inflater.inflate(R.layout.list_item_header_review, container, false);
+            			((TextView) rootView.findViewById(R.id.review_list_header)).setText(reviewItem.getTitle());
+            			break;
+            			
+            	case SIMPLE_ITEM_TYPE :
+        			rootView = inflater.inflate(R.layout.list_item_review, container, false);
+        			((TextView) rootView.findViewById(R.id.review_list_item_label)).setText(reviewItem.getTitle());
+        			
+        			displayItemValue = reviewItem.getDisplayValue();
+                    if (TextUtils.isEmpty(displayItemValue)) {
+                    	displayItemValue = DEFAULT_ITEM_VALUE;
+                    }
+        			((TextView) rootView.findViewById(R.id.review_list_item_value)).setText(displayItemValue);
+        			break;
+            } // end of switch
             return rootView;
         }
 
@@ -166,8 +193,7 @@ public class ReviewFragment extends ListFragment implements ModelCallbacks {
 	 * Setter Method: setReviewFragmentCallbacks()
 	 * 
 	 */  	
-	public void setReviewFragmentCallbacks(
-			ReviewFragmentCallbacks reviewFragmentCallbacks) {
+	public void setReviewFragmentCallbacks(ReviewFragmentCallbacks reviewFragmentCallbacks) {
 		this.reviewFragmentCallbacks = reviewFragmentCallbacks;
 	}
 }

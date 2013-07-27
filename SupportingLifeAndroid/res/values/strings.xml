@@ -88,7 +88,7 @@
     <!-- ASSESSMENT WIZARD BREAD-CRUMB UI -->
     <!-- STAGE 3: Cough / Breathing Assessment -->
     <!-- ============================================================ -->
-    <string name="breathing_assessment_title">Cough \\ Breathing</string>
+    <string name="breathing_assessment_title">Breathing Assessment</string>
     <string name="breathing_assessment_radio_cough_difficult_breathing">Does the child have cough or difficult breathing?</string>
     <string name="breathing_assessment_radio_chest_indrawing">Chest indrawing:</string>
     <!-- Cough / Breathing Review -->
@@ -99,7 +99,7 @@
     <!-- ASSESSMENT WIZARD BREAD-CRUMB UI -->
     <!-- STAGE 4: Diarrhoea Assessment -->
     <!-- ============================================================ -->
-    <string name="diarrhoea_assessment_title">Diarrhoea</string>
+    <string name="diarrhoea_assessment_title">Diarrhoea Assessment</string>
     <string name="diarrhoea_assessment_radio_diarrhoea">Does the child have diarrhoea?</string>
     <string name="diarrhoea_assessment_radio_blood_stools">Is there blood in the stools?</string>
 
@@ -111,7 +111,7 @@
     <!-- ASSESSMENT WIZARD BREAD-CRUMB UI -->
     <!-- STAGE 5: Fever Assessment -->
     <!-- ============================================================ -->
-    <string name="fever_assessment_title">Fever</string>
+    <string name="fever_assessment_title">Fever Assessment</string>
 
     <!-- Fever -->
     <string name="fever_assessment_radio_fever">Does the child have fever?</string>
@@ -136,7 +136,7 @@
     <!-- ASSESSMENT WIZARD BREAD-CRUMB UI -->
     <!-- STAGE 6: Ear Assessment -->
     <!-- ============================================================ -->
-    <string name="ear_assessment_title">Ear</string>
+    <string name="ear_assessment_title">Ear Assessment</string>
     <string name="ear_assessment_radio_ear_problem">Does the child have an ear problem?</string>
     <string name="ear_assessment_radio_ear_pain">Is there ear pain?</string>
     <string name="ear_assessment_radio_ear_discharge">Is there ear discharge?</string>
@@ -150,7 +150,7 @@
     <!-- ASSESSMENT WIZARD BREAD-CRUMB UI -->
     <!-- STAGE 7: Malnutrition and Anaemia Assessment -->
     <!-- ============================================================ -->
-    <string name="malnutrition_assessment_title">Malnutrition and Anaemia</string>
+    <string name="malnutrition_assessment_title">Malnutrition Assessment</string>
     <string name="malnutrition_assessment_radio_oedema">Oedema of both feet</string>
 
     <!-- Weight for Age -->

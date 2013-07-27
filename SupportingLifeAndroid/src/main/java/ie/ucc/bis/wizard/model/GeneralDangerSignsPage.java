@@ -48,6 +48,10 @@ public class GeneralDangerSignsPage extends AbstractPage {
     	String reviewItemLabel = null;
     	String reviewItemValue = null;
 
+    	// review header
+    	reviewItemLabel = resources.getString(R.string.general_danger_signs_title);
+    	reviewItems.add(new ReviewItem(reviewItemLabel, null, getKey(), -1, true));
+    	
     	// not able to drink or breastfeed
     	reviewItemLabel = resources.getString(R.string.general_danger_signs_review_drink_breastfeed);
     	reviewItemValue = getPageData().getString(DRINK_BREASTFEED_DATA_KEY + AssessmentWizardRadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);

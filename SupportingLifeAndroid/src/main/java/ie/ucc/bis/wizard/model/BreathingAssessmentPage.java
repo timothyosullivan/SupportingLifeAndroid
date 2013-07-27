@@ -46,6 +46,10 @@ public class BreathingAssessmentPage extends AbstractPage {
     	String reviewItemLabel = null;
     	String reviewItemValue = null;
     	
+    	// review header
+    	reviewItemLabel = resources.getString(R.string.breathing_assessment_title);
+    	reviewItems.add(new ReviewItem(reviewItemLabel, null, getKey(), -1, true));	
+    	
     	// does the child have cough or difficult breathing?
     	reviewItemLabel = resources.getString(R.string.breathing_assessment_review_cough_difficult_breathing);
     	reviewItemValue = getPageData().getString(COUGH_DIFFICULT_BREATHING_DATA_KEY + AssessmentWizardRadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);

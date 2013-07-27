@@ -12,16 +12,45 @@ public class ReviewItem {
     private String title;
     private String displayValue;
     private String pageKey;
+    private boolean headerItem;
 
+    /**
+     * Constructor
+     * 
+     * @param title
+     * @param displayValue
+     * @param pageKey
+     */
     public ReviewItem(String title, String displayValue, String pageKey) {
-        this(title, displayValue, pageKey, DEFAULT_WEIGHT);
+        this(title, displayValue, pageKey, DEFAULT_WEIGHT, false);
     }
 
+    /**
+     * Constructor
+     * 
+     * @param title
+     * @param displayValue
+     * @param pageKey
+     * @param weight
+     */
     public ReviewItem(String title, String displayValue, String pageKey, int weight) {
+    	this(title, displayValue, pageKey, weight, false);
+    }
+    
+    /**
+     * Constructor
+     * 
+     * @param title
+     * @param displayValue
+     * @param pageKey
+     * @param weight
+     */
+    public ReviewItem(String title, String displayValue, String pageKey, int weight, boolean headerItem) {
         setTitle(title);
         setDisplayValue(displayValue);
         setPageKey(pageKey);
         setWeight(weight);
+        setHeaderItem(headerItem);
     }
 
     public String getDisplayValue() {
@@ -55,4 +84,12 @@ public class ReviewItem {
     public void setWeight(int weight) {
         this.weight = weight;
     }
+
+	public boolean isHeaderItem() {
+		return headerItem;
+	}
+
+	public void setHeaderItem(boolean headerItem) {
+		this.headerItem = headerItem;
+	}
 }

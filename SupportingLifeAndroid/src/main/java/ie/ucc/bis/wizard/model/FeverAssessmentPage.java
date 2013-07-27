@@ -48,6 +48,10 @@ public class FeverAssessmentPage extends AbstractPage {
     	Resources resources = appContext.getResources();
     	String reviewItemLabel = null;
     	String reviewItemValue = null;
+    	
+    	// review header
+    	reviewItemLabel = resources.getString(R.string.fever_assessment_title);
+    	reviewItems.add(new ReviewItem(reviewItemLabel, null, getKey(), -1, true));
 
     	// fever
     	reviewItemLabel = resources.getString(R.string.fever_assessment_review_fever);
