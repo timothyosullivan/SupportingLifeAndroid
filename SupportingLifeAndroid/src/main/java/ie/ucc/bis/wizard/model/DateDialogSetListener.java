@@ -36,8 +36,9 @@ public class DateDialogSetListener implements OnDateSetListener {
                 (dateString != null) ? dateString : null);
 		getDatePickerDialogFragment().getPage().notifyDataChanged();
 		
-		// update view
+		// update view with date selected and toggle focus off
 		getDatePickerDialogFragment().getDateEditText().setText(dateString);
+		getDatePickerDialogFragment().getDateEditText().clearFocus();
 	}
 
 	/**

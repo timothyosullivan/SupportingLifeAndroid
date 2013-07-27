@@ -3,7 +3,11 @@ package ie.ucc.bis.wizard.ui;
 import ie.ucc.bis.wizard.model.AbstractPage;
 import ie.ucc.bis.wizard.model.DateDialogSetListener;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
 
 import android.app.DatePickerDialog;
 import android.app.Dialog;
@@ -35,12 +39,24 @@ public class DatePickerDialogFragment extends DialogFragment {
     
 	public Dialog onCreateDialog(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-		
-		// Use the current date as the default date in the picker
+        int year, month, day;
+ 
+		// Use the current date as the default date if a date has not been 
+        // previously configured by the picker
 		final Calendar cal = Calendar.getInstance();
-		int year = cal.get(Calendar.YEAR);
-		int month = cal.get(Calendar.MONTH);
-		int day = cal.get(Calendar.DAY_OF_MONTH);
+		String datePreviouslyChosen = getPage().getPageData().getString(getDataKey());
+		if (datePreviouslyChosen != null) {
+			try {
+				Date previousDate = new SimpleDateFormat("dd MMMM yyyy", Locale.ENGLISH).parse(datePreviouslyChosen);
+				cal.setTime(previousDate);	
+			} catch (ParseException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		year = cal.get(Calendar.YEAR);
+		month = cal.get(Calendar.MONTH);
+		day = cal.get(Calendar.DAY_OF_MONTH);
 
 		// Create a new instance of DatePickerDialog and return it
 		return new DatePickerDialog(getActivity(), new DateDialogSetListener(this), year, month, day);
