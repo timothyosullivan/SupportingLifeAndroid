@@ -1,102 +1,164 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     style="@style/SupportingLifePage"
-    android:layout_height="match_parent"
-    android:layout_width="match_parent"  >
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
 
-<!-- ============================================================ -->
-<!-- ASSESSMENT BREAD-CRUMB WIZARD UI -->
-<!-- ASSESSMENT PAGE: GENERAL PATIENT DETAILS -->
-<!-- ============================================================ -->
+    <!-- ============================================================ -->
+    <!-- ASSESSMENT BREAD-CRUMB WIZARD UI -->
+    <!-- ASSESSMENT PAGE: GENERAL PATIENT DETAILS -->
+    <!-- ============================================================ -->
+
     <TextView style="@style/WizardPageTitle" />
 
-    <ScrollView android:layout_height="match_parent"
-    	android:layout_width="match_parent" >
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="218dp"
             android:orientation="vertical" >
 
-			<!-- ============================================================ -->
-			<!-- FIRST NAME -->
-			<!-- ============================================================ --> 
-            <TextView style="@style/WizardFormLabel"
+            <!-- ============================================================ -->
+            <!-- FIRST NAME -->
+            <!-- ============================================================ -->
+
+            <TextView
+                style="@style/WizardFormLabel"
                 android:text="@string/general_patient_details_first_name" />
 
-            <EditText android:id="@+id/general_patient_details_first_name"
+            <EditText
+                android:id="@+id/general_patient_details_first_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:saveEnabled="false"
-                android:inputType="textCapWords"
+                android:layout_marginBottom="10dp"
                 android:hint="@string/general_patient_details_first_name_hint"
-                android:layout_marginBottom="16dp" />
+                android:inputType="textCapWords"
+                android:saveEnabled="false" />
 
-			<!-- ============================================================ -->
-			<!-- SURNAME -->
-			<!-- ============================================================ -->             
-            <TextView style="@style/WizardFormLabel"
+            <!-- ============================================================ -->
+            <!-- SURNAME -->
+            <!-- ============================================================ -->
+
+            <TextView
+                style="@style/WizardFormLabel"
                 android:text="@string/general_patient_details_surname" />
 
-            <EditText android:id="@+id/general_patient_details_surname"
+            <EditText
+                android:id="@+id/general_patient_details_surname"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:saveEnabled="false"
-                android:inputType="textCapWords"
                 android:layout_marginBottom="10dp"
-                android:hint="@string/general_patient_details_surname_hint" />
+                android:hint="@string/general_patient_details_surname_hint"
+                android:inputType="textCapWords"
+                android:saveEnabled="false" />
 
-			<!-- ============================================================ -->
-			<!-- DATE OF BIRTH -->
-			<!-- Intention is to display a text box that looks like a spinner -->
-			<!-- to activate a date picker dialog. This is analoguos to the   -->
-			<!-- approach in the Google Calendar App -->
-			<!-- ============================================================ -->             
-            <TextView style="@style/WizardFormLabel"
+            <!-- ============================================================ -->
+            <!-- DATE OF BIRTH -->
+            <!-- Intention is to display a text box that looks like a spinner -->
+            <!-- to activate a date picker dialog. This is analoguos to the -->
+            <!-- approach in the Google Calendar App -->
+            <!-- ============================================================ -->
+
+            <TextView
+                style="@style/WizardFormLabel"
                 android:text="@string/general_patient_details_date_of_birth" />
 
-            <EditText android:id="@+id/general_patient_details_date_of_birth"
+            <EditText
+                android:id="@+id/general_patient_details_date_of_birth"
                 style="@android:style/Widget.Holo.Light.Spinner"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:saveEnabled="false" />
+
+            <!-- ============================================================ -->
+            <!-- WEIGHT -->
+            <!-- ============================================================ -->
+
+            <TextView
+                style="@style/WizardFormLabel"
+                android:text="@string/general_patient_details_weight" />
+
+            <EditText
+                android:id="@+id/general_patient_details_weight"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:inputType="numberDecimal"
+                android:saveEnabled="false" />
+
+            <!-- ============================================================ -->
+            <!-- TEMPERATURE -->
+            <!-- ============================================================ -->
+
+            <TextView
+                android:id="@+id/general_patient_details_temperature_label"
+                style="@style/WizardFormLabel"
+                android:text="@string/general_patient_details_temperature" />
+
+            <EditText
+                android:id="@+id/general_patient_details_temperature"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:inputType="numberDecimal"
+                android:saveEnabled="false" />
+
+            <!-- ============================================================ -->
+            <!-- GENDER -->
+            <!-- ============================================================ -->
+
+            <TextView
+                style="@style/WizardFormLabel"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="bottom"
+                android:text="@string/general_patient_details_radio_gender" />
+
+            <RadioGroup
+                android:id="@+id/general_patient_details_radio_gender"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+
+                <RadioButton
+                    android:id="@+id/general_patient_details_radio_gender_male"
+                    android:layout_width="112dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.67"
+                    android:checked="false"
+                    android:text="@string/general_patient_details_radio_gender_male" />
+
+                <RadioButton
+                    android:id="@+id/general_patient_details_radio_gender_female"
+                    android:layout_width="118dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="top"
+                    android:layout_weight="0.32"
+                    android:checked="false"
+                    android:text="@string/general_patient_details_radio_gender_female" />
+            </RadioGroup>
+
+            <!-- ============================================================ -->
+            <!-- PROBLEMS -->
+            <!-- ============================================================ -->
+
+            <TextView
+                style="@style/WizardFormLabel"
+                android:text="@string/general_patient_details_problems" />
+
+            <EditText
+                android:id="@+id/general_patient_details_problems"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:gravity="top|left"
+                android:inputType="textMultiLine"
+                android:lines="5"
                 android:saveEnabled="false"
-                android:layout_marginBottom="10dp"/>  
-          
-			<!-- ============================================================ -->
-			<!-- GENDER -->
-			<!-- ============================================================ -->               
-			
-			<TextView
-			    style="@style/WizardFormLabel"
-			    android:layout_width="match_parent"
-			    android:layout_height="match_parent"
-			    android:layout_gravity="bottom"
-			    android:text="@string/general_patient_details_radio_gender" />
-			
-			<RadioGroup
-			    android:id="@+id/general_patient_details_radio_gender"
-			    android:layout_width="match_parent"
-			    android:layout_height="wrap_content"
-			    android:orientation="horizontal" >
-
-			    <RadioButton
-			        android:id="@+id/general_patient_details_radio_gender_male"
-			        android:layout_width="112dp"
-			        android:layout_height="wrap_content"
-			        android:layout_weight="0.67"
-			        android:checked="false"
-			        android:text="@string/general_patient_details_radio_gender_male" />
-
-			    <RadioButton
-			        android:id="@+id/general_patient_details_radio_gender_female"
-			        android:layout_width="118dp"
-			        android:layout_height="wrap_content"
-			        android:layout_gravity="top"
-			        android:layout_weight="0.32"
-			        android:checked="false"
-			        android:text="@string/general_patient_details_radio_gender_female" />
-
-			</RadioGroup>
-			   
+                android:scrollHorizontally="false" />
         </LinearLayout>
     </ScrollView>
+
 </LinearLayout>

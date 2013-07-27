@@ -19,8 +19,11 @@ import android.text.TextUtils;
 public class GeneralPatientDetailsPage extends AbstractPage {
     public static final String FIRST_NAME_DATA_KEY = "FIRST_NAME";
     public static final String SURNAME_DATA_KEY = "SURNAME";
-    public static final String DATE_OF_BIRTH_DATA_KEY = "DATE_OF_BIRTH";   
+    public static final String DATE_OF_BIRTH_DATA_KEY = "DATE_OF_BIRTH";
+    public static final String WEIGHT_DATA_KEY = "WEIGHT";
+    public static final String TEMPERATURE_DATA_KEY = "TEMPERATURE";
     public static final String GENDER_DATA_KEY = "GENDER";
+    public static final String PROBLEMS_DATA_KEY = "PROBLEMS";
     
     private GeneralPatientDetailsFragment generalPatientDetailsFragment;
 
@@ -55,10 +58,27 @@ public class GeneralPatientDetailsPage extends AbstractPage {
     	reviewItemLabel = resources.getString(R.string.general_patient_details_review_surname);
     	reviewItems.add(new ReviewItem(reviewItemLabel, getPageData().getString(SURNAME_DATA_KEY), getKey(), -1));
     	
+    	// date of birth
+    	reviewItemLabel = resources.getString(R.string.general_patient_details_review_date_of_birth);
+    	reviewItems.add(new ReviewItem(reviewItemLabel, getPageData().getString(DATE_OF_BIRTH_DATA_KEY), getKey(), -1));
+    	
+    	// weight
+    	reviewItemLabel = resources.getString(R.string.general_patient_details_review_weight);
+    	reviewItems.add(new ReviewItem(reviewItemLabel, getPageData().getString(WEIGHT_DATA_KEY), getKey(), -1));	
+    	
+    	// temperature
+    	reviewItemLabel = resources.getString(R.string.general_patient_details_review_temperature);
+    	reviewItems.add(new ReviewItem(reviewItemLabel, getPageData().getString(TEMPERATURE_DATA_KEY), getKey(), -1));
+    	
     	// gender
     	reviewItemLabel = resources.getString(R.string.general_patient_details_review_gender);
     	reviewItemValue = getPageData().getString(GENDER_DATA_KEY + AssessmentWizardRadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
     	reviewItems.add(new ReviewItem(reviewItemLabel, reviewItemValue, getKey(), -1));
+    	
+    	// problems
+    	reviewItemLabel = resources.getString(R.string.general_patient_details_review_problems);
+    	reviewItems.add(new ReviewItem(reviewItemLabel, getPageData().getString(PROBLEMS_DATA_KEY), getKey(), -1));	    
+    	
     }
 
     @Override

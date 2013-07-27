@@ -9,7 +9,9 @@ import ie.ucc.bis.wizard.model.GeneralPatientDetailsPage;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.text.Html;
 import android.text.InputType;
+import android.text.Spanned;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,6 +36,9 @@ public class GeneralPatientDetailsFragment extends Fragment {
     private EditText firstNameEditText;
     private EditText surnameEditText;
     private EditText dateBirthEditText;
+    private EditText weightEditText;
+    private EditText temperatureEditText;
+    private EditText problemsEditText;
     private RadioGroup genderRadioGroup;
     
     public static GeneralPatientDetailsFragment create(String pageKey) {
@@ -77,11 +82,28 @@ public class GeneralPatientDetailsFragment extends Fragment {
         // date of birth
         setDateBirthEditText((EditText) rootView.findViewById(R.id.general_patient_details_date_of_birth));
         getDateBirthEditText().setText(getGeneralPatientDetailsPage().getPageData().getString(GeneralPatientDetailsPage.DATE_OF_BIRTH_DATA_KEY));
-                        
+
+        // weight
+        setWeightEditText((EditText) rootView.findViewById(R.id.general_patient_details_weight));
+        getWeightEditText().setText(getGeneralPatientDetailsPage().getPageData().getString(GeneralPatientDetailsPage.WEIGHT_DATA_KEY));
+        
+        // temperature label - add degree celsius postfix
+        Spanned temperatureHeading = Html.fromHtml(getResources().getString(R.string.general_patient_details_temperature) + " (<sup>o</sup>" + "C)");
+        TextView temperatureLabel = (TextView) rootView.findViewById(R.id.general_patient_details_temperature_label);
+        temperatureLabel.setText(temperatureHeading);
+        
+        // temperature textfield
+        setTemperatureEditText((EditText) rootView.findViewById(R.id.general_patient_details_temperature));
+        getTemperatureEditText().setText(getGeneralPatientDetailsPage().getPageData().getString(GeneralPatientDetailsPage.TEMPERATURE_DATA_KEY));
+        
         // gender
         setGenderRadioGroup((RadioGroup) rootView.findViewById(R.id.general_patient_details_radio_gender));
         getGenderRadioGroup().check(getGeneralPatientDetailsPage()
         		.getPageData().getInt(GeneralPatientDetailsPage.GENDER_DATA_KEY));
+        
+        // what are the child's problems
+        setProblemsEditText((EditText) rootView.findViewById(R.id.general_patient_details_problems));
+        getProblemsEditText().setText(getGeneralPatientDetailsPage().getPageData().getString(GeneralPatientDetailsPage.PROBLEMS_DATA_KEY));
         
 		// add soft keyboard handler - essentially hiding soft
 		// keyboard when an EditText is not in focus
@@ -123,11 +145,23 @@ public class GeneralPatientDetailsFragment extends Fragment {
 				GeneralPatientDetailsPage.DATE_OF_BIRTH_DATA_KEY));
         
         // turn off soft keyboard input method for 'Date of Birth' EditText
-        getDateBirthEditText().setInputType(InputType.TYPE_NULL); 
+        getDateBirthEditText().setInputType(InputType.TYPE_NULL);
         
+        getWeightEditText().addTextChangedListener(
+        		new AssessmentWizardTextWatcher(getGeneralPatientDetailsPage(), 
+        				GeneralPatientDetailsPage.WEIGHT_DATA_KEY));
+        
+        getTemperatureEditText().addTextChangedListener(
+        		new AssessmentWizardTextWatcher(getGeneralPatientDetailsPage(), 
+        				GeneralPatientDetailsPage.TEMPERATURE_DATA_KEY));
+      
         getGenderRadioGroup().setOnCheckedChangeListener(
         		new AssessmentWizardRadioGroupListener(getGeneralPatientDetailsPage(),
         				GeneralPatientDetailsPage.GENDER_DATA_KEY));
+        
+        getProblemsEditText().addTextChangedListener(
+        		new AssessmentWizardTextWatcher(getGeneralPatientDetailsPage(), 
+        				GeneralPatientDetailsPage.PROBLEMS_DATA_KEY));
     }
 
 	/**
@@ -226,5 +260,47 @@ public class GeneralPatientDetailsFragment extends Fragment {
 	 */	
 	public void setDateBirthEditText(EditText dateBirthEditText) {
 		this.dateBirthEditText = dateBirthEditText;
+	}
+
+	/**
+	 * Getter Method: getWeightEditText()
+	 */
+	public EditText getWeightEditText() {
+		return weightEditText;
+	}
+
+	/**
+	 * Setter Method: setWeightEditText()
+	 */
+	public void setWeightEditText(EditText weightEditText) {
+		this.weightEditText = weightEditText;
+	}
+
+	/**
+	 * Getter Method: getTemperatureEditText()
+	 */
+	public EditText getTemperatureEditText() {
+		return temperatureEditText;
+	}
+
+	/**
+	 * Setter Method: setTemperatureEditText()
+	 */
+	public void setTemperatureEditText(EditText temperatureEditText) {
+		this.temperatureEditText = temperatureEditText;
+	}
+
+	/**
+	 * Getter Method: getProblemsEditText()
+	 */
+	public EditText getProblemsEditText() {
+		return problemsEditText;
+	}
+
+	/**
+	 * Setter Method: setProblemsEditText()
+	 */
+	public void setProblemsEditText(EditText problemsEditText) {
+		this.problemsEditText = problemsEditText;
 	}
 }

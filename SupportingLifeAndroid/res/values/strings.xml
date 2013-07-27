@@ -48,16 +48,24 @@
     <string name="general_patient_details_title">Patient Details</string>
     <string name="general_patient_details_first_name">First Name:</string>
     <string name="general_patient_details_surname">Surname:</string>
-    <string name="general_patient_details_date_of_birth">Date of Birth: </string>
+    <string name="general_patient_details_date_of_birth">Date of Birth:</string>
+    <string name="general_patient_details_weight">Weight (kg):</string>
+    <string name="general_patient_details_temperature">Temperature</string>
+    <!-- Gender -->
     <string name="general_patient_details_radio_gender">Gender:</string>
     <string name="general_patient_details_radio_gender_male">Male</string>
     <string name="general_patient_details_radio_gender_female">Female</string>
-    
+    <!-- Problems -->
+    <string name="general_patient_details_problems">What are the child\'s problems?: </string>
+
     <!-- Patient Details Review -->
     <string name="general_patient_details_review_first_name">First Name</string>
     <string name="general_patient_details_review_surname">Surname</string>
     <string name="general_patient_details_review_date_of_birth">Date of Birth</string>
+    <string name="general_patient_details_review_weight">Weight (kg)</string>
+    <string name="general_patient_details_review_temperature">Temperature</string>
     <string name="general_patient_details_review_gender">Gender</string>
+    <string name="general_patient_details_review_problems">Problems</string>
 
     <!-- HINTS -->
     <string name="general_patient_details_first_name_hint">Please enter your first name</string>
@@ -144,12 +152,11 @@
     <!-- ============================================================ -->
     <string name="malnutrition_assessment_title">Malnutrition and Anaemia</string>
     <string name="malnutrition_assessment_radio_oedema">Oedema of both feet</string>
-    
+
     <!-- Weight for Age -->
     <string name="malnutrition_assessment_radio_weight_for_age">Weight for Age</string>
     <string name="malnutrition_assessment_radio_weight_for_age_very_low">Very Low</string>
-    <string name="malnutrition_assessment_radio_weight_for_age_not_very_low">Not Very Low</string>    
-    
+    <string name="malnutrition_assessment_radio_weight_for_age_not_very_low">Not Very Low</string>
     <string name="malnutrition_assessment_radio_visible_severe_wasting">Visible Severe Wasting</string>
 
     <!-- Malnutrition and Anaemia Review -->
@@ -164,15 +171,15 @@
     <string name="immunization_assessment_title">Immunization Status</string>
     <string name="immunization_assessment_radio_vaccine_bcg">BCG</string>
     <string name="immunization_assessment_radio_vaccine_measles">Measles</string>
-    
+
     <!-- Vaccine Categories -->
     <string name="immunization_assessment_radio_vaccine_already_received">Already Received</string>
     <string name="immunization_assessment_radio_vaccine_receive_today">Receive Today</string>
- 
+
     <!-- Immunization Status Review -->
     <string name="immunization_assessment_review_vaccine_bcg">Vaccine: BCG</string>
     <string name="immunization_assessment_review_vaccine_measles">Vaccine: Measles</string>
-    
+
     <!-- ============================================================ -->
     <!-- ASSESSMENT WIZARD BREAD-CRUMB UI -->
     <!-- UNIVERSAL COMPONENTS -->

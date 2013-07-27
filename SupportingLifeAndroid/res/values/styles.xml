@@ -1,5 +1,5 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android">
-    
+
     <!-- ============================================================ -->
     <!-- APPLICATION STYLE THEME -->
     <!-- ============================================================ -->
@@ -11,7 +11,7 @@
 
     <!-- ============================================================ -->
     <!-- TITLE BAR STYLE -->
-    <!-- ============================================================ -->    
+    <!-- ============================================================ -->
     <style name="TitleBar">
         <item name="android:id">@id/title_container</item>
         <item name="android:layout_width">fill_parent</item>
@@ -19,10 +19,10 @@
         <item name="android:orientation">horizontal</item>
         <item name="android:background">@color/DarkGreen</item>
     </style>
-    
+
     <!-- ============================================================ -->
     <!-- TITLE BAR BUTTON STYLE -->
-    <!-- ============================================================ --> 
+    <!-- ============================================================ -->
     <style name="TitleBarAction">
         <item name="android:layout_width">@dimen/title_height</item>
         <item name="android:layout_height">fill_parent</item>
@@ -31,7 +31,7 @@
 
     <!-- ============================================================ -->
     <!-- TITLE BAR SEPARATOR STYLE -->
-    <!-- ============================================================ -->     
+    <!-- ============================================================ -->
     <style name="TitleBarSeparator">
         <item name="android:layout_width">1dp</item>
         <item name="android:layout_height">fill_parent</item>
@@ -40,7 +40,7 @@
 
     <!-- ============================================================ -->
     <!-- TITLE BAR TEXT STYLE -->
-    <!-- ============================================================ -->       
+    <!-- ============================================================ -->
     <style name="TitleBarText">
         <item name="android:id">@id/title_text</item>
         <item name="android:layout_width">0dp</item>
@@ -55,10 +55,10 @@
         <item name="android:singleLine">true</item>
         <item name="android:ellipsize">end</item>
     </style>
-    
+
     <!-- ============================================================ -->
     <!-- PAGE STYLE -->
-    <!-- ============================================================ -->     
+    <!-- ============================================================ -->
     <style name="SupportingLifePage">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">match_parent</item>
@@ -69,7 +69,7 @@
 
     <!-- ============================================================ -->
     <!-- BREADCRUMB WIZARD PAGE TITLE STYLE -->
-    <!-- ============================================================ -->         
+    <!-- ============================================================ -->
     <style name="WizardPageTitle">
         <item name="android:id">@android:id/title</item>
         <item name="android:layout_width">match_parent</item>
@@ -81,14 +81,14 @@
 
     <!-- ============================================================ -->
     <!-- BREADCRUMB WIZARD TEXT STYLE -->
-    <!-- ============================================================ -->    
+    <!-- ============================================================ -->
     <style name="BreadcrumbTextAppearanceFinish" parent="android:TextAppearance.Medium">
         <item name="android:textColor">@color/White</item>
     </style>
 
     <!-- ============================================================ -->
     <!-- BREADCRUMB WIZARD FORM LABEL STYLE -->
-    <!-- ============================================================ -->        
+    <!-- ============================================================ -->
     <style name="WizardFormLabel">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
@@ -97,17 +97,18 @@
         <item name="android:textStyle">bold</item>
         <item name="android:paddingLeft">4dp</item>
         <item name="android:paddingRight">12dp</item>
+        <item name="android:paddingTop">5dp</item>
     </style>
 
     <!-- ============================================================ -->
     <!-- BREADCRUMB WIZARD RADIO BUTTON STYLE -->
-    <!-- ============================================================ -->        
- 	<style name="RadioButton" parent="@android:style/Widget.CompoundButton.RadioButton">
- 	    <item name="android:button">@drawable/radio_button</item>
- 	    <item name="android:paddingTop">10dp</item>
- 	    <item name="android:paddingBottom">10dp</item>
- 	    <item name="android:paddingLeft">5dp</item>
- 	    <item name="android:paddingRight">5dp</item>
+    <!-- ============================================================ -->
+    <style name="RadioButton" parent="@android:style/Widget.CompoundButton.RadioButton">
+        <item name="android:button">@drawable/radio_button</item>
+        <item name="android:paddingTop">5dp</item>
+        <item name="android:paddingBottom">15dp</item>
+        <item name="android:paddingLeft">5dp</item>
+        <item name="android:paddingRight">5dp</item>
     </style>
-    
+
 </resources>
