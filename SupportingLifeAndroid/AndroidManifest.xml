@@ -45,7 +45,7 @@
             android:name="ie.ucc.bis.activity.AssessmentWizardActivity"
             android:label="@string/activity_title_record_patient_details_wizard"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden" >
+            android:windowSoftInputMode="adjustPan|stateHidden" >
         </activity>
         <activity
             android:name="ie.ucc.bis.activity.SubmitPatientRecordActivity"
