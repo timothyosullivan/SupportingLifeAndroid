@@ -15,16 +15,17 @@ import java.util.List;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
-import android.content.res.Resources;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 public class AssessmentWizardActivity extends SupportingLifeBaseActivity implements PageFragmentCallbacks, ReviewFragmentCallbacks, ModelCallbacks {
 
-    private ViewPager viewPager;
+	private ViewPager viewPager;
     private AssessmentWizardPagerAdapter suppLifeWizardPagerAdapter;
     private List<AbstractPage> currentPageSequence;
     private AbstractWizardModel supportingLifeWizardModel = new AssessmentWizardModel(this);;
@@ -94,31 +95,8 @@ public class AssessmentWizardActivity extends SupportingLifeBaseActivity impleme
             }
         });
 
-        // configure button click listener on nextButton       
-        getNextButton().setOnClickListener(new View.OnClickListener() {
-            public void onClick(View view) {
-                if (getViewPager().getCurrentItem() == getCurrentPageSequence().size()) {
-                	// we're currently on the review pane so display confirmation dialog
-                    DialogFragment dg = new DialogFragment() {
-                        @Override
-                        public Dialog onCreateDialog(Bundle savedInstanceState) {
-                            return new AlertDialog.Builder(getActivity())
-                                    .setMessage(R.string.submit_confirm_message)
-                                    .setPositiveButton(R.string.submit_confirm_button, null)
-                                    .setNegativeButton(android.R.string.cancel, null)
-                                    .create();
-                        }
-                    };
-                    dg.show(getSupportFragmentManager(), "Submit Assessment");
-                } else {
-                    if (mEditingAfterReview) {
-                    	getViewPager().setCurrentItem(getSuppLifeWizardPagerAdapter().getCount() - 1);
-                    } else {
-                    	getViewPager().setCurrentItem(getViewPager().getCurrentItem() + 1);
-                    }
-                }
-            }
-        });
+        // configure click listener on Next Button       
+        getNextButton().setOnClickListener(new NextButtonListener());
 
         getPrevButton().setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
@@ -181,10 +159,6 @@ public class AssessmentWizardActivity extends SupportingLifeBaseActivity impleme
         outState.putBundle("model", getSupportingLifeWizardModel().save());
     }
 
-    public AbstractWizardModel getWizardModel() {
-        return getSupportingLifeWizardModel();
-    }
-
     public void onEditScreenAfterReview(String key) {
         for (int i = getCurrentPageSequence().size() - 1; i >= 0; i--) {
             if (getCurrentPageSequence().get(i).getKey().equals(key)) {
@@ -205,25 +179,7 @@ public class AssessmentWizardActivity extends SupportingLifeBaseActivity impleme
             }
         }
     }
-    
-    public Resources getActivityResources() {
-    	return getResources();
-    }
-    
-
-	/**
-	 * Method: getPage
-	 * 
-	 * Implementation support for 'PageFragmentCallbacks' Interface
-	 * 
-	 * Retrieve a bread-crumb UI Wizard page based on the key
-	 * 
-	 * @param key : String
-	 */    
-    public AbstractPage getPage(String key) {
-        return getSupportingLifeWizardModel().findPageByKey(key);
-    }
-
+        
     private boolean recalculateCutOffPage() {
         // Cut off the pager adapter at first required page that isn't completed
         int cutOffPage = getCurrentPageSequence().size() + 1;
@@ -242,7 +198,82 @@ public class AssessmentWizardActivity extends SupportingLifeBaseActivity impleme
 
         return false;
     }
+    
+    /**
+     * Inner Class: NextButtonListener
+     * 
+     * Provides OnClick handler functionality for Next Button
+     * on the Wizard bread-crumb UI 
+     * 
+     * @author TOSullivan
+     *
+     */
+    private final class NextButtonListener implements View.OnClickListener {
+		public void onClick(View view) {
+		    if (getViewPager().getCurrentItem() == getCurrentPageSequence().size()) {
+		    	// we're currently on the review pane so display confirmation dialog
+		        DialogFragment dg = new DialogFragment() {
+		            @Override
+		            public Dialog onCreateDialog(Bundle savedInstanceState) {
+		                return new AlertDialog.Builder(getActivity())
+		                        .setMessage(R.string.submit_confirm_message)
+		                        .setPositiveButton(R.string.submit_confirm_button, new AssessmentDialogListener())
+		                        .setNegativeButton(android.R.string.cancel, null)
+		                        .create();
+		            }
+		        };
+		        dg.show(getSupportFragmentManager(), "Submit Assessment");
+		    } else {
+		        if (mEditingAfterReview) {
+		        	getViewPager().setCurrentItem(getSuppLifeWizardPagerAdapter().getCount() - 1);
+		        } else {
+		        	getViewPager().setCurrentItem(getViewPager().getCurrentItem() + 1);
+		        }
+		    }
+		}
+	} // end of inner class
+    
+    /**
+     * Inner Class: AssessmentDialogListener
+     * 
+     * Provides OnClick handler functionality for Submit Button
+     * on the Assessment Submission Dialog
+     * 
+     * @author TOSullivan
+     *
+     */
+    private final class AssessmentDialogListener implements DialogInterface.OnClickListener {
+    	
+		public void onClick(DialogInterface dialog, int which) {
+			runOnUiThread(new Runnable() {
+				public void run() {  
+				      Toast.makeText(getApplicationContext(), "Assessment Button clicked", Toast.LENGTH_SHORT).show();  
+				   }  
+				});
+		}
+    } // end of inner class
 
+	/**
+	 * Method: getPage
+	 * 
+	 * Implementation support for 'PageFragmentCallbacks' Interface
+	 * 
+	 * Retrieve a bread-crumb UI Wizard page based on the key
+	 * 
+	 * @param key : String
+	 */    
+    public AbstractPage getPage(String key) {
+        return getSupportingLifeWizardModel().findPageByKey(key);
+    }   
+  
+	/**
+	 * Getter Method: getWizardModel()
+	 * 
+	 */	 
+    public AbstractWizardModel getWizardModel() {
+        return getSupportingLifeWizardModel();
+    }
+    
 	/**
 	 * Getter Method: getSupportingLifeWizardModel()
 	 * 
