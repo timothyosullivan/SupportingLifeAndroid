@@ -16,12 +16,12 @@ import java.util.List;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
 public class AssessmentWizardActivity extends SupportingLifeBaseActivity implements PageFragmentCallbacks, ReviewFragmentCallbacks, ModelCallbacks {
 
@@ -245,11 +245,17 @@ public class AssessmentWizardActivity extends SupportingLifeBaseActivity impleme
     private final class AssessmentDialogListener implements DialogInterface.OnClickListener {
     	
 		public void onClick(DialogInterface dialog, int which) {
-			runOnUiThread(new Runnable() {
-				public void run() {  
-				      Toast.makeText(getApplicationContext(), "Assessment Button clicked", Toast.LENGTH_SHORT).show();  
-				   }  
-				});
+			
+			startActivity(new Intent(getApplicationContext(), AssessmentResultsActivity.class));
+			
+			// configure the activity animation transition effect
+			overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+			
+//			runOnUiThread(new Runnable() {
+//				public void run() {  
+//				      Toast.makeText(getApplicationContext(), "Assessment Button clicked", Toast.LENGTH_SHORT).show();
+//				   }  
+//				});
 		}
     } // end of inner class
 
@@ -268,7 +274,6 @@ public class AssessmentWizardActivity extends SupportingLifeBaseActivity impleme
   
 	/**
 	 * Getter Method: getWizardModel()
-	 * 
 	 */	 
     public AbstractWizardModel getWizardModel() {
         return getSupportingLifeWizardModel();
@@ -276,7 +281,6 @@ public class AssessmentWizardActivity extends SupportingLifeBaseActivity impleme
     
 	/**
 	 * Getter Method: getSupportingLifeWizardModel()
-	 * 
 	 */	    
 	public AbstractWizardModel getSupportingLifeWizardModel() {
 		return supportingLifeWizardModel;
@@ -284,7 +288,6 @@ public class AssessmentWizardActivity extends SupportingLifeBaseActivity impleme
 	
 	/**
 	 * Setter Method: setSupportingLifeWizardModel()
-	 * 
 	 */   	
 	public void setSupportingLifeWizardModel(AbstractWizardModel supportingLifeWizardModel) {
 		this.supportingLifeWizardModel = supportingLifeWizardModel;
@@ -292,7 +295,6 @@ public class AssessmentWizardActivity extends SupportingLifeBaseActivity impleme
 
 	/**
 	 * Getter Method: getSuppLifeWizardPagerAdapter()
-	 * 
 	 */			
 	public AssessmentWizardPagerAdapter getSuppLifeWizardPagerAdapter() {
 		return suppLifeWizardPagerAdapter;
@@ -300,7 +302,6 @@ public class AssessmentWizardActivity extends SupportingLifeBaseActivity impleme
 
 	/**
 	 * Setter Method: setSuppLifeWizardPagerAdapter()
-	 * 
 	 */   	
 	public void setSuppLifeWizardPagerAdapter(AssessmentWizardPagerAdapter suppLifeWizardPagerAdapter) {
 		this.suppLifeWizardPagerAdapter = suppLifeWizardPagerAdapter;
@@ -308,7 +309,6 @@ public class AssessmentWizardActivity extends SupportingLifeBaseActivity impleme
 
 	/**
 	 * Getter Method: getViewPager()
-	 * 
 	 */		
 	public ViewPager getViewPager() {
 		return viewPager;
@@ -316,7 +316,6 @@ public class AssessmentWizardActivity extends SupportingLifeBaseActivity impleme
 
 	/**
 	 * Setter Method: setViewPager()
-	 * 
 	 */  
 	public void setViewPager(ViewPager viewPager) {
 		this.viewPager = viewPager;
@@ -324,7 +323,6 @@ public class AssessmentWizardActivity extends SupportingLifeBaseActivity impleme
 
 	/**
 	 * Getter Method: getCurrentPageSequence()
-	 * 
 	 */	
 	public List<AbstractPage> getCurrentPageSequence() {
 		return currentPageSequence;
@@ -332,7 +330,6 @@ public class AssessmentWizardActivity extends SupportingLifeBaseActivity impleme
 
 	/**
 	 * Setter Method: setCurrentPageSequence()
-	 * 
 	 */  
 	public void setCurrentPageSequence(List<AbstractPage> currentPageSequence) {
 		this.currentPageSequence = currentPageSequence;
@@ -340,7 +337,6 @@ public class AssessmentWizardActivity extends SupportingLifeBaseActivity impleme
 
 	/**
 	 * Getter Method: getStepPagerStrip()
-	 * 
 	 */	
 	public StepPagerStrip getStepPagerStrip() {
 		return stepPagerStrip;
@@ -348,7 +344,6 @@ public class AssessmentWizardActivity extends SupportingLifeBaseActivity impleme
 
 	/**
 	 * Setter Method: setStepPagerStrip()
-	 * 
 	 */  
 	public void setStepPagerStrip(StepPagerStrip stepPagerStrip) {
 		this.stepPagerStrip = stepPagerStrip;
@@ -356,7 +351,6 @@ public class AssessmentWizardActivity extends SupportingLifeBaseActivity impleme
 
 	/**
 	 * Getter Method: getNextButton()
-	 * 
 	 */		
     public Button getNextButton() {
 		return nextButton;
@@ -364,7 +358,6 @@ public class AssessmentWizardActivity extends SupportingLifeBaseActivity impleme
 
 	/**
 	 * Setter Method: setNextButton()
-	 * 
 	 */  
 	public void setNextButton(Button nextButton) {
 		this.nextButton = nextButton;
@@ -372,7 +365,6 @@ public class AssessmentWizardActivity extends SupportingLifeBaseActivity impleme
 
 	/**
 	 * Getter Method: getPrevButton()
-	 * 
 	 */	
 	public Button getPrevButton() {
 		return prevButton;
@@ -380,7 +372,6 @@ public class AssessmentWizardActivity extends SupportingLifeBaseActivity impleme
 
 	/**
 	 * Setter Method: setPrevButton()
-	 * 
 	 */  
 	public void setPrevButton(Button prevButton) {
 		this.prevButton = prevButton;

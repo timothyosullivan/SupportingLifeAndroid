@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ============================================================ -->
+<!-- ASSESSMENT RESULTS SCREEN -->
+<!-- ============================================================ -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <!-- ============================================================ -->
+    <!-- TITLE BAR -->
+    <!-- ============================================================ -->
+
+    <include
+        android:id="@+id/title_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        layout="@layout/title_bar" />
+
+    <!-- ============================================================ -->
+    <!-- TABBED FRAGMENTS DISPLAYING THE FOLLOWING: 				  -->
+    <!--  															  -->
+    <!-- 1. Assessment Details Tab									  -->
+    <!-- 2. Classifications Tab										  -->
+	<!-- 3. Recommended Treatments Tab 								  -->
+    <!-- ============================================================ --> 
+    <fragment
+        android:id="@+id/assessment_results_fragment_tabs"
+        android:name="ie.ucc.bis.wizard.ui.TabControllerFragment"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" />
+    
+    <FrameLayout
+        android:id="@+id/fragment_content"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"/>
+
+</LinearLayout>

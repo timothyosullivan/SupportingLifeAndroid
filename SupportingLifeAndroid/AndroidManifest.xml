@@ -48,6 +48,11 @@
             android:windowSoftInputMode="adjustPan|stateHidden" >
         </activity>
         <activity
+            android:name="ie.ucc.bis.activity.AssessmentResultsActivity"
+            android:label="@string/activity_title_assessment_results"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
             android:name="ie.ucc.bis.activity.SubmitPatientRecordActivity"
             android:label="@string/activity_title_submit_patient_record"
             android:screenOrientation="portrait" >

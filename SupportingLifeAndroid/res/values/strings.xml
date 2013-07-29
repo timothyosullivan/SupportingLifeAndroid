@@ -16,6 +16,7 @@
     <string name="activity_title_record_patient_details">Assessment</string>
     <string name="activity_title_submit_patient_record">Submission</string>
     <string name="activity_title_record_patient_details_wizard">e-IMCI Assessment</string>
+    <string name="activity_title_assessment_results">Assessment Results</string>
 
     <!-- ============================================================ -->
     <!-- TITLE BAR -->
@@ -193,7 +194,18 @@
     <string name="assessment_wizard_review_button">Review</string>
     <string name="submit_confirm_message">Perform Medical Assessment</string>
     <string name="submit_confirm_button">Submit Patient Record</string>
-
+  
+    <!-- ============================================================ -->
+    <!-- ASSESSMENT RESULTS TABS 									  -->
+    <!-- 															  -->
+    <!-- 1. Assessment Details Tab									  -->
+    <!-- 2. Classifications Tab										  -->
+	<!-- 3. Recommended Treatments Tab 								  -->
+    <!-- ============================================================ -->
+    <string name="assessment_classifications_label_list_view">Classifications</string>
+    <string name="assessment_treatments_label_list_view">Treatments</string>
+   
+       
     <!-- ============================================================ -->
     <!-- TRAINING SCREEN -->
     <!-- ============================================================ -->
@@ -202,36 +214,23 @@
     <!-- ============================================================ -->
     <!-- ABOUT SCREEN -->
     <!-- ============================================================ -->
-    <string name="about_intro">The Supporting LIFE project (Supporting Low-cost Intervention For disEase control) 
-is designed to provide low-cost, effective, and targeted interventions in remote and resource-poor 
-settings in order to overcome inadequate healthcare infrastructures in Malawi, Southern Africa. 
-\n\nLed by Dr John O’Donoghue and Dr Joe Gallagher, Co-Directors of the Health Information Systems Research Centre (HISRC), 
-Department of Business Information Systems, University College Cork, it includes a multinational group of experts, institutions and non-governmental organisations (NGOs) 
-in Ireland, Sweden, the United Kingdom, Malawi, and Switzerland. 
-Supporting LIFE, which received over €3.6 million in funding from the European Commission Seventh Framework Programme (FP7), 
-applies a novel combination of smartphone technology, wireless body area network sensors and expert decision support systems
-to equip the Ministry of Health’s front-line health-care workers in Malawi with mobile devices and applications to assist in their assessment, 
-diagnosis and treatment of seriously ill children.
-\n\nAdvancing technology and the subsequent ubiquitous use of mobile devices  
-is an amazing feat and an often taken-for-granted luxury. People are 
-connected - all the time - to and by some type of device. \n\nAccordingly, 
-in an age when social networking and virtual connectivity may seem to 
-bring out the anti-social aspects of us in real-world interpersonal settings, 
-it is all the more refreshing and heart-warming that this innovative technology 
-is being dedicated to the worthy and honourable cause of saving lives of 
-children in developing countries.</string>
+    <string name="about_intro">Supporting LIFE project</string>
     <string name="supporting_life_tree_image">Supporting Life Tree Image</string>
     <string name="spinning_wheel_image">Supporting Life Image Animation</string>
 
-    <!-- END: About Screen -->
-
-
+    <!-- ============================================================ -->
+    <!-- SPLASH SCREEN -->
+    <!-- ============================================================ -->
+    <string name="splash_screen_image">Supporting LIFE Splash Screen</string>
+    
+    
+    
     <!-- START: Register Patient Details Screen -->
     <string name="first_name_label">First Name:</string>
     <string name="surname_label">Surname:</string>
     <string name="button_send">Submit</string>
     <!-- END: Register Patient Details Screen -->
 
-    <string name="splash_screen_image">Supporting LIFE Splash Screen</string>
+
 
 </resources>
