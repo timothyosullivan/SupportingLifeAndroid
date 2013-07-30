@@ -18,7 +18,7 @@ public class TrainingActivity extends SupportingLifeBaseActivity {
 		super.onCreate(savedInstanceState);
 
 		setContentView(R.layout.activity_training);	
-		setTitleFromActivityLabel(R.id.title_text);
+		setTitleFromActivityLabel(R.id.action_bar_title_text);
 	}
 
 

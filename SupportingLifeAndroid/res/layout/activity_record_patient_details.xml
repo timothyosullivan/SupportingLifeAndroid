@@ -1,73 +1,49 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:orientation="vertical" >
+	android:layout_height="fill_parent"
+	android:orientation="vertical" >
 
-    <!-- ============================================================ -->
-    <!-- TITLE BAR -->
-    <!-- ============================================================ -->
+	<TableRow>
+		<!-- FirstName Label -->
+		<TextView
+			android:id="@+id/first_name_label"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="@string/first_name_label" />
 
-    <include
-        android:id="@+id/title_bar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        layout="@layout/title_bar" />
+		<!-- FirstName Textfield -->
+		<EditText
+			android:id="@+id/first_name_text"
+			android:layout_width="220dip"
+			android:layout_height="wrap_content"
+			android:hint="" >
+		</EditText>
 
-    <TableLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+	</TableRow>
 
-        <TableRow>
+	<TableRow>
+		<!-- Surname Label -->
+		<TextView
+			android:id="@+id/surname_label"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="@string/surname_label" />
+	
+		<!-- Surname Textfield -->
+		<EditText
+			android:id="@+id/surname_text"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:hint="" />
+	</TableRow>
 
-            <!-- FirstName Label -->
-
-            <TextView
-                android:id="@+id/first_name_label"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/first_name_label" />
-
-            <!-- FirstName Textfield -->
-
-            <EditText
-                android:id="@+id/first_name_text"
-                android:layout_width="220dip"
-                android:layout_height="wrap_content"
-                android:hint="" >
-
-            </EditText>
-
-        </TableRow>
-
-        <TableRow>
-
-            <!-- Surname Label -->
-
-            <TextView
-                android:id="@+id/surname_label"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/surname_label" />
-
-            <!-- Surname Textfield -->
-
-            <EditText
-                android:id="@+id/surname_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:hint="" />
-        </TableRow>
-
-        <TableRow>
-
-            <!-- Submit Button -->
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="sendMessage"
-                android:text="@string/button_send" />
-        </TableRow>
-    </TableLayout>
-
-</LinearLayout>
+	<TableRow>
+		<!-- Submit Button -->
+		<Button
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:onClick="sendMessage"
+			android:text="@string/button_send" />
+	</TableRow>
+</TableLayout>

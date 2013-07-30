@@ -7,16 +7,6 @@
     android:layout_height="fill_parent"
     android:orientation="vertical" >
 
-    <!-- ============================================================ -->
-    <!-- TITLE BAR -->
-    <!-- ============================================================ -->
-
-    <include
-        android:id="@+id/title_bar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        layout="@layout/title_bar" />
-
 	<!-- ============================================================ -->
 	<!-- BACKGROUND IMAGE -->
 	<!-- ============================================================ -->    
@@ -28,5 +18,5 @@
         android:layout_marginTop="10dp"
         android:contentDescription="@string/supporting_life_tree_image"
         android:src="@drawable/supporting_life_tree" />
-
+    
 </LinearLayout>

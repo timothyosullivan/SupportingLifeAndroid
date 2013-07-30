@@ -6,67 +6,50 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical" >
-
+    
     <!-- ============================================================ -->
-    <!-- TITLE BAR -->
-    <!-- ============================================================ -->
-
-    <include
-        android:id="@+id/title_bar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        layout="@layout/title_bar" />
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical" >
-
-        <!-- ============================================================ -->
-        <!-- BACKGROUND IMAGE -->
-        <!-- ============================================================ -->
-
-        <ImageView
-            android:id="@+id/supporting_life_tree_image"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:layout_marginTop="10dp"
-            android:contentDescription="@string/supporting_life_tree_image"
-            android:src="@drawable/supporting_life_tree" />
-
-        <!-- ============================================================ -->
-        <!-- SPINNING WHEEL IMAGE HANDLER -->
-        <!-- ============================================================ -->
-
-        <ImageView
-            android:id="@+id/spinning_wheel_image"
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:layout_gravity="fill_vertical"
-            android:layout_marginBottom="15dp"
-            android:layout_marginTop="10dp"
-            android:contentDescription="@string/spinning_wheel_image"
-            android:visibility="invisible" />
-
-        <!-- ============================================================ -->
-        <!-- ABOUT TEXT -->
-        <!-- ============================================================ -->
-
-        <TextView
-            android:id="@+id/about_text_content"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_gravity="right"
-            android:layout_marginBottom="15dp"
-            android:fadeScrollbars="false"
-            android:gravity="fill_horizontal"
-            android:maxLines="15"
-            android:scrollbarAlwaysDrawVerticalTrack="true"
-            android:scrollbarStyle="insideInset"
-            android:scrollbars="vertical"
-            android:text="@string/about_intro"
-            android:textColor="@color/Black" />
-    </LinearLayout>
-
+	<!-- BACKGROUND IMAGE -->
+	<!-- ============================================================ -->
+		
+	<ImageView
+		android:id="@+id/supporting_life_tree_image"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_marginBottom="10dp"
+		android:layout_marginTop="10dp"
+		android:contentDescription="@string/supporting_life_tree_image"
+		android:src="@drawable/supporting_life_tree" />
+		
+	<!-- ============================================================ -->
+	<!-- SPINNING WHEEL IMAGE HANDLER -->
+	<!-- ============================================================ -->
+		
+	<ImageView
+		android:id="@+id/spinning_wheel_image"
+		android:layout_width="match_parent"
+		android:layout_height="200dp"
+		android:layout_gravity="fill_vertical"
+		android:layout_marginBottom="15dp"
+		android:layout_marginTop="10dp"
+		android:contentDescription="@string/spinning_wheel_image"
+		android:visibility="invisible" />
+		
+	<!-- ============================================================ -->
+	<!-- ABOUT TEXT -->
+	<!-- ============================================================ -->
+		
+	<TextView
+		android:id="@+id/about_text_content"
+		android:layout_width="wrap_content"
+		android:layout_height="match_parent"
+		android:layout_gravity="right"
+		android:layout_marginBottom="15dp"
+		android:fadeScrollbars="false"
+		android:gravity="fill_horizontal"
+		android:maxLines="15"
+		android:scrollbarAlwaysDrawVerticalTrack="true"
+		android:scrollbarStyle="insideInset"
+		android:scrollbars="vertical"
+		android:text="@string/about_intro"
+		android:textColor="@color/Black" />
 </LinearLayout>

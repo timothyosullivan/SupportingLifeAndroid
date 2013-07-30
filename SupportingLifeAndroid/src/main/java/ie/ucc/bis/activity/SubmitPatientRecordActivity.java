@@ -35,7 +35,7 @@ public class SubmitPatientRecordActivity extends SupportingLifeBaseActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_submit_patient_record);
-		setTitleFromActivityLabel(R.id.title_text);
+		setTitleFromActivityLabel(R.id.action_bar_title_text);
 
 		// extract the patient record sent by the main activity
 		Intent intent = getIntent();

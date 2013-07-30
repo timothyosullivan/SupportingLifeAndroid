@@ -1,6 +1,7 @@
 package ie.ucc.bis.activity;
 
 import ie.ucc.bis.R;
+import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -47,8 +48,12 @@ public abstract class SupportingLifeBaseActivity extends FragmentActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-	}
 
+		if (!(this instanceof SplashActivity)) {
+			// configure custom action bar
+			configureActionBar();
+		}
+	}
 
 	/**
 	 * onDestroy method is the final method called before the activity is destroyed.
@@ -259,5 +264,27 @@ public abstract class SupportingLifeBaseActivity extends FragmentActivity {
 	    	// 2. Have the parent layout request focus
 	    	((ViewGroup) getWindow().getDecorView()).getChildAt(0).requestFocus();
 	    }
+	}
+	
+	/**
+	 * Responsible for configuring custom action bar for activity
+	 * 
+	 */
+	private void configureActionBar() {
+		
+		// choose the layout of the action bar
+		final ViewGroup actionBarLayout = (ViewGroup) getLayoutInflater().inflate(R.layout.action_bar, null);
+		
+		// Set up ActionBar
+		final ActionBar actionBar = getActionBar();
+		actionBar.setDisplayShowHomeEnabled(true);
+		actionBar.setDisplayShowTitleEnabled(false);
+		actionBar.setDisplayShowCustomEnabled(true);
+		actionBar.setCustomView(actionBarLayout);
+		       
+		// need to collapse the default home button on the action bar as
+		// otherwise our custom 'home icon' will be pushed out to the right
+		View homeIcon = findViewById(android.R.id.home);
+		((View) homeIcon.getParent()).setVisibility(View.GONE);
 	}
 }

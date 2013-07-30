@@ -1,14 +1,17 @@
 package ie.ucc.bis.wizard.ui;
 
+import ie.ucc.bis.R;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.ListFragment;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.Toast;
 
 /**
- * Class: AssessmentClassificationsListFragment
+ * Class: AssessmentClassificationsFragment
  * 
  * Responsible for displaying the classification assessment 
  * results list  
@@ -16,21 +19,13 @@ import android.widget.Toast;
  * @author TOSullivan
  *
  */
-public class AssessmentClassificationsListFragment extends ListFragment {
+public class AssessmentClassificationsFragment extends ListFragment {
     
     @Override
-    public void onActivityCreated(Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        
-        Activity activity = getActivity();
-        
-        if (activity != null) {
-            // Create an instance of the custom adapter for the GridView. A static array of location data
-            // is stored in the Application sub-class for this app. This data would normally come
-            // from a database or a web service.
-          //  ListAdapter listAdapter = new LocationModelListAdapter(activity, FragmentTabTutorialApplication.sLocations);
-          //  setListAdapter(listAdapter);
-        }
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    	  View myFragmentView = inflater.inflate(R.layout.fragment_assessment_classifications_tab, container, false);
+    	     	 
+    	  return myFragmentView;
     }
 
     @Override

@@ -4,45 +4,46 @@
     <!-- APPLICATION STYLE THEME -->
     <!-- ============================================================ -->
     <style name="Theme.Transparent" parent="android:Theme.Light">
-        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowNoTitle">false</item>
+        <item name="android:windowActionBar">true</item>
         <item name="android:backgroundDimEnabled">false</item>
+        <item name="android:actionBarStyle">@style/ActionBar</item>
         <item name="android:radioButtonStyle">@style/RadioButton</item>
     </style>
 
     <!-- ============================================================ -->
-    <!-- TITLE BAR STYLE -->
+    <!-- ACTION BAR GENERAL STYLE -->
     <!-- ============================================================ -->
-    <style name="TitleBar">
-        <item name="android:id">@id/title_container</item>
-        <item name="android:layout_width">fill_parent</item>
-        <item name="android:layout_height">@dimen/title_height</item>
-        <item name="android:orientation">horizontal</item>
+    <style name="ActionBar" parent="@android:style/Widget.Holo.ActionBar">
         <item name="android:background">@color/DarkGreen</item>
+		<item name="android:titleTextStyle">@style/ActionBar.TextStyle</item>
+		<item name="android:actionButtonStyle">@style/ActionBar.ActionBarButton</item>
+        <!-- below line removes default application icon from action bar -->
+        <item name="android:icon">@android:color/transparent</item>
     </style>
-
+	
     <!-- ============================================================ -->
-    <!-- TITLE BAR BUTTON STYLE -->
+    <!-- ACTION BAR BUTTON STYLE -->
     <!-- ============================================================ -->
-    <style name="TitleBarAction">
-        <item name="android:layout_width">@dimen/title_height</item>
-        <item name="android:layout_height">fill_parent</item>
-        <item name="android:background">@drawable/titlebar_generic_button</item>
+    <style name="ActionBar.ActionBarButton">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:background">@drawable/actionbar_generic_button</item>
     </style>
-
+    
     <!-- ============================================================ -->
-    <!-- TITLE BAR SEPARATOR STYLE -->
+    <!-- ACTION BAR SEPARATOR STYLE -->
     <!-- ============================================================ -->
-    <style name="TitleBarSeparator">
+    <style name="ActionBar.ActionBarSeparator">
         <item name="android:layout_width">1dp</item>
         <item name="android:layout_height">fill_parent</item>
         <item name="android:background">@color/White</item>
-    </style>
-
+    </style>    
+    
     <!-- ============================================================ -->
-    <!-- TITLE BAR TEXT STYLE -->
+    <!-- ACTION BAR TEXT STYLE -->
     <!-- ============================================================ -->
-    <style name="TitleBarText">
-        <item name="android:id">@id/title_text</item>
+    <style name="ActionBar.TextStyle">
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">fill_parent</item>
         <item name="android:layout_weight">1</item>
@@ -55,7 +56,7 @@
         <item name="android:singleLine">true</item>
         <item name="android:ellipsize">end</item>
     </style>
-
+     
     <!-- ============================================================ -->
     <!-- PAGE STYLE -->
     <!-- ============================================================ -->

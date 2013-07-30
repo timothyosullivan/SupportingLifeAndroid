@@ -54,7 +54,7 @@ public class AssessmentWizardActivity extends SupportingLifeBaseActivity impleme
         super.onCreate(savedInstanceState);        
         setContentView(R.layout.activity_assessment_wizard);
         
-        setTitleFromActivityLabel(R.id.title_text);
+        setTitleFromActivityLabel(R.id.action_bar_title_text);
         
         if (savedInstanceState != null) {
         	getSupportingLifeWizardModel().load(savedInstanceState.getBundle("model"));

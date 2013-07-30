@@ -27,7 +27,7 @@ public class RecordPatientDetailsActivity extends SupportingLifeBaseActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_record_patient_details);		
-        setTitleFromActivityLabel(R.id.title_text);
+        setTitleFromActivityLabel(R.id.action_bar_title_text);
     }
     
     /**

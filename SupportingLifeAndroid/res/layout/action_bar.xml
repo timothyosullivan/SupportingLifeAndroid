@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ============================================================ -->
+<!-- ACTION BAR -->
+<!-- ============================================================ -->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="@dimen/action_bar_height"
+    android:orientation="horizontal"
+    style="@style/ActionBar" >
+
+	<!-- ============================================================ -->
+	<!-- HOME BUTTON -->
+	<!-- ============================================================ -->
+
+    <ImageButton
+        android:id="@+id/action_bar_home_button"
+        style="@style/ActionBar.ActionBarButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:paddingLeft="10dp"
+		android:paddingRight="10dp"
+        android:contentDescription="@string/actionbar_home_description"
+        android:onClick="onClickHome"
+        android:src="@drawable/actionbar_home_button" />
+
+    <ImageView
+        android:id="@+id/first_action_bar_separator"
+        style="@style/ActionBar.ActionBarSeparator"
+        android:layout_toRightOf="@+id/action_bar_home_button"
+        android:contentDescription="@string/actionbar_separator_description" />
+
+	<!-- ============================================================ -->
+	<!-- TEXTUAL APP NAME ON TOOLBAR -->
+	<!-- ============================================================ -->    
+    
+    <TextView
+        android:id="@+id/action_bar_title_text"
+        style="@style/ActionBar.TextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@+id/first_action_bar_separator"
+        android:text="@string/app_name" />
+
+	<!-- ============================================================ -->
+	<!-- ABOUT BUTTON -->
+	<!-- ============================================================ -->
+
+    <ImageButton android:id="@+id/action_bar_about_button"
+        style="@style/ActionBar.ActionBarButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/actionbar_about_description"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:paddingLeft="10dp"
+		android:paddingRight="10dp"
+        android:layout_toLeftOf="@+id/action_bar_search_button"
+        android:onClick="onClickAbout"
+        android:src="@drawable/actionbar_about_button" />
+
+    <ImageView
+        android:id="@+id/second_action_bar_separator"
+        style="@style/ActionBar.ActionBarSeparator"
+        android:layout_toRightOf="@+id/action_bar_about_button"
+        android:contentDescription="@string/actionbar_separator_description" />
+    
+	<!-- ============================================================ -->
+	<!-- SEARCH BUTTON -->
+	<!-- ============================================================ -->
+    <ImageButton android:id="@+id/action_bar_search_button"
+        style="@style/ActionBar.ActionBarButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/actionbar_search_description"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+		android:layout_alignParentRight="true"
+		android:paddingLeft="10dp"
+		android:paddingRight="10dp"
+        android:onClick="onClickSearch"
+        android:src="@drawable/actionbar_search_button"/>
+
+</RelativeLayout>

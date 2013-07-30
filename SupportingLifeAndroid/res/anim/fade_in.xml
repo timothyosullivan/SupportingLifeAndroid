@@ -3,7 +3,7 @@
 <!-- FADE-IN ANIMATION: USED FOR ACTIVITY TRANSITION -->
 <!-- ============================================================ -->
 <set xmlns:android="http://schemas.android.com/apk/res/android"
-  android:interpolator="@android:anim/linear_interpolator">
+  android:interpolator="@android:anim/accelerate_interpolator">
   <alpha android:fromAlpha="0.1"
          android:toAlpha="1.0"
          android:duration="10"/>

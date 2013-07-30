@@ -8,31 +8,26 @@
     android:orientation="vertical" >
 
     <!-- ============================================================ -->
-    <!-- TITLE BAR -->
-    <!-- ============================================================ -->
-
-    <include
-        android:id="@+id/title_bar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        layout="@layout/title_bar" />
-
-    <!-- ============================================================ -->
     <!-- TABBED FRAGMENTS DISPLAYING THE FOLLOWING: 				  -->
     <!--  															  -->
     <!-- 1. Assessment Details Tab									  -->
     <!-- 2. Classifications Tab										  -->
 	<!-- 3. Recommended Treatments Tab 								  -->
     <!-- ============================================================ --> 
-    <fragment
-        android:id="@+id/assessment_results_fragment_tabs"
-        android:name="ie.ucc.bis.wizard.ui.TabControllerFragment"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content" />
-    
-    <FrameLayout
-        android:id="@+id/fragment_content"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"/>
 
+	<!-- ============================================================ -->
+	<!-- PAGE SWIPING UI -->
+	<!-- ============================================================ -->
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/assessment_results_pager"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" >
+    </android.support.v4.view.ViewPager>
+
+	<View
+		android:id="@+id/divider"
+		android:layout_width="match_parent"
+		android:layout_height="1dp" />
 </LinearLayout>

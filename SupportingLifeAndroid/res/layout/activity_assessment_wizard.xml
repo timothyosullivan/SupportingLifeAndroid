@@ -11,80 +11,58 @@
     android:focusableInTouchMode="true" >
 
     <!-- ============================================================ -->
-    <!-- TITLE BAR -->
-    <!-- ============================================================ -->
-
-    <include
-        android:id="@+id/title_bar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        layout="@layout/title_bar" />
-
-    <!-- ============================================================ -->
     <!-- BREADCRUMB WIZARD UI -->
     <!-- ============================================================ -->
+	<ie.ucc.bis.wizard.ui.StepPagerStrip
+		android:id="@+id/strip"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_marginLeft="16dp"
+		android:layout_marginRight="16dp"
+		android:gravity="left"
+		android:paddingBottom="8dp"
+		android:paddingTop="16dp" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+	<!-- ============================================================ -->
+	<!-- PAGE SWIPING UI -->
+	<!-- ============================================================ -->
 
-        <!-- ============================================================ -->
-        <!-- BREADCRUMB -->
-        <!-- ============================================================ -->
+	<android.support.v4.view.ViewPager
+		android:id="@+id/pager"
+		android:layout_width="match_parent"
+		android:layout_height="0dp"
+		android:layout_weight="1" />
 
-        <ie.ucc.bis.wizard.ui.StepPagerStrip
-            android:id="@+id/strip"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:gravity="left"
-            android:paddingBottom="8dp"
-            android:paddingTop="16dp" />
+	<View
+		android:id="@+id/divider"
+		android:layout_width="match_parent"
+		android:layout_height="1dp" />
 
-        <!-- ============================================================ -->
-        <!-- PAGE SWIPING UI -->
-        <!-- ============================================================ -->
+	<!-- ============================================================ -->
+	<!-- NAVIGATION BUTTONS -->
+	<!-- ============================================================ -->
 
-        <android.support.v4.view.ViewPager
-            android:id="@+id/pager"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1" />
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:orientation="horizontal" >
 
-        <View
-            android:id="@+id/divider"
-            android:layout_width="match_parent"
-            android:layout_height="1dp" />
+		<Button
+			android:id="@+id/prev_button"
+			style="@style/BreadcrumbTextAppearanceFinish" 
+			android:layout_width="0dp"
+			android:layout_height="fill_parent"
+			android:layout_weight="1"
+			android:background="@drawable/breadcrumb_previous_button"
+			android:text="@string/assessment_wizard_previous_button"/>
 
-        <!-- ============================================================ -->
-        <!-- NAVIGATION BUTTONS -->
-        <!-- ============================================================ -->
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal" >
-
-            <Button
-                android:id="@+id/prev_button"
-                style="@style/BreadcrumbTextAppearanceFinish" 
-                android:layout_width="0dp"
-                android:layout_height="fill_parent"
-                android:layout_weight="1"
-                android:background="@drawable/breadcrumb_previous_button"
-                android:text="@string/assessment_wizard_previous_button"/>
-
-            <Button
-                android:id="@+id/next_button"
-                style="@style/BreadcrumbTextAppearanceFinish" 
-                android:layout_width="0dp"
-                android:layout_height="fill_parent"
-                android:layout_weight="1"
-                android:background="@drawable/breadcrumb_next_button"
-                android:text="@string/assessment_wizard_next_button"/>
-        </LinearLayout>
-    </LinearLayout>
-
+		<Button
+			android:id="@+id/next_button"
+			style="@style/BreadcrumbTextAppearanceFinish" 
+			android:layout_width="0dp"
+			android:layout_height="fill_parent"
+			android:layout_weight="1"
+			android:background="@drawable/breadcrumb_next_button"
+			android:text="@string/assessment_wizard_next_button"/>
+	</LinearLayout>
 </LinearLayout>
