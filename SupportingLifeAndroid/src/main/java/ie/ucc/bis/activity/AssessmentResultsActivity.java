@@ -53,21 +53,29 @@ public class AssessmentResultsActivity extends SupportingLifeBaseActivity {
  
         // attach the Tabs to the fragment classes and set the tab title.
         setTabsAdapter(new TabsAdapter(this, getViewPager()));
-        getTabsAdapter().addTab(bar.newTab().setText("Classifications"),
+
+        // add assessment details tab
+        getTabsAdapter().addTab(bar.newTab().setText(R.string.assessment_details_tab_title),
         		AssessmentClassificationsFragment.class, null);
-        getTabsAdapter().addTab(bar.newTab().setText("Treatments"),
+        
+        // add classifications tab
+        getTabsAdapter().addTab(bar.newTab().setText(R.string.assessment_classifications_tab_title),
+        		AssessmentClassificationsFragment.class, null);
+        
+        // add treatments tab
+        getTabsAdapter().addTab(bar.newTab().setText(R.string.assessment_treatments_tab_title),
         		AssessmentClassificationsFragment.class, null);
  
-//        if (savedInstanceState != null) {
-//            bar.setSelectedNavigationItem(savedInstanceState.getInt("tab", 0));
-//        }
+       if (savedInstanceState != null) {
+            bar.setSelectedNavigationItem(savedInstanceState.getInt("tab", 0));
+        }
 	}
 	
-//	@Override
-//	protected void onSaveInstanceState(Bundle outState) {
-//		super.onSaveInstanceState(outState);
-//		outState.putInt("tab", getActionBar().getSelectedNavigationIndex()); 
-//	}
+	@Override
+	protected void onSaveInstanceState(Bundle outState) {
+		super.onSaveInstanceState(outState);
+		outState.putInt("tab", getActionBar().getSelectedNavigationIndex()); 
+	}
 		
 	/**
 	 * Static Class: TabsAdapter
