@@ -30,7 +30,7 @@ public class SplashActivity extends SupportingLifeBaseActivity {
 	 */
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {		
-		super.onCreate(savedInstanceState);
+		super.onCreate(savedInstanceState);		
 		setContentView(R.layout.activity_splash);
 
 		// thread for displaying the SplashScreen

@@ -10,6 +10,13 @@
         <item name="android:actionBarStyle">@style/ActionBar</item>
         <item name="android:radioButtonStyle">@style/RadioButton</item>
     </style>
+    
+    <!-- ============================================================ -->
+    <!-- SPLASH SCREEN STYLE THEME -->
+    <!-- ============================================================ -->    
+    <style name="Theme.Splash" parent="android:Theme.Light.NoTitleBar">
+		<item name="android:windowAnimationStyle">@null</item>
+    </style>
 
     <!-- ============================================================ -->
     <!-- ACTION BAR GENERAL STYLE -->
