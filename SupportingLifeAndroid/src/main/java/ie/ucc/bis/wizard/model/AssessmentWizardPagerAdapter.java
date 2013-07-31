@@ -52,7 +52,9 @@ public class AssessmentWizardPagerAdapter extends FragmentStatePagerAdapter {
 
     @Override
     public int getCount() {
-        return Math.min(mCutOffPage + 1, getAssessmentWizardActivity().getCurrentPageSequence().size() + 1);
+        return Math.min(mCutOffPage + 1, 
+        		getAssessmentWizardActivity().getCurrentPageSequence() != null ? getAssessmentWizardActivity().getCurrentPageSequence().size() + 1
+        				: mCutOffPage + 1);
     }
 
     public void setCutOffPage(int cutOffPage) {
