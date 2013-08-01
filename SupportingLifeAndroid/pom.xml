@@ -7,17 +7,15 @@
 	<version>1.0-SNAPSHOT</version>
 	<packaging>apk</packaging>
 	<name>SupportingLifeAndroid</name>
-
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<platform.version>4.1.1.4</platform.version>
 		<android.plugin.version>3.6.0</android.plugin.version>
-		<google.android.version>r18</google.android.version>
+		<google.android.version>18.0.0</google.android.version>
 		<spring.version>1.0.1.RELEASE</spring.version>
 		<json.version>1.9.12</json.version>
 		<android.api.level>17</android.api.level>
 	</properties>
-
 	<dependencies>
 		<dependency>
 			<groupId>com.google.android</groupId>
@@ -48,7 +46,6 @@
 			<version>${json.version}</version>
 		</dependency>
 	</dependencies>
-	
 	<build>
 		<finalName>${project.artifactId}</finalName>
 		<pluginManagement>
@@ -67,8 +64,8 @@
 				<artifactId>android-maven-plugin</artifactId>
 				<configuration>
 					<sdk>
-	                    <platform>${android.api.level}</platform>
-	                </sdk>
+						<platform>${android.api.level}</platform>
+					</sdk>
 				</configuration>
 			</plugin>
 		</plugins>
