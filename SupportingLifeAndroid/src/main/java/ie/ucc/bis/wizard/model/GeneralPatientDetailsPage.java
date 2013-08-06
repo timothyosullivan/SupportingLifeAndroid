@@ -87,7 +87,8 @@ public class GeneralPatientDetailsPage extends AbstractPage {
 
     @Override
     public boolean isCompleted() {
-        return !TextUtils.isEmpty(getPageData().getString(FIRST_NAME_DATA_KEY));
+     //   return !TextUtils.isEmpty(getPageData().getString(FIRST_NAME_DATA_KEY));
+    	return true;
     }
 
 	/**
