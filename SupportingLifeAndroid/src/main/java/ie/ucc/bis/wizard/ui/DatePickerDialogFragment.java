@@ -78,7 +78,6 @@ public class DatePickerDialogFragment extends DialogFragment {
 
 	/**
 	 * Getter Method: getPage()
-	 * 
 	 */
 	public AbstractPage getPage() {
 		return page;
@@ -86,7 +85,6 @@ public class DatePickerDialogFragment extends DialogFragment {
 
 	/**
 	 * Setter Method: setPage()
-	 * 
 	 */
 	public void setPage(AbstractPage page) {
 		this.page = page;
@@ -94,7 +92,6 @@ public class DatePickerDialogFragment extends DialogFragment {
 
 	/**
 	 * Getter Method: getDataKey()
-	 * 
 	 */
 	public String getDataKey() {
 		return dataKey;
@@ -102,7 +99,6 @@ public class DatePickerDialogFragment extends DialogFragment {
 
 	/**
 	 * Setter Method: setDataKey()
-	 * 
 	 */
 	public void setDataKey(String dataKey) {
 		this.dataKey = dataKey;

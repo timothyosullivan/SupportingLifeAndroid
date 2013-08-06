@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ============================================================ -->
+<!-- CLASSIFICATION RULES -->
+<!-- ============================================================ -->
+<ClassificationRules>
+    <Classification>
+        <Name>Severe Pneumonia or Very Severe Disease</Name>
+        <Type>SEVERE</Type>
+        <Symptoms>
+            <Sympton>chest_indrawing</Sympton>
+            <Sympton>stridor</Sympton>
+        </Symptoms>
+    </Classification>
+    <Classification>
+        <Name>Pneumonia</Name>
+        <Type>MODERATE</Type>
+        <Symptoms>
+            <Sympton>fast_breathing</Sympton>
+        </Symptoms>
+    </Classification>
+</ClassificationRules>

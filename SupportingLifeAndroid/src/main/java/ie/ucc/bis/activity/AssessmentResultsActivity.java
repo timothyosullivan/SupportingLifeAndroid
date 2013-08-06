@@ -1,15 +1,22 @@
 package ie.ucc.bis.activity;
 
 import ie.ucc.bis.R;
+import ie.ucc.bis.domain.Classification;
+import ie.ucc.bis.domain.Patient;
 import ie.ucc.bis.wizard.model.ReviewItem;
 import ie.ucc.bis.wizard.ui.AssessmentResultsReviewFragment;
 
+import java.io.IOException;
 import java.util.ArrayList;
+
+import org.xmlpull.v1.XmlPullParser;
+import org.xmlpull.v1.XmlPullParserException;
 
 import android.app.ActionBar;
 import android.app.ActionBar.Tab;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.XmlResourceParser;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -32,9 +39,16 @@ import android.support.v4.view.ViewPager;
  */
 public class AssessmentResultsActivity extends SupportingLifeBaseActivity {
 
+	public static final String CLASSIFICATION_ELEMENT = "Classification";
+	public static final String CLASSIFICATION_NAME = "Name";
+	public static final String CLASSIFICATION_TYPE = "Type";
+	public static final String CLASSIFICATION_SYMPTOM = "Symptom";
+	
 	private ViewPager ViewPager;
 	private TabsAdapter TabsAdapter;
 	private ArrayList<ReviewItem> reviewItems;
+	private Patient patient;
+	private ArrayList<Classification> classificationRules;
 	
 	/* 
 	 * Method: onCreate() 
@@ -54,6 +68,9 @@ public class AssessmentResultsActivity extends SupportingLifeBaseActivity {
         // extract the assessment page data sent by the assessment bread-crumb wizard
 		Intent intent = getIntent();
         setReviewItems((ArrayList<ReviewItem>) intent.getSerializableExtra(AssessmentWizardActivity.ASSESSMENT_REVIEW_ITEMS));
+        
+        // classify symptoms
+        determineClassifications();
  
         // create a new Action bar and set title to strings.xml
         final ActionBar bar = getActionBar();
@@ -78,7 +95,70 @@ public class AssessmentResultsActivity extends SupportingLifeBaseActivity {
             bar.setSelectedNavigationItem(savedInstanceState.getInt("tab", 0));
         }
 	}
-	
+
+	/**
+	 * 
+	 * Responsible for determining patient classifications based on 
+	 * assessment
+	 * 
+	 */
+	private void determineClassifications() {
+		setPatient(new Patient());
+		setClassificationRules(new ArrayList<Classification>());
+		
+		try {
+			String elemName = null;
+			Classification classificationRule = null;
+			ArrayList<String> symptoms = null;
+			XmlResourceParser xmlParser = getResources().getXml(R.xml.classification_rules);
+			
+			// pass header <?xml ...
+			xmlParser.next();
+			int eventType = xmlParser.next();
+			
+			while (eventType != XmlPullParser.END_DOCUMENT) {
+				if (eventType == XmlPullParser.START_TAG) {
+					elemName = xmlParser.getName();
+					if (CLASSIFICATION_ELEMENT.equalsIgnoreCase(elemName)) {
+						// <Classification>
+						classificationRule = new Classification();
+						symptoms = new ArrayList<String>();
+					}
+				} // end of if
+				else if (eventType == XmlPullParser.TEXT) {				
+					if (CLASSIFICATION_NAME.equalsIgnoreCase(elemName)) {
+						// <Name>
+						classificationRule.setName(xmlParser.getText());
+					}
+					else if (CLASSIFICATION_TYPE.equalsIgnoreCase(elemName)) {
+						// <Type>
+						classificationRule.setType(xmlParser.getText());
+					}
+					else if (CLASSIFICATION_SYMPTOM.equalsIgnoreCase(elemName)) {
+						// <Symptom>
+						symptoms.add(xmlParser.getText());
+					}
+				} // end of else if
+				else if (eventType == XmlPullParser.END_TAG) {
+					if(CLASSIFICATION_ELEMENT.equalsIgnoreCase(xmlParser.getName())) {
+						// </Classification>
+						// ** perhaps need to have an arrayList element copy here.....
+						classificationRule.setSymptoms(symptoms);
+						getClassificationRules().add(classificationRule);
+					}
+				} // end of else if
+				
+				eventType = xmlParser.next();
+			} // end of while			
+		} catch (XmlPullParserException ex) {
+			ex.printStackTrace();
+		}
+		catch (IOException ex) {
+			ex.printStackTrace();
+		}
+//		System.out.println("Classication Rules: " + getClassificationRules().toString());
+	}
+
 	@Override
 	protected void onSaveInstanceState(Bundle outState) {
 		super.onSaveInstanceState(outState);
@@ -277,6 +357,34 @@ public class AssessmentResultsActivity extends SupportingLifeBaseActivity {
 	 */
 	private void setReviewItems(ArrayList<ReviewItem> reviewItems) {
 		this.reviewItems = reviewItems;
-	}	
+	}
+
+	/**
+	 * Getter Method: getPatient()
+	 */	
+	public Patient getPatient() {
+		return patient;
+	}
+
+	/**
+	 * Setter Method: setPatient()
+	 */
+	private void setPatient(Patient patient) {
+		this.patient = patient;
+	}
+
+	/**
+	 * Getter Method: getClassificationRules()
+	 */	
+	public ArrayList<Classification> getClassificationRules() {
+		return classificationRules;
+	}
+
+	/**
+	 * Setter Method: setClassificationRules()
+	 */
+	public void setClassificationRules(ArrayList<Classification> classificationRules) {
+		this.classificationRules = classificationRules;
+	}
 }
 
