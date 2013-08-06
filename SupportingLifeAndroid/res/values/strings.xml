@@ -202,9 +202,9 @@
     <!-- 2. Classifications Tab										  -->
 	<!-- 3. Recommended Treatments Tab 								  -->
     <!-- ============================================================ -->
-    <string name="assessment_details_tab_title">Patient Details</string>
-    <string name="assessment_classifications_tab_title">Classifications</string>
-    <string name="assessment_treatments_tab_title">Treatments</string>
+    <string name="assessment_results_review_tab_title">Patient Details</string>
+    <string name="assessment_results_classifications_tab_title">Classifications</string>
+    <string name="assessment_results_treatments_tab_title">Treatments</string>
           
     <!-- ============================================================ -->
     <!-- TRAINING SCREEN -->

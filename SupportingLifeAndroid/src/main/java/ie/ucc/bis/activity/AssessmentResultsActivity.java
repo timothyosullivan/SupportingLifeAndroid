@@ -1,13 +1,15 @@
 package ie.ucc.bis.activity;
 
 import ie.ucc.bis.R;
-import ie.ucc.bis.wizard.ui.AssessmentClassificationsFragment;
+import ie.ucc.bis.wizard.model.ReviewItem;
+import ie.ucc.bis.wizard.ui.AssessmentResultsReviewFragment;
 
 import java.util.ArrayList;
 
 import android.app.ActionBar;
 import android.app.ActionBar.Tab;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -21,9 +23,9 @@ import android.support.v4.view.ViewPager;
  * 
  * The results shown comprise of the following:
  * 
- * 1. Assessment Details Tab
- * 2. Classifications Tab
- * 3. Recommended Treatments Tab
+ * 1. Assessment Review Items Tab
+ * 2. Assessment Classifications Tab
+ * 3. Assessment Recommended Treatments Tab
  * 
  * @author TOSullivan
  *
@@ -32,6 +34,7 @@ public class AssessmentResultsActivity extends SupportingLifeBaseActivity {
 
 	private ViewPager ViewPager;
 	private TabsAdapter TabsAdapter;
+	private ArrayList<ReviewItem> reviewItems;
 	
 	/* 
 	 * Method: onCreate() 
@@ -40,12 +43,17 @@ public class AssessmentResultsActivity extends SupportingLifeBaseActivity {
 	 * 
 	 */
 	@Override
+	@SuppressWarnings("unchecked")
 	public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_assessment_results);
         setTitleFromActivityLabel(R.id.action_bar_title_text);
         setViewPager((ViewPager) findViewById(R.id.assessment_results_pager));
+        
+        // extract the assessment page data sent by the assessment bread-crumb wizard
+		Intent intent = getIntent();
+        setReviewItems((ArrayList<ReviewItem>) intent.getSerializableExtra(AssessmentWizardActivity.ASSESSMENT_REVIEW_ITEMS));
  
         // create a new Action bar and set title to strings.xml
         final ActionBar bar = getActionBar();
@@ -54,17 +62,17 @@ public class AssessmentResultsActivity extends SupportingLifeBaseActivity {
         // attach the Tabs to the fragment classes and set the tab title.
         setTabsAdapter(new TabsAdapter(this, getViewPager()));
 
-        // add assessment details tab
-        getTabsAdapter().addTab(bar.newTab().setText(R.string.assessment_details_tab_title),
-        		AssessmentClassificationsFragment.class, null);
+        // add assessment review items tab
+        getTabsAdapter().addTab(bar.newTab().setText(R.string.assessment_results_review_tab_title),
+        		AssessmentResultsReviewFragment.class, null);
         
         // add classifications tab
-        getTabsAdapter().addTab(bar.newTab().setText(R.string.assessment_classifications_tab_title),
-        		AssessmentClassificationsFragment.class, null);
+        getTabsAdapter().addTab(bar.newTab().setText(R.string.assessment_results_classifications_tab_title),
+        		AssessmentResultsReviewFragment.class, null);
         
         // add treatments tab
-        getTabsAdapter().addTab(bar.newTab().setText(R.string.assessment_treatments_tab_title),
-        		AssessmentClassificationsFragment.class, null);
+        getTabsAdapter().addTab(bar.newTab().setText(R.string.assessment_results_treatments_tab_title),
+        		AssessmentResultsReviewFragment.class, null);
  
        if (savedInstanceState != null) {
             bar.setSelectedNavigationItem(savedInstanceState.getInt("tab", 0));
@@ -123,7 +131,7 @@ public class AssessmentResultsActivity extends SupportingLifeBaseActivity {
 		 * fragments
 		 * 
 		 * @param tab
-		 * @param clss
+		 * @param fragmentClass
 		 * @param args
 		 */
 		public void addTab(ActionBar.Tab tab, Class<?> fragmentClass, Bundle args) {
@@ -255,6 +263,20 @@ public class AssessmentResultsActivity extends SupportingLifeBaseActivity {
 	 */
 	public void setTabsAdapter(TabsAdapter tabsAdapter) {
 		TabsAdapter = tabsAdapter;
+	}
+	
+	/**
+	 * Getter Method: getReviewItems()
+	 */	
+	public ArrayList<ReviewItem> getReviewItems() {
+		return reviewItems;
+	}
+
+	/**
+	 * Setter Method: setReviewItems()
+	 */
+	private void setReviewItems(ArrayList<ReviewItem> reviewItems) {
+		this.reviewItems = reviewItems;
 	}	
 }
 

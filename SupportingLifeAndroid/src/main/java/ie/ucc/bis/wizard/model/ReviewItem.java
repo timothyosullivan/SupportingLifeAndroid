@@ -1,12 +1,19 @@
 package ie.ucc.bis.wizard.model;
 
+import java.io.Serializable;
+
 /**
  * Represents a single line item on the final review page.
  *
  * @see ie.ucc.bis.wizard.ui.ReviewFragment
  */
-public class ReviewItem {
-    public static final int DEFAULT_WEIGHT = 0;
+public class ReviewItem implements Serializable {
+    /**
+	 * Generated Serial ID
+	 */
+	private static final long serialVersionUID = -2027656980188256986L;
+
+	public static final int DEFAULT_WEIGHT = 0;
 
     private int weight;
     private String title;

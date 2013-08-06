@@ -25,6 +25,8 @@ import android.widget.Button;
 
 public class AssessmentWizardActivity extends SupportingLifeBaseActivity implements PageFragmentCallbacks, ReviewFragmentCallbacks, ModelCallbacks {
 
+	public static final String ASSESSMENT_REVIEW_ITEMS = "ASSESSMENT_REVIEW_ITEMS";
+	
 	private ViewPager viewPager;
     private AssessmentWizardPagerAdapter suppLifeWizardPagerAdapter;
     private List<AbstractPage> currentPageSequence;
@@ -246,7 +248,9 @@ public class AssessmentWizardActivity extends SupportingLifeBaseActivity impleme
     	
 		public void onClick(DialogInterface dialog, int which) {
 			
-			startActivity(new Intent(getApplicationContext(), AssessmentResultsActivity.class));
+			Intent intent = new Intent(getApplicationContext(), AssessmentResultsActivity.class);
+			intent.putExtra(ASSESSMENT_REVIEW_ITEMS, getSupportingLifeWizardModel().gatherAssessmentReviewItems());
+			startActivity(intent);
 			
 			// configure the activity animation transition effect
 			overridePendingTransition(R.anim.fade_in, R.anim.fade_out);

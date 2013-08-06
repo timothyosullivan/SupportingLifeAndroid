@@ -7,7 +7,6 @@ import java.util.ArrayList;
 
 import android.content.res.Resources;
 import android.support.v4.app.Fragment;
-import android.text.TextUtils;
 
 /**
  * Page Title: General Patient Details

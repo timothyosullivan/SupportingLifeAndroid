@@ -1,6 +1,8 @@
 package ie.ucc.bis.wizard.model;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import android.content.Context;
@@ -148,6 +150,26 @@ public abstract class AbstractWizardModel implements ModelCallbacks {
         return flattened;
     }
 
+    /**
+     * Gets the current list of review items, associated with each assessment page, as
+     * entered by the user
+     * 
+     * @return ArrayList<ReviewItem>
+     */
+	public ArrayList<ReviewItem> gatherAssessmentReviewItems() {
+		ArrayList<ReviewItem> reviewItems = new ArrayList<ReviewItem>();
+        for (AbstractPage page : getCurrentPageSequence()) {
+            page.getReviewItems(reviewItems);
+        }
+        
+        Collections.sort(reviewItems, new Comparator<ReviewItem>() {
+            public int compare(ReviewItem a, ReviewItem b) {
+                return a.getWeight() > b.getWeight() ? +1 : a.getWeight() < b.getWeight() ? -1 : 0;
+            }
+        });
+		return reviewItems;
+	}
+    
 	/**
 	 * Getter Method: getApplicationContext()
 	 * 

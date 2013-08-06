@@ -1,33 +1,22 @@
 package ie.ucc.bis.wizard.ui;
 
 import ie.ucc.bis.R;
+import ie.ucc.bis.wizard.model.AbstractPage;
 import ie.ucc.bis.wizard.model.AbstractWizardModel;
 import ie.ucc.bis.wizard.model.ModelCallbacks;
-import ie.ucc.bis.wizard.model.AbstractPage;
-import ie.ucc.bis.wizard.model.ReviewItem;
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
-
+import ie.ucc.bis.wizard.model.ReviewAssessmentAdapter;
 import android.app.Activity;
 import android.os.Bundle;
-import android.support.v4.app.ListFragment;
-import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
-public class ReviewFragment extends ListFragment implements ModelCallbacks {
+public class ReviewFragment extends ReviewListFragment implements ModelCallbacks {
     private ReviewFragmentCallbacks reviewFragmentCallbacks;
-    private AbstractWizardModel mWizardModel;
-    private List<ReviewItem> mCurrentReviewItems;
-
-    private ReviewAdapter mReviewAdapter;
+    private AbstractWizardModel wizardModel;
+    private ReviewAssessmentAdapter reviewAssessmentAdapter;
 
     public ReviewFragment() {
     }
@@ -35,7 +24,7 @@ public class ReviewFragment extends ListFragment implements ModelCallbacks {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mReviewAdapter = new ReviewAdapter();
+        setReviewAssessmentAdapter(new ReviewAssessmentAdapter(this));
     }
 
     @Override
@@ -49,7 +38,7 @@ public class ReviewFragment extends ListFragment implements ModelCallbacks {
         titleView.setTextColor(getResources().getColor(R.color.DarkGreen));
 
         ListView listView = (ListView) rootView.findViewById(android.R.id.list);
-        setListAdapter(mReviewAdapter);
+        setListAdapter(getReviewAssessmentAdapter());
         listView.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
         return rootView;
     }
@@ -64,8 +53,8 @@ public class ReviewFragment extends ListFragment implements ModelCallbacks {
 
         setReviewFragmentCallbacks((ReviewFragmentCallbacks) activity);
 
-        mWizardModel = getReviewFragmentCallbacks().getWizardModel();
-        mWizardModel.registerListener(this);
+        setWizardModel(getReviewFragmentCallbacks().getWizardModel());
+        getWizardModel().registerListener(this);
         onPageTreeChanged();
     }
 
@@ -79,111 +68,24 @@ public class ReviewFragment extends ListFragment implements ModelCallbacks {
         super.onDetach();
         setReviewFragmentCallbacks(null);
 
-        mWizardModel.unregisterListener(this);
+        getWizardModel().unregisterListener(this);
     }
 
     public void onPageDataChanged(AbstractPage changedPage) {
-        ArrayList<ReviewItem> reviewItems = new ArrayList<ReviewItem>();
-        for (AbstractPage page : mWizardModel.getCurrentPageSequence()) {
-            page.getReviewItems(reviewItems);
-        }
-        
-        Collections.sort(reviewItems, new Comparator<ReviewItem>() {
-            public int compare(ReviewItem a, ReviewItem b) {
-                return a.getWeight() > b.getWeight() ? +1 : a.getWeight() < b.getWeight() ? -1 : 0;
-            }
-        });
-        mCurrentReviewItems = reviewItems;
+       setCurrentReviewItems(getWizardModel().gatherAssessmentReviewItems());
 
-        if (mReviewAdapter != null) {
-            mReviewAdapter.notifyDataSetInvalidated();
+        if (getReviewAssessmentAdapter() != null) {
+        	getReviewAssessmentAdapter().notifyDataSetInvalidated();
         }
     }
 
     @Override
     public void onListItemClick(ListView l, View v, int position, long id) {
-        getReviewFragmentCallbacks().onEditScreenAfterReview(mCurrentReviewItems.get(position).getPageKey());
-    }
-
-
-    private class ReviewAdapter extends BaseAdapter {
-    	private static final int HEADER_ITEM_TYPE = 0;
-    	private static final int SIMPLE_ITEM_TYPE = 1;
-    	private static final int MAX_TYPE_COUNT = 2;
-    	private static final String DEFAULT_ITEM_VALUE = "--------";
-    	
-        @Override
-        public boolean hasStableIds() {
-            return true;
-        }
-
-        @Override
-        public int getItemViewType(int position) {
-        	// need to ascertain if we are dealing with a header
-        	// or just a simple list item
-        	ReviewItem reviewItem = mCurrentReviewItems.get(position);
-        	if (reviewItem.isHeaderItem()) {
-        		return HEADER_ITEM_TYPE;
-        	}
-        	else {
-        		return SIMPLE_ITEM_TYPE;
-        	}
-        }
-
-        @Override
-        public int getViewTypeCount() {
-            return MAX_TYPE_COUNT;
-        }
-
-        @Override
-        public boolean areAllItemsEnabled() {
-            return true;
-        }
-
-        public Object getItem(int position) {
-            return mCurrentReviewItems.get(position);
-        }
-
-        public long getItemId(int position) {
-            return mCurrentReviewItems.get(position).hashCode();
-        }
-
-        public View getView(int position, View view, ViewGroup container) {
-            LayoutInflater inflater = LayoutInflater.from(getActivity());
-            int itemType = getItemViewType(position);
-            View rootView = null;
-            String displayItemValue = null;
-            
-            ReviewItem reviewItem = mCurrentReviewItems.get(position);
-            
-            switch (itemType) {
-            	case HEADER_ITEM_TYPE : 
-            			rootView = inflater.inflate(R.layout.list_item_header_review, container, false);
-            			((TextView) rootView.findViewById(R.id.review_list_header)).setText(reviewItem.getTitle());
-            			break;
-            			
-            	case SIMPLE_ITEM_TYPE :
-        			rootView = inflater.inflate(R.layout.list_item_review, container, false);
-        			((TextView) rootView.findViewById(R.id.review_list_item_label)).setText(reviewItem.getTitle());
-        			
-        			displayItemValue = reviewItem.getDisplayValue();
-                    if (TextUtils.isEmpty(displayItemValue)) {
-                    	displayItemValue = DEFAULT_ITEM_VALUE;
-                    }
-        			((TextView) rootView.findViewById(R.id.review_list_item_value)).setText(displayItemValue);
-        			break;
-            } // end of switch
-            return rootView;
-        }
-
-        public int getCount() {
-            return mCurrentReviewItems.size();
-        }
+        getReviewFragmentCallbacks().onEditScreenAfterReview(getCurrentReviewItems().get(position).getPageKey());
     }
 
 	/**
 	 * Getter Method: getReviewFragmentCallbacks()
-	 * 
 	 */		 
 	public ReviewFragmentCallbacks getReviewFragmentCallbacks() {
 		return reviewFragmentCallbacks;
@@ -191,9 +93,36 @@ public class ReviewFragment extends ListFragment implements ModelCallbacks {
 
 	/**
 	 * Setter Method: setReviewFragmentCallbacks()
-	 * 
 	 */  	
 	public void setReviewFragmentCallbacks(ReviewFragmentCallbacks reviewFragmentCallbacks) {
 		this.reviewFragmentCallbacks = reviewFragmentCallbacks;
+	}
+
+	/**
+	 * Getter Method: getReviewAssessmentAdapter()
+	 */	
+	private ReviewAssessmentAdapter getReviewAssessmentAdapter() {
+		return reviewAssessmentAdapter;
+	}
+
+	/**
+	 * Setter Method: setReviewAssessmentAdapter()
+	 */
+	private void setReviewAssessmentAdapter(ReviewAssessmentAdapter reviewAssessmentAdapter) {
+		this.reviewAssessmentAdapter = reviewAssessmentAdapter;
+	}
+
+	/**
+	 * Getter Method: getWizardModel()
+	 */	
+	private AbstractWizardModel getWizardModel() {
+		return wizardModel;
+	}
+
+	/**
+	 * Setter Method: setWizardModel()
+	 */
+	private void setWizardModel(AbstractWizardModel wizardModel) {
+		this.wizardModel = wizardModel;
 	}
 }
