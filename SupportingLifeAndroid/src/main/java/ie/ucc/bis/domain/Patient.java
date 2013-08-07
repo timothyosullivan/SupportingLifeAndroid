@@ -15,7 +15,9 @@ public class Patient implements Serializable {
 	private String surname;
 	private ArrayList<Classification> classifications;
 	
-	public Patient() {}
+	public Patient() {
+		setClassifications(new ArrayList<Classification>());
+	}
 
 	/**
 	 * Constructor

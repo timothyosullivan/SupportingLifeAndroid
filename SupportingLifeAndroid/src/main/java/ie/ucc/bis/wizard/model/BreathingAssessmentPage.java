@@ -45,20 +45,23 @@ public class BreathingAssessmentPage extends AbstractPage {
     	Resources resources = ((AbstractWizardModel) getModelCallbacks()).applicationContext.getResources();
     	String reviewItemLabel = null;
     	String reviewItemValue = null;
+    	String reviewItemSymptomId = null;
     	
     	// review header
     	reviewItemLabel = resources.getString(R.string.breathing_assessment_title);
-    	reviewItems.add(new ReviewItem(reviewItemLabel, null, getKey(), -1, true));	
+    	reviewItems.add(new ReviewItem(reviewItemLabel, getKey()));	
     	
     	// does the child have cough or difficult breathing?
     	reviewItemLabel = resources.getString(R.string.breathing_assessment_review_cough_difficult_breathing);
     	reviewItemValue = getPageData().getString(COUGH_DIFFICULT_BREATHING_DATA_KEY + AssessmentWizardRadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
-    	reviewItems.add(new ReviewItem(reviewItemLabel, reviewItemValue, getKey(), -1));    	
+    	reviewItemSymptomId = resources.getString(R.string.breathing_assessment_cough_difficult_breathing_symptom_id);
+    	reviewItems.add(new ReviewItem(reviewItemLabel, reviewItemValue, reviewItemSymptomId, getKey(), -1));    	
     	
     	// chest indrawing
     	reviewItemLabel = resources.getString(R.string.breathing_assessment_review_chest_indrawing);
     	reviewItemValue = getPageData().getString(CHEST_INDRAWING_DATA_KEY + AssessmentWizardRadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
-    	reviewItems.add(new ReviewItem(reviewItemLabel, reviewItemValue, getKey(), -1));    	
+    	reviewItemSymptomId = resources.getString(R.string.breathing_assessment_chest_indrawing_symptom_id);
+    	reviewItems.add(new ReviewItem(reviewItemLabel, reviewItemValue, reviewItemSymptomId, getKey(), -1));    	
     }
 
 

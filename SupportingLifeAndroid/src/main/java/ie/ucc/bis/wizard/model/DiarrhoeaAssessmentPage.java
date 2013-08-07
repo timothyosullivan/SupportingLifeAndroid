@@ -46,20 +46,23 @@ public class DiarrhoeaAssessmentPage extends AbstractPage {
     	Resources resources = appContext.getResources();
     	String reviewItemLabel = null;
     	String reviewItemValue = null;
+    	String reviewItemSymptomId = null;
     	
     	// review header
     	reviewItemLabel = resources.getString(R.string.diarrhoea_assessment_title);
-    	reviewItems.add(new ReviewItem(reviewItemLabel, null, getKey(), -1, true));	
+    	reviewItems.add(new ReviewItem(reviewItemLabel, getKey()));	
 
     	// diarrhoea
     	reviewItemLabel = resources.getString(R.string.diarrhoea_assessment_review_diarrhoea);
     	reviewItemValue = getPageData().getString(DIARRHOEA_DATA_KEY + AssessmentWizardRadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
-    	reviewItems.add(new ReviewItem(reviewItemLabel, reviewItemValue, getKey(), -1));    	
+    	reviewItemSymptomId = resources.getString(R.string.diarrhoea_assessment_diarrhoea_symptom_id);
+    	reviewItems.add(new ReviewItem(reviewItemLabel, reviewItemValue, reviewItemSymptomId, getKey(), -1));    	
     	
     	// blood in the stools
     	reviewItemLabel = resources.getString(R.string.diarrhoea_assessment_review_blood_stools);
     	reviewItemValue = getPageData().getString(BLOOD_STOOLS_DATA_KEY + AssessmentWizardRadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
-    	reviewItems.add(new ReviewItem(reviewItemLabel, reviewItemValue, getKey(), -1));
+    	reviewItemSymptomId = resources.getString(R.string.diarrhoea_assessment_blood_stools_symptom_id);
+    	reviewItems.add(new ReviewItem(reviewItemLabel, reviewItemValue, reviewItemSymptomId, getKey(), -1));
     }
 
 	/**

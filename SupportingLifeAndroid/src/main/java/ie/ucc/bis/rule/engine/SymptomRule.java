@@ -40,6 +40,14 @@ public class SymptomRule implements Serializable {
 	 * Constructor
 	 * 
 	 */	
+	public SymptomRule() {
+		setSymptoms(new ArrayList<String>());
+	}
+	
+	/**
+	 * Constructor
+	 * 
+	 */	
 	public SymptomRule(String rule) {
 		setRule(rule);
 		setSymptoms(new ArrayList<String>());

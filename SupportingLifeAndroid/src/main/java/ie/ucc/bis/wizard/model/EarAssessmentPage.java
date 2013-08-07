@@ -47,25 +47,29 @@ public class EarAssessmentPage extends AbstractPage {
     	Resources resources = appContext.getResources();
     	String reviewItemLabel = null;
     	String reviewItemValue = null;
+    	String reviewItemSymptomId = null;
     	
     	// review header
     	reviewItemLabel = resources.getString(R.string.ear_assessment_title);
-    	reviewItems.add(new ReviewItem(reviewItemLabel, null, getKey(), -1, true));
+    	reviewItems.add(new ReviewItem(reviewItemLabel, getKey()));
     	
     	// ear problem
     	reviewItemLabel = resources.getString(R.string.ear_assessment_review_ear_problem);
     	reviewItemValue = getPageData().getString(EAR_PROBLEM_DATA_KEY + AssessmentWizardRadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
-    	reviewItems.add(new ReviewItem(reviewItemLabel, reviewItemValue, getKey(), -1));
+    	reviewItemSymptomId = resources.getString(R.string.ear_assessment_ear_problem_symptom_id);
+    	reviewItems.add(new ReviewItem(reviewItemLabel, reviewItemValue, reviewItemSymptomId, getKey(), -1));
     	
     	// ear pain
     	reviewItemLabel = resources.getString(R.string.ear_assessment_review_ear_pain);
     	reviewItemValue = getPageData().getString(EAR_PAIN_DATA_KEY + AssessmentWizardRadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
-    	reviewItems.add(new ReviewItem(reviewItemLabel, reviewItemValue, getKey(), -1));
+    	reviewItemSymptomId = resources.getString(R.string.ear_assessment_ear_pain_symptom_id);
+    	reviewItems.add(new ReviewItem(reviewItemLabel, reviewItemValue, reviewItemSymptomId, getKey(), -1));
     	
     	// ear discharge
     	reviewItemLabel = resources.getString(R.string.ear_assessment_review_ear_discharge);
     	reviewItemValue = getPageData().getString(EAR_DISCHARGE_DATA_KEY + AssessmentWizardRadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
-    	reviewItems.add(new ReviewItem(reviewItemLabel, reviewItemValue, getKey(), -1));    	
+    	reviewItemSymptomId = resources.getString(R.string.ear_assessment_ear_discharge_symptom_id);
+    	reviewItems.add(new ReviewItem(reviewItemLabel, reviewItemValue, reviewItemSymptomId, getKey(), -1));	
     }
 
 	/**

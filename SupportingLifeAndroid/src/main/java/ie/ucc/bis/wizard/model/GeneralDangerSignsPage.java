@@ -47,25 +47,29 @@ public class GeneralDangerSignsPage extends AbstractPage {
     	Resources resources = appContext.getResources();
     	String reviewItemLabel = null;
     	String reviewItemValue = null;
+    	String reviewItemSymptomId = null;
 
     	// review header
     	reviewItemLabel = resources.getString(R.string.general_danger_signs_title);
-    	reviewItems.add(new ReviewItem(reviewItemLabel, null, getKey(), -1, true));
+    	reviewItems.add(new ReviewItem(reviewItemLabel, getKey()));
     	
     	// not able to drink or breastfeed
     	reviewItemLabel = resources.getString(R.string.general_danger_signs_review_drink_breastfeed);
     	reviewItemValue = getPageData().getString(DRINK_BREASTFEED_DATA_KEY + AssessmentWizardRadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
-    	reviewItems.add(new ReviewItem(reviewItemLabel, reviewItemValue, getKey(), -1));    	
+    	reviewItemSymptomId = resources.getString(R.string.general_danger_signs_drink_breastfeed_symptom_id);
+    	reviewItems.add(new ReviewItem(reviewItemLabel, reviewItemValue, reviewItemSymptomId, getKey(), -1));    	
     	
     	// vomits everythings
     	reviewItemLabel = resources.getString(R.string.general_danger_signs_review_vomits);
     	reviewItemValue = getPageData().getString(VOMITS_EVERYTHING_DATA_KEY + AssessmentWizardRadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
-    	reviewItems.add(new ReviewItem(reviewItemLabel, reviewItemValue, getKey(), -1));
+    	reviewItemSymptomId = resources.getString(R.string.general_danger_signs_vomits_everything_symptom_id);
+    	reviewItems.add(new ReviewItem(reviewItemLabel, reviewItemValue, reviewItemSymptomId, getKey(), -1));
     	
     	// history of convulsions
     	reviewItemLabel = resources.getString(R.string.general_danger_signs_review_convulsions);
     	reviewItemValue = getPageData().getString(HISTORY_OF_CONVULSIONS_DATA_KEY + AssessmentWizardRadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
-    	reviewItems.add(new ReviewItem(reviewItemLabel, reviewItemValue, getKey(), -1));
+     	reviewItemSymptomId = resources.getString(R.string.general_danger_signs_convulsions_symptom_id);
+    	reviewItems.add(new ReviewItem(reviewItemLabel, reviewItemValue, reviewItemSymptomId, getKey(), -1));
     }
 
 	/**

@@ -46,7 +46,9 @@ public class Classification implements Serializable {
 	 * Constructor
 	 * 
 	 */
-	public Classification() {}
+	public Classification() {
+		setSymptomRule(new SymptomRule());
+	}
 	
 	/**
 	 * Constructor

@@ -48,25 +48,29 @@ public class MalnutritionAssessmentPage extends AbstractPage {
     	Resources resources = appContext.getResources();
     	String reviewItemLabel = null;
     	String reviewItemValue = null;
+    	String reviewItemSymptomId = null;
     	
     	// review header
     	reviewItemLabel = resources.getString(R.string.malnutrition_assessment_title);
-    	reviewItems.add(new ReviewItem(reviewItemLabel, null, getKey(), -1, true));
+    	reviewItems.add(new ReviewItem(reviewItemLabel, getKey()));
     	
     	// oedema of both feet
     	reviewItemLabel = resources.getString(R.string.malnutrition_assessment_review_oedema);
     	reviewItemValue = getPageData().getString(OEDEMA_DATA_KEY + AssessmentWizardRadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
-    	reviewItems.add(new ReviewItem(reviewItemLabel, reviewItemValue, getKey(), -1));
+    	reviewItemSymptomId = resources.getString(R.string.malnutrition_assessment_oedema_symptom_id);
+    	reviewItems.add(new ReviewItem(reviewItemLabel, reviewItemValue, reviewItemSymptomId, getKey(), -1));
     	
     	// weight for age
     	reviewItemLabel = resources.getString(R.string.malnutrition_assessment_review_weight_for_age);
     	reviewItemValue = getPageData().getString(WEIGHT_FOR_AGE_DATA_KEY + AssessmentWizardRadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
-    	reviewItems.add(new ReviewItem(reviewItemLabel, reviewItemValue, getKey(), -1));
+    	reviewItemSymptomId = resources.getString(R.string.malnutrition_assessment_weight_for_age_symptom_id);
+    	reviewItems.add(new ReviewItem(reviewItemLabel, reviewItemValue, reviewItemSymptomId, getKey(), -1));
     	
     	// visible severe wasting
     	reviewItemLabel = resources.getString(R.string.malnutrition_assessment_review_visible_severe_wasting);
     	reviewItemValue = getPageData().getString(VISIBLE_SEVERE_WASTING_DATA_KEY + AssessmentWizardRadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
-    	reviewItems.add(new ReviewItem(reviewItemLabel, reviewItemValue, getKey(), -1));    	
+    	reviewItemSymptomId = resources.getString(R.string.malnutrition_assessment_visible_severe_wasting_symptom_id);
+    	reviewItems.add(new ReviewItem(reviewItemLabel, reviewItemValue, reviewItemSymptomId, getKey(), -1));  	
     }
 
 	/**

@@ -4,38 +4,38 @@
     <!-- ============================================================ -->
     <!-- GENERAL APPLICATION DETAILS -->
     <!-- ============================================================ -->
-    <string name="app_name">Supporting LIFE</string>
+	<string name="app_name">Supporting LIFE</string>
 
     <!-- ============================================================ -->
     <!-- ACTIVITY TITLES -->
     <!-- ============================================================ -->
-    <string name="activity_title_home">Home</string>
-    <string name="activity_title_search">Search</string>
-    <string name="activity_title_about">About</string>
-    <string name="activity_title_training">Training</string>
-    <string name="activity_title_record_patient_details">Assessment</string>
-    <string name="activity_title_submit_patient_record">Submission</string>
-    <string name="activity_title_record_patient_details_wizard">e-IMCI Assessment</string>
-    <string name="activity_title_assessment_results">e-IMCI Results</string>
+	<string name="activity_title_home">Home</string>
+	<string name="activity_title_search">Search</string>
+	<string name="activity_title_about">About</string>
+	<string name="activity_title_training">Training</string>
+	<string name="activity_title_record_patient_details">Assessment</string>
+	<string name="activity_title_submit_patient_record">Submission</string>
+	<string name="activity_title_record_patient_details_wizard">e-IMCI Assessment</string>
+	<string name="activity_title_assessment_results">e-IMCI Results</string>
 
     <!-- ============================================================ -->
     <!-- ACTION BAR -->
     <!-- ============================================================ -->
-    <string name="actionbar_home_description">Home</string>
-    <string name="actionbar_about_description">About</string>
-    <string name="actionbar_search_description">Search</string>
-    <string name="actionbar_separator_description">Title Bar</string>
+	<string name="actionbar_home_description">Home</string>
+	<string name="actionbar_about_description">About</string>
+	<string name="actionbar_search_description">Search</string>
+	<string name="actionbar_separator_description">Title Bar</string>
 
     <!-- ============================================================ -->
     <!-- DASHBOARD -->
     <!-- ============================================================ -->
-    <string name="dashboard_assessment_button">e-IMCI Assessment</string>
-    <string name="dashboard_about_button">About</string>
-    <string name="dashboard_assessment_wizard_button">e-IMCI Assessment Wizard</string>
-    <string name="dashboard_training_button">Training</string>
-    <string name="action_settings">Settings</string>
-    <string name="submissionInfoStatus">Submitting Patient Record..</string>
-    <string name="retrievalInfoStatus">Retrieving Patient Record..</string>
+	<string name="dashboard_assessment_button">e-IMCI Assessment</string>
+	<string name="dashboard_about_button">About</string>
+	<string name="dashboard_assessment_wizard_button">e-IMCI Assessment Wizard</string>
+	<string name="dashboard_training_button">Training</string>
+	<string name="action_settings">Settings</string>
+	<string name="submissionInfoStatus">Submitting Patient Record..</string>
+	<string name="retrievalInfoStatus">Retrieving Patient Record..</string>
 
     <!-- ============================================================ -->
     <!-- ASSESSMENT WIZARD BREAD-CRUMB UI -->
@@ -46,154 +46,189 @@
     <!-- ASSESSMENT WIZARD BREAD-CRUMB UI -->
     <!-- STAGE 1: GENERAL PATIENT DETAILS -->
     <!-- ============================================================ -->
-    <string name="general_patient_details_title">Patient Details</string>
-    <string name="general_patient_details_first_name">First Name:</string>
-    <string name="general_patient_details_surname">Surname:</string>
-    <string name="general_patient_details_date_of_birth">Date of Birth:</string>
-    <string name="general_patient_details_weight">Weight (kg):</string>
-    <string name="general_patient_details_temperature">Temperature</string>
+	<string name="general_patient_details_title">Patient Details</string>
+	<string name="general_patient_details_first_name">First Name:</string>
+	<string name="general_patient_details_surname">Surname:</string>
+	<string name="general_patient_details_date_of_birth">Date of Birth:</string>
+	<string name="general_patient_details_weight">Weight (kg):</string>
+	<string name="general_patient_details_temperature">Temperature</string>
     <!-- Gender -->
-    <string name="general_patient_details_radio_gender">Gender:</string>
-    <string name="general_patient_details_radio_gender_male">Male</string>
-    <string name="general_patient_details_radio_gender_female">Female</string>
+	<string name="general_patient_details_radio_gender">Gender:</string>
+	<string name="general_patient_details_radio_gender_male">Male</string>
+	<string name="general_patient_details_radio_gender_female">Female</string>
     <!-- Problems -->
-    <string name="general_patient_details_problems">What are the child\'s problems?: </string>
+	<string name="general_patient_details_problems">What are the child\'s problems?:</string>
 
     <!-- Patient Details Review -->
-    <string name="general_patient_details_review_first_name">First Name</string>
-    <string name="general_patient_details_review_surname">Surname</string>
-    <string name="general_patient_details_review_date_of_birth">Date of Birth</string>
-    <string name="general_patient_details_review_weight">Weight (kg)</string>
-    <string name="general_patient_details_review_temperature">Temperature</string>
-    <string name="general_patient_details_review_gender">Gender</string>
-    <string name="general_patient_details_review_problems">Problems</string>
+	<string name="general_patient_details_review_first_name">First Name</string>
+	<string name="general_patient_details_review_surname">Surname</string>
+	<string name="general_patient_details_review_date_of_birth">Date of Birth</string>
+	<string name="general_patient_details_review_weight">Weight (kg)</string>
+	<string name="general_patient_details_review_temperature">Temperature</string>
+	<string name="general_patient_details_review_gender">Gender</string>
+	<string name="general_patient_details_review_problems">Problems</string>
 
     <!-- HINTS -->
-    <string name="general_patient_details_first_name_hint">Please enter your first name</string>
-    <string name="general_patient_details_surname_hint">Please enter your surname</string>
+	<string name="general_patient_details_first_name_hint">Please enter your first name</string>
+	<string name="general_patient_details_surname_hint">Please enter your surname</string>
+	
+	<!-- Symptom Ids (NOT TO BE TRANSLATED!)-->
+	<string name="general_patient_details_weight_symptom_id">weight</string>
+	<string name="general_patient_details_temperature_symptom_id">temperature</string>
+	<string name="general_patient_details_gender_symptom_id">gender</string>
 
     <!-- ============================================================ -->
     <!-- ASSESSMENT WIZARD BREAD-CRUMB UI -->
     <!-- STAGE 2: GENERAL DANGER SIGNS -->
     <!-- ============================================================ -->
-    <string name="general_danger_signs_title">Danger Signs</string>
-    <string name="general_danger_signs_radio_drink_breastfeed">Not able to Drink or Breastfeed:</string>
-    <string name="general_danger_signs_radio_vomits">Vomits Everything:</string>
-    <string name="general_danger_signs_radio_convulsions">History of Convulsions:</string>
+	<string name="general_danger_signs_title">Danger Signs</string>
+	<string name="general_danger_signs_radio_drink_breastfeed">Not able to Drink or Breastfeed:</string>
+	<string name="general_danger_signs_radio_vomits">Vomits Everything:</string>
+	<string name="general_danger_signs_radio_convulsions">History of Convulsions:</string>
+    
     <!-- Danger Signs Review -->
-    <string name="general_danger_signs_review_drink_breastfeed">Not able to Drink or Breastfeed</string>
-    <string name="general_danger_signs_review_vomits">Vomits Everything</string>
-    <string name="general_danger_signs_review_convulsions">History of Convulsions</string>
+	<string name="general_danger_signs_review_drink_breastfeed">Not able to Drink or Breastfeed</string>
+	<string name="general_danger_signs_review_vomits">Vomits Everything</string>
+	<string name="general_danger_signs_review_convulsions">History of Convulsions</string>
 
+	<!-- Symptom Ids (NOT TO BE TRANSLATED!)-->
+	<string name="general_danger_signs_drink_breastfeed_symptom_id">not_able_to_drink_or_breastfeed</string>
+	<string name="general_danger_signs_vomits_everything_symptom_id">vomits_everything</string>
+	<string name="general_danger_signs_convulsions_symptom_id">history_of_convulsions</string>
     <!-- ============================================================ -->
     <!-- ASSESSMENT WIZARD BREAD-CRUMB UI -->
     <!-- STAGE 3: Cough / Breathing Assessment -->
     <!-- ============================================================ -->
-    <string name="breathing_assessment_title">Breathing Assessment</string>
-    <string name="breathing_assessment_radio_cough_difficult_breathing">Does the child have cough or difficult breathing?</string>
-    <string name="breathing_assessment_radio_chest_indrawing">Chest indrawing:</string>
+	<string name="breathing_assessment_title">Breathing Assessment</string>
+	<string name="breathing_assessment_radio_cough_difficult_breathing">Does the child have cough or difficult breathing?
+	</string>
+	<string name="breathing_assessment_radio_chest_indrawing">Chest indrawing:</string>
+	
     <!-- Cough / Breathing Review -->
-    <string name="breathing_assessment_review_cough_difficult_breathing">Cough or Difficult Breathing</string>
-    <string name="breathing_assessment_review_chest_indrawing">Chest Indrawing</string>
+	<string name="breathing_assessment_review_cough_difficult_breathing">Cough or Difficult Breathing</string>
+	<string name="breathing_assessment_review_chest_indrawing">Chest Indrawing</string>
+	
+	<!-- Symptom Ids (NOT TO BE TRANSLATED!)-->
+	<string name="breathing_assessment_cough_difficult_breathing_symptom_id">cough_difficult_breathing</string>
+	<string name="breathing_assessment_chest_indrawing_symptom_id">chest_indrawing</string>
 
     <!-- ============================================================ -->
     <!-- ASSESSMENT WIZARD BREAD-CRUMB UI -->
     <!-- STAGE 4: Diarrhoea Assessment -->
     <!-- ============================================================ -->
-    <string name="diarrhoea_assessment_title">Diarrhoea Assessment</string>
-    <string name="diarrhoea_assessment_radio_diarrhoea">Does the child have diarrhoea?</string>
-    <string name="diarrhoea_assessment_radio_blood_stools">Is there blood in the stools?</string>
+	<string name="diarrhoea_assessment_title">Diarrhoea Assessment</string>
+	<string name="diarrhoea_assessment_radio_diarrhoea">Does the child have diarrhoea?</string>
+	<string name="diarrhoea_assessment_radio_blood_stools">Is there blood in the stools?</string>
 
     <!-- Diarrhoea Review -->
-    <string name="diarrhoea_assessment_review_diarrhoea">Diarrhoea</string>
-    <string name="diarrhoea_assessment_review_blood_stools">Blood in the Stools</string>
+	<string name="diarrhoea_assessment_review_diarrhoea">Diarrhoea</string>
+	<string name="diarrhoea_assessment_review_blood_stools">Blood in the Stools</string>
+	
+	<!-- Symptom Ids (NOT TO BE TRANSLATED!)-->
+	<string name="diarrhoea_assessment_diarrhoea_symptom_id">diarrhoea</string>
+	<string name="diarrhoea_assessment_blood_stools_symptom_id">blood_in_the_stools</string>
 
     <!-- ============================================================ -->
     <!-- ASSESSMENT WIZARD BREAD-CRUMB UI -->
     <!-- STAGE 5: Fever Assessment -->
     <!-- ============================================================ -->
-    <string name="fever_assessment_title">Fever Assessment</string>
+	<string name="fever_assessment_title">Fever Assessment</string>
 
     <!-- Fever -->
-    <string name="fever_assessment_radio_fever">Does the child have fever?</string>
-    <string name="fever_assessment_radio_fever_no">No</string>
-    <string name="fever_assessment_radio_fever_history">History</string>
-    <string name="fever_assessment_radio_fever_feels_hot">Feels Hot</string>
-    <string name="fever_assessment_radio_fever_temperature">Temperature > 37.5</string>
+	<string name="fever_assessment_radio_fever">Does the child have fever?</string>
+	<string name="fever_assessment_radio_fever_no">No</string>
+	<string name="fever_assessment_radio_fever_history">History</string>
+	<string name="fever_assessment_radio_fever_feels_hot">Feels Hot</string>
+	<string name="fever_assessment_radio_fever_temperature">Temperature > 37.5</string>
 
     <!-- Malaria Risk -->
-    <string name="fever_assessment_radio_malaria_risk">Malaria Risk</string>
-    <string name="fever_assessment_radio_malaria_risk_high">High</string>
-    <string name="fever_assessment_radio_malaria_risk_low">Low</string>
-    <string name="fever_assessment_radio_malaria_risk_no">No</string>
-    <string name="fever_assessment_duration">For how long? (days)</string>
+	<string name="fever_assessment_radio_malaria_risk">Malaria Risk</string>
+	<string name="fever_assessment_radio_malaria_risk_high">High</string>
+	<string name="fever_assessment_radio_malaria_risk_low">Low</string>
+	<string name="fever_assessment_radio_malaria_risk_no">No</string>
+	<string name="fever_assessment_duration">For how long? (days)</string>
 
     <!-- Fever Review -->
-    <string name="fever_assessment_review_fever">Fever</string>
-    <string name="fever_assessment_review_malaria_risk">Malaria Risk</string>
-    <string name="fever_assessment_review_duration">For how long? (days)</string>
+	<string name="fever_assessment_review_fever">Fever</string>
+	<string name="fever_assessment_review_malaria_risk">Malaria Risk</string>
+	<string name="fever_assessment_review_duration">For how long? (days)</string>
+	
+	<!-- Symptom Ids (NOT TO BE TRANSLATED!)-->
+	<string name="fever_assessment_fever_symptom_id">fever</string>
+	<string name="fever_assessment_malaria_risk_symptom_id">malaria_risk</string>
+	<string name="fever_assessment_duration_symptom_id">fever_duration</string>
 
     <!-- ============================================================ -->
     <!-- ASSESSMENT WIZARD BREAD-CRUMB UI -->
     <!-- STAGE 6: Ear Assessment -->
     <!-- ============================================================ -->
-    <string name="ear_assessment_title">Ear Assessment</string>
-    <string name="ear_assessment_radio_ear_problem">Does the child have an ear problem?</string>
-    <string name="ear_assessment_radio_ear_pain">Is there ear pain?</string>
-    <string name="ear_assessment_radio_ear_discharge">Is there ear discharge?</string>
+	<string name="ear_assessment_title">Ear Assessment</string>
+	<string name="ear_assessment_radio_ear_problem">Does the child have an ear problem?</string>
+	<string name="ear_assessment_radio_ear_pain">Is there ear pain?</string>
+	<string name="ear_assessment_radio_ear_discharge">Is there ear discharge?</string>
 
     <!-- Ear Review -->
-    <string name="ear_assessment_review_ear_problem">Ear Problem</string>
-    <string name="ear_assessment_review_ear_pain">Ear Pain</string>
-    <string name="ear_assessment_review_ear_discharge">Ear Discharge</string>
+	<string name="ear_assessment_review_ear_problem">Ear Problem</string>
+	<string name="ear_assessment_review_ear_pain">Ear Pain</string>
+	<string name="ear_assessment_review_ear_discharge">Ear Discharge</string>
 
+	<!-- Symptom Ids (NOT TO BE TRANSLATED!)-->
+	<string name="ear_assessment_ear_problem_symptom_id">ear_problem</string>
+	<string name="ear_assessment_ear_pain_symptom_id">ear_pain</string>
+	<string name="ear_assessment_ear_discharge_symptom_id">ear_discharge</string>
+	
     <!-- ============================================================ -->
     <!-- ASSESSMENT WIZARD BREAD-CRUMB UI -->
     <!-- STAGE 7: Malnutrition and Anaemia Assessment -->
     <!-- ============================================================ -->
-    <string name="malnutrition_assessment_title">Malnutrition Assessment</string>
-    <string name="malnutrition_assessment_radio_oedema">Oedema of both feet</string>
+	<string name="malnutrition_assessment_title">Malnutrition Assessment</string>
+	<string name="malnutrition_assessment_radio_oedema">Oedema of both feet</string>
 
     <!-- Weight for Age -->
-    <string name="malnutrition_assessment_radio_weight_for_age">Weight for Age</string>
-    <string name="malnutrition_assessment_radio_weight_for_age_very_low">Very Low</string>
-    <string name="malnutrition_assessment_radio_weight_for_age_not_very_low">Not Very Low</string>
-    <string name="malnutrition_assessment_radio_visible_severe_wasting">Visible Severe Wasting</string>
+	<string name="malnutrition_assessment_radio_weight_for_age">Weight for Age</string>
+	<string name="malnutrition_assessment_radio_weight_for_age_very_low">Very Low</string>
+	<string name="malnutrition_assessment_radio_weight_for_age_not_very_low">Not Very Low</string>
+	<string name="malnutrition_assessment_radio_visible_severe_wasting">Visible Severe Wasting</string>
 
     <!-- Malnutrition and Anaemia Review -->
-    <string name="malnutrition_assessment_review_oedema">Oedema of both feet</string>
-    <string name="malnutrition_assessment_review_weight_for_age">Weight for Age</string>
-    <string name="malnutrition_assessment_review_visible_severe_wasting">Visible Severe Wasting</string>
+	<string name="malnutrition_assessment_review_oedema">Oedema of both feet</string>
+	<string name="malnutrition_assessment_review_weight_for_age">Weight for Age</string>
+	<string name="malnutrition_assessment_review_visible_severe_wasting">Visible Severe Wasting</string>
+	
+	<!-- Symptom Ids (NOT TO BE TRANSLATED!)-->
+	<string name="malnutrition_assessment_oedema_symptom_id">oedema_of_both_feet</string>
+	<string name="malnutrition_assessment_weight_for_age_symptom_id">weight_for_age</string>
+	<string name="malnutrition_assessment_visible_severe_wasting_symptom_id">visible_severe_wasting</string>
 
     <!-- ============================================================ -->
     <!-- ASSESSMENT WIZARD BREAD-CRUMB UI -->
     <!-- STAGE 8: Immunization Status Assessment -->
     <!-- ============================================================ -->
-    <string name="immunization_assessment_title">Immunization Status</string>
-    <string name="immunization_assessment_radio_vaccine_bcg">BCG</string>
-    <string name="immunization_assessment_radio_vaccine_measles">Measles</string>
+	<string name="immunization_assessment_title">Immunization Status</string>
+	<string name="immunization_assessment_radio_vaccine_bcg">BCG</string>
+	<string name="immunization_assessment_radio_vaccine_measles">Measles</string>
 
     <!-- Vaccine Categories -->
-    <string name="immunization_assessment_radio_vaccine_already_received">Already Received</string>
-    <string name="immunization_assessment_radio_vaccine_receive_today">Receive Today</string>
+	<string name="immunization_assessment_radio_vaccine_already_received">Already Received</string>
+	<string name="immunization_assessment_radio_vaccine_receive_today">Receive Today</string>
 
     <!-- Immunization Status Review -->
-    <string name="immunization_assessment_review_vaccine_bcg">Vaccine: BCG</string>
-    <string name="immunization_assessment_review_vaccine_measles">Vaccine: Measles</string>
+	<string name="immunization_assessment_review_vaccine_bcg">Vaccine: BCG</string>
+	<string name="immunization_assessment_review_vaccine_measles">Vaccine: Measles</string>
 
     <!-- ============================================================ -->
     <!-- ASSESSMENT WIZARD BREAD-CRUMB UI -->
     <!-- UNIVERSAL COMPONENTS -->
     <!-- ============================================================ -->
-    <string name="assessment_wizard_review_title">Review</string>
-    <string name="assessment_wizard_radio_yes">Yes</string>
-    <string name="assessment_wizard_radio_no">No</string>
-    <string name="assessment_wizard_previous_button">Previous</string>
-    <string name="assessment_wizard_next_button">Next</string>
-    <string name="assessment_wizard_finish_button">Finish</string>
-    <string name="assessment_wizard_review_button">Review</string>
-    <string name="submit_confirm_message">Perform Medical Assessment</string>
-    <string name="submit_confirm_button">Submit Patient Record</string>
+	<string name="assessment_wizard_review_title">Review</string>
+	<string name="assessment_wizard_radio_yes">Yes</string>
+	<string name="assessment_wizard_radio_no">No</string>
+	<string name="assessment_wizard_previous_button">Previous</string>
+	<string name="assessment_wizard_next_button">Next</string>
+	<string name="assessment_wizard_finish_button">Finish</string>
+	<string name="assessment_wizard_review_button">Review</string>
+	<string name="submit_confirm_message">Perform Medical Assessment</string>
+	<string name="submit_confirm_button">Submit Patient Record</string>
   
     <!-- ============================================================ -->
     <!-- ASSESSMENT RESULTS TABS 									  -->
@@ -202,9 +237,9 @@
     <!-- 2. Classifications Tab										  -->
 	<!-- 3. Recommended Treatments Tab 								  -->
     <!-- ============================================================ -->
-    <string name="assessment_results_review_tab_title">Patient Details</string>
-    <string name="assessment_results_classifications_tab_title">Classifications</string>
-    <string name="assessment_results_treatments_tab_title">Treatments</string>
+	<string name="assessment_results_review_tab_title">Patient Details</string>
+	<string name="assessment_results_classifications_tab_title">Classifications</string>
+	<string name="assessment_results_treatments_tab_title">Treatments</string>
           
     <!-- ============================================================ -->
     <!-- TRAINING SCREEN -->
@@ -214,23 +249,20 @@
     <!-- ============================================================ -->
     <!-- ABOUT SCREEN -->
     <!-- ============================================================ -->
-    <string name="about_intro">Supporting LIFE project</string>
-    <string name="supporting_life_tree_image">Supporting Life Tree Image</string>
-    <string name="spinning_wheel_image">Supporting Life Image Animation</string>
+	<string name="about_intro">Supporting LIFE project</string>
+	<string name="supporting_life_tree_image">Supporting Life Tree Image</string>
+	<string name="spinning_wheel_image">Supporting Life Image Animation</string>
 
     <!-- ============================================================ -->
     <!-- SPLASH SCREEN -->
     <!-- ============================================================ -->
-    <string name="splash_screen_image">Supporting LIFE Splash Screen</string>
+	<string name="splash_screen_image">Supporting LIFE Splash Screen</string>
     
     
     
     <!-- START: Register Patient Details Screen -->
-    <string name="first_name_label">First Name:</string>
-    <string name="surname_label">Surname:</string>
-    <string name="button_send">Submit</string>
+	<string name="first_name_label">First Name:</string>
+	<string name="surname_label">Surname:</string>
+	<string name="button_send">Submit</string>
     <!-- END: Register Patient Details Screen -->
-
-
-
 </resources>

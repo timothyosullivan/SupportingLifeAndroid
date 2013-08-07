@@ -59,7 +59,9 @@ public class AssessmentResultsActivity extends SupportingLifeBaseActivity {
         setReviewItems((ArrayList<ReviewItem>) intent.getSerializableExtra(AssessmentWizardActivity.ASSESSMENT_REVIEW_ITEMS));
         
         // classify symptoms
-        RuleEngine.determineClassifications(this, getPatient());
+        setPatient(new Patient());
+        RuleEngine ruleEngine = new RuleEngine();
+        ruleEngine.determineClassifications(this, getReviewItems(), getPatient());
  
         // create a new Action bar and set title to strings.xml
         final ActionBar bar = getActionBar();

@@ -10,7 +10,7 @@
 		<Category>cough_difficult_breathing</Category>
 		<Name>Severe Pneumonia or Very Severe Disease</Name>
 		<Type>SEVERE</Type>
-		<SymptomRule rule="ANY">
+		<SymptomRule rule="ANY_SYMPTOM">
 			<Symptom>chest_indrawing</Symptom>
 			<Symptom>stridor</Symptom>
 			<!-- Any general danger sign -->
@@ -25,7 +25,7 @@
 		<Category>cough_difficult_breathing</Category>
 		<Name>Pneumonia</Name>
 		<Type>MODERATE</Type>
-		<SymptomRule rule="ANY">
+		<SymptomRule rule="ANY_SYMPTOM">
 			<Symptom>fast_breathing</Symptom>
 		</SymptomRule>
 	</Classification>
@@ -33,7 +33,7 @@
 		<Category>cough_difficult_breathing</Category>
 		<Name>No Pneumonia: Cough or Cold</Name>
 		<Type>LOW</Type>
-		<SymptomRule rule="ANY">
+		<SymptomRule rule="ANY_SYMPTOM">
 			<Symptom>fast_breathing</Symptom>
 		</SymptomRule>
 	</Classification>

@@ -48,24 +48,28 @@ public class FeverAssessmentPage extends AbstractPage {
     	Resources resources = appContext.getResources();
     	String reviewItemLabel = null;
     	String reviewItemValue = null;
+    	String reviewItemSymptomId = null;
     	
     	// review header
     	reviewItemLabel = resources.getString(R.string.fever_assessment_title);
-    	reviewItems.add(new ReviewItem(reviewItemLabel, null, getKey(), -1, true));
+    	reviewItems.add(new ReviewItem(reviewItemLabel, getKey()));
 
     	// fever
     	reviewItemLabel = resources.getString(R.string.fever_assessment_review_fever);
     	reviewItemValue = getPageData().getString(FEVER_DATA_KEY + ToggleButtonGroupTableLayout.TOGGLE_BUTTON_TEXT_DATA_KEY);
-    	reviewItems.add(new ReviewItem(reviewItemLabel, reviewItemValue, getKey(), -1));    	
+    	reviewItemSymptomId = resources.getString(R.string.fever_assessment_fever_symptom_id);
+    	reviewItems.add(new ReviewItem(reviewItemLabel, reviewItemValue, reviewItemSymptomId, getKey(), -1));
     	
     	// malaria risk
     	reviewItemLabel = resources.getString(R.string.fever_assessment_review_malaria_risk);
     	reviewItemValue = getPageData().getString(MALARIA_RISK_DATA_KEY + AssessmentWizardRadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
-    	reviewItems.add(new ReviewItem(reviewItemLabel, reviewItemValue, getKey(), -1));
+    	reviewItemSymptomId = resources.getString(R.string.fever_assessment_malaria_risk_symptom_id);
+    	reviewItems.add(new ReviewItem(reviewItemLabel, reviewItemValue, reviewItemSymptomId, getKey(), -1));
     	
     	// duration
     	reviewItemLabel = resources.getString(R.string.fever_assessment_review_duration);
-    	reviewItems.add(new ReviewItem(reviewItemLabel, getPageData().getString(DURATION_DATA_KEY), getKey(), -1));
+    	reviewItemSymptomId = resources.getString(R.string.fever_assessment_duration_symptom_id);
+    	reviewItems.add(new ReviewItem(reviewItemLabel, getPageData().getString(DURATION_DATA_KEY), reviewItemSymptomId, getKey(), -1));
     }
 
 	/**

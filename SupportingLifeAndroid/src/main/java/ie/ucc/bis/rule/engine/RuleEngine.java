@@ -3,6 +3,7 @@ package ie.ucc.bis.rule.engine;
 import ie.ucc.bis.R;
 import ie.ucc.bis.activity.SupportingLifeBaseActivity;
 import ie.ucc.bis.domain.Patient;
+import ie.ucc.bis.wizard.model.ReviewItem;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -26,13 +27,20 @@ import android.util.Log;
 
 public class RuleEngine {
 
-	public static final String CLASSIFICATION_ELEMENT = "Classification";
-	public static final String CLASSIFICATION_CATEGORY = "Category";
-	public static final String CLASSIFICATION_NAME = "Name";
-	public static final String CLASSIFICATION_TYPE = "Type";
-	public static final String CLASSIFICATION_SYMPTOM_RULE = "SymptomRule";
-	public static final String CLASSIFICATION_SYMPTOM_RULE_ATTRIB = "rule";
-	public static final String CLASSIFICATION_SYMPTOM = "Symptom";
+	private static final String CLASSIFICATION_ELEMENT = "Classification";
+	private static final String CLASSIFICATION_CATEGORY = "Category";
+	private static final String CLASSIFICATION_NAME = "Name";
+	private static final String CLASSIFICATION_TYPE = "Type";
+	private static final String CLASSIFICATION_SYMPTOM_RULE = "SymptomRule";
+	private static final String CLASSIFICATION_SYMPTOM_RULE_ATTRIB = "rule";
+	private static final String CLASSIFICATION_SYMPTOM = "Symptom";
+	
+	// Symptom Rules
+	private static final String ANY_SYMPTOM_RULE = "ANY_SYMPTOM";
+	private static final String TWO_SYMPTOMS_REQUIRED_RULE = "TWO_SYMPTOMS_REQUIRED";
+	private static final int ONE_SYMPTOM_REQUIRED = 1;
+	private static final int TWO_SYMPTOMS_REQUIRED = 2;	
+	
 	
 	private static final String LOG_TAG = "ie.ucc.bis.rule.engine.RuleEngine";
 	
@@ -44,13 +52,25 @@ public class RuleEngine {
 	 * assessment
 	 * 
 	 * @param supportingLifeBaseActivity 
+	 * @param reviewItems 
 	 * @param patient 
 	 * 
 	 */
-	public static void determineClassifications(SupportingLifeBaseActivity supportingLifeBaseActivity, Patient patient) {
+	public void determineClassifications(SupportingLifeBaseActivity supportingLifeBaseActivity, ArrayList<ReviewItem> reviewItems, Patient patient) {
 
 		setClassificationRules(new ArrayList<Classification>());
-		
+		parseClassificationRules(supportingLifeBaseActivity);
+		determinePatientClassifications(reviewItems, patient);
+	}
+
+	/**
+	 * 
+	 * Responsible for parsing xml-based classification rules
+	 * 
+	 * @param supportingLifeBaseActivity 
+	 * 
+	 */
+	private void parseClassificationRules(SupportingLifeBaseActivity supportingLifeBaseActivity) {
 		try {
 			String elemName = null;
 			Classification classificationRule = null;
@@ -58,8 +78,6 @@ public class RuleEngine {
 			String symptomRuleAttrib = null;
 			XmlResourceParser xmlParser = supportingLifeBaseActivity.getResources().getXml(R.xml.classification_rules);
 			
-			// pass header <?xml ...
-			xmlParser.next();
 			int eventType = xmlParser.next();
 			
 			while (eventType != XmlPullParser.END_DOCUMENT) {
@@ -109,35 +127,126 @@ public class RuleEngine {
 		catch (IOException ex) {
 			ex.printStackTrace();
 		}
+		// DEBUG OUTPUT
 		Log.i(LOG_TAG, captureClassificationRulesDebugOutput());
 	}
+	
+	/**
+	 * 
+	 * Responsible for determining patient classifications
+	 * 
+	 * @param reviewItems
+	 * @param patient 
+	 * 
+	 */
+	private void determinePatientClassifications(ArrayList<ReviewItem> reviewItems, Patient patient) {
+		// iterate over all classifications to determine if any fit the patient
+		// assessment
+		boolean classificationApplies = false;
+		Classification classificationMatch = new Classification();
+		for (Classification classification : getClassificationRules()) {
+			classificationApplies = patientHasClassification(classification, reviewItems, classificationMatch);
+			if (classificationApplies) {
+				patient.getClassifications().add(classificationMatch);
+				classificationApplies = false;
+				classificationMatch = new Classification();
+			}
+		}
+		// DEBUG OUTPUT
+		Log.i(LOG_TAG, captureClassificationDebugOutput(patient.getClassifications()));
+	}
+
+	/**
+	 * 
+	 * Determines whether a patient has a specific classification
+	 * 
+	 * @param classification - i.e. classification to be checked
+	 * @param reviewItems
+	 * @param classificationMatch 
+	 * 
+	 */
+	private boolean patientHasClassification(Classification classification, ArrayList<ReviewItem> reviewItems, Classification classificationMatch) {
+		boolean hasClassification = false;
+		
+		// determine the rule constraints on this classification
+		// TODO - Create Enum and Switch to Case Statment
+		if (classification.getSymptomRule().getRule().equalsIgnoreCase(ANY_SYMPTOM_RULE)) {
+			hasClassification = checkSymptomRule(classification, reviewItems, classificationMatch, ONE_SYMPTOM_REQUIRED);
+		}
+		return hasClassification;
+	}
+
+	/**
+	 * 
+	 * Determines whether a symptom rule applies to a patient
+	 * 
+	 * @param classification - i.e. classification to be checked
+	 * @param reviewItems
+	 * @param classificationMatch 
+	 * @param symptomNumberRequired
+	 * 
+	 */
+	private boolean checkSymptomRule(Classification classification, ArrayList<ReviewItem> reviewItems, Classification classificationMatch, int symptomNumberRequired) {
+		int symptomCounter = 0;
+		boolean symptomRuleApplies = false;
+		
+		SYMPTOM_RULE_CHECK:
+		for (String symptom : classification.getSymptomRule().getSymptoms()) {
+			for (ReviewItem reviewItem : reviewItems) {
+				if (symptom.equalsIgnoreCase(reviewItem.getSymptomId())) {
+					classificationMatch.getSymptomRule().getSymptoms().add(symptom);
+					symptomCounter++;
+					if (symptomCounter == symptomNumberRequired) {
+						classificationMatch.setName(classification.getName());
+						classificationMatch.setType(classification.getType());
+						classificationMatch.setCategory(classification.getCategory());
+						symptomRuleApplies = true;
+						break SYMPTOM_RULE_CHECK;
+					}
+				}
+			}
+		}
+		return symptomRuleApplies;
+	}
+
+	/**
+	 * 
+	 * Provides debug output of all classifications passed to
+	 * the method
+	 * 
+	 * @param classifications
+	 * 
+	 */
+	private String captureClassificationDebugOutput(ArrayList<Classification> classifications) {
+		StringBuffer debugOutput = new StringBuffer();
+		
+		for (Classification classification : classifications){
+			debugOutput.append(classification.debugOutput());
+		}
+		
+		return debugOutput.toString();
+	}	
 	
 	/**
 	 * 
 	 * Provides debug output of all classification rules held in memory
 	 * 
 	 */
-	private static String captureClassificationRulesDebugOutput() {
-		StringBuffer debugOutput = new StringBuffer();
-		
-		for (Classification classification : getClassificationRules()){
-			debugOutput.append(classification.debugOutput());
-		}
-		
-		return debugOutput.toString();
+	private String captureClassificationRulesDebugOutput() {
+		return captureClassificationDebugOutput(getClassificationRules());
 	}
 
 	/**
 	 * Getter Method: getClassificationRules()
 	 */	
-	public static ArrayList<Classification> getClassificationRules() {
+	public ArrayList<Classification> getClassificationRules() {
 		return RuleEngine.classificationRules;
 	}
 
 	/**
 	 * Setter Method: setClassificationRules()
 	 */
-	public static void setClassificationRules(ArrayList<Classification> classificationRules) {
+	public void setClassificationRules(ArrayList<Classification> classificationRules) {
 		RuleEngine.classificationRules = classificationRules;
 	}
 }
