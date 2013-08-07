@@ -3,19 +3,64 @@
 <!-- CLASSIFICATION RULES -->
 <!-- ============================================================ -->
 <ClassificationRules>
-    <Classification>
-        <Name>Severe Pneumonia or Very Severe Disease</Name>
-        <Type>SEVERE</Type>
-        <Symptoms>
-            <Sympton>chest_indrawing</Sympton>
-            <Sympton>stridor</Sympton>
-        </Symptoms>
-    </Classification>
-    <Classification>
-        <Name>Pneumonia</Name>
-        <Type>MODERATE</Type>
-        <Symptoms>
-            <Sympton>fast_breathing</Sympton>
-        </Symptoms>
-    </Classification>
+	<!-- ============================================================ -->
+	<!-- COUGH OR DIFFICULT BREATHING -->
+	<!-- ============================================================ -->
+	<Classification>
+		<Category>cough_difficult_breathing</Category>
+		<Name>Severe Pneumonia or Very Severe Disease</Name>
+		<Type>SEVERE</Type>
+		<SymptomRule rule="ANY">
+			<Symptom>chest_indrawing</Symptom>
+			<Symptom>stridor</Symptom>
+			<!-- Any general danger sign -->
+			<Symptom>not_able_to_drink_or_breastfeed</Symptom>
+			<Symptom>vomits_everything</Symptom>
+			<Symptom>history_of_convulsions</Symptom>
+			<Symptom>lethargic_or_unconscious</Symptom>
+			<Symptom>convulsing_now</Symptom>
+		</SymptomRule>
+	</Classification>
+	<Classification>
+		<Category>cough_difficult_breathing</Category>
+		<Name>Pneumonia</Name>
+		<Type>MODERATE</Type>
+		<SymptomRule rule="ANY">
+			<Symptom>fast_breathing</Symptom>
+		</SymptomRule>
+	</Classification>
+	<Classification>
+		<Category>cough_difficult_breathing</Category>
+		<Name>No Pneumonia: Cough or Cold</Name>
+		<Type>LOW</Type>
+		<SymptomRule rule="ANY">
+			<Symptom>fast_breathing</Symptom>
+		</SymptomRule>
+	</Classification>
+
+	<!-- ============================================================ -->
+	<!-- DEHYDRATION -->
+	<!-- ============================================================ -->
+	<Classification>
+		<Category>dehydration</Category>
+		<Name>Severe Dehydration</Name>
+		<Type>SEVERE</Type>
+		<SymptomRule rule="TWO_SYMPTOMS_REQUIRED">
+			<Symptom>lethargic_or_unconscious</Symptom>
+			<Symptom>sunken_eyes</Symptom>
+			<Symptom>not_able_to_drink_or_drinking_poorly</Symptom>
+			<Symptom>skin_pinch_goes_back_very_slowly</Symptom>
+		</SymptomRule>
+	</Classification>
+	<Classification>
+		<Category>dehydration</Category>
+		<Name>Some Dehydration</Name>
+		<Type>MODERATE</Type>
+		<SymptomRule rule="TWO_SYMPTOMS_REQUIRED">
+			<Symptom>restless_irritable</Symptom>
+			<Symptom>sunken_eyes</Symptom>
+			<Symptom>drinks_eagerly_thirsty</Symptom>
+			<Symptom>skin_pinch_goes_back_slowly</Symptom>
+		</SymptomRule>
+	</Classification>
 </ClassificationRules>

@@ -1,5 +1,7 @@
 package ie.ucc.bis.domain;
 
+import ie.ucc.bis.rule.engine.Classification;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 
