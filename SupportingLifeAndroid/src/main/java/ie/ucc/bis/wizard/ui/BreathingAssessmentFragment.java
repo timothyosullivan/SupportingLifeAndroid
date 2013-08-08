@@ -3,6 +3,7 @@ package ie.ucc.bis.wizard.ui;
 import ie.ucc.bis.R;
 import ie.ucc.bis.activity.SupportingLifeBaseActivity;
 import ie.ucc.bis.wizard.model.AssessmentWizardRadioGroupListener;
+import ie.ucc.bis.wizard.model.AssessmentWizardTextWatcher;
 import ie.ucc.bis.wizard.model.BreathingAssessmentPage;
 import android.app.Activity;
 import android.os.Bundle;
@@ -10,6 +11,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
@@ -28,7 +30,10 @@ public class BreathingAssessmentFragment extends Fragment {
     private PageFragmentCallbacks pageFragmentCallbacks;
     private String pageKey;
     private RadioGroup coughDifficultBreathingRadioGroup;
+    private EditText coughDurationEditText;
+    private EditText breathsPerMinuteEditText;
     private RadioGroup chestIndrawingRadioGroup;
+    private RadioGroup stridorRadioGroup;
 
     
     public static BreathingAssessmentFragment create(String pageKey) {
@@ -66,10 +71,23 @@ public class BreathingAssessmentFragment extends Fragment {
         getCoughDifficultBreathingRadioGroup().check(getBreathingAssessmentPage()
         		.getPageData().getInt(BreathingAssessmentPage.COUGH_DIFFICULT_BREATHING_DATA_KEY));
         
+        // for how long? (days) - cough duration
+        setCoughDurationEditText((EditText) rootView.findViewById(R.id.breathing_assessment_cough_duration));
+        getCoughDurationEditText().setText(getBreathingAssessmentPage().getPageData().getString(BreathingAssessmentPage.COUGH_DURATION_DATA_KEY));
+        
+        // breaths per minute
+        setBreathsPerMinuteEditText((EditText) rootView.findViewById(R.id.breathing_assessment_breaths_per_minute));
+        getBreathsPerMinuteEditText().setText(getBreathingAssessmentPage().getPageData().getString(BreathingAssessmentPage.BREATHS_PER_MINUTE_DATA_KEY));
+        
         // chest indrawing
         setChestIndrawingRadioGroup((RadioGroup) rootView.findViewById(R.id.breathing_assessment_radio_chest_indrawing));
         getChestIndrawingRadioGroup().check(getBreathingAssessmentPage()
         		.getPageData().getInt(BreathingAssessmentPage.CHEST_INDRAWING_DATA_KEY));
+        
+        // stridor
+        setStridorRadioGroup((RadioGroup) rootView.findViewById(R.id.breathing_assessment_radio_stridor));
+        getStridorRadioGroup().check(getBreathingAssessmentPage()
+        		.getPageData().getInt(BreathingAssessmentPage.STRIDOR_DATA_KEY));
         
 		// add soft keyboard handler - essentially hiding soft
 		// keyboard when an EditText is not in focus
@@ -101,12 +119,23 @@ public class BreathingAssessmentFragment extends Fragment {
 
         getCoughDifficultBreathingRadioGroup().setOnCheckedChangeListener(
         		new AssessmentWizardRadioGroupListener(getBreathingAssessmentPage(),
-        				BreathingAssessmentPage.COUGH_DIFFICULT_BREATHING_DATA_KEY));        
+        				BreathingAssessmentPage.COUGH_DIFFICULT_BREATHING_DATA_KEY));
+        
+        getCoughDurationEditText().addTextChangedListener(
+        		new AssessmentWizardTextWatcher(getBreathingAssessmentPage(), 
+        				BreathingAssessmentPage.COUGH_DURATION_DATA_KEY));
+        
+        getBreathsPerMinuteEditText().addTextChangedListener(
+        		new AssessmentWizardTextWatcher(getBreathingAssessmentPage(), 
+        				BreathingAssessmentPage.BREATHS_PER_MINUTE_DATA_KEY));
         
         getChestIndrawingRadioGroup().setOnCheckedChangeListener(
         		new AssessmentWizardRadioGroupListener(getBreathingAssessmentPage(),
         				BreathingAssessmentPage.CHEST_INDRAWING_DATA_KEY));
         
+        getStridorRadioGroup().setOnCheckedChangeListener(
+        		new AssessmentWizardRadioGroupListener(getBreathingAssessmentPage(),
+        				BreathingAssessmentPage.STRIDOR_DATA_KEY));
     }
 
 	/**
@@ -179,5 +208,47 @@ public class BreathingAssessmentFragment extends Fragment {
 	 */	
 	public void setChestIndrawingRadioGroup(RadioGroup chestIndrawingRadioGroup) {
 		this.chestIndrawingRadioGroup = chestIndrawingRadioGroup;
+	}
+
+	/**
+	 * Getter Method: getStridorRadioGroup()
+	 */	
+	private RadioGroup getStridorRadioGroup() {
+		return stridorRadioGroup;
+	}
+
+	/**
+	 * Setter Method: setStridorRadioGroup()
+	 */	
+	private void setStridorRadioGroup(RadioGroup stridorRadioGroup) {
+		this.stridorRadioGroup = stridorRadioGroup;
+	}
+
+	/**
+	 * Getter Method: getCoughDurationEditText()
+	 */	
+	private EditText getCoughDurationEditText() {
+		return coughDurationEditText;
+	}
+
+	/**
+	 * Setter Method: setCoughDurationEditText()
+	 */	
+	private void setCoughDurationEditText(EditText coughDurationEditText) {
+		this.coughDurationEditText = coughDurationEditText;
+	}
+
+	/**
+	 * Getter Method: getBreathsPerMinuteEditText()
+	 */	
+	private EditText getBreathsPerMinuteEditText() {
+		return breathsPerMinuteEditText;
+	}
+
+	/**
+	 * Setter Method: setBreathsPerMinuteEditText()
+	 */	
+	private void setBreathsPerMinuteEditText(EditText breathsPerMinuteEditText) {
+		this.breathsPerMinuteEditText = breathsPerMinuteEditText;
 	}
 }

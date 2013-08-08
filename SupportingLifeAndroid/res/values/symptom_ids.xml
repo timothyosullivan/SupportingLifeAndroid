@@ -41,7 +41,10 @@
 	
 	<!-- Symptom Ids (NOT TO BE TRANSLATED!)-->
 	<string name="breathing_assessment_cough_difficult_breathing_symptom_id">cough_difficult_breathing</string>
+	<string name="breathing_assessment_cough_duration_symptom_id">cough_duration</string>
+	<string name="breathing_assessment_breaths_per_minute_symptom_id">breaths_per_minute</string>	
 	<string name="breathing_assessment_chest_indrawing_symptom_id">chest_indrawing</string>
+	<string name="breathing_assessment_stridor_symptom_id">stridor</string>
 
     <!-- ============================================================ -->
     <!-- ASSESSMENT WIZARD BREAD-CRUMB UI -->

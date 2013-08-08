@@ -19,7 +19,10 @@ import android.support.v4.app.Fragment;
  */
 public class BreathingAssessmentPage extends AbstractPage {
     public static final String COUGH_DIFFICULT_BREATHING_DATA_KEY = "COUGH_DIFFICULT_BREATHING";
+    public static final String COUGH_DURATION_DATA_KEY = "COUGH_DURATION";
+    public static final String BREATHS_PER_MINUTE_DATA_KEY = "BREATHS_PER_MINUTE";
     public static final String CHEST_INDRAWING_DATA_KEY = "CHEST_INDRAWING";
+    public static final String STRIDOR_DATA_KEY = "STRIDOR";
     
     private BreathingAssessmentFragment breathingAssessmentFragment;
 
@@ -55,13 +58,29 @@ public class BreathingAssessmentPage extends AbstractPage {
     	reviewItemLabel = resources.getString(R.string.breathing_assessment_review_cough_difficult_breathing);
     	reviewItemValue = getPageData().getString(COUGH_DIFFICULT_BREATHING_DATA_KEY + AssessmentWizardRadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
     	reviewItemSymptomId = resources.getString(R.string.breathing_assessment_cough_difficult_breathing_symptom_id);
-    	reviewItems.add(new ReviewItem(reviewItemLabel, reviewItemValue, reviewItemSymptomId, getKey(), -1));    	
+    	reviewItems.add(new ReviewItem(reviewItemLabel, reviewItemValue, reviewItemSymptomId, getKey(), -1));
+
+    	// for how long? (days) - cough duration
+    	reviewItemLabel = resources.getString(R.string.breathing_assessment_review_cough_duration);
+    	reviewItemSymptomId = resources.getString(R.string.breathing_assessment_cough_duration_symptom_id);
+    	reviewItems.add(new ReviewItem(reviewItemLabel, getPageData().getString(COUGH_DURATION_DATA_KEY), reviewItemSymptomId, getKey(), -1));
+ 
+    	// breaths per minute
+    	reviewItemLabel = resources.getString(R.string.breathing_assessment_review_breaths_per_minute);
+    	reviewItemSymptomId = resources.getString(R.string.breathing_assessment_breaths_per_minute_symptom_id);
+    	reviewItems.add(new ReviewItem(reviewItemLabel, getPageData().getString(BREATHS_PER_MINUTE_DATA_KEY), reviewItemSymptomId, getKey(), -1));
     	
     	// chest indrawing
     	reviewItemLabel = resources.getString(R.string.breathing_assessment_review_chest_indrawing);
     	reviewItemValue = getPageData().getString(CHEST_INDRAWING_DATA_KEY + AssessmentWizardRadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
     	reviewItemSymptomId = resources.getString(R.string.breathing_assessment_chest_indrawing_symptom_id);
-    	reviewItems.add(new ReviewItem(reviewItemLabel, reviewItemValue, reviewItemSymptomId, getKey(), -1));    	
+    	reviewItems.add(new ReviewItem(reviewItemLabel, reviewItemValue, reviewItemSymptomId, getKey(), -1));
+
+    	// stridor
+    	reviewItemLabel = resources.getString(R.string.breathing_assessment_review_stridor);
+    	reviewItemValue = getPageData().getString(STRIDOR_DATA_KEY + AssessmentWizardRadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
+    	reviewItemSymptomId = resources.getString(R.string.breathing_assessment_stridor_symptom_id);
+    	reviewItems.add(new ReviewItem(reviewItemLabel, reviewItemValue, reviewItemSymptomId, getKey(), -1));   
     }
 
 
