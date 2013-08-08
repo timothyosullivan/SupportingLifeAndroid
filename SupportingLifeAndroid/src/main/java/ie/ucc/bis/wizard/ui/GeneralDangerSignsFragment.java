@@ -30,6 +30,8 @@ public class GeneralDangerSignsFragment extends Fragment {
     private RadioGroup drinkBreastfeedRadioGroup;
     private RadioGroup vomitsRadioGroup;
     private RadioGroup convulsionsRadioGroup;
+    private RadioGroup lethargicUnconsciousRadioGroup;
+    private RadioGroup convulsingNowRadioGroup;
     
     public static GeneralDangerSignsFragment create(String pageKey) {
         Bundle args = new Bundle();
@@ -76,6 +78,16 @@ public class GeneralDangerSignsFragment extends Fragment {
         getConvulsionsRadioGroup().check(getGeneralDangerSignsPage()
         		.getPageData().getInt(GeneralDangerSignsPage.HISTORY_OF_CONVULSIONS_DATA_KEY));
         
+        // lethargic or unconscious
+        setLethargicUnconsciousRadioGroup((RadioGroup) rootView.findViewById(R.id.general_danger_signs_radio_lethargic_or_unconscious));
+        getLethargicUnconsciousRadioGroup().check(getGeneralDangerSignsPage()
+        		.getPageData().getInt(GeneralDangerSignsPage.LETHARGIC_OR_UNCONSCIOUS_DATA_KEY));
+        
+        // convulsing now
+        setConvulsingNowRadioGroup((RadioGroup) rootView.findViewById(R.id.general_danger_signs_radio_convulsing_now));
+        getConvulsingNowRadioGroup().check(getGeneralDangerSignsPage()
+        		.getPageData().getInt(GeneralDangerSignsPage.CONVULSING_NOW_DATA_KEY));
+        
 		// add soft keyboard handler - essentially hiding soft
 		// keyboard when an EditText is not in focus
 		((SupportingLifeBaseActivity) getActivity()).addSoftKeyboardHandling(rootView);
@@ -115,6 +127,14 @@ public class GeneralDangerSignsFragment extends Fragment {
         getConvulsionsRadioGroup().setOnCheckedChangeListener(
         		new AssessmentWizardRadioGroupListener(getGeneralDangerSignsPage(),
         				GeneralDangerSignsPage.HISTORY_OF_CONVULSIONS_DATA_KEY));
+
+        getLethargicUnconsciousRadioGroup().setOnCheckedChangeListener(
+        		new AssessmentWizardRadioGroupListener(getGeneralDangerSignsPage(),
+        				GeneralDangerSignsPage.LETHARGIC_OR_UNCONSCIOUS_DATA_KEY));
+        
+        getConvulsingNowRadioGroup().setOnCheckedChangeListener(
+        		new AssessmentWizardRadioGroupListener(getGeneralDangerSignsPage(),
+        				GeneralDangerSignsPage.CONVULSING_NOW_DATA_KEY));
     }
 
 	/**
@@ -199,5 +219,33 @@ public class GeneralDangerSignsFragment extends Fragment {
 	 */		
 	public void setConvulsionsRadioGroup(RadioGroup convulsionsRadioGroup) {
 		this.convulsionsRadioGroup = convulsionsRadioGroup;
+	}
+
+	/**
+	 * Getter Method: getLethargicUnconsciousRadioGroup()
+	 */	
+	private RadioGroup getLethargicUnconsciousRadioGroup() {
+		return lethargicUnconsciousRadioGroup;
+	}
+
+	/**
+	 * Setter Method: setLethargicUnconsciousRadioGroup()
+	 */
+	private void setLethargicUnconsciousRadioGroup(RadioGroup lethargicUnconsciousRadioGroup) {
+		this.lethargicUnconsciousRadioGroup = lethargicUnconsciousRadioGroup;
+	}
+
+	/**
+	 * Getter Method: getConvulsingNowRadioGroup()
+	 */	
+	private RadioGroup getConvulsingNowRadioGroup() {
+		return convulsingNowRadioGroup;
+	}
+
+	/**
+	 * Setter Method: setConvulsingNowRadioGroup()
+	 */	
+	private void setConvulsingNowRadioGroup(RadioGroup convulsingNowRadioGroup) {
+		this.convulsingNowRadioGroup = convulsingNowRadioGroup;
 	}
 }

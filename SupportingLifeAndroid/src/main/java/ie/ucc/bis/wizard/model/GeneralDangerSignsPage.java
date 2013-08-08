@@ -21,6 +21,8 @@ public class GeneralDangerSignsPage extends AbstractPage {
     public static final String DRINK_BREASTFEED_DATA_KEY = "DRINK_BREASTFEED";
     public static final String VOMITS_EVERYTHING_DATA_KEY = "VOMITS_EVERYTHING";
     public static final String HISTORY_OF_CONVULSIONS_DATA_KEY = "HISTORY_OF_CONVULSIONS";
+    public static final String LETHARGIC_OR_UNCONSCIOUS_DATA_KEY = "LETHARGIC_OR_UNCONSCIOUS";
+    public static final String CONVULSING_NOW_DATA_KEY = "CONVULSING_NOW";
     
     private GeneralDangerSignsFragment generalDangerSignsFragment;
 
@@ -69,6 +71,18 @@ public class GeneralDangerSignsPage extends AbstractPage {
     	reviewItemLabel = resources.getString(R.string.general_danger_signs_review_convulsions);
     	reviewItemValue = getPageData().getString(HISTORY_OF_CONVULSIONS_DATA_KEY + AssessmentWizardRadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
      	reviewItemSymptomId = resources.getString(R.string.general_danger_signs_convulsions_symptom_id);
+    	reviewItems.add(new ReviewItem(reviewItemLabel, reviewItemValue, reviewItemSymptomId, getKey(), -1));
+    	
+    	// lethargic or unconscious
+    	reviewItemLabel = resources.getString(R.string.general_danger_signs_review_lethargic_or_unconscious);
+    	reviewItemValue = getPageData().getString(LETHARGIC_OR_UNCONSCIOUS_DATA_KEY + AssessmentWizardRadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
+     	reviewItemSymptomId = resources.getString(R.string.general_danger_signs_lethargic_or_unconscious_symptom_id);
+    	reviewItems.add(new ReviewItem(reviewItemLabel, reviewItemValue, reviewItemSymptomId, getKey(), -1));
+    	
+    	// convulsing now
+    	reviewItemLabel = resources.getString(R.string.general_danger_signs_review_convulsing_now);
+    	reviewItemValue = getPageData().getString(CONVULSING_NOW_DATA_KEY + AssessmentWizardRadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
+     	reviewItemSymptomId = resources.getString(R.string.general_danger_signs_convulsing_now_symptom_id);
     	reviewItems.add(new ReviewItem(reviewItemLabel, reviewItemValue, reviewItemSymptomId, getKey(), -1));
     }
 

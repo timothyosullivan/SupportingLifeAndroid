@@ -31,6 +31,8 @@
 	<string name="general_danger_signs_drink_breastfeed_symptom_id">not_able_to_drink_or_breastfeed</string>
 	<string name="general_danger_signs_vomits_everything_symptom_id">vomits_everything</string>
 	<string name="general_danger_signs_convulsions_symptom_id">history_of_convulsions</string>
+	<string name="general_danger_signs_lethargic_or_unconscious_symptom_id">lethargic_or_unconscious</string>
+	<string name="general_danger_signs_convulsing_now_symptom_id">convulsing_now</string>
 	
     <!-- ============================================================ -->
     <!-- ASSESSMENT WIZARD BREAD-CRUMB UI -->

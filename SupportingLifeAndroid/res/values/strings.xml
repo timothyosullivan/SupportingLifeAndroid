@@ -80,12 +80,16 @@
 	<string name="general_danger_signs_radio_drink_breastfeed">Not able to Drink or Breastfeed:</string>
 	<string name="general_danger_signs_radio_vomits">Vomits Everything:</string>
 	<string name="general_danger_signs_radio_convulsions">History of Convulsions:</string>
-    
+	<string name="general_danger_signs_radio_lethargic_or_unconscious">Lethargic or Unconscious:</string>
+	<string name="general_danger_signs_radio_convulsing_now">Convulsing Now:</string>
+	
     <!-- Danger Signs Review -->
 	<string name="general_danger_signs_review_drink_breastfeed">Not able to Drink or Breastfeed</string>
 	<string name="general_danger_signs_review_vomits">Vomits Everything</string>
 	<string name="general_danger_signs_review_convulsions">History of Convulsions</string>
-
+	<string name="general_danger_signs_review_lethargic_or_unconscious">Lethargic or Unconscious</string>
+	<string name="general_danger_signs_review_convulsing_now">Convulsing Now</string>
+	
     <!-- ============================================================ -->
     <!-- ASSESSMENT WIZARD BREAD-CRUMB UI -->
     <!-- STAGE 3: Cough / Breathing Assessment -->
