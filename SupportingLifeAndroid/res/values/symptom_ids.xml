@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+<!-- ============================================================ -->
+<!-- These Symptom Ids are used to match up the UI element on the -->
+<!-- front-end with the <Symptom> element specified in the        -->
+<!-- 'classification_rules.xml' file. 							  -->
+<!--  															  -->
+<!-- The user UI selections are recorded via the ReviewItem       -->
+<!-- object instances associated with each assessment page.       -->
+<!-- These are then cross-referenced by the RuleEngine after it	  -->
+<!-- completes parsing classification_rules.xml 			  	  -->
+<!-- ============================================================ -->
+
+    <!-- ============================================================ -->
+    <!-- ASSESSMENT WIZARD BREAD-CRUMB UI -->
+    <!-- STAGE 1: GENERAL PATIENT DETAILS -->
+    <!-- ============================================================ -->
+	
+	<!-- Symptom Ids (NOT TO BE TRANSLATED!)-->
+	<string name="general_patient_details_weight_symptom_id">weight</string>
+	<string name="general_patient_details_temperature_symptom_id">temperature</string>
+	<string name="general_patient_details_gender_symptom_id">gender</string>
+
+    <!-- ============================================================ -->
+    <!-- ASSESSMENT WIZARD BREAD-CRUMB UI -->
+    <!-- STAGE 2: GENERAL DANGER SIGNS -->
+    <!-- ============================================================ -->
+
+	<!-- Symptom Ids (NOT TO BE TRANSLATED!)-->
+	<string name="general_danger_signs_drink_breastfeed_symptom_id">not_able_to_drink_or_breastfeed</string>
+	<string name="general_danger_signs_vomits_everything_symptom_id">vomits_everything</string>
+	<string name="general_danger_signs_convulsions_symptom_id">history_of_convulsions</string>
+	
+    <!-- ============================================================ -->
+    <!-- ASSESSMENT WIZARD BREAD-CRUMB UI -->
+    <!-- STAGE 3: Cough / Breathing Assessment -->
+    <!-- ============================================================ -->
+	
+	<!-- Symptom Ids (NOT TO BE TRANSLATED!)-->
+	<string name="breathing_assessment_cough_difficult_breathing_symptom_id">cough_difficult_breathing</string>
+	<string name="breathing_assessment_chest_indrawing_symptom_id">chest_indrawing</string>
+
+    <!-- ============================================================ -->
+    <!-- ASSESSMENT WIZARD BREAD-CRUMB UI -->
+    <!-- STAGE 4: Diarrhoea Assessment -->
+    <!-- ============================================================ -->
+	
+	<!-- Symptom Ids (NOT TO BE TRANSLATED!)-->
+	<string name="diarrhoea_assessment_diarrhoea_symptom_id">diarrhoea</string>
+	<string name="diarrhoea_assessment_blood_stools_symptom_id">blood_in_the_stools</string>
+
+    <!-- ============================================================ -->
+    <!-- ASSESSMENT WIZARD BREAD-CRUMB UI -->
+    <!-- STAGE 5: Fever Assessment -->
+    <!-- ============================================================ -->
+
+	<!-- Symptom Ids (NOT TO BE TRANSLATED!)-->
+	<string name="fever_assessment_fever_symptom_id">fever</string>
+	<string name="fever_assessment_malaria_risk_symptom_id">malaria_risk</string>
+	<string name="fever_assessment_duration_symptom_id">fever_duration</string>
+
+    <!-- ============================================================ -->
+    <!-- ASSESSMENT WIZARD BREAD-CRUMB UI -->
+    <!-- STAGE 6: Ear Assessment -->
+    <!-- ============================================================ -->
+
+	<!-- Symptom Ids (NOT TO BE TRANSLATED!)-->
+	<string name="ear_assessment_ear_problem_symptom_id">ear_problem</string>
+	<string name="ear_assessment_ear_pain_symptom_id">ear_pain</string>
+	<string name="ear_assessment_ear_discharge_symptom_id">ear_discharge</string>
+	
+    <!-- ============================================================ -->
+    <!-- ASSESSMENT WIZARD BREAD-CRUMB UI -->
+    <!-- STAGE 7: Malnutrition and Anaemia Assessment -->
+    <!-- ============================================================ -->
+	
+	<!-- Symptom Ids (NOT TO BE TRANSLATED!)-->
+	<string name="malnutrition_assessment_oedema_symptom_id">oedema_of_both_feet</string>
+	<string name="malnutrition_assessment_weight_for_age_symptom_id">weight_for_age</string>
+	<string name="malnutrition_assessment_visible_severe_wasting_symptom_id">visible_severe_wasting</string>
+
+    <!-- ============================================================ -->
+    <!-- ASSESSMENT WIZARD BREAD-CRUMB UI -->
+    <!-- STAGE 8: Immunization Status Assessment -->
+    <!-- ============================================================ -->
+</resources>

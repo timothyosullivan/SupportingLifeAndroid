@@ -76,6 +76,8 @@ public class RuleEngine {
 			Classification classificationRule = null;
 			SymptomRule symptomRule = null;
 			String symptomRuleAttrib = null;
+			String symptomId = null;
+			String symptomName = null;
 			XmlResourceParser xmlParser = supportingLifeBaseActivity.getResources().getXml(R.xml.classification_rules);
 			
 			int eventType = xmlParser.next();
@@ -107,7 +109,10 @@ public class RuleEngine {
 						}
 						else if (CLASSIFICATION_SYMPTOM.equalsIgnoreCase(elemName)) {
 							// <Symptom>
-							symptomRule.getSymptoms().add(xmlParser.nextText());
+							symptomId = xmlParser.nextText();
+							int identifier = supportingLifeBaseActivity.getResources().getIdentifier(symptomId, "string", "ie.ucc.bis");
+							symptomName = supportingLifeBaseActivity.getResources().getString(identifier);
+							symptomRule.getSymptoms().add(symptomName);
 						}						
 						break;
 					case XmlPullParser.END_TAG:

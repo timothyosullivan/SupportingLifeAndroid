@@ -71,11 +71,6 @@
     <!-- HINTS -->
 	<string name="general_patient_details_first_name_hint">Please enter your first name</string>
 	<string name="general_patient_details_surname_hint">Please enter your surname</string>
-	
-	<!-- Symptom Ids (NOT TO BE TRANSLATED!)-->
-	<string name="general_patient_details_weight_symptom_id">weight</string>
-	<string name="general_patient_details_temperature_symptom_id">temperature</string>
-	<string name="general_patient_details_gender_symptom_id">gender</string>
 
     <!-- ============================================================ -->
     <!-- ASSESSMENT WIZARD BREAD-CRUMB UI -->
@@ -91,10 +86,6 @@
 	<string name="general_danger_signs_review_vomits">Vomits Everything</string>
 	<string name="general_danger_signs_review_convulsions">History of Convulsions</string>
 
-	<!-- Symptom Ids (NOT TO BE TRANSLATED!)-->
-	<string name="general_danger_signs_drink_breastfeed_symptom_id">not_able_to_drink_or_breastfeed</string>
-	<string name="general_danger_signs_vomits_everything_symptom_id">vomits_everything</string>
-	<string name="general_danger_signs_convulsions_symptom_id">history_of_convulsions</string>
     <!-- ============================================================ -->
     <!-- ASSESSMENT WIZARD BREAD-CRUMB UI -->
     <!-- STAGE 3: Cough / Breathing Assessment -->
@@ -107,10 +98,6 @@
     <!-- Cough / Breathing Review -->
 	<string name="breathing_assessment_review_cough_difficult_breathing">Cough or Difficult Breathing</string>
 	<string name="breathing_assessment_review_chest_indrawing">Chest Indrawing</string>
-	
-	<!-- Symptom Ids (NOT TO BE TRANSLATED!)-->
-	<string name="breathing_assessment_cough_difficult_breathing_symptom_id">cough_difficult_breathing</string>
-	<string name="breathing_assessment_chest_indrawing_symptom_id">chest_indrawing</string>
 
     <!-- ============================================================ -->
     <!-- ASSESSMENT WIZARD BREAD-CRUMB UI -->
@@ -123,10 +110,6 @@
     <!-- Diarrhoea Review -->
 	<string name="diarrhoea_assessment_review_diarrhoea">Diarrhoea</string>
 	<string name="diarrhoea_assessment_review_blood_stools">Blood in the Stools</string>
-	
-	<!-- Symptom Ids (NOT TO BE TRANSLATED!)-->
-	<string name="diarrhoea_assessment_diarrhoea_symptom_id">diarrhoea</string>
-	<string name="diarrhoea_assessment_blood_stools_symptom_id">blood_in_the_stools</string>
 
     <!-- ============================================================ -->
     <!-- ASSESSMENT WIZARD BREAD-CRUMB UI -->
@@ -152,11 +135,6 @@
 	<string name="fever_assessment_review_fever">Fever</string>
 	<string name="fever_assessment_review_malaria_risk">Malaria Risk</string>
 	<string name="fever_assessment_review_duration">For how long? (days)</string>
-	
-	<!-- Symptom Ids (NOT TO BE TRANSLATED!)-->
-	<string name="fever_assessment_fever_symptom_id">fever</string>
-	<string name="fever_assessment_malaria_risk_symptom_id">malaria_risk</string>
-	<string name="fever_assessment_duration_symptom_id">fever_duration</string>
 
     <!-- ============================================================ -->
     <!-- ASSESSMENT WIZARD BREAD-CRUMB UI -->
@@ -171,11 +149,6 @@
 	<string name="ear_assessment_review_ear_problem">Ear Problem</string>
 	<string name="ear_assessment_review_ear_pain">Ear Pain</string>
 	<string name="ear_assessment_review_ear_discharge">Ear Discharge</string>
-
-	<!-- Symptom Ids (NOT TO BE TRANSLATED!)-->
-	<string name="ear_assessment_ear_problem_symptom_id">ear_problem</string>
-	<string name="ear_assessment_ear_pain_symptom_id">ear_pain</string>
-	<string name="ear_assessment_ear_discharge_symptom_id">ear_discharge</string>
 	
     <!-- ============================================================ -->
     <!-- ASSESSMENT WIZARD BREAD-CRUMB UI -->
@@ -195,11 +168,6 @@
 	<string name="malnutrition_assessment_review_weight_for_age">Weight for Age</string>
 	<string name="malnutrition_assessment_review_visible_severe_wasting">Visible Severe Wasting</string>
 	
-	<!-- Symptom Ids (NOT TO BE TRANSLATED!)-->
-	<string name="malnutrition_assessment_oedema_symptom_id">oedema_of_both_feet</string>
-	<string name="malnutrition_assessment_weight_for_age_symptom_id">weight_for_age</string>
-	<string name="malnutrition_assessment_visible_severe_wasting_symptom_id">visible_severe_wasting</string>
-
     <!-- ============================================================ -->
     <!-- ASSESSMENT WIZARD BREAD-CRUMB UI -->
     <!-- STAGE 8: Immunization Status Assessment -->
