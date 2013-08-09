@@ -50,9 +50,24 @@
 			        android:layout_weight="0.32"
 			        android:checked="false"
 			        android:text="@string/assessment_wizard_radio_no" />
-
 			</RadioGroup>
 
+            <!-- ============================================================ -->
+            <!-- FOR HOW LONG? (DIARRHOEA DURATION) -->
+            <!-- ============================================================ -->
+
+            <TextView
+                android:id="@+id/diarrhoea_assessment_diarrhoea_duration_label"
+                style="@style/WizardFormLabel"
+                android:text="@string/diarrhoea_assessment_diarrhoea_duration" />
+
+            <EditText
+                android:id="@+id/diarrhoea_assessment_diarrhoea_duration"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:inputType="number" />
+						
 			<!-- ============================================================ -->
 			<!-- BLOOD IN THE STOOLS RADIO BUTTON GROUP -->
 			<!-- ============================================================ -->               
@@ -86,9 +101,238 @@
 			        android:layout_weight="0.32"
 			        android:checked="false"
 			        android:text="@string/assessment_wizard_radio_no" />
-
 			</RadioGroup>
-						   
+
+			<!-- ============================================================ -->
+			<!-- SUNKEN EYES RADIO BUTTON GROUP -->
+			<!-- ============================================================ -->               
+			
+			<TextView
+			    style="@style/WizardFormLabel"
+			    android:layout_width="match_parent"
+			    android:layout_height="match_parent"
+			    android:layout_gravity="bottom"
+			    android:text="@string/diarrhoea_assessment_radio_sunken_eyes" />
+			
+			<RadioGroup
+			    android:id="@+id/diarrhoea_assessment_radio_sunken_eyes"
+			    android:layout_width="match_parent"
+			    android:layout_height="wrap_content"
+			    android:orientation="horizontal" >
+
+			    <RadioButton
+			        android:id="@+id/diarrhoea_assessment_radio_sunken_eyes_yes"
+			        android:layout_width="112dp"
+			        android:layout_height="wrap_content"
+			        android:layout_weight="0.67"
+			        android:checked="false"
+			        android:text="@string/assessment_wizard_radio_yes" />
+
+			    <RadioButton
+			        android:id="@+id/diarrhoea_assessment_radio_sunken_eyes_no"
+			        android:layout_width="118dp"
+			        android:layout_height="wrap_content"
+			        android:layout_gravity="top"
+			        android:layout_weight="0.32"
+			        android:checked="false"
+			        android:text="@string/assessment_wizard_radio_no" />
+			</RadioGroup>
+			
+			<!-- ============================================================ -->
+			<!-- LETHARGIC OR UNCONSCIOUS RADIO BUTTON GROUP -->
+			<!-- This radio button should correlate directly with the value   -->
+			<!-- set on the 'General Danger Signs' page and vica-versa		  -->
+			<!-- ============================================================ -->               
+			
+			<TextView
+			    style="@style/WizardFormLabel"
+			    android:layout_width="match_parent"
+			    android:layout_height="match_parent"
+			    android:layout_gravity="bottom"
+			    android:text="@string/diarrhoea_assessment_radio_lethargic_or_unconscious" />
+			
+			<RadioGroup
+			    android:id="@+id/diarrhoea_assessment_radio_lethargic_or_unconscious"
+			    android:layout_width="match_parent"
+			    android:layout_height="wrap_content"
+			    android:orientation="horizontal" >
+
+			    <RadioButton
+			        android:id="@+id/diarrhoea_assessment_radio_lethargic_or_unconscious_yes"
+			        android:layout_width="112dp"
+			        android:layout_height="wrap_content"
+			        android:layout_weight="0.67"
+			        android:checked="false"
+			        android:text="@string/assessment_wizard_radio_yes" />
+
+			    <RadioButton
+			        android:id="@+id/diarrhoea_assessment_radio_lethargic_or_unconscious_no"
+			        android:layout_width="118dp"
+			        android:layout_height="wrap_content"
+			        android:layout_gravity="top"
+			        android:layout_weight="0.32"
+			        android:checked="false"
+			        android:text="@string/assessment_wizard_radio_no" />
+			</RadioGroup>
+
+			<!-- ============================================================ -->
+			<!-- RESTLESS / IRRITABLE RADIO BUTTON GROUP -->
+			<!-- ============================================================ -->               
+			
+			<TextView
+			    style="@style/WizardFormLabel"
+			    android:layout_width="match_parent"
+			    android:layout_height="match_parent"
+			    android:layout_gravity="bottom"
+			    android:text="@string/diarrhoea_assessment_radio_restless_irritable" />
+			
+			<RadioGroup
+			    android:id="@+id/diarrhoea_assessment_radio_restless_irritable"
+			    android:layout_width="match_parent"
+			    android:layout_height="wrap_content"
+			    android:orientation="horizontal" >
+
+			    <RadioButton
+			        android:id="@+id/diarrhoea_assessment_radio_restless_irritable_yes"
+			        android:layout_width="112dp"
+			        android:layout_height="wrap_content"
+			        android:layout_weight="0.67"
+			        android:checked="false"
+			        android:text="@string/assessment_wizard_radio_yes" />
+
+			    <RadioButton
+			        android:id="@+id/diarrhoea_assessment_radio_restless_irritable_no"
+			        android:layout_width="118dp"
+			        android:layout_height="wrap_content"
+			        android:layout_gravity="top"
+			        android:layout_weight="0.32"
+			        android:checked="false"
+			        android:text="@string/assessment_wizard_radio_no" />
+			</RadioGroup>
+			
+			<!-- ============================================================ -->
+			<!-- CHOLERA IN AREA RADIO BUTTON GROUP -->
+			<!-- ============================================================ -->               
+			
+			<TextView
+			    style="@style/WizardFormLabel"
+			    android:layout_width="match_parent"
+			    android:layout_height="match_parent"
+			    android:layout_gravity="bottom"
+			    android:text="@string/diarrhoea_assessment_radio_cholera_in_area" />
+			
+			<RadioGroup
+			    android:id="@+id/diarrhoea_assessment_radio_cholera_in_area"
+			    android:layout_width="match_parent"
+			    android:layout_height="wrap_content"
+			    android:orientation="horizontal" >
+
+			    <RadioButton
+			        android:id="@+id/diarrhoea_assessment_radio_cholera_in_area_yes"
+			        android:layout_width="112dp"
+			        android:layout_height="wrap_content"
+			        android:layout_weight="0.67"
+			        android:checked="false"
+			        android:text="@string/assessment_wizard_radio_yes" />
+
+			    <RadioButton
+			        android:id="@+id/diarrhoea_assessment_radio_cholera_in_area_no"
+			        android:layout_width="118dp"
+			        android:layout_height="wrap_content"
+			        android:layout_gravity="top"
+			        android:layout_weight="0.32"
+			        android:checked="false"
+			        android:text="@string/assessment_wizard_radio_no" />
+			</RadioGroup>
+
+			<!-- ============================================================ -->
+			<!-- OFFER THE CHILD FLUID RADIO BUTTON GROUP -->
+			<!-- ============================================================ -->               
+			
+			<TextView
+			    style="@style/WizardFormLabel"
+			    android:layout_width="match_parent"
+			    android:layout_height="match_parent"
+			    android:layout_gravity="bottom"
+			    android:text="@string/diarrhoea_assessment_radio_child_fluid" />
+			
+			<RadioGroup
+			    android:id="@+id/diarrhoea_assessment_radio_child_fluid"
+			    android:layout_width="match_parent"
+			    android:layout_height="wrap_content"
+			    android:orientation="horizontal" >
+
+			    <RadioButton
+			        android:id="@+id/diarrhoea_assessment_radio_child_fluid_not_able"
+			        android:layout_width="112dp"
+			        android:layout_height="wrap_content"
+			        android:layout_weight="0.67"
+			        android:checked="false"
+			        android:text="@string/diarrhoea_assessment_radio_child_fluid_not_able" />
+
+			    <RadioButton
+			        android:id="@+id/diarrhoea_assessment_radio_child_fluid_drinking_poorly"
+			        android:layout_width="118dp"
+			        android:layout_height="wrap_content"
+			        android:layout_gravity="top"
+			        android:layout_weight="0.32"
+			        android:checked="false"
+			        android:text="@string/diarrhoea_assessment_radio_child_fluid_drinking_poorly" />
+			    
+			    <RadioButton
+			        android:id="@+id/diarrhoea_assessment_radio_child_fluid_drinking_eagerly"
+			        android:layout_width="118dp"
+			        android:layout_height="wrap_content"
+			        android:layout_gravity="top"
+			        android:layout_weight="0.32"
+			        android:checked="false"
+			        android:text="@string/diarrhoea_assessment_radio_child_fluid_drinking_eagerly" />
+			</RadioGroup>
+
+			<!-- ============================================================ -->
+			<!-- SKIN PINCH RADIO BUTTON GROUP -->
+			<!-- ============================================================ -->               
+			
+			<TextView
+			    style="@style/WizardFormLabel"
+			    android:layout_width="match_parent"
+			    android:layout_height="match_parent"
+			    android:layout_gravity="bottom"
+			    android:text="@string/diarrhoea_assessment_radio_skin_pinch" />
+			
+			<RadioGroup
+			    android:id="@+id/diarrhoea_assessment_radio_skin_pinch"
+			    android:layout_width="match_parent"
+			    android:layout_height="wrap_content"
+			    android:orientation="horizontal" >
+
+			    <RadioButton
+			        android:id="@+id/diarrhoea_assessment_radio_skin_pinch_very_slowly"
+			        android:layout_width="112dp"
+			        android:layout_height="wrap_content"
+			        android:layout_weight="0.67"
+			        android:checked="false"
+			        android:text="@string/diarrhoea_assessment_radio_skin_pinch_very_slowly" />
+
+			    <RadioButton
+			        android:id="@+id/diarrhoea_assessment_radio_skin_pinch_slowly"
+			        android:layout_width="118dp"
+			        android:layout_height="wrap_content"
+			        android:layout_gravity="top"
+			        android:layout_weight="0.32"
+			        android:checked="false"
+			        android:text="@string/diarrhoea_assessment_radio_skin_pinch_slowly" />
+			    
+			    <RadioButton
+			        android:id="@+id/diarrhoea_assessment_radio_skin_pinch_immediate"
+			        android:layout_width="118dp"
+			        android:layout_height="wrap_content"
+			        android:layout_gravity="top"
+			        android:layout_weight="0.32"
+			        android:checked="false"
+			        android:text="@string/diarrhoea_assessment_radio_skin_pinch_immediate" />
+			</RadioGroup>
+			
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

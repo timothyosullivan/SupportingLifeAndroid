@@ -4,14 +4,14 @@ import android.content.Context;
 
 public class AssessmentWizardModel extends AbstractWizardModel {
 
-	private static final String GENERAL_PATIENT_DETAILS_PAGE_TITLE = "Patient Details";
-	private static final String DANGER_SIGNS_PAGE_TITLE = "Danger Signs";
-	private static final String BREATHING_ASSESSMENT_PAGE_TITLE = "Breathing Assessment";
-	private static final String DIARRHOEA_ASSESSMENT_PAGE_TITLE = "Diarrhoea Assessment";
-	private static final String FEVER_ASSESSMENT_PAGE_TITLE = "Fever Assessment";
-	private static final String EAR_ASSESSMENT_PAGE_TITLE = "Ear Assessment";
-	private static final String MALNUTRITION_ASSESSMENT_PAGE_TITLE = "Malnutrition Assessment";
-	private static final String IMMUNIZATION_ASSESSMENT_PAGE_TITLE = "Immunization Status";
+	public static final String GENERAL_PATIENT_DETAILS_PAGE_TITLE = "Patient Details";
+	public static final String DANGER_SIGNS_PAGE_TITLE = "Danger Signs";
+	public static final String BREATHING_ASSESSMENT_PAGE_TITLE = "Breathing Assessment";
+	public static final String DIARRHOEA_ASSESSMENT_PAGE_TITLE = "Diarrhoea Assessment";
+	public static final String FEVER_ASSESSMENT_PAGE_TITLE = "Fever Assessment";
+	public static final String EAR_ASSESSMENT_PAGE_TITLE = "Ear Assessment";
+	public static final String MALNUTRITION_ASSESSMENT_PAGE_TITLE = "Malnutrition Assessment";
+	public static final String IMMUNIZATION_ASSESSMENT_PAGE_TITLE = "Immunization Status";
 	
 	
 	/**

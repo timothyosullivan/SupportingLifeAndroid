@@ -53,8 +53,15 @@
 	
 	<!-- Symptom Ids (NOT TO BE TRANSLATED!)-->
 	<string name="diarrhoea_assessment_diarrhoea_symptom_id">diarrhoea</string>
+	<string name="diarrhoea_assessment_diarrhoea_duration_symptom_id">diarrhoea_duration</string>
 	<string name="diarrhoea_assessment_blood_stools_symptom_id">blood_in_the_stools</string>
-
+	<string name="diarrhoea_assessment_sunken_eyes_symptom_id">sunken_eyes</string>
+	<string name="diarrhoea_assessment_restless_irritable_symptom_id">restless_irritable</string>
+	<string name="diarrhoea_assessment_cholera_in_area_symptom_id">cholera_in_area</string>
+	<string name="diarrhoea_assessment_child_fluid_symptom_id">child_fluid</string>
+	<string name="diarrhoea_assessment_skin_pinch_symptom_id">skin_pinch</string>
+	
+	
     <!-- ============================================================ -->
     <!-- ASSESSMENT WIZARD BREAD-CRUMB UI -->
     <!-- STAGE 5: Fever Assessment -->

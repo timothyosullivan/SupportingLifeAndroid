@@ -6,7 +6,7 @@
 <!-- Note: The <Symptom> element string must match a string 	  -->
 <!-- 	   element in the 'symptom_ids.xml' file (otherwise an 	  -->
 <!--       will be thrown at runtime when parsing the  			  -->
-<!--       'classification_rules.xml' document 					  -->
+<!--       'classification_rules.xml' document)					  -->
 
 <ClassificationRules>
 	<!-- ============================================================ -->

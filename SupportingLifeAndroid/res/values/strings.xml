@@ -115,11 +115,35 @@
     <!-- ============================================================ -->
 	<string name="diarrhoea_assessment_title">Diarrhoea Assessment</string>
 	<string name="diarrhoea_assessment_radio_diarrhoea">Does the child have diarrhoea?</string>
+	<string name="diarrhoea_assessment_diarrhoea_duration">For how long? (days)</string>
 	<string name="diarrhoea_assessment_radio_blood_stools">Is there blood in the stools?</string>
+	<string name="diarrhoea_assessment_radio_sunken_eyes">Sunken eyes:</string>
+	<string name="diarrhoea_assessment_radio_lethargic_or_unconscious">Lethargic or unconscious:</string>
+	<string name="diarrhoea_assessment_radio_restless_irritable">Restless / irritable:</string>
+	<string name="diarrhoea_assessment_radio_cholera_in_area">Cholera in Area:</string>
+	
+	<!-- Offer the Child Fluid -->
+	<string name="diarrhoea_assessment_radio_child_fluid">Offer the child fluid</string>
+	<string name="diarrhoea_assessment_radio_child_fluid_not_able">Not able to drink</string>
+	<string name="diarrhoea_assessment_radio_child_fluid_drinking_poorly">Drinking poorly</string>
+	<string name="diarrhoea_assessment_radio_child_fluid_drinking_eagerly">Drinking eagerly, thirsty</string>
 
+	<!-- Skin Pinch -->
+	<string name="diarrhoea_assessment_radio_skin_pinch">Skin pinch</string>
+	<string name="diarrhoea_assessment_radio_skin_pinch_very_slowly">Very slowly (longer than 2 seconds)</string>
+	<string name="diarrhoea_assessment_radio_skin_pinch_slowly">Slowly</string>
+	<string name="diarrhoea_assessment_radio_skin_pinch_immediate">Immediate</string>
+		
     <!-- Diarrhoea Review -->
 	<string name="diarrhoea_assessment_review_diarrhoea">Diarrhoea</string>
+	<string name="diarrhoea_assessment_review_diarrhoea_duration">For How Long? (days)</string>
 	<string name="diarrhoea_assessment_review_blood_stools">Blood in the Stools</string>
+	<string name="diarrhoea_assessment_review_sunken_eyes">Sunken Eyes</string>
+	<string name="diarrhoea_assessment_review_lethargic_or_unconscious">Lethargic or Unconscious:</string>
+	<string name="diarrhoea_assessment_review_restless_irritable">Restless / Irritable</string>
+	<string name="diarrhoea_assessment_review_cholera_in_area">Cholera in Area</string>
+	<string name="diarrhoea_assessment_review_child_fluid">Offer the Child Fluid</string>
+	<string name="diarrhoea_assessment_review_skin_pinch">Skin Pinch</string>
 
     <!-- ============================================================ -->
     <!-- ASSESSMENT WIZARD BREAD-CRUMB UI -->
