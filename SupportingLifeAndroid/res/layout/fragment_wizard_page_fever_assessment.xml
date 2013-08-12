@@ -128,7 +128,462 @@
                 android:layout_height="match_parent"
                 android:inputType="number"
                 android:maxLength="3" />
+            
+           	<!-- ============================================================ -->
+			<!-- 'FEVER BEEN PRESENT EVERY DAY' RADIO BUTTON GROUP -->
+			<!-- ============================================================ -->               
+			
+			<TextView
+			    style="@style/WizardFormLabel"
+			    android:layout_width="match_parent"
+			    android:layout_height="match_parent"
+			    android:layout_gravity="bottom"
+			    android:text="@string/fever_assessment_radio_present_every_day" />
+			
+			<RadioGroup
+			    android:id="@+id/fever_assessment_radio_present_every_day"
+			    android:layout_width="match_parent"
+			    android:layout_height="wrap_content"
+			    android:orientation="horizontal" >
 
+			    <RadioButton
+			        android:id="@+id/fever_assessment_radio_present_every_day_yes"
+			        android:layout_width="112dp"
+			        android:layout_height="wrap_content"
+			        android:layout_weight="0.67"
+			        android:checked="false"
+			        android:text="@string/assessment_wizard_radio_yes" />
+
+			    <RadioButton
+			        android:id="@+id/fever_assessment_radio_present_every_day_no"
+			        android:layout_width="118dp"
+			        android:layout_height="wrap_content"
+			        android:layout_gravity="top"
+			        android:layout_weight="0.32"
+			        android:checked="false"
+			        android:text="@string/assessment_wizard_radio_no" />
+			</RadioGroup>
+			
+           	<!-- ============================================================ -->
+			<!-- MEASLES RADIO BUTTON GROUP -->
+			<!-- ============================================================ -->               
+			
+			<TextView
+			    style="@style/WizardFormLabel"
+			    android:layout_width="match_parent"
+			    android:layout_height="match_parent"
+			    android:layout_gravity="bottom"
+			    android:text="@string/fever_assessment_radio_measles" />
+			
+			<RadioGroup
+			    android:id="@+id/fever_assessment_radio_measles"
+			    android:layout_width="match_parent"
+			    android:layout_height="wrap_content"
+			    android:orientation="horizontal" >
+
+			    <RadioButton
+			        android:id="@+id/fever_assessment_radio_measles_yes"
+			        android:layout_width="112dp"
+			        android:layout_height="wrap_content"
+			        android:layout_weight="0.67"
+			        android:checked="false"
+			        android:text="@string/assessment_wizard_radio_yes" />
+
+			    <RadioButton
+			        android:id="@+id/fever_assessment_radio_measles_no"
+			        android:layout_width="118dp"
+			        android:layout_height="wrap_content"
+			        android:layout_gravity="top"
+			        android:layout_weight="0.32"
+			        android:checked="false"
+			        android:text="@string/assessment_wizard_radio_no" />
+			</RadioGroup>
+
+           	<!-- ============================================================ -->
+			<!-- STIFF NECK RADIO BUTTON GROUP -->
+			<!-- ============================================================ -->               
+			
+			<TextView
+			    style="@style/WizardFormLabel"
+			    android:layout_width="match_parent"
+			    android:layout_height="match_parent"
+			    android:layout_gravity="bottom"
+			    android:text="@string/fever_assessment_radio_stiff_neck" />
+			
+			<RadioGroup
+			    android:id="@+id/fever_assessment_radio_stiff_neck"
+			    android:layout_width="match_parent"
+			    android:layout_height="wrap_content"
+			    android:orientation="horizontal" >
+
+			    <RadioButton
+			        android:id="@+id/fever_assessment_radio_stiff_neck_yes"
+			        android:layout_width="112dp"
+			        android:layout_height="wrap_content"
+			        android:layout_weight="0.67"
+			        android:checked="false"
+			        android:text="@string/assessment_wizard_radio_yes" />
+
+			    <RadioButton
+			        android:id="@+id/fever_assessment_radio_stiff_neck_no"
+			        android:layout_width="118dp"
+			        android:layout_height="wrap_content"
+			        android:layout_gravity="top"
+			        android:layout_weight="0.32"
+			        android:checked="false"
+			        android:text="@string/assessment_wizard_radio_no" />
+			</RadioGroup>
+		
+           	<!-- ============================================================ -->
+			<!-- RUNNY NOSE RADIO BUTTON GROUP -->
+			<!-- ============================================================ -->               
+			
+			<TextView
+			    style="@style/WizardFormLabel"
+			    android:layout_width="match_parent"
+			    android:layout_height="match_parent"
+			    android:layout_gravity="bottom"
+			    android:text="@string/fever_assessment_radio_runny_nose" />
+			
+			<RadioGroup
+			    android:id="@+id/fever_assessment_radio_runny_nose"
+			    android:layout_width="match_parent"
+			    android:layout_height="wrap_content"
+			    android:orientation="horizontal" >
+
+			    <RadioButton
+			        android:id="@+id/fever_assessment_radio_runny_nose_yes"
+			        android:layout_width="112dp"
+			        android:layout_height="wrap_content"
+			        android:layout_weight="0.67"
+			        android:checked="false"
+			        android:text="@string/assessment_wizard_radio_yes" />
+
+			    <RadioButton
+			        android:id="@+id/fever_assessment_radio_runny_nose_no"
+			        android:layout_width="118dp"
+			        android:layout_height="wrap_content"
+			        android:layout_gravity="top"
+			        android:layout_weight="0.32"
+			        android:checked="false"
+			        android:text="@string/assessment_wizard_radio_no" />
+			</RadioGroup>
+
+           	<!-- ============================================================ -->
+			<!-- GENERALISED RASH RADIO BUTTON GROUP -->
+			<!-- ============================================================ -->               
+			
+			<TextView
+			    style="@style/WizardFormLabel"
+			    android:layout_width="match_parent"
+			    android:layout_height="match_parent"
+			    android:layout_gravity="bottom"
+			    android:text="@string/fever_assessment_radio_generalised_rash" />
+			
+			<RadioGroup
+			    android:id="@+id/fever_assessment_radio_generalised_rash"
+			    android:layout_width="match_parent"
+			    android:layout_height="wrap_content"
+			    android:orientation="horizontal" >
+
+			    <RadioButton
+			        android:id="@+id/fever_assessment_radio_generalised_rash_yes"
+			        android:layout_width="112dp"
+			        android:layout_height="wrap_content"
+			        android:layout_weight="0.67"
+			        android:checked="false"
+			        android:text="@string/assessment_wizard_radio_yes" />
+
+			    <RadioButton
+			        android:id="@+id/fever_assessment_radio_generalised_rash_no"
+			        android:layout_width="118dp"
+			        android:layout_height="wrap_content"
+			        android:layout_gravity="top"
+			        android:layout_weight="0.32"
+			        android:checked="false"
+			        android:text="@string/assessment_wizard_radio_no" />
+			</RadioGroup>
+			
+           	<!-- ============================================================ -->
+			<!-- COUGH RADIO BUTTON GROUP -->
+			<!-- ============================================================ -->               
+			
+			<TextView
+			    style="@style/WizardFormLabel"
+			    android:layout_width="match_parent"
+			    android:layout_height="match_parent"
+			    android:layout_gravity="bottom"
+			    android:text="@string/fever_assessment_radio_cough" />
+			
+			<RadioGroup
+			    android:id="@+id/fever_assessment_radio_cough"
+			    android:layout_width="match_parent"
+			    android:layout_height="wrap_content"
+			    android:orientation="horizontal" >
+
+			    <RadioButton
+			        android:id="@+id/fever_assessment_radio_cough_yes"
+			        android:layout_width="112dp"
+			        android:layout_height="wrap_content"
+			        android:layout_weight="0.67"
+			        android:checked="false"
+			        android:text="@string/assessment_wizard_radio_yes" />
+
+			    <RadioButton
+			        android:id="@+id/fever_assessment_radio_cough_no"
+			        android:layout_width="118dp"
+			        android:layout_height="wrap_content"
+			        android:layout_gravity="top"
+			        android:layout_weight="0.32"
+			        android:checked="false"
+			        android:text="@string/assessment_wizard_radio_no" />
+			</RadioGroup>
+			
+           	<!-- ============================================================ -->
+			<!-- RED EYES RADIO BUTTON GROUP -->
+			<!-- ============================================================ -->               
+			
+			<TextView
+			    style="@style/WizardFormLabel"
+			    android:layout_width="match_parent"
+			    android:layout_height="match_parent"
+			    android:layout_gravity="bottom"
+			    android:text="@string/fever_assessment_radio_red_eyes" />
+			
+			<RadioGroup
+			    android:id="@+id/fever_assessment_radio_red_eyes"
+			    android:layout_width="match_parent"
+			    android:layout_height="wrap_content"
+			    android:orientation="horizontal" >
+
+			    <RadioButton
+			        android:id="@+id/fever_assessment_radio_red_eyes_yes"
+			        android:layout_width="112dp"
+			        android:layout_height="wrap_content"
+			        android:layout_weight="0.67"
+			        android:checked="false"
+			        android:text="@string/assessment_wizard_radio_yes" />
+
+			    <RadioButton
+			        android:id="@+id/fever_assessment_radio_red_eyes_no"
+			        android:layout_width="118dp"
+			        android:layout_height="wrap_content"
+			        android:layout_gravity="top"
+			        android:layout_weight="0.32"
+			        android:checked="false"
+			        android:text="@string/assessment_wizard_radio_no" />
+			</RadioGroup>
+
+           	<!-- ============================================================ -->
+			<!-- MOUTH ULCERS RADIO BUTTON GROUP -->
+			<!-- ============================================================ -->               
+			
+			<TextView
+			    style="@style/WizardFormLabel"
+			    android:layout_width="match_parent"
+			    android:layout_height="match_parent"
+			    android:layout_gravity="bottom"
+			    android:text="@string/fever_assessment_radio_mouth_ulcers" />
+			
+			<RadioGroup
+			    android:id="@+id/fever_assessment_radio_mouth_ulcers"
+			    android:layout_width="match_parent"
+			    android:layout_height="wrap_content"
+			    android:orientation="horizontal" >
+
+			    <RadioButton
+			        android:id="@+id/fever_assessment_radio_mouth_ulcers_yes"
+			        android:layout_width="112dp"
+			        android:layout_height="wrap_content"
+			        android:layout_weight="0.67"
+			        android:checked="false"
+			        android:text="@string/assessment_wizard_radio_yes" />
+
+			    <RadioButton
+			        android:id="@+id/fever_assessment_radio_mouth_ulcers_no"
+			        android:layout_width="118dp"
+			        android:layout_height="wrap_content"
+			        android:layout_gravity="top"
+			        android:layout_weight="0.32"
+			        android:checked="false"
+			        android:text="@string/assessment_wizard_radio_no" />
+			</RadioGroup>
+			
+           	<!-- ============================================================ -->
+			<!-- DEEP MOUTH ULCERS RADIO BUTTON GROUP -->
+			<!-- ============================================================ -->               
+			
+			<TextView
+			    style="@style/WizardFormLabel"
+			    android:layout_width="match_parent"
+			    android:layout_height="match_parent"
+			    android:layout_gravity="bottom"
+			    android:text="@string/fever_assessment_radio_deep_mouth_ulcers" />
+			
+			<RadioGroup
+			    android:id="@+id/fever_assessment_radio_deep_mouth_ulcers"
+			    android:layout_width="match_parent"
+			    android:layout_height="wrap_content"
+			    android:orientation="horizontal" >
+
+			    <RadioButton
+			        android:id="@+id/fever_assessment_radio_deep_mouth_ulcers_yes"
+			        android:layout_width="112dp"
+			        android:layout_height="wrap_content"
+			        android:layout_weight="0.67"
+			        android:checked="false"
+			        android:text="@string/assessment_wizard_radio_yes" />
+
+			    <RadioButton
+			        android:id="@+id/fever_assessment_radio_deep_mouth_ulcers_no"
+			        android:layout_width="118dp"
+			        android:layout_height="wrap_content"
+			        android:layout_gravity="top"
+			        android:layout_weight="0.32"
+			        android:checked="false"
+			        android:text="@string/assessment_wizard_radio_no" />
+			</RadioGroup>
+
+           	<!-- ============================================================ -->
+			<!-- EXTENSIVE MOUTH ULCERS RADIO BUTTON GROUP -->
+			<!-- ============================================================ -->               
+			
+			<TextView
+			    style="@style/WizardFormLabel"
+			    android:layout_width="match_parent"
+			    android:layout_height="match_parent"
+			    android:layout_gravity="bottom"
+			    android:text="@string/fever_assessment_radio_extensive_mouth_ulcers" />
+			
+			<RadioGroup
+			    android:id="@+id/fever_assessment_radio_extensive_mouth_ulcers"
+			    android:layout_width="match_parent"
+			    android:layout_height="wrap_content"
+			    android:orientation="horizontal" >
+
+			    <RadioButton
+			        android:id="@+id/fever_assessment_radio_extensive_mouth_ulcers_yes"
+			        android:layout_width="112dp"
+			        android:layout_height="wrap_content"
+			        android:layout_weight="0.67"
+			        android:checked="false"
+			        android:text="@string/assessment_wizard_radio_yes" />
+
+			    <RadioButton
+			        android:id="@+id/fever_assessment_radio_extensive_mouth_ulcers_no"
+			        android:layout_width="118dp"
+			        android:layout_height="wrap_content"
+			        android:layout_gravity="top"
+			        android:layout_weight="0.32"
+			        android:checked="false"
+			        android:text="@string/assessment_wizard_radio_no" />
+			</RadioGroup>
+			
+           	<!-- ============================================================ -->
+			<!-- PUS DRAINING FROM THE EYE RADIO BUTTON GROUP -->
+			<!-- ============================================================ -->               
+			
+			<TextView
+			    style="@style/WizardFormLabel"
+			    android:layout_width="match_parent"
+			    android:layout_height="match_parent"
+			    android:layout_gravity="bottom"
+			    android:text="@string/fever_assessment_radio_pus_draining" />
+			
+			<RadioGroup
+			    android:id="@+id/fever_assessment_radio_pus_draining"
+			    android:layout_width="match_parent"
+			    android:layout_height="wrap_content"
+			    android:orientation="horizontal" >
+
+			    <RadioButton
+			        android:id="@+id/fever_assessment_radio_pus_draining_yes"
+			        android:layout_width="112dp"
+			        android:layout_height="wrap_content"
+			        android:layout_weight="0.67"
+			        android:checked="false"
+			        android:text="@string/assessment_wizard_radio_yes" />
+
+			    <RadioButton
+			        android:id="@+id/fever_assessment_radio_pus_draining_no"
+			        android:layout_width="118dp"
+			        android:layout_height="wrap_content"
+			        android:layout_gravity="top"
+			        android:layout_weight="0.32"
+			        android:checked="false"
+			        android:text="@string/assessment_wizard_radio_no" />
+			</RadioGroup>
+			
+           	<!-- ============================================================ -->
+			<!-- CLOUDING OF THE CORNEA RADIO BUTTON GROUP -->
+			<!-- ============================================================ -->               
+			
+			<TextView
+			    style="@style/WizardFormLabel"
+			    android:layout_width="match_parent"
+			    android:layout_height="match_parent"
+			    android:layout_gravity="bottom"
+			    android:text="@string/fever_assessment_radio_cornea_clouding" />
+			
+			<RadioGroup
+			    android:id="@+id/fever_assessment_radio_cornea_clouding"
+			    android:layout_width="match_parent"
+			    android:layout_height="wrap_content"
+			    android:orientation="horizontal" >
+
+			    <RadioButton
+			        android:id="@+id/fever_assessment_radio_cornea_clouding_yes"
+			        android:layout_width="112dp"
+			        android:layout_height="wrap_content"
+			        android:layout_weight="0.67"
+			        android:checked="false"
+			        android:text="@string/assessment_wizard_radio_yes" />
+
+			    <RadioButton
+			        android:id="@+id/fever_assessment_radio_cornea_clouding_no"
+			        android:layout_width="118dp"
+			        android:layout_height="wrap_content"
+			        android:layout_gravity="top"
+			        android:layout_weight="0.32"
+			        android:checked="false"
+			        android:text="@string/assessment_wizard_radio_no" />
+			</RadioGroup>
+			
+           	<!-- ============================================================ -->
+			<!-- BULGING FONTANEL RADIO BUTTON GROUP -->
+			<!-- ============================================================ -->               
+			
+			<TextView
+			    style="@style/WizardFormLabel"
+			    android:layout_width="match_parent"
+			    android:layout_height="match_parent"
+			    android:layout_gravity="bottom"
+			    android:text="@string/fever_assessment_radio_bulging_fontanel" />
+			
+			<RadioGroup
+			    android:id="@+id/fever_assessment_radio_bulging_fontanel"
+			    android:layout_width="match_parent"
+			    android:layout_height="wrap_content"
+			    android:orientation="horizontal" >
+
+			    <RadioButton
+			        android:id="@+id/fever_assessment_radio_bulging_fontanel_yes"
+			        android:layout_width="112dp"
+			        android:layout_height="wrap_content"
+			        android:layout_weight="0.67"
+			        android:checked="false"
+			        android:text="@string/assessment_wizard_radio_yes" />
+
+			    <RadioButton
+			        android:id="@+id/fever_assessment_radio_bulging_fontanel_no"
+			        android:layout_width="118dp"
+			        android:layout_height="wrap_content"
+			        android:layout_gravity="top"
+			        android:layout_weight="0.32"
+			        android:checked="false"
+			        android:text="@string/assessment_wizard_radio_no" />
+			</RadioGroup>
+			
         </LinearLayout>
 
     </ScrollView>

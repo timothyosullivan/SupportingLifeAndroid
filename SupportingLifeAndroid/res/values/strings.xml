@@ -166,12 +166,66 @@
 	<string name="fever_assessment_radio_malaria_risk_high">High</string>
 	<string name="fever_assessment_radio_malaria_risk_low">Low</string>
 	<string name="fever_assessment_radio_malaria_risk_no">No</string>
+	
+	<!-- Duration -->
 	<string name="fever_assessment_duration">For how long? (days)</string>
+	
+	<!-- Fever Present Every Day -->
+	<string name="fever_assessment_radio_present_every_day">Has fever been present every day?</string>
+	
+	<!-- Measles -->
+	<string name="fever_assessment_radio_measles">Has the child measles now or within the last three months?</string>
 
+	<!-- Stiff Neck -->
+	<string name="fever_assessment_radio_stiff_neck">Stiff neck</string>
+	
+	<!-- Runny Nose -->
+	<string name="fever_assessment_radio_runny_nose">Runny nose</string>
+
+	<!-- Generalised Rash -->
+	<string name="fever_assessment_radio_generalised_rash">Generalised Rash</string>
+
+	<!-- Cough -->
+	<string name="fever_assessment_radio_cough">Cough</string>
+
+	<!-- Red Eyes -->
+	<string name="fever_assessment_radio_red_eyes">Red eyes</string>
+	
+	<!-- Mouth Ulcers -->
+	<string name="fever_assessment_radio_mouth_ulcers">Mouth ulcers</string>
+
+	<!-- Deep Mouth Ulcers -->
+	<string name="fever_assessment_radio_deep_mouth_ulcers">Deep mouth ulcers</string>
+
+	<!-- Extensive Mouth Ulcers -->
+	<string name="fever_assessment_radio_extensive_mouth_ulcers">Extensive mouth ulcers</string>
+	
+	<!-- Pus Draining from the Eye -->
+	<string name="fever_assessment_radio_pus_draining">Pus draining from the eye</string>
+	
+	<!-- Clouding of the Cornea -->
+	<string name="fever_assessment_radio_cornea_clouding">Clouding of the cornea</string>
+	
+	<!-- Bulging Fontanel -->
+	<string name="fever_assessment_radio_bulging_fontanel">Bulging fontanel</string>
+	
     <!-- Fever Review -->
 	<string name="fever_assessment_review_fever">Fever</string>
 	<string name="fever_assessment_review_malaria_risk">Malaria Risk</string>
 	<string name="fever_assessment_review_duration">For How Long? (days)</string>
+	<string name="fever_assessment_review_present_every_day">Fever Present Every Day</string>
+	<string name="fever_assessment_review_measles">Has the Child Measles Now or within the Last Three Months?</string>
+	<string name="fever_assessment_review_stiff_neck">Stiff Neck</string>
+	<string name="fever_assessment_review_runny_nose">Runny Nose</string>
+	<string name="fever_assessment_review_generalised_rash">Generalised Rash</string>
+	<string name="fever_assessment_review_cough">Cough</string>
+	<string name="fever_assessment_review_red_eyes">Red Eyes</string>
+	<string name="fever_assessment_review_mouth_ulcers">Mouth Ulcers</string>
+	<string name="fever_assessment_review_deep_mouth_ulcers">Deep Mouth Ulcers</string>
+	<string name="fever_assessment_review_extensive_mouth_ulcers">Extensive Mouth Ulcers</string>
+	<string name="fever_assessment_review_pus_draining">Pus Draining from the Eye</string>
+	<string name="fever_assessment_review_cornea_clouding">Clouding of the Cornea</string>
+	<string name="fever_assessment_review_bulging_fontanel">Bulging Fontanel</string>
 
     <!-- ============================================================ -->
     <!-- ASSESSMENT WIZARD BREAD-CRUMB UI -->

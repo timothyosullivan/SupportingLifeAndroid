@@ -22,6 +22,19 @@ public class FeverAssessmentPage extends AbstractPage {
     public static final String FEVER_DATA_KEY = "FEVER";
     public static final String MALARIA_RISK_DATA_KEY = "MALARIA_RISK";
     public static final String DURATION_DATA_KEY = "DURATION";
+    public static final String FEVER_PRESENT_EVERY_DAY_DATA_KEY = "FEVER_PRESENT_EVERY_DAY";
+    public static final String MEASLES_DATA_KEY = "MEASLES";
+    public static final String STIFF_NECK_DATA_KEY = "STIFF_NECK";
+    public static final String RUNNY_NOSE_DATA_KEY = "RUNNY_NOSE";
+    public static final String GENERALISED_RASH_DATA_KEY = "GENERALISED_RASH";
+    public static final String COUGH_DATA_KEY = "COUGH";
+    public static final String RED_EYES_DATA_KEY = "RED_EYES";
+    public static final String MOUTH_ULCERS_DATA_KEY = "MOUTH_ULCERS";
+    public static final String DEEP_MOUTH_ULCERS_DATA_KEY = "DEEP_MOUTH_ULCERS";
+    public static final String EXTENSIVE_MOUTH_ULCERS_DATA_KEY = "EXTENSIVE_MOUTH_ULCERS";
+    public static final String PUS_DRAINING_DATA_KEY = "PUS_DRAINING";
+    public static final String CORNEA_CLOUDING_DATA_KEY = "CORNEA_CLOUDING";
+    public static final String BULGING_FONTANEL_DATA_KEY = "BULGING_FONTANEL"; 
     
     private FeverAssessmentFragment feverAssessmentFragment;
 
