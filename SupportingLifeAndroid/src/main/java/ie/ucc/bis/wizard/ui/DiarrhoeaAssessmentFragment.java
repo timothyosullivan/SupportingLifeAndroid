@@ -1,8 +1,8 @@
 package ie.ucc.bis.wizard.ui;
 
 import ie.ucc.bis.R;
-import ie.ucc.bis.activity.AssessmentWizardActivity;
 import ie.ucc.bis.activity.SupportingLifeBaseActivity;
+import ie.ucc.bis.ui.utilities.RadioGroupUtilities;
 import ie.ucc.bis.wizard.model.AbstractPage;
 import ie.ucc.bis.wizard.model.AbstractWizardModel;
 import ie.ucc.bis.wizard.model.AssessmentWizardModel;
@@ -10,7 +10,6 @@ import ie.ucc.bis.wizard.model.AssessmentWizardRadioGroupListener;
 import ie.ucc.bis.wizard.model.AssessmentWizardTextWatcher;
 import ie.ucc.bis.wizard.model.DiarrhoeaAssessmentPage;
 import ie.ucc.bis.wizard.model.GeneralDangerSignsPage;
-import ie.ucc.bis.wizard.model.ModelCallbacks;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -97,9 +96,10 @@ public class DiarrhoeaAssessmentFragment extends Fragment {
         		.getPageData().getInt(DiarrhoeaAssessmentPage.SUNKEN_EYES_DATA_KEY));
         
         // lethargic or unconscious - ** This is fed from the 'General Danger Signs' Page / review item
+        // will be set via onViewStateRestored(..) callback method
         setLethargicUnconsciousRadioGroup((RadioGroup) rootView.findViewById(R.id.diarrhoea_assessment_radio_lethargic_or_unconscious));
-        String uiReferenceElement = GeneralDangerSignsPage.LETHARGIC_OR_UNCONSCIOUS_DATA_KEY + AssessmentWizardRadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY;
-        configureYesNoRadioButtonSetting(AssessmentWizardModel.DANGER_SIGNS_PAGE_TITLE, uiReferenceElement);
+        // disable user interaction with this radio group selection
+        RadioGroupUtilities.toggleRadioButtonsEnabledState(getLethargicUnconsciousRadioGroup(), false);
       
         // restless / irritable
         setRestlessIrritableRadioGroup((RadioGroup) rootView.findViewById(R.id.diarrhoea_assessment_radio_restless_irritable));
@@ -128,20 +128,31 @@ public class DiarrhoeaAssessmentFragment extends Fragment {
         return rootView;
     }
 
-	private void configureYesNoRadioButtonSetting(String pageTitle, String uiReferenceElement) {
-		// 1. retrieve the relevant page where the radio group 'lethargic or unconscious' is being referenced
-        AbstractPage dangerSignsAssessmentPage = getWizardModel().findPageByKey(pageTitle);
+	/**
+	 * Method: configureLethargicUnconsciousRadioGroup
+	 * 
+	 * Responsible for configuring the Lethargic/Unconscious Radio Group based on the
+	 * 'Diarrhoea Assessment' page based on the corresponding radio group value on the 
+	 * 'General Danger Signs' page
+	 * 
+	 */   
+	private void configureLethargicUnconsciousRadioGroup() {
+		// 1. retrieve the relevant page and ui element
+		//    where the radio group 'lethargic or unconscious' is being referenced
+        AbstractPage dangerSignsAssessmentPage = getWizardModel().findPageByKey(AssessmentWizardModel.DANGER_SIGNS_PAGE_TITLE);
+        String uiReferenceElement = GeneralDangerSignsPage.LETHARGIC_OR_UNCONSCIOUS_DATA_KEY + AssessmentWizardRadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY;
+        
         // 2. retrieve the textual value (yes/no) of the radio group checked option
         String radioGroupSetting = dangerSignsAssessmentPage.getPageData().getString(uiReferenceElement);
-        // 3. set this value on the lethargic/unconscious radio grouping on the diarrhoea assessment page
-        if (radioGroupSetting.equals(getResources().getString(R.string.assessment_wizard_radio_yes))) {
-        	getLethargicUnconsciousRadioGroup().check(R.id.diarrhoea_assessment_radio_lethargic_or_unconscious_yes);
-        	getDiarrhoeaDurationEditText().setText(getResources().getString(R.string.assessment_wizard_radio_yes));
-        }
-        else if (radioGroupSetting.equals(getResources().getString(R.string.assessment_wizard_radio_no))) {
-        	// getLethargicUnconsciousRadioGroup().check(R.id.diarrhoea_assessment_radio_lethargic_or_unconscious_no);
-        	getLethargicUnconsciousRadioGroup().clearCheck();
-        	getDiarrhoeaDurationEditText().setText(getResources().getString(R.string.assessment_wizard_radio_no));
+        
+        if (radioGroupSetting != null) {        
+	        // 3. set this value on the lethargic/unconscious radio grouping on the diarrhoea assessment page
+	        if (radioGroupSetting.equals(getResources().getString(R.string.assessment_wizard_radio_yes))) {
+	        	getLethargicUnconsciousRadioGroup().check(R.id.diarrhoea_assessment_radio_lethargic_or_unconscious_yes);
+	        }
+	        else if (radioGroupSetting.equals(getResources().getString(R.string.assessment_wizard_radio_no))) {
+	        	getLethargicUnconsciousRadioGroup().check(R.id.diarrhoea_assessment_radio_lethargic_or_unconscious_no);
+	        }
         }
 	}
     
@@ -167,7 +178,7 @@ public class DiarrhoeaAssessmentFragment extends Fragment {
     public void onViewStateRestored(Bundle savedInstanceState) {
         super.onViewStateRestored(savedInstanceState);
         
-        configureYesNoRadioButtonSetting();
+        configureLethargicUnconsciousRadioGroup();
     }
 
     @Override
@@ -193,6 +204,11 @@ public class DiarrhoeaAssessmentFragment extends Fragment {
         getSunkenEyesRadioGroup().setOnCheckedChangeListener(
         		new AssessmentWizardRadioGroupListener(getDiarrhoeaAssessmentPage(),
         				DiarrhoeaAssessmentPage.SUNKEN_EYES_DATA_KEY));
+        
+        // lethargic or unconscious
+        getLethargicUnconsciousRadioGroup().setOnCheckedChangeListener(
+        		new AssessmentWizardRadioGroupListener(getDiarrhoeaAssessmentPage(),
+        				DiarrhoeaAssessmentPage.LETHARGIC_OR_UNCONSCIOUS_DATA_KEY));
         
         // restless / irritable
         getRestlessIrritableRadioGroup().setOnCheckedChangeListener(

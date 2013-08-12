@@ -143,37 +143,54 @@
 			<!-- This radio button should correlate directly with the value   -->
 			<!-- set on the 'General Danger Signs' page and vica-versa		  -->
 			<!-- ============================================================ -->               
-			
-			<TextView
-			    style="@style/WizardFormLabel"
-			    android:layout_width="match_parent"
-			    android:layout_height="match_parent"
-			    android:layout_gravity="bottom"
-			    android:text="@string/diarrhoea_assessment_radio_lethargic_or_unconscious" />
-			
-			<RadioGroup
-			    android:id="@+id/diarrhoea_assessment_radio_lethargic_or_unconscious"
+
+			<LinearLayout
 			    android:layout_width="match_parent"
 			    android:layout_height="wrap_content"
-			    android:orientation="horizontal" >
-
-			    <RadioButton
-			        android:id="@+id/diarrhoea_assessment_radio_lethargic_or_unconscious_yes"
-			        android:layout_width="112dp"
-			        android:layout_height="wrap_content"
-			        android:layout_weight="0.67"
-			        android:checked="false"
-			        android:text="@string/assessment_wizard_radio_yes" />
-
-			    <RadioButton
-			        android:id="@+id/diarrhoea_assessment_radio_lethargic_or_unconscious_no"
-			        android:layout_width="118dp"
-			        android:layout_height="wrap_content"
-			        android:layout_gravity="top"
-			        android:layout_weight="0.32"
-			        android:checked="false"
-			        android:text="@string/assessment_wizard_radio_no" />
-			</RadioGroup>
+			    android:background="@drawable/border"
+			    android:layout_marginTop="10dp"
+			    android:layout_marginBottom="10dp"
+			    android:orientation="vertical" >
+			
+				<TextView
+				    style="@style/WizardFormLabel"
+				    android:layout_width="match_parent"
+				    android:layout_height="wrap_content"
+				    android:layout_gravity="bottom"
+				    android:text="@string/diarrhoea_assessment_radio_lethargic_or_unconscious" />
+				
+				<RadioGroup
+				    android:id="@+id/diarrhoea_assessment_radio_lethargic_or_unconscious"
+				    android:layout_width="match_parent"
+				    android:layout_height="wrap_content"
+				    android:orientation="horizontal" >
+	
+				    <RadioButton
+				        android:id="@+id/diarrhoea_assessment_radio_lethargic_or_unconscious_yes"
+				        android:layout_width="112dp"
+				        android:layout_height="wrap_content"
+				        android:layout_weight="0.67"
+				        android:checked="false"
+				        android:text="@string/assessment_wizard_radio_yes" />
+	
+				    <RadioButton
+				        android:id="@+id/diarrhoea_assessment_radio_lethargic_or_unconscious_no"
+				        android:layout_width="118dp"
+				        android:layout_height="wrap_content"
+				        android:layout_gravity="top"
+				        android:layout_weight="0.32"
+				        android:checked="false"
+				        android:text="@string/assessment_wizard_radio_no" />
+				</RadioGroup>
+				
+				<TextView
+			    	style="@style/WizardFormNote"
+			    	android:layout_width="match_parent"
+			    	android:layout_height="match_parent"
+			    	android:layout_gravity="bottom"
+			    	android:text="@string/diarrhoea_assessment_radio_lethargic_disabled_note" />
+				
+			</LinearLayout>
 
 			<!-- ============================================================ -->
 			<!-- RESTLESS / IRRITABLE RADIO BUTTON GROUP -->

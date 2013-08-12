@@ -133,7 +133,10 @@
 	<string name="diarrhoea_assessment_radio_skin_pinch_very_slowly">Very slowly (longer than 2 seconds)</string>
 	<string name="diarrhoea_assessment_radio_skin_pinch_slowly">Slowly</string>
 	<string name="diarrhoea_assessment_radio_skin_pinch_immediate">Immediate</string>
-		
+	
+	<!-- Lethargic or Unconscious Radio Group Disabled Note -->
+	<string name="diarrhoea_assessment_radio_lethargic_disabled_note">*Value chosen on \'General Danger Signs\' assessment page</string>
+		 
     <!-- Diarrhoea Review -->
 	<string name="diarrhoea_assessment_review_diarrhoea">Diarrhoea</string>
 	<string name="diarrhoea_assessment_review_diarrhoea_duration">For How Long? (days)</string>

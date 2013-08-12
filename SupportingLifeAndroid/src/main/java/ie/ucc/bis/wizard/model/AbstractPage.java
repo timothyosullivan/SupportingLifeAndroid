@@ -1,9 +1,9 @@
 package ie.ucc.bis.wizard.model;
 
+import java.util.ArrayList;
+
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-
-import java.util.ArrayList;
 
 /**
  * Represents a single page in the bread-crumb UI wizard.

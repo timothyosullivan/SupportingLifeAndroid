@@ -107,6 +107,22 @@
         <item name="android:paddingRight">12dp</item>
         <item name="android:paddingTop">5dp</item>
     </style>
+    
+    <!-- ============================================================ -->
+    <!-- BREADCRUMB WIZARD FORM NOTE STYLE -->
+    <!-- ============================================================ -->
+    <style name="WizardFormNote">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginBottom">2dp</item>
+        <item name="android:textColor">@color/DarkGreen</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">10sp</item>
+        <item name="android:paddingLeft">4dp</item>
+        <item name="android:paddingRight">12dp</item>
+        <item name="android:paddingTop">5dp</item>
+    </style>
+    
 
     <!-- ============================================================ -->
     <!-- BREADCRUMB WIZARD RADIO BUTTON STYLE -->
