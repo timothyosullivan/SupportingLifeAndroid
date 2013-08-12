@@ -273,39 +273,39 @@
 			    android:layout_gravity="bottom"
 			    android:text="@string/diarrhoea_assessment_radio_child_fluid" />
 			
-			<RadioGroup
-			    android:id="@+id/diarrhoea_assessment_radio_child_fluid"
-			    android:layout_width="match_parent"
-			    android:layout_height="wrap_content"
-			    android:orientation="horizontal" >
+			<ie.ucc.bis.ui.custom.ToggleButtonGroupTableLayout
+                android:id="@+id/diarrhoea_assessment_radio_child_fluid"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" >
 
-			    <RadioButton
-			        android:id="@+id/diarrhoea_assessment_radio_child_fluid_not_able"
-			        android:layout_width="112dp"
-			        android:layout_height="wrap_content"
-			        android:layout_weight="0.67"
-			        android:checked="false"
-			        android:text="@string/diarrhoea_assessment_radio_child_fluid_not_able" />
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" >
 
-			    <RadioButton
-			        android:id="@+id/diarrhoea_assessment_radio_child_fluid_drinking_poorly"
-			        android:layout_width="118dp"
-			        android:layout_height="wrap_content"
-			        android:layout_gravity="top"
-			        android:layout_weight="0.32"
-			        android:checked="false"
-			        android:text="@string/diarrhoea_assessment_radio_child_fluid_drinking_poorly" />
+                    <RadioButton
+                        android:id="@+id/diarrhoea_assessment_radio_child_fluid_not_able"
+                        android:layout_weight="0.67"
+                        android:checked="false"
+                        android:text="@string/diarrhoea_assessment_radio_child_fluid_not_able" />
+
+                    <RadioButton
+                        android:id="@+id/diarrhoea_assessment_radio_child_fluid_drinking_poorly"
+                        android:layout_weight="0.67"
+                        android:checked="false"
+                        android:text="@string/diarrhoea_assessment_radio_child_fluid_drinking_poorly" />
+                </TableRow>
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" >
+
+                    <RadioButton
+                        android:id="@+id/diarrhoea_assessment_radio_child_fluid_drinking_eagerly"
+                        android:layout_weight="0.67"
+                        android:checked="false"
+                        android:text="@string/diarrhoea_assessment_radio_child_fluid_drinking_eagerly" />
+                </TableRow>
+            </ie.ucc.bis.ui.custom.ToggleButtonGroupTableLayout>
 			    
-			    <RadioButton
-			        android:id="@+id/diarrhoea_assessment_radio_child_fluid_drinking_eagerly"
-			        android:layout_width="118dp"
-			        android:layout_height="wrap_content"
-			        android:layout_gravity="top"
-			        android:layout_weight="0.32"
-			        android:checked="false"
-			        android:text="@string/diarrhoea_assessment_radio_child_fluid_drinking_eagerly" />
-			</RadioGroup>
-
 			<!-- ============================================================ -->
 			<!-- SKIN PINCH RADIO BUTTON GROUP -->
 			<!-- ============================================================ -->               
@@ -316,40 +316,39 @@
 			    android:layout_height="match_parent"
 			    android:layout_gravity="bottom"
 			    android:text="@string/diarrhoea_assessment_radio_skin_pinch" />
-			
-			<RadioGroup
-			    android:id="@+id/diarrhoea_assessment_radio_skin_pinch"
-			    android:layout_width="match_parent"
-			    android:layout_height="wrap_content"
-			    android:orientation="horizontal" >
+						
+			<ie.ucc.bis.ui.custom.ToggleButtonGroupTableLayout
+                android:id="@+id/diarrhoea_assessment_radio_skin_pinch"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" >
 
-			    <RadioButton
-			        android:id="@+id/diarrhoea_assessment_radio_skin_pinch_very_slowly"
-			        android:layout_width="112dp"
-			        android:layout_height="wrap_content"
-			        android:layout_weight="0.67"
-			        android:checked="false"
-			        android:text="@string/diarrhoea_assessment_radio_skin_pinch_very_slowly" />
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" >
 
-			    <RadioButton
-			        android:id="@+id/diarrhoea_assessment_radio_skin_pinch_slowly"
-			        android:layout_width="118dp"
-			        android:layout_height="wrap_content"
-			        android:layout_gravity="top"
-			        android:layout_weight="0.32"
-			        android:checked="false"
-			        android:text="@string/diarrhoea_assessment_radio_skin_pinch_slowly" />
-			    
-			    <RadioButton
-			        android:id="@+id/diarrhoea_assessment_radio_skin_pinch_immediate"
-			        android:layout_width="118dp"
-			        android:layout_height="wrap_content"
-			        android:layout_gravity="top"
-			        android:layout_weight="0.32"
-			        android:checked="false"
-			        android:text="@string/diarrhoea_assessment_radio_skin_pinch_immediate" />
-			</RadioGroup>
-			
+                    <RadioButton
+                        android:id="@+id/diarrhoea_assessment_radio_skin_pinch_very_slowly"
+                        android:layout_weight="0.67"
+                        android:checked="false"
+                        android:text="@string/diarrhoea_assessment_radio_skin_pinch_very_slowly" />
+
+                    <RadioButton
+                        android:id="@+id/diarrhoea_assessment_radio_skin_pinch_slowly"
+                        android:layout_weight="0.67"
+                        android:checked="false"
+                        android:text="@string/diarrhoea_assessment_radio_skin_pinch_slowly" />
+                </TableRow>
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" >
+
+                    <RadioButton
+                        android:id="@+id/diarrhoea_assessment_radio_skin_pinch_immediate"
+                        android:layout_weight="0.67"
+                        android:checked="false"
+                        android:text="@string/diarrhoea_assessment_radio_skin_pinch_immediate" />
+                </TableRow>
+            </ie.ucc.bis.ui.custom.ToggleButtonGroupTableLayout>
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

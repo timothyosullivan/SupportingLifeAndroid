@@ -2,6 +2,7 @@ package ie.ucc.bis.wizard.ui;
 
 import ie.ucc.bis.R;
 import ie.ucc.bis.activity.SupportingLifeBaseActivity;
+import ie.ucc.bis.ui.custom.ToggleButtonGroupTableLayout;
 import ie.ucc.bis.ui.utilities.RadioGroupUtilities;
 import ie.ucc.bis.wizard.model.AbstractPage;
 import ie.ucc.bis.wizard.model.AbstractWizardModel;
@@ -43,8 +44,8 @@ public class DiarrhoeaAssessmentFragment extends Fragment {
     private RadioGroup lethargicUnconsciousRadioGroup;
     private RadioGroup restlessIrritableRadioGroup;
     private RadioGroup choleraInAreaRadioGroup;
-    private RadioGroup childFluidRadioGroup;
-    private RadioGroup skinPinchRadioGroup;
+    private ToggleButtonGroupTableLayout childFluidRadioGroup;
+    private ToggleButtonGroupTableLayout skinPinchRadioGroup;
     
     public static DiarrhoeaAssessmentFragment create(String pageKey) {
         Bundle args = new Bundle();
@@ -112,12 +113,12 @@ public class DiarrhoeaAssessmentFragment extends Fragment {
         		.getPageData().getInt(DiarrhoeaAssessmentPage.CHOLERA_IN_AREA_DATA_KEY));
         
         // offer the child fluid
-        setChildFluidRadioGroup((RadioGroup) rootView.findViewById(R.id.diarrhoea_assessment_radio_child_fluid));
+        setChildFluidRadioGroup((ToggleButtonGroupTableLayout) rootView.findViewById(R.id.diarrhoea_assessment_radio_child_fluid));
         getChildFluidRadioGroup().check(getDiarrhoeaAssessmentPage()
         		.getPageData().getInt(DiarrhoeaAssessmentPage.CHILD_FLUID_DATA_KEY));
        
         // skin pinch
-        setSkinPinchRadioGroup((RadioGroup) rootView.findViewById(R.id.diarrhoea_assessment_radio_skin_pinch));
+        setSkinPinchRadioGroup((ToggleButtonGroupTableLayout) rootView.findViewById(R.id.diarrhoea_assessment_radio_skin_pinch));
         getSkinPinchRadioGroup().check(getDiarrhoeaAssessmentPage()
         		.getPageData().getInt(DiarrhoeaAssessmentPage.SKIN_PINCH_DATA_KEY));
         
@@ -221,14 +222,14 @@ public class DiarrhoeaAssessmentFragment extends Fragment {
         				DiarrhoeaAssessmentPage.CHOLERA_IN_AREA_DATA_KEY));
         
         // offer the child fluid
-        getChildFluidRadioGroup().setOnCheckedChangeListener(
-        		new AssessmentWizardRadioGroupListener(getDiarrhoeaAssessmentPage(),
-        				DiarrhoeaAssessmentPage.CHILD_FLUID_DATA_KEY));
+        // configure page and data key for radio button listener in 'custom fever toggle group'
+        getChildFluidRadioGroup().setPage(getDiarrhoeaAssessmentPage());
+        getChildFluidRadioGroup().setDataKey(DiarrhoeaAssessmentPage.CHILD_FLUID_DATA_KEY);
         
         // skin pinch
-        getSkinPinchRadioGroup().setOnCheckedChangeListener(
-        		new AssessmentWizardRadioGroupListener(getDiarrhoeaAssessmentPage(),
-        				DiarrhoeaAssessmentPage.SKIN_PINCH_DATA_KEY));
+        // configure page and data key for radio button listener in 'custom fever toggle group'
+        getSkinPinchRadioGroup().setPage(getDiarrhoeaAssessmentPage());
+        getSkinPinchRadioGroup().setDataKey(DiarrhoeaAssessmentPage.SKIN_PINCH_DATA_KEY);
     }
 
 	/**
@@ -374,28 +375,28 @@ public class DiarrhoeaAssessmentFragment extends Fragment {
 	/**
 	 * Getter Method: getChildFluidRadioGroup()
 	 */
-	private RadioGroup getChildFluidRadioGroup() {
+	private ToggleButtonGroupTableLayout getChildFluidRadioGroup() {
 		return childFluidRadioGroup;
 	}
 
 	/**
 	 * Setter Method: setChildFluidRadioGroup()
 	 */	
-	private void setChildFluidRadioGroup(RadioGroup childFluidRadioGroup) {
+	private void setChildFluidRadioGroup(ToggleButtonGroupTableLayout childFluidRadioGroup) {
 		this.childFluidRadioGroup = childFluidRadioGroup;
 	}
 
 	/**
 	 * Getter Method: getSkinPinchRadioGroup()
 	 */
-	private RadioGroup getSkinPinchRadioGroup() {
+	private ToggleButtonGroupTableLayout getSkinPinchRadioGroup() {
 		return skinPinchRadioGroup;
 	}
 
 	/**
 	 * Setter Method: setSkinPinchRadioGroup()
 	 */	
-	private void setSkinPinchRadioGroup(RadioGroup skinPinchRadioGroup) {
+	private void setSkinPinchRadioGroup(ToggleButtonGroupTableLayout skinPinchRadioGroup) {
 		this.skinPinchRadioGroup = skinPinchRadioGroup;
 	}
 

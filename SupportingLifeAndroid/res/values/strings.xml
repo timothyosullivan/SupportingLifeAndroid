@@ -124,18 +124,18 @@
 	
 	<!-- Offer the Child Fluid -->
 	<string name="diarrhoea_assessment_radio_child_fluid">Offer the child fluid</string>
-	<string name="diarrhoea_assessment_radio_child_fluid_not_able">Not able to drink</string>
+	<string name="diarrhoea_assessment_radio_child_fluid_not_able">Not able to \ndrink</string>
 	<string name="diarrhoea_assessment_radio_child_fluid_drinking_poorly">Drinking poorly</string>
 	<string name="diarrhoea_assessment_radio_child_fluid_drinking_eagerly">Drinking eagerly, thirsty</string>
 
 	<!-- Skin Pinch -->
 	<string name="diarrhoea_assessment_radio_skin_pinch">Skin pinch</string>
-	<string name="diarrhoea_assessment_radio_skin_pinch_very_slowly">Very slowly (longer than 2 seconds)</string>
+	<string name="diarrhoea_assessment_radio_skin_pinch_very_slowly">Very slowly \n(longer than \n2 seconds)</string>
 	<string name="diarrhoea_assessment_radio_skin_pinch_slowly">Slowly</string>
 	<string name="diarrhoea_assessment_radio_skin_pinch_immediate">Immediate</string>
 	
 	<!-- Lethargic or Unconscious Radio Group Disabled Note -->
-	<string name="diarrhoea_assessment_radio_lethargic_disabled_note">*Value chosen on \'General Danger Signs\' assessment page</string>
+	<string name="diarrhoea_assessment_radio_lethargic_disabled_note">*chosen on \'Danger Signs\' assessment page</string>
 		 
     <!-- Diarrhoea Review -->
 	<string name="diarrhoea_assessment_review_diarrhoea">Diarrhoea</string>
