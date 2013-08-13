@@ -94,6 +94,8 @@
 	<string name="ear_assessment_ear_problem_symptom_id">ear_problem</string>
 	<string name="ear_assessment_ear_pain_symptom_id">ear_pain</string>
 	<string name="ear_assessment_ear_discharge_symptom_id">ear_discharge</string>
+	<string name="ear_assessment_ear_discharge_duration_symptom_id">ear_discharge_duration</string>
+	<string name="ear_assessment_tender_swelling_symptom_id">tender_swelling_behind_ear</string>
 	
     <!-- ============================================================ -->
     <!-- ASSESSMENT WIZARD BREAD-CRUMB UI -->

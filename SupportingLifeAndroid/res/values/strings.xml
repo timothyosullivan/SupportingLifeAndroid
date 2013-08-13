@@ -235,11 +235,15 @@
 	<string name="ear_assessment_radio_ear_problem">Does the child have an ear problem?</string>
 	<string name="ear_assessment_radio_ear_pain">Is there ear pain?</string>
 	<string name="ear_assessment_radio_ear_discharge">Is there ear discharge?</string>
+	<string name="ear_assessment_ear_discharge_duration">For how long? (days)</string>
+	<string name="ear_assessment_radio_tender_swelling">Tender swelling behind the ear</string>
 
     <!-- Ear Review -->
 	<string name="ear_assessment_review_ear_problem">Ear Problem</string>
 	<string name="ear_assessment_review_ear_pain">Ear Pain</string>
 	<string name="ear_assessment_review_ear_discharge">Ear Discharge</string>
+	<string name="ear_assessment_review_ear_discharge_duration">For How Long? (days)</string>
+	<string name="ear_assessment_review_tender_swelling">Tender Swelling behind the Ear</string>
 	
     <!-- ============================================================ -->
     <!-- ASSESSMENT WIZARD BREAD-CRUMB UI -->

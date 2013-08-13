@@ -3,6 +3,7 @@ package ie.ucc.bis.wizard.ui;
 import ie.ucc.bis.R;
 import ie.ucc.bis.activity.SupportingLifeBaseActivity;
 import ie.ucc.bis.wizard.model.AssessmentWizardRadioGroupListener;
+import ie.ucc.bis.wizard.model.AssessmentWizardTextWatcher;
 import ie.ucc.bis.wizard.model.EarAssessmentPage;
 import android.app.Activity;
 import android.os.Bundle;
@@ -10,6 +11,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
@@ -30,6 +32,8 @@ public class EarAssessmentFragment extends Fragment {
     private RadioGroup earProblemRadioGroup;
     private RadioGroup earPainRadioGroup;
     private RadioGroup earDischargeRadioGroup;
+    private EditText earDischargeDurationEditText;
+    private RadioGroup tenderSwellingRadioGroup;
     
     public static EarAssessmentFragment create(String pageKey) {
         Bundle args = new Bundle();
@@ -76,6 +80,15 @@ public class EarAssessmentFragment extends Fragment {
         getEarDischargeRadioGroup().check(getEarAssessmentPage()
         		.getPageData().getInt(EarAssessmentPage.EAR_DISCHARGE_DATA_KEY));
         
+        // ear discharge duration
+        setEarDischargeDurationEditText((EditText) rootView.findViewById(R.id.ear_assessment_ear_discharge_duration));
+        getEarDischargeDurationEditText().setText(getEarAssessmentPage().getPageData().getString(EarAssessmentPage.EAR_DISCHARGE_DURATION_DATA_KEY));
+        
+        // tender swelling
+        setTenderSwellingRadioGroup((RadioGroup) rootView.findViewById(R.id.ear_assessment_radio_tender_swelling));
+        getTenderSwellingRadioGroup().check(getEarAssessmentPage()
+        		.getPageData().getInt(EarAssessmentPage.TENDER_SWELLING_DATA_KEY));
+        
 		// add soft keyboard handler - essentially hiding soft
 		// keyboard when an EditText is not in focus
 		((SupportingLifeBaseActivity) getActivity()).addSoftKeyboardHandling(rootView);
@@ -119,6 +132,16 @@ public class EarAssessmentFragment extends Fragment {
         getEarDischargeRadioGroup().setOnCheckedChangeListener(
         		new AssessmentWizardRadioGroupListener(getEarAssessmentPage(),
         				EarAssessmentPage.EAR_DISCHARGE_DATA_KEY));
+        
+        // add listener to ear discharge duration edit text
+        getEarDischargeDurationEditText().addTextChangedListener(
+        		new AssessmentWizardTextWatcher(getEarAssessmentPage(), 
+        				EarAssessmentPage.EAR_DISCHARGE_DURATION_DATA_KEY));
+        
+        // add listener to tender swelling radio group
+        getTenderSwellingRadioGroup().setOnCheckedChangeListener(
+        		new AssessmentWizardRadioGroupListener(getEarAssessmentPage(),
+        				EarAssessmentPage.TENDER_SWELLING_DATA_KEY));
     }
     
 
@@ -204,5 +227,33 @@ public class EarAssessmentFragment extends Fragment {
 	 */
 	public void setEarDischargeRadioGroup(RadioGroup earDischargeRadioGroup) {
 		this.earDischargeRadioGroup = earDischargeRadioGroup;
+	}
+
+	/**
+	 * Getter Method: getEarDischargeDurationEditText()
+	 */	
+	private EditText getEarDischargeDurationEditText() {
+		return earDischargeDurationEditText;
+	}
+
+	/**
+	 * Setter Method: setEarDischargeDurationEditText()
+	 */
+	private void setEarDischargeDurationEditText(EditText earDischargeDurationEditText) {
+		this.earDischargeDurationEditText = earDischargeDurationEditText;
+	}
+
+	/**
+	 * Getter Method: getTenderSwellingRadioGroup()
+	 */	
+	private RadioGroup getTenderSwellingRadioGroup() {
+		return tenderSwellingRadioGroup;
+	}
+
+	/**
+	 * Setter Method: setTenderSwellingRadioGroup()
+	 */
+	private void setTenderSwellingRadioGroup(RadioGroup tenderSwellingRadioGroup) {
+		this.tenderSwellingRadioGroup = tenderSwellingRadioGroup;
 	}
 }

@@ -21,6 +21,8 @@ public class EarAssessmentPage extends AbstractPage {
     public static final String EAR_PROBLEM_DATA_KEY = "EAR_PROBLEM";
     public static final String EAR_PAIN_DATA_KEY = "EAR_PAIN";
     public static final String EAR_DISCHARGE_DATA_KEY = "EAR_DISCHARGE";
+    public static final String EAR_DISCHARGE_DURATION_DATA_KEY = "EAR_DISCHARGE_DURATION";
+    public static final String TENDER_SWELLING_DATA_KEY = "TENDER_SWELLING";
     
     private EarAssessmentFragment earAssessmentFragment;
 
@@ -69,7 +71,18 @@ public class EarAssessmentPage extends AbstractPage {
     	reviewItemLabel = resources.getString(R.string.ear_assessment_review_ear_discharge);
     	reviewItemValue = getPageData().getString(EAR_DISCHARGE_DATA_KEY + AssessmentWizardRadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
     	reviewItemSymptomId = resources.getString(R.string.ear_assessment_ear_discharge_symptom_id);
-    	reviewItems.add(new ReviewItem(reviewItemLabel, reviewItemValue, reviewItemSymptomId, getKey(), -1));	
+    	reviewItems.add(new ReviewItem(reviewItemLabel, reviewItemValue, reviewItemSymptomId, getKey(), -1));
+    	
+    	// for how long? (days) - ear discharge duration
+    	reviewItemLabel = resources.getString(R.string.ear_assessment_review_ear_discharge_duration);
+    	reviewItemSymptomId = resources.getString(R.string.ear_assessment_ear_discharge_duration_symptom_id);
+    	reviewItems.add(new ReviewItem(reviewItemLabel, getPageData().getString(EAR_DISCHARGE_DURATION_DATA_KEY), reviewItemSymptomId, getKey(), -1));
+    	
+    	// tender swelling
+    	reviewItemLabel = resources.getString(R.string.ear_assessment_review_tender_swelling);
+    	reviewItemValue = getPageData().getString(TENDER_SWELLING_DATA_KEY + AssessmentWizardRadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
+    	reviewItemSymptomId = resources.getString(R.string.ear_assessment_tender_swelling_symptom_id);
+    	reviewItems.add(new ReviewItem(reviewItemLabel, reviewItemValue, reviewItemSymptomId, getKey(), -1));
     }
 
 	/**
