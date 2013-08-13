@@ -165,7 +165,6 @@ public class FeverAssessmentPage extends AbstractPage {
 
 	/**
 	 * Getter Method: getFeverAssessmentFragment()
-	 * 
 	 */	
 	public FeverAssessmentFragment getFeverAssessmentFragment() {
 		return feverAssessmentFragment;
@@ -173,7 +172,6 @@ public class FeverAssessmentPage extends AbstractPage {
 
 	/**
 	 * Setter Method: setFeverAssessmentFragment()
-	 * 
 	 */	
 	public void setFeverAssessmentFragment(FeverAssessmentFragment feverAssessmentFragment) {
 		this.feverAssessmentFragment = feverAssessmentFragment;
