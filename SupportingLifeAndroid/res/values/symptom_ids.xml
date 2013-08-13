@@ -71,6 +71,19 @@
 	<string name="fever_assessment_fever_symptom_id">fever</string>
 	<string name="fever_assessment_malaria_risk_symptom_id">malaria_risk</string>
 	<string name="fever_assessment_duration_symptom_id">fever_duration</string>
+	<string name="fever_assessment_present_every_day_symptom_id">fever_present_every_day</string>
+	<string name="fever_assessment_measles_symptom_id">measles</string>
+	<string name="fever_assessment_stiff_neck_symptom_id">stiff_neck</string>
+	<string name="fever_assessment_runny_nose_symptom_id">runny_nose</string>
+	<string name="fever_assessment_generalised_rash_symptom_id">generalised_rash</string>
+	<string name="fever_assessment_cough_symptom_id">cough</string>
+	<string name="fever_assessment_red_eyes_symptom_id">red_eyes</string>
+	<string name="fever_assessment_mouth_ulcers_symptom_id">mouth_ulcers</string>
+	<string name="fever_assessment_deep_mouth_ulcers_symptom_id">deep_mouth_ulcers</string>
+	<string name="fever_assessment_extensive_mouth_ulcers_symptom_id">extensive_mouth_ulcers</string>
+	<string name="fever_assessment_pus_draining_symptom_id">pus_draining</string>
+	<string name="fever_assessment_cornea_clouding_symptom_id">cornea_clouding</string>
+	<string name="fever_assessment_bulging_fontanel_symptom_id">bulging_fontanel</string>
 
     <!-- ============================================================ -->
     <!-- ASSESSMENT WIZARD BREAD-CRUMB UI -->
