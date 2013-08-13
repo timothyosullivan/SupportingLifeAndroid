@@ -150,7 +150,7 @@ public class FeverAssessmentFragment extends Fragment {
         // pus draining from the eye
         setPusDrainingRadioGroup((RadioGroup) rootView.findViewById(R.id.fever_assessment_radio_pus_draining));
         getPusDrainingRadioGroup().check(getFeverAssessmentPage()
-        		.getPageData().getInt(FeverAssessmentPage.PUS_DRAINING_DATA_KEY));
+        		.getPageData().getInt(FeverAssessmentPage.PUS_DRAINING_DATA_KEY));       
         
         // clouding of the cornea
         setCorneaCloudingRadioGroup((RadioGroup) rootView.findViewById(R.id.fever_assessment_radio_cornea_clouding));
@@ -481,7 +481,7 @@ public class FeverAssessmentFragment extends Fragment {
 	private void setDeepMouthUlcersRadioGroup(RadioGroup deepMouthUlcersRadioGroup) {
 		this.deepMouthUlcersRadioGroup = deepMouthUlcersRadioGroup;
 	}
-
+	
 	/**
 	 * Getter Method: getExtensiveMouthUlcersRadioGroup()
 	 */

@@ -412,20 +412,20 @@
            	<!-- ============================================================ -->
 			<!-- DEEP MOUTH ULCERS RADIO BUTTON GROUP -->
 			<!-- ============================================================ -->               
-			
+			    
 			<TextView
 			    style="@style/WizardFormLabel"
 			    android:layout_width="match_parent"
 			    android:layout_height="match_parent"
 			    android:layout_gravity="bottom"
 			    android:text="@string/fever_assessment_radio_deep_mouth_ulcers" />
-			
+				
 			<RadioGroup
 			    android:id="@+id/fever_assessment_radio_deep_mouth_ulcers"
 			    android:layout_width="match_parent"
 			    android:layout_height="wrap_content"
 			    android:orientation="horizontal" >
-
+	
 			    <RadioButton
 			        android:id="@+id/fever_assessment_radio_deep_mouth_ulcers_yes"
 			        android:layout_width="112dp"
@@ -433,7 +433,7 @@
 			        android:layout_weight="0.67"
 			        android:checked="false"
 			        android:text="@string/assessment_wizard_radio_yes" />
-
+	
 			    <RadioButton
 			        android:id="@+id/fever_assessment_radio_deep_mouth_ulcers_no"
 			        android:layout_width="118dp"
@@ -454,13 +454,13 @@
 			    android:layout_height="match_parent"
 			    android:layout_gravity="bottom"
 			    android:text="@string/fever_assessment_radio_extensive_mouth_ulcers" />
-			
+				
 			<RadioGroup
 			    android:id="@+id/fever_assessment_radio_extensive_mouth_ulcers"
 			    android:layout_width="match_parent"
 			    android:layout_height="wrap_content"
 			    android:orientation="horizontal" >
-
+	
 			    <RadioButton
 			        android:id="@+id/fever_assessment_radio_extensive_mouth_ulcers_yes"
 			        android:layout_width="112dp"
@@ -468,7 +468,7 @@
 			        android:layout_weight="0.67"
 			        android:checked="false"
 			        android:text="@string/assessment_wizard_radio_yes" />
-
+	
 			    <RadioButton
 			        android:id="@+id/fever_assessment_radio_extensive_mouth_ulcers_no"
 			        android:layout_width="118dp"
