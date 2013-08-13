@@ -3,7 +3,7 @@
     <!-- ============================================================ -->
     <!-- APPLICATION STYLE THEME -->
     <!-- ============================================================ -->
-    <style name="Theme.Transparent" parent="android:Theme.Light">
+    <style name="Theme.Transparent" parent="android:Theme.Holo.Light">
         <item name="android:windowNoTitle">false</item>
         <item name="android:windowActionBar">true</item>
         <item name="android:backgroundDimEnabled">false</item>
