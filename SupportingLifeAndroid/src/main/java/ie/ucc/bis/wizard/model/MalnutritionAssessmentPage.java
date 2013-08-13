@@ -21,6 +21,8 @@ public class MalnutritionAssessmentPage extends AbstractPage {
     public static final String OEDEMA_DATA_KEY = "OEDEMA";
     public static final String WEIGHT_FOR_AGE_DATA_KEY = "WEIGHT_FOR_AGE";
     public static final String VISIBLE_SEVERE_WASTING_DATA_KEY = "VISIBLE_SEVERE_WASTING";
+    public static final String PALMAR_PALLOR_DATA_KEY = "PALMAR_PALLOR";
+    public static final String MEBENDAZOLE_DOSE_DATA_KEY = "MEBENDAZOLE_DOSE";
     
     private MalnutritionAssessmentFragment malnutritionAssessmentFragment;
 
@@ -70,7 +72,19 @@ public class MalnutritionAssessmentPage extends AbstractPage {
     	reviewItemLabel = resources.getString(R.string.malnutrition_assessment_review_visible_severe_wasting);
     	reviewItemValue = getPageData().getString(VISIBLE_SEVERE_WASTING_DATA_KEY + AssessmentWizardRadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
     	reviewItemSymptomId = resources.getString(R.string.malnutrition_assessment_visible_severe_wasting_symptom_id);
-    	reviewItems.add(new ReviewItem(reviewItemLabel, reviewItemValue, reviewItemSymptomId, getKey(), -1));  	
+    	reviewItems.add(new ReviewItem(reviewItemLabel, reviewItemValue, reviewItemSymptomId, getKey(), -1));
+    	
+    	// palmar pallor
+    	reviewItemLabel = resources.getString(R.string.malnutrition_assessment_review_palmar_pallor);
+    	reviewItemValue = getPageData().getString(PALMAR_PALLOR_DATA_KEY + AssessmentWizardRadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
+    	reviewItemSymptomId = resources.getString(R.string.malnutrition_assessment_palmar_pallor_symptom_id);
+    	reviewItems.add(new ReviewItem(reviewItemLabel, reviewItemValue, reviewItemSymptomId, getKey(), -1));    	
+    	
+    	// mebendazole dose
+    	reviewItemLabel = resources.getString(R.string.malnutrition_assessment_review_mebendazole_dose);
+    	reviewItemValue = getPageData().getString(MEBENDAZOLE_DOSE_DATA_KEY + AssessmentWizardRadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
+    	reviewItemSymptomId = resources.getString(R.string.malnutrition_assessment_mebendazole_dose_symptom_id);
+    	reviewItems.add(new ReviewItem(reviewItemLabel, reviewItemValue, reviewItemSymptomId, getKey(), -1));      	
     }
 
 	/**

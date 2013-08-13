@@ -106,6 +106,8 @@
 	<string name="malnutrition_assessment_oedema_symptom_id">oedema_of_both_feet</string>
 	<string name="malnutrition_assessment_weight_for_age_symptom_id">weight_for_age</string>
 	<string name="malnutrition_assessment_visible_severe_wasting_symptom_id">visible_severe_wasting</string>
+	<string name="malnutrition_assessment_palmar_pallor_symptom_id">palmar_pallor</string>
+	<string name="malnutrition_assessment_mebendazole_dose_symptom_id">mebendazole_dose</string>
 
     <!-- ============================================================ -->
     <!-- ASSESSMENT WIZARD BREAD-CRUMB UI -->

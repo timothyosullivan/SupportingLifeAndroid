@@ -30,6 +30,8 @@ public class MalnutritionAssessmentFragment extends Fragment {
     private RadioGroup oedemaRadioGroup;
     private RadioGroup weightForAgeRadioGroup;
     private RadioGroup visibleSevereWastingRadioGroup;
+    private RadioGroup palmarPallorRadioGroup;
+    private RadioGroup mebendazoleDoseRadioGroup;    
     
     public static MalnutritionAssessmentFragment create(String pageKey) {
         Bundle args = new Bundle();
@@ -76,6 +78,16 @@ public class MalnutritionAssessmentFragment extends Fragment {
         getVisibleSevereWastingRadioGroup().check(getMalnutritionAssessmentPage()
         		.getPageData().getInt(MalnutritionAssessmentPage.VISIBLE_SEVERE_WASTING_DATA_KEY));
         
+        // palmar pallor
+        setPalmarPallorRadioGroup((RadioGroup) rootView.findViewById(R.id.malnutrition_assessment_radio_palmar_pallor));
+        getPalmarPallorRadioGroup().check(getMalnutritionAssessmentPage()
+        		.getPageData().getInt(MalnutritionAssessmentPage.PALMAR_PALLOR_DATA_KEY));
+        
+        // mebendazaloe dose
+        setMebendazoleDoseRadioGroup((RadioGroup) rootView.findViewById(R.id.malnutrition_assessment_radio_mebendazole_dose));
+        getMebendazoleDoseRadioGroup().check(getMalnutritionAssessmentPage()
+        		.getPageData().getInt(MalnutritionAssessmentPage.MEBENDAZOLE_DOSE_DATA_KEY));
+        
 		// add soft keyboard handler - essentially hiding soft
 		// keyboard when an EditText is not in focus
 		((SupportingLifeBaseActivity) getActivity()).addSoftKeyboardHandling(rootView);
@@ -119,6 +131,16 @@ public class MalnutritionAssessmentFragment extends Fragment {
         getVisibleSevereWastingRadioGroup().setOnCheckedChangeListener(
         		new AssessmentWizardRadioGroupListener(getMalnutritionAssessmentPage(),
         				MalnutritionAssessmentPage.VISIBLE_SEVERE_WASTING_DATA_KEY));
+        
+        // add listener to palmar pallor radio group
+        getPalmarPallorRadioGroup().setOnCheckedChangeListener(
+        		new AssessmentWizardRadioGroupListener(getMalnutritionAssessmentPage(),
+        				MalnutritionAssessmentPage.PALMAR_PALLOR_DATA_KEY));
+        
+        // add listener to visible severe wasting radio group
+        getMebendazoleDoseRadioGroup().setOnCheckedChangeListener(
+        		new AssessmentWizardRadioGroupListener(getMalnutritionAssessmentPage(),
+        				MalnutritionAssessmentPage.MEBENDAZOLE_DOSE_DATA_KEY));
     }
     
 
@@ -204,5 +226,33 @@ public class MalnutritionAssessmentFragment extends Fragment {
 	 */			
 	public void setVisibleSevereWastingRadioGroup(RadioGroup visibleSevereWastingRadioGroup) {
 		this.visibleSevereWastingRadioGroup = visibleSevereWastingRadioGroup;
+	}
+
+	/**
+	 * Getter Method: getPalmarPallorRadioGroup()
+	 */	
+	private RadioGroup getPalmarPallorRadioGroup() {
+		return palmarPallorRadioGroup;
+	}
+
+	/**
+	 * Setter Method: setPalmarPallorRadioGroup()
+	 */	
+	private void setPalmarPallorRadioGroup(RadioGroup palmarPallorRadioGroup) {
+		this.palmarPallorRadioGroup = palmarPallorRadioGroup;
+	}
+
+	/**
+	 * Getter Method: getMebendazoleDoseRadioGroup()
+	 */	
+	private RadioGroup getMebendazoleDoseRadioGroup() {
+		return mebendazoleDoseRadioGroup;
+	}
+
+	/**
+	 * Setter Method: setMebendazoleDoseRadioGroup()
+	 */	
+	private void setMebendazoleDoseRadioGroup(RadioGroup mebendazoleDoseRadioGroup) {
+		this.mebendazoleDoseRadioGroup = mebendazoleDoseRadioGroup;
 	}
 }

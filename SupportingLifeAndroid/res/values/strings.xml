@@ -253,15 +253,27 @@
 	<string name="malnutrition_assessment_radio_oedema">Oedema of both feet</string>
 
     <!-- Weight for Age -->
-	<string name="malnutrition_assessment_radio_weight_for_age">Weight for Age</string>
+	<string name="malnutrition_assessment_radio_weight_for_age">Weight for age</string>
 	<string name="malnutrition_assessment_radio_weight_for_age_very_low">Very Low</string>
 	<string name="malnutrition_assessment_radio_weight_for_age_not_very_low">Not Very Low</string>
-	<string name="malnutrition_assessment_radio_visible_severe_wasting">Visible Severe Wasting</string>
+	
+	<!-- Visible Severe Wasting -->
+	<string name="malnutrition_assessment_radio_visible_severe_wasting">Visible severe wasting</string>
+	
+	<!-- Palmar Pallor -->
+	<string name="malnutrition_assessment_radio_palmar_pallor">Palmar Pallor</string>
+	<string name="malnutrition_assessment_radio_palmar_pallor_some">Some</string>
+	<string name="malnutrition_assessment_radio_palmar_pallor_severe">Severe</string>
+	
+	<!-- Mebendazole Dose -->
+	<string name="malnutrition_assessment_radio_mebendazole_dose">Mebendazole dose in the last six months</string>
 
     <!-- Malnutrition and Anaemia Review -->
 	<string name="malnutrition_assessment_review_oedema">Oedema of both feet</string>
 	<string name="malnutrition_assessment_review_weight_for_age">Weight for Age</string>
 	<string name="malnutrition_assessment_review_visible_severe_wasting">Visible Severe Wasting</string>
+	<string name="malnutrition_assessment_review_palmar_pallor">Palmar Pallor</string>
+	<string name="malnutrition_assessment_review_mebendazole_dose">Mebendazole Dose in the last Six Months</string>
 	
     <!-- ============================================================ -->
     <!-- ASSESSMENT WIZARD BREAD-CRUMB UI -->
