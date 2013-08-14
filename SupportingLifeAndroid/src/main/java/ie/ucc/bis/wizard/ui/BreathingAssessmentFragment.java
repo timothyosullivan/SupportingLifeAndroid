@@ -2,9 +2,9 @@ package ie.ucc.bis.wizard.ui;
 
 import ie.ucc.bis.R;
 import ie.ucc.bis.activity.SupportingLifeBaseActivity;
-import ie.ucc.bis.wizard.model.AssessmentWizardRadioGroupListener;
 import ie.ucc.bis.wizard.model.AssessmentWizardTextWatcher;
 import ie.ucc.bis.wizard.model.BreathingAssessmentPage;
+import ie.ucc.bis.wizard.model.listener.RadioGroupListener;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -118,7 +118,7 @@ public class BreathingAssessmentFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         getCoughDifficultBreathingRadioGroup().setOnCheckedChangeListener(
-        		new AssessmentWizardRadioGroupListener(getBreathingAssessmentPage(),
+        		new RadioGroupListener(getBreathingAssessmentPage(),
         				BreathingAssessmentPage.COUGH_DIFFICULT_BREATHING_DATA_KEY));
         
         getCoughDurationEditText().addTextChangedListener(
@@ -130,11 +130,11 @@ public class BreathingAssessmentFragment extends Fragment {
         				BreathingAssessmentPage.BREATHS_PER_MINUTE_DATA_KEY));
         
         getChestIndrawingRadioGroup().setOnCheckedChangeListener(
-        		new AssessmentWizardRadioGroupListener(getBreathingAssessmentPage(),
+        		new RadioGroupListener(getBreathingAssessmentPage(),
         				BreathingAssessmentPage.CHEST_INDRAWING_DATA_KEY));
         
         getStridorRadioGroup().setOnCheckedChangeListener(
-        		new AssessmentWizardRadioGroupListener(getBreathingAssessmentPage(),
+        		new RadioGroupListener(getBreathingAssessmentPage(),
         				BreathingAssessmentPage.STRIDOR_DATA_KEY));
     }
 

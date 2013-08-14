@@ -1,5 +1,6 @@
-package ie.ucc.bis.wizard.model;
+package ie.ucc.bis.wizard.model.listener;
 
+import ie.ucc.bis.wizard.model.AbstractPage;
 import ie.ucc.bis.wizard.ui.DatePickerDialogFragment;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;

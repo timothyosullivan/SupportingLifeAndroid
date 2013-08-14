@@ -1,6 +1,7 @@
 package ie.ucc.bis.wizard.model;
 
 import ie.ucc.bis.R;
+import ie.ucc.bis.wizard.model.listener.RadioGroupListener;
 import ie.ucc.bis.wizard.ui.ImmunizationAssessmentFragment;
 
 import java.util.ArrayList;
@@ -54,12 +55,12 @@ public class ImmunizationAssessmentPage extends AbstractPage {
     	
     	// BCG vaccine
     	reviewItemLabel = resources.getString(R.string.immunization_assessment_review_vaccine_bcg);
-    	reviewItemValue = getPageData().getString(BCG_VACCINE_DATA_KEY + AssessmentWizardRadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
+    	reviewItemValue = getPageData().getString(BCG_VACCINE_DATA_KEY + RadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
     	reviewItems.add(new ReviewItem(reviewItemLabel, reviewItemValue, null, getKey(), -1));
     	
     	// Measles vaccine
     	reviewItemLabel = resources.getString(R.string.immunization_assessment_review_vaccine_measles);
-    	reviewItemValue = getPageData().getString(MEASLES_VACCINE_DATA_KEY + AssessmentWizardRadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
+    	reviewItemValue = getPageData().getString(MEASLES_VACCINE_DATA_KEY + RadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
     	reviewItems.add(new ReviewItem(reviewItemLabel, reviewItemValue, null, getKey(), -1));	
     }
 

@@ -2,8 +2,8 @@ package ie.ucc.bis.wizard.ui;
 
 import ie.ucc.bis.R;
 import ie.ucc.bis.activity.SupportingLifeBaseActivity;
-import ie.ucc.bis.wizard.model.AssessmentWizardRadioGroupListener;
 import ie.ucc.bis.wizard.model.MalnutritionAssessmentPage;
+import ie.ucc.bis.wizard.model.listener.RadioGroupListener;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -119,27 +119,27 @@ public class MalnutritionAssessmentFragment extends Fragment {
 
         // add listener to oedema radio group
         getOedemaRadioGroup().setOnCheckedChangeListener(
-        		new AssessmentWizardRadioGroupListener(getMalnutritionAssessmentPage(),
+        		new RadioGroupListener(getMalnutritionAssessmentPage(),
         				MalnutritionAssessmentPage.OEDEMA_DATA_KEY));
         
         // add listener to weight for age radio group
         getWeightForAgeRadioGroup().setOnCheckedChangeListener(
-        		new AssessmentWizardRadioGroupListener(getMalnutritionAssessmentPage(),
+        		new RadioGroupListener(getMalnutritionAssessmentPage(),
         				MalnutritionAssessmentPage.WEIGHT_FOR_AGE_DATA_KEY));
         
         // add listener to visible severe wasting radio group
         getVisibleSevereWastingRadioGroup().setOnCheckedChangeListener(
-        		new AssessmentWizardRadioGroupListener(getMalnutritionAssessmentPage(),
+        		new RadioGroupListener(getMalnutritionAssessmentPage(),
         				MalnutritionAssessmentPage.VISIBLE_SEVERE_WASTING_DATA_KEY));
         
         // add listener to palmar pallor radio group
         getPalmarPallorRadioGroup().setOnCheckedChangeListener(
-        		new AssessmentWizardRadioGroupListener(getMalnutritionAssessmentPage(),
+        		new RadioGroupListener(getMalnutritionAssessmentPage(),
         				MalnutritionAssessmentPage.PALMAR_PALLOR_DATA_KEY));
         
         // add listener to visible severe wasting radio group
         getMebendazoleDoseRadioGroup().setOnCheckedChangeListener(
-        		new AssessmentWizardRadioGroupListener(getMalnutritionAssessmentPage(),
+        		new RadioGroupListener(getMalnutritionAssessmentPage(),
         				MalnutritionAssessmentPage.MEBENDAZOLE_DOSE_DATA_KEY));
     }
     

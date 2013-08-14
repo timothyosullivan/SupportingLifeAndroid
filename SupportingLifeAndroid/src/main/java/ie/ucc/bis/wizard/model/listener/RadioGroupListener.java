@@ -1,17 +1,18 @@
-package ie.ucc.bis.wizard.model;
+package ie.ucc.bis.wizard.model.listener;
 
+import ie.ucc.bis.wizard.model.AbstractPage;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
 
-public class AssessmentWizardRadioGroupListener implements OnCheckedChangeListener {
+public class RadioGroupListener implements OnCheckedChangeListener {
 	
 	public static final String RADIO_BUTTON_TEXT_DATA_KEY = "RadioButtonText";
 	
 	private AbstractPage page;
 	private String dataKey;
 	
-	public AssessmentWizardRadioGroupListener(AbstractPage page, String dataKey) {
+	public RadioGroupListener(AbstractPage page, String dataKey) {
 		setPage(page);
 		setDataKey(dataKey);
 	}

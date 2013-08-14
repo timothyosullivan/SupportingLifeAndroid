@@ -3,9 +3,10 @@ package ie.ucc.bis.wizard.ui;
 import ie.ucc.bis.R;
 import ie.ucc.bis.activity.SupportingLifeBaseActivity;
 import ie.ucc.bis.ui.custom.ToggleButtonGroupTableLayout;
-import ie.ucc.bis.wizard.model.AssessmentWizardRadioGroupListener;
 import ie.ucc.bis.wizard.model.AssessmentWizardTextWatcher;
 import ie.ucc.bis.wizard.model.FeverAssessmentPage;
+import ie.ucc.bis.wizard.model.listener.RadioGroupCoordinatorListener;
+import ie.ucc.bis.wizard.model.listener.RadioGroupListener;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -197,7 +198,7 @@ public class FeverAssessmentFragment extends Fragment {
 
         // add listener to malaria risk radio group
         getMalariaRiskRadioGroup().setOnCheckedChangeListener(
-        		new AssessmentWizardRadioGroupListener(getFeverAssessmentPage(),
+        		new RadioGroupListener(getFeverAssessmentPage(),
         				FeverAssessmentPage.MALARIA_RISK_DATA_KEY));
         
         // listener to duration
@@ -207,67 +208,71 @@ public class FeverAssessmentFragment extends Fragment {
         
         // add listener to 'fever present every day' radio group
         getFeverPresentDailyRadioGroup().setOnCheckedChangeListener(
-        		new AssessmentWizardRadioGroupListener(getFeverAssessmentPage(),
+        		new RadioGroupListener(getFeverAssessmentPage(),
         				FeverAssessmentPage.FEVER_PRESENT_EVERY_DAY_DATA_KEY));
         
         // add listener to measles radio group
         getMeaslesRadioGroup().setOnCheckedChangeListener(
-        		new AssessmentWizardRadioGroupListener(getFeverAssessmentPage(),
+        		new RadioGroupListener(getFeverAssessmentPage(),
         				FeverAssessmentPage.MEASLES_DATA_KEY));
 
         // add listener to stiff neck radio group
         getStiffNeckRadioGroup().setOnCheckedChangeListener(
-        		new AssessmentWizardRadioGroupListener(getFeverAssessmentPage(),
+        		new RadioGroupListener(getFeverAssessmentPage(),
         				FeverAssessmentPage.STIFF_NECK_DATA_KEY));    
  
         // add listener to runny nose radio group
         getRunnyNoseRadioGroup().setOnCheckedChangeListener(
-        		new AssessmentWizardRadioGroupListener(getFeverAssessmentPage(),
+        		new RadioGroupListener(getFeverAssessmentPage(),
         				FeverAssessmentPage.RUNNY_NOSE_DATA_KEY));
         
         // add listener to generalised rash radio group
         getGeneralisedRashRadioGroup().setOnCheckedChangeListener(
-        		new AssessmentWizardRadioGroupListener(getFeverAssessmentPage(),
+        		new RadioGroupListener(getFeverAssessmentPage(),
         				FeverAssessmentPage.GENERALISED_RASH_DATA_KEY));
         
         // add listener to cough radio group
         getCoughRadioGroup().setOnCheckedChangeListener(
-        		new AssessmentWizardRadioGroupListener(getFeverAssessmentPage(),
+        		new RadioGroupListener(getFeverAssessmentPage(),
         				FeverAssessmentPage.COUGH_DATA_KEY));
         
         // add listener to red eyes radio group
         getRedEyesRadioGroup().setOnCheckedChangeListener(
-        		new AssessmentWizardRadioGroupListener(getFeverAssessmentPage(),
+        		new RadioGroupListener(getFeverAssessmentPage(),
         				FeverAssessmentPage.RED_EYES_DATA_KEY));  
       
         // add listener to mouth ulcers radio group
+//        getMouthUlcersRadioGroup().setOnCheckedChangeListener(
+//        		new AssessmentWizardRadioGroupListener(getFeverAssessmentPage(),
+//        				FeverAssessmentPage.MOUTH_ULCERS_DATA_KEY));
+
         getMouthUlcersRadioGroup().setOnCheckedChangeListener(
-        		new AssessmentWizardRadioGroupListener(getFeverAssessmentPage(),
-        				FeverAssessmentPage.MOUTH_ULCERS_DATA_KEY));
+        		new RadioGroupCoordinatorListener(getFeverAssessmentPage(),
+        				FeverAssessmentPage.MOUTH_ULCERS_DATA_KEY, getDeepMouthUlcersRadioGroup()));
         
         // add listener to deep mouth ulcers radio group
         getDeepMouthUlcersRadioGroup().setOnCheckedChangeListener(
-        		new AssessmentWizardRadioGroupListener(getFeverAssessmentPage(),
+        		new RadioGroupListener(getFeverAssessmentPage(),
         				FeverAssessmentPage.DEEP_MOUTH_ULCERS_DATA_KEY));
         
         // add listener to extensive mouth ulcers radio group
         getExtensiveMouthUlcersRadioGroup().setOnCheckedChangeListener(
-        		new AssessmentWizardRadioGroupListener(getFeverAssessmentPage(),
+        		new RadioGroupListener(getFeverAssessmentPage(),
         				FeverAssessmentPage.EXTENSIVE_MOUTH_ULCERS_DATA_KEY));
         
         // add listener to pus draining from the eye radio group
         getPusDrainingRadioGroup().setOnCheckedChangeListener(
-        		new AssessmentWizardRadioGroupListener(getFeverAssessmentPage(),
+        		new RadioGroupListener(getFeverAssessmentPage(),
         				FeverAssessmentPage.PUS_DRAINING_DATA_KEY));
         
         // add listener to clouding of the cornea radio group
         getCorneaCloudingRadioGroup().setOnCheckedChangeListener(
-        		new AssessmentWizardRadioGroupListener(getFeverAssessmentPage(),
+        		new RadioGroupListener(getFeverAssessmentPage(),
         				FeverAssessmentPage.CORNEA_CLOUDING_DATA_KEY));
         
         // add listener to bulging fontanel radio group
         getBulgingFontanelRadioGroup().setOnCheckedChangeListener(
-        		new AssessmentWizardRadioGroupListener(getFeverAssessmentPage(),
+        		new RadioGroupListener(getFeverAssessmentPage(),
         				FeverAssessmentPage.BULGING_FONTANEL_DATA_KEY));       
     }
     

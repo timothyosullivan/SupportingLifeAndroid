@@ -1,6 +1,7 @@
 package ie.ucc.bis.wizard.model;
 
 import ie.ucc.bis.R;
+import ie.ucc.bis.wizard.model.listener.RadioGroupListener;
 import ie.ucc.bis.wizard.ui.GeneralPatientDetailsFragment;
 
 import java.util.ArrayList;
@@ -79,7 +80,7 @@ public class GeneralPatientDetailsPage extends AbstractPage {
     	// gender
     	reviewItemLabel = resources.getString(R.string.general_patient_details_review_gender);
     	reviewItemSymptomId = resources.getString(R.string.general_patient_details_gender_symptom_id);
-    	reviewItemValue = getPageData().getString(GENDER_DATA_KEY + AssessmentWizardRadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
+    	reviewItemValue = getPageData().getString(GENDER_DATA_KEY + RadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
     	reviewItems.add(new ReviewItem(reviewItemLabel, reviewItemValue, reviewItemSymptomId, getKey(), -1));
     	
     	// problems

@@ -2,10 +2,10 @@ package ie.ucc.bis.wizard.ui;
 
 import ie.ucc.bis.R;
 import ie.ucc.bis.activity.SupportingLifeBaseActivity;
-import ie.ucc.bis.wizard.model.AssessmentWizardRadioGroupListener;
 import ie.ucc.bis.wizard.model.AssessmentWizardTextWatcher;
-import ie.ucc.bis.wizard.model.DatePickerListener;
 import ie.ucc.bis.wizard.model.GeneralPatientDetailsPage;
+import ie.ucc.bis.wizard.model.listener.RadioGroupListener;
+import ie.ucc.bis.wizard.model.listener.DatePickerListener;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -156,7 +156,7 @@ public class GeneralPatientDetailsFragment extends Fragment {
         				GeneralPatientDetailsPage.TEMPERATURE_DATA_KEY));
       
         getGenderRadioGroup().setOnCheckedChangeListener(
-        		new AssessmentWizardRadioGroupListener(getGeneralPatientDetailsPage(),
+        		new RadioGroupListener(getGeneralPatientDetailsPage(),
         				GeneralPatientDetailsPage.GENDER_DATA_KEY));
         
         getProblemsEditText().addTextChangedListener(

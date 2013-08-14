@@ -2,9 +2,9 @@ package ie.ucc.bis.wizard.ui;
 
 import ie.ucc.bis.R;
 import ie.ucc.bis.activity.SupportingLifeBaseActivity;
-import ie.ucc.bis.wizard.model.AssessmentWizardRadioGroupListener;
 import ie.ucc.bis.wizard.model.AssessmentWizardTextWatcher;
 import ie.ucc.bis.wizard.model.EarAssessmentPage;
+import ie.ucc.bis.wizard.model.listener.RadioGroupListener;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -120,17 +120,17 @@ public class EarAssessmentFragment extends Fragment {
 
         // add listener to ear problem radio group
         getEarProblemRadioGroup().setOnCheckedChangeListener(
-        		new AssessmentWizardRadioGroupListener(getEarAssessmentPage(),
+        		new RadioGroupListener(getEarAssessmentPage(),
         				EarAssessmentPage.EAR_PROBLEM_DATA_KEY));
         
         // add listener to ear pain radio group
         getEarPainRadioGroup().setOnCheckedChangeListener(
-        		new AssessmentWizardRadioGroupListener(getEarAssessmentPage(),
+        		new RadioGroupListener(getEarAssessmentPage(),
         				EarAssessmentPage.EAR_PAIN_DATA_KEY));
         
         // add listener to ear discharge radio group
         getEarDischargeRadioGroup().setOnCheckedChangeListener(
-        		new AssessmentWizardRadioGroupListener(getEarAssessmentPage(),
+        		new RadioGroupListener(getEarAssessmentPage(),
         				EarAssessmentPage.EAR_DISCHARGE_DATA_KEY));
         
         // add listener to ear discharge duration edit text
@@ -140,7 +140,7 @@ public class EarAssessmentFragment extends Fragment {
         
         // add listener to tender swelling radio group
         getTenderSwellingRadioGroup().setOnCheckedChangeListener(
-        		new AssessmentWizardRadioGroupListener(getEarAssessmentPage(),
+        		new RadioGroupListener(getEarAssessmentPage(),
         				EarAssessmentPage.TENDER_SWELLING_DATA_KEY));
     }
     

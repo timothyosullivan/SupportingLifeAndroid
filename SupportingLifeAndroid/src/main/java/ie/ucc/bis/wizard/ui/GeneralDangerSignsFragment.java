@@ -2,8 +2,8 @@ package ie.ucc.bis.wizard.ui;
 
 import ie.ucc.bis.R;
 import ie.ucc.bis.activity.SupportingLifeBaseActivity;
-import ie.ucc.bis.wizard.model.AssessmentWizardRadioGroupListener;
 import ie.ucc.bis.wizard.model.GeneralDangerSignsPage;
+import ie.ucc.bis.wizard.model.listener.RadioGroupListener;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -117,23 +117,23 @@ public class GeneralDangerSignsFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         getDrinkBreastfeedRadioGroup().setOnCheckedChangeListener(
-        		new AssessmentWizardRadioGroupListener(getGeneralDangerSignsPage(),
+        		new RadioGroupListener(getGeneralDangerSignsPage(),
         				GeneralDangerSignsPage.DRINK_BREASTFEED_DATA_KEY));        
         
         getVomitsRadioGroup().setOnCheckedChangeListener(
-        		new AssessmentWizardRadioGroupListener(getGeneralDangerSignsPage(),
+        		new RadioGroupListener(getGeneralDangerSignsPage(),
         				GeneralDangerSignsPage.VOMITS_EVERYTHING_DATA_KEY));
         
         getConvulsionsRadioGroup().setOnCheckedChangeListener(
-        		new AssessmentWizardRadioGroupListener(getGeneralDangerSignsPage(),
+        		new RadioGroupListener(getGeneralDangerSignsPage(),
         				GeneralDangerSignsPage.HISTORY_OF_CONVULSIONS_DATA_KEY));
 
         getLethargicUnconsciousRadioGroup().setOnCheckedChangeListener(
-        		new AssessmentWizardRadioGroupListener(getGeneralDangerSignsPage(),
+        		new RadioGroupListener(getGeneralDangerSignsPage(),
         				GeneralDangerSignsPage.LETHARGIC_OR_UNCONSCIOUS_DATA_KEY));
         
         getConvulsingNowRadioGroup().setOnCheckedChangeListener(
-        		new AssessmentWizardRadioGroupListener(getGeneralDangerSignsPage(),
+        		new RadioGroupListener(getGeneralDangerSignsPage(),
         				GeneralDangerSignsPage.CONVULSING_NOW_DATA_KEY));
     }
 

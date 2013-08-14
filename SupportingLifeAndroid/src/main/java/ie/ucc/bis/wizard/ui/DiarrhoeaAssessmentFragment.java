@@ -7,10 +7,10 @@ import ie.ucc.bis.ui.utilities.RadioGroupUtilities;
 import ie.ucc.bis.wizard.model.AbstractPage;
 import ie.ucc.bis.wizard.model.AbstractWizardModel;
 import ie.ucc.bis.wizard.model.AssessmentWizardModel;
-import ie.ucc.bis.wizard.model.AssessmentWizardRadioGroupListener;
 import ie.ucc.bis.wizard.model.AssessmentWizardTextWatcher;
 import ie.ucc.bis.wizard.model.DiarrhoeaAssessmentPage;
 import ie.ucc.bis.wizard.model.GeneralDangerSignsPage;
+import ie.ucc.bis.wizard.model.listener.RadioGroupListener;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -141,7 +141,7 @@ public class DiarrhoeaAssessmentFragment extends Fragment {
 		// 1. retrieve the relevant page and ui element
 		//    where the radio group 'lethargic or unconscious' is being referenced
         AbstractPage dangerSignsAssessmentPage = getWizardModel().findPageByKey(AssessmentWizardModel.DANGER_SIGNS_PAGE_TITLE);
-        String uiReferenceElement = GeneralDangerSignsPage.LETHARGIC_OR_UNCONSCIOUS_DATA_KEY + AssessmentWizardRadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY;
+        String uiReferenceElement = GeneralDangerSignsPage.LETHARGIC_OR_UNCONSCIOUS_DATA_KEY + RadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY;
         
         // 2. retrieve the textual value (yes/no) of the radio group checked option
         String radioGroupSetting = dangerSignsAssessmentPage.getPageData().getString(uiReferenceElement);
@@ -188,7 +188,7 @@ public class DiarrhoeaAssessmentFragment extends Fragment {
 
         // diarrhoea
         getDiarrhoeaRadioGroup().setOnCheckedChangeListener(
-        		new AssessmentWizardRadioGroupListener(getDiarrhoeaAssessmentPage(),
+        		new RadioGroupListener(getDiarrhoeaAssessmentPage(),
         				DiarrhoeaAssessmentPage.DIARRHOEA_DATA_KEY));
 
         // for how long? (days) - diarrhoea duration
@@ -198,27 +198,27 @@ public class DiarrhoeaAssessmentFragment extends Fragment {
         
         // blood in the stools
         getBloodStoolsRadioGroup().setOnCheckedChangeListener(
-        		new AssessmentWizardRadioGroupListener(getDiarrhoeaAssessmentPage(),
+        		new RadioGroupListener(getDiarrhoeaAssessmentPage(),
         				DiarrhoeaAssessmentPage.BLOOD_STOOLS_DATA_KEY));
         
         // sunken eyes
         getSunkenEyesRadioGroup().setOnCheckedChangeListener(
-        		new AssessmentWizardRadioGroupListener(getDiarrhoeaAssessmentPage(),
+        		new RadioGroupListener(getDiarrhoeaAssessmentPage(),
         				DiarrhoeaAssessmentPage.SUNKEN_EYES_DATA_KEY));
         
         // lethargic or unconscious
         getLethargicUnconsciousRadioGroup().setOnCheckedChangeListener(
-        		new AssessmentWizardRadioGroupListener(getDiarrhoeaAssessmentPage(),
+        		new RadioGroupListener(getDiarrhoeaAssessmentPage(),
         				DiarrhoeaAssessmentPage.LETHARGIC_OR_UNCONSCIOUS_DATA_KEY));
         
         // restless / irritable
         getRestlessIrritableRadioGroup().setOnCheckedChangeListener(
-        		new AssessmentWizardRadioGroupListener(getDiarrhoeaAssessmentPage(),
+        		new RadioGroupListener(getDiarrhoeaAssessmentPage(),
         				DiarrhoeaAssessmentPage.RESTLESS_IRRITABLE_DATA_KEY));
         
         // cholera in area
         getCholeraInAreaRadioGroup().setOnCheckedChangeListener(
-        		new AssessmentWizardRadioGroupListener(getDiarrhoeaAssessmentPage(),
+        		new RadioGroupListener(getDiarrhoeaAssessmentPage(),
         				DiarrhoeaAssessmentPage.CHOLERA_IN_AREA_DATA_KEY));
         
         // offer the child fluid

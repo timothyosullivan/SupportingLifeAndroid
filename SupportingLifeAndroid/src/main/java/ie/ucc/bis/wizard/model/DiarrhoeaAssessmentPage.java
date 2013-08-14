@@ -1,6 +1,7 @@
 package ie.ucc.bis.wizard.model;
 
 import ie.ucc.bis.R;
+import ie.ucc.bis.wizard.model.listener.RadioGroupListener;
 import ie.ucc.bis.wizard.ui.DiarrhoeaAssessmentFragment;
 
 import java.util.ArrayList;
@@ -61,7 +62,7 @@ public class DiarrhoeaAssessmentPage extends AbstractPage {
 
     	// diarrhoea
     	reviewItemLabel = resources.getString(R.string.diarrhoea_assessment_review_diarrhoea);
-    	reviewItemValue = getPageData().getString(DIARRHOEA_DATA_KEY + AssessmentWizardRadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
+    	reviewItemValue = getPageData().getString(DIARRHOEA_DATA_KEY + RadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
     	reviewItemSymptomId = resources.getString(R.string.diarrhoea_assessment_diarrhoea_symptom_id);
     	reviewItems.add(new ReviewItem(reviewItemLabel, reviewItemValue, reviewItemSymptomId, getKey(), -1));
 
@@ -72,13 +73,13 @@ public class DiarrhoeaAssessmentPage extends AbstractPage {
     	
     	// blood in the stools
     	reviewItemLabel = resources.getString(R.string.diarrhoea_assessment_review_blood_stools);
-    	reviewItemValue = getPageData().getString(BLOOD_STOOLS_DATA_KEY + AssessmentWizardRadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
+    	reviewItemValue = getPageData().getString(BLOOD_STOOLS_DATA_KEY + RadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
     	reviewItemSymptomId = resources.getString(R.string.diarrhoea_assessment_blood_stools_symptom_id);
     	reviewItems.add(new ReviewItem(reviewItemLabel, reviewItemValue, reviewItemSymptomId, getKey(), -1));
     	
     	// sunken eyes
     	reviewItemLabel = resources.getString(R.string.diarrhoea_assessment_review_sunken_eyes);
-    	reviewItemValue = getPageData().getString(SUNKEN_EYES_DATA_KEY + AssessmentWizardRadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
+    	reviewItemValue = getPageData().getString(SUNKEN_EYES_DATA_KEY + RadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
     	reviewItemSymptomId = resources.getString(R.string.diarrhoea_assessment_sunken_eyes_symptom_id);
     	reviewItems.add(new ReviewItem(reviewItemLabel, reviewItemValue, reviewItemSymptomId, getKey(), -1));
     	
@@ -87,30 +88,30 @@ public class DiarrhoeaAssessmentPage extends AbstractPage {
     	//    the review items i.e. from the 'general danger signs' page - so set the symptom
     	//    id to be null in this case so it won't be picked up
     	reviewItemLabel = resources.getString(R.string.diarrhoea_assessment_review_lethargic_or_unconscious);
-    	reviewItemValue = getPageData().getString(LETHARGIC_OR_UNCONSCIOUS_DATA_KEY + AssessmentWizardRadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
+    	reviewItemValue = getPageData().getString(LETHARGIC_OR_UNCONSCIOUS_DATA_KEY + RadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
     	reviewItems.add(new ReviewItem(reviewItemLabel, reviewItemValue, null, getKey(), -1));
     	
     	// restless / irritable
     	reviewItemLabel = resources.getString(R.string.diarrhoea_assessment_review_restless_irritable);
-    	reviewItemValue = getPageData().getString(RESTLESS_IRRITABLE_DATA_KEY + AssessmentWizardRadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
+    	reviewItemValue = getPageData().getString(RESTLESS_IRRITABLE_DATA_KEY + RadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
     	reviewItemSymptomId = resources.getString(R.string.diarrhoea_assessment_restless_irritable_symptom_id);
     	reviewItems.add(new ReviewItem(reviewItemLabel, reviewItemValue, reviewItemSymptomId, getKey(), -1));
     	
     	// cholera in area
     	reviewItemLabel = resources.getString(R.string.diarrhoea_assessment_review_cholera_in_area);
-    	reviewItemValue = getPageData().getString(CHOLERA_IN_AREA_DATA_KEY + AssessmentWizardRadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
+    	reviewItemValue = getPageData().getString(CHOLERA_IN_AREA_DATA_KEY + RadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
     	reviewItemSymptomId = resources.getString(R.string.diarrhoea_assessment_cholera_in_area_symptom_id);
     	reviewItems.add(new ReviewItem(reviewItemLabel, reviewItemValue, reviewItemSymptomId, getKey(), -1));
     	
     	// offer the child fluid
     	reviewItemLabel = resources.getString(R.string.diarrhoea_assessment_review_child_fluid);
-    	reviewItemValue = getPageData().getString(CHILD_FLUID_DATA_KEY + AssessmentWizardRadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
+    	reviewItemValue = getPageData().getString(CHILD_FLUID_DATA_KEY + RadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
     	reviewItemSymptomId = resources.getString(R.string.diarrhoea_assessment_child_fluid_symptom_id);
     	reviewItems.add(new ReviewItem(reviewItemLabel, reviewItemValue, reviewItemSymptomId, getKey(), -1));
     	
     	// skin pinch
     	reviewItemLabel = resources.getString(R.string.diarrhoea_assessment_review_skin_pinch);
-    	reviewItemValue = getPageData().getString(SKIN_PINCH_DATA_KEY + AssessmentWizardRadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
+    	reviewItemValue = getPageData().getString(SKIN_PINCH_DATA_KEY + RadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
     	reviewItemSymptomId = resources.getString(R.string.diarrhoea_assessment_skin_pinch_symptom_id);
     	reviewItems.add(new ReviewItem(reviewItemLabel, reviewItemValue, reviewItemSymptomId, getKey(), -1));
     }

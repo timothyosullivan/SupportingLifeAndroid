@@ -2,8 +2,8 @@ package ie.ucc.bis.wizard.ui;
 
 import ie.ucc.bis.R;
 import ie.ucc.bis.activity.SupportingLifeBaseActivity;
-import ie.ucc.bis.wizard.model.AssessmentWizardRadioGroupListener;
 import ie.ucc.bis.wizard.model.ImmunizationAssessmentPage;
+import ie.ucc.bis.wizard.model.listener.RadioGroupListener;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -101,12 +101,12 @@ public class ImmunizationAssessmentFragment extends Fragment {
 
         // add listener to BCG Vaccine radio group
         getBcgVaccineRadioGroup().setOnCheckedChangeListener(
-        		new AssessmentWizardRadioGroupListener(getImmunizationAssessmentPage(),
+        		new RadioGroupListener(getImmunizationAssessmentPage(),
         				ImmunizationAssessmentPage.BCG_VACCINE_DATA_KEY));
         
         // add listener to Measles Vaccine radio group
         getMeaslesVaccineRadioGroup().setOnCheckedChangeListener(
-        		new AssessmentWizardRadioGroupListener(getImmunizationAssessmentPage(),
+        		new RadioGroupListener(getImmunizationAssessmentPage(),
         				ImmunizationAssessmentPage.MEASLES_VACCINE_DATA_KEY));
     }
 

@@ -2,6 +2,7 @@ package ie.ucc.bis.wizard.model;
 
 import ie.ucc.bis.R;
 import ie.ucc.bis.ui.custom.ToggleButtonGroupTableLayout;
+import ie.ucc.bis.wizard.model.listener.RadioGroupListener;
 import ie.ucc.bis.wizard.ui.FeverAssessmentFragment;
 
 import java.util.ArrayList;
@@ -75,7 +76,7 @@ public class FeverAssessmentPage extends AbstractPage {
     	
     	// malaria risk
     	reviewItemLabel = resources.getString(R.string.fever_assessment_review_malaria_risk);
-    	reviewItemValue = getPageData().getString(MALARIA_RISK_DATA_KEY + AssessmentWizardRadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
+    	reviewItemValue = getPageData().getString(MALARIA_RISK_DATA_KEY + RadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
     	reviewItemSymptomId = resources.getString(R.string.fever_assessment_malaria_risk_symptom_id);
     	reviewItems.add(new ReviewItem(reviewItemLabel, reviewItemValue, reviewItemSymptomId, getKey(), -1));
     	
@@ -86,79 +87,79 @@ public class FeverAssessmentPage extends AbstractPage {
     	
     	// 'fever present every day'
     	reviewItemLabel = resources.getString(R.string.fever_assessment_review_present_every_day);
-    	reviewItemValue = getPageData().getString(FEVER_PRESENT_EVERY_DAY_DATA_KEY + AssessmentWizardRadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
+    	reviewItemValue = getPageData().getString(FEVER_PRESENT_EVERY_DAY_DATA_KEY + RadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
     	reviewItemSymptomId = resources.getString(R.string.fever_assessment_pus_draining_symptom_id);
     	reviewItems.add(new ReviewItem(reviewItemLabel, reviewItemValue, reviewItemSymptomId, getKey(), -1));    	
 
     	// measles
     	reviewItemLabel = resources.getString(R.string.fever_assessment_review_measles);
-    	reviewItemValue = getPageData().getString(MEASLES_DATA_KEY + AssessmentWizardRadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
+    	reviewItemValue = getPageData().getString(MEASLES_DATA_KEY + RadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
     	reviewItemSymptomId = resources.getString(R.string.fever_assessment_measles_symptom_id);
     	reviewItems.add(new ReviewItem(reviewItemLabel, reviewItemValue, reviewItemSymptomId, getKey(), -1));      
 
     	// stiff neck
     	reviewItemLabel = resources.getString(R.string.fever_assessment_review_stiff_neck);
-    	reviewItemValue = getPageData().getString(STIFF_NECK_DATA_KEY + AssessmentWizardRadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
+    	reviewItemValue = getPageData().getString(STIFF_NECK_DATA_KEY + RadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
     	reviewItemSymptomId = resources.getString(R.string.fever_assessment_stiff_neck_symptom_id);
     	reviewItems.add(new ReviewItem(reviewItemLabel, reviewItemValue, reviewItemSymptomId, getKey(), -1));
 
     	// runny nose
     	reviewItemLabel = resources.getString(R.string.fever_assessment_review_runny_nose);
-    	reviewItemValue = getPageData().getString(RUNNY_NOSE_DATA_KEY + AssessmentWizardRadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
+    	reviewItemValue = getPageData().getString(RUNNY_NOSE_DATA_KEY + RadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
     	reviewItemSymptomId = resources.getString(R.string.fever_assessment_runny_nose_symptom_id);
     	reviewItems.add(new ReviewItem(reviewItemLabel, reviewItemValue, reviewItemSymptomId, getKey(), -1));
     	
     	// generalised rash
     	reviewItemLabel = resources.getString(R.string.fever_assessment_review_generalised_rash);
-    	reviewItemValue = getPageData().getString(GENERALISED_RASH_DATA_KEY + AssessmentWizardRadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
+    	reviewItemValue = getPageData().getString(GENERALISED_RASH_DATA_KEY + RadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
     	reviewItemSymptomId = resources.getString(R.string.fever_assessment_generalised_rash_symptom_id);
     	reviewItems.add(new ReviewItem(reviewItemLabel, reviewItemValue, reviewItemSymptomId, getKey(), -1));
     	
     	// cough
     	reviewItemLabel = resources.getString(R.string.fever_assessment_review_cough);
-    	reviewItemValue = getPageData().getString(COUGH_DATA_KEY + AssessmentWizardRadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
+    	reviewItemValue = getPageData().getString(COUGH_DATA_KEY + RadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
     	reviewItemSymptomId = resources.getString(R.string.fever_assessment_cough_symptom_id);
     	reviewItems.add(new ReviewItem(reviewItemLabel, reviewItemValue, reviewItemSymptomId, getKey(), -1));
     	
     	// red eyes
     	reviewItemLabel = resources.getString(R.string.fever_assessment_review_red_eyes);
-    	reviewItemValue = getPageData().getString(RED_EYES_DATA_KEY + AssessmentWizardRadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
+    	reviewItemValue = getPageData().getString(RED_EYES_DATA_KEY + RadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
     	reviewItemSymptomId = resources.getString(R.string.fever_assessment_red_eyes_symptom_id);
     	reviewItems.add(new ReviewItem(reviewItemLabel, reviewItemValue, reviewItemSymptomId, getKey(), -1));
     	
     	// mouth ulcers
     	reviewItemLabel = resources.getString(R.string.fever_assessment_review_mouth_ulcers);
-    	reviewItemValue = getPageData().getString(MOUTH_ULCERS_DATA_KEY + AssessmentWizardRadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
+    	reviewItemValue = getPageData().getString(MOUTH_ULCERS_DATA_KEY + RadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
     	reviewItemSymptomId = resources.getString(R.string.fever_assessment_mouth_ulcers_symptom_id);
     	reviewItems.add(new ReviewItem(reviewItemLabel, reviewItemValue, reviewItemSymptomId, getKey(), -1));
     	
     	// deep mouth ulcers
     	reviewItemLabel = resources.getString(R.string.fever_assessment_review_deep_mouth_ulcers);
-    	reviewItemValue = getPageData().getString(DEEP_MOUTH_ULCERS_DATA_KEY + AssessmentWizardRadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
+    	reviewItemValue = getPageData().getString(DEEP_MOUTH_ULCERS_DATA_KEY + RadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
     	reviewItemSymptomId = resources.getString(R.string.fever_assessment_deep_mouth_ulcers_symptom_id);
     	reviewItems.add(new ReviewItem(reviewItemLabel, reviewItemValue, reviewItemSymptomId, getKey(), -1));
     	
     	// extensive mouth ulcers
     	reviewItemLabel = resources.getString(R.string.fever_assessment_review_extensive_mouth_ulcers);
-    	reviewItemValue = getPageData().getString(EXTENSIVE_MOUTH_ULCERS_DATA_KEY + AssessmentWizardRadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
+    	reviewItemValue = getPageData().getString(EXTENSIVE_MOUTH_ULCERS_DATA_KEY + RadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
     	reviewItemSymptomId = resources.getString(R.string.fever_assessment_extensive_mouth_ulcers_symptom_id);
     	reviewItems.add(new ReviewItem(reviewItemLabel, reviewItemValue, reviewItemSymptomId, getKey(), -1));
     	
     	// pus draining from the eye
     	reviewItemLabel = resources.getString(R.string.fever_assessment_review_pus_draining);
-    	reviewItemValue = getPageData().getString(PUS_DRAINING_DATA_KEY + AssessmentWizardRadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
+    	reviewItemValue = getPageData().getString(PUS_DRAINING_DATA_KEY + RadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
     	reviewItemSymptomId = resources.getString(R.string.fever_assessment_pus_draining_symptom_id);
     	reviewItems.add(new ReviewItem(reviewItemLabel, reviewItemValue, reviewItemSymptomId, getKey(), -1));
     	
     	// clouding of the cornea
     	reviewItemLabel = resources.getString(R.string.fever_assessment_review_cornea_clouding);
-    	reviewItemValue = getPageData().getString(CORNEA_CLOUDING_DATA_KEY + AssessmentWizardRadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
+    	reviewItemValue = getPageData().getString(CORNEA_CLOUDING_DATA_KEY + RadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
     	reviewItemSymptomId = resources.getString(R.string.fever_assessment_cornea_clouding_symptom_id);
     	reviewItems.add(new ReviewItem(reviewItemLabel, reviewItemValue, reviewItemSymptomId, getKey(), -1));
     	
     	// bulging fontanel
     	reviewItemLabel = resources.getString(R.string.fever_assessment_review_bulging_fontanel);
-    	reviewItemValue = getPageData().getString(BULGING_FONTANEL_DATA_KEY + AssessmentWizardRadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
+    	reviewItemValue = getPageData().getString(BULGING_FONTANEL_DATA_KEY + RadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
     	reviewItemSymptomId = resources.getString(R.string.fever_assessment_bulging_fontanel_symptom_id);
     	reviewItems.add(new ReviewItem(reviewItemLabel, reviewItemValue, reviewItemSymptomId, getKey(), -1));
     }
