@@ -2,6 +2,9 @@ package ie.ucc.bis.wizard.model.listener;
 
 import ie.ucc.bis.wizard.model.AbstractPage;
 import android.view.View;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.view.animation.TranslateAnimation;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
@@ -33,16 +36,77 @@ public class RadioGroupCoordinatorListener implements OnCheckedChangeListener {
 		
 		if (radioButton.getText().toString().equals("No")) {
 			getManipulatedRadioGroup().clearCheck();
-			getManipulatedRadioGroup().setVisibility(View.GONE);
+		//	getManipulatedRadioGroup().setVisibility(View.GONE);
+		//	slideToRight(getManipulatedRadioGroup());
+			fadeOut(getManipulatedRadioGroup());		
 		}
 		else {
-			getManipulatedRadioGroup().setVisibility(View.VISIBLE);			
+			fadeIn(getManipulatedRadioGroup());		
 		}
 		
 		getManipulatedRadioGroup().invalidate();
     	getPage().notifyDataChanged();
 	}
 
+	// To animate view slide out from bottom to top
+	public void slideToTop(View view) {
+	TranslateAnimation animate = new TranslateAnimation(0,0,0,-view.getHeight());
+	animate.setDuration(500);
+	animate.setFillAfter(true);
+	view.startAnimation(animate);
+	view.setVisibility(View.GONE);
+	}
+	
+	public void slideToRight(View view){
+	TranslateAnimation animate = new TranslateAnimation(0,view.getWidth(),0,0);
+	animate.setDuration(500);
+	animate.setFillAfter(true);
+	view.startAnimation(animate);
+	view.setVisibility(View.GONE);
+	}	
+	
+	public void fadeIn(View view){
+		// alpha value = 1.0 means fully opaque and alpha value = 0.0 means fully transparent.
+		float fromAlphaLevel = 0.0f;
+		float toAlphaLevel = 1.0f;
+
+		
+		AlphaAnimation animate = new AlphaAnimation(fromAlphaLevel, toAlphaLevel);
+		animate.setDuration(500);
+		animate.setFillAfter(true);
+		view.startAnimation(animate);
+		view.setVisibility(View.VISIBLE);
+		}		
+	
+	public void fadeOut(final View view){
+		// alpha value = 1.0 means fully opaque and alpha value = 0.0 means fully transparent.
+		float fromAlphaLevel = 1.0f;
+		float toAlphaLevel = 0.0f;
+
+		
+		AlphaAnimation animate = new AlphaAnimation(fromAlphaLevel, toAlphaLevel);
+		animate.setDuration(500);
+		animate.setFillAfter(true);
+		view.startAnimation(animate);
+		
+		animate.setAnimationListener(new Animation.AnimationListener() {
+            @Override
+            public void onAnimationStart(Animation animation) {
+
+            }
+
+            @Override
+            public void onAnimationEnd(Animation animation) {
+            	view.setVisibility(View.GONE);
+            }
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {
+
+            }
+        });
+	}	
+	
 	/**
 	 * Getter Method: getPage()
 	 */
@@ -78,6 +142,9 @@ public class RadioGroupCoordinatorListener implements OnCheckedChangeListener {
 	public void setManipulatedRadioGroup(RadioGroup manipulatedRadioGroup) {
 		this.manipulatedRadioGroup = manipulatedRadioGroup;
 	}
+
+	
+
 
 	
 }
