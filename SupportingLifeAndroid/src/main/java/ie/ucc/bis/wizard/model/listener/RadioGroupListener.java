@@ -19,15 +19,24 @@ public class RadioGroupListener implements OnCheckedChangeListener {
 	
 	public void onCheckedChanged(RadioGroup group, int checkedId) {
 		RadioButton radioButton = (RadioButton) group.findViewById(checkedId);
-		// firstly add text label of radio button
-		// needed for displaying review UI screen
-    	getPage().getPageData().putString(dataKey + RADIO_BUTTON_TEXT_DATA_KEY, radioButton.getText().toString());
-    	
-    	// secondly add the id of the radio button
-    	// needed for onCreateView() in relevant Fragment to re-display
-    	// a view from page data
-		getPage().getPageData().putInt(dataKey, checkedId);
 		
+		if (radioButton != null) {
+			// firstly add text label of radio button
+			// needed for displaying review UI screen
+	    	getPage().getPageData().putString(dataKey + RADIO_BUTTON_TEXT_DATA_KEY, radioButton.getText().toString());
+	    	
+	    	// secondly add the id of the radio button
+	    	// needed for onCreateView() in relevant Fragment to re-display
+	    	// a view from page data
+			getPage().getPageData().putInt(dataKey, checkedId);
+		}
+		else {
+			// indicates that the radio group has been cleared, i.e.
+			// no radio button selected, programaticaly. Need to remove
+			// key entry from page data
+			getPage().getPageData().remove(dataKey + RADIO_BUTTON_TEXT_DATA_KEY);
+			getPage().getPageData().remove(dataKey);
+		}
     	getPage().notifyDataChanged();
 	}
 

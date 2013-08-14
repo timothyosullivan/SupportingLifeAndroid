@@ -32,11 +32,14 @@ public class RadioGroupCoordinatorListener implements OnCheckedChangeListener {
 		getPage().getPageData().putInt(dataKey, checkedId);
 		
 		if (radioButton.getText().toString().equals("No")) {
+			getManipulatedRadioGroup().clearCheck();
 			getManipulatedRadioGroup().setVisibility(View.GONE);
-			getManipulatedRadioGroup().invalidate();
+		}
+		else {
+			getManipulatedRadioGroup().setVisibility(View.VISIBLE);			
 		}
 		
-		
+		getManipulatedRadioGroup().invalidate();
     	getPage().notifyDataChanged();
 	}
 
