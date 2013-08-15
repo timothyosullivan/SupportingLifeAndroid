@@ -1,10 +1,17 @@
 package ie.ucc.bis.wizard.model.listener;
 
 import ie.ucc.bis.wizard.model.AbstractPage;
+import ie.ucc.bis.wizard.model.DynamicView;
+
+import java.util.Arrays;
+import java.util.List;
+
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.TranslateAnimation;
+import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
@@ -15,12 +22,21 @@ public class RadioGroupCoordinatorListener implements OnCheckedChangeListener {
 	
 	private AbstractPage page;
 	private String dataKey;
-	private RadioGroup manipulatedRadioGroup;
-	
-	public RadioGroupCoordinatorListener(AbstractPage page, String dataKey, RadioGroup manipulatedRadioGroup) {
+	private List<DynamicView> dynamicViews;
+	private ViewGroup parentView;
+
+	public RadioGroupCoordinatorListener(AbstractPage page, String dataKey, DynamicView dynamicView, ViewGroup parentView) {
 		setPage(page);
 		setDataKey(dataKey);
-		setManipulatedRadioGroup(manipulatedRadioGroup);
+		setDynamicViews(Arrays.asList(dynamicView));
+		setParentView(parentView);
+	}
+	
+	public RadioGroupCoordinatorListener(AbstractPage page, String dataKey, List<DynamicView> dynamicViews, ViewGroup parentView) {
+		setPage(page);
+		setDataKey(dataKey);
+		setDynamicViews(dynamicViews);
+		setParentView(parentView);
 	}
 	
 	public void onCheckedChanged(RadioGroup group, int checkedId) {
@@ -34,55 +50,38 @@ public class RadioGroupCoordinatorListener implements OnCheckedChangeListener {
     	// a view from page data
 		getPage().getPageData().putInt(dataKey, checkedId);
 		
-		if (radioButton.getText().toString().equals("No")) {
-			getManipulatedRadioGroup().clearCheck();
-		//	getManipulatedRadioGroup().setVisibility(View.GONE);
-		//	slideToRight(getManipulatedRadioGroup());
-			fadeOut(getManipulatedRadioGroup());		
+		// Thirdly, need to handle the View(s) that this RadioButton is controlling
+		for (DynamicView dynamicView : getDynamicViews()) {
+			if (radioButton.getText().toString().equals("No")) {
+				if (dynamicView.getControlledElement() instanceof RadioGroup) {
+					((RadioGroup) dynamicView.getControlledElement()).clearCheck();
+				}
+				else if (dynamicView.getControlledElement() instanceof EditText) {
+					((EditText) dynamicView.getControlledElement()).setText(null);
+				}
+				
+		//		if (dynamicView.getWrappedView().getVisibility() == View.VISIBLE) {
+			//		slideToRight(dynamicView.getWrappedView());
+				//	dynamicView.getWrappedView().setVisibility(View.GONE);
+					getParentView().removeView(dynamicView.getWrappedView());
+		//		}
+			}
+			else {
+	//			if (dynamicView.getWrappedView().getVisibility() == View.GONE) {
+				//	fadeIn(dynamicView.getWrappedView());
+				//	dynamicView.getWrappedView().setVisibility(View.VISIBLE);
+				getParentView().addView(dynamicView.getWrappedView());
+	//			}
+			}
+	//		dynamicView.getWrappedView().invalidate();
 		}
-		else {
-			fadeIn(getManipulatedRadioGroup());		
-		}
-		
-		getManipulatedRadioGroup().invalidate();
-    	getPage().notifyDataChanged();
+	    getPage().notifyDataChanged();
 	}
 
-	// To animate view slide out from bottom to top
-	public void slideToTop(View view) {
-	TranslateAnimation animate = new TranslateAnimation(0,0,0,-view.getHeight());
-	animate.setDuration(500);
-	animate.setFillAfter(true);
-	view.startAnimation(animate);
-	view.setVisibility(View.GONE);
-	}
-	
-	public void slideToRight(View view){
-	TranslateAnimation animate = new TranslateAnimation(0,view.getWidth(),0,0);
-	animate.setDuration(500);
-	animate.setFillAfter(true);
-	view.startAnimation(animate);
-	view.setVisibility(View.GONE);
-	}	
-	
-	public void fadeIn(View view){
+	private void fadeIn(final View view){
 		// alpha value = 1.0 means fully opaque and alpha value = 0.0 means fully transparent.
 		float fromAlphaLevel = 0.0f;
 		float toAlphaLevel = 1.0f;
-
-		
-		AlphaAnimation animate = new AlphaAnimation(fromAlphaLevel, toAlphaLevel);
-		animate.setDuration(500);
-		animate.setFillAfter(true);
-		view.startAnimation(animate);
-		view.setVisibility(View.VISIBLE);
-		}		
-	
-	public void fadeOut(final View view){
-		// alpha value = 1.0 means fully opaque and alpha value = 0.0 means fully transparent.
-		float fromAlphaLevel = 1.0f;
-		float toAlphaLevel = 0.0f;
-
 		
 		AlphaAnimation animate = new AlphaAnimation(fromAlphaLevel, toAlphaLevel);
 		animate.setDuration(500);
@@ -92,8 +91,32 @@ public class RadioGroupCoordinatorListener implements OnCheckedChangeListener {
 		animate.setAnimationListener(new Animation.AnimationListener() {
             @Override
             public void onAnimationStart(Animation animation) {
-
+            	
             }
+
+            @Override
+            public void onAnimationEnd(Animation animation) {
+            	view.setVisibility(View.VISIBLE);
+            }
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {}
+        });
+	}		
+	
+	private void fadeOut(final View view){
+		// alpha value = 1.0 means fully opaque and alpha value = 0.0 means fully transparent.
+		float fromAlphaLevel = 1.0f;
+		float toAlphaLevel = 0.0f;
+		
+		AlphaAnimation animate = new AlphaAnimation(fromAlphaLevel, toAlphaLevel);
+		animate.setDuration(500);
+		animate.setFillAfter(true);
+		view.startAnimation(animate);
+		
+		animate.setAnimationListener(new Animation.AnimationListener() {
+            @Override
+            public void onAnimationStart(Animation animation) {}
 
             @Override
             public void onAnimationEnd(Animation animation) {
@@ -101,11 +124,30 @@ public class RadioGroupCoordinatorListener implements OnCheckedChangeListener {
             }
 
             @Override
-            public void onAnimationRepeat(Animation animation) {
-
-            }
+            public void onAnimationRepeat(Animation animation) {}
         });
-	}	
+	}
+	
+	
+	private void slideToRight(final View view) {
+		TranslateAnimation animate = new TranslateAnimation(0,view.getWidth(),0,0);
+		animate.setDuration(1000);
+		animate.setFillAfter(true);
+		view.startAnimation(animate);
+		
+		animate.setAnimationListener(new Animation.AnimationListener() {
+            @Override
+            public void onAnimationStart(Animation animation) {}
+
+            @Override
+            public void onAnimationEnd(Animation animation) {
+            	view.setVisibility(View.GONE);
+            }
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {}
+        });
+	}
 	
 	/**
 	 * Getter Method: getPage()
@@ -135,16 +177,32 @@ public class RadioGroupCoordinatorListener implements OnCheckedChangeListener {
 		this.dataKey = dataKey;
 	}
 
-	public RadioGroup getManipulatedRadioGroup() {
-		return manipulatedRadioGroup;
+	/**
+	 * Getter Method: getDynamicViews()
+	 */
+	private List<DynamicView> getDynamicViews() {
+		return dynamicViews;
 	}
 
-	public void setManipulatedRadioGroup(RadioGroup manipulatedRadioGroup) {
-		this.manipulatedRadioGroup = manipulatedRadioGroup;
+	/**
+	 * Setter Method: setDynamicViews()
+	 */
+	private void setDynamicViews(List<DynamicView> dynamicViews) {
+		this.dynamicViews = dynamicViews;
 	}
 
-	
+	/**
+	 * Getter Method: getParentView()
+	 */
+	private ViewGroup getParentView() {
+		return parentView;
+	}
 
+	/**
+	 * Setter Method: setParentView()
+	 */
+	private void setParentView(ViewGroup parentView) {
+		this.parentView = parentView;
+	}
 
-	
 }

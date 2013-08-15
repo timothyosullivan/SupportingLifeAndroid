@@ -1,5 +1,6 @@
-package ie.ucc.bis.wizard.model;
+package ie.ucc.bis.wizard.model.listener;
 
+import ie.ucc.bis.wizard.model.AbstractPage;
 import android.text.Editable;
 import android.text.TextWatcher;
 
@@ -9,14 +10,18 @@ public class AssessmentWizardTextWatcher implements TextWatcher {
 	private String dataKey;
 	
 	public AssessmentWizardTextWatcher(AbstractPage page, String dataKey) {
-		setPage(page);
+		setPage(page); 
 		setDataKey(dataKey);
 	}
 	
 	
 	public void afterTextChanged(Editable editable) {
-		getPage().getPageData().putString(dataKey,
-                (editable != null) ? editable.toString() : null);
+		if (editable != null) {
+			getPage().getPageData().putString(dataKey, editable.toString());
+		}
+		else {
+			getPage().getPageData().remove(dataKey);
+		}
     	getPage().notifyDataChanged();
 	}
 

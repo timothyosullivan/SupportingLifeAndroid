@@ -2,8 +2,8 @@ package ie.ucc.bis.wizard.ui;
 
 import ie.ucc.bis.R;
 import ie.ucc.bis.activity.SupportingLifeBaseActivity;
-import ie.ucc.bis.wizard.model.AssessmentWizardTextWatcher;
 import ie.ucc.bis.wizard.model.EarAssessmentPage;
+import ie.ucc.bis.wizard.model.listener.AssessmentWizardTextWatcher;
 import ie.ucc.bis.wizard.model.listener.RadioGroupListener;
 import android.app.Activity;
 import android.os.Bundle;

@@ -3,10 +3,14 @@ package ie.ucc.bis.wizard.ui;
 import ie.ucc.bis.R;
 import ie.ucc.bis.activity.SupportingLifeBaseActivity;
 import ie.ucc.bis.ui.custom.ToggleButtonGroupTableLayout;
-import ie.ucc.bis.wizard.model.AssessmentWizardTextWatcher;
+import ie.ucc.bis.wizard.model.DynamicView;
 import ie.ucc.bis.wizard.model.FeverAssessmentPage;
+import ie.ucc.bis.wizard.model.listener.AssessmentWizardTextWatcher;
 import ie.ucc.bis.wizard.model.listener.RadioGroupCoordinatorListener;
 import ie.ucc.bis.wizard.model.listener.RadioGroupListener;
+
+import java.util.Arrays;
+
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -49,8 +53,10 @@ public class FeverAssessmentFragment extends Fragment {
     private RadioGroup pusDrainingRadioGroup;
     private RadioGroup corneaCloudingRadioGroup;
     private RadioGroup bulgingFontanelRadioGroup;
+    private DynamicView deepMouthUlcersDynamicView;
+    private DynamicView extensiveMouthUlcersDynamicView;
     
-    public static FeverAssessmentFragment create(String pageKey) {
+	public static FeverAssessmentFragment create(String pageKey) {
         Bundle args = new Bundle();
         args.putString(ARG_PAGE_KEY, pageKey);
 
@@ -143,11 +149,25 @@ public class FeverAssessmentFragment extends Fragment {
         getDeepMouthUlcersRadioGroup().check(getFeverAssessmentPage()
         		.getPageData().getInt(FeverAssessmentPage.DEEP_MOUTH_ULCERS_DATA_KEY));
         
+        // deep mouth ulcers is a dynamic view within the UI
+        setDeepMouthUlcersDynamicView(new DynamicView(rootView.findViewById(R.id.fever_assessment_view_deep_mouth_ulcers),
+        									rootView.findViewById(R.id.fever_assessment_radio_deep_mouth_ulcers)));
+        
+        // hide mouth ulcers dynamic view by default
+  //      getDeepMouthUlcersDynamicView().getWrappedView().setVisibility(View.GONE);
+        
         // extensive mouth ulcers
         setExtensiveMouthUlcersRadioGroup((RadioGroup) rootView.findViewById(R.id.fever_assessment_radio_extensive_mouth_ulcers));
         getExtensiveMouthUlcersRadioGroup().check(getFeverAssessmentPage()
         		.getPageData().getInt(FeverAssessmentPage.EXTENSIVE_MOUTH_ULCERS_DATA_KEY));
 
+        // extensive mouth ulcers is a dynamic view within the UI
+        setExtensiveMouthUlcersDynamicView(new DynamicView(rootView.findViewById(R.id.fever_assessment_view_extensive_mouth_ulcers),
+        									rootView.findViewById(R.id.fever_assessment_radio_extensive_mouth_ulcers)));
+        
+        // hide mouth ulcers dynamic view by default
+  //      getExtensiveMouthUlcersDynamicView().getWrappedView().setVisibility(View.GONE);
+        
         // pus draining from the eye
         setPusDrainingRadioGroup((RadioGroup) rootView.findViewById(R.id.fever_assessment_radio_pus_draining));
         getPusDrainingRadioGroup().check(getFeverAssessmentPage()
@@ -241,14 +261,12 @@ public class FeverAssessmentFragment extends Fragment {
         		new RadioGroupListener(getFeverAssessmentPage(),
         				FeverAssessmentPage.RED_EYES_DATA_KEY));  
       
-        // add listener to mouth ulcers radio group
-//        getMouthUlcersRadioGroup().setOnCheckedChangeListener(
-//        		new AssessmentWizardRadioGroupListener(getFeverAssessmentPage(),
-//        				FeverAssessmentPage.MOUTH_ULCERS_DATA_KEY));
-
+        // add dynamic view listener to mouth ulcers radio group
         getMouthUlcersRadioGroup().setOnCheckedChangeListener(
         		new RadioGroupCoordinatorListener(getFeverAssessmentPage(),
-        				FeverAssessmentPage.MOUTH_ULCERS_DATA_KEY, getDeepMouthUlcersRadioGroup()));
+        				FeverAssessmentPage.MOUTH_ULCERS_DATA_KEY, 
+        				Arrays.asList(getDeepMouthUlcersDynamicView(), getExtensiveMouthUlcersDynamicView()),
+        				((ViewGroup) getMouthUlcersRadioGroup().getParent())));
         
         // add listener to deep mouth ulcers radio group
         getDeepMouthUlcersRadioGroup().setOnCheckedChangeListener(
@@ -541,5 +559,33 @@ public class FeverAssessmentFragment extends Fragment {
 	 */	
 	private void setBulgingFontanelRadioGroup(RadioGroup bulgingFontanelRadioGroup) {
 		this.bulgingFontanelRadioGroup = bulgingFontanelRadioGroup;
+	}
+	
+	/**
+	 * Getter Method: getDeepMouthUlcersDynamicView()
+	 */
+    private DynamicView getDeepMouthUlcersDynamicView() {
+		return deepMouthUlcersDynamicView;
+	}
+
+	/**
+	 * Setter Method: setDeepMouthUlcersDynamicView()
+	 */	
+	private void setDeepMouthUlcersDynamicView(DynamicView deepMouthUlcersDynamicView) {
+		this.deepMouthUlcersDynamicView = deepMouthUlcersDynamicView;
+	}
+
+	/**
+	 * Getter Method: getExtensiveMouthUlcersDynamicView()
+	 */
+	private DynamicView getExtensiveMouthUlcersDynamicView() {
+		return extensiveMouthUlcersDynamicView;
+	}
+
+	/**
+	 * Setter Method: setExtensiveMouthUlcersDynamicView()
+	 */	
+	private void setExtensiveMouthUlcersDynamicView(DynamicView extensiveMouthUlcersDynamicView) {
+		this.extensiveMouthUlcersDynamicView = extensiveMouthUlcersDynamicView;
 	}
 }
