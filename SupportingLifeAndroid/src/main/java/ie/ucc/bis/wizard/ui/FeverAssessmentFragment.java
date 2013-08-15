@@ -2,6 +2,7 @@ package ie.ucc.bis.wizard.ui;
 
 import ie.ucc.bis.R;
 import ie.ucc.bis.activity.SupportingLifeBaseActivity;
+import ie.ucc.bis.ui.custom.LayoutAnimator;
 import ie.ucc.bis.ui.custom.ToggleButtonGroupTableLayout;
 import ie.ucc.bis.wizard.model.DynamicView;
 import ie.ucc.bis.wizard.model.FeverAssessmentPage;
@@ -11,6 +12,7 @@ import ie.ucc.bis.wizard.model.listener.RadioGroupListener;
 
 import java.util.Arrays;
 
+import android.animation.LayoutTransition;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -182,6 +184,13 @@ public class FeverAssessmentFragment extends Fragment {
         setBulgingFontanelRadioGroup((RadioGroup) rootView.findViewById(R.id.fever_assessment_radio_bulging_fontanel));
         getBulgingFontanelRadioGroup().check(getFeverAssessmentPage()
         		.getPageData().getInt(FeverAssessmentPage.BULGING_FONTANEL_DATA_KEY));
+        
+        // configure custom animation on fever layout
+        LayoutTransition transition = new LayoutTransition();
+        ((ViewGroup) getMouthUlcersRadioGroup().getParent()).setLayoutTransition(transition);
+        LayoutAnimator.flipInAnimation(transition);
+        LayoutAnimator.flipOutAnimation(transition, getExtensiveMouthUlcersDynamicView().getWrappedView());        
+        
         
 		// add soft keyboard handler - essentially hiding soft
 		// keyboard when an EditText is not in focus
