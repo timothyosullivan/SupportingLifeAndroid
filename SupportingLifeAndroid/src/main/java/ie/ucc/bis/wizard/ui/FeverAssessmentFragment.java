@@ -59,6 +59,7 @@ public class FeverAssessmentFragment extends Fragment {
     private DynamicView extensiveMouthUlcersDynamicView;
     private View mouthUlcersView;
     private ViewGroup animatedView;
+    private Boolean animatedViewInVisibleState;
 
 	public static FeverAssessmentFragment create(String pageKey) {
         Bundle args = new Bundle();
@@ -66,6 +67,7 @@ public class FeverAssessmentFragment extends Fragment {
 
         FeverAssessmentFragment fragment = new FeverAssessmentFragment();
         fragment.setArguments(args);
+        fragment.setAnimatedViewInVisibleState(false);
         return fragment;
     }
 
@@ -82,6 +84,32 @@ public class FeverAssessmentFragment extends Fragment {
         Bundle args = getArguments();
         setPageKey(args.getString(ARG_PAGE_KEY));
         setFeverAssessmentPage((FeverAssessmentPage) getPageFragmentCallbacks().getPage(getPageKey()));
+    }
+    
+    @Override
+    public void onSaveInstanceState(Bundle savedInstanceState) {
+      if (getAnimatedView().indexOfChild(getDeepMouthUlcersDynamicView().getWrappedView()) != -1) {
+    	  // Animated view is visible
+    	  savedInstanceState.putBoolean("animatedViewInVisibleState", true);
+      }
+      else {
+    	  // Animated view is invisible
+    	  savedInstanceState.putBoolean("animatedViewInVisibleState", false);
+      }
+      super.onSaveInstanceState(savedInstanceState);
+    }
+    
+    @Override
+    public void onViewStateRestored(Bundle savedInstanceState) {
+      super.onViewStateRestored(savedInstanceState);
+      if (savedInstanceState != null) {
+    	  setAnimatedViewInVisibleState(savedInstanceState.getBoolean("animatedViewInVisibleState"));
+      }
+      
+      if (!isAnimatedViewInVisibleState()) {
+	        ViewGroupUtilities.removeDynamicViews(getAnimatedView(), Arrays.asList(getDeepMouthUlcersDynamicView(), getExtensiveMouthUlcersDynamicView()));
+      }
+      
     }
 
     @Override
@@ -143,39 +171,11 @@ public class FeverAssessmentFragment extends Fragment {
         getRedEyesRadioGroup().check(getFeverAssessmentPage()
         		.getPageData().getInt(FeverAssessmentPage.RED_EYES_DATA_KEY));
         
-        //////////////////////////////////////////
-        
-        // mouth ulcers
-        setMouthUlcersView((View) rootView.findViewById(R.id.fever_assessment_view_mouth_ulcers));
-                
-        setMouthUlcersRadioGroup((RadioGroup) rootView.findViewById(R.id.fever_assessment_radio_mouth_ulcers));
-        getMouthUlcersRadioGroup().check(getFeverAssessmentPage()
-        		.getPageData().getInt(FeverAssessmentPage.MOUTH_ULCERS_DATA_KEY));
-        
-        // deep mouth ulcers
-        setDeepMouthUlcersRadioGroup((RadioGroup) rootView.findViewById(R.id.fever_assessment_radio_deep_mouth_ulcers));
-        getDeepMouthUlcersRadioGroup().check(getFeverAssessmentPage()
-        		.getPageData().getInt(FeverAssessmentPage.DEEP_MOUTH_ULCERS_DATA_KEY));
-        
-        // deep mouth ulcers is a dynamic view within the UI
-        setDeepMouthUlcersDynamicView(new DynamicView(rootView.findViewById(R.id.fever_assessment_view_deep_mouth_ulcers),
-        									rootView.findViewById(R.id.fever_assessment_radio_deep_mouth_ulcers)));
-                
-        // extensive mouth ulcers
-        setExtensiveMouthUlcersRadioGroup((RadioGroup) rootView.findViewById(R.id.fever_assessment_radio_extensive_mouth_ulcers));
-        getExtensiveMouthUlcersRadioGroup().check(getFeverAssessmentPage()
-        		.getPageData().getInt(FeverAssessmentPage.EXTENSIVE_MOUTH_ULCERS_DATA_KEY));
 
-        // extensive mouth ulcers is a dynamic view within the UI
-        setExtensiveMouthUlcersDynamicView(new DynamicView(rootView.findViewById(R.id.fever_assessment_view_extensive_mouth_ulcers),
-        									rootView.findViewById(R.id.fever_assessment_radio_extensive_mouth_ulcers)));
+        // configure the animated view of mouth ulcers 
+        // i.e. mouth ulcers --> deep mouth ulcers + extended mouth ulcers
+        configureMouthUlcersAnimatedView(rootView);
         
-        // hide deep mouth ulcers + extensive mouth ulcers dynamic views by default
-        setAnimatedView(((ViewGroup) rootView.findViewById(R.id.fever_assessment_animated_view)));
-        ViewGroupUtilities.removeDynamicViews(getAnimatedView(), Arrays.asList(getDeepMouthUlcersDynamicView(), getExtensiveMouthUlcersDynamicView()));
-        
-        //////////////////////////////////////////
-                
         // pus draining from the eye
         setPusDrainingRadioGroup((RadioGroup) rootView.findViewById(R.id.fever_assessment_radio_pus_draining));
         getPusDrainingRadioGroup().check(getFeverAssessmentPage()
@@ -201,6 +201,36 @@ public class FeverAssessmentFragment extends Fragment {
         
         return rootView;
     }
+
+	private void configureMouthUlcersAnimatedView(View rootView) {
+		// mouth ulcers
+        setMouthUlcersView((View) rootView.findViewById(R.id.fever_assessment_view_mouth_ulcers));
+                
+        setMouthUlcersRadioGroup((RadioGroup) rootView.findViewById(R.id.fever_assessment_radio_mouth_ulcers));
+        getMouthUlcersRadioGroup().check(getFeverAssessmentPage()
+        		.getPageData().getInt(FeverAssessmentPage.MOUTH_ULCERS_DATA_KEY));
+        
+        // deep mouth ulcers
+        setDeepMouthUlcersRadioGroup((RadioGroup) rootView.findViewById(R.id.fever_assessment_radio_deep_mouth_ulcers));
+        getDeepMouthUlcersRadioGroup().check(getFeverAssessmentPage()
+        		.getPageData().getInt(FeverAssessmentPage.DEEP_MOUTH_ULCERS_DATA_KEY));
+        
+        // deep mouth ulcers is a dynamic view within the UI
+        setDeepMouthUlcersDynamicView(new DynamicView(rootView.findViewById(R.id.fever_assessment_view_deep_mouth_ulcers),
+        									rootView.findViewById(R.id.fever_assessment_radio_deep_mouth_ulcers)));
+                
+        // extensive mouth ulcers
+        setExtensiveMouthUlcersRadioGroup((RadioGroup) rootView.findViewById(R.id.fever_assessment_radio_extensive_mouth_ulcers));
+        getExtensiveMouthUlcersRadioGroup().check(getFeverAssessmentPage()
+        		.getPageData().getInt(FeverAssessmentPage.EXTENSIVE_MOUTH_ULCERS_DATA_KEY));
+
+        // extensive mouth ulcers is a dynamic view within the UI
+        setExtensiveMouthUlcersDynamicView(new DynamicView(rootView.findViewById(R.id.fever_assessment_view_extensive_mouth_ulcers),
+        									rootView.findViewById(R.id.fever_assessment_radio_extensive_mouth_ulcers)));
+        
+        // get a hold on the top level animated view
+        setAnimatedView(((ViewGroup) rootView.findViewById(R.id.fever_assessment_animated_view)));
+	}
 
 
 	@Override
@@ -640,5 +670,19 @@ public class FeverAssessmentFragment extends Fragment {
 	 */	
 	private void setMouthUlcersView(View mouthUlcersView) {
 		this.mouthUlcersView = mouthUlcersView;
+	}
+
+	/**
+	 * Getter Method: isAnimatedViewInVisibleState()
+	 */
+	private Boolean isAnimatedViewInVisibleState() {
+		return animatedViewInVisibleState;
+	}
+
+	/**
+	 * Setter Method: setAnimatedViewInVisibleState()
+	 */	
+	private void setAnimatedViewInVisibleState(Boolean animatedViewInVisibleState) {
+		this.animatedViewInVisibleState = animatedViewInVisibleState;
 	}
 }
