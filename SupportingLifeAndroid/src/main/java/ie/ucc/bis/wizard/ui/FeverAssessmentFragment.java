@@ -2,8 +2,8 @@ package ie.ucc.bis.wizard.ui;
 
 import ie.ucc.bis.R;
 import ie.ucc.bis.activity.SupportingLifeBaseActivity;
-import ie.ucc.bis.ui.custom.LayoutAnimator;
 import ie.ucc.bis.ui.custom.ToggleButtonGroupTableLayout;
+import ie.ucc.bis.ui.utilities.ViewGroupUtilities;
 import ie.ucc.bis.wizard.model.DynamicView;
 import ie.ucc.bis.wizard.model.FeverAssessmentPage;
 import ie.ucc.bis.wizard.model.listener.AssessmentWizardTextWatcher;
@@ -57,7 +57,9 @@ public class FeverAssessmentFragment extends Fragment {
     private RadioGroup bulgingFontanelRadioGroup;
     private DynamicView deepMouthUlcersDynamicView;
     private DynamicView extensiveMouthUlcersDynamicView;
-    
+    private View mouthUlcersView;
+    private ViewGroup animatedView;
+
 	public static FeverAssessmentFragment create(String pageKey) {
         Bundle args = new Bundle();
         args.putString(ARG_PAGE_KEY, pageKey);
@@ -87,7 +89,7 @@ public class FeverAssessmentFragment extends Fragment {
             Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_wizard_page_fever_assessment, container, false);
         ((TextView) rootView.findViewById(android.R.id.title)).setText(getFeverAssessmentPage().getTitle());
-        
+                
         // need to add superscript text to the degree Celsius label of a 
         // fever radio button
         RadioButton feverTempRadioButton = (RadioButton) rootView.findViewById(R.id.fever_assessment_radio_fever_temperature);
@@ -141,7 +143,11 @@ public class FeverAssessmentFragment extends Fragment {
         getRedEyesRadioGroup().check(getFeverAssessmentPage()
         		.getPageData().getInt(FeverAssessmentPage.RED_EYES_DATA_KEY));
         
+        //////////////////////////////////////////
+        
         // mouth ulcers
+        setMouthUlcersView((View) rootView.findViewById(R.id.fever_assessment_view_mouth_ulcers));
+                
         setMouthUlcersRadioGroup((RadioGroup) rootView.findViewById(R.id.fever_assessment_radio_mouth_ulcers));
         getMouthUlcersRadioGroup().check(getFeverAssessmentPage()
         		.getPageData().getInt(FeverAssessmentPage.MOUTH_ULCERS_DATA_KEY));
@@ -154,10 +160,7 @@ public class FeverAssessmentFragment extends Fragment {
         // deep mouth ulcers is a dynamic view within the UI
         setDeepMouthUlcersDynamicView(new DynamicView(rootView.findViewById(R.id.fever_assessment_view_deep_mouth_ulcers),
         									rootView.findViewById(R.id.fever_assessment_radio_deep_mouth_ulcers)));
-        
-        // hide mouth ulcers dynamic view by default
-  //      getDeepMouthUlcersDynamicView().getWrappedView().setVisibility(View.GONE);
-        
+                
         // extensive mouth ulcers
         setExtensiveMouthUlcersRadioGroup((RadioGroup) rootView.findViewById(R.id.fever_assessment_radio_extensive_mouth_ulcers));
         getExtensiveMouthUlcersRadioGroup().check(getFeverAssessmentPage()
@@ -167,14 +170,17 @@ public class FeverAssessmentFragment extends Fragment {
         setExtensiveMouthUlcersDynamicView(new DynamicView(rootView.findViewById(R.id.fever_assessment_view_extensive_mouth_ulcers),
         									rootView.findViewById(R.id.fever_assessment_radio_extensive_mouth_ulcers)));
         
-        // hide mouth ulcers dynamic view by default
-  //      getExtensiveMouthUlcersDynamicView().getWrappedView().setVisibility(View.GONE);
+        // hide deep mouth ulcers + extensive mouth ulcers dynamic views by default
+        setAnimatedView(((ViewGroup) rootView.findViewById(R.id.fever_assessment_animated_view)));
+        ViewGroupUtilities.removeDynamicViews(getAnimatedView(), Arrays.asList(getDeepMouthUlcersDynamicView(), getExtensiveMouthUlcersDynamicView()));
         
+        //////////////////////////////////////////
+                
         // pus draining from the eye
         setPusDrainingRadioGroup((RadioGroup) rootView.findViewById(R.id.fever_assessment_radio_pus_draining));
         getPusDrainingRadioGroup().check(getFeverAssessmentPage()
-        		.getPageData().getInt(FeverAssessmentPage.PUS_DRAINING_DATA_KEY));       
-        
+        		.getPageData().getInt(FeverAssessmentPage.PUS_DRAINING_DATA_KEY));     
+                       
         // clouding of the cornea
         setCorneaCloudingRadioGroup((RadioGroup) rootView.findViewById(R.id.fever_assessment_radio_cornea_clouding));
         getCorneaCloudingRadioGroup().check(getFeverAssessmentPage()
@@ -185,12 +191,9 @@ public class FeverAssessmentFragment extends Fragment {
         getBulgingFontanelRadioGroup().check(getFeverAssessmentPage()
         		.getPageData().getInt(FeverAssessmentPage.BULGING_FONTANEL_DATA_KEY));
         
-        // configure custom animation on fever layout
-        LayoutTransition transition = new LayoutTransition();
-        ((ViewGroup) getMouthUlcersRadioGroup().getParent()).setLayoutTransition(transition);
-        LayoutAnimator.flipInAnimation(transition);
-        LayoutAnimator.flipOutAnimation(transition, getExtensiveMouthUlcersDynamicView().getWrappedView());        
-        
+        // **** TO COMMENT
+        LayoutTransition transition = getAnimatedView().getLayoutTransition();
+        transition.enableTransitionType(LayoutTransition.CHANGING);
         
 		// add soft keyboard handler - essentially hiding soft
 		// keyboard when an EditText is not in focus
@@ -271,11 +274,7 @@ public class FeverAssessmentFragment extends Fragment {
         				FeverAssessmentPage.RED_EYES_DATA_KEY));  
       
         // add dynamic view listener to mouth ulcers radio group
-        getMouthUlcersRadioGroup().setOnCheckedChangeListener(
-        		new RadioGroupCoordinatorListener(getFeverAssessmentPage(),
-        				FeverAssessmentPage.MOUTH_ULCERS_DATA_KEY, 
-        				Arrays.asList(getDeepMouthUlcersDynamicView(), getExtensiveMouthUlcersDynamicView()),
-        				((ViewGroup) getMouthUlcersRadioGroup().getParent())));
+        addMouthUlcersDynamicViewListener();       
         
         // add listener to deep mouth ulcers radio group
         getDeepMouthUlcersRadioGroup().setOnCheckedChangeListener(
@@ -302,6 +301,23 @@ public class FeverAssessmentFragment extends Fragment {
         		new RadioGroupListener(getFeverAssessmentPage(),
         				FeverAssessmentPage.BULGING_FONTANEL_DATA_KEY));       
     }
+
+	/**
+	 * addMouthUlcersDynamicViewListener()
+	 * 
+	 * Responsible for adding a listener to the Mouth Ulcers view
+	 * 
+	 */
+	private void addMouthUlcersDynamicViewListener() {
+        int indexPosition = getAnimatedView().indexOfChild(getMouthUlcersView()) + 1;
+        
+        getMouthUlcersRadioGroup().setOnCheckedChangeListener(
+        		new RadioGroupCoordinatorListener(getFeverAssessmentPage(),
+        				FeverAssessmentPage.MOUTH_ULCERS_DATA_KEY, 
+        				Arrays.asList(getDeepMouthUlcersDynamicView(), getExtensiveMouthUlcersDynamicView()),
+        				getAnimatedView(),
+        				indexPosition));
+	}
     
 
 	/**
@@ -596,5 +612,33 @@ public class FeverAssessmentFragment extends Fragment {
 	 */	
 	private void setExtensiveMouthUlcersDynamicView(DynamicView extensiveMouthUlcersDynamicView) {
 		this.extensiveMouthUlcersDynamicView = extensiveMouthUlcersDynamicView;
+	}
+
+	/**
+	 * Getter Method: getAnimatedView()
+	 */
+	private ViewGroup getAnimatedView() {
+		return animatedView;
+	}
+
+	/**
+	 * Setter Method: setAnimatedView()
+	 */	
+	private void setAnimatedView(ViewGroup animatedView) {
+		this.animatedView = animatedView;
+	}
+
+	/**
+	 * Getter Method: getMouthUlcersView()
+	 */
+	private View getMouthUlcersView() {
+		return mouthUlcersView;
+	}
+
+	/**
+	 * Setter Method: setMouthUlcersView()
+	 */	
+	private void setMouthUlcersView(View mouthUlcersView) {
+		this.mouthUlcersView = mouthUlcersView;
 	}
 }
