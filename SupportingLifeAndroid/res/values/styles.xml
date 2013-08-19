@@ -106,6 +106,7 @@
         <item name="android:paddingLeft">4dp</item>
         <item name="android:paddingRight">12dp</item>
         <item name="android:paddingTop">5dp</item>
+        <item name="android:textSize">16sp</item>
     </style>
     
     <!-- ============================================================ -->
@@ -129,7 +130,7 @@
     <!-- ============================================================ -->
     <style name="RadioButton" parent="@android:style/Widget.CompoundButton.RadioButton">
         <item name="android:button">@drawable/radio_button</item>
-        <item name="android:paddingTop">5dp</item>
+        <item name="android:paddingTop">15dp</item>
         <item name="android:paddingBottom">15dp</item>
         <item name="android:paddingLeft">5dp</item>
         <item name="android:paddingRight">5dp</item>

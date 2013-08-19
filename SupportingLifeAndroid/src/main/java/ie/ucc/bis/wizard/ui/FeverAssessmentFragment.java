@@ -12,7 +12,6 @@ import ie.ucc.bis.wizard.model.listener.RadioGroupListener;
 
 import java.util.Arrays;
 
-import android.animation.LayoutTransition;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -190,11 +189,7 @@ public class FeverAssessmentFragment extends Fragment {
         setBulgingFontanelRadioGroup((RadioGroup) rootView.findViewById(R.id.fever_assessment_radio_bulging_fontanel));
         getBulgingFontanelRadioGroup().check(getFeverAssessmentPage()
         		.getPageData().getInt(FeverAssessmentPage.BULGING_FONTANEL_DATA_KEY));
-        
-        // **** TO COMMENT
-        LayoutTransition transition = getAnimatedView().getLayoutTransition();
-        transition.enableTransitionType(LayoutTransition.CHANGING);
-        
+                
 		// add soft keyboard handler - essentially hiding soft
 		// keyboard when an EditText is not in focus
 		((SupportingLifeBaseActivity) getActivity()).addSoftKeyboardHandling(rootView);

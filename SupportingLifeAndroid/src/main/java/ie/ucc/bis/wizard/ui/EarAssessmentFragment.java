@@ -2,9 +2,15 @@ package ie.ucc.bis.wizard.ui;
 
 import ie.ucc.bis.R;
 import ie.ucc.bis.activity.SupportingLifeBaseActivity;
+import ie.ucc.bis.ui.utilities.ViewGroupUtilities;
+import ie.ucc.bis.wizard.model.DynamicView;
 import ie.ucc.bis.wizard.model.EarAssessmentPage;
 import ie.ucc.bis.wizard.model.listener.AssessmentWizardTextWatcher;
+import ie.ucc.bis.wizard.model.listener.RadioGroupCoordinatorListener;
 import ie.ucc.bis.wizard.model.listener.RadioGroupListener;
+
+import java.util.Arrays;
+
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -34,6 +40,10 @@ public class EarAssessmentFragment extends Fragment {
     private RadioGroup earDischargeRadioGroup;
     private EditText earDischargeDurationEditText;
     private RadioGroup tenderSwellingRadioGroup;
+    private DynamicView earDischargeDurationDynamicView;
+    private View earDischargeView;
+    private ViewGroup animatedView;
+    private Boolean animatedViewInVisibleState;
     
     public static EarAssessmentFragment create(String pageKey) {
         Bundle args = new Bundle();
@@ -41,6 +51,7 @@ public class EarAssessmentFragment extends Fragment {
 
         EarAssessmentFragment fragment = new EarAssessmentFragment();
         fragment.setArguments(args);
+        fragment.setAnimatedViewInVisibleState(false);
         return fragment;
     }
 
@@ -50,6 +61,33 @@ public class EarAssessmentFragment extends Fragment {
 	 */
     public EarAssessmentFragment() {}
 
+    @Override
+    public void onSaveInstanceState(Bundle savedInstanceState) {
+      if (getAnimatedView().indexOfChild(getEarDischargeDurationDynamicView().getWrappedView()) != -1) {
+    	  // Animated view is visible
+    	  savedInstanceState.putBoolean("animatedViewInVisibleState", true);
+      }
+      else {
+    	  // Animated view is invisible
+    	  savedInstanceState.putBoolean("animatedViewInVisibleState", false);
+      }
+      super.onSaveInstanceState(savedInstanceState);
+    }
+    
+    @Override
+    public void onViewStateRestored(Bundle savedInstanceState) {
+      super.onViewStateRestored(savedInstanceState);
+      if (savedInstanceState != null) {
+    	  setAnimatedViewInVisibleState(savedInstanceState.getBoolean("animatedViewInVisibleState"));
+      }
+      
+      if (!isAnimatedViewInVisibleState()) {
+	        ViewGroupUtilities.removeDynamicViews(getAnimatedView(), Arrays.asList(getEarDischargeDurationDynamicView()));
+      }
+      
+    }
+    
+    
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -75,14 +113,9 @@ public class EarAssessmentFragment extends Fragment {
         getEarPainRadioGroup().check(getEarAssessmentPage()
         		.getPageData().getInt(EarAssessmentPage.EAR_PAIN_DATA_KEY));
         
-        // ear discharge
-        setEarDischargeRadioGroup((RadioGroup) rootView.findViewById(R.id.ear_assessment_radio_ear_discharge));
-        getEarDischargeRadioGroup().check(getEarAssessmentPage()
-        		.getPageData().getInt(EarAssessmentPage.EAR_DISCHARGE_DATA_KEY));
-        
-        // ear discharge duration
-        setEarDischargeDurationEditText((EditText) rootView.findViewById(R.id.ear_assessment_ear_discharge_duration));
-        getEarDischargeDurationEditText().setText(getEarAssessmentPage().getPageData().getString(EarAssessmentPage.EAR_DISCHARGE_DURATION_DATA_KEY));
+        // configure the animated view of ear discharge 
+        // i.e. ear discharge --> ear discharge duration
+        configureEarDischargeAnimatedView(rootView);
         
         // tender swelling
         setTenderSwellingRadioGroup((RadioGroup) rootView.findViewById(R.id.ear_assessment_radio_tender_swelling));
@@ -95,6 +128,28 @@ public class EarAssessmentFragment extends Fragment {
         
         return rootView;
     }
+    
+	private void configureEarDischargeAnimatedView(View rootView) {
+		
+		// mouth ulcers
+		setEarDischargeView((View) rootView.findViewById(R.id.ear_assessment_view_ear_discharge));
+		
+        // ear discharge
+        setEarDischargeRadioGroup((RadioGroup) rootView.findViewById(R.id.ear_assessment_radio_ear_discharge));
+        getEarDischargeRadioGroup().check(getEarAssessmentPage()
+        		.getPageData().getInt(EarAssessmentPage.EAR_DISCHARGE_DATA_KEY));
+        
+        // ear discharge duration
+        setEarDischargeDurationEditText((EditText) rootView.findViewById(R.id.ear_assessment_ear_discharge_duration));
+        getEarDischargeDurationEditText().setText(getEarAssessmentPage().getPageData().getString(EarAssessmentPage.EAR_DISCHARGE_DURATION_DATA_KEY));
+		       
+        //  ear discharge duration is a dynamic view within the UI
+        setEarDischargeDurationDynamicView(new DynamicView(rootView.findViewById(R.id.ear_assessment_view_ear_discharge_duration),
+        									rootView.findViewById(R.id.ear_assessment_ear_discharge_duration)));
+                
+        // get a hold on the top level animated view
+        setAnimatedView(((ViewGroup) rootView.findViewById(R.id.ear_assessment_discharge_animated_view)));
+	}
 
 
 	@Override
@@ -128,10 +183,8 @@ public class EarAssessmentFragment extends Fragment {
         		new RadioGroupListener(getEarAssessmentPage(),
         				EarAssessmentPage.EAR_PAIN_DATA_KEY));
         
-        // add listener to ear discharge radio group
-        getEarDischargeRadioGroup().setOnCheckedChangeListener(
-        		new RadioGroupListener(getEarAssessmentPage(),
-        				EarAssessmentPage.EAR_DISCHARGE_DATA_KEY));
+        // add dynamic view listener to ear discharge radio group
+        addEarDischargeDynamicViewListener();  
         
         // add listener to ear discharge duration edit text
         getEarDischargeDurationEditText().addTextChangedListener(
@@ -143,6 +196,23 @@ public class EarAssessmentFragment extends Fragment {
         		new RadioGroupListener(getEarAssessmentPage(),
         				EarAssessmentPage.TENDER_SWELLING_DATA_KEY));
     }
+    
+	/**
+	 * addEarDischargeDynamicViewListener()
+	 * 
+	 * Responsible for adding a listener to the Ear Discharge view
+	 * 
+	 */
+	private void addEarDischargeDynamicViewListener() {
+        int indexPosition = getAnimatedView().indexOfChild(getEarDischargeView()) + 1;
+        
+        getEarDischargeRadioGroup().setOnCheckedChangeListener(
+        		new RadioGroupCoordinatorListener(getEarAssessmentPage(),
+        				EarAssessmentPage.EAR_DISCHARGE_DATA_KEY, 
+        				Arrays.asList(getEarDischargeDurationDynamicView()),
+        				getAnimatedView(),
+        				indexPosition));
+	}    
     
 
 	/**
@@ -255,5 +325,61 @@ public class EarAssessmentFragment extends Fragment {
 	 */
 	private void setTenderSwellingRadioGroup(RadioGroup tenderSwellingRadioGroup) {
 		this.tenderSwellingRadioGroup = tenderSwellingRadioGroup;
+	}
+
+	/**
+	 * Getter Method: getEarDischargeDurationDynamicView()
+	 */	
+	private DynamicView getEarDischargeDurationDynamicView() {
+		return earDischargeDurationDynamicView;
+	}
+
+	/**
+	 * Setter Method: setEarDischargeDurationDynamicView()
+	 */
+	private void setEarDischargeDurationDynamicView(DynamicView earDischargeDurationDynamicView) {
+		this.earDischargeDurationDynamicView = earDischargeDurationDynamicView;
+	}
+
+	/**
+	 * Getter Method: getEarDischargeView()
+	 */	
+	private View getEarDischargeView() {
+		return earDischargeView;
+	}
+
+	/**
+	 * Setter Method: setEarDischargeView()
+	 */
+	private void setEarDischargeView(View earDischargeView) {
+		this.earDischargeView = earDischargeView;
+	}
+
+	/**
+	 * Getter Method: getAnimatedView()
+	 */	
+	private ViewGroup getAnimatedView() {
+		return animatedView;
+	}
+
+	/**
+	 * Setter Method: setAnimatedView()
+	 */
+	private void setAnimatedView(ViewGroup animatedView) {
+		this.animatedView = animatedView;
+	}
+
+	/**
+	 * Getter Method: isAnimatedViewInVisibleState()
+	 */
+	private Boolean isAnimatedViewInVisibleState() {
+		return animatedViewInVisibleState;
+	}
+
+	/**
+	 * Setter Method: setAnimatedViewInVisibleState()
+	 */
+	private void setAnimatedViewInVisibleState(Boolean animatedViewInVisibleState) {
+		this.animatedViewInVisibleState = animatedViewInVisibleState;
 	}
 }

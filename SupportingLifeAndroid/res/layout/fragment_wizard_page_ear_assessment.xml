@@ -14,10 +14,11 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" >
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="218dp"
-            android:orientation="vertical" >
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:animateLayoutChanges="true"
+			android:orientation="vertical">
 
             <!-- ============================================================ -->
             <!-- EAR PROBLEM RADIO BUTTON GROUP -->
@@ -92,54 +93,70 @@
             <!-- ============================================================ -->
             <!-- EAR DISCHARGE RADIO BUTTON GROUP -->
             <!-- ============================================================ -->
-
-            <TextView
-                style="@style/WizardFormLabel"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_gravity="bottom"
-                android:text="@string/ear_assessment_radio_ear_discharge" />
-
-            <RadioGroup
-                android:id="@+id/ear_assessment_radio_ear_discharge"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal" >
-
-                <RadioButton
-                    android:id="@+id/ear_assessment_radio_ear_discharge_yes"
-                    android:layout_width="112dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.67"
-                    android:checked="false"
-                    android:text="@string/assessment_wizard_radio_yes" />
-
-                <RadioButton
-                    android:id="@+id/ear_assessment_radio_ear_discharge_no"
-                    android:layout_width="118dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="top"
-                    android:layout_weight="0.32"
-                    android:checked="false"
-                    android:text="@string/assessment_wizard_radio_no" />
-            </RadioGroup>
-            
-			<!-- ============================================================ -->
-			<!-- FOR HOW LONG? (EAR DISCHARGE DURATION) -->
-			<!-- ============================================================ -->
-	
-			<TextView
-				android:id="@+id/ear_assessment_ear_discharge_duration_label"
-				style="@style/WizardFormLabel"
-				android:text="@string/ear_assessment_ear_discharge_duration" />
-	
-	            <EditText
-	                android:id="@+id/ear_assessment_ear_discharge_duration"
-	                android:layout_width="match_parent"
-	                android:layout_height="wrap_content"
-	                android:layout_marginBottom="10dp"
-	                android:inputType="number" />
-            
+			<LinearLayout
+				android:id="@+id/ear_assessment_discharge_animated_view"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:animateLayoutChanges="true"
+				android:orientation="vertical">
+                <LinearLayout
+					android:id="@+id/ear_assessment_view_ear_discharge"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:orientation="vertical">
+		            <TextView
+		                style="@style/WizardFormLabel"
+		                android:layout_width="match_parent"
+		                android:layout_height="match_parent"
+		                android:layout_gravity="bottom"
+		                android:text="@string/ear_assessment_radio_ear_discharge" />
+		
+		            <RadioGroup
+		                android:id="@+id/ear_assessment_radio_ear_discharge"
+		                android:layout_width="match_parent"
+		                android:layout_height="wrap_content"
+		                android:orientation="horizontal" >
+		
+		                <RadioButton
+		                    android:id="@+id/ear_assessment_radio_ear_discharge_yes"
+		                    android:layout_width="112dp"
+		                    android:layout_height="wrap_content"
+		                    android:layout_weight="0.67"
+		                    android:checked="false"
+		                    android:text="@string/assessment_wizard_radio_yes" />
+		
+		                <RadioButton
+		                    android:id="@+id/ear_assessment_radio_ear_discharge_no"
+		                    android:layout_width="118dp"
+		                    android:layout_height="wrap_content"
+		                    android:layout_gravity="top"
+		                    android:layout_weight="0.32"
+		                    android:checked="false"
+		                    android:text="@string/assessment_wizard_radio_no" />
+		            </RadioGroup>
+	            </LinearLayout>
+	            
+				<!-- ============================================================ -->
+				<!-- FOR HOW LONG? (EAR DISCHARGE DURATION) -->
+				<!-- ============================================================ -->
+				<LinearLayout
+					android:id="@+id/ear_assessment_view_ear_discharge_duration"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:paddingLeft="30dp"
+					android:orientation="vertical">
+					<TextView
+						android:id="@+id/ear_assessment_ear_discharge_duration_label"
+						style="@style/WizardFormLabel"
+						android:text="@string/ear_assessment_ear_discharge_duration" />
+			
+			            <EditText
+			                android:id="@+id/ear_assessment_ear_discharge_duration"
+			                android:layout_width="match_parent"
+			                android:layout_height="wrap_content"
+			                android:layout_marginBottom="10dp"
+			                android:inputType="number" />
+				</LinearLayout>
             <!-- ============================================================ -->
             <!-- TENDER SWELLING BEHIND THE EAR RADIO BUTTON GROUP -->
             <!-- ============================================================ -->
@@ -174,7 +191,7 @@
                     android:checked="false"
                     android:text="@string/assessment_wizard_radio_no" />
             </RadioGroup>
-	            
+          </LinearLayout> <!-- end of ear discharge animated view -->
         </LinearLayout>
     </ScrollView>
 
