@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- ============================================================ -->
-<!-- CLASSIFICATION RULES -->
+<!-- CLASSIFICATION RULES 										  -->
 <!-- ============================================================ -->
 
 <!-- Note: The <Symptom> element string must match a string 	  -->
@@ -10,21 +10,78 @@
 
 <ClassificationRules>
 	<!-- ============================================================ -->
-	<!-- COUGH OR DIFFICULT BREATHING -->
+	<!-- COUGH OR DIFFICULT BREATHING 								  -->
+	<!-- ============================================================ -->
+	<!-- ============================================================ -->
+	<!-- Classification: Severe Pneumonia or Very Severe Disease 	  -->
+	<!-- Type: SEVERE 												  -->
+	<!-- Symptoms: Cough or Difficult Breathing 					  -->
+	<!-- 				AND 										  -->
+	<!--  ((Chest Indrawing) OR (Stridor) OR (Any General Danger Sign)-->
 	<!-- ============================================================ -->
 	<Classification>
 		<Category>cough_difficult_breathing</Category>
 		<Name>Severe Pneumonia or Very Severe Disease</Name>
 		<Type>SEVERE</Type>
+		<Priority>1</Priority>
 		<SymptomRule rule="ANY_SYMPTOM">
-			<Symptom>breathing_assessment_chest_indrawing_symptom_id</Symptom>
+			<Symptom>breathing_assessment_cough_difficult_breathing_symptom_id</Symptom>	<!-- Cough or Difficult Breathing -->
+		</SymptomRule>
+		<SymptomRule rule="ANY_SYMPTOM">
+			<Symptom>breathing_assessment_chest_indrawing_symptom_id</Symptom> 				<!-- Chest Indrawing -->
+			<Symptom>breathing_assessment_stridor_symptom_id</Symptom> 						<!-- Stridor -->
 			<!-- Any general danger sign -->
-			<Symptom>general_danger_signs_drink_breastfeed_symptom_id</Symptom>
-			<Symptom>general_danger_signs_vomits_everything_symptom_id</Symptom>
-			<Symptom>general_danger_signs_convulsions_symptom_id</Symptom>
+			<Symptom>general_danger_signs_drink_breastfeed_symptom_id</Symptom> 			<!-- Not Able to Drink or Breastfeed -->
+			<Symptom>general_danger_signs_vomits_everything_symptom_id</Symptom> 			<!-- Vomits Everything -->
+			<Symptom>general_danger_signs_convulsions_symptom_id</Symptom> 					<!-- History of Convulsions -->
+			<Symptom>general_danger_signs_lethargic_or_unconscious_symptom_id</Symptom>		<!-- Lethargic or Unconscious -->
+			<Symptom>general_danger_signs_convulsing_now_symptom_id</Symptom>				<!-- Convulsing Now -->
 		</SymptomRule>
 	</Classification>
 
+	<!-- ============================================================ -->
+	<!-- COUGH OR DIFFICULT BREATHING 								  -->
+	<!-- ============================================================ -->
+	<!-- ============================================================ -->
+	<!-- Classification: Severe Pneumonia or Very Severe Disease 	  -->
+	<!-- Type: MODERATE												  -->
+	<!-- Symptoms: Cough or Difficult Breathing 					  -->
+	<!-- 				AND 										  -->
+	<!--           Fast Breathing									  -->
+	<!-- ============================================================ -->
+	<Classification>
+		<Category>cough_difficult_breathing</Category>
+		<Name>Pneumonia</Name>
+		<Type>MODERATE</Type>
+		<Priority>2</Priority>
+		<SymptomRule rule="ANY_SYMPTOM">
+			<Symptom>breathing_assessment_cough_difficult_breathing_symptom_id</Symptom>	<!-- Cough or Difficult Breathing -->
+		</SymptomRule>
+		<SymptomRule rule="ANY_SYMPTOM">
+			<Symptom>breathing_assessment_fast_breathing_symptom_id</Symptom> 				<!-- Fast Breathing -->
+		</SymptomRule>
+	</Classification>
+
+	<!-- ============================================================ -->
+	<!-- COUGH OR DIFFICULT BREATHING 								  -->
+	<!-- ============================================================ -->
+	<!-- ============================================================ -->
+	<!-- Classification: Severe Pneumonia or Very Severe Disease 	  -->
+	<!-- Type: MODERATE												  -->
+	<!-- Symptoms: Cough or Difficult Breathing 					  -->
+	<!-- 				AND 										  -->
+	<!--           No sign of pneumonia or very severe disease		  -->
+	<!-- ============================================================ -->
+	<Classification>
+		<Category>cough_difficult_breathing</Category>
+		<Name>No Pneumonia: Cough or Cold</Name>
+		<Type>LOW</Type>
+		<Priority>3</Priority>
+		<SymptomRule rule="ANY_SYMPTOM">
+			<Symptom>breathing_assessment_cough_difficult_breathing_symptom_id</Symptom>	<!-- Cough or Difficult Breathing -->
+		</SymptomRule>
+	</Classification>
+		
 	<!-- ============================================================ -->
 	<!-- DEHYDRATION -->
 	<!-- ============================================================ -->

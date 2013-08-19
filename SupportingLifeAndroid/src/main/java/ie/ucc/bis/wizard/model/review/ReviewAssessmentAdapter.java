@@ -1,4 +1,4 @@
-package ie.ucc.bis.wizard.model;
+package ie.ucc.bis.wizard.model.review;
 
 import ie.ucc.bis.R;
 import ie.ucc.bis.wizard.ui.ReviewListFragment;

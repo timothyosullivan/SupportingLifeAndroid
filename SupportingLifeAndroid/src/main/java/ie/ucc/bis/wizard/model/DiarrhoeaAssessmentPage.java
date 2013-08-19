@@ -2,6 +2,9 @@ package ie.ucc.bis.wizard.model;
 
 import ie.ucc.bis.R;
 import ie.ucc.bis.wizard.model.listener.RadioGroupListener;
+import ie.ucc.bis.wizard.model.review.RadioToggleReviewItem;
+import ie.ucc.bis.wizard.model.review.ReviewItem;
+import ie.ucc.bis.wizard.model.review.TextReviewItem;
 import ie.ucc.bis.wizard.ui.DiarrhoeaAssessmentFragment;
 
 import java.util.ArrayList;
@@ -64,24 +67,24 @@ public class DiarrhoeaAssessmentPage extends AbstractPage {
     	reviewItemLabel = resources.getString(R.string.diarrhoea_assessment_review_diarrhoea);
     	reviewItemValue = getPageData().getString(DIARRHOEA_DATA_KEY + RadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
     	reviewItemSymptomId = resources.getString(R.string.diarrhoea_assessment_diarrhoea_symptom_id);
-    	reviewItems.add(new ReviewItem(reviewItemLabel, reviewItemValue, reviewItemSymptomId, getKey(), -1));
+    	reviewItems.add(new RadioToggleReviewItem(reviewItemLabel, reviewItemValue, reviewItemSymptomId, getKey(), -1));
 
     	// for how long? (days) - diarrhoea duration
     	reviewItemLabel = resources.getString(R.string.diarrhoea_assessment_review_diarrhoea_duration);
     	reviewItemSymptomId = resources.getString(R.string.diarrhoea_assessment_diarrhoea_duration_symptom_id);
-    	reviewItems.add(new ReviewItem(reviewItemLabel, getPageData().getString(DIARRHOEA_DURATION_DATA_KEY), reviewItemSymptomId, getKey(), -1));
+    	reviewItems.add(new TextReviewItem(reviewItemLabel, getPageData().getString(DIARRHOEA_DURATION_DATA_KEY), reviewItemSymptomId, getKey(), -1));
     	
     	// blood in the stools
     	reviewItemLabel = resources.getString(R.string.diarrhoea_assessment_review_blood_stools);
     	reviewItemValue = getPageData().getString(BLOOD_STOOLS_DATA_KEY + RadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
     	reviewItemSymptomId = resources.getString(R.string.diarrhoea_assessment_blood_stools_symptom_id);
-    	reviewItems.add(new ReviewItem(reviewItemLabel, reviewItemValue, reviewItemSymptomId, getKey(), -1));
+    	reviewItems.add(new RadioToggleReviewItem(reviewItemLabel, reviewItemValue, reviewItemSymptomId, getKey(), -1));
     	
     	// sunken eyes
     	reviewItemLabel = resources.getString(R.string.diarrhoea_assessment_review_sunken_eyes);
     	reviewItemValue = getPageData().getString(SUNKEN_EYES_DATA_KEY + RadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
     	reviewItemSymptomId = resources.getString(R.string.diarrhoea_assessment_sunken_eyes_symptom_id);
-    	reviewItems.add(new ReviewItem(reviewItemLabel, reviewItemValue, reviewItemSymptomId, getKey(), -1));
+    	reviewItems.add(new RadioToggleReviewItem(reviewItemLabel, reviewItemValue, reviewItemSymptomId, getKey(), -1));
     	
     	// lethargic or unconscious
     	// ** we only wish for a single instance of this symptom to be present when parsing
@@ -95,25 +98,27 @@ public class DiarrhoeaAssessmentPage extends AbstractPage {
     	reviewItemLabel = resources.getString(R.string.diarrhoea_assessment_review_restless_irritable);
     	reviewItemValue = getPageData().getString(RESTLESS_IRRITABLE_DATA_KEY + RadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
     	reviewItemSymptomId = resources.getString(R.string.diarrhoea_assessment_restless_irritable_symptom_id);
-    	reviewItems.add(new ReviewItem(reviewItemLabel, reviewItemValue, reviewItemSymptomId, getKey(), -1));
+    	reviewItems.add(new RadioToggleReviewItem(reviewItemLabel, reviewItemValue, reviewItemSymptomId, getKey(), -1));
     	
     	// cholera in area
     	reviewItemLabel = resources.getString(R.string.diarrhoea_assessment_review_cholera_in_area);
     	reviewItemValue = getPageData().getString(CHOLERA_IN_AREA_DATA_KEY + RadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
     	reviewItemSymptomId = resources.getString(R.string.diarrhoea_assessment_cholera_in_area_symptom_id);
-    	reviewItems.add(new ReviewItem(reviewItemLabel, reviewItemValue, reviewItemSymptomId, getKey(), -1));
+    	reviewItems.add(new RadioToggleReviewItem(reviewItemLabel, reviewItemValue, reviewItemSymptomId, getKey(), -1));
     	
     	// offer the child fluid
     	reviewItemLabel = resources.getString(R.string.diarrhoea_assessment_review_child_fluid);
     	reviewItemValue = getPageData().getString(CHILD_FLUID_DATA_KEY + RadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
     	reviewItemSymptomId = resources.getString(R.string.diarrhoea_assessment_child_fluid_symptom_id);
-    	reviewItems.add(new ReviewItem(reviewItemLabel, reviewItemValue, reviewItemSymptomId, getKey(), -1));
+    	reviewItems.add(new RadioToggleReviewItem(reviewItemLabel, reviewItemValue, reviewItemSymptomId, getKey(), -1));
     	
     	// skin pinch
     	reviewItemLabel = resources.getString(R.string.diarrhoea_assessment_review_skin_pinch);
     	reviewItemValue = getPageData().getString(SKIN_PINCH_DATA_KEY + RadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
     	reviewItemSymptomId = resources.getString(R.string.diarrhoea_assessment_skin_pinch_symptom_id);
-    	reviewItems.add(new ReviewItem(reviewItemLabel, reviewItemValue, reviewItemSymptomId, getKey(), -1));
+    	// an immediate skin pinch response would indicate that the negative symptom criteria would apply
+    	reviewItems.add(new RadioToggleReviewItem(reviewItemLabel, reviewItemValue, reviewItemSymptomId, getKey(), -1,
+    			resources.getString(R.string.diarrhoea_assessment_radio_skin_pinch_immediate)));
     }
 
 	/**

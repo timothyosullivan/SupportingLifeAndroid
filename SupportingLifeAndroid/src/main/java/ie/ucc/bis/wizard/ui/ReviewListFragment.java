@@ -1,6 +1,6 @@
 package ie.ucc.bis.wizard.ui;
 
-import ie.ucc.bis.wizard.model.ReviewItem;
+import ie.ucc.bis.wizard.model.review.ReviewItem;
 
 import java.util.List;
 

@@ -10,16 +10,16 @@ import java.util.ArrayList;
  * Encapsulates a Symptom Rule as defined by 
  * classification_rules.xml e.g.
  * 
- *	<SymptomRule rule="ANY">
- *		<Symptom>chest_indrawing</Symptom>
- *		<Symptom>stridor</Symptom>
- *		<!-- Any general danger sign -->
- *		<Symptom>not_able_to_drink_or_breastfeed</Symptom>
- *		<Symptom>vomits_everything</Symptom>
- *		<Symptom>history_of_convulsions</Symptom>
- *		<Symptom>lethargic_or_unconscious</Symptom>
- *		<Symptom>convulsing_now</Symptom>
- *	</SymptomRule>
+ * <SymptomRule rule="ANY_SYMPTOM">
+ * 		<Symptom>breathing_assessment_chest_indrawing_symptom_id</Symptom> 				<!-- Chest Indrawing -->
+ * 		<Symptom>breathing_assessment_stridor_symptom_id</Symptom> 						<!-- Stridor -->
+ * 		<!-- Any general danger sign -->
+ * 		<Symptom>general_danger_signs_drink_breastfeed_symptom_id</Symptom> 			<!-- Not Able to Drink or Breastfeed -->
+ * 		<Symptom>general_danger_signs_vomits_everything_symptom_id</Symptom> 			<!-- Vomits Everything -->
+ * 		<Symptom>general_danger_signs_convulsions_symptom_id</Symptom> 					<!-- History of Convulsions -->
+ * 		<Symptom>general_danger_signs_lethargic_or_unconscious_symptom_id</Symptom>		<!-- Lethargic or Unconscious -->
+ * 		<Symptom>general_danger_signs_convulsing_now_symptom_id</Symptom>				<!-- Convulsing Now -->
+ * </SymptomRule>
  * 
  * @author TOSullivan
  *
@@ -34,7 +34,6 @@ public class SymptomRule implements Serializable {
 	
 	private String rule;
 	private ArrayList<String> symptoms;
-	private SymptomRule symptomRule; // recursive class member
 	
 	/**
 	 * Constructor
@@ -82,20 +81,6 @@ public class SymptomRule implements Serializable {
 	}
 
 	/**
-	 * Getter Method: getSymptomRule()
-	 */
-	public SymptomRule getSymptomRule() {
-		return symptomRule;
-	}
-
-	/**
-	 * Setter Method: setSymptomRule()
-	 */
-	public void setSymptomRule(SymptomRule symptomRule) {
-		this.symptomRule = symptomRule;
-	}
-
-	/**
 	 * 
 	 * Provides debug output of symptom rule
 	 * 
@@ -107,11 +92,7 @@ public class SymptomRule implements Serializable {
 		for (String symptom : getSymptoms()) {
 			debugOutput.append("Symptom: " + symptom + "\n");
 		}
-		
-		if (getSymptomRule() != null) {
-			debugOutput.append(getSymptomRule().debugOutput()); // recursive call
-		}
-		
+				
 		return debugOutput.toString();
 	}
 	

@@ -1,6 +1,7 @@
-package ie.ucc.bis.wizard.model;
+package ie.ucc.bis.wizard.model.review;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * Represents a single line item on the final review page.
@@ -21,6 +22,9 @@ public class ReviewItem implements Serializable {
     private String symptomId;
     private String pageKey;
     private boolean headerItem;
+    private boolean positiveSymptom;
+    private String negativeSymptomCriteria;
+    private List<ReviewItem> dependees;
 
     /**
      * Constructor for header review items
@@ -57,24 +61,57 @@ public class ReviewItem implements Serializable {
     public ReviewItem(String title, String displayValue, String symptomId, String pageKey, int weight) {
     	this(title, displayValue, symptomId, pageKey, weight, false);
     }
-    
+        
     /**
-     * Constructor
+     * Constructor for non-header, symptom review items
      * 
      * @param title
      * @param displayValue
+     * @param symptomId
      * @param pageKey
      * @param weight
+     * @param headerItem
      */
-    private ReviewItem(String title, String displayValue, String symptomId, String pageKey, int weight, boolean headerItem) {
+    protected ReviewItem(String title, String displayValue, String symptomId, String pageKey, int weight, boolean headerItem) {
         setTitle(title);
         setDisplayValue(displayValue);
         setSymptomId(symptomId);
         setPageKey(pageKey);
         setWeight(weight);
         setHeaderItem(headerItem);
+        setPositiveSymptom(false);
     }
-
+    
+    /**
+     * Constructor for non-header, symptom review items
+     * 
+     * @param title
+     * @param displayValue
+     * @param symptomId
+     * @param pageKey
+     * @param weight
+     * @param headerItem
+     * @param negativeSymptomCriteria
+     */
+    protected ReviewItem(String title, String displayValue, String symptomId, String pageKey, int weight, boolean headerItem, String negativeSymptomCriteria) {
+    	this(title, displayValue, symptomId, pageKey, weight, false);
+    	setNegativeSymptomCriteria(negativeSymptomCriteria);
+    }
+    
+    /**
+     * Method: assessSymptom()
+     * 
+     * Determine if, based on the user input,
+     * the symptom applies to the patient being assessed.
+     * 
+     * For generic review items which apply in the case of header items,
+     * the assessment of the symptom always defaults to false
+     *  
+     */
+    public void assessSymptom() {
+    	setPositiveSymptom(false);
+    }
+    
 	/**
 	 * Getter Method: getDisplayValue()
 	 */
@@ -157,5 +194,47 @@ public class ReviewItem implements Serializable {
 	 */
 	public void setSymptomId(String symptomId) {
 		this.symptomId = symptomId;
+	}
+
+	/**
+	 * Getter Method: isPositiveSymptom()
+	 */
+	public boolean isPositiveSymptom() {
+		return positiveSymptom;
+	}
+
+	/**
+	 * Setter Method: setPositiveSymptom()
+	 */
+	public void setPositiveSymptom(boolean positiveSymptom) {
+		this.positiveSymptom = positiveSymptom;
+	}
+
+	/**
+	 * Getter Method: getNegativeSymptomCriteria()
+	 */
+	public String getNegativeSymptomCriteria() {
+		return negativeSymptomCriteria;
+	}
+
+	/**
+	 * Setter Method: setNegativeSymptomCriteria()
+	 */
+	private void setNegativeSymptomCriteria(String negativeSymptomCriteria) {
+		this.negativeSymptomCriteria = negativeSymptomCriteria;
+	}
+
+	/**
+	 * Getter Method: getDependees()
+	 */
+	public List<ReviewItem> getDependees() {
+		return dependees;
+	}
+
+	/**
+	 * Setter Method: setDependees()
+	 */
+	public void setDependees(List<ReviewItem> dependees) {
+		this.dependees = dependees;
 	}
 }
