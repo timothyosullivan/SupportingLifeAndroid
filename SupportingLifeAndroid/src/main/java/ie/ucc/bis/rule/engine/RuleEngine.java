@@ -37,6 +37,7 @@ public class RuleEngine {
 	private static final String CLASSIFICATION_SYMPTOM_RULE = "SymptomRule";
 	private static final String CLASSIFICATION_SYMPTOM_RULE_ATTRIB = "rule";
 	private static final String CLASSIFICATION_SYMPTOM = "Symptom";
+	private static final String CLASSIFICATION_SYMPTOM_VALUE_ATTRIB = "value";
 	
 	// Symptom Rules
 	private static final String ANY_SYMPTOM_RULE = "ANY_SYMPTOM";
@@ -81,6 +82,7 @@ public class RuleEngine {
 			String symptomRuleAttrib = null;
 			String symptomId = null;
 			String symptomName = null;
+			String symptomValueAttrib = null;
 			XmlResourceParser xmlParser = supportingLifeBaseActivity.getResources().getXml(R.xml.classification_rules);
 			
 			int eventType = xmlParser.next();
@@ -116,10 +118,14 @@ public class RuleEngine {
 						}
 						else if (CLASSIFICATION_SYMPTOM.equalsIgnoreCase(elemName)) {
 							// <Symptom>
+							symptomValueAttrib = xmlParser.getAttributeValue(null, CLASSIFICATION_SYMPTOM_VALUE_ATTRIB);
 							symptomId = xmlParser.nextText();
 							int identifier = supportingLifeBaseActivity.getResources().getIdentifier(symptomId, "string", "ie.ucc.bis");
 							symptomName = supportingLifeBaseActivity.getResources().getString(identifier);
-							symptomRule.getSymptoms().add(symptomName);
+							
+							Symptom symptom = new Symptom(symptomName, symptomValueAttrib);
+							
+							symptomRule.getSymptoms().add(symptom);
 						}						
 						break;
 					case XmlPullParser.END_TAG:
@@ -237,17 +243,21 @@ public class RuleEngine {
 		int symptomRuleCounter = classificationMatch.getSymptomRules().size() - 1;
 		
 		SYMPTOM_RULE_CHECK:
-		for (String symptom : symptomRule.getSymptoms()) {
+		for (Symptom symptom : symptomRule.getSymptoms()) {
 			for (ReviewItem reviewItem : reviewItems) {
-				if (reviewItem.isPositiveSymptom()){
-					if (symptom.equalsIgnoreCase(reviewItem.getSymptomId())) {
-						classificationMatch.getSymptomRules().get(symptomRuleCounter).getSymptoms().add(symptom);
-						symptomCounter++;
-						if (symptomCounter == symptomNumberRequired) {
-							symptomRuleApplies = true;
-							break SYMPTOM_RULE_CHECK;
-						}
-					} // end of if (symptom.equalsIgnoreCase( ...
+				if (reviewItem.isPositiveSymptom() != false){
+					// symptom id match?
+					if (symptom.getIdentifier().equalsIgnoreCase(reviewItem.getSymptomId())) {
+						// symptom value match?
+						if (symptom.getValue().equalsIgnoreCase(reviewItem.getDisplayValue())) {
+							classificationMatch.getSymptomRules().get(symptomRuleCounter).getSymptoms().add(symptom);
+							symptomCounter++;
+							if (symptomCounter == symptomNumberRequired) {
+								symptomRuleApplies = true;
+								break SYMPTOM_RULE_CHECK;
+							}
+						} // end of if (symptom.getValue().equalsIgnoreCase(... 
+					} // end of if (symptom.getIdentifier().equalsIgnoreCase...
 				} // end of if (reviewItem.isPositiveSymptom())
 			}
 		}

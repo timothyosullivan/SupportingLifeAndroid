@@ -15,6 +15,9 @@ public class ReviewItem implements Serializable {
 	private static final long serialVersionUID = -2027656980188256986L;
 
 	public static final int DEFAULT_WEIGHT = -1;
+	
+	protected final String YES_RESPONSE = "yes";
+	protected final String NO_RESPONSE = "no";
 
     private int weight;
     private String title;

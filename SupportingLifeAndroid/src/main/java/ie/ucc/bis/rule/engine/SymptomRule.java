@@ -11,14 +11,14 @@ import java.util.ArrayList;
  * classification_rules.xml e.g.
  * 
  * <SymptomRule rule="ANY_SYMPTOM">
- * 		<Symptom>breathing_assessment_chest_indrawing_symptom_id</Symptom> 				<!-- Chest Indrawing -->
- * 		<Symptom>breathing_assessment_stridor_symptom_id</Symptom> 						<!-- Stridor -->
+ * 		<Symptom value="yes">breathing_assessment_chest_indrawing_symptom_id</Symptom> 				<!-- Chest Indrawing -->
+ * 		<Symptom value="yes">breathing_assessment_stridor_symptom_id</Symptom> 						<!-- Stridor -->
  * 		<!-- Any general danger sign -->
- * 		<Symptom>general_danger_signs_drink_breastfeed_symptom_id</Symptom> 			<!-- Not Able to Drink or Breastfeed -->
- * 		<Symptom>general_danger_signs_vomits_everything_symptom_id</Symptom> 			<!-- Vomits Everything -->
- * 		<Symptom>general_danger_signs_convulsions_symptom_id</Symptom> 					<!-- History of Convulsions -->
- * 		<Symptom>general_danger_signs_lethargic_or_unconscious_symptom_id</Symptom>		<!-- Lethargic or Unconscious -->
- * 		<Symptom>general_danger_signs_convulsing_now_symptom_id</Symptom>				<!-- Convulsing Now -->
+ * 		<Symptom value="yes">general_danger_signs_drink_breastfeed_symptom_id</Symptom> 			<!-- Not Able to Drink or Breastfeed -->
+ * 		<Symptom value="yes">general_danger_signs_vomits_everything_symptom_id</Symptom> 			<!-- Vomits Everything -->
+ * 		<Symptom value="yes">general_danger_signs_convulsions_symptom_id</Symptom> 					<!-- History of Convulsions -->
+ * 		<Symptom value="yes">general_danger_signs_lethargic_or_unconscious_symptom_id</Symptom>		<!-- Lethargic or Unconscious -->
+ * 		<Symptom value="yes">general_danger_signs_convulsing_now_symptom_id</Symptom>				<!-- Convulsing Now -->
  * </SymptomRule>
  * 
  * @author TOSullivan
@@ -33,14 +33,14 @@ public class SymptomRule implements Serializable {
 	private static final long serialVersionUID = 2175782496476894436L;
 	
 	private String rule;
-	private ArrayList<String> symptoms;
+	private ArrayList<Symptom> symptoms;
 	
 	/**
 	 * Constructor
 	 * 
 	 */	
 	public SymptomRule() {
-		setSymptoms(new ArrayList<String>());
+		setSymptoms(new ArrayList<Symptom>());
 	}
 	
 	/**
@@ -49,7 +49,7 @@ public class SymptomRule implements Serializable {
 	 */	
 	public SymptomRule(String rule) {
 		setRule(rule);
-		setSymptoms(new ArrayList<String>());
+		setSymptoms(new ArrayList<Symptom>());
 	}
 
 	/**
@@ -69,14 +69,14 @@ public class SymptomRule implements Serializable {
 	/**
 	 * Getter Method: getSymptoms()
 	 */
-	public ArrayList<String> getSymptoms() {
+	public ArrayList<Symptom> getSymptoms() {
 		return symptoms;
 	}
 
 	/**
 	 * Setter Method: setSymptoms()
 	 */
-	public void setSymptoms(ArrayList<String> symptoms) {
+	public void setSymptoms(ArrayList<Symptom> symptoms) {
 		this.symptoms = symptoms;
 	}
 
@@ -89,8 +89,9 @@ public class SymptomRule implements Serializable {
 		StringBuffer debugOutput = new StringBuffer();
 
 		debugOutput.append("Rule: " + getRule() + "\n");
-		for (String symptom : getSymptoms()) {
-			debugOutput.append("Symptom: " + symptom + "\n");
+		for (Symptom symptom : getSymptoms()) {
+			debugOutput.append("Symptom: " + symptom.getIdentifier() + "\n");
+			debugOutput.append(" ----> Symptom Value: " + symptom.getValue() + "\n");
 		}
 				
 		return debugOutput.toString();
