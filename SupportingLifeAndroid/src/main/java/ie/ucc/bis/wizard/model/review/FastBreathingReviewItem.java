@@ -1,5 +1,6 @@
 package ie.ucc.bis.wizard.model.review;
 
+import ie.ucc.bis.activity.SupportingLifeBaseActivity;
 import ie.ucc.bis.ui.utilities.DateUtilities;
 
 import java.io.Serializable;
@@ -35,6 +36,9 @@ public class FastBreathingReviewItem extends ReviewItem implements Serializable 
 	 */
 	private static final long serialVersionUID = 3173057953023920926L;
 	
+	private final String YES_RESPONSE = "yes";
+	private final String NO_RESPONSE = "no";
+	
 	private static final int TWO_MONTHS = 2;
 	private static final int TWELVE_MONTHS = 12;
 	private static final int FIVE_YEARS_IN_MONTHS = 60;
@@ -58,8 +62,8 @@ public class FastBreathingReviewItem extends ReviewItem implements Serializable 
     /**
      * Method: assessSymptom()
      * 
-     * Determine if, based on the user input,
-     * the symptom applies to the patient being assessed.
+     * Determine the appropriate symptom value based
+     * on the user's response.
      * 
 	 * RULE:
 	 * Fast Breathing applies if the following criteria is met:
@@ -70,8 +74,10 @@ public class FastBreathingReviewItem extends ReviewItem implements Serializable 
 	 * [12 months < Child Age < 5 years] 
 	 * 		--> 40 breaths per minute or more == Fast Breathing
      * 
+     * @param supportingLifeBaseActivity 
+     * 
      */
-    public void assessSymptom() {
+    public void assessSymptom(SupportingLifeBaseActivity supportingLifeBaseActivity) {
     	if (!TextUtils.isEmpty(getDisplayValue())) {
     		
     		ReviewItem birthDateReviewItem = getDependees().get(0);
@@ -87,17 +93,17 @@ public class FastBreathingReviewItem extends ReviewItem implements Serializable 
 					 * 		--> 50 breaths per minute or more == Fast Breathing
 					 */
 					if ((monthsDifference > TWO_MONTHS) && (monthsDifference < TWELVE_MONTHS) && (Integer.getInteger(getDisplayValue()).intValue() > FIFTY_BREATHS_PER_MINUTE)) {
-						setDisplayValue(YES_RESPONSE);
+						setSymptomValue(YES_RESPONSE);
 					}
 					/* Rule:
 					 * [12 months < Child Age < 60 months] 
 					 * 		--> 40 breaths per minute or more == Fast Breathing
 					 */
 					else if ((monthsDifference > TWELVE_MONTHS) && (monthsDifference < FIVE_YEARS_IN_MONTHS) && (Integer.parseInt(getDisplayValue()) > FORTY_BREATHS_PER_MINUTE)) {
-						setDisplayValue(YES_RESPONSE);
+						setSymptomValue(YES_RESPONSE);
 					}
 					else {
-						setDisplayValue(NO_RESPONSE);
+						setSymptomValue(NO_RESPONSE);
 					}
 	    		} catch (ParseException e) {
 	    			e.printStackTrace();
@@ -105,7 +111,7 @@ public class FastBreathingReviewItem extends ReviewItem implements Serializable 
     		}
     	}
     	else {
-    		setDisplayValue(NO_RESPONSE);
+    		setSymptomValue(NO_RESPONSE);
     	}
     }
 	

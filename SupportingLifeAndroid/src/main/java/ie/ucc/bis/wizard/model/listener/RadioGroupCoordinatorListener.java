@@ -12,6 +12,15 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
 
+/**
+ * This listener class is responsible for listening to a particular 
+ * radio group, taking record of the option selected within the 
+ * radio group, and also controlling the visibility of a 
+ * dynamic view(s) on the UI depending on the user selection.
+ * 
+ * @author timothyosullivan
+ *
+ */
 public class RadioGroupCoordinatorListener implements OnCheckedChangeListener {
 	
 	public static final String RADIO_BUTTON_TEXT_DATA_KEY = "RadioButtonText";

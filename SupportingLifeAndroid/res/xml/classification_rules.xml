@@ -25,17 +25,17 @@
 		<Type>SEVERE</Type>
 		<Priority>1</Priority>
 		<SymptomRule rule="ANY_SYMPTOM">
-			<Symptom value="yes">breathing_assessment_cough_difficult_breathing_symptom_id</Symptom>	<!-- Cough or Difficult Breathing -->
+			<Symptom value="yes">breathing_assessment_cough_difficult_breathing_symptom_id</Symptom>	<!-- Cough or Difficult Breathing : YES -->
 		</SymptomRule>
 		<SymptomRule rule="ANY_SYMPTOM">
-			<Symptom value="yes">breathing_assessment_chest_indrawing_symptom_id</Symptom> 				<!-- Chest Indrawing -->
-			<Symptom value="yes">breathing_assessment_stridor_symptom_id</Symptom> 						<!-- Stridor -->
+			<Symptom value="yes">breathing_assessment_chest_indrawing_symptom_id</Symptom> 				<!-- Chest Indrawing : YES -->
+			<Symptom value="yes">breathing_assessment_stridor_symptom_id</Symptom> 						<!-- Stridor : YES -->
 			<!-- Any general danger sign -->
-			<Symptom value="yes">general_danger_signs_drink_breastfeed_symptom_id</Symptom> 			<!-- Not Able to Drink or Breastfeed -->
-			<Symptom value="yes">general_danger_signs_vomits_everything_symptom_id</Symptom> 			<!-- Vomits Everything -->
-			<Symptom value="yes">general_danger_signs_convulsions_symptom_id</Symptom> 					<!-- History of Convulsions -->
-			<Symptom value="yes">general_danger_signs_lethargic_or_unconscious_symptom_id</Symptom>		<!-- Lethargic or Unconscious -->
-			<Symptom value="yes">general_danger_signs_convulsing_now_symptom_id</Symptom>				<!-- Convulsing Now -->
+			<Symptom value="yes">general_danger_signs_drink_breastfeed_symptom_id</Symptom> 			<!-- Not Able to Drink or Breastfeed : YES -->
+			<Symptom value="yes">general_danger_signs_vomits_everything_symptom_id</Symptom> 			<!-- Vomits Everything : YES -->
+			<Symptom value="yes">general_danger_signs_convulsions_symptom_id</Symptom> 					<!-- History of Convulsions : YES -->
+			<Symptom value="yes">general_danger_signs_lethargic_or_unconscious_symptom_id</Symptom>		<!-- Lethargic or Unconscious : YES -->
+			<Symptom value="yes">general_danger_signs_convulsing_now_symptom_id</Symptom>				<!-- Convulsing Now : YES -->
 		</SymptomRule>
 	</Classification>
 
@@ -55,10 +55,10 @@
 		<Type>MODERATE</Type>
 		<Priority>2</Priority>
 		<SymptomRule rule="ANY_SYMPTOM">
-			<Symptom value="yes">breathing_assessment_cough_difficult_breathing_symptom_id</Symptom>	<!-- Cough or Difficult Breathing -->
+			<Symptom value="yes">breathing_assessment_cough_difficult_breathing_symptom_id</Symptom>	<!-- Cough or Difficult Breathing : YES -->
 		</SymptomRule>
 		<SymptomRule rule="ANY_SYMPTOM">
-			<Symptom value="yes">breathing_assessment_fast_breathing_symptom_id</Symptom> 				<!-- Fast Breathing -->
+			<Symptom value="yes">breathing_assessment_fast_breathing_symptom_id</Symptom> 				<!-- Fast Breathing : YES -->
 		</SymptomRule>
 	</Classification>
 
@@ -66,8 +66,8 @@
 	<!-- COUGH OR DIFFICULT BREATHING 								  -->
 	<!-- ============================================================ -->
 	<!-- ============================================================ -->
-	<!-- Classification: Severe Pneumonia or Very Severe Disease 	  -->
-	<!-- Type: MODERATE												  -->
+	<!-- Classification: No Pneumonia: Cough or Cold 	  			  -->
+	<!-- Type: LOW												  	  -->
 	<!-- Symptoms: Cough or Difficult Breathing 					  -->
 	<!-- 				AND 										  -->
 	<!--           No sign of pneumonia or very severe disease		  -->
@@ -78,7 +78,36 @@
 		<Type>LOW</Type>
 		<Priority>3</Priority>
 		<SymptomRule rule="ANY_SYMPTOM">
-			<Symptom value="yes">breathing_assessment_cough_difficult_breathing_symptom_id</Symptom>	<!-- Cough or Difficult Breathing -->
+			<Symptom value="yes">breathing_assessment_cough_difficult_breathing_symptom_id</Symptom>	<!-- Cough or Difficult Breathing : YES -->
+		</SymptomRule>
+		<SymptomRule rule="ANY_SYMPTOM">
+			<Symptom value="no">breathing_assessment_fast_breathing_symptom_id</Symptom> 				<!-- Fast Breathing : NO -->
+		</SymptomRule>
+		<SymptomRule rule="ANY_SYMPTOM">
+			<Symptom value="no">breathing_assessment_chest_indrawing_symptom_id</Symptom> 				<!-- Chest Indrawing : NO -->
+		</SymptomRule>
+		<SymptomRule rule="ANY_SYMPTOM">
+			<Symptom value="no">breathing_assessment_stridor_symptom_id</Symptom> 						<!-- Stridor : NO -->
+		</SymptomRule>
+		<SymptomRule rule="ANY_SYMPTOM">
+			<!-- general danger sign -->
+			<Symptom value="no">general_danger_signs_drink_breastfeed_symptom_id</Symptom> 				<!-- Not Able to Drink or Breastfeed : NO -->
+		</SymptomRule>
+		<SymptomRule rule="ANY_SYMPTOM">
+		    <!-- general danger sign -->
+			<Symptom value="no">general_danger_signs_vomits_everything_symptom_id</Symptom> 			<!-- Vomits Everything : NO -->
+		</SymptomRule>
+		<SymptomRule rule="ANY_SYMPTOM">
+		    <!-- general danger sign -->
+			<Symptom value="no">general_danger_signs_convulsions_symptom_id</Symptom> 					<!-- History of Convulsions : NO -->
+		</SymptomRule>
+		<SymptomRule rule="ANY_SYMPTOM">
+		    <!-- general danger sign -->
+			<Symptom value="no">general_danger_signs_lethargic_or_unconscious_symptom_id</Symptom>		<!-- Lethargic or Unconscious : NO -->
+		</SymptomRule>
+		<SymptomRule rule="ANY_SYMPTOM">
+		    <!-- general danger sign -->
+			<Symptom value="no">general_danger_signs_convulsing_now_symptom_id</Symptom>				<!-- Convulsing Now : NO -->
 		</SymptomRule>
 	</Classification>
 		
@@ -87,13 +116,14 @@
 	<!-- ============================================================ -->
 	<!-- ============================================================ -->
 	<!-- Classification: Severe Dehydration 	  					  -->
-	<!-- Type: Severe												  -->
+	<!-- Type: SEVERE												  -->
 	<!-- Symptoms: Diarrhoea										  -->
 	<!-- 			AND												  -->
 	<!--			Two of the following signs:						  -->
 	<!-- 		   -> Lethargic or unconscious 						  -->
 	<!--           -> Sunken Eyes		 							  -->
-	<!--           -> Not able to drink or drnking poorly			  -->
+	<!--           -> Not able to drink								  -->
+	<!-- 		   -> Drinking poorly								  -->
 	<!--           -> Skin pinch goes back very slowly				  -->
 	<!-- ============================================================ -->
 	<Classification>
@@ -102,14 +132,69 @@
 		<Type>SEVERE</Type>
 		<Priority>1</Priority>
 		<SymptomRule rule="ANY_SYMPTOM">
-			<Symptom value="yes">diarrhoea_assessment_diarrhoea_symptom_id</Symptom>	<!-- Diarrhoea-->
+			<Symptom value="yes">diarrhoea_assessment_diarrhoea_symptom_id</Symptom>					<!-- Diarrhoea  : YES-->
 		</SymptomRule>
 		<SymptomRule rule="TWO_SYMPTOMS_REQUIRED">
-			<Symptom value="yes">general_danger_signs_lethargic_or_unconscious_symptom_id</Symptom>
-			<Symptom value="yes">diarrhoea_assessment_sunken_eyes_symptom_id</Symptom>
-			<Symptom value="not able to drink">diarrhoea_assessment_child_fluid_symptom_id</Symptom>
-			<Symptom value="drinking poorly">diarrhoea_assessment_child_fluid_symptom_id</Symptom>
-			<Symptom value="very slowly">diarrhoea_assessment_skin_pinch_symptom_id</Symptom>
+			<Symptom value="yes">general_danger_signs_lethargic_or_unconscious_symptom_id</Symptom>		<!-- Lethargic or Unconscious : YES -->
+			<Symptom value="yes">diarrhoea_assessment_sunken_eyes_symptom_id</Symptom>					<!-- Sunken Eyes : YES -->
+			<Symptom value="not able to drink">diarrhoea_assessment_child_fluid_symptom_id</Symptom>	<!-- Offer the Child Fluid : Not Able to Drink -->
+			<Symptom value="drinking poorly">diarrhoea_assessment_child_fluid_symptom_id</Symptom>		<!-- Offer the Child Fluid : Drinking Poorly -->
+			<Symptom value="very slowly">diarrhoea_assessment_skin_pinch_symptom_id</Symptom>			<!-- Skin Pinch : Very Slowly -->
+		</SymptomRule>
+	</Classification>
+	
+	<!-- ============================================================ -->
+	<!-- DEHYDRATION (SUB-CLASSIFICATION OF DIARRHOEA)				  -->
+	<!-- ============================================================ -->
+	<!-- ============================================================ -->
+	<!-- Classification: Some Dehydration 	  					  	  -->
+	<!-- Type: MODERATE												  -->
+	<!-- Symptoms: Diarrhoea										  -->
+	<!-- 			AND												  -->
+	<!--			Two of the following signs:						  -->
+	<!-- 		   -> Restless, Irritable	 						  -->
+	<!--           -> Sunken Eyes		 							  -->
+	<!--           -> Drinks eagerly, thirsty						  -->
+	<!--           -> Skin pinch goes back slowly					  -->
+	<!-- ============================================================ -->
+	<Classification>
+		<Category>dehydration</Category>
+		<Name>Some Dehydration</Name>
+		<Type>MODERATE</Type>
+		<Priority>2</Priority>
+		<SymptomRule rule="ANY_SYMPTOM">
+			<Symptom value="yes">diarrhoea_assessment_diarrhoea_symptom_id</Symptom>					<!-- Diarrhoea  : YES-->
+		</SymptomRule>
+		<SymptomRule rule="TWO_SYMPTOMS_REQUIRED">
+			<Symptom value="yes">diarrhoea_assessment_restless_irritable_symptom_id</Symptom>			<!-- Restless, Irritable : YES -->
+			<Symptom value="yes">diarrhoea_assessment_sunken_eyes_symptom_id</Symptom>					<!-- Sunken Eyes : YES -->
+			<Symptom value="drinking eagerly">diarrhoea_assessment_child_fluid_symptom_id</Symptom>		<!-- Offer the Child Fluid : Drinks Eagerly, Thirsty -->
+			<Symptom value="slowly">diarrhoea_assessment_skin_pinch_symptom_id</Symptom>				<!-- Skin Pinch : Slowly -->
+		</SymptomRule>
+	</Classification>
+	
+	<!-- ============================================================ -->
+	<!-- DEHYDRATION (SUB-CLASSIFICATION OF DIARRHOEA)				  -->
+	<!-- ============================================================ -->
+	<!-- ============================================================ -->
+	<!-- Classification: No Dehydration 	  					  	  -->
+	<!-- Type: LOW													  -->
+	<!-- Symptoms: Diarrhoea										  -->
+	<!-- 			AND												  -->
+	<!--			Not enough signs to classify as some or severe	  -->
+	<!-- 			dehydration 									  -->
+	<!-- 			(Note: The 'not enough signs to classify as some  -->
+	<!-- 				   or severe dehydration' will be verified    -->
+	<!-- 				   implicity by the other dyhydration 		  -->
+	<!-- 				   not defaulting to true) 					  -->
+	<!-- ============================================================ -->
+	<Classification>
+		<Category>dehydration</Category>
+		<Name>No Dehydration</Name>
+		<Type>Low</Type>
+		<Priority>3</Priority>
+		<SymptomRule rule="ANY_SYMPTOM">
+			<Symptom value="yes">diarrhoea_assessment_diarrhoea_symptom_id</Symptom>					<!-- Diarrhoea  : YES-->
 		</SymptomRule>
 	</Classification>
 </ClassificationRules>

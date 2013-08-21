@@ -4,9 +4,7 @@ import ie.ucc.bis.R;
 import ie.ucc.bis.ui.utilities.ReviewItemUtilities;
 import ie.ucc.bis.wizard.model.listener.RadioGroupListener;
 import ie.ucc.bis.wizard.model.review.FastBreathingReviewItem;
-import ie.ucc.bis.wizard.model.review.RadioToggleReviewItem;
 import ie.ucc.bis.wizard.model.review.ReviewItem;
-import ie.ucc.bis.wizard.model.review.TextReviewItem;
 import ie.ucc.bis.wizard.ui.BreathingAssessmentFragment;
 
 import java.util.ArrayList;
@@ -65,12 +63,12 @@ public class BreathingAssessmentPage extends AbstractPage {
     	reviewItemLabel = resources.getString(R.string.breathing_assessment_review_cough_difficult_breathing);
     	reviewItemValue = getPageData().getString(COUGH_DIFFICULT_BREATHING_DATA_KEY + RadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
     	reviewItemSymptomId = resources.getString(R.string.breathing_assessment_cough_difficult_breathing_symptom_id);
-    	reviewItems.add(new RadioToggleReviewItem(reviewItemLabel, reviewItemValue, reviewItemSymptomId, getKey(), -1));
+    	reviewItems.add(new ReviewItem(reviewItemLabel, reviewItemValue, reviewItemSymptomId, getKey(), -1));
 
     	// for how long? (days) - cough duration
     	reviewItemLabel = resources.getString(R.string.breathing_assessment_review_cough_duration);
     	reviewItemSymptomId = resources.getString(R.string.breathing_assessment_cough_duration_symptom_id);
-    	reviewItems.add(new TextReviewItem(reviewItemLabel, getPageData().getString(COUGH_DURATION_DATA_KEY), reviewItemSymptomId, getKey(), -1));
+    	reviewItems.add(new ReviewItem(reviewItemLabel, getPageData().getString(COUGH_DURATION_DATA_KEY), reviewItemSymptomId, getKey(), -1));
  
     	// breaths per minute
     	reviewItemLabel = resources.getString(R.string.breathing_assessment_review_breaths_per_minute);
@@ -87,13 +85,13 @@ public class BreathingAssessmentPage extends AbstractPage {
     	reviewItemLabel = resources.getString(R.string.breathing_assessment_review_chest_indrawing);
     	reviewItemValue = getPageData().getString(CHEST_INDRAWING_DATA_KEY + RadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
     	reviewItemSymptomId = resources.getString(R.string.breathing_assessment_chest_indrawing_symptom_id);
-    	reviewItems.add(new RadioToggleReviewItem(reviewItemLabel, reviewItemValue, reviewItemSymptomId, getKey(), -1));
+    	reviewItems.add(new ReviewItem(reviewItemLabel, reviewItemValue, reviewItemSymptomId, getKey(), -1));
 
     	// stridor
     	reviewItemLabel = resources.getString(R.string.breathing_assessment_review_stridor);
     	reviewItemValue = getPageData().getString(STRIDOR_DATA_KEY + RadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
     	reviewItemSymptomId = resources.getString(R.string.breathing_assessment_stridor_symptom_id);
-    	reviewItems.add(new RadioToggleReviewItem(reviewItemLabel, reviewItemValue, reviewItemSymptomId, getKey(), -1));   
+    	reviewItems.add(new ReviewItem(reviewItemLabel, reviewItemValue, reviewItemSymptomId, getKey(), -1));   
     }
 
 

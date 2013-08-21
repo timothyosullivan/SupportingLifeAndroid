@@ -1,6 +1,7 @@
 package ie.ucc.bis.ui.custom;
 
 import ie.ucc.bis.wizard.model.AbstractPage;
+import ie.ucc.bis.wizard.model.listener.RadioGroupCoordinatorListener;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
@@ -10,8 +11,7 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 
 public class ToggleButtonGroupTableLayout extends TableLayout implements OnClickListener {
-
-	public static final String TOGGLE_BUTTON_TEXT_DATA_KEY = "ToggleButton";	
+	
 	private RadioButton activeRadioButton;
 	private AbstractPage page;
 	private String dataKey;
@@ -43,7 +43,7 @@ public class ToggleButtonGroupTableLayout extends TableLayout implements OnClick
 		
 		// firstly add text label of radio button
 		// needed for displaying review UI screen
-    	getPage().getPageData().putString(dataKey + TOGGLE_BUTTON_TEXT_DATA_KEY, getActiveRadioButton().getText().toString());
+    	getPage().getPageData().putString(dataKey + RadioGroupCoordinatorListener.RADIO_BUTTON_TEXT_DATA_KEY, getActiveRadioButton().getText().toString());
     	
     	// secondly add the id of the radio button
     	// needed for onCreateView() in relevant Fragment to re-display

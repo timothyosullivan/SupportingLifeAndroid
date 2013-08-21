@@ -64,7 +64,7 @@ public class RuleEngine {
 
 		setClassifications(new ArrayList<Classification>());
 		parseClassificationRules(supportingLifeBaseActivity);
-		determinePatientClassifications(reviewItems, patient);
+		determinePatientClassifications(supportingLifeBaseActivity, reviewItems, patient);
 	}
 
 	/**
@@ -158,15 +158,16 @@ public class RuleEngine {
 	 * 
 	 * Responsible for determining patient classifications
 	 * 
+	 * @param supportingLifeBaseActivity
 	 * @param reviewItems
 	 * @param patient 
 	 * 
 	 */
-	private void determinePatientClassifications(ArrayList<ReviewItem> reviewItems, Patient patient) {
+	private void determinePatientClassifications(SupportingLifeBaseActivity supportingLifeBaseActivity, ArrayList<ReviewItem> reviewItems, Patient patient) {
 		// 1. iterate over all review items and perform first rudimentary check in assessing
 		//    if the symptom criteria applies
 		for (ReviewItem reviewItem : reviewItems) {
-			reviewItem.assessSymptom();
+			reviewItem.assessSymptom(supportingLifeBaseActivity);
 		}
 		
 		// 2. iterate over all classifications to determine if any fit the patient
@@ -217,6 +218,9 @@ public class RuleEngine {
 			if (symptomRule.getRule().equalsIgnoreCase(ANY_SYMPTOM_RULE)) {
 				hasClassification = checkSymptomRule(symptomRule, reviewItems, classificationMatch, ONE_SYMPTOM_REQUIRED);
 			}
+			else if (symptomRule.getRule().equalsIgnoreCase(TWO_SYMPTOMS_REQUIRED_RULE)) {
+				hasClassification = checkSymptomRule(symptomRule, reviewItems, classificationMatch, TWO_SYMPTOMS_REQUIRED);
+			}
 			if (!hasClassification) {
 				break;
 			}
@@ -245,11 +249,11 @@ public class RuleEngine {
 		SYMPTOM_RULE_CHECK:
 		for (Symptom symptom : symptomRule.getSymptoms()) {
 			for (ReviewItem reviewItem : reviewItems) {
-				if (reviewItem.isPositiveSymptom() != false){
+				if (reviewItem.getSymptomValue() != null){
 					// symptom id match?
 					if (symptom.getIdentifier().equalsIgnoreCase(reviewItem.getSymptomId())) {
 						// symptom value match?
-						if (symptom.getValue().equalsIgnoreCase(reviewItem.getDisplayValue())) {
+						if (symptom.getValue().equalsIgnoreCase(reviewItem.getSymptomValue())) {
 							classificationMatch.getSymptomRules().get(symptomRuleCounter).getSymptoms().add(symptom);
 							symptomCounter++;
 							if (symptomCounter == symptomNumberRequired) {

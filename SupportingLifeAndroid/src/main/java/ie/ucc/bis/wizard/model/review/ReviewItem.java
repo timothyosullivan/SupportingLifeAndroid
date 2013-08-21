@@ -1,5 +1,7 @@
 package ie.ucc.bis.wizard.model.review;
 
+import ie.ucc.bis.activity.SupportingLifeBaseActivity;
+
 import java.io.Serializable;
 import java.util.List;
 
@@ -16,17 +18,13 @@ public class ReviewItem implements Serializable {
 
 	public static final int DEFAULT_WEIGHT = -1;
 	
-	protected final String YES_RESPONSE = "yes";
-	protected final String NO_RESPONSE = "no";
-
     private int weight;
     private String title;
     private String displayValue;
     private String symptomId;
     private String pageKey;
     private boolean headerItem;
-    private boolean positiveSymptom;
-    private String negativeSymptomCriteria;
+    private String symptomValue;
     private List<ReviewItem> dependees;
 
     /**
@@ -82,37 +80,23 @@ public class ReviewItem implements Serializable {
         setPageKey(pageKey);
         setWeight(weight);
         setHeaderItem(headerItem);
-        setPositiveSymptom(false);
-    }
-    
-    /**
-     * Constructor for non-header, symptom review items
-     * 
-     * @param title
-     * @param displayValue
-     * @param symptomId
-     * @param pageKey
-     * @param weight
-     * @param headerItem
-     * @param negativeSymptomCriteria
-     */
-    protected ReviewItem(String title, String displayValue, String symptomId, String pageKey, int weight, boolean headerItem, String negativeSymptomCriteria) {
-    	this(title, displayValue, symptomId, pageKey, weight, false);
-    	setNegativeSymptomCriteria(negativeSymptomCriteria);
+        setSymptomValue(null);
     }
     
     /**
      * Method: assessSymptom()
      * 
-     * Determine if, based on the user input,
-     * the symptom applies to the patient being assessed.
+     * Determine the appropriate symptom value based
+     * on the user's response. The user's response is
+     * captured from the displayValue attribute 
      * 
-     * For generic review items which apply in the case of header items,
-     * the assessment of the symptom always defaults to false
+     * @param supportingLifeBaseActivity 
      *  
      */
-    public void assessSymptom() {
-    	setPositiveSymptom(false);
+    public void assessSymptom(SupportingLifeBaseActivity supportingLifeBaseActivity) {
+    	if (getDisplayValue() != null) {
+    		setSymptomValue(getDisplayValue());
+    	}
     }
     
 	/**
@@ -200,34 +184,6 @@ public class ReviewItem implements Serializable {
 	}
 
 	/**
-	 * Getter Method: isPositiveSymptom()
-	 */
-	public boolean isPositiveSymptom() {
-		return positiveSymptom;
-	}
-
-	/**
-	 * Setter Method: setPositiveSymptom()
-	 */
-	public void setPositiveSymptom(boolean positiveSymptom) {
-		this.positiveSymptom = positiveSymptom;
-	}
-
-	/**
-	 * Getter Method: getNegativeSymptomCriteria()
-	 */
-	public String getNegativeSymptomCriteria() {
-		return negativeSymptomCriteria;
-	}
-
-	/**
-	 * Setter Method: setNegativeSymptomCriteria()
-	 */
-	private void setNegativeSymptomCriteria(String negativeSymptomCriteria) {
-		this.negativeSymptomCriteria = negativeSymptomCriteria;
-	}
-
-	/**
 	 * Getter Method: getDependees()
 	 */
 	public List<ReviewItem> getDependees() {
@@ -239,5 +195,19 @@ public class ReviewItem implements Serializable {
 	 */
 	public void setDependees(List<ReviewItem> dependees) {
 		this.dependees = dependees;
+	}
+
+	/**
+	 * Getter Method: getSymptomValue()
+	 */
+	public String getSymptomValue() {
+		return symptomValue;
+	}
+
+	/**
+	 * Setter Method: setSymptomValue()
+	 */
+	public void setSymptomValue(String symptomValue) {
+		this.symptomValue = symptomValue;
 	}
 }
