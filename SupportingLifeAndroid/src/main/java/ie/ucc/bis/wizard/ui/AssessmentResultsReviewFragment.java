@@ -2,7 +2,7 @@ package ie.ucc.bis.wizard.ui;
 
 import ie.ucc.bis.R;
 import ie.ucc.bis.activity.AssessmentResultsActivity;
-import ie.ucc.bis.wizard.model.ReviewAssessmentAdapter;
+import ie.ucc.bis.wizard.model.review.ReviewAssessmentAdapter;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.LayoutInflater;

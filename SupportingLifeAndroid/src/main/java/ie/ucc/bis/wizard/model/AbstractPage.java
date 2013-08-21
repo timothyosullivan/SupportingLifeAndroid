@@ -1,5 +1,7 @@
 package ie.ucc.bis.wizard.model;
 
+import ie.ucc.bis.wizard.model.review.ReviewItem;
+
 import java.util.ArrayList;
 
 import android.os.Bundle;

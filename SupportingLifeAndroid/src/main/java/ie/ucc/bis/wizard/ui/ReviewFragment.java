@@ -4,7 +4,7 @@ import ie.ucc.bis.R;
 import ie.ucc.bis.wizard.model.AbstractPage;
 import ie.ucc.bis.wizard.model.AbstractWizardModel;
 import ie.ucc.bis.wizard.model.ModelCallbacks;
-import ie.ucc.bis.wizard.model.ReviewAssessmentAdapter;
+import ie.ucc.bis.wizard.model.review.ReviewAssessmentAdapter;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.LayoutInflater;

@@ -2,6 +2,7 @@ package ie.ucc.bis.wizard.model;
 
 import ie.ucc.bis.R;
 import ie.ucc.bis.wizard.model.listener.RadioGroupListener;
+import ie.ucc.bis.wizard.model.review.ReviewItem;
 import ie.ucc.bis.wizard.ui.ImmunizationAssessmentFragment;
 
 import java.util.ArrayList;

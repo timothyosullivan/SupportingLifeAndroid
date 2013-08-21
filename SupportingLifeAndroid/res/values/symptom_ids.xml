@@ -18,6 +18,7 @@
     <!-- ============================================================ -->
 	
 	<!-- Symptom Ids (NOT TO BE TRANSLATED!)-->
+	<string name="general_patient_details_date_of_birth_symptom_id">date_of_birth</string>
 	<string name="general_patient_details_weight_symptom_id">weight</string>
 	<string name="general_patient_details_temperature_symptom_id">temperature</string>
 	<string name="general_patient_details_gender_symptom_id">gender</string>
@@ -42,7 +43,7 @@
 	<!-- Symptom Ids (NOT TO BE TRANSLATED!)-->
 	<string name="breathing_assessment_cough_difficult_breathing_symptom_id">cough_difficult_breathing</string>
 	<string name="breathing_assessment_cough_duration_symptom_id">cough_duration</string>
-	<string name="breathing_assessment_breaths_per_minute_symptom_id">breaths_per_minute</string>	
+	<string name="breathing_assessment_fast_breathing_symptom_id">fast_breathing</string>	
 	<string name="breathing_assessment_chest_indrawing_symptom_id">chest_indrawing</string>
 	<string name="breathing_assessment_stridor_symptom_id">stridor</string>
 

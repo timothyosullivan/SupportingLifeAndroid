@@ -2,6 +2,8 @@ package ie.ucc.bis.rule.engine;
 
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -40,29 +42,17 @@ public class Classification implements Serializable {
 	private String category;
 	private String name;
 	private String type;
-	private SymptomRule symptomRule;
+	private int priority;
+	private List<SymptomRule> symptomRules;
  
 	/**
 	 * Constructor
 	 * 
 	 */
 	public Classification() {
-		setSymptomRule(new SymptomRule());
+		setSymptomRules(new ArrayList<SymptomRule>());
 	}
-	
-	/**
-	 * Constructor
-	 * 
-	 * @param category
-	 * @param name
-	 * @param type
-	 */
-	public Classification(String category, String name, String type) {
-		setCategory(category);
-		setName(name);
-		setType(type);
-	}
-	
+		
 	/**
 	 * Getter Method: getCategory()
 	 */
@@ -106,17 +96,31 @@ public class Classification implements Serializable {
 	}
 
 	/**
-	 * Getter Method: getSymptomRule()
+	 * Getter Method: getPriority()
 	 */
-	public SymptomRule getSymptomRule() {
-		return symptomRule;
+	public int getPriority() {
+		return priority;
 	}
 
 	/**
-	 * Setter Method: setSymptomRule()
+	 * Setter Method: setPriority()
 	 */
-	public void setSymptomRule(SymptomRule symptomRule) {
-		this.symptomRule = symptomRule;
+	public void setPriority(int priority) {
+		this.priority = priority;
+	}
+
+	/**
+	 * Getter Method: getSymptomRules()
+	 */
+	public List<SymptomRule> getSymptomRules() {
+		return symptomRules;
+	}
+
+	/**
+	 * Setter Method: setSymptomRules()
+	 */
+	public void setSymptomRules(List<SymptomRule> symptomRules) {
+		this.symptomRules = symptomRules;
 	}
 
 	/**
@@ -127,10 +131,13 @@ public class Classification implements Serializable {
 	public String debugOutput() {
 		StringBuffer debugOutput = new StringBuffer();
 
+		debugOutput.append("------------------------------------ \n");
 		debugOutput.append("Category: " + getCategory() + "\n");
 		debugOutput.append("Name: " + getName() + "\n");
 		debugOutput.append("Type: " + getType() + "\n");
-		debugOutput.append(getSymptomRule().debugOutput());
+		for (SymptomRule symptomRule : getSymptomRules()) {
+			debugOutput.append(symptomRule.debugOutput());
+		}
 		
 		return debugOutput.toString();
 	}
