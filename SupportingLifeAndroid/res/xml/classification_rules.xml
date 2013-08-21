@@ -191,10 +191,507 @@
 	<Classification>
 		<Category>dehydration</Category>
 		<Name>No Dehydration</Name>
-		<Type>Low</Type>
+		<Type>LOW</Type>
 		<Priority>3</Priority>
 		<SymptomRule rule="ANY_SYMPTOM">
-			<Symptom value="yes">diarrhoea_assessment_diarrhoea_symptom_id</Symptom>					<!-- Diarrhoea  : YES-->
+			<Symptom value="yes">diarrhoea_assessment_diarrhoea_symptom_id</Symptom>					<!-- Diarrhoea : YES-->
 		</SymptomRule>
 	</Classification>
+
+	<!-- ============================================================ -->
+	<!-- PERSISTANT DIARRHOEA (SUB-CLASSIFICATION OF DIARRHOEA)		  -->
+	<!-- ============================================================ -->
+	<!-- ============================================================ -->
+	<!-- Classification: Severe Persistent Diarrhoea 			  	  -->
+	<!-- Type: SEVERE												  -->
+	<!-- Classification: Severe Dehydration							  -->
+	<!-- 				 	   OR									  -->
+	<!--			     Some Dehydration							  -->
+	<!-- ============================================================ -->
+	<Classification>
+		<Category>persistent_diarrhoea</Category>
+		<Name>Severe Persistent Diarrhoea</Name>
+		<Type>SEVERE</Type>
+		<Priority>1</Priority>
+		<ClassificationRule rule="ANY_CLASSIFICATION">
+			<ClassificationDiagnosed value="true">Severe Dehydration</ClassificationDiagnosed>			<!-- Severe Dehyration (Classification) : TRUE -->
+			<ClassificationDiagnosed value="true">Some Dehydration</ClassificationDiagnosed>			<!-- Some Dehyration (Classification) : TRUE -->
+		</ClassificationRule>
+	</Classification>
+
+	<!-- ============================================================ -->
+	<!-- PERSISTANT DIARRHOEA (SUB-CLASSIFICATION OF DIARRHOEA)		  -->
+	<!-- ============================================================ -->
+	<!-- ============================================================ -->
+	<!-- Classification: Persistent Diarrhoea 					  	  -->
+	<!-- Type: MODERATE												  -->
+	<!-- Classification: NO Dehydration							  	  -->
+	<!-- ============================================================ -->
+	<Classification>
+		<Category>persistent_diarrhoea</Category>
+		<Name>Persistent Diarrhoea</Name>
+		<Type>MODERATE</Type>
+		<Priority>2</Priority>
+		<ClassificationRule rule="ANY_CLASSIFICATION">
+			<ClassificationDiagnosed value="true">No Dehydration</ClassificationDiagnosed>				<!-- No Dehyration (Classification) : TRUE -->
+		</ClassificationRule>
+	</Classification>
+
+	<!-- ============================================================ -->
+	<!-- DYSENTERY (SUB-CLASSIFICATION OF DIARRHOEA)		  		  -->
+	<!-- ============================================================ -->
+	<!-- ============================================================ -->
+	<!-- Classification: Dysentery 			  	  					  -->
+	<!-- Type: MODERATE												  -->
+	<!-- Symptoms: Diarrhoea										  -->
+	<!-- 			AND												  -->
+	<!--		   Blood in the Stool								  -->
+	<!-- ============================================================ -->
+	<Classification>
+		<Category>dysentery</Category>
+		<Name>Dysentery</Name>
+		<Type>MODERATE</Type>
+		<Priority>2</Priority>
+		<SymptomRule rule="ANY_SYMPTOM">
+			<Symptom value="yes">diarrhoea_assessment_diarrhoea_symptom_id</Symptom>					<!-- Diarrhoea : YES-->
+		</SymptomRule>
+		<SymptomRule rule="ANY_SYMPTOM">
+			<Symptom value="yes">diarrhoea_assessment_blood_stools_symptom_id</Symptom>					<!-- Blood in the Stool : YES-->
+		</SymptomRule>
+	</Classification>
+
+	<!-- ============================================================ -->
+	<!-- HIGH MALARIA RISK (SUB-CLASSIFICATION OF FEVER) 			  -->
+	<!-- ============================================================ -->
+	<!-- ============================================================ -->
+	<!-- Classification: Very Severe Febrile Disease 	  			  -->
+	<!-- Type: SEVERE 												  -->
+	<!-- Symptoms: Fever 					  						  -->
+	<!-- 		    AND 										  	  -->
+	<!--  		   ((Any General Danger Sign) OR (STIFF NECK))		  -->
+	<!-- 			AND 											  -->
+	<!-- 		   High Malaria Risk Area  							  -->
+	<!-- ============================================================ -->
+	<Classification>
+		<Category>high_malaria_risk</Category>
+		<Name>Very Severe Febrile Disease</Name>
+		<Type>SEVERE</Type>
+		<Priority>1</Priority>
+		<SymptomRule rule="ANY_SYMPTOM">
+			<Symptom value="yes">fever_assessment_fever_symptom_id</Symptom>							<!-- Fever : YES -->
+		</SymptomRule>
+		<SymptomRule rule="ANY_SYMPTOM">
+			<Symptom value="yes">fever_assessment_stiff_neck_symptom_id</Symptom> 						<!-- Stiff Neck : YES -->
+			<!-- Any general danger sign -->
+			<Symptom value="yes">general_danger_signs_drink_breastfeed_symptom_id</Symptom> 			<!-- Not Able to Drink or Breastfeed : YES -->
+			<Symptom value="yes">general_danger_signs_vomits_everything_symptom_id</Symptom> 			<!-- Vomits Everything : YES -->
+			<Symptom value="yes">general_danger_signs_convulsions_symptom_id</Symptom> 					<!-- History of Convulsions : YES -->
+			<Symptom value="yes">general_danger_signs_lethargic_or_unconscious_symptom_id</Symptom>		<!-- Lethargic or Unconscious : YES -->
+			<Symptom value="yes">general_danger_signs_convulsing_now_symptom_id</Symptom>				<!-- Convulsing Now : YES -->
+		</SymptomRule>
+		<SymptomRule rule="ANY_SYMPTOM">
+			<Symptom value="high malaria risk">fever_assessment_malaria_risk_symptom_id</Symptom>		<!-- Malaria Risk : High Malaria Risk -->
+		</SymptomRule>
+	</Classification>
+
+	<!-- ============================================================ -->
+	<!-- HIGH MALARIA RISK (SUB-CLASSIFICATION OF FEVER) 			  -->
+	<!-- ============================================================ -->
+	<!-- ============================================================ -->
+	<!-- Classification: Malaria						  			  -->
+	<!-- Type: MODERATE 											  -->
+	<!-- Symptoms: Fever 					  						  -->
+	<!-- 			AND 											  -->
+	<!-- 		   High Malaria Risk Area  							  -->
+	<!-- ============================================================ -->
+	<Classification>
+		<Category>high_malaria_risk</Category>
+		<Name>Malaria</Name>
+		<Type>MODERATE</Type>
+		<Priority>2</Priority>
+		<SymptomRule rule="ANY_SYMPTOM">
+			<Symptom value="yes">fever_assessment_fever_symptom_id</Symptom>							<!-- Fever : YES -->
+		</SymptomRule>
+		<SymptomRule rule="ANY_SYMPTOM">
+			<Symptom value="high malaria risk">fever_assessment_malaria_risk_symptom_id</Symptom>		<!-- Malaria Risk : High Malaria Risk -->
+		</SymptomRule>
+	</Classification>
+	
+	<!-- ============================================================ -->
+	<!-- LOW MALARIA RISK (SUB-CLASSIFICATION OF FEVER) 			  -->
+	<!-- ============================================================ -->
+	<!-- ============================================================ -->
+	<!-- Classification: Very Severe Febrile Disease 	  			  -->
+	<!-- Type: SEVERE 												  -->
+	<!-- Symptoms: Fever(Open Question Here - What Radio Buttons identify Fever) -->
+	<!-- 		    AND 										  	  -->
+	<!--  		   ((Any General Danger Sign) OR (STIFF NECK))		  -->
+	<!-- 			AND 											  -->
+	<!-- 		   Low Malaria Risk Area  							  -->
+	<!-- ============================================================ -->
+	<Classification>
+		<Category>low_malaria_risk</Category>
+		<Name>Very Severe Febrile Disease</Name>
+		<Type>SEVERE</Type>
+		<Priority>1</Priority>
+		<SymptomRule rule="ANY_SYMPTOM">
+			<Symptom value="yes">fever_assessment_fever_symptom_id</Symptom>							<!-- Fever : YES -->
+		</SymptomRule>
+		<SymptomRule rule="ANY_SYMPTOM">
+			<Symptom value="yes">fever_assessment_stiff_neck_symptom_id</Symptom> 						<!-- Stiff Neck : YES -->
+			<!-- Any general danger sign -->
+			<Symptom value="yes">general_danger_signs_drink_breastfeed_symptom_id</Symptom> 			<!-- Not Able to Drink or Breastfeed : YES -->
+			<Symptom value="yes">general_danger_signs_vomits_everything_symptom_id</Symptom> 			<!-- Vomits Everything : YES -->
+			<Symptom value="yes">general_danger_signs_convulsions_symptom_id</Symptom> 					<!-- History of Convulsions : YES -->
+			<Symptom value="yes">general_danger_signs_lethargic_or_unconscious_symptom_id</Symptom>		<!-- Lethargic or Unconscious : YES -->
+			<Symptom value="yes">general_danger_signs_convulsing_now_symptom_id</Symptom>				<!-- Convulsing Now : YES -->
+		</SymptomRule>
+		<SymptomRule rule="ANY_SYMPTOM">
+			<Symptom value="low malaria risk">fever_assessment_malaria_risk_symptom_id</Symptom>		<!-- Malaria Risk : Low Malaria Risk -->
+		</SymptomRule>
+	</Classification>
+
+	<!-- ============================================================ -->
+	<!-- LOW MALARIA RISK (SUB-CLASSIFICATION OF FEVER) 			  -->
+	<!-- ============================================================ -->
+	<!-- ============================================================ -->
+	<!-- Classification: Malaria  			  						  -->
+	<!-- Type: MODERARTE											  -->
+	<!-- Symptoms: Fever 					  						  -->
+	<!-- 		    AND 										  	  -->
+	<!--  		   No Runny Nose		  							  -->
+	<!-- 			AND 											  -->
+	<!-- 		   No Measles			  							  -->
+	<!-- 			AND 											  -->
+	<!-- 		   No other cause of Fever?(Open Question Here) 	  -->
+	<!-- 			AND 											  -->
+	<!-- 		   Low Malaria Risk Area  							  -->
+	<!-- ============================================================ -->
+	<Classification>
+		<Category>low_malaria_risk</Category>
+		<Name>Malaria</Name>
+		<Type>MODERATE</Type>
+		<Priority>2</Priority>
+		<SymptomRule rule="ANY_SYMPTOM">
+			<Symptom value="yes">fever_assessment_fever_symptom_id</Symptom>							<!-- Fever : YES -->
+		</SymptomRule>
+		<SymptomRule rule="ANY_SYMPTOM">
+			<Symptom value="no">fever_assessment_runny_nose_symptom_id</Symptom> 						<!-- Runny Nose : NO -->
+		</SymptomRule>
+		<SymptomRule rule="ANY_SYMPTOM">
+			<Symptom value="no">fever_assessment_measles_symptom_id</Symptom> 							<!-- Measles : NO -->
+		</SymptomRule>
+		<SymptomRule rule="ANY_SYMPTOM">
+			<Symptom value="low malaria risk">fever_assessment_malaria_risk_symptom_id</Symptom>		<!-- Malaria Risk : Low Malaria Risk -->
+		</SymptomRule>
+	</Classification>
+
+	<!-- ============================================================ -->
+	<!-- LOW MALARIA RISK (SUB-CLASSIFICATION OF FEVER) 			  -->
+	<!-- ============================================================ -->
+	<!-- ============================================================ -->
+	<!-- Classification: Fever - Malaria Unlikely    				  -->
+	<!-- Type: LOW											  		  -->
+	<!-- Symptoms: Fever 					  						  -->
+	<!-- 		    AND 										  	  -->
+	<!--  		   (Runny Nose present	  							  -->
+	<!-- 			OR 												  -->
+	<!-- 		    Measles present			  						  -->
+	<!-- 			OR 												  -->
+	<!-- 		   Other cause of Fever present?(Open Question Here)) -->
+	<!-- 			AND 											  -->
+	<!-- 		   Low Malaria Risk Area  							  -->
+	<!-- ============================================================ -->
+	<Classification>
+		<Category>low_malaria_risk</Category>
+		<Name>Fever - Malaria Unlikely</Name>
+		<Type>LOW</Type>
+		<Priority>3</Priority>
+		<SymptomRule rule="ANY_SYMPTOM">
+			<Symptom value="yes">fever_assessment_fever_symptom_id</Symptom>							<!-- Fever : YES -->
+		</SymptomRule>
+		<SymptomRule rule="ANY_SYMPTOM">
+			<Symptom value="yes">fever_assessment_runny_nose_symptom_id</Symptom> 						<!-- Runny Nose : YES -->
+			<Symptom value="yes">fever_assessment_measles_symptom_id</Symptom> 							<!-- Measles : YES -->
+		</SymptomRule>
+		<SymptomRule rule="ANY_SYMPTOM">
+			<Symptom value="low malaria risk">fever_assessment_malaria_risk_symptom_id</Symptom>		<!-- Malaria Risk : Low Malaria Risk -->
+		</SymptomRule>
+	</Classification>
+
+	
+	<!-- ============================================================ -->
+	<!-- NO MALARIA RISK (SUB-CLASSIFICATION OF FEVER) 			  	  -->
+	<!-- ============================================================ -->
+	<!-- ============================================================ -->
+	<!-- Classification: Very Severe Febrile Disease    			  -->
+	<!-- Type: MODERATE										  		  -->
+	<!-- Symptoms: Fever 					  						  -->
+	<!-- 		    AND 										  	  -->
+	<!--  		   ((Any General Danger Sign) OR (STIFF NECK))		  -->
+	<!-- 			AND 											  -->
+	<!-- 		   No Malaria Risk Area  							  -->
+	<!-- ============================================================ -->
+	<Classification>
+		<Category>no_malaria_risk</Category>
+		<Name>Very Severe Febrile Disease</Name>
+		<Type>MODERATE</Type>
+		<Priority>2</Priority>
+		<SymptomRule rule="ANY_SYMPTOM">
+			<Symptom value="yes">fever_assessment_fever_symptom_id</Symptom>							<!-- Fever : YES -->
+		</SymptomRule>
+		<SymptomRule rule="ANY_SYMPTOM">
+			<Symptom value="yes">fever_assessment_stiff_neck_symptom_id</Symptom> 						<!-- Stiff Neck : YES -->
+			<!-- Any general danger sign -->
+			<Symptom value="yes">general_danger_signs_drink_breastfeed_symptom_id</Symptom> 			<!-- Not Able to Drink or Breastfeed : YES -->
+			<Symptom value="yes">general_danger_signs_vomits_everything_symptom_id</Symptom> 			<!-- Vomits Everything : YES -->
+			<Symptom value="yes">general_danger_signs_convulsions_symptom_id</Symptom> 					<!-- History of Convulsions : YES -->
+			<Symptom value="yes">general_danger_signs_lethargic_or_unconscious_symptom_id</Symptom>		<!-- Lethargic or Unconscious : YES -->
+			<Symptom value="yes">general_danger_signs_convulsing_now_symptom_id</Symptom>				<!-- Convulsing Now : YES -->
+		</SymptomRule>
+		<SymptomRule rule="ANY_SYMPTOM">
+			<Symptom value="no malaria risk">fever_assessment_malaria_risk_symptom_id</Symptom>			<!-- Malaria Risk : No Malaria Risk -->
+		</SymptomRule>
+	</Classification>
+	
+	<!-- ============================================================ -->
+	<!-- NO MALARIA RISK (SUB-CLASSIFICATION OF FEVER) 			  	  -->
+	<!-- ============================================================ -->
+	<!-- ============================================================ -->
+	<!-- Classification: Fever - Malaria Unlikely	    			  -->
+	<!-- Type: LOW											  		  -->
+	<!-- Symptoms: Fever 					  						  -->
+	<!-- 		    AND 										  	  -->
+	<!--  		   No General Danger Sign 							  -->
+	<!--            AND 											  -->
+	<!--		   No STIFF NECK									  -->
+	<!-- 			AND 											  -->
+	<!-- 		   No Malaria Risk Area  							  -->
+	<!-- ============================================================ -->
+	<Classification>
+		<Category>no_malaria_risk</Category>
+		<Name>Fever - Malaria Unlikely</Name>
+		<Type>LOW</Type>
+		<Priority>3</Priority>
+		<SymptomRule rule="ANY_SYMPTOM">
+			<Symptom value="yes">fever_assessment_fever_symptom_id</Symptom>							<!-- Fever : YES -->
+		</SymptomRule>
+		<SymptomRule rule="ANY_SYMPTOM">
+			<!-- general danger sign -->
+			<Symptom value="no">general_danger_signs_drink_breastfeed_symptom_id</Symptom> 				<!-- Not Able to Drink or Breastfeed : NO -->
+		</SymptomRule>
+		<SymptomRule rule="ANY_SYMPTOM">
+		    <!-- general danger sign -->
+			<Symptom value="no">general_danger_signs_vomits_everything_symptom_id</Symptom> 			<!-- Vomits Everything : NO -->
+		</SymptomRule>
+		<SymptomRule rule="ANY_SYMPTOM">
+		    <!-- general danger sign -->
+			<Symptom value="no">general_danger_signs_convulsions_symptom_id</Symptom> 					<!-- History of Convulsions : NO -->
+		</SymptomRule>
+		<SymptomRule rule="ANY_SYMPTOM">
+		    <!-- general danger sign -->
+			<Symptom value="no">general_danger_signs_lethargic_or_unconscious_symptom_id</Symptom>		<!-- Lethargic or Unconscious : NO -->
+		</SymptomRule>
+		<SymptomRule rule="ANY_SYMPTOM">
+		    <!-- general danger sign -->
+			<Symptom value="no">general_danger_signs_convulsing_now_symptom_id</Symptom>				<!-- Convulsing Now : NO -->
+		</SymptomRule>
+		<SymptomRule rule="ANY_SYMPTOM">
+			<Symptom value="no">fever_assessment_stiff_neck_symptom_id</Symptom> 						<!-- Stiff Neck : NO -->
+		</SymptomRule>
+		<SymptomRule rule="ANY_SYMPTOM">
+			<Symptom value="no malaria risk">fever_assessment_malaria_risk_symptom_id</Symptom>			<!-- Malaria Risk : No Malaria Risk -->
+		</SymptomRule>
+	</Classification>
+
+	<!-- ============================================================ -->
+	<!-- MEASLES					 								  -->
+	<!-- ============================================================ -->
+	<!-- ============================================================ -->
+	<!-- Classification: Severe Complicated Measles				 	  -->
+	<!-- Type: SEVERE 												  -->
+	<!-- Symptoms: Fever? / Measles Now? (Open Question Here)		  -->
+	<!-- 			    AND											  -->
+	<!--		   (Any General Danger Sign		 					  -->
+	<!-- 				OR 										  	  -->
+	<!--  		   Clouding of the Cornea 							  -->
+	<!-- 		        OR											  -->
+	<!-- 		   Deep Mouth Ulcers								  -->
+	<!-- 				OR											  -->
+	<!-- 		   Extensive Mouth Ulcers)							  -->
+	<!-- ============================================================ -->
+	<Classification>
+		<Category>measles</Category>
+		<Name>Severe Complicated Measles</Name>
+		<Type>SEVERE</Type>
+		<Priority>1</Priority>
+		<SymptomRule rule="ANY_SYMPTOM">
+			<Symptom value="yes">fever_assessment_fever_symptom_id</Symptom>							<!-- Fever : YES -->
+		</SymptomRule>
+		<SymptomRule rule="ANY_SYMPTOM">
+			<Symptom value="yes">fever_assessment_cornea_clouding_symptom_id</Symptom> 					<!-- Clouding of the Cornea : YES -->
+			<Symptom value="yes">fever_assessment_deep_mouth_ulcers_symptom_id</Symptom> 				<!-- Deep Mouth Ulcers : YES -->
+			<Symptom value="yes">fever_assessment_extensive_mouth_ulcers_symptom_id</Symptom> 			<!-- Extensive Mouth Ulcers : YES -->
+			<!-- Any general danger sign -->
+			<Symptom value="yes">general_danger_signs_drink_breastfeed_symptom_id</Symptom> 			<!-- Not Able to Drink or Breastfeed : YES -->
+			<Symptom value="yes">general_danger_signs_vomits_everything_symptom_id</Symptom> 			<!-- Vomits Everything : YES -->
+			<Symptom value="yes">general_danger_signs_convulsions_symptom_id</Symptom> 					<!-- History of Convulsions : YES -->
+			<Symptom value="yes">general_danger_signs_lethargic_or_unconscious_symptom_id</Symptom>		<!-- Lethargic or Unconscious : YES -->
+			<Symptom value="yes">general_danger_signs_convulsing_now_symptom_id</Symptom>				<!-- Convulsing Now : YES -->
+		</SymptomRule>
+	</Classification>
+
+	<!-- ============================================================ -->
+	<!-- MEASLES					 								  -->
+	<!-- ============================================================ -->
+	<!-- ============================================================ -->
+	<!-- Classification: Measles with Eye or Mouth Complications 	  -->
+	<!-- Type: MODERATE 											  -->
+	<!-- Symptoms: Fever? / Measles Now? (Open Question Here)		  -->
+	<!-- 			    AND											  -->
+	<!--		   (Pus Draining from the Eye		 				  -->
+	<!-- 				OR 										  	  -->
+	<!--  		   Mouth Ulcers)		 							  -->
+	<!-- ============================================================ -->
+	<Classification>
+		<Category>measles</Category>
+		<Name>Measles with Eye or Mouth Complications</Name>
+		<Type>MODERATE</Type>
+		<Priority>2</Priority>
+		<SymptomRule rule="ANY_SYMPTOM">
+			<Symptom value="yes">fever_assessment_fever_symptom_id</Symptom>							<!-- Fever : YES -->
+		</SymptomRule>
+		<SymptomRule rule="ANY_SYMPTOM">
+			<Symptom value="yes">fever_assessment_pus_draining_symptom_id</Symptom> 					<!-- Pus Draining from the Eye : YES -->
+			<Symptom value="yes">fever_assessment_mouth_ulcers_symptom_id</Symptom> 					<!-- Mouth Ulcers : YES -->
+		</SymptomRule>
+	</Classification>
+
+	<!-- ============================================================ -->
+	<!-- MEASLES					 								  -->
+	<!-- ============================================================ -->
+	<!-- ============================================================ -->
+	<!-- Classification: Measles								 	  -->
+	<!-- Type: LOW 											  		  -->
+	<!-- Symptoms: Fever? (Open Question Here)		  				  -->
+	<!-- 			    AND											  -->
+	<!--		   (Measles now or within the last 3 months)		  -->
+	<!-- ============================================================ -->
+	<Classification>
+		<Category>measles</Category>
+		<Name>Measles</Name>
+		<Type>LOW</Type>
+		<Priority>3</Priority>
+		<SymptomRule rule="ANY_SYMPTOM">
+			<Symptom value="yes">fever_assessment_fever_symptom_id</Symptom>							<!-- Fever : YES -->
+		</SymptomRule>
+		<SymptomRule rule="ANY_SYMPTOM">
+			<Symptom value="yes">fever_assessment_measles_symptom_id</Symptom> 							<!-- Measles now or within last three months : YES -->
+		</SymptomRule>
+	</Classification>
+	
+	<!-- ============================================================ -->
+	<!-- EAR PROBLEM				 								  -->
+	<!-- ============================================================ -->
+	<!-- ============================================================ -->
+	<!-- Classification: Mastoiditis							 	  -->
+	<!-- Type: SEVERE										  		  -->
+	<!-- Symptoms: Ear Problem						  				  -->
+	<!-- 			    AND											  -->
+	<!--		   Tender Swelling behind the Ear		  			  -->
+	<!-- ============================================================ -->
+	<Classification>
+		<Category>ear_problem</Category>
+		<Name>Mastoiditis</Name>
+		<Type>SEVERE</Type>
+		<Priority>1</Priority>
+		<SymptomRule rule="ANY_SYMPTOM">
+			<Symptom value="yes">ear_assessment_ear_problem_symptom_id</Symptom>						<!-- Ear Problem : YES -->
+		</SymptomRule>
+		<SymptomRule rule="ANY_SYMPTOM">
+			<Symptom value="yes">ear_assessment_tender_swelling_symptom_id</Symptom> 					<!-- Tender Swelling behind the Ear : YES -->
+		</SymptomRule>
+	</Classification>
+
+	<!-- ============================================================ -->
+	<!-- EAR PROBLEM				 								  -->
+	<!-- ============================================================ -->
+	<!-- ============================================================ -->
+	<!-- Classification: Acute Ear Infection					 	  -->
+	<!-- Type: MODERATE										  		  -->
+	<!-- Symptoms: Ear Problem						  				  -->
+	<!-- 				AND											  -->
+	<!-- 		   ((Ear Pus Discharge 								  -->
+	<!-- 				AND 										  -->
+	<!-- 		   Ear Pus Discharge less than 14 days)				  -->
+	<!-- 			    OR											  -->
+	<!--		   Ear Pain)							  			  -->
+	<!-- ============================================================ -->
+	<Classification>
+		<Category>ear_problem</Category>
+		<Name>Acute Ear Infection</Name>
+		<Type>MODERATE</Type>
+		<Priority>2</Priority>
+		<SymptomRule rule="ANY_SYMPTOM">
+			<Symptom value="yes">ear_assessment_ear_problem_symptom_id</Symptom>						<!-- Ear Problem : YES -->
+		</SymptomRule>
+		<SymptomRule rule="ANY_SYMPTOM">
+			<Symptom value="yes">TO_BE_DONE</Symptom> 													<!-- Ear Pus Discharge < 14 days : YES -->
+			<Symptom value="yes">ear_assessment_ear_pain_symptom_id</Symptom>							<!-- Ear Pain : YES -->
+		</SymptomRule>
+	</Classification>
+
+	<!-- ============================================================ -->
+	<!-- EAR PROBLEM				 								  -->
+	<!-- ============================================================ -->
+	<!-- ============================================================ -->
+	<!-- Classification: Chronic Ear Infection					 	  -->
+	<!-- Type: MODERATE										  		  -->
+	<!-- Symptoms: Ear Problem						  				  -->
+	<!-- 				AND											  -->
+	<!-- 		   ((Ear Pus Discharge 								  -->
+	<!-- 				AND 										  -->
+	<!-- 		   Ear Pus Discharge more than 14 days)				  -->
+	<!-- ============================================================ -->
+	<Classification>
+		<Category>ear_problem</Category>
+		<Name>Chronic Ear Infection</Name>
+		<Type>MODERATE</Type>
+		<Priority>2</Priority>
+		<SymptomRule rule="ANY_SYMPTOM">
+			<Symptom value="yes">ear_assessment_ear_problem_symptom_id</Symptom>						<!-- Ear Problem : YES -->
+		</SymptomRule>
+		<SymptomRule rule="ANY_SYMPTOM">
+			<Symptom value="yes">TO_BE_DONE</Symptom> 													<!-- Ear Pus Discharge > 14 days : YES -->
+		</SymptomRule>
+	</Classification>
+
+	<!-- ============================================================ -->
+	<!-- EAR PROBLEM				 								  -->
+	<!-- ============================================================ -->
+	<!-- ============================================================ -->
+	<!-- Classification: No Ear Infection						 	  -->
+	<!-- Type: LOW											  		  -->
+	<!-- Symptoms: Ear Problem						  				  -->
+	<!-- 				AND											  -->
+	<!-- 		   No Ear Pain		 								  -->
+	<!-- 				AND 										  -->
+	<!-- 		   No Ear Pus Discharge								  -->
+	<!-- ============================================================ -->
+	<Classification>
+		<Category>ear_problem</Category>
+		<Name>No Ear Infection</Name>
+		<Type>LOW</Type>
+		<Priority>3</Priority>
+		<SymptomRule rule="ANY_SYMPTOM">
+			<Symptom value="yes">ear_assessment_ear_problem_symptom_id</Symptom>						<!-- Ear Problem : YES -->
+		</SymptomRule>
+		<SymptomRule rule="ANY_SYMPTOM">
+			<Symptom value="no">ear_assessment_ear_pain_symptom_id</Symptom>							<!-- Ear Pain : NO -->
+		</SymptomRule>
+		<SymptomRule rule="ANY_SYMPTOM">
+			<Symptom value="no">ear_assessment_ear_discharge_symptom_id</Symptom>						<!-- Ear Pus Discharge : NO -->
+		</SymptomRule>
+	</Classification>
+
 </ClassificationRules>
