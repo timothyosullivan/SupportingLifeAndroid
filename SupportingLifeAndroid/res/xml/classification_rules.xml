@@ -278,7 +278,9 @@
 		<Type>SEVERE</Type>
 		<Priority>1</Priority>
 		<SymptomRule rule="ANY_SYMPTOM">
-			<Symptom value="yes">fever_assessment_fever_symptom_id</Symptom>							<!-- Fever : YES -->
+			<Symptom value="history">fever_assessment_fever_symptom_id</Symptom>						<!-- Fever : History -->
+			<Symptom value="feels hot">fever_assessment_fever_symptom_id</Symptom>						<!-- Fever : Feels Hot -->
+			<Symptom value="high temperature">fever_assessment_fever_symptom_id</Symptom>				<!-- Fever : High Temperature -->
 		</SymptomRule>
 		<SymptomRule rule="ANY_SYMPTOM">
 			<Symptom value="yes">fever_assessment_stiff_neck_symptom_id</Symptom> 						<!-- Stiff Neck : YES -->
@@ -310,7 +312,9 @@
 		<Type>MODERATE</Type>
 		<Priority>2</Priority>
 		<SymptomRule rule="ANY_SYMPTOM">
-			<Symptom value="yes">fever_assessment_fever_symptom_id</Symptom>							<!-- Fever : YES -->
+			<Symptom value="history">fever_assessment_fever_symptom_id</Symptom>						<!-- Fever : History -->
+			<Symptom value="feels hot">fever_assessment_fever_symptom_id</Symptom>						<!-- Fever : Feels Hot -->
+			<Symptom value="high temperature">fever_assessment_fever_symptom_id</Symptom>				<!-- Fever : High Temperature -->
 		</SymptomRule>
 		<SymptomRule rule="ANY_SYMPTOM">
 			<Symptom value="high malaria risk">fever_assessment_malaria_risk_symptom_id</Symptom>		<!-- Malaria Risk : High Malaria Risk -->
@@ -335,7 +339,9 @@
 		<Type>SEVERE</Type>
 		<Priority>1</Priority>
 		<SymptomRule rule="ANY_SYMPTOM">
-			<Symptom value="yes">fever_assessment_fever_symptom_id</Symptom>							<!-- Fever : YES -->
+			<Symptom value="history">fever_assessment_fever_symptom_id</Symptom>						<!-- Fever : History -->
+			<Symptom value="feels hot">fever_assessment_fever_symptom_id</Symptom>						<!-- Fever : Feels Hot -->
+			<Symptom value="high temperature">fever_assessment_fever_symptom_id</Symptom>				<!-- Fever : High Temperature -->
 		</SymptomRule>
 		<SymptomRule rule="ANY_SYMPTOM">
 			<Symptom value="yes">fever_assessment_stiff_neck_symptom_id</Symptom> 						<!-- Stiff Neck : YES -->
@@ -373,7 +379,9 @@
 		<Type>MODERATE</Type>
 		<Priority>2</Priority>
 		<SymptomRule rule="ANY_SYMPTOM">
-			<Symptom value="yes">fever_assessment_fever_symptom_id</Symptom>							<!-- Fever : YES -->
+			<Symptom value="history">fever_assessment_fever_symptom_id</Symptom>						<!-- Fever : History -->
+			<Symptom value="feels hot">fever_assessment_fever_symptom_id</Symptom>						<!-- Fever : Feels Hot -->
+			<Symptom value="high temperature">fever_assessment_fever_symptom_id</Symptom>				<!-- Fever : High Temperature -->
 		</SymptomRule>
 		<SymptomRule rule="ANY_SYMPTOM">
 			<Symptom value="no">fever_assessment_runny_nose_symptom_id</Symptom> 						<!-- Runny Nose : NO -->
@@ -408,7 +416,9 @@
 		<Type>LOW</Type>
 		<Priority>3</Priority>
 		<SymptomRule rule="ANY_SYMPTOM">
-			<Symptom value="yes">fever_assessment_fever_symptom_id</Symptom>							<!-- Fever : YES -->
+			<Symptom value="history">fever_assessment_fever_symptom_id</Symptom>						<!-- Fever : History -->
+			<Symptom value="feels hot">fever_assessment_fever_symptom_id</Symptom>						<!-- Fever : Feels Hot -->
+			<Symptom value="high temperature">fever_assessment_fever_symptom_id</Symptom>				<!-- Fever : High Temperature -->
 		</SymptomRule>
 		<SymptomRule rule="ANY_SYMPTOM">
 			<Symptom value="yes">fever_assessment_runny_nose_symptom_id</Symptom> 						<!-- Runny Nose : YES -->
@@ -438,7 +448,9 @@
 		<Type>MODERATE</Type>
 		<Priority>2</Priority>
 		<SymptomRule rule="ANY_SYMPTOM">
-			<Symptom value="yes">fever_assessment_fever_symptom_id</Symptom>							<!-- Fever : YES -->
+			<Symptom value="history">fever_assessment_fever_symptom_id</Symptom>						<!-- Fever : History -->
+			<Symptom value="feels hot">fever_assessment_fever_symptom_id</Symptom>						<!-- Fever : Feels Hot -->
+			<Symptom value="high temperature">fever_assessment_fever_symptom_id</Symptom>				<!-- Fever : High Temperature -->
 		</SymptomRule>
 		<SymptomRule rule="ANY_SYMPTOM">
 			<Symptom value="yes">fever_assessment_stiff_neck_symptom_id</Symptom> 						<!-- Stiff Neck : YES -->
@@ -474,7 +486,9 @@
 		<Type>LOW</Type>
 		<Priority>3</Priority>
 		<SymptomRule rule="ANY_SYMPTOM">
-			<Symptom value="yes">fever_assessment_fever_symptom_id</Symptom>							<!-- Fever : YES -->
+			<Symptom value="history">fever_assessment_fever_symptom_id</Symptom>						<!-- Fever : History -->
+			<Symptom value="feels hot">fever_assessment_fever_symptom_id</Symptom>						<!-- Fever : Feels Hot -->
+			<Symptom value="high temperature">fever_assessment_fever_symptom_id</Symptom>				<!-- Fever : High Temperature -->
 		</SymptomRule>
 		<SymptomRule rule="ANY_SYMPTOM">
 			<!-- general danger sign -->
@@ -526,7 +540,9 @@
 		<Type>SEVERE</Type>
 		<Priority>1</Priority>
 		<SymptomRule rule="ANY_SYMPTOM">
-			<Symptom value="yes">fever_assessment_fever_symptom_id</Symptom>							<!-- Fever : YES -->
+			<Symptom value="history">fever_assessment_fever_symptom_id</Symptom>						<!-- Fever : History -->
+			<Symptom value="feels hot">fever_assessment_fever_symptom_id</Symptom>						<!-- Fever : Feels Hot -->
+			<Symptom value="high temperature">fever_assessment_fever_symptom_id</Symptom>				<!-- Fever : High Temperature -->
 		</SymptomRule>
 		<SymptomRule rule="ANY_SYMPTOM">
 			<Symptom value="yes">fever_assessment_cornea_clouding_symptom_id</Symptom> 					<!-- Clouding of the Cornea : YES -->
@@ -559,7 +575,9 @@
 		<Type>MODERATE</Type>
 		<Priority>2</Priority>
 		<SymptomRule rule="ANY_SYMPTOM">
-			<Symptom value="yes">fever_assessment_fever_symptom_id</Symptom>							<!-- Fever : YES -->
+			<Symptom value="history">fever_assessment_fever_symptom_id</Symptom>						<!-- Fever : History -->
+			<Symptom value="feels hot">fever_assessment_fever_symptom_id</Symptom>						<!-- Fever : Feels Hot -->
+			<Symptom value="high temperature">fever_assessment_fever_symptom_id</Symptom>				<!-- Fever : High Temperature -->
 		</SymptomRule>
 		<SymptomRule rule="ANY_SYMPTOM">
 			<Symptom value="yes">fever_assessment_pus_draining_symptom_id</Symptom> 					<!-- Pus Draining from the Eye : YES -->
@@ -583,7 +601,9 @@
 		<Type>LOW</Type>
 		<Priority>3</Priority>
 		<SymptomRule rule="ANY_SYMPTOM">
-			<Symptom value="yes">fever_assessment_fever_symptom_id</Symptom>							<!-- Fever : YES -->
+			<Symptom value="history">fever_assessment_fever_symptom_id</Symptom>						<!-- Fever : History -->
+			<Symptom value="feels hot">fever_assessment_fever_symptom_id</Symptom>						<!-- Fever : Feels Hot -->
+			<Symptom value="high temperature">fever_assessment_fever_symptom_id</Symptom>				<!-- Fever : High Temperature -->
 		</SymptomRule>
 		<SymptomRule rule="ANY_SYMPTOM">
 			<Symptom value="yes">fever_assessment_measles_symptom_id</Symptom> 							<!-- Measles now or within last three months : YES -->
@@ -636,7 +656,7 @@
 			<Symptom value="yes">ear_assessment_ear_problem_symptom_id</Symptom>						<!-- Ear Problem : YES -->
 		</SymptomRule>
 		<SymptomRule rule="ANY_SYMPTOM">
-			<Symptom value="yes">TO_BE_DONE</Symptom> 													<!-- Ear Pus Discharge < 14 days : YES -->
+		<!-- 	<Symptom value="yes">TO_BE_DONE</Symptom> 					-->								<!-- Ear Pus Discharge < 14 days : YES -->
 			<Symptom value="yes">ear_assessment_ear_pain_symptom_id</Symptom>							<!-- Ear Pain : YES -->
 		</SymptomRule>
 	</Classification>
@@ -662,7 +682,7 @@
 			<Symptom value="yes">ear_assessment_ear_problem_symptom_id</Symptom>						<!-- Ear Problem : YES -->
 		</SymptomRule>
 		<SymptomRule rule="ANY_SYMPTOM">
-			<Symptom value="yes">TO_BE_DONE</Symptom> 													<!-- Ear Pus Discharge > 14 days : YES -->
+	<!-- 		<Symptom value="yes">TO_BE_DONE</Symptom> 							-->						<!-- Ear Pus Discharge > 14 days : YES -->
 		</SymptomRule>
 	</Classification>
 
@@ -713,7 +733,7 @@
 		<Priority>1</Priority>
 		<SymptomRule rule="ANY_SYMPTOM">
 			<Symptom value="yes">malnutrition_assessment_visible_severe_wasting_symptom_id</Symptom>	<!-- Visible Severe Wasting : YES -->
-			<Symptom value="severe">malnutrition_assessment_palmar_pallor_symptom_id</Symptom>			<!-- Palmar Pallor : Severe -->
+	<!-- 		<Symptom value="severe">malnutrition_assessment_palmar_pallor_symptom_id</Symptom>	 -->		<!-- Palmar Pallor : Severe -->
 			<Symptom value="yes">malnutrition_assessment_oedema_symptom_id</Symptom>					<!-- Oedema of Both Feet : YES -->
 		</SymptomRule>
 	</Classification>
@@ -734,8 +754,8 @@
 		<Type>MODERATE</Type>
 		<Priority>2</Priority>
 		<SymptomRule rule="ANY_SYMPTOM">
-			<Symptom value="some">malnutrition_assessment_palmar_pallor_symptom_id</Symptom>			<!-- Palmar Pallor : Some -->
-			<Symptom value="very low">malnutrition_assessment_weight_for_age_symptom_id</Symptom>		<!-- Weight for Age : Very Low -->
+<!-- 			<Symptom value="some">malnutrition_assessment_palmar_pallor_symptom_id</Symptom>		-->	<!-- Palmar Pallor : Some -->
+<!-- 			<Symptom value="very low">malnutrition_assessment_weight_for_age_symptom_id</Symptom>	-->	<!-- Weight for Age : Very Low -->
 		</SymptomRule>
 	</Classification>
 	
@@ -758,7 +778,7 @@
 		    <Symptom value="no">malnutrition_assessment_oedema_symptom_id</Symptom>						<!-- Oedema of Both Feet : NO -->
 		</SymptomRule>
 		<SymptomRule rule="ANY_SYMPTOM">
-		    <Symptom value="not very low">malnutrition_assessment_weight_for_age_symptom_id</Symptom>	<!-- Weight for Age : Not Very Low -->
+<!--		    <Symptom value="not very low">malnutrition_assessment_weight_for_age_symptom_id</Symptom>	--> <!-- Weight for Age : Not Very Low -->
 		</SymptomRule>
 		<SymptomRule rule="ANY_SYMPTOM">
 		    <Symptom value="no">malnutrition_assessment_visible_severe_wasting_symptom_id</Symptom>		<!-- Visible Severe Wasting : NO -->

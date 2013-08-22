@@ -3,6 +3,8 @@ package ie.ucc.bis.wizard.model;
 import ie.ucc.bis.R;
 import ie.ucc.bis.wizard.model.listener.RadioGroupCoordinatorListener;
 import ie.ucc.bis.wizard.model.listener.RadioGroupListener;
+import ie.ucc.bis.wizard.model.review.FeverReviewItem;
+import ie.ucc.bis.wizard.model.review.MalariaReviewItem;
 import ie.ucc.bis.wizard.model.review.ReviewItem;
 import ie.ucc.bis.wizard.ui.FeverAssessmentFragment;
 
@@ -73,13 +75,13 @@ public class FeverAssessmentPage extends AbstractPage {
     	reviewItemLabel = resources.getString(R.string.fever_assessment_review_fever);
     	reviewItemValue = getPageData().getString(FEVER_DATA_KEY + RadioGroupCoordinatorListener.RADIO_BUTTON_TEXT_DATA_KEY);
     	reviewItemSymptomId = resources.getString(R.string.fever_assessment_fever_symptom_id);
-    	reviewItems.add(new ReviewItem(reviewItemLabel, reviewItemValue, reviewItemSymptomId, getKey(), -1));
+    	reviewItems.add(new FeverReviewItem(reviewItemLabel, reviewItemValue, reviewItemSymptomId, getKey(), -1));
     	
     	// malaria risk
     	reviewItemLabel = resources.getString(R.string.fever_assessment_review_malaria_risk);
     	reviewItemValue = getPageData().getString(MALARIA_RISK_DATA_KEY + RadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
     	reviewItemSymptomId = resources.getString(R.string.fever_assessment_malaria_risk_symptom_id);
-    	reviewItems.add(new ReviewItem(reviewItemLabel, reviewItemValue, reviewItemSymptomId, getKey(), -1));
+    	reviewItems.add(new MalariaReviewItem(reviewItemLabel, reviewItemValue, reviewItemSymptomId, getKey(), -1));
     	
     	// duration
     	reviewItemLabel = resources.getString(R.string.fever_assessment_review_duration);

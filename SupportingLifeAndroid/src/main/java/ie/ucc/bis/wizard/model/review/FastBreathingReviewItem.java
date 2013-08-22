@@ -35,10 +35,7 @@ public class FastBreathingReviewItem extends ReviewItem implements Serializable 
 	 *  Generated Serial ID
 	 */
 	private static final long serialVersionUID = 3173057953023920926L;
-	
-	private final String YES_RESPONSE = "yes";
-	private final String NO_RESPONSE = "no";
-	
+		
 	private static final int TWO_MONTHS = 2;
 	private static final int TWELVE_MONTHS = 12;
 	private static final int FIVE_YEARS_IN_MONTHS = 60;

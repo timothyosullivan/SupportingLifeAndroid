@@ -4,6 +4,7 @@ import ie.ucc.bis.R;
 import ie.ucc.bis.activity.SupportingLifeBaseActivity;
 import ie.ucc.bis.domain.Patient;
 import ie.ucc.bis.ui.utilities.ClassificationUtils;
+import ie.ucc.bis.ui.utilities.LoggerUtils;
 import ie.ucc.bis.wizard.model.review.ReviewItem;
 
 import java.io.IOException;
@@ -14,7 +15,6 @@ import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 
 import android.content.res.XmlResourceParser;
-import android.util.Log;
 
 
 /**
@@ -38,14 +38,7 @@ public class RuleEngine {
 	private static final String CLASSIFICATION_SYMPTOM_RULE_ATTRIB = "rule";
 	private static final String CLASSIFICATION_SYMPTOM = "Symptom";
 	private static final String CLASSIFICATION_SYMPTOM_VALUE_ATTRIB = "value";
-	
-	// Symptom Rules
-	private static final String ANY_SYMPTOM_RULE = "ANY_SYMPTOM";
-	private static final String TWO_SYMPTOMS_REQUIRED_RULE = "TWO_SYMPTOMS_REQUIRED";
-	private static final int ONE_SYMPTOM_REQUIRED = 1;
-	private static final int TWO_SYMPTOMS_REQUIRED = 2;	
-	
-	
+		
 	private static final String LOG_TAG = "ie.ucc.bis.rule.engine.RuleEngine";
 	
 	private static ArrayList<Classification> systemClassifications;
@@ -121,10 +114,9 @@ public class RuleEngine {
 							symptomValueAttrib = xmlParser.getAttributeValue(null, CLASSIFICATION_SYMPTOM_VALUE_ATTRIB);
 							symptomId = xmlParser.nextText();
 							int identifier = supportingLifeBaseActivity.getResources().getIdentifier(symptomId, "string", "ie.ucc.bis");
-							symptomName = supportingLifeBaseActivity.getResources().getString(identifier);
-							
-							Symptom symptom = new Symptom(symptomName, symptomValueAttrib);
-							
+
+							symptomName = supportingLifeBaseActivity.getResources().getString(identifier);							
+							Symptom symptom = new Symptom(symptomName, symptomValueAttrib);								
 							symptomRule.getSymptoms().add(symptom);
 						}						
 						break;
@@ -148,10 +140,10 @@ public class RuleEngine {
 			ex.printStackTrace();
 		}
 		// DEBUG OUTPUT
-		Log.i(LOG_TAG, captureClassificationsDebugOutput());
-		Log.i(LOG_TAG, "--------------------------------------");
-		Log.i(LOG_TAG, "--------------------------------------");
-		Log.i(LOG_TAG, "--------------------------------------");
+		LoggerUtils.i(LOG_TAG, captureClassificationsDebugOutput());
+		LoggerUtils.i(LOG_TAG, "--------------------------------------");
+		LoggerUtils.i(LOG_TAG, "--------------------------------------");
+		LoggerUtils.i(LOG_TAG, "--------------------------------------");
 	}
 	
 	/**
@@ -195,7 +187,7 @@ public class RuleEngine {
 		patient.setClassifications((ArrayList<Classification>) uniqueClassificationGrouping);
 		
 		// DEBUG OUTPUT
-		Log.i(LOG_TAG, captureClassificationDebugOutput(patient.getClassifications()));
+		LoggerUtils.i(LOG_TAG, captureClassificationDebugOutput(patient.getClassifications()));
 	}
 
 	/**
@@ -215,11 +207,11 @@ public class RuleEngine {
 		ClassificationUtils.copyClassificationHeadlineDetails(classification, classificationMatch);
 		
 		for (SymptomRule symptomRule : classification.getSymptomRules()) {
-			if (symptomRule.getRule().equalsIgnoreCase(ANY_SYMPTOM_RULE)) {
-				hasClassification = checkSymptomRule(symptomRule, reviewItems, classificationMatch, ONE_SYMPTOM_REQUIRED);
+			if (symptomRule.getRule().equalsIgnoreCase(SymptomRuleCriteria.ANY_SYMPTOM.name())) {
+				hasClassification = checkSymptomRule(symptomRule, reviewItems, classificationMatch, SymptomRuleCriteria.ANY_SYMPTOM.getSymptomsRequired());
 			}
-			else if (symptomRule.getRule().equalsIgnoreCase(TWO_SYMPTOMS_REQUIRED_RULE)) {
-				hasClassification = checkSymptomRule(symptomRule, reviewItems, classificationMatch, TWO_SYMPTOMS_REQUIRED);
+			else if (symptomRule.getRule().equalsIgnoreCase(SymptomRuleCriteria.TWO_SYMPTOMS_REQUIRED.name())) {
+				hasClassification = checkSymptomRule(symptomRule, reviewItems, classificationMatch, SymptomRuleCriteria.TWO_SYMPTOMS_REQUIRED.getSymptomsRequired());
 			}
 			if (!hasClassification) {
 				break;
@@ -276,14 +268,14 @@ public class RuleEngine {
 	 * @param classifications
 	 * 
 	 */
-	private String captureClassificationDebugOutput(ArrayList<Classification> classifications) {
-		StringBuffer debugOutput = new StringBuffer();
+	private StringBuilder captureClassificationDebugOutput(ArrayList<Classification> classifications) {
+		StringBuilder debugOutput = new StringBuilder();
 		
 		for (Classification classification : classifications){
 			debugOutput.append(classification.debugOutput());
 		}
 		
-		return debugOutput.toString();
+		return debugOutput;
 	}	
 	
 	/**
@@ -291,7 +283,7 @@ public class RuleEngine {
 	 * Provides debug output of all classifications held in memory
 	 * 
 	 */
-	private String captureClassificationsDebugOutput() {
+	private StringBuilder captureClassificationsDebugOutput() {
 		return captureClassificationDebugOutput(getSystemClassifications());
 	}
 
