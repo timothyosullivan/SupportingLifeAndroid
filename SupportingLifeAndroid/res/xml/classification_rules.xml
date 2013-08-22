@@ -43,7 +43,7 @@
 	<!-- COUGH OR DIFFICULT BREATHING 								  -->
 	<!-- ============================================================ -->
 	<!-- ============================================================ -->
-	<!-- Classification: Severe Pneumonia or Very Severe Disease 	  -->
+	<!-- Classification: Pneumonia								 	  -->
 	<!-- Type: MODERATE												  -->
 	<!-- Symptoms: Cough or Difficult Breathing 					  -->
 	<!-- 				AND 										  -->
@@ -185,8 +185,8 @@
 	<!-- 			dehydration 									  -->
 	<!-- 			(Note: The 'not enough signs to classify as some  -->
 	<!-- 				   or severe dehydration' will be verified    -->
-	<!-- 				   implicity by the other dyhydration 		  -->
-	<!-- 				   not defaulting to true) 					  -->
+	<!-- 				   implicitly by the other dehydration 		  -->
+	<!-- 				   rules not defaulting to true) 			  -->
 	<!-- ============================================================ -->
 	<Classification>
 		<Category>dehydration</Category>
@@ -694,4 +694,78 @@
 		</SymptomRule>
 	</Classification>
 
+	<!-- ============================================================ -->
+	<!-- MALNUTRITION AND ANAEMIA	 								  -->
+	<!-- ============================================================ -->
+	<!-- ============================================================ -->
+	<!-- Classification: Severe Malnutrition or Severe Anaemia	 	  -->
+	<!-- Type: SEVERE										  		  -->
+	<!-- Symptoms: Visible Severe Wasting			  				  -->
+	<!-- 				OR											  -->
+	<!-- 		   Severe Palmar Pallor							  -->
+	<!-- 				OR 											  -->
+	<!-- 		   Oedema of Both Feet								  -->
+	<!-- ============================================================ -->
+	<Classification>
+		<Category>malnutrition_and_anaemia</Category>
+		<Name>Severe Malnutrition or Severe Anaemia</Name>
+		<Type>SEVERE</Type>
+		<Priority>1</Priority>
+		<SymptomRule rule="ANY_SYMPTOM">
+			<Symptom value="yes">malnutrition_assessment_visible_severe_wasting_symptom_id</Symptom>	<!-- Visible Severe Wasting : YES -->
+			<Symptom value="severe">malnutrition_assessment_palmar_pallor_symptom_id</Symptom>			<!-- Palmar Pallor : Severe -->
+			<Symptom value="yes">malnutrition_assessment_oedema_symptom_id</Symptom>					<!-- Oedema of Both Feet : YES -->
+		</SymptomRule>
+	</Classification>
+	
+	<!-- ============================================================ -->
+	<!-- MALNUTRITION AND ANAEMIA	 								  -->
+	<!-- ============================================================ -->
+	<!-- ============================================================ -->
+	<!-- Classification: Anaemia or Very Low Weight				 	  -->
+	<!-- Type: MODERATE										  		  -->
+	<!-- Symptoms: Some Palmar Pallor				  				  -->
+	<!-- 				OR											  -->
+	<!-- 		   Very Low Weight for Age							  -->
+	<!-- ============================================================ -->
+	<Classification>
+		<Category>malnutrition_and_anaemia</Category>
+		<Name>Anaemia or Very Low Weight</Name>
+		<Type>MODERATE</Type>
+		<Priority>2</Priority>
+		<SymptomRule rule="ANY_SYMPTOM">
+			<Symptom value="some">malnutrition_assessment_palmar_pallor_symptom_id</Symptom>			<!-- Palmar Pallor : Some -->
+			<Symptom value="very low">malnutrition_assessment_weight_for_age_symptom_id</Symptom>		<!-- Weight for Age : Very Low -->
+		</SymptomRule>
+	</Classification>
+	
+	<!-- ============================================================ -->
+	<!-- MALNUTRITION AND ANAEMIA	 								  -->
+	<!-- ============================================================ -->
+	<!-- ============================================================ -->
+	<!-- Classification: No Anaemia or Not Very Low Weight		 	  -->
+	<!-- Type: LOW											  		  -->
+	<!-- Symptoms: No other signs of Malnutrition	  				  -->
+	<!-- 				AND											  -->
+	<!-- 		   Not Very Low Weight for Age						  -->
+	<!-- ============================================================ -->
+	<Classification>
+		<Category>malnutrition_and_anaemia</Category>
+		<Name>No Anaemia and Not Very Low Weight</Name>
+		<Type>LOW</Type>
+		<Priority>3</Priority>
+		<SymptomRule rule="ANY_SYMPTOM">
+		    <Symptom value="no">malnutrition_assessment_oedema_symptom_id</Symptom>						<!-- Oedema of Both Feet : NO -->
+		</SymptomRule>
+		<SymptomRule rule="ANY_SYMPTOM">
+		    <Symptom value="not very low">malnutrition_assessment_weight_for_age_symptom_id</Symptom>	<!-- Weight for Age : Not Very Low -->
+		</SymptomRule>
+		<SymptomRule rule="ANY_SYMPTOM">
+		    <Symptom value="no">malnutrition_assessment_visible_severe_wasting_symptom_id</Symptom>		<!-- Visible Severe Wasting : NO -->
+		</SymptomRule>
+		<SymptomRule rule="ANY_SYMPTOM">
+			<Symptom value="no">malnutrition_assessment_palmar_pallor_symptom_id</Symptom>				<!-- Palmar Pallor : NO -->
+		</SymptomRule>
+	</Classification>
+	
 </ClassificationRules>
