@@ -4,7 +4,6 @@ import ie.ucc.bis.R;
 import ie.ucc.bis.activity.SupportingLifeBaseActivity;
 import ie.ucc.bis.domain.Patient;
 import ie.ucc.bis.ui.utilities.ClassificationUtils;
-import ie.ucc.bis.ui.utilities.LoggerUtils;
 import ie.ucc.bis.wizard.model.review.ReviewItem;
 
 import java.io.IOException;
@@ -140,10 +139,10 @@ public class RuleEngine {
 			ex.printStackTrace();
 		}
 		// DEBUG OUTPUT
-		LoggerUtils.i(LOG_TAG, captureClassificationsDebugOutput());
-		LoggerUtils.i(LOG_TAG, "--------------------------------------");
-		LoggerUtils.i(LOG_TAG, "--------------------------------------");
-		LoggerUtils.i(LOG_TAG, "--------------------------------------");
+//		LoggerUtils.i(LOG_TAG, captureClassificationsDebugOutput());
+//		LoggerUtils.i(LOG_TAG, "--------------------------------------");
+//		LoggerUtils.i(LOG_TAG, "--------------------------------------");
+//		LoggerUtils.i(LOG_TAG, "--------------------------------------");
 	}
 	
 	/**
@@ -187,7 +186,7 @@ public class RuleEngine {
 		patient.setClassifications((ArrayList<Classification>) uniqueClassificationGrouping);
 		
 		// DEBUG OUTPUT
-		LoggerUtils.i(LOG_TAG, captureClassificationDebugOutput(patient.getClassifications()));
+		// LoggerUtils.i(LOG_TAG, captureClassificationDebugOutput(patient.getClassifications()));
 	}
 
 	/**
@@ -268,7 +267,7 @@ public class RuleEngine {
 	 * @param classifications
 	 * 
 	 */
-	private StringBuilder captureClassificationDebugOutput(ArrayList<Classification> classifications) {
+	private StringBuilder captureClassificationDebugOutput(List<Classification> classifications) {
 		StringBuilder debugOutput = new StringBuilder();
 		
 		for (Classification classification : classifications){

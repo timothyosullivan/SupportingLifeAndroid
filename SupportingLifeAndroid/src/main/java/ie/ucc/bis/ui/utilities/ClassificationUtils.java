@@ -2,7 +2,6 @@ package ie.ucc.bis.ui.utilities;
 
 import ie.ucc.bis.rule.engine.Classification;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class ClassificationUtils {
@@ -17,7 +16,7 @@ public class ClassificationUtils {
 	 * @return Classification
 	 */
 	public static Classification retrieveHighestPriorityClassification(String classificationCategoryId, 
-			ArrayList<Classification> classifications) {
+			List<Classification> classifications) {
 		
 		int priority = -1;
 		Classification highestClassification = new Classification();

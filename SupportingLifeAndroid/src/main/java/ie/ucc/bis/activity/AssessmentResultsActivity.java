@@ -4,6 +4,7 @@ import ie.ucc.bis.R;
 import ie.ucc.bis.domain.Patient;
 import ie.ucc.bis.rule.engine.RuleEngine;
 import ie.ucc.bis.wizard.model.review.ReviewItem;
+import ie.ucc.bis.wizard.ui.AssessmentClassificationsFragment;
 import ie.ucc.bis.wizard.ui.AssessmentResultsReviewFragment;
 
 import java.util.ArrayList;
@@ -76,7 +77,7 @@ public class AssessmentResultsActivity extends SupportingLifeBaseActivity {
         
         // add classifications tab
         getTabsAdapter().addTab(bar.newTab().setText(R.string.assessment_results_classifications_tab_title),
-        		AssessmentResultsReviewFragment.class, null);
+        		AssessmentClassificationsFragment.class, null);
         
         // add treatments tab
         getTabsAdapter().addTab(bar.newTab().setText(R.string.assessment_results_treatments_tab_title),

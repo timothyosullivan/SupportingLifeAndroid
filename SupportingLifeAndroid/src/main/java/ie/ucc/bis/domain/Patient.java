@@ -4,6 +4,7 @@ import ie.ucc.bis.rule.engine.Classification;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class Patient implements Serializable {
@@ -13,7 +14,7 @@ public class Patient implements Serializable {
 	private long patientId;
 	private String firstName;
 	private String surname;
-	private ArrayList<Classification> classifications;
+	private List<Classification> classifications;
 	
 	public Patient() {
 		setClassifications(new ArrayList<Classification>());
@@ -88,14 +89,14 @@ public class Patient implements Serializable {
 	/**
 	 * Getter Method: getClassifications()
 	 */
-	public ArrayList<Classification> getClassifications() {
+	public List<Classification> getClassifications() {
 		return classifications;
 	}
 
 	/**
 	 * Setter Method: setClassifications()
 	 */
-	public void setClassifications(ArrayList<Classification> classifications) {
+	public void setClassifications(List<Classification> classifications) {
 		this.classifications = classifications;
 	}	
 }
