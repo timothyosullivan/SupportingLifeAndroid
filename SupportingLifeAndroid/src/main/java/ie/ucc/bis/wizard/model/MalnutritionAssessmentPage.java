@@ -4,6 +4,7 @@ import ie.ucc.bis.R;
 import ie.ucc.bis.wizard.model.listener.RadioGroupListener;
 import ie.ucc.bis.wizard.model.review.PalmarPallorReviewItem;
 import ie.ucc.bis.wizard.model.review.ReviewItem;
+import ie.ucc.bis.wizard.model.review.WeightForAgeReviewItem;
 import ie.ucc.bis.wizard.ui.MalnutritionAssessmentFragment;
 
 import java.util.ArrayList;
@@ -69,7 +70,7 @@ public class MalnutritionAssessmentPage extends AbstractPage {
     	reviewItemLabel = resources.getString(R.string.malnutrition_assessment_review_weight_for_age);
     	reviewItemValue = getPageData().getString(WEIGHT_FOR_AGE_DATA_KEY + RadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
     	reviewItemSymptomId = resources.getString(R.string.malnutrition_assessment_weight_for_age_symptom_id);
-    	reviewItems.add(new ReviewItem(reviewItemLabel, reviewItemValue, reviewItemSymptomId, getKey(), -1));
+    	reviewItems.add(new WeightForAgeReviewItem(reviewItemLabel, reviewItemValue, reviewItemSymptomId, getKey(), -1));
     	
     	// visible severe wasting
     	reviewItemLabel = resources.getString(R.string.malnutrition_assessment_review_visible_severe_wasting);
