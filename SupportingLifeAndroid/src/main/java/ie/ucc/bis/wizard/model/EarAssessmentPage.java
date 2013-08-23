@@ -2,6 +2,7 @@ package ie.ucc.bis.wizard.model;
 
 import ie.ucc.bis.R;
 import ie.ucc.bis.wizard.model.listener.RadioGroupListener;
+import ie.ucc.bis.wizard.model.review.EarDischargeDurationReviewItem;
 import ie.ucc.bis.wizard.model.review.ReviewItem;
 import ie.ucc.bis.wizard.ui.EarAssessmentFragment;
 
@@ -78,7 +79,7 @@ public class EarAssessmentPage extends AbstractPage {
     	// for how long? (days) - ear discharge duration
     	reviewItemLabel = resources.getString(R.string.ear_assessment_review_ear_discharge_duration);
     	reviewItemSymptomId = resources.getString(R.string.ear_assessment_ear_discharge_duration_symptom_id);
-    	reviewItems.add(new ReviewItem(reviewItemLabel, getPageData().getString(EAR_DISCHARGE_DURATION_DATA_KEY), reviewItemSymptomId, getKey(), -1));
+    	reviewItems.add(new EarDischargeDurationReviewItem(reviewItemLabel, getPageData().getString(EAR_DISCHARGE_DURATION_DATA_KEY), reviewItemSymptomId, getKey(), -1));
     	
     	// tender swelling
     	reviewItemLabel = resources.getString(R.string.ear_assessment_review_tender_swelling);

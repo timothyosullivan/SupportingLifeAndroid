@@ -656,7 +656,7 @@
 			<Symptom value="yes">ear_assessment_ear_problem_symptom_id</Symptom>						<!-- Ear Problem : YES -->
 		</SymptomRule>
 		<SymptomRule rule="ANY_SYMPTOM">
-		<!-- 	<Symptom value="yes">TO_BE_DONE</Symptom> 					-->								<!-- Ear Pus Discharge < 14 days : YES -->
+		 	<Symptom value="no">ear_assessment_ear_discharge_duration_symptom_id</Symptom>	 			<!-- Ear Pus Discharge >= 14 days : NO -->
 			<Symptom value="yes">ear_assessment_ear_pain_symptom_id</Symptom>							<!-- Ear Pain : YES -->
 		</SymptomRule>
 	</Classification>
@@ -682,7 +682,10 @@
 			<Symptom value="yes">ear_assessment_ear_problem_symptom_id</Symptom>						<!-- Ear Problem : YES -->
 		</SymptomRule>
 		<SymptomRule rule="ANY_SYMPTOM">
-	<!-- 		<Symptom value="yes">TO_BE_DONE</Symptom> 							-->						<!-- Ear Pus Discharge > 14 days : YES -->
+			<Symptom value="yes">ear_assessment_ear_discharge_symptom_id</Symptom>						<!-- Ear Pus Discharge : YES -->
+		</SymptomRule>
+		<SymptomRule rule="ANY_SYMPTOM">
+			<Symptom value="yes">ear_assessment_ear_discharge_duration_symptom_id</Symptom>				<!-- Ear Pus Discharge >= 14 days : YES -->
 		</SymptomRule>
 	</Classification>
 
