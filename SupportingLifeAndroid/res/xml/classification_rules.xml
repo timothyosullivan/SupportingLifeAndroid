@@ -736,7 +736,7 @@
 		<Priority>1</Priority>
 		<SymptomRule rule="ANY_SYMPTOM">
 			<Symptom value="yes">malnutrition_assessment_visible_severe_wasting_symptom_id</Symptom>	<!-- Visible Severe Wasting : YES -->
-	<!-- 		<Symptom value="severe">malnutrition_assessment_palmar_pallor_symptom_id</Symptom>	 -->		<!-- Palmar Pallor : Severe -->
+	 		<Symptom value="severe">malnutrition_assessment_palmar_pallor_symptom_id</Symptom>	 		<!-- Palmar Pallor : Severe -->
 			<Symptom value="yes">malnutrition_assessment_oedema_symptom_id</Symptom>					<!-- Oedema of Both Feet : YES -->
 		</SymptomRule>
 	</Classification>
@@ -757,7 +757,7 @@
 		<Type>MODERATE</Type>
 		<Priority>2</Priority>
 		<SymptomRule rule="ANY_SYMPTOM">
-<!-- 			<Symptom value="some">malnutrition_assessment_palmar_pallor_symptom_id</Symptom>		-->	<!-- Palmar Pallor : Some -->
+ 			<Symptom value="some">malnutrition_assessment_palmar_pallor_symptom_id</Symptom>			<!-- Palmar Pallor : Some -->
 <!-- 			<Symptom value="very low">malnutrition_assessment_weight_for_age_symptom_id</Symptom>	-->	<!-- Weight for Age : Very Low -->
 		</SymptomRule>
 	</Classification>
