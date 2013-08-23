@@ -65,6 +65,6 @@ public class ClassificationUtils {
 		classificationMatch.setName(classification.getName());
 		classificationMatch.setType(classification.getType());
 		classificationMatch.setCategory(classification.getCategory());
+		classificationMatch.setPriority(classification.getPriority());
 	}
-
 }

@@ -8,6 +8,8 @@ import ie.ucc.bis.wizard.model.review.ReviewItem;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import org.xmlpull.v1.XmlPullParser;
@@ -183,6 +185,11 @@ public class RuleEngine {
 				uniqueClassificationGrouping.add(highestPriorityClassification);
 			}
 		}
+		
+		// 4. Finally, we should order the classifications such that the highest priority 
+		//    classifications are listed first. This will help alert the HSA to the 
+		//    severity of the patient's condition.
+		Collections.sort(uniqueClassificationGrouping, new ClassificationComparator());
 		patient.setClassifications((ArrayList<Classification>) uniqueClassificationGrouping);
 		
 		// DEBUG OUTPUT

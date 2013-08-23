@@ -70,17 +70,17 @@ public class AssessmentResultsActivity extends SupportingLifeBaseActivity {
  
         // attach the Tabs to the fragment classes and set the tab title.
         setTabsAdapter(new TabsAdapter(this, getViewPager()));
-
-        // add assessment review items tab
-        getTabsAdapter().addTab(bar.newTab().setText(R.string.assessment_results_review_tab_title),
-        		AssessmentResultsReviewFragment.class, null);
-        
+       
         // add classifications tab
         getTabsAdapter().addTab(bar.newTab().setText(R.string.assessment_results_classifications_tab_title),
         		AssessmentClassificationsFragment.class, null);
         
         // add treatments tab
         getTabsAdapter().addTab(bar.newTab().setText(R.string.assessment_results_treatments_tab_title),
+        		AssessmentResultsReviewFragment.class, null);
+        
+        // add assessment review items tab
+        getTabsAdapter().addTab(bar.newTab().setText(R.string.assessment_results_review_tab_title),
         		AssessmentResultsReviewFragment.class, null);
  
        if (savedInstanceState != null) {

@@ -77,12 +77,35 @@ public class ClassificationAdapter extends BaseAdapter {
     			rootView = inflater.inflate(R.layout.list_item_review, container, false);
     			((TextView) rootView.findViewById(R.id.review_list_item_label)).setText(classification.getName());
     			((TextView) rootView.findViewById(R.id.review_list_item_value)).setText(classification.getType());
+    			View classificationView = rootView.findViewById(R.id.review_list_item);
+    			colourCodeClassification(classification, classificationView);
     			break;
         } // end of switch
         return rootView;
     }
 
-    public int getCount() {
+    /**
+     * Method: colourCodeClassification
+     * 
+     * Responsible for colour coding classification based on the 
+     * severity of the classification
+     * 
+     * @param classification
+     * @param classificationView
+     */
+    private void colourCodeClassification(Classification classification, View classificationView) {
+		if (classification.getType().equalsIgnoreCase(Classification.SEVERE_CLASSIFICATION_TYPE)) {
+			classificationView.setBackgroundColor(getAssessmentClassificationsFragment().getResources().getColor(R.color.Red));
+		}
+		else if (classification.getType().equalsIgnoreCase(Classification.MODERATE_CLASSIFICATION_TYPE)) {
+			classificationView.setBackgroundColor(getAssessmentClassificationsFragment().getResources().getColor(R.color.Yellow));
+		}
+		else {
+			classificationView.setBackgroundColor(getAssessmentClassificationsFragment().getResources().getColor(R.color.LightGreen));
+		}
+	}
+
+	public int getCount() {
         return getAssessmentClassificationsFragment().getPatient().getClassifications().size();
     }
 

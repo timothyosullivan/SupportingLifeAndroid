@@ -38,6 +38,10 @@ public class Classification implements Serializable {
 	 * Generated Serial ID
 	 */
 	private static final long serialVersionUID = 2250655542678899484L;
+	
+	public static final String SEVERE_CLASSIFICATION_TYPE = "SEVERE";
+	public static final String MODERATE_CLASSIFICATION_TYPE = "MODERATE";
+	public static final String LOW_CLASSIFICATION_TYPE = "LOW";
 
 	private String category;
 	private String name;
@@ -141,4 +145,5 @@ public class Classification implements Serializable {
 		
 		return debugOutput.toString();
 	}
+
 }
