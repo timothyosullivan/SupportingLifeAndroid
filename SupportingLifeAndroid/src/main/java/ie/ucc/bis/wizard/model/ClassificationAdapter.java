@@ -106,7 +106,10 @@ public class ClassificationAdapter extends BaseAdapter {
 	}
 
 	public int getCount() {
-        return getAssessmentClassificationsFragment().getPatient().getClassifications().size();
+		// null pointer exception was being called here previously periodically as 
+		// AssessmentClassificationFragment was null when querying for number of classifications
+		// associated with Patient - so now holding this information locally
+		return getAssessmentClassificationsFragment().getPatient().getClassifications().size();
     }
 
 	/**

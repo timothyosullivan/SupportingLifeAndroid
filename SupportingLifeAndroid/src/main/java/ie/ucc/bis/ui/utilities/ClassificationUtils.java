@@ -19,11 +19,11 @@ public class ClassificationUtils {
 			List<Classification> classifications) {
 		
 		int priority = -1;
-		Classification highestClassification = new Classification();
+		Classification highestClassification = null;
 		
 		for (Classification classification : classifications) {
 			if (classification.getCategory().equals(classificationCategoryId)) {
-				if (classification.getPriority() > priority) {
+				if (highestClassification == null || classification.getPriority() < priority) {
 					highestClassification = classification;
 					priority = classification.getPriority();
 				}
@@ -41,11 +41,28 @@ public class ClassificationUtils {
 	 * 
 	 * @return: True - if classification is in list
 	 */
-	public static boolean containsClassificationCategoryId(List<Classification> classificationList,
-			String classificationCategoryId) {
+	public static boolean containsClassificationCategoryId(List<Classification> classificationList, String classificationCategoryId) {
 		
 		for (Classification classification : classificationList) {
-			if (classification.getCategory().equals(classificationCategoryId)) {
+			if (classification.getCategory() != null && classification.getCategory().equals(classificationCategoryId)) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	/**
+	 * Utility method to determine whether a classification list contains
+	 * a particular classification (identified by it's name)
+	 * 
+	 * @param classificationName
+	 * @param classificationList
+	 * 
+	 * @return: True - if classification is in list
+	 */
+	public static boolean containsClassificationName(String classificationName, List<Classification> classificationList) {
+		for (Classification classification : classificationList) {
+			if (classification.getName().equals(classificationName)) {
 				return true;
 			}
 		}

@@ -28,6 +28,19 @@ import java.util.List;
  *		</SymptomRule>
  *	</Classification>
  * 
+ * OR
+ * 
+ * 	<Classification>
+ * 		<Category>persistent_diarrhoea</Category>
+ * 		<Name>Severe Persistent Diarrhoea</Name>
+ * 		<Type>SEVERE</Type>
+ * 		<Priority>1</Priority>
+ * 		<ClassificationRule rule="ANY_CLASSIFICATION">
+ * 			<ClassificationDiagnosed value="true">Severe Dehydration</ClassificationDiagnosed>			<!-- Severe Dehyration (Classification) : TRUE -->
+ * 			<ClassificationDiagnosed value="true">Some Dehydration</ClassificationDiagnosed>			<!-- Some Dehyration (Classification) : TRUE -->
+ * 		</ClassificationRule>
+ * </Classification>
+ * 
  * @author TOSullivan
  *
  */
@@ -48,6 +61,7 @@ public class Classification implements Serializable {
 	private String type;
 	private int priority;
 	private List<SymptomRule> symptomRules;
+	private List<ClassificationRule> classificationRules;
  
 	/**
 	 * Constructor
@@ -55,6 +69,7 @@ public class Classification implements Serializable {
 	 */
 	public Classification() {
 		setSymptomRules(new ArrayList<SymptomRule>());
+		setClassificationRules(new ArrayList<ClassificationRule>());
 	}
 		
 	/**
@@ -128,6 +143,20 @@ public class Classification implements Serializable {
 	}
 
 	/**
+	 * Getter Method: getClassificationRules()
+	 */
+	public List<ClassificationRule> getClassificationRules() {
+		return classificationRules;
+	}
+
+	/**
+	 * Setter Method: setClassificationRules()
+	 */
+	public void setClassificationRules(List<ClassificationRule> classificationRules) {
+		this.classificationRules = classificationRules;
+	}
+
+	/**
 	 * 
 	 * Provides debug output of classification rule
 	 * 
@@ -139,8 +168,16 @@ public class Classification implements Serializable {
 		debugOutput.append("Category: " + getCategory() + "\n");
 		debugOutput.append("Name: " + getName() + "\n");
 		debugOutput.append("Type: " + getType() + "\n");
-		for (SymptomRule symptomRule : getSymptomRules()) {
-			debugOutput.append(symptomRule.debugOutput());
+		
+		if (getSymptomRules().size() != 0) {
+			for (SymptomRule symptomRule : getSymptomRules()) {
+				debugOutput.append(symptomRule.debugOutput());
+			}
+		}
+		if (getClassificationRules().size() != 0) {
+			for (ClassificationRule classificationRule : getClassificationRules()) {
+				debugOutput.append(classificationRule.debugOutput());
+			}		
 		}
 		
 		return debugOutput.toString();

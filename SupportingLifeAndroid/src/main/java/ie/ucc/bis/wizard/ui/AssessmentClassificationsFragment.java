@@ -30,10 +30,11 @@ public class AssessmentClassificationsFragment extends ListFragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setClassificationAdapter(new ClassificationAdapter(this));
         
         // obtain a reference to the patient being dealt with...
         setPatient(((AssessmentResultsActivity) getActivity()).getPatient());
+        
+        setClassificationAdapter(new ClassificationAdapter(this));
     }
     
     @Override
