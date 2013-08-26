@@ -162,9 +162,9 @@ public class ClassificationRuleEngine {
 			ex.printStackTrace();
 		}
 		// DEBUG OUTPUT
-		LoggerUtils.i(LOG_TAG, captureClassificationsDebugOutput());
-		LoggerUtils.i(LOG_TAG, "--------------------------------------");
-		LoggerUtils.i(LOG_TAG, "--------------------------------------");
+//		LoggerUtils.i(LOG_TAG, captureClassificationsDebugOutput());
+//		LoggerUtils.i(LOG_TAG, "--------------------------------------");
+//		LoggerUtils.i(LOG_TAG, "--------------------------------------");
 		LoggerUtils.i(LOG_TAG, "--------------------------------------");
 	}
 	
