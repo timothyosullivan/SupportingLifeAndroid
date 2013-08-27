@@ -57,6 +57,8 @@ public class FeverAssessmentFragment extends Fragment {
     private DynamicView deepMouthUlcersDynamicView;
     private DynamicView extensiveMouthUlcersDynamicView;
     private View mouthUlcersView;
+    private DynamicView feverDurationDynamicView;
+    private View feverView;
     private ViewGroup animatedView;
     private Boolean animatedViewInVisibleState;
 
@@ -116,29 +118,15 @@ public class FeverAssessmentFragment extends Fragment {
             Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_wizard_page_fever_assessment, container, false);
         ((TextView) rootView.findViewById(android.R.id.title)).setText(getFeverAssessmentPage().getTitle());
-                
-        // need to add superscript text to the degree Celsius label of a 
-        // fever radio button
-        RadioButton feverTempRadioButton = (RadioButton) rootView.findViewById(R.id.fever_assessment_radio_fever_temperature);
-        feverTempRadioButton.setText(Html.fromHtml(getText(R.string.fever_assessment_radio_fever_temperature) + "<sup>o</sup>" + "C"));
-                
-        // fever
-        setFeverCustomRadioGroup((ToggleButtonGroupTableLayout) rootView.findViewById(R.id.fever_assessment_radio_fever));
-        getFeverCustomRadioGroup().check(getFeverAssessmentPage()
-        		.getPageData().getInt(FeverAssessmentPage.FEVER_DATA_KEY));
-        
+
+        // configure the animated view of fever duration 
+        // i.e. Fever --> Fever Duration
+        configureFeverDurationAnimatedView(rootView);
+                        
         // malaria risk
         setMalariaRiskRadioGroup((RadioGroup) rootView.findViewById(R.id.fever_assessment_radio_malaria_risk));
         getMalariaRiskRadioGroup().check(getFeverAssessmentPage()
         		.getPageData().getInt(FeverAssessmentPage.MALARIA_RISK_DATA_KEY));
-        
-        // fever duration
-        setDurationEditText((EditText) rootView.findViewById(R.id.fever_assessment_text_duration));
-        
-        // has fever been present every day
-        setFeverPresentDailyRadioGroup((RadioGroup) rootView.findViewById(R.id.fever_assessment_radio_present_every_day));
-        getFeverPresentDailyRadioGroup().check(getFeverAssessmentPage()
-        		.getPageData().getInt(FeverAssessmentPage.FEVER_PRESENT_EVERY_DAY_DATA_KEY));
         
         // measles
         setMeaslesRadioGroup((RadioGroup) rootView.findViewById(R.id.fever_assessment_radio_measles));
@@ -197,6 +185,37 @@ public class FeverAssessmentFragment extends Fragment {
         return rootView;
     }
 
+	private void configureFeverDurationAnimatedView(View rootView) {
+		// Fever view
+		setFeverView((View) rootView.findViewById(R.id.fever_assessment_view_fever));
+		
+        // need to add superscript text to the degree Celsius label of a 
+        // fever radio button
+        RadioButton feverTempRadioButton = (RadioButton) rootView.findViewById(R.id.fever_assessment_radio_fever_temperature);
+        feverTempRadioButton.setText(Html.fromHtml(getText(R.string.fever_assessment_radio_fever_temperature) + "<sup>o</sup>" + "C"));
+                
+        // fever
+        setFeverCustomRadioGroup((ToggleButtonGroupTableLayout) rootView.findViewById(R.id.fever_assessment_radio_fever));
+        getFeverCustomRadioGroup().check(getFeverAssessmentPage()
+        		.getPageData().getInt(FeverAssessmentPage.FEVER_DATA_KEY));
+        
+        // fever duration
+        setDurationEditText((EditText) rootView.findViewById(R.id.fever_assessment_fever_duration));
+        
+        // fever duration is a dynamic view within the UI
+        setFeverDurationDynamicView(new DynamicView(rootView.findViewById(R.id.fever_assessment_view_fever_duration),
+        									rootView.findViewById(R.id.fever_assessment_fever_duration)));
+        
+        // has fever been present every day
+        setFeverPresentDailyRadioGroup((RadioGroup) rootView.findViewById(R.id.fever_assessment_radio_present_every_day));
+        getFeverPresentDailyRadioGroup().check(getFeverAssessmentPage()
+        		.getPageData().getInt(FeverAssessmentPage.FEVER_PRESENT_EVERY_DAY_DATA_KEY));      
+		                       
+        // get a hold on the top level animated view
+        setAnimatedView(((ViewGroup) rootView.findViewById(R.id.diarrhoea_assessment_diarrhoea_animated_view)));
+	}
+    
+    
 	private void configureMouthUlcersAnimatedView(View rootView) {
 		// mouth ulcers
         setMouthUlcersView((View) rootView.findViewById(R.id.fever_assessment_view_mouth_ulcers));
@@ -249,10 +268,8 @@ public class FeverAssessmentFragment extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        // configure page and data key for radio button listener in 'custom fever toggle group'
-        getFeverCustomRadioGroup().setPage(getFeverAssessmentPage());
-        getFeverCustomRadioGroup().setDataKey(FeverAssessmentPage.FEVER_DATA_KEY);
-
+        addFeverDynamicViewListener();
+        
         // add listener to malaria risk radio group
         getMalariaRiskRadioGroup().setOnCheckedChangeListener(
         		new RadioGroupListener(getFeverAssessmentPage(),
@@ -327,6 +344,28 @@ public class FeverAssessmentFragment extends Fragment {
         				FeverAssessmentPage.BULGING_FONTANEL_DATA_KEY));       
     }
 
+	/**
+	 * addFeverDynamicViewListener()
+	 * 
+	 * Responsible for adding a listener to the Fever view
+	 * 
+	 */
+	private void addFeverDynamicViewListener() {
+		
+        // configure page and data key for radio button listener in 'custom fever toggle group'
+        getFeverCustomRadioGroup().setPage(getFeverAssessmentPage());
+        getFeverCustomRadioGroup().setDataKey(FeverAssessmentPage.FEVER_DATA_KEY);
+		
+        int indexPosition = getAnimatedView().indexOfChild(getFeverView()) + 1;
+        
+        getFeverCustomRadioGroup().getRadioGroup().setOnCheckedChangeListener(
+        		new RadioGroupCoordinatorListener(getFeverAssessmentPage(),
+        				null, 
+        				Arrays.asList(getFeverDurationDynamicView()),
+        				getAnimatedView(),
+        				indexPosition));
+	}   
+    
 	/**
 	 * addMouthUlcersDynamicViewListener()
 	 * 
@@ -665,6 +704,34 @@ public class FeverAssessmentFragment extends Fragment {
 	 */	
 	private void setMouthUlcersView(View mouthUlcersView) {
 		this.mouthUlcersView = mouthUlcersView;
+	}
+
+	/**
+	 * Getter Method: getFeverDurationDynamicView()
+	 */
+	public DynamicView getFeverDurationDynamicView() {
+		return feverDurationDynamicView;
+	}
+
+	/**
+	 * Setter Method: setFeverDurationDynamicView()
+	 */	
+	public void setFeverDurationDynamicView(DynamicView feverDurationDynamicView) {
+		this.feverDurationDynamicView = feverDurationDynamicView;
+	}
+
+	/**
+	 * Getter Method: getFeverView()
+	 */
+	public View getFeverView() {
+		return feverView;
+	}
+
+	/**
+	 * Setter Method: setFeverView()
+	 */	
+	public void setFeverView(View feverView) {
+		this.feverView = feverView;
 	}
 
 	/**

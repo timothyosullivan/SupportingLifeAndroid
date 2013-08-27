@@ -22,45 +22,105 @@
             <!-- ============================================================ -->
             <!-- FEVER RADIO BUTTON GROUP -->
             <!-- ============================================================ -->
+            <LinearLayout
+				android:id="@+id/fever_assessment_view_fever"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:orientation="vertical">
+				<TextView
+					style="@style/WizardFormLabel"
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"
+					android:layout_gravity="bottom"
+					android:text="@string/fever_assessment_radio_fever"/>
+				<ie.ucc.bis.ui.custom.ToggleButtonGroupTableLayout
+					android:id="@+id/fever_assessment_radio_fever"
+					android:layout_width="match_parent"
+					android:layout_height="match_parent">
+					<TableRow
+						android:layout_width="match_parent"
+						android:layout_height="match_parent">
+						<RadioButton
+							android:id="@+id/fever_assessment_radio_fever_no"
+							android:layout_weight="0.67"
+							android:checked="false"
+							android:text="@string/fever_assessment_radio_fever_no"/>
+						<RadioButton
+							android:id="@+id/fever_assessment_radio_fever_history"
+							android:layout_weight="0.67"
+							android:checked="false"
+							android:text="@string/fever_assessment_radio_fever_history"/>
+					</TableRow>
+					<TableRow
+						android:layout_width="match_parent"
+						android:layout_height="match_parent">
+						<RadioButton
+							android:id="@+id/fever_assessment_radio_fever_feels_hot"
+							android:layout_weight="0.67"
+							android:checked="false"
+							android:text="@string/fever_assessment_radio_fever_feels_hot"/>
+						<RadioButton
+							android:id="@+id/fever_assessment_radio_fever_temperature"
+							android:layout_weight="0.67"
+							android:checked="false"
+							android:text="@string/fever_assessment_radio_fever_temperature"/>						
+					</TableRow>
+				</ie.ucc.bis.ui.custom.ToggleButtonGroupTableLayout>
+			</LinearLayout>
+
+            <!-- ============================================================ -->
+            <!-- DURATION (FOR HOW LONG?) Text -->
+            <!-- ============================================================ -->
+            <LinearLayout
+				android:id="@+id/fever_assessment_view_fever_duration"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:orientation="vertical">
+				<TextView
+					style="@style/WizardFormLabel"
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"
+					android:layout_gravity="bottom"
+					android:text="@string/fever_assessment_duration"/>
+				<EditText
+					android:id="@+id/fever_assessment_fever_duration"
+					android:layout_width="174dp"
+					android:layout_height="match_parent"
+					android:inputType="number"
+					android:maxLength="3"/>
+			</LinearLayout>
+            
+           	<!-- ============================================================ -->
+			<!-- 'FEVER BEEN PRESENT EVERY DAY' RADIO BUTTON GROUP -->
+			<!-- ============================================================ -->
 			<TextView
 				style="@style/WizardFormLabel"
 				android:layout_width="match_parent"
 				android:layout_height="match_parent"
 				android:layout_gravity="bottom"
-				android:text="@string/fever_assessment_radio_fever"/>
-			<ie.ucc.bis.ui.custom.ToggleButtonGroupTableLayout
-				android:id="@+id/fever_assessment_radio_fever"
+				android:text="@string/fever_assessment_radio_present_every_day"/>
+			<RadioGroup
+				android:id="@+id/fever_assessment_radio_present_every_day"
 				android:layout_width="match_parent"
-				android:layout_height="match_parent">
-				<TableRow
-					android:layout_width="match_parent"
-					android:layout_height="match_parent">
-					<RadioButton
-						android:id="@+id/fever_assessment_radio_fever_no"
-						android:layout_weight="0.67"
-						android:checked="false"
-						android:text="@string/fever_assessment_radio_fever_no"/>
-					<RadioButton
-						android:id="@+id/fever_assessment_radio_fever_history"
-						android:layout_weight="0.67"
-						android:checked="false"
-						android:text="@string/fever_assessment_radio_fever_history"/>
-				</TableRow>
-				<TableRow
-					android:layout_width="match_parent"
-					android:layout_height="match_parent">
-					<RadioButton
-						android:id="@+id/fever_assessment_radio_fever_feels_hot"
-						android:layout_weight="0.67"
-						android:checked="false"
-						android:text="@string/fever_assessment_radio_fever_feels_hot"/>
-					<RadioButton
-						android:id="@+id/fever_assessment_radio_fever_temperature"
-						android:layout_weight="0.67"
-						android:checked="false"
-						android:text="@string/fever_assessment_radio_fever_temperature"/>
-				</TableRow>
-			</ie.ucc.bis.ui.custom.ToggleButtonGroupTableLayout>
+				android:layout_height="wrap_content"
+				android:orientation="horizontal">
+				<RadioButton
+					android:id="@+id/fever_assessment_radio_present_every_day_yes"
+					android:layout_width="112dp"
+					android:layout_height="wrap_content"
+					android:layout_weight="0.67"
+					android:checked="false"
+					android:text="@string/assessment_wizard_radio_yes"/>
+				<RadioButton
+					android:id="@+id/fever_assessment_radio_present_every_day_no"
+					android:layout_width="118dp"
+					android:layout_height="wrap_content"
+					android:layout_gravity="top"
+					android:layout_weight="0.32"
+					android:checked="false"
+					android:text="@string/assessment_wizard_radio_no"/>
+			</RadioGroup>			
+
             <!-- ============================================================ -->
             <!-- MALARIA RISK RADIO BUTTON GROUP -->
             <!-- ============================================================ -->
@@ -99,54 +159,7 @@
 					android:checked="false"
 					android:text="@string/fever_assessment_radio_malaria_risk_no"/>
 			</RadioGroup>
-
-            <!-- ============================================================ -->
-            <!-- DURATION (FOR HOW LONG?) Text -->
-            <!-- ============================================================ -->
-			<TextView
-				style="@style/WizardFormLabel"
-				android:layout_width="match_parent"
-				android:layout_height="match_parent"
-				android:layout_gravity="bottom"
-				android:text="@string/fever_assessment_duration"/>
-			<EditText
-				android:id="@+id/fever_assessment_text_duration"
-				android:layout_width="174dp"
-				android:layout_height="match_parent"
-				android:inputType="number"
-				android:maxLength="3"/>
-            
-           	<!-- ============================================================ -->
-			<!-- 'FEVER BEEN PRESENT EVERY DAY' RADIO BUTTON GROUP -->
-			<!-- ============================================================ -->
-			<TextView
-				style="@style/WizardFormLabel"
-				android:layout_width="match_parent"
-				android:layout_height="match_parent"
-				android:layout_gravity="bottom"
-				android:text="@string/fever_assessment_radio_present_every_day"/>
-			<RadioGroup
-				android:id="@+id/fever_assessment_radio_present_every_day"
-				android:layout_width="match_parent"
-				android:layout_height="wrap_content"
-				android:orientation="horizontal">
-				<RadioButton
-					android:id="@+id/fever_assessment_radio_present_every_day_yes"
-					android:layout_width="112dp"
-					android:layout_height="wrap_content"
-					android:layout_weight="0.67"
-					android:checked="false"
-					android:text="@string/assessment_wizard_radio_yes"/>
-				<RadioButton
-					android:id="@+id/fever_assessment_radio_present_every_day_no"
-					android:layout_width="118dp"
-					android:layout_height="wrap_content"
-					android:layout_gravity="top"
-					android:layout_weight="0.32"
-					android:checked="false"
-					android:text="@string/assessment_wizard_radio_no"/>
-			</RadioGroup>
-			
+		
            	<!-- ============================================================ -->
 			<!-- MEASLES RADIO BUTTON GROUP -->
 			<!-- ============================================================ -->

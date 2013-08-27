@@ -1,12 +1,15 @@
 package ie.ucc.bis.ui.custom;
 
 import ie.ucc.bis.wizard.model.AbstractPage;
+import ie.ucc.bis.wizard.model.DynamicView;
 import ie.ucc.bis.wizard.model.listener.RadioGroupCoordinatorListener;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 
@@ -49,6 +52,30 @@ public class ToggleButtonGroupTableLayout extends TableLayout implements OnClick
     	// needed for onCreateView() in relevant Fragment to re-display
     	// a view from page data
 		getPage().getPageData().putInt(dataKey, getActiveRadioButton().getId());
+		
+		/*
+		 * 		// Thirdly, need to handle the View(s) that this RadioButton is controlling		
+		if (radioButton.getText().toString().equals("No")) {
+			for (DynamicView dynamicView : getDynamicViews()) {
+				if (dynamicView.getControlledElement() instanceof RadioGroup) {
+					((RadioGroup) dynamicView.getControlledElement()).clearCheck();
+				}
+				else if (dynamicView.getControlledElement() instanceof EditText) {
+					((EditText) dynamicView.getControlledElement()).setText(null);
+				}
+			
+				int index = getParentView().indexOfChild(dynamicView.getWrappedView());
+				if (index != -1) {				
+					getParentView().removeViewAt(index);
+				}
+			}
+		}	
+		else { // user has selected 'YES'
+			for (int counter = 0; counter < getDynamicViews().size(); counter++) {
+				getParentView().addView(getDynamicViews().get(counter).getWrappedView(), getIndexPosition() + counter);
+			}
+		}
+		 */
 		
     	getPage().notifyDataChanged();
 	}
