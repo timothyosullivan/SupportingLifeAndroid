@@ -130,11 +130,10 @@ public class EarAssessmentFragment extends Fragment {
     }
     
 	private void configureEarDischargeAnimatedView(View rootView) {
-		
-		// mouth ulcers
+		// ear discharge view
 		setEarDischargeView((View) rootView.findViewById(R.id.ear_assessment_view_ear_discharge));
 		
-        // ear discharge
+        // ear discharge radio group
         setEarDischargeRadioGroup((RadioGroup) rootView.findViewById(R.id.ear_assessment_radio_ear_discharge));
         getEarDischargeRadioGroup().check(getEarAssessmentPage()
         		.getPageData().getInt(EarAssessmentPage.EAR_DISCHARGE_DATA_KEY));

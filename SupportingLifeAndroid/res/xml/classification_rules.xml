@@ -327,7 +327,7 @@
 	<!-- ============================================================ -->
 	<!-- Classification: Very Severe Febrile Disease 	  			  -->
 	<!-- Type: SEVERE 												  -->
-	<!-- Symptoms: Fever(Open Question Here - What Radio Buttons identify Fever) -->
+	<!-- Symptoms: Fever											  -->
 	<!-- 		    AND 										  	  -->
 	<!--  		   ((Any General Danger Sign) OR (STIFF NECK))		  -->
 	<!-- 			AND 											  -->
@@ -524,7 +524,9 @@
 	<!-- ============================================================ -->
 	<!-- Classification: Severe Complicated Measles				 	  -->
 	<!-- Type: SEVERE 												  -->
-	<!-- Symptoms: Fever? / Measles Now? (Open Question Here)		  -->
+	<!-- Symptoms: 	Fever											  -->
+	<!--				AND											  -->
+	<!-- 		   Measles Now or within Last Three Months			  -->
 	<!-- 			    AND											  -->
 	<!--		   (Any General Danger Sign		 					  -->
 	<!-- 				OR 										  	  -->
@@ -539,6 +541,9 @@
 		<Name>Severe Complicated Measles</Name>
 		<Type>SEVERE</Type>
 		<Priority>1</Priority>
+		<SymptomRule rule="ANY_SYMPTOM">
+			<Symptom value="yes">fever_assessment_measles_symptom_id</Symptom>							<!-- Fever : Measles Now or within Last Three Months -->
+		</SymptomRule>
 		<SymptomRule rule="ANY_SYMPTOM">
 			<Symptom value="history">fever_assessment_fever_symptom_id</Symptom>						<!-- Fever : History -->
 			<Symptom value="feels hot">fever_assessment_fever_symptom_id</Symptom>						<!-- Fever : Feels Hot -->
@@ -563,7 +568,9 @@
 	<!-- ============================================================ -->
 	<!-- Classification: Measles with Eye or Mouth Complications 	  -->
 	<!-- Type: MODERATE 											  -->
-	<!-- Symptoms: Fever? / Measles Now? (Open Question Here)		  -->
+	<!-- Symptoms: 	Fever											  -->
+	<!--				AND											  -->
+	<!-- 		   Measles Now or within Last Three Months			  -->
 	<!-- 			    AND											  -->
 	<!--		   (Pus Draining from the Eye		 				  -->
 	<!-- 				OR 										  	  -->
@@ -574,6 +581,9 @@
 		<Name>Measles with Eye or Mouth Complications</Name>
 		<Type>MODERATE</Type>
 		<Priority>2</Priority>
+		<SymptomRule rule="ANY_SYMPTOM">
+			<Symptom value="yes">fever_assessment_measles_symptom_id</Symptom>							<!-- Fever : Measles Now or within Last Three Months -->
+		</SymptomRule>
 		<SymptomRule rule="ANY_SYMPTOM">
 			<Symptom value="history">fever_assessment_fever_symptom_id</Symptom>						<!-- Fever : History -->
 			<Symptom value="feels hot">fever_assessment_fever_symptom_id</Symptom>						<!-- Fever : Feels Hot -->
@@ -591,7 +601,7 @@
 	<!-- ============================================================ -->
 	<!-- Classification: Measles								 	  -->
 	<!-- Type: LOW 											  		  -->
-	<!-- Symptoms: Fever? (Open Question Here)		  				  -->
+	<!-- Symptoms: 	Fever											  -->
 	<!-- 			    AND											  -->
 	<!--		   (Measles now or within the last 3 months)		  -->
 	<!-- ============================================================ -->
@@ -601,12 +611,12 @@
 		<Type>LOW</Type>
 		<Priority>3</Priority>
 		<SymptomRule rule="ANY_SYMPTOM">
+			<Symptom value="yes">fever_assessment_measles_symptom_id</Symptom>							<!-- Fever : Measles Now or within Last Three Months -->
+		</SymptomRule>
+		<SymptomRule rule="ANY_SYMPTOM">
 			<Symptom value="history">fever_assessment_fever_symptom_id</Symptom>						<!-- Fever : History -->
 			<Symptom value="feels hot">fever_assessment_fever_symptom_id</Symptom>						<!-- Fever : Feels Hot -->
 			<Symptom value="high temperature">fever_assessment_fever_symptom_id</Symptom>				<!-- Fever : High Temperature -->
-		</SymptomRule>
-		<SymptomRule rule="ANY_SYMPTOM">
-			<Symptom value="yes">fever_assessment_measles_symptom_id</Symptom> 							<!-- Measles now or within last three months : YES -->
 		</SymptomRule>
 	</Classification>
 	

@@ -2,9 +2,15 @@ package ie.ucc.bis.wizard.ui;
 
 import ie.ucc.bis.R;
 import ie.ucc.bis.activity.SupportingLifeBaseActivity;
+import ie.ucc.bis.ui.utilities.ViewGroupUtilities;
 import ie.ucc.bis.wizard.model.BreathingAssessmentPage;
+import ie.ucc.bis.wizard.model.DynamicView;
 import ie.ucc.bis.wizard.model.listener.AssessmentWizardTextWatcher;
+import ie.ucc.bis.wizard.model.listener.RadioGroupCoordinatorListener;
 import ie.ucc.bis.wizard.model.listener.RadioGroupListener;
+
+import java.util.Arrays;
+
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -34,6 +40,10 @@ public class BreathingAssessmentFragment extends Fragment {
     private EditText breathsPerMinuteEditText;
     private RadioGroup chestIndrawingRadioGroup;
     private RadioGroup stridorRadioGroup;
+    private DynamicView coughDifficultBreathingDurationDynamicView;
+    private View coughDifficultBreathingView;
+    private ViewGroup animatedView;
+    private Boolean animatedViewInVisibleState;
 
     
     public static BreathingAssessmentFragment create(String pageKey) {
@@ -42,6 +52,7 @@ public class BreathingAssessmentFragment extends Fragment {
 
         BreathingAssessmentFragment fragment = new BreathingAssessmentFragment();
         fragment.setArguments(args);
+        fragment.setAnimatedViewInVisibleState(false);
         return fragment;
     }
 
@@ -51,6 +62,31 @@ public class BreathingAssessmentFragment extends Fragment {
 	 */        
     public BreathingAssessmentFragment() {}
 
+    @Override
+    public void onSaveInstanceState(Bundle savedInstanceState) {
+    	if (getAnimatedView().indexOfChild(getCoughDifficultBreathingDurationDynamicView().getWrappedView()) != -1) {
+    		// Animated view is visible
+    		savedInstanceState.putBoolean("animatedViewInVisibleState", true);
+    	}
+    	else {
+    		// Animated view is invisible
+    		savedInstanceState.putBoolean("animatedViewInVisibleState", false);
+    	}
+    	super.onSaveInstanceState(savedInstanceState);
+    }
+    
+    @Override
+    public void onViewStateRestored(Bundle savedInstanceState) {
+    	super.onViewStateRestored(savedInstanceState);
+    	if (savedInstanceState != null) {
+    		setAnimatedViewInVisibleState(savedInstanceState.getBoolean("animatedViewInVisibleState"));
+    	}
+    	if (!isAnimatedViewInVisibleState()) {
+    		ViewGroupUtilities.removeDynamicViews(getAnimatedView(), Arrays.asList(getCoughDifficultBreathingDurationDynamicView()));
+    	}
+    }
+    
+    
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,15 +102,10 @@ public class BreathingAssessmentFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_wizard_page_cough_breathing_assessment, container, false);
         ((TextView) rootView.findViewById(android.R.id.title)).setText(getBreathingAssessmentPage().getTitle());
 
-        // does the child have cough or difficult breathing?
-        setCoughDifficultBreathingRadioGroup((RadioGroup) rootView.findViewById(R.id.breathing_assessment_radio_cough_difficult_breathing));
-        getCoughDifficultBreathingRadioGroup().check(getBreathingAssessmentPage()
-        		.getPageData().getInt(BreathingAssessmentPage.COUGH_DIFFICULT_BREATHING_DATA_KEY));
-        
-        // for how long? (days) - cough duration
-        setCoughDurationEditText((EditText) rootView.findViewById(R.id.breathing_assessment_cough_duration));
-        getCoughDurationEditText().setText(getBreathingAssessmentPage().getPageData().getString(BreathingAssessmentPage.COUGH_DURATION_DATA_KEY));
-        
+        // configure the animated view of cough / difficult breathing duration 
+        // i.e. cough / difficult breathing --> cough / difficult breathing duration
+        configureCoughDifficultBreathingDurationAnimatedView(rootView);
+                
         // breaths per minute
         setBreathsPerMinuteEditText((EditText) rootView.findViewById(R.id.breathing_assessment_breaths_per_minute));
         getBreathsPerMinuteEditText().setText(getBreathingAssessmentPage().getPageData().getString(BreathingAssessmentPage.BREATHS_PER_MINUTE_DATA_KEY));
@@ -95,6 +126,27 @@ public class BreathingAssessmentFragment extends Fragment {
         
         return rootView;
     }
+    
+	private void configureCoughDifficultBreathingDurationAnimatedView(View rootView) {
+		// cough / difficult breathing view
+		setCoughDifficultBreathingView((View) rootView.findViewById(R.id.breathing_assessment_view_cough_difficult_breathing));
+		
+        // does the child have cough or difficult breathing?
+        setCoughDifficultBreathingRadioGroup((RadioGroup) rootView.findViewById(R.id.breathing_assessment_radio_cough_difficult_breathing));
+        getCoughDifficultBreathingRadioGroup().check(getBreathingAssessmentPage()
+        		.getPageData().getInt(BreathingAssessmentPage.COUGH_DIFFICULT_BREATHING_DATA_KEY));
+        
+        // for how long? (days) - cough duration
+        setCoughDurationEditText((EditText) rootView.findViewById(R.id.breathing_assessment_cough_duration));
+        getCoughDurationEditText().setText(getBreathingAssessmentPage().getPageData().getString(BreathingAssessmentPage.COUGH_DURATION_DATA_KEY));
+		       
+        //  cough / difficult breathing duration is a dynamic view within the UI
+        setCoughDifficultBreathingDurationDynamicView(new DynamicView(rootView.findViewById(R.id.breathing_assessment_view_cough_duration),
+        									rootView.findViewById(R.id.breathing_assessment_cough_duration)));
+                
+        // get a hold on the top level animated view
+        setAnimatedView(((ViewGroup) rootView.findViewById(R.id.breathing_assessment_cough_difficult_breathing_animated_view)));
+	}
 
     @Override
     public void onAttach(Activity activity) {
@@ -117,9 +169,8 @@ public class BreathingAssessmentFragment extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        getCoughDifficultBreathingRadioGroup().setOnCheckedChangeListener(
-        		new RadioGroupListener(getBreathingAssessmentPage(),
-        				BreathingAssessmentPage.COUGH_DIFFICULT_BREATHING_DATA_KEY));
+        // add dynamic view listener to cough difficult breathing radio group
+        addCoughDifficultBreathingDynamicViewListener();  
         
         getCoughDurationEditText().addTextChangedListener(
         		new AssessmentWizardTextWatcher(getBreathingAssessmentPage(), 
@@ -137,6 +188,23 @@ public class BreathingAssessmentFragment extends Fragment {
         		new RadioGroupListener(getBreathingAssessmentPage(),
         				BreathingAssessmentPage.STRIDOR_DATA_KEY));
     }
+    
+	/**
+	 * addCoughDifficultBreathingDynamicViewListener()
+	 * 
+	 * Responsible for adding a listener to the Cough Difficult Breathing view
+	 * 
+	 */
+	private void addCoughDifficultBreathingDynamicViewListener() {
+        int indexPosition = getAnimatedView().indexOfChild(getCoughDifficultBreathingView()) + 1;
+        
+        getCoughDifficultBreathingRadioGroup().setOnCheckedChangeListener(
+        		new RadioGroupCoordinatorListener(getBreathingAssessmentPage(),
+        				BreathingAssessmentPage.COUGH_DIFFICULT_BREATHING_DATA_KEY, 
+        				Arrays.asList(getCoughDifficultBreathingDurationDynamicView()),
+        				getAnimatedView(),
+        				indexPosition));
+	}    
 
 	/**
 	 * Getter Method: getPageFragmentCallbacks()
@@ -250,5 +318,61 @@ public class BreathingAssessmentFragment extends Fragment {
 	 */	
 	private void setBreathsPerMinuteEditText(EditText breathsPerMinuteEditText) {
 		this.breathsPerMinuteEditText = breathsPerMinuteEditText;
+	}
+
+	/**
+	 * Getter Method: getCoughDifficultBreathingDurationDynamicView()
+	 */	
+	public DynamicView getCoughDifficultBreathingDurationDynamicView() {
+		return coughDifficultBreathingDurationDynamicView;
+	}
+
+	/**
+	 * Setter Method: setCoughDifficultBreathingDurationDynamicView()
+	 */	
+	public void setCoughDifficultBreathingDurationDynamicView(DynamicView coughDifficultBreathingDurationDynamicView) {
+		this.coughDifficultBreathingDurationDynamicView = coughDifficultBreathingDurationDynamicView;
+	}
+
+	/**
+	 * Getter Method: getCoughDifficultBreathingView()
+	 */	
+	public View getCoughDifficultBreathingView() {
+		return coughDifficultBreathingView;
+	}
+
+	/**
+	 * Setter Method: setCoughDifficultBreathingView()
+	 */	
+	public void setCoughDifficultBreathingView(View coughDifficultBreathingView) {
+		this.coughDifficultBreathingView = coughDifficultBreathingView;
+	}	
+	
+	/**
+	 * Getter Method: getAnimatedView()
+	 */	
+	public ViewGroup getAnimatedView() {
+		return animatedView;
+	}
+
+	/**
+	 * Setter Method: setAnimatedView()
+	 */	
+	public void setAnimatedView(ViewGroup animatedView) {
+		this.animatedView = animatedView;
+	}
+
+	/**
+	 * Getter Method: isAnimatedViewInVisibleState()
+	 */	
+	public Boolean isAnimatedViewInVisibleState() {
+		return animatedViewInVisibleState;
+	}
+
+	/**
+	 * Setter Method: setAnimatedViewInVisibleState()
+	 */	
+	public void setAnimatedViewInVisibleState(Boolean animatedViewInVisibleState) {
+		this.animatedViewInVisibleState = animatedViewInVisibleState;
 	}
 }
