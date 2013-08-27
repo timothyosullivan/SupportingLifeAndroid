@@ -4,13 +4,19 @@ import ie.ucc.bis.R;
 import ie.ucc.bis.activity.SupportingLifeBaseActivity;
 import ie.ucc.bis.ui.custom.ToggleButtonGroupTableLayout;
 import ie.ucc.bis.ui.utilities.RadioGroupUtilities;
+import ie.ucc.bis.ui.utilities.ViewGroupUtilities;
 import ie.ucc.bis.wizard.model.AbstractPage;
 import ie.ucc.bis.wizard.model.AbstractWizardModel;
 import ie.ucc.bis.wizard.model.AssessmentWizardModel;
 import ie.ucc.bis.wizard.model.DiarrhoeaAssessmentPage;
+import ie.ucc.bis.wizard.model.DynamicView;
 import ie.ucc.bis.wizard.model.GeneralDangerSignsPage;
 import ie.ucc.bis.wizard.model.listener.AssessmentWizardTextWatcher;
+import ie.ucc.bis.wizard.model.listener.RadioGroupCoordinatorListener;
 import ie.ucc.bis.wizard.model.listener.RadioGroupListener;
+
+import java.util.Arrays;
+
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -46,6 +52,10 @@ public class DiarrhoeaAssessmentFragment extends Fragment {
     private RadioGroup choleraInAreaRadioGroup;
     private ToggleButtonGroupTableLayout childFluidRadioGroup;
     private ToggleButtonGroupTableLayout skinPinchRadioGroup;
+    private DynamicView diarrhoeaDurationDynamicView;
+    private View diarrhoeaView;
+    private ViewGroup animatedView;
+    private Boolean animatedViewInVisibleState;
     
     public static DiarrhoeaAssessmentFragment create(String pageKey) {
         Bundle args = new Bundle();
@@ -53,6 +63,7 @@ public class DiarrhoeaAssessmentFragment extends Fragment {
 
         DiarrhoeaAssessmentFragment fragment = new DiarrhoeaAssessmentFragment();
         fragment.setArguments(args);
+        fragment.setAnimatedViewInVisibleState(false);
         return fragment;
     }
 
@@ -72,20 +83,28 @@ public class DiarrhoeaAssessmentFragment extends Fragment {
     }
 
     @Override
+    public void onSaveInstanceState(Bundle savedInstanceState) {
+    	if (getAnimatedView().indexOfChild(getDiarrhoeaDurationDynamicView().getWrappedView()) != -1) {
+    		// Animated view is visible
+    		savedInstanceState.putBoolean("animatedViewInVisibleState", true);
+    	}
+    	else {
+    		// Animated view is invisible
+    		savedInstanceState.putBoolean("animatedViewInVisibleState", false);
+    	}
+    	super.onSaveInstanceState(savedInstanceState);
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_wizard_page_diarrhoea_assessment, container, false);
         ((TextView) rootView.findViewById(android.R.id.title)).setText(getDiarrhoeaAssessmentPage().getTitle());
 
-        // diarrhoea
-        setDiarrhoeaRadioGroup((RadioGroup) rootView.findViewById(R.id.diarrhoea_assessment_radio_diarrhoea));
-        getDiarrhoeaRadioGroup().check(getDiarrhoeaAssessmentPage()
-        		.getPageData().getInt(DiarrhoeaAssessmentPage.DIARRHOEA_DATA_KEY));
-        
-        // for how long? (days) - diarrhoea duration
-        setDiarrhoeaDurationEditText((EditText) rootView.findViewById(R.id.diarrhoea_assessment_diarrhoea_duration));
-        getDiarrhoeaDurationEditText().setText(getDiarrhoeaAssessmentPage().getPageData().getString(DiarrhoeaAssessmentPage.DIARRHOEA_DURATION_DATA_KEY));
-        
+        // configure the animated view of diarrhoea duration 
+        // i.e. Diarrhoea --> diarrhoea duration
+        configureDiarrhoeaDurationAnimatedView(rootView);
+               
         // blood in the stools
         setBloodStoolsRadioGroup((RadioGroup) rootView.findViewById(R.id.diarrhoea_assessment_radio_blood_stools));
         getBloodStoolsRadioGroup().check(getDiarrhoeaAssessmentPage()
@@ -128,7 +147,28 @@ public class DiarrhoeaAssessmentFragment extends Fragment {
         
         return rootView;
     }
-
+    
+	private void configureDiarrhoeaDurationAnimatedView(View rootView) {
+		// diarrhoea view
+		setDiarrhoeaView((View) rootView.findViewById(R.id.diarrhoea_assessment_view_diarrhoea));
+		
+        // diarrhoea
+        setDiarrhoeaRadioGroup((RadioGroup) rootView.findViewById(R.id.diarrhoea_assessment_radio_diarrhoea));
+        getDiarrhoeaRadioGroup().check(getDiarrhoeaAssessmentPage()
+        		.getPageData().getInt(DiarrhoeaAssessmentPage.DIARRHOEA_DATA_KEY));
+        
+        // for how long? (days) - diarrhoea duration
+        setDiarrhoeaDurationEditText((EditText) rootView.findViewById(R.id.diarrhoea_assessment_diarrhoea_duration));
+        getDiarrhoeaDurationEditText().setText(getDiarrhoeaAssessmentPage().getPageData().getString(DiarrhoeaAssessmentPage.DIARRHOEA_DURATION_DATA_KEY));
+		       
+        // diarrhoea duration is a dynamic view within the UI
+        setDiarrhoeaDurationDynamicView(new DynamicView(rootView.findViewById(R.id.diarrhoea_assessment_view_diarrhoea_duration),
+        									rootView.findViewById(R.id.diarrhoea_assessment_diarrhoea_duration)));
+                
+        // get a hold on the top level animated view
+        setAnimatedView(((ViewGroup) rootView.findViewById(R.id.diarrhoea_assessment_diarrhoea_animated_view)));
+	}
+    
 	/**
 	 * Method: configureLethargicUnconsciousRadioGroup
 	 * 
@@ -179,6 +219,13 @@ public class DiarrhoeaAssessmentFragment extends Fragment {
     public void onViewStateRestored(Bundle savedInstanceState) {
         super.onViewStateRestored(savedInstanceState);
         
+    	if (savedInstanceState != null) {
+    		setAnimatedViewInVisibleState(savedInstanceState.getBoolean("animatedViewInVisibleState"));
+    	}
+    	if (!isAnimatedViewInVisibleState()) {
+    		ViewGroupUtilities.removeDynamicViews(getAnimatedView(), Arrays.asList(getDiarrhoeaDurationDynamicView()));
+    	}
+        
         configureLethargicUnconsciousRadioGroup();
     }
 
@@ -186,11 +233,9 @@ public class DiarrhoeaAssessmentFragment extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        // diarrhoea
-        getDiarrhoeaRadioGroup().setOnCheckedChangeListener(
-        		new RadioGroupListener(getDiarrhoeaAssessmentPage(),
-        				DiarrhoeaAssessmentPage.DIARRHOEA_DATA_KEY));
-
+        // add dynamic view listener to diarrhoea radio group
+        addDiarrhoeaDynamicViewListener();
+        
         // for how long? (days) - diarrhoea duration
         getDiarrhoeaDurationEditText().addTextChangedListener(
         		new AssessmentWizardTextWatcher(getDiarrhoeaAssessmentPage(), 
@@ -232,6 +277,23 @@ public class DiarrhoeaAssessmentFragment extends Fragment {
         getSkinPinchRadioGroup().setDataKey(DiarrhoeaAssessmentPage.SKIN_PINCH_DATA_KEY);
     }
 
+	/**
+	 * addDiarrhoeaDynamicViewListener()
+	 * 
+	 * Responsible for adding a listener to the Diarrhoea view
+	 * 
+	 */
+	private void addDiarrhoeaDynamicViewListener() {
+        int indexPosition = getAnimatedView().indexOfChild(getDiarrhoeaView()) + 1;
+        
+        getDiarrhoeaRadioGroup().setOnCheckedChangeListener(
+        		new RadioGroupCoordinatorListener(getDiarrhoeaAssessmentPage(),
+        				DiarrhoeaAssessmentPage.DIARRHOEA_DATA_KEY, 
+        				Arrays.asList(getDiarrhoeaDurationDynamicView()),
+        				getAnimatedView(),
+        				indexPosition));
+	}   
+    
 	/**
 	 * Getter Method: getPageFragmentCallbacks()
 	 */
@@ -412,5 +474,61 @@ public class DiarrhoeaAssessmentFragment extends Fragment {
 	 */	
 	public void setWizardModel(AbstractWizardModel wizardModel) {
 		this.wizardModel = wizardModel;
+	}
+
+	/**
+	 * Getter Method: getDiarrhoeaDurationDynamicView()
+	 */
+	public DynamicView getDiarrhoeaDurationDynamicView() {
+		return diarrhoeaDurationDynamicView;
+	}
+
+	/**
+	 * Setter Method: setDiarrhoeaDurationDynamicView()
+	 */	
+	public void setDiarrhoeaDurationDynamicView(DynamicView diarrhoeaDurationDynamicView) {
+		this.diarrhoeaDurationDynamicView = diarrhoeaDurationDynamicView;
+	}
+
+	/**
+	 * Getter Method: getDiarrhoeaView()
+	 */
+	public View getDiarrhoeaView() {
+		return diarrhoeaView;
+	}
+
+	/**
+	 * Setter Method: setDiarrhoeaView()
+	 */	
+	public void setDiarrhoeaView(View diarrhoeaView) {
+		this.diarrhoeaView = diarrhoeaView;
+	}
+
+	/**
+	 * Getter Method: getAnimatedView()
+	 */
+	public ViewGroup getAnimatedView() {
+		return animatedView;
+	}
+
+	/**
+	 * Setter Method: setAnimatedView()
+	 */	
+	public void setAnimatedView(ViewGroup animatedView) {
+		this.animatedView = animatedView;
+	}
+
+	/**
+	 * Getter Method: isAnimatedViewInVisibleState()
+	 */
+	public Boolean isAnimatedViewInVisibleState() {
+		return animatedViewInVisibleState;
+	}
+
+	/**
+	 * Setter Method: setAnimatedViewInVisibleState()
+	 */	
+	public void setAnimatedViewInVisibleState(Boolean animatedViewInVisibleState) {
+		this.animatedViewInVisibleState = animatedViewInVisibleState;
 	}
 }
