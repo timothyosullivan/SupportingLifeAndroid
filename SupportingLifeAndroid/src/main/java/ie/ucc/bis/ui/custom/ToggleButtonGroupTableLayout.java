@@ -1,11 +1,15 @@
 package ie.ucc.bis.ui.custom;
 
+import java.util.Arrays;
+import java.util.List;
+
 import ie.ucc.bis.wizard.model.AbstractPage;
 import ie.ucc.bis.wizard.model.DynamicView;
 import ie.ucc.bis.wizard.model.listener.RadioGroupCoordinatorListener;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.View.OnClickListener;
 import android.widget.EditText;
 import android.widget.RadioButton;
@@ -18,6 +22,9 @@ public class ToggleButtonGroupTableLayout extends TableLayout implements OnClick
 	private RadioButton activeRadioButton;
 	private AbstractPage page;
 	private String dataKey;
+	private List<DynamicView> dynamicViews;
+	private ViewGroup parentView;
+	private int indexPosition;
 	
 	/** 
 	 * @param context
@@ -54,30 +61,39 @@ public class ToggleButtonGroupTableLayout extends TableLayout implements OnClick
 		getPage().getPageData().putInt(dataKey, getActiveRadioButton().getId());
 		
 		/*
-		 * 		// Thirdly, need to handle the View(s) that this RadioButton is controlling		
-		if (radioButton.getText().toString().equals("No")) {
-			for (DynamicView dynamicView : getDynamicViews()) {
-				if (dynamicView.getControlledElement() instanceof RadioGroup) {
-					((RadioGroup) dynamicView.getControlledElement()).clearCheck();
+		 * 	In some cases this custom layout will also be handling a dynamic view
+		 */
+		if (getDynamicViews() != null) {
+			if (radioButton.getText().toString().equals("No")) {
+				for (DynamicView dynamicView : getDynamicViews()) {
+					if (dynamicView.getControlledElement() instanceof RadioGroup) {
+						((RadioGroup) dynamicView.getControlledElement()).clearCheck();
+					}
+					else if (dynamicView.getControlledElement() instanceof EditText) {
+						((EditText) dynamicView.getControlledElement()).setText(null);
+					}
+				
+					int index = getParentView().indexOfChild(dynamicView.getWrappedView());
+					if (index != -1) {				
+						getParentView().removeViewAt(index);
+					}
 				}
-				else if (dynamicView.getControlledElement() instanceof EditText) {
-					((EditText) dynamicView.getControlledElement()).setText(null);
+			}	
+			else { // user has selected 'YES' (or its equivalent)
+				for (int counter = 0; counter < getDynamicViews().size(); counter++) {
+					if (getParentView().indexOfChild(getDynamicViews().get(counter).getWrappedView()) == -1) {
+						getParentView().addView(getDynamicViews().get(counter).getWrappedView(), getIndexPosition() + counter);
+					}
 				}
-			
-				int index = getParentView().indexOfChild(dynamicView.getWrappedView());
-				if (index != -1) {				
-					getParentView().removeViewAt(index);
-				}
-			}
-		}	
-		else { // user has selected 'YES'
-			for (int counter = 0; counter < getDynamicViews().size(); counter++) {
-				getParentView().addView(getDynamicViews().get(counter).getWrappedView(), getIndexPosition() + counter);
 			}
 		}
-		 */
-		
     	getPage().notifyDataChanged();
+	}
+	
+	public void configureDynamicView(DynamicView dynamicView, ViewGroup parentView, int indexPosition) {
+		setDynamicViews(Arrays.asList(dynamicView));
+		setParentView(parentView);
+		this.indexPosition = indexPosition;
 	}
 	
 
@@ -189,6 +205,41 @@ public class ToggleButtonGroupTableLayout extends TableLayout implements OnClick
 	 */	
 	public void setActiveRadioButton(RadioButton activeRadioButton) {
 		this.activeRadioButton = activeRadioButton;
+	}
+
+	/**
+	 * Getter Method: getDynamicViews()
+	 */	
+	public List<DynamicView> getDynamicViews() {
+		return dynamicViews;
+	}
+
+	/**
+	 * Setter Method: setDynamicViews()
+	 */	
+	public void setDynamicViews(List<DynamicView> dynamicViews) {
+		this.dynamicViews = dynamicViews;
+	}
+
+	/**
+	 * Getter Method: getParentView()
+	 */	
+	public ViewGroup getParentView() {
+		return parentView;
+	}
+
+	/**
+	 * Setter Method: setParentView()
+	 */	
+	public void setParentView(ViewGroup parentView) {
+		this.parentView = parentView;
+	}
+
+	/**
+	 * Getter Method: getIndexPosition()
+	 */	
+	public int getIndexPosition() {
+		return indexPosition;
 	}
 
 }

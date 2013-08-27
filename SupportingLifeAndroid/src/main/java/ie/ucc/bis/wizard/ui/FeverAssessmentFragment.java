@@ -59,8 +59,10 @@ public class FeverAssessmentFragment extends Fragment {
     private View mouthUlcersView;
     private DynamicView feverDurationDynamicView;
     private View feverView;
+    private ViewGroup animatedFeverDurationView;
     private ViewGroup animatedView;
     private Boolean animatedViewInVisibleState;
+    private Boolean animatedFeverViewInVisibleState;
 
 	public static FeverAssessmentFragment create(String pageKey) {
         Bundle args = new Bundle();
@@ -69,6 +71,7 @@ public class FeverAssessmentFragment extends Fragment {
         FeverAssessmentFragment fragment = new FeverAssessmentFragment();
         fragment.setArguments(args);
         fragment.setAnimatedViewInVisibleState(false);
+        fragment.setAnimatedFeverViewInVisibleState(false);
         return fragment;
     }
 
@@ -97,6 +100,15 @@ public class FeverAssessmentFragment extends Fragment {
     	  // Animated view is invisible
     	  savedInstanceState.putBoolean("animatedViewInVisibleState", false);
       }
+      
+      if (getAnimatedFeverDurationView().indexOfChild(getFeverDurationDynamicView().getWrappedView()) != -1) {
+    	  // Animated Fever view is visible
+    	  savedInstanceState.putBoolean("animatedFeverViewInVisibleState", true);
+      }
+      else {
+    	  // Animated Fever view is invisible
+    	  savedInstanceState.putBoolean("animatedFeverViewInVisibleState", false);
+      }
       super.onSaveInstanceState(savedInstanceState);
     }
     
@@ -105,11 +117,16 @@ public class FeverAssessmentFragment extends Fragment {
       super.onViewStateRestored(savedInstanceState);
       if (savedInstanceState != null) {
     	  setAnimatedViewInVisibleState(savedInstanceState.getBoolean("animatedViewInVisibleState"));
+    	  setAnimatedFeverViewInVisibleState(savedInstanceState.getBoolean("animatedFeverViewInVisibleState"));
       }
       
       if (!isAnimatedViewInVisibleState()) {
 	        ViewGroupUtilities.removeDynamicViews(getAnimatedView(), Arrays.asList(getDeepMouthUlcersDynamicView(), getExtensiveMouthUlcersDynamicView()));
       }
+      
+      if (!isAnimatedFeverViewInVisibleState()) {
+	        ViewGroupUtilities.removeDynamicViews(getAnimatedFeverDurationView(), Arrays.asList(getFeverDurationDynamicView()));
+    }
       
     }
 
@@ -209,10 +226,11 @@ public class FeverAssessmentFragment extends Fragment {
         // has fever been present every day
         setFeverPresentDailyRadioGroup((RadioGroup) rootView.findViewById(R.id.fever_assessment_radio_present_every_day));
         getFeverPresentDailyRadioGroup().check(getFeverAssessmentPage()
-        		.getPageData().getInt(FeverAssessmentPage.FEVER_PRESENT_EVERY_DAY_DATA_KEY));      
-		                       
+        		.getPageData().getInt(FeverAssessmentPage.FEVER_PRESENT_EVERY_DAY_DATA_KEY));
+        
         // get a hold on the top level animated view
-        setAnimatedView(((ViewGroup) rootView.findViewById(R.id.diarrhoea_assessment_diarrhoea_animated_view)));
+        setAnimatedFeverDurationView(((ViewGroup) rootView.findViewById(R.id.fever_assessment_duration_animated_view)));
+        
 	}
     
     
@@ -268,6 +286,7 @@ public class FeverAssessmentFragment extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        // add listener to custom fever radio group
         addFeverDynamicViewListener();
         
         // add listener to malaria risk radio group
@@ -356,14 +375,11 @@ public class FeverAssessmentFragment extends Fragment {
         getFeverCustomRadioGroup().setPage(getFeverAssessmentPage());
         getFeverCustomRadioGroup().setDataKey(FeverAssessmentPage.FEVER_DATA_KEY);
 		
-        int indexPosition = getAnimatedView().indexOfChild(getFeverView()) + 1;
+        int indexPosition = getAnimatedFeverDurationView().indexOfChild(getFeverView()) + 1;
         
-        getFeverCustomRadioGroup().getRadioGroup().setOnCheckedChangeListener(
-        		new RadioGroupCoordinatorListener(getFeverAssessmentPage(),
-        				null, 
-        				Arrays.asList(getFeverDurationDynamicView()),
-        				getAnimatedView(),
-        				indexPosition));
+        getFeverCustomRadioGroup().configureDynamicView(getFeverDurationDynamicView(),
+        				getAnimatedFeverDurationView(),
+        				indexPosition);
 	}   
     
 	/**
@@ -693,6 +709,20 @@ public class FeverAssessmentFragment extends Fragment {
 	}
 
 	/**
+	 * Getter Method: getAnimatedFeverDurationView()
+	 */
+	public ViewGroup getAnimatedFeverDurationView() {
+		return animatedFeverDurationView;
+	}
+
+	/**
+	 * Setter Method: setAnimatedFeverDurationView()
+	 */	
+	public void setAnimatedFeverDurationView(ViewGroup animatedFeverDurationView) {
+		this.animatedFeverDurationView = animatedFeverDurationView;
+	}
+
+	/**
 	 * Getter Method: getMouthUlcersView()
 	 */
 	private View getMouthUlcersView() {
@@ -732,6 +762,20 @@ public class FeverAssessmentFragment extends Fragment {
 	 */	
 	public void setFeverView(View feverView) {
 		this.feverView = feverView;
+	}
+
+	/**
+	 * Getter Method: isAnimatedFeverViewInVisibleState()
+	 */
+	public Boolean isAnimatedFeverViewInVisibleState() {
+		return animatedFeverViewInVisibleState;
+	}
+
+	/**
+	 * Setter Method: setAnimatedFeverViewInVisibleState()
+	 */
+	public void setAnimatedFeverViewInVisibleState(Boolean animatedFeverViewInVisibleState) {
+		this.animatedFeverViewInVisibleState = animatedFeverViewInVisibleState;
 	}
 
 	/**
