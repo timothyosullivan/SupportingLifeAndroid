@@ -13,5 +13,4 @@ public class ViewGroupUtilities {
 			viewGroup.removeView(dynamicView.getWrappedView());
 		}
 	}
-	
 }

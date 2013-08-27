@@ -39,7 +39,7 @@ public class AssessmentClassificationsFragment extends ListFragment {
     
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-    	  View myFragmentView = inflater.inflate(R.layout.fragment_assessment_results_review_tab, container, false);
+    	  View myFragmentView = inflater.inflate(R.layout.fragment_assessment_results_classification_tab, container, false);
           
           ListView listView = (ListView) myFragmentView.findViewById(android.R.id.list);
           setListAdapter(getClassificationAdapter());

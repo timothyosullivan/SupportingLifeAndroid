@@ -3,6 +3,7 @@ package ie.ucc.bis.wizard.model;
 import ie.ucc.bis.R;
 import ie.ucc.bis.rule.engine.Classification;
 import ie.ucc.bis.wizard.ui.AssessmentClassificationsFragment;
+import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,10 +11,7 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 public class ClassificationAdapter extends BaseAdapter {
-	private static final int HEADER_ITEM_TYPE = 0;
 	private static final int SIMPLE_ITEM_TYPE = 1;
-	private static final int MAX_TYPE_COUNT = 2;
-	private static final String DEFAULT_ITEM_VALUE = "--------";
 	
 	private AssessmentClassificationsFragment assessmentClassificationsFragment;
 	
@@ -29,21 +27,11 @@ public class ClassificationAdapter extends BaseAdapter {
 
     @Override
     public int getItemViewType(int position) {
-    	// need to ascertain if we are dealing with a header
-    	// or just a simple list item
-    	Classification classification = getAssessmentClassificationsFragment().getPatient().getClassifications().get(position);
-    	// here we could colour code the classification
-//    	if (reviewItem.isHeaderItem()) {
-//    		return HEADER_ITEM_TYPE;
-//    	}
-//    	else {
-    		return SIMPLE_ITEM_TYPE;
-//    	}
+   		return SIMPLE_ITEM_TYPE;
     }
 
     @Override
     public int getViewTypeCount() {
-//        return MAX_TYPE_COUNT;
     	return 1;
     }
 
@@ -68,16 +56,11 @@ public class ClassificationAdapter extends BaseAdapter {
         Classification classification = getAssessmentClassificationsFragment().getPatient().getClassifications().get(position);
         
         switch (itemType) {
-//        	case HEADER_ITEM_TYPE : 
-//        			rootView = inflater.inflate(R.layout.list_item_header_review, container, false);
-//        			((TextView) rootView.findViewById(R.id.review_list_header)).setText(reviewItem.getTitle());
-//        			break;
-//        			
         	case SIMPLE_ITEM_TYPE :
-    			rootView = inflater.inflate(R.layout.list_item_review, container, false);
-    			((TextView) rootView.findViewById(R.id.review_list_item_label)).setText(classification.getName());
-    			((TextView) rootView.findViewById(R.id.review_list_item_value)).setText(classification.getType());
-    			View classificationView = rootView.findViewById(R.id.review_list_item);
+    			rootView = inflater.inflate(R.layout.classification_list_item_review, container, false);
+    			((TextView) rootView.findViewById(R.id.classification_list_item_label)).setText(classification.getName());
+    			((TextView) rootView.findViewById(R.id.classification_list_item_value)).setText(classification.getType());
+    			View classificationView = rootView.findViewById(R.id.classification_list_item);
     			colourCodeClassification(classification, classificationView);
     			break;
         } // end of switch
@@ -94,14 +77,18 @@ public class ClassificationAdapter extends BaseAdapter {
      * @param classificationView
      */
     private void colourCodeClassification(Classification classification, View classificationView) {
+    	Drawable background = null;
 		if (classification.getType().equalsIgnoreCase(Classification.SEVERE_CLASSIFICATION_TYPE)) {
-			classificationView.setBackgroundColor(getAssessmentClassificationsFragment().getResources().getColor(R.color.Red));
+			background = getAssessmentClassificationsFragment().getResources().getDrawable(R.drawable.red_classification_list_item);
+			classificationView.setBackground(background);
 		}
 		else if (classification.getType().equalsIgnoreCase(Classification.MODERATE_CLASSIFICATION_TYPE)) {
-			classificationView.setBackgroundColor(getAssessmentClassificationsFragment().getResources().getColor(R.color.Yellow));
+			background = getAssessmentClassificationsFragment().getResources().getDrawable(R.drawable.yellow_classification_list_item);
+			classificationView.setBackground(background);
 		}
 		else {
-			classificationView.setBackgroundColor(getAssessmentClassificationsFragment().getResources().getColor(R.color.LightGreen));
+			background = getAssessmentClassificationsFragment().getResources().getDrawable(R.drawable.green_classification_list_item);
+			classificationView.setBackground(background);
 		}
 	}
 
