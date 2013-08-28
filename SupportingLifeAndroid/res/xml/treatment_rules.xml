@@ -1,0 +1,779 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ============================================================ -->
+<!-- TREATMENT RULES 										  	  -->
+<!-- ============================================================ -->
+
+<!-- Note: The <Symptom> element string must match a string 	  -->
+<!-- 	   element in the 'symptom_ids.xml' file (otherwise an 	  -->
+<!--       will be thrown at runtime when parsing the  			  -->
+<!--       'treatment_rules.xml' document)					  	  -->
+
+<TreatmentRules>
+	<!-- ============================================================ -->
+	<!-- COUGH OR DIFFICULT BREATHING 								  -->
+	<!-- ============================================================ -->
+	<!-- ============================================================ -->
+	<!-- Classification: Severe Pneumonia or Very Severe Disease 	  -->
+	<!-- 															  -->
+	<!-- Treatments: Refer URGENTLY to Hospital 					  -->
+	<!-- 				AND 										  -->
+	<!--  			 Oral Antibiotic								  -->
+	<!-- ============================================================ -->
+	<TreatmentRule>
+		<Category>cough_difficult_breathing</Category>
+		<Classification>Severe Pneumonia or Very Severe Disease</Classification>
+		<Treatment>
+			<Recommendation>Refer URGENTLY to Hospital</Recommendation>
+		</Treatment>
+		<Treatment>
+			<Recommendation>Oral Antibiotic</Recommendation>
+		</Treatment>
+	</TreatmentRule>
+
+	<!-- ============================================================ -->
+	<!-- COUGH OR DIFFICULT BREATHING 								  -->
+	<!-- ============================================================ -->
+	<!-- ============================================================ -->
+	<!-- Classification: Pneumonia									  -->
+	<!-- 															  -->
+	<!-- Treatments: Oral Antibiotic for 5 days 					  -->
+	<!-- 				AND 										  -->
+	<!--  			 Sooth the throat and relieve the cough with	  -->
+	<!--			 a safe remedy									  -->
+	<!--				AND											  -->
+	<!-- 			 Follow-up visit: 2 days 						  -->
+	<!--				AND											  -->
+	<!--			 Advise mother when to return					  -->
+	<!-- ============================================================ -->
+	<TreatmentRule>
+		<Category>cough_difficult_breathing</Category>
+		<Classification>Pneumonia</Classification>
+		<Treatment>
+			<Recommendation>Oral Antibiotic for 5 days</Recommendation>
+		</Treatment>
+		<Treatment>
+			<Recommendation>Sooth the throat and relieve the cough with a safe remedy</Recommendation>
+		</Treatment>
+		<Treatment>
+			<Recommendation>Follow-up visit: 2 days</Recommendation>
+		</Treatment>
+		<Treatment>
+			<Recommendation>Advise mother when to return</Recommendation>
+		</Treatment>
+	</TreatmentRule>
+	
+	<!-- ============================================================ -->
+	<!-- COUGH OR DIFFICULT BREATHING 								  -->
+	<!-- ============================================================ -->
+	<!-- ============================================================ -->
+	<!-- Classification: No Pneumonia: Cough or Cold				  -->
+	<!-- 															  -->
+	<!-- Treatments: Refer for Assessment		 					  -->
+	<!--			 (condition: if coughing more than 30 days)		  -->
+	<!-- 				AND 										  -->
+	<!--  			 Sooth the throat and relieve the cough with	  -->
+	<!--			 a safe remedy									  -->
+	<!--				AND											  -->
+	<!-- 			 Follow-up visit: 5 days 						  -->
+	<!--				AND											  -->
+	<!--			 Advise mother when to return					  -->
+	<!-- ============================================================ -->
+	<TreatmentRule>
+		<Category>cough_difficult_breathing</Category>
+		<Classification>No Pneumonia: Cough or Cold</Classification>
+		<Treatment>
+			<CriteriaList rule="all">
+				<SymptomCriteria value="yes">breathing_assessment_cough_duration_more_than_thirty_days_symptom_id</SymptomCriteria>
+			</CriteriaList>
+			<Recommendation>Refer for Assessment</Recommendation>
+		</Treatment>
+		<Treatment>
+			<Recommendation>Sooth the throat and relieve the cough with a safe remedy</Recommendation>
+		</Treatment>
+		<Treatment>
+			<Recommendation>Follow-up visit: 5 days</Recommendation>
+		</Treatment>
+		<Treatment>
+			<Recommendation>Advise mother when to return</Recommendation>
+		</Treatment>
+	</TreatmentRule>
+
+	<!-- ============================================================ -->
+	<!-- DEHYDRATION (SUB-CLASSIFICATION OF DIARRHOEA)				  -->
+	<!-- ============================================================ -->
+	<!-- ============================================================ -->
+	<!-- Classification: Severe Dehydration 	  					  -->
+	<!-- 															  -->
+	<!-- Treatments: Refer URGENTLY to Hospital with mother giving    -->
+	<!--			 frequent sips of ORS	 					  	  -->
+	<!--			 (condition: if 'severe dehydration is not the 	  -->
+	<!--						 only severe classification)		  -->
+	<!-- 				AND 										  -->
+	<!-- 			 Give fluid for severe dehydration (Plan C)	      -->
+	<!--			 (condition: if 'severe dehydration is the 	  	  -->
+	<!--						 only severe classification)		  -->
+	<!--				AND											  -->
+	<!-- 			 Give antibiotic for cholera	      			  -->
+	<!--			 (condition: if child is 2 years or older and	  -->
+	<!--						 there is cholera in the area)		  -->
+	<!-- ============================================================ -->
+	<TreatmentRule>
+		<Category>dehydration</Category>
+		<Classification>Severe Dehydration</Classification>
+		<Treatment>
+			<CriteriaList rule="all">
+				<TreatmentCriteria value="no">treatment_criteria_severe_dehydration_is_only_severe_classification</TreatmentCriteria>
+			</CriteriaList>
+			<Recommendation>Refer URGENTLY to Hospital with mother giving frequent sips of ORS</Recommendation>
+		</Treatment>
+		<Treatment>
+			<CriteriaList rule="all">
+				<TreatmentCriteria value="yes">treatment_criteria_severe_dehydration_is_only_severe_classification</TreatmentCriteria>
+			</CriteriaList>
+			<Recommendation>Give fluid for severe dehydration (Plan C)</Recommendation>
+		</Treatment>
+		<Treatment>
+			<CriteriaList rule="all">
+				<SymptomCriteria value="yes">diarrhoea_assessment_cholera_in_area_symptom_id</SymptomCriteria>
+				<TreatmentCriteria value="yes">treatment_criteria_patient_is_two_years_or_older</TreatmentCriteria>
+			</CriteriaList>
+			<Recommendation>Give antibiotic for cholera</Recommendation>
+		</Treatment>
+	</TreatmentRule>
+	
+	<!-- ============================================================ -->
+	<!-- DEHYDRATION (SUB-CLASSIFICATION OF DIARRHOEA)			  	  -->
+	<!-- ============================================================ -->
+	<!-- ============================================================ -->
+	<!-- Classification: Some Dehydration 	  						  -->
+	<!-- 															  -->
+	<!-- Treatments: Refer URGENTLY to Hospital with mother giving    -->
+	<!--			 frequent sips of ORS	 					  	  -->
+	<!--			 (condition: if patient has at least one 		  -->
+	<!--						 severe classification)				  -->
+	<!-- 				AND 										  -->
+	<!-- 			 Give food and fluid for some dehydration 		  --> 
+	<!--			 (Plan B)	      								  -->
+	<!--				AND											  -->
+	<!-- 			 Follow-up visit: 5 days 						  -->
+	<!--				AND											  -->
+	<!--			 Advise mother when to return if not improving	  -->
+	<!-- ============================================================ -->
+	<TreatmentRule>
+		<Category>dehydration</Category>
+		<Classification>Some Dehydration</Classification>
+		<Treatment>
+			<CriteriaList rule="all">
+				<TreatmentCriteria value="no">treatment_criteria_patient_has_at_least_one_severe_classification</TreatmentCriteria>
+			</CriteriaList>
+			<Recommendation>Refer URGENTLY to Hospital with mother giving frequent sips of ORS</Recommendation>
+		</Treatment>
+		<Treatment>
+			<Recommendation>Give food and fluid for some dehydration (Plan B)</Recommendation>
+		</Treatment>
+		<Treatment>
+			<Recommendation>Follow-up visit: 5 days</Recommendation>
+		</Treatment>
+		<Treatment>
+			<Recommendation>Advise mother when to return if not improving</Recommendation>
+		</Treatment>
+	</TreatmentRule>
+	
+	<!-- ============================================================ -->
+	<!-- DEHYDRATION (SUB-CLASSIFICATION OF DIARRHOEA)			  	  -->
+	<!-- ============================================================ -->
+	<!-- ============================================================ -->
+	<!-- Classification: No Dehydration 	  						  -->
+	<!-- 															  -->
+	<!-- Treatments:  Give food and fluid to treat diarrhoea at		  --> 
+	<!--			  home (Plan A)	      							  -->
+	<!--				AND											  -->
+	<!-- 			 Follow-up visit: 5 days 						  -->
+	<!--				AND											  -->
+	<!--			 Advise mother when to return if not improving	  -->
+	<!-- ============================================================ -->
+	<TreatmentRule>
+		<Category>dehydration</Category>
+		<Classification>No Dehydration</Classification>
+		<Treatment>
+			<Recommendation>Give food and fluid to treat diarrhoea at home (Plan A)</Recommendation>
+		</Treatment>
+		<Treatment>
+			<Recommendation>Follow-up visit: 5 days</Recommendation>
+		</Treatment>
+		<Treatment>
+			<Recommendation>Advise mother when to return if not improving</Recommendation>
+		</Treatment>
+	</TreatmentRule>
+	
+	<!-- ============================================================ -->
+	<!-- PERSISTANT DIARRHOEA (SUB-CLASSIFICATION OF DIARRHOEA)		  -->
+	<!-- ============================================================ -->
+	<!-- ============================================================ -->
+	<!-- Classification: Severe Persistent Diarrhoea 			  	  -->
+	<!-- 															  -->
+	<!-- Treatments:  Refer to Hospital (there is time to give all	  --> 
+	<!--			  treatments before referral)	    			  -->
+	<!-- ============================================================ -->
+	<TreatmentRule>
+		<Category>persistent_diarrhoea</Category>
+		<Classification>Severe Persistent Diarrhoea</Classification>
+		<Treatment>
+			<Recommendation>Refer to Hospital (there is time to give all treatments before referral)</Recommendation>
+		</Treatment>
+	</TreatmentRule>
+	
+	<!-- ============================================================ -->
+	<!-- PERSISTANT DIARRHOEA (SUB-CLASSIFICATION OF DIARRHOEA)		  -->
+	<!-- ============================================================ -->
+	<!-- ============================================================ -->
+	<!-- Classification: Persistent Diarrhoea 			  	  		  -->
+	<!-- 															  -->
+	<!-- Treatments:  Advise the mother on feeding a child who has	  --> 
+	<!--			  Persistent Diarrhoea			    			  -->
+	<!--			  AND											  -->
+	<!--			  Follow-up visit: 5 days 						  -->
+	<!-- ============================================================ -->
+	<TreatmentRule>
+		<Category>persistent_diarrhoea</Category>
+		<Classification>Persistent Diarrhoea</Classification>
+		<Treatment>
+			<Recommendation>Advise the mother on feeding a child who has Persistent Diarrhoea</Recommendation>
+		</Treatment>
+		<Treatment>
+			<Recommendation>Follow-up visit: 5 days</Recommendation>
+		</Treatment>
+	</TreatmentRule>
+
+	<!-- ============================================================ -->
+	<!-- DYSENTERY (SUB-CLASSIFICATION OF DIARRHOEA)		  		  -->
+	<!-- ============================================================ -->
+	<!-- ============================================================ -->
+	<!-- Classification: Dysentery 			  	  					  -->
+	<!-- 															  -->
+	<!-- Treatments:  Treat for 5 days with an oral antibiotic 		  --> 
+	<!--			  recommended for Shigella in your area			  -->
+	<!--			  AND											  -->
+	<!--			  Follow-up visit: 2 days 						  -->
+	<!-- ============================================================ -->
+	<TreatmentRule>
+		<Category>dysentery</Category>
+		<Classification>Dysentery</Classification>
+		<Treatment>
+			<Recommendation>Treat for 5 days with an oral antibiotic recommended for Shigella in your area</Recommendation>
+		</Treatment>
+		<Treatment>
+			<Recommendation>Follow-up visit: 2 days</Recommendation>
+		</Treatment>
+	</TreatmentRule>
+
+	<!-- ============================================================ -->
+	<!-- HIGH MALARIA RISK (SUB-CLASSIFICATION OF FEVER) 			  -->
+	<!-- ============================================================ -->
+	<!-- ============================================================ -->
+	<!-- Classification: Very Severe Febrile Disease 	  			  -->
+	<!-- 															  -->
+	<!-- Treatments:  Refer URGENTLY to Hospital			 		  --> 
+	<!--			  AND											  -->
+	<!--			  Give quinine for severe malaria (first dose)	  -->
+	<!--			  AND											  -->
+	<!--			  Give first dose of an appropriate antibiotic	  -->
+	<!--			  AND											  -->
+	<!--			  Treat the child to prevent low blood sugar	  -->
+	<!--			  AND											  -->
+	<!--			  Give one dose of paracetamol in clinic for	  -->
+	<!--			  high fever									  -->
+	<!--			  (condition: if patient has a temperature of	  -->
+	<!-- 						  of 37.5 degrees celsius or above)   -->
+	<!-- ============================================================ -->
+	<TreatmentRule>
+		<Category>high_malaria_risk</Category>
+		<Classification>Very Severe Febrile Disease</Classification>
+		<Treatment>
+			<Recommendation>Refer URGENTLY to Hospital</Recommendation>
+		</Treatment>
+		<Treatment>
+			<Recommendation>Give quinine for severe malaria (first dose)</Recommendation>
+		</Treatment>
+		<Treatment>
+			<Recommendation>Give first dose of an appropriate antibiotic</Recommendation>
+		</Treatment>
+		<Treatment>
+			<Recommendation>Treat the child to prevent low blood sugar</Recommendation>
+		</Treatment>
+		<Treatment>
+			<CriteriaList rule="all">
+				<SymptomCriteria value="high temperature">fever_assessment_fever_symptom_id</SymptomCriteria>	<!-- Fever : High Temperature (> 37.5 degrees celsius) -->
+			</CriteriaList>
+			<Recommendation>Give one dose of paracetamol in clinic for high fever</Recommendation>
+		</Treatment>
+	</TreatmentRule>
+
+	<!-- ============================================================ -->
+	<!-- HIGH MALARIA RISK (SUB-CLASSIFICATION OF FEVER) 			  -->
+	<!-- ============================================================ -->
+	<!-- ============================================================ -->
+	<!-- Classification: Malaria						  			  -->
+	<!-- 															  -->
+	<!-- Treatments:  Treat with oral antimalarial					  -->
+	<!--			  (condition: if no cough with fast breathing)	  -->
+	<!--			  AND											  -->
+	<!--			  Treat with Contrimoxazole	for five days		  -->
+	<!--			  (condition: if cough with fast breathing)	  	  -->
+	<!--			  AND											  -->
+	<!--			  Give one dose of paracetamol in clinic for	  -->
+	<!--			  high fever									  -->
+	<!--			  (condition: if patient has a temperature of	  -->
+	<!-- 						  of 37.5 degrees celsius or above)   -->
+	<!--			  AND											  -->
+	<!-- 			  Follow-up visit: 2 days 						  -->
+	<!--		   	  AND											  -->
+	<!--			  Advise mother when to return if fever persists  -->
+	<!--			  AND											  -->
+	<!--			  Refer for Assessment							  -->
+	<!--			  (condition: if fever present every day for      -->
+	<!-- 						  more than 7 days)   				  -->
+	<!-- ============================================================ -->
+	<TreatmentRule>
+		<Category>high_malaria_risk</Category>
+		<Classification>Malaria</Classification>
+		<Treatment>
+			<CriteriaList rule="all">
+				<SymptomCriteria value="no">breathing_assessment_cough_difficult_breathing_symptom_id</SymptomCriteria>		<!-- No Cough Present -->
+				<SymptomCriteria value="yes">breathing_assessment_fast_breathing_symptom_id</SymptomCriteria>				<!-- Fast Breathing -->
+			</CriteriaList>
+			<Recommendation>Treat with oral antimalarial</Recommendation>
+		</Treatment>
+		<Treatment>
+			<CriteriaList rule="all">
+				<SymptomCriteria value="yes">breathing_assessment_cough_difficult_breathing_symptom_id</SymptomCriteria>	<!-- Cough Present -->
+				<SymptomCriteria value="yes">breathing_assessment_fast_breathing_symptom_id</SymptomCriteria>				<!-- Fast Breathing -->
+			</CriteriaList>
+			<Recommendation>Treat with Contrimoxazole for five days</Recommendation>
+		</Treatment>
+		<Treatment>
+			<CriteriaList rule="all">
+				<SymptomCriteria value="high temperature">fever_assessment_fever_symptom_id</SymptomCriteria>				<!-- Fever : High Temperature (> 37.5 degrees celsius) -->
+			</CriteriaList>
+			<Recommendation>Give one dose of paracetamol in clinic for high fever</Recommendation>
+		</Treatment>
+		<Treatment>
+			<Recommendation>Advise the mother on when to return if the fever persists</Recommendation>
+		</Treatment>
+		<Treatment>
+			<Recommendation>Follow-up visit: 2 days</Recommendation>
+		</Treatment>
+		<Treatment>
+			<CriteriaList rule="all">
+				<SymptomCriteria value="yes">fever_assessment_present_every_day_symptom_id</SymptomCriteria>				<!-- Fever present every day -->
+				<SymptomCriteria value="yes">fever_assessment_duration_more_than_seven_days_symptom_id</SymptomCriteria>	<!-- Fever duration more than 7 days -->
+			</CriteriaList>
+			<Recommendation>Refer for Assessment</Recommendation>
+		</Treatment>
+	</TreatmentRule>
+	
+	<!-- ============================================================ -->
+	<!-- LOW MALARIA RISK (SUB-CLASSIFICATION OF FEVER) 			  -->
+	<!-- ============================================================ -->
+	<!-- ============================================================ -->
+	<!-- Classification: Very Severe Febrile Disease 	  			  -->
+	<!-- 															  -->
+	<!-- Treatments:  Refer URGENTLY to Hospital			 		  --> 
+	<!--			  AND											  -->
+	<!--			  Give quinine for severe malaria (first dose)	  -->
+	<!--			  AND											  -->
+	<!--			  Give first dose of an appropriate antibiotic	  -->
+	<!--			  AND											  -->
+	<!--			  Treat the child to prevent low blood sugar	  -->
+	<!--			  AND											  -->
+	<!--			  Give one dose of paracetamol in clinic for	  -->
+	<!--			  high fever									  -->
+	<!--			  (condition: if patient has a temperature of	  -->
+	<!-- 						  of 37.5 degrees celsius or above)   -->
+	<!-- ============================================================ -->
+	<TreatmentRule>
+		<Category>low_malaria_risk</Category>
+		<Classification>Very Severe Febrile Disease</Classification>
+		<Treatment>
+			<Recommendation>Refer URGENTLY to Hospital</Recommendation>
+		</Treatment>
+		<Treatment>
+			<Recommendation>Give quinine for severe malaria (first dose)</Recommendation>
+		</Treatment>
+		<Treatment>
+			<Recommendation>Give first dose of an appropriate antibiotic</Recommendation>
+		</Treatment>
+		<Treatment>
+			<Recommendation>Treat the child to prevent low blood sugar</Recommendation>
+		</Treatment>
+		<Treatment>
+			<CriteriaList rule="all">
+				<SymptomCriteria value="high temperature">fever_assessment_fever_symptom_id</SymptomCriteria>	<!-- Fever : High Temperature (> 37.5 degrees celsius) -->
+			</CriteriaList>
+			<Recommendation>Give one dose of paracetamol in clinic for high fever</Recommendation>
+		</Treatment>
+	</TreatmentRule>
+
+	<!-- ============================================================ -->
+	<!-- LOW MALARIA RISK (SUB-CLASSIFICATION OF FEVER) 			  -->
+	<!-- ============================================================ -->
+	<!-- ============================================================ -->
+	<!-- Classification: Malaria  			  						  -->
+	<!-- 															  -->
+	<!-- Treatments:  Treat with oral antimalarial					  -->
+	<!--			  (condition: if no cough with fast breathing)	  -->
+	<!--			  AND											  -->
+	<!--			  Treat with Contrimoxazole	for five days		  -->
+	<!--			  (condition: if cough with fast breathing)	  	  -->
+	<!--			  AND											  -->
+	<!--			  Give one dose of paracetamol in clinic for	  -->
+	<!--			  high fever									  -->
+	<!--			  (condition: if patient has a temperature of	  -->
+	<!-- 						  of 37.5 degrees celsius or above)   -->
+	<!--			  AND											  -->
+	<!-- 			  Follow-up visit: 2 days 						  -->
+	<!--		   	  AND											  -->
+	<!--			  Advise mother when to return if fever persists  -->
+	<!--			  AND											  -->
+	<!--			  Refer for Assessment							  -->
+	<!--			  (condition: if fever present every day for      -->
+	<!-- 						  more than 7 days)   				  -->
+	<!-- ============================================================ -->
+	<TreatmentRule>
+		<Category>low_malaria_risk</Category>
+		<Classification>Malaria</Classification>
+		<Treatment>
+			<CriteriaList rule="all">
+				<SymptomCriteria value="no">breathing_assessment_cough_difficult_breathing_symptom_id</SymptomCriteria>		<!-- No Cough Present -->
+				<SymptomCriteria value="yes">breathing_assessment_fast_breathing_symptom_id</SymptomCriteria>				<!-- Fast Breathing -->
+			</CriteriaList>
+			<Recommendation>Treat with oral antimalarial</Recommendation>
+		</Treatment>
+		<Treatment>
+			<CriteriaList rule="all">
+				<SymptomCriteria value="yes">breathing_assessment_cough_difficult_breathing_symptom_id</SymptomCriteria>	<!-- Cough Present -->
+				<SymptomCriteria value="yes">breathing_assessment_fast_breathing_symptom_id</SymptomCriteria>				<!-- Fast Breathing -->
+			</CriteriaList>
+			<Recommendation>Treat with Contrimoxazole for five days</Recommendation>
+		</Treatment>
+		<Treatment>
+			<CriteriaList rule="all">
+				<SymptomCriteria value="high temperature">fever_assessment_fever_symptom_id</SymptomCriteria>				<!-- Fever : High Temperature (> 37.5 degrees celsius) -->
+			</CriteriaList>
+			<Recommendation>Give one dose of paracetamol in clinic for high fever</Recommendation>
+		</Treatment>
+		<Treatment>
+			<Recommendation>Advise the mother on when to return if the fever persists</Recommendation>
+		</Treatment>
+		<Treatment>
+			<Recommendation>Follow-up visit: 2 days</Recommendation>
+		</Treatment>
+		<Treatment>
+			<CriteriaList rule="all">
+				<SymptomCriteria value="yes">fever_assessment_present_every_day_symptom_id</SymptomCriteria>				<!-- Fever present every day -->
+				<SymptomCriteria value="yes">fever_assessment_duration_more_than_seven_days_symptom_id</SymptomCriteria>	<!-- Fever duration more than 7 days -->
+			</CriteriaList>
+			<Recommendation>Refer for Assessment</Recommendation>
+		</Treatment>
+	</TreatmentRule>	
+	
+	<!-- ============================================================ -->
+	<!-- LOW MALARIA RISK (SUB-CLASSIFICATION OF FEVER) 			  -->
+	<!-- ============================================================ -->
+	<!-- ============================================================ -->
+	<!-- Classification: Fever - Malaria Unlikely    				  -->
+	<!-- 															  -->
+	<!-- Treatments:  Give one dose of paracetamol in clinic for	  -->
+	<!--			  high fever									  -->
+	<!--			  (condition: if patient has a temperature of	  -->
+	<!-- 						  of 37.5 degrees celsius or above)   -->
+	<!--			  AND											  -->
+	<!-- 			  Follow-up visit: 2 days 						  -->
+	<!--		   	  AND											  -->
+	<!--			  Advise mother when to return if fever persists  -->
+	<!--			  AND											  -->
+	<!--			  Refer for Assessment							  -->
+	<!--			  (condition: if fever present every day for      -->
+	<!-- 						  more than 7 days)   				  -->
+	<!-- ============================================================ -->
+	<TreatmentRule>
+		<Category>low_malaria_risk</Category>
+		<Classification>Fever - Malaria Unlikely</Classification>
+		<Treatment>
+			<CriteriaList rule="all">
+				<SymptomCriteria value="high temperature">fever_assessment_fever_symptom_id</SymptomCriteria>				<!-- Fever : High Temperature (> 37.5 degrees celsius) -->
+			</CriteriaList>
+			<Recommendation>Give one dose of paracetamol in clinic for high fever</Recommendation>
+		</Treatment>
+		<Treatment>
+			<Recommendation>Advise the mother on when to return if the fever persists</Recommendation>
+		</Treatment>
+		<Treatment>
+			<Recommendation>Follow-up visit: 2 days</Recommendation>
+		</Treatment>
+		<Treatment>
+			<CriteriaList rule="all">
+				<SymptomCriteria value="yes">fever_assessment_present_every_day_symptom_id</SymptomCriteria>				<!-- Fever present every day -->
+				<SymptomCriteria value="yes">fever_assessment_duration_more_than_seven_days_symptom_id</SymptomCriteria>	<!-- Fever duration more than 7 days -->
+			</CriteriaList>
+			<Recommendation>Refer for Assessment</Recommendation>
+		</Treatment>
+	</TreatmentRule>
+
+	<!-- ============================================================ -->
+	<!-- NO MALARIA RISK (SUB-CLASSIFICATION OF FEVER) 			  	  -->
+	<!-- ============================================================ -->
+	<!-- ============================================================ -->
+	<!-- Classification: Very Severe Febrile Disease    			  -->
+	<!-- 															  -->
+	<!-- Treatments:  Refer URGENTLY to Hospital			 		  --> 
+	<!--			  AND											  -->
+	<!--			  Give first dose of an appropriate antibiotic	  -->
+	<!--			  AND											  -->
+	<!--			  Treat the child to prevent low blood sugar	  -->
+	<!--			  AND											  -->
+	<!--			  Give one dose of paracetamol in clinic for	  -->
+	<!--			  high fever									  -->
+	<!--			  (condition: if patient has a temperature of	  -->
+	<!-- 						  of 37.5 degrees celsius or above)   -->
+	<!-- ============================================================ -->
+	<TreatmentRule>
+		<Category>no_malaria_risk</Category>
+		<Classification>Very Severe Febrile Disease</Classification>
+		<Treatment>
+			<Recommendation>Refer URGENTLY to Hospital</Recommendation>
+		</Treatment>
+		<Treatment>
+			<Recommendation>Give first dose of an appropriate antibiotic</Recommendation>
+		</Treatment>
+		<Treatment>
+			<Recommendation>Treat the child to prevent low blood sugar</Recommendation>
+		</Treatment>
+		<Treatment>
+			<CriteriaList rule="all">
+				<SymptomCriteria value="high temperature">fever_assessment_fever_symptom_id</SymptomCriteria>	<!-- Fever : High Temperature (> 37.5 degrees celsius) -->
+			</CriteriaList>
+			<Recommendation>Give one dose of paracetamol in clinic for high fever</Recommendation>
+		</Treatment>
+	</TreatmentRule>
+	
+	<!-- ============================================================ -->
+	<!-- NO MALARIA RISK (SUB-CLASSIFICATION OF FEVER) 			  	  -->
+	<!-- ============================================================ -->
+	<!-- ============================================================ -->
+	<!-- Classification: Fever - Malaria Unlikely	    			  -->
+	<!-- 															  -->
+	<!-- Treatments:  Give one dose of paracetamol in clinic for	  -->
+	<!--			  high fever									  -->
+	<!--			  (condition: if patient has a temperature of	  -->
+	<!-- 						  of 37.5 degrees celsius or above)   -->
+	<!--			  AND											  -->
+	<!-- 			  Follow-up visit: 2 days 						  -->
+	<!--		   	  AND											  -->
+	<!--			  Advise mother when to return if fever persists  -->
+	<!--			  AND											  -->
+	<!--			  Refer for Assessment							  -->
+	<!--			  (condition: if fever present every day for      -->
+	<!-- 						  more than 7 days)   				  -->
+	<!-- ============================================================ -->
+	<TreatmentRule>
+		<Category>no_malaria_risk</Category>
+		<Classification>Fever - Malaria Unlikely</Classification>
+		<Treatment>
+			<CriteriaList rule="all">
+				<SymptomCriteria value="high temperature">fever_assessment_fever_symptom_id</SymptomCriteria>				<!-- Fever : High Temperature (> 37.5 degrees celsius) -->
+			</CriteriaList>
+			<Recommendation>Give one dose of paracetamol in clinic for high fever</Recommendation>
+		</Treatment>
+		<Treatment>
+			<Recommendation>Advise the mother on when to return if the fever persists</Recommendation>
+		</Treatment>
+		<Treatment>
+			<Recommendation>Follow-up visit: 2 days</Recommendation>
+		</Treatment>
+		<Treatment>
+			<CriteriaList rule="all">
+				<SymptomCriteria value="yes">fever_assessment_present_every_day_symptom_id</SymptomCriteria>				<!-- Fever present every day -->
+				<SymptomCriteria value="yes">fever_assessment_duration_more_than_seven_days_symptom_id</SymptomCriteria>	<!-- Fever duration more than 7 days -->
+			</CriteriaList>
+			<Recommendation>Refer for Assessment</Recommendation>
+		</Treatment>
+	</TreatmentRule>
+
+	<!-- ============================================================ -->
+	<!-- MEASLES					 								  -->
+	<!-- ============================================================ -->
+	<!-- ============================================================ -->
+	<!-- Classification: Severe Complicated Measles				 	  -->
+	<!-- 															  -->
+	<!-- Treatments:  Refer URGENTLY to Hospital			 		  --> 
+	<!--			  AND											  -->
+	<!-- 			  Give Vitamin A								  -->
+	<!--		   	  AND											  -->
+	<!--			  Give first dose of an appropriate antibiotic	  -->
+	<!--			  AND											  -->
+	<!--			  Apply tetracycline eye ointment				  -->
+	<!--			  (condition: if patient has either 'clouding     -->
+	<!-- 						  of the cornea' or 'pus discharge	  -->
+	<!--						  from the eye')   				  	  -->
+	<!-- ============================================================ -->
+	<TreatmentRule>
+		<Category>measles</Category>
+		<Classification>Severe Complicated Measles</Classification>
+		<Treatment>
+			<Recommendation>Refer URGENTLY to Hospital</Recommendation>
+		</Treatment>
+		<Treatment>
+			<Recommendation>Give Vitamin A</Recommendation>
+		</Treatment>
+		<Treatment>
+			<Recommendation>Give first dose of an appropriate antibiotic</Recommendation>
+		</Treatment>
+		<Treatment>
+			<CriteriaList rule="either">
+				<SymptomCriteria value="yes">fever_assessment_cornea_clouding_symptom_id</SymptomCriteria>				<!-- Clouding of the Cornea -->
+				<SymptomCriteria value="yes">fever_assessment_pus_draining_symptom_id</SymptomCriteria>					<!-- Pus Discharge from the Eye -->
+			</CriteriaList>
+			<Recommendation>Apply tetracycline eye ointment</Recommendation>
+		</Treatment>
+	</TreatmentRule>
+
+	<!-- ============================================================ -->
+	<!-- MEASLES					 								  -->
+	<!-- ============================================================ -->
+	<!-- ============================================================ -->
+	<!-- Classification: Measles with Eye or Mouth Complications 	  -->
+	<!-- 															  -->
+	<!-- Treatments:  Give Vitamin A								  -->
+	<!--		   	  AND											  -->
+	<!--			  Apply tetracycline eye ointment				  -->
+	<!--			  (condition: if patient has 'pus discharge	  	  -->
+	<!--						  from the eye')   				  	  -->
+	<!--			  AND											  -->
+	<!--			  Treat mouth ulcers with gentian violet		  -->
+	<!--			  (condition: if patient has 'mouth ulcers')   	  -->
+	<!--			  AND											  -->
+	<!-- 			  Follow-up visit: 2 days 						  -->
+	<!-- ============================================================ -->
+	<TreatmentRule>
+		<Category>measles</Category>
+		<Classification>Measles with Eye or Mouth Complications</Classification>
+		<Treatment>
+			<Recommendation>Give Vitamin A</Recommendation>
+		</Treatment>
+		<Treatment>
+			<CriteriaList rule="all">
+				<SymptomCriteria value="yes">fever_assessment_pus_draining_symptom_id</SymptomCriteria>					<!-- Pus Discharge from the Eye -->
+			</CriteriaList>
+			<Recommendation>Apply tetracycline eye ointment</Recommendation>
+		</Treatment>
+		<Treatment>
+			<CriteriaList rule="all">
+				<SymptomCriteria value="yes">fever_assessment_mouth_ulcers_symptom_id</SymptomCriteria>					<!-- Mouth Ulcers -->
+			</CriteriaList>
+			<Recommendation>Treat mouth ulcers with gentian violet</Recommendation>
+		</Treatment>
+		<Treatment>
+			<Recommendation>Follow-up visit: 2 days</Recommendation>
+		</Treatment>
+	</TreatmentRule>
+
+	<!-- ============================================================ -->
+	<!-- MEASLES					 								  -->
+	<!-- ============================================================ -->
+	<!-- ============================================================ -->
+	<!-- Classification: Measles								 	  -->
+	<!-- 															  -->
+	<!-- Treatments:  Give Vitamin A								  -->
+	<!-- ============================================================ -->
+	<TreatmentRule>
+		<Category>measles</Category>
+		<Classification>Measles</Classification>
+		<Treatment>
+			<Recommendation>Give Vitamin A</Recommendation>
+		</Treatment>
+	</TreatmentRule>
+
+	<!-- ============================================================ -->
+	<!-- EAR PROBLEM				 								  -->
+	<!-- ============================================================ -->
+	<!-- ============================================================ -->
+	<!-- Classification: Mastoiditis							 	  -->
+	<!-- 															  -->
+	<!-- Treatments:  Refer URGENTLY to Hospital			 		  --> 
+	<!--			  AND											  -->
+	<!--			  Give first dose of paracetamol for pain		  -->
+	<!--			  AND											  -->
+	<!--			  Give first dose of an appropriate antibiotic	  -->
+	<!-- ============================================================ -->
+	<TreatmentRule>
+		<Category>ear_problem</Category>
+		<Classification>Mastoiditis</Classification>
+		<Treatment>
+			<Recommendation>Refer URGENTLY to Hospital</Recommendation>
+		</Treatment>
+		<Treatment>
+			<Recommendation>Give first dose of paracetamol for pain</Recommendation>
+		</Treatment>
+		<Treatment>
+			<Recommendation>Give first dose of an appropriate antibiotic</Recommendation>
+		</Treatment>
+	</TreatmentRule>
+	
+	<!-- ============================================================ -->
+	<!-- EAR PROBLEM				 								  -->
+	<!-- ============================================================ -->
+	<!-- ============================================================ -->
+	<!-- Classification: Acute Ear Infection					 	  -->
+	<!-- 															  -->
+	<!-- Treatments: Oral Antibiotic for 5 days 					  -->
+	<!-- 				AND 										  -->
+	<!--  			 Give paracetamol for pain						  -->
+	<!--				AND											  -->
+	<!-- 			 Dry the ear by wicking 						  -->
+	<!--				AND											  -->
+	<!--			 Follow-up visit: 2 days						  -->
+	<!-- ============================================================ -->
+	<TreatmentRule>
+		<Category>ear_problem</Category>
+		<Classification>Acute Ear Infection</Classification>
+		<Treatment>
+			<Recommendation>Oral Antibiotic for 5 days</Recommendation>
+		</Treatment>
+		<Treatment>
+			<Recommendation>Give paracetamol for pain</Recommendation>
+		</Treatment>
+		<Treatment>
+			<Recommendation>Dry the ear by wicking</Recommendation>
+		</Treatment>
+		<Treatment>
+			<Recommendation>Follow-up visit: 2 days</Recommendation>
+		</Treatment>
+	</TreatmentRule>
+	
+	<!-- ============================================================ -->
+	<!-- EAR PROBLEM				 								  -->
+	<!-- ============================================================ -->
+	<!-- ============================================================ -->
+	<!-- Classification: Chronic Ear Infection					 	  -->
+	<!-- 													  		  -->
+	<!-- NEED TO DO......											  -->
+	<!-- ============================================================ -->
+
+	<!-- ============================================================ -->
+	<!-- EAR PROBLEM				 								  -->
+	<!-- ============================================================ -->
+	<!-- ============================================================ -->
+	<!-- Classification: No Ear Infection						 	  -->
+	<!-- 															  -->
+	<!-- Treatments: No additional treatment						  -->
+	<!-- ============================================================ -->
+	<TreatmentRule>
+		<Category>ear_problem</Category>
+		<Classification>No Ear Infection</Classification>
+		<Treatment>
+			<Recommendation>No additional treatment</Recommendation>
+		</Treatment>
+	</TreatmentRule>
+
+</TreatmentRules>

@@ -666,7 +666,7 @@
 			<Symptom value="yes">ear_assessment_ear_problem_symptom_id</Symptom>						<!-- Ear Problem : YES -->
 		</SymptomRule>
 		<SymptomRule rule="ANY_SYMPTOM">
-		 	<Symptom value="no">ear_assessment_ear_discharge_duration_symptom_id</Symptom>	 			<!-- Ear Pus Discharge >= 14 days : NO -->
+			<Symptom value="no">ear_assessment_ear_discharge_duration_symptom_id</Symptom>	 			<!-- Ear Pus Discharge >= 14 days : NO -->
 			<Symptom value="yes">ear_assessment_ear_pain_symptom_id</Symptom>							<!-- Ear Pain : YES -->
 		</SymptomRule>
 	</Classification>
@@ -746,7 +746,7 @@
 		<Priority>1</Priority>
 		<SymptomRule rule="ANY_SYMPTOM">
 			<Symptom value="yes">malnutrition_assessment_visible_severe_wasting_symptom_id</Symptom>	<!-- Visible Severe Wasting : YES -->
-	 		<Symptom value="severe">malnutrition_assessment_palmar_pallor_symptom_id</Symptom>	 		<!-- Palmar Pallor : Severe -->
+			<Symptom value="severe">malnutrition_assessment_palmar_pallor_symptom_id</Symptom>	 		<!-- Palmar Pallor : Severe -->
 			<Symptom value="yes">malnutrition_assessment_oedema_symptom_id</Symptom>					<!-- Oedema of Both Feet : YES -->
 		</SymptomRule>
 	</Classification>
@@ -767,8 +767,8 @@
 		<Type>MODERATE</Type>
 		<Priority>2</Priority>
 		<SymptomRule rule="ANY_SYMPTOM">
- 			<Symptom value="some">malnutrition_assessment_palmar_pallor_symptom_id</Symptom>			<!-- Palmar Pallor : Some -->
- 			<Symptom value="very low">malnutrition_assessment_weight_for_age_symptom_id</Symptom>		<!-- Weight for Age : Very Low -->
+			<Symptom value="some">malnutrition_assessment_palmar_pallor_symptom_id</Symptom>			<!-- Palmar Pallor : Some -->
+			<Symptom value="very low">malnutrition_assessment_weight_for_age_symptom_id</Symptom>		<!-- Weight for Age : Very Low -->
 		</SymptomRule>
 	</Classification>
 	
@@ -788,17 +788,17 @@
 		<Type>LOW</Type>
 		<Priority>3</Priority>
 		<SymptomRule rule="ANY_SYMPTOM">
-		    <Symptom value="no">malnutrition_assessment_oedema_symptom_id</Symptom>						<!-- Oedema of Both Feet : NO -->
+			<Symptom value="no">malnutrition_assessment_oedema_symptom_id</Symptom>						<!-- Oedema of Both Feet : NO -->
 		</SymptomRule>
 		<SymptomRule rule="ANY_SYMPTOM">
-		    <Symptom value="not very low">malnutrition_assessment_weight_for_age_symptom_id</Symptom>	<!-- Weight for Age : Not Very Low -->
+			<Symptom value="not very low">malnutrition_assessment_weight_for_age_symptom_id</Symptom>	<!-- Weight for Age : Not Very Low -->
 		</SymptomRule>
 		<SymptomRule rule="ANY_SYMPTOM">
-		    <Symptom value="no">malnutrition_assessment_visible_severe_wasting_symptom_id</Symptom>		<!-- Visible Severe Wasting : NO -->
+			<Symptom value="no">malnutrition_assessment_visible_severe_wasting_symptom_id</Symptom>		<!-- Visible Severe Wasting : NO -->
 		</SymptomRule>
 		<SymptomRule rule="ANY_SYMPTOM">
 			<Symptom value="no">malnutrition_assessment_palmar_pallor_symptom_id</Symptom>				<!-- Palmar Pallor : NO -->
 		</SymptomRule>
 	</Classification>
-	
+
 </ClassificationRules>
