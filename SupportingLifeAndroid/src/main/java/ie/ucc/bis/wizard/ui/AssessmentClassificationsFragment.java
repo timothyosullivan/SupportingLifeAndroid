@@ -35,11 +35,6 @@ public class AssessmentClassificationsFragment extends ListFragment {
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
- 
-        // obtain a reference to the patient being dealt with...
-        setPatient(((AssessmentResultsActivity) getActivity()).getPatient());
-        
-        setClassificationAdapter(new ClassificationAdapter(this, getPatient()));
     }
     
     @Override
@@ -47,7 +42,12 @@ public class AssessmentClassificationsFragment extends ListFragment {
     	  View myFragmentView = inflater.inflate(R.layout.fragment_assessment_results_classification_tab, container, false);
           
           ListView listView = (ListView) myFragmentView.findViewById(android.R.id.list);
+ 
+          // obtain a reference to the patient being dealt with...
+          setPatient(((AssessmentResultsActivity) getActivity()).getPatient());          
+          setClassificationAdapter(new ClassificationAdapter(this, getPatient()));
           setListAdapter(getClassificationAdapter());
+          
           listView.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
     	     	 
     	  return myFragmentView;
