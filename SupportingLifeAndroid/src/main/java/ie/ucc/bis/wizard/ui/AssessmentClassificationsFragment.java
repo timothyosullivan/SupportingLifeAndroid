@@ -46,15 +46,9 @@ public class AssessmentClassificationsFragment extends ListFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
     	  View myFragmentView = inflater.inflate(R.layout.fragment_assessment_results_classification_tab, container, false);
           
-          ListView listView = (ListView) myFragmentView.findViewById(android.R.id.list);
- 
-          // obtain a reference to the patient being dealt with...
-          setPatient(((AssessmentResultsActivity) getActivity()).getPatient());          
-          setClassificationAdapter(new ClassificationAdapter(this, getPatient()));
-          setListAdapter(getClassificationAdapter());
-          
+          ListView listView = (ListView) myFragmentView.findViewById(android.R.id.list);         
           listView.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
-    	     	 
+          
     	  return myFragmentView;
     }
 
