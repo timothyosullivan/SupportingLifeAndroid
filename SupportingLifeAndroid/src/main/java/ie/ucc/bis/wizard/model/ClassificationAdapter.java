@@ -1,6 +1,7 @@
 package ie.ucc.bis.wizard.model;
 
 import ie.ucc.bis.R;
+import ie.ucc.bis.domain.Patient;
 import ie.ucc.bis.rule.engine.Classification;
 import ie.ucc.bis.wizard.ui.AssessmentClassificationsFragment;
 import android.graphics.drawable.Drawable;
@@ -12,12 +13,14 @@ import android.widget.TextView;
 
 public class ClassificationAdapter extends BaseAdapter {
 	private static final int SIMPLE_ITEM_TYPE = 1;
+	private Patient patient;
 	
 	private AssessmentClassificationsFragment assessmentClassificationsFragment;
 	
-    public ClassificationAdapter(AssessmentClassificationsFragment assessmentClassificationsFragment) {
+    public ClassificationAdapter(AssessmentClassificationsFragment assessmentClassificationsFragment, Patient patient) {
 		super();
 		setAssessmentClassificationsFragment(assessmentClassificationsFragment);
+		setPatient(patient);
 	}
 
 	@Override
@@ -41,30 +44,30 @@ public class ClassificationAdapter extends BaseAdapter {
     }
 
     public Object getItem(int position) {
-        return getAssessmentClassificationsFragment().getPatient().getClassifications().get(position);
+        return getPatient().getClassifications().get(position);
     }
 
     public long getItemId(int position) {
-        return getAssessmentClassificationsFragment().getPatient().getClassifications().get(position).hashCode();
+        return getPatient().getClassifications().get(position).hashCode();
     }
 
     public View getView(int position, View view, ViewGroup container) {
-        LayoutInflater inflater = LayoutInflater.from(getAssessmentClassificationsFragment().getActivity());
         int itemType = getItemViewType(position);
-        View rootView = null;
-        
-        Classification classification = getAssessmentClassificationsFragment().getPatient().getClassifications().get(position);
-        
+               
         switch (itemType) {
         	case SIMPLE_ITEM_TYPE :
-    			rootView = inflater.inflate(R.layout.classification_list_item_review, container, false);
-    			((TextView) rootView.findViewById(R.id.classification_list_item_label)).setText(classification.getName());
-    			((TextView) rootView.findViewById(R.id.classification_list_item_value)).setText(classification.getType());
-    			View classificationView = rootView.findViewById(R.id.classification_list_item);
+        		if (view == null) {
+        	        LayoutInflater inflater = LayoutInflater.from(getAssessmentClassificationsFragment().getActivity());
+        			view = inflater.inflate(R.layout.classification_list_item_review, container, false);
+        		}
+                Classification classification = getPatient().getClassifications().get(position);
+    			((TextView) view.findViewById(R.id.classification_list_item_label)).setText(classification.getName());
+    			((TextView) view.findViewById(R.id.classification_list_item_value)).setText(classification.getType());
+    			View classificationView = view.findViewById(R.id.classification_list_item);
     			colourCodeClassification(classification, classificationView);
     			break;
         } // end of switch
-        return rootView;
+        return view;
     }
 
     /**
@@ -96,7 +99,7 @@ public class ClassificationAdapter extends BaseAdapter {
 		// null pointer exception was being called here previously periodically as 
 		// AssessmentClassificationFragment was null when querying for number of classifications
 		// associated with Patient - so now holding this information locally
-		return getAssessmentClassificationsFragment().getPatient().getClassifications().size();
+		return getPatient().getClassifications().size();
     }
 
 	/**
@@ -111,5 +114,19 @@ public class ClassificationAdapter extends BaseAdapter {
 	 */
 	private void setAssessmentClassificationsFragment(AssessmentClassificationsFragment assessmentClassificationsFragment) {
 		this.assessmentClassificationsFragment = assessmentClassificationsFragment;
+	}
+
+	/**
+	 * Getter Method: getPatient()
+	 */
+	public Patient getPatient() {
+		return patient;
+	}
+
+	/**
+	 * Setter Method: setPatient()
+	 */
+	public void setPatient(Patient patient) {
+		this.patient = patient;
 	}
 }

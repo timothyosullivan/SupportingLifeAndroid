@@ -3,30 +3,30 @@ package ie.ucc.bis.rule.engine;
 import java.io.Serializable;
 
 /**
- * Class: Symptom
+ * Class: TreatmentCriteria
  * 
- * Encapsulates a Symptom defined by 
- * classification_rules.xml e.g.
+ * Encapsulates a TreatmentCriteria as defined by 
+ * treatment_rules.xml e.g.
  * 
- * 	<Symptom value="yes">breathing_assessment_chest_indrawing_symptom_id</Symptom> 				<!-- Chest Indrawing -->
+ * 	<TreatmentCriteria value="yes">treatment_criteria_patient_is_two_years_or_older</TreatmentCriterion>
  * 
  * @author TOSullivan
  *
  */
-public class Symptom implements Serializable {
+public class TreatmentCriteria implements Serializable {
 
 	/**
 	 * Generated Serial ID
 	 */
-	private static final long serialVersionUID = 7913629697084438822L;
+	private static final long serialVersionUID = -8729326497091398713L;
 
 	private String identifier;
 	private String value;
-	
+		
 	/**
 	 * Constructor
 	 */
-	public Symptom(String identifier, String value) {
+	public TreatmentCriteria(String identifier, String value) {
 		setIdentifier(identifier);
 		setValue(value);
 	}
@@ -58,17 +58,17 @@ public class Symptom implements Serializable {
 	public void setValue(String value) {
 		this.value = value;
 	}
-	
+
 	/**
 	 * 
-	 * Provides debug output of a symptom
+	 * Provides debug output of the treatment criteria
 	 * 
 	 */
 	public String debugOutput() {
 		StringBuffer debugOutput = new StringBuffer();
 		
-		debugOutput.append("Symptom: " + getIdentifier() + "\n");
-		debugOutput.append(" ----> Symptom Value: " + getValue() + "\n");
+		debugOutput.append("Treatment Criteria: " + getIdentifier() + "\n");
+		debugOutput.append(" ----> Value: " + getValue() + "\n");
 
 		return debugOutput.toString();
 	}

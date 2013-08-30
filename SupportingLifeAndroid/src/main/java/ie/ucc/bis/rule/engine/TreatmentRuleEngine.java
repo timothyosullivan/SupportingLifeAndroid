@@ -3,13 +3,11 @@ package ie.ucc.bis.rule.engine;
 import ie.ucc.bis.R;
 import ie.ucc.bis.activity.SupportingLifeBaseActivity;
 import ie.ucc.bis.domain.Patient;
-import ie.ucc.bis.ui.utilities.ClassificationUtils;
 import ie.ucc.bis.ui.utilities.LoggerUtils;
 import ie.ucc.bis.wizard.model.review.ReviewItem;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import org.xmlpull.v1.XmlPullParser;
@@ -19,71 +17,69 @@ import android.content.res.XmlResourceParser;
 
 
 /**
- * Class: ClassificationRuleEngine
+ * Class: TreatmentRuleEngine
  * 
- * Responsible for parsing classification xml rules and
- * determining appropriate classifications for patient.
+ * Responsible for parsing treatment xml rules and
+ * determining appropriate treatments for patient.
  * 
  * @author TOSullivan
  *
  */
 
-public class ClassificationRuleEngine {
+public class TreatmentRuleEngine {
 
-	private static final String CLASSIFICATION_ELEMENT = "Classification";
+	private static final String TREATMENT_RULE = "TreatmentRule";
 	private static final String CLASSIFICATION_CATEGORY = "Category";
-	private static final String CLASSIFICATION_NAME = "Name";
-	private static final String CLASSIFICATION_TYPE = "Type";
-	private static final String CLASSIFICATION_PRIORITY = "Priority";
-	private static final String CLASSIFICATION_SYMPTOM_RULE = "SymptomRule";
+	private static final String CLASSIFICATION_NAME = "Classification";
+	private static final String TREATMENT = "Treatment";
+	private static final String CRITERIA_LIST = "CriteriaList";
+	private static final String TREATMENT_CRITERIA = "TreatmentCriteria";
+	private static final String SYMPTOM_CRITERIA = "SymptomCriteria";
+	private static final String RECOMMENDATION = "Recommendation";
 	private static final String RULE_ATTRIB = "rule";
-	private static final String CLASSIFICATION_SYMPTOM = "Symptom";
-	private static final String CLASSIFICATION_SYMPTOM_VALUE_ATTRIB = "value";
-	private static final String CLASSIFICATION_RULE = "ClassificationRule";
-	private static final String CLASSIFICATION_DIAGNOSED = "ClassificationDiagnosed";
+	private static final String VALUE_ATTRIB = "value";
+
+	private static final String LOG_TAG = "ie.ucc.bis.rule.engine.TreatmentRuleEngine";
 	
-	private static final String LOG_TAG = "ie.ucc.bis.rule.engine.ClassificationRuleEngine";
-	
-	private static ArrayList<Classification> systemClassifications;
-	
+	private static ArrayList<TreatmentRule> systemTreatmentRules;
 	
 	/**
 	 * 
-	 * Responsible for determining patient classifications based on 
+	 * Responsible for determining patient treatments based on 
 	 * assessment
 	 * 
 	 * @param supportingLifeBaseActivity 
-	 * @param reviewItems 
+	 * @param reviewItems
+	 * @param classifications
 	 * @param patient 
 	 * 
 	 */
-	public void determineClassifications(SupportingLifeBaseActivity supportingLifeBaseActivity, ArrayList<ReviewItem> reviewItems, Patient patient) {
+	public void determineTreatments(SupportingLifeBaseActivity supportingLifeBaseActivity, ArrayList<ReviewItem> reviewItems, 
+			ArrayList<Classification> classifications, Patient patient) {
 
-		setSystemClassifications(new ArrayList<Classification>());
-		parseClassificationRules(supportingLifeBaseActivity);
-		determinePatientClassifications(supportingLifeBaseActivity, reviewItems, patient);
+		setSystemTreatmentRules(new ArrayList<TreatmentRule>());
+		parseTreatmentRules(supportingLifeBaseActivity);
+	//	determinePatientTreatments(supportingLifeBaseActivity, classifications, reviewItems, patient);
 	}
 
 	/**
 	 * 
-	 * Responsible for parsing xml-based classification rules
+	 * Responsible for parsing xml-based treatment rules
 	 * 
 	 * @param supportingLifeBaseActivity 
 	 * 
 	 */
-	private void parseClassificationRules(SupportingLifeBaseActivity supportingLifeBaseActivity) {
+	private void parseTreatmentRules(SupportingLifeBaseActivity supportingLifeBaseActivity) {
 		try {
 			String elemName = null;
-			Classification classification = null;
-			SymptomRule symptomRule = null;
-			String symptomRuleAttrib = null;
-			String symptomId = null;
-			String symptomName = null;
-			String valueAttrib = null;
-			ClassificationRule classificationRule = null;
-			String classificationRuleAttrib = null;
-			String classificationDiagnosedName = null;
-			XmlResourceParser xmlParser = supportingLifeBaseActivity.getResources().getXml(R.xml.classification_rules);
+			TreatmentRule treatmentRule = null;
+			Treatment treatment = null;
+			TreatmentCriterion treatmentCriterion = null;
+			TreatmentCriteria treatmentCriteria = null;
+			Symptom symptomCriteria = null;
+			String ruleAttrib = null;	
+			
+			XmlResourceParser xmlParser = supportingLifeBaseActivity.getResources().getXml(R.xml.treatment_rules);
 			
 			int eventType = xmlParser.next();
 			
@@ -91,66 +87,53 @@ public class ClassificationRuleEngine {
 				switch (eventType) {
 					case XmlPullParser.START_TAG:
 						elemName = xmlParser.getName();
-						if (CLASSIFICATION_ELEMENT.equalsIgnoreCase(elemName)) {
-							// <Classification>
-							classification = new Classification();
+						if (TREATMENT_RULE.equalsIgnoreCase(elemName)) {
+							// <TreatmentRule>
+							treatmentRule = new TreatmentRule();
 						}
 						else if (CLASSIFICATION_CATEGORY.equalsIgnoreCase(elemName)) {
 							// <Category>
-							classification.setCategory(xmlParser.nextText());
+							treatmentRule.setCategory(xmlParser.nextText());
 						}					
 						else if (CLASSIFICATION_NAME.equalsIgnoreCase(elemName)) {
-							// <Name>
-							classification.setName(xmlParser.nextText());
+							// <Classification>
+							treatmentRule.setClassification(xmlParser.nextText());
 						}
-						else if (CLASSIFICATION_TYPE.equalsIgnoreCase(elemName)) {
-							// <Type>
-							classification.setType(xmlParser.nextText());
+						else if (TREATMENT.equalsIgnoreCase(elemName)) {
+							// <Treatment>
+							treatment = new Treatment();
 						}
-						else if (CLASSIFICATION_PRIORITY.equalsIgnoreCase(elemName)) {
-							// <Priority>
-							classification.setPriority(Integer.parseInt(xmlParser.nextText()));
+						else if (CRITERIA_LIST.equalsIgnoreCase(elemName)) {
+							// <CriteriaList>
+							ruleAttrib = xmlParser.getAttributeValue(null, RULE_ATTRIB);
+							treatmentCriterion = new TreatmentCriterion(ruleAttrib);
+							treatment.setTreatmentCriterion(treatmentCriterion);
 						}
-						else if (CLASSIFICATION_SYMPTOM_RULE.equalsIgnoreCase(elemName)) {
-							// <SymptomRule>
-							symptomRuleAttrib = xmlParser.getAttributeValue(null, RULE_ATTRIB);
-							symptomRule = new SymptomRule(symptomRuleAttrib);
-						}						
-						else if (CLASSIFICATION_SYMPTOM.equalsIgnoreCase(elemName)) {
-							// <Symptom>
-							valueAttrib = xmlParser.getAttributeValue(null, CLASSIFICATION_SYMPTOM_VALUE_ATTRIB);
-							symptomId = xmlParser.nextText();
-							int identifier = supportingLifeBaseActivity.getResources().getIdentifier(symptomId, "string", "ie.ucc.bis");
-
-							symptomName = supportingLifeBaseActivity.getResources().getString(identifier);							
-							Symptom symptom = new Symptom(symptomName, valueAttrib);								
-							symptomRule.getSymptoms().add(symptom);
+						else if (SYMPTOM_CRITERIA.equalsIgnoreCase(elemName)) {
+							// <SymptomCriteria>
+							ruleAttrib = xmlParser.getAttributeValue(null, VALUE_ATTRIB);
+							symptomCriteria = new Symptom(ruleAttrib, xmlParser.nextText());
+							treatment.getTreatmentCriterion().getSymptomCriteria().add(symptomCriteria);
 						}
-						else if (CLASSIFICATION_RULE.equalsIgnoreCase(elemName)) {
-							// <ClassificationRule>
-							classificationRuleAttrib = xmlParser.getAttributeValue(null, RULE_ATTRIB);
-							classificationRule = new ClassificationRule(classificationRuleAttrib);
+						else if (TREATMENT_CRITERIA.equalsIgnoreCase(elemName)) {
+							// <TreatmentCriteria>
+							ruleAttrib = xmlParser.getAttributeValue(null, VALUE_ATTRIB);
+							treatmentCriteria = new TreatmentCriteria(ruleAttrib, xmlParser.nextText());
+							treatment.getTreatmentCriterion().getTreatmentCriteria().add(treatmentCriteria);
 						}
-						else if (CLASSIFICATION_DIAGNOSED.equalsIgnoreCase(elemName)) {
-							// <ClassificationDiagosed>
-							valueAttrib = xmlParser.getAttributeValue(null, CLASSIFICATION_SYMPTOM_VALUE_ATTRIB);
-							classificationDiagnosedName = xmlParser.nextText();				
-							ClassificationDiagnosed classificationDiagnosed = new ClassificationDiagnosed(classificationDiagnosedName, valueAttrib);								
-							classificationRule.getClassificationsDiagnosed().add(classificationDiagnosed);
+						else if (RECOMMENDATION.equalsIgnoreCase(elemName)) {
+							// <Recommendation>
+							treatment.setRecommendation(xmlParser.nextText());
 						}
 						break;
 					case XmlPullParser.END_TAG:
-						if (CLASSIFICATION_SYMPTOM_RULE.equalsIgnoreCase(xmlParser.getName())) {
-							// </SymptomRule>
-							classification.getSymptomRules().add(symptomRule);
+						if (TREATMENT.equalsIgnoreCase(xmlParser.getName())) {
+							// </Treatment>
+							treatmentRule.getTreatments().add(treatment);
 						}
-						else if(CLASSIFICATION_RULE.equalsIgnoreCase(xmlParser.getName())) {
-							// </ClassificationRule>
-							classification.getClassificationRules().add(classificationRule);
-						}
-						else if(CLASSIFICATION_ELEMENT.equalsIgnoreCase(xmlParser.getName())) {
-							// </Classification>
-							getSystemClassifications().add(classification);
+						else if(TREATMENT_RULE.equalsIgnoreCase(xmlParser.getName())) {
+							// </TreatmentRule>
+							getSystemTreatmentRules().add(treatmentRule);
 						}
 						break;
 				} // end of switch				
@@ -163,9 +146,9 @@ public class ClassificationRuleEngine {
 			ex.printStackTrace();
 		}
 		// DEBUG OUTPUT
-//		LoggerUtils.i(LOG_TAG, captureClassificationsDebugOutput());
-//		LoggerUtils.i(LOG_TAG, "--------------------------------------");
-//		LoggerUtils.i(LOG_TAG, "--------------------------------------");
+		LoggerUtils.i(LOG_TAG, captureTreatmentsDebugOutput());
+		LoggerUtils.i(LOG_TAG, "--------------------------------------");
+		LoggerUtils.i(LOG_TAG, "--------------------------------------");
 		LoggerUtils.i(LOG_TAG, "--------------------------------------");
 	}
 	
@@ -178,7 +161,7 @@ public class ClassificationRuleEngine {
 	 * @param patient 
 	 * 
 	 */
-	private void determinePatientClassifications(SupportingLifeBaseActivity supportingLifeBaseActivity, ArrayList<ReviewItem> reviewItems, Patient patient) {
+/*	private void determinePatientClassifications(SupportingLifeBaseActivity supportingLifeBaseActivity, ArrayList<ReviewItem> reviewItems, Patient patient) {
 		// 1. iterate over all review items and perform first rudimentary check in assessing
 		//    if the symptom criteria applies
 		for (ReviewItem reviewItem : reviewItems) {
@@ -226,7 +209,7 @@ public class ClassificationRuleEngine {
 		// DEBUG OUTPUT
 		// LoggerUtils.i(LOG_TAG, captureClassificationDebugOutput(patient.getClassifications()));
 	}
-
+*/
 	/**
 	 * 
 	 * Cross-references a patient record against a specific classification rule.
@@ -238,7 +221,7 @@ public class ClassificationRuleEngine {
 	 * 
 	 * 
 	 */
-	private void checkClassificationRuleAgainstPatientRecord(Patient patient, Classification classification) {
+/*	private void checkClassificationRuleAgainstPatientRecord(Patient patient, Classification classification) {
 		Classification classificationMatch;
 		for(ClassificationRule classificationRule : classification.getClassificationRules()) {
 			for (ClassificationDiagnosed classificationDiagnosed : classificationRule.getClassificationsDiagnosed()) {
@@ -255,7 +238,7 @@ public class ClassificationRuleEngine {
 			}
 		}
 	}
-
+*/
 	/**
 	 * 
 	 * Determines whether a patient has a specific classification
@@ -265,7 +248,7 @@ public class ClassificationRuleEngine {
 	 * @param classificationMatch 
 	 * 
 	 */
-	private boolean patientHasClassification(Classification classification, ArrayList<ReviewItem> reviewItems, Classification classificationMatch) {
+/*	private boolean patientHasClassification(Classification classification, ArrayList<ReviewItem> reviewItems, Classification classificationMatch) {
 		boolean hasClassification = false;
 		
 		// determine the rule constraints on this classification
@@ -285,7 +268,7 @@ public class ClassificationRuleEngine {
 		}
 		return hasClassification;
 	}
-	
+*/	
 	/**
 	 * 
 	 * Determines whether a symptom rule applies to a patient
@@ -296,7 +279,7 @@ public class ClassificationRuleEngine {
 	 * @param symptomNumberRequired
 	 * 
 	 */
-	private boolean checkSymptomRule(SymptomRule symptomRule, ArrayList<ReviewItem> reviewItems, Classification classificationMatch, int symptomNumberRequired) {
+/*	private boolean checkSymptomRule(SymptomRule symptomRule, ArrayList<ReviewItem> reviewItems, Classification classificationMatch, int symptomNumberRequired) {
 		int symptomCounter = 0;
 		boolean symptomRuleApplies = false;
 		
@@ -325,7 +308,7 @@ public class ClassificationRuleEngine {
 		}
 		return symptomRuleApplies;
 	}
-	
+*/	
 	/**
 	 * Returns a subset of those system classifications which contain
 	 * a classification rule e.g.
@@ -344,7 +327,7 @@ public class ClassificationRuleEngine {
 	 * @return List<Classification>
 	 * 
 	 */
-	private List<Classification> retrieveSystemClassificationWithClassificationRule() {
+/*	private List<Classification> retrieveSystemClassificationWithClassificationRule() {
 		List<Classification> classifications = new ArrayList<Classification>();
 		
 		for (Classification classification : getSystemClassifications()) {
@@ -355,20 +338,20 @@ public class ClassificationRuleEngine {
 		}
 		return classifications;
 	}
-
+*/
 	/**
 	 * 
-	 * Provides debug output of all classifications passed to
+	 * Provides debug output of all treatment rules passed to
 	 * the method
 	 * 
-	 * @param classifications
+	 * @param treatmentRules
 	 * 
 	 */
-	private StringBuilder captureClassificationDebugOutput(List<Classification> classifications) {
+	private StringBuilder captureTreatmentDebugOutput(List<TreatmentRule> treatmentRules) {
 		StringBuilder debugOutput = new StringBuilder();
 		
-		for (Classification classification : classifications){
-			debugOutput.append(classification.debugOutput());
+		for (TreatmentRule treatmentRule : treatmentRules){
+			debugOutput.append(treatmentRule.debugOutput());
 		}
 		
 		return debugOutput;
@@ -376,24 +359,24 @@ public class ClassificationRuleEngine {
 	
 	/**
 	 * 
-	 * Provides debug output of all classifications held in memory
+	 * Provides debug output of all treatments held in memory
 	 * 
 	 */
-	public StringBuilder captureClassificationsDebugOutput() {
-		return captureClassificationDebugOutput(getSystemClassifications());
+	public StringBuilder captureTreatmentsDebugOutput() {
+		return captureTreatmentDebugOutput(getSystemTreatmentRules());
 	}
 
 	/**
-	 * Getter Method: getSystemClassifications()
+	 * Getter Method: getSystemTreatmentRules()
 	 */	
-	public ArrayList<Classification> getSystemClassifications() {
-		return ClassificationRuleEngine.systemClassifications;
+	public static ArrayList<TreatmentRule> getSystemTreatmentRules() {
+		return systemTreatmentRules;
 	}
 
 	/**
-	 * Setter Method: setSystemClassifications()
+	 * Setter Method: setSystemTreatmentRules()
 	 */
-	public void setSystemClassifications(ArrayList<Classification> systemClassifications) {
-		ClassificationRuleEngine.systemClassifications = systemClassifications;
+	public static void setSystemTreatmentRules(ArrayList<TreatmentRule> systemTreatmentRules) {
+		TreatmentRuleEngine.systemTreatmentRules = systemTreatmentRules;
 	}
 }

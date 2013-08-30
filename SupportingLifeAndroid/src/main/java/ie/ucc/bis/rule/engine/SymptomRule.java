@@ -2,6 +2,7 @@ package ie.ucc.bis.rule.engine;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -33,7 +34,7 @@ public class SymptomRule implements Serializable {
 	private static final long serialVersionUID = 2175782496476894436L;
 	
 	private String rule;
-	private ArrayList<Symptom> symptoms;
+	private List<Symptom> symptoms;
 	
 	/**
 	 * Constructor
@@ -69,14 +70,14 @@ public class SymptomRule implements Serializable {
 	/**
 	 * Getter Method: getSymptoms()
 	 */
-	public ArrayList<Symptom> getSymptoms() {
+	public List<Symptom> getSymptoms() {
 		return symptoms;
 	}
 
 	/**
 	 * Setter Method: setSymptoms()
 	 */
-	public void setSymptoms(ArrayList<Symptom> symptoms) {
+	public void setSymptoms(List<Symptom> symptoms) {
 		this.symptoms = symptoms;
 	}
 

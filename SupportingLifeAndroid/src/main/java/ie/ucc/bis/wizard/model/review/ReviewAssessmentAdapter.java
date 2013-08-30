@@ -59,31 +59,34 @@ public class ReviewAssessmentAdapter extends BaseAdapter {
     }
 
     public View getView(int position, View view, ViewGroup container) {
-        LayoutInflater inflater = LayoutInflater.from(getReviewListFragment().getActivity());
         int itemType = getItemViewType(position);
-        View rootView = null;
-        String displayItemValue = null;
-        
-        ReviewItem reviewItem = getReviewListFragment().getCurrentReviewItems().get(position);
-        
+    	ReviewItem reviewItem = getReviewListFragment().getCurrentReviewItems().get(position);
+                
         switch (itemType) {
         	case HEADER_ITEM_TYPE : 
-        			rootView = inflater.inflate(R.layout.list_item_header_review, container, false);
-        			((TextView) rootView.findViewById(R.id.review_list_header)).setText(reviewItem.getTitle());
-        			break;
+            	if (view == null) {
+            		LayoutInflater inflater = LayoutInflater.from(getReviewListFragment().getActivity());
+        			view = inflater.inflate(R.layout.list_item_header_review, container, false);
+            	}
+
+        		((TextView) view.findViewById(R.id.review_list_header)).setText(reviewItem.getTitle());
+        		break;
         			
         	case SIMPLE_ITEM_TYPE :
-    			rootView = inflater.inflate(R.layout.list_item_review, container, false);
-    			((TextView) rootView.findViewById(R.id.review_list_item_label)).setText(reviewItem.getTitle());
+            	if (view == null) {
+            		LayoutInflater inflater = LayoutInflater.from(getReviewListFragment().getActivity());
+            		view = inflater.inflate(R.layout.list_item_review, container, false);
+            	}
+    			((TextView) view.findViewById(R.id.review_list_item_label)).setText(reviewItem.getTitle());
     			
-    			displayItemValue = reviewItem.getDisplayValue();
+    			String displayItemValue = reviewItem.getDisplayValue();
                 if (TextUtils.isEmpty(displayItemValue)) {
                 	displayItemValue = DEFAULT_ITEM_VALUE;
                 }
-    			((TextView) rootView.findViewById(R.id.review_list_item_value)).setText(displayItemValue);
+    			((TextView) view.findViewById(R.id.review_list_item_value)).setText(displayItemValue);
     			break;
         } // end of switch
-        return rootView;
+        return view;
     }
 
     public int getCount() {

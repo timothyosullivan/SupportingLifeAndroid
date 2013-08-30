@@ -3,6 +3,7 @@ package ie.ucc.bis.activity;
 import ie.ucc.bis.R;
 import ie.ucc.bis.domain.Patient;
 import ie.ucc.bis.rule.engine.ClassificationRuleEngine;
+import ie.ucc.bis.rule.engine.TreatmentRuleEngine;
 import ie.ucc.bis.wizard.model.review.ReviewItem;
 import ie.ucc.bis.wizard.ui.AssessmentClassificationsFragment;
 import ie.ucc.bis.wizard.ui.AssessmentResultsReviewFragment;
@@ -61,8 +62,12 @@ public class AssessmentResultsActivity extends SupportingLifeBaseActivity {
         
         // classify symptoms
         setPatient(new Patient());
-        ClassificationRuleEngine ruleEngine = new ClassificationRuleEngine();
-        ruleEngine.determineClassifications(this, getReviewItems(), getPatient());
+        ClassificationRuleEngine classificationRuleEngine = new ClassificationRuleEngine();
+        classificationRuleEngine.determineClassifications(this, getReviewItems(), getPatient());
+        
+        // identify treatments
+        TreatmentRuleEngine treatmentRuleEngine = new TreatmentRuleEngine();
+        treatmentRuleEngine.determineTreatments(this, reviewItems, classificationRuleEngine.getSystemClassifications(), getPatient());
  
         // create a new Action bar and set title to strings.xml
         final ActionBar bar = getActionBar();

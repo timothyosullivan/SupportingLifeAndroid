@@ -9,8 +9,12 @@ import java.util.List;
 
 public class Patient implements Serializable {
 	
-	private static final long serialVersionUID = 1L;
-
+	/**
+	 * Generated Serial ID
+	 */
+	private static final long serialVersionUID = 7692081022011255176L;
+	
+	
 	private long patientId;
 	private String firstName;
 	private String surname;

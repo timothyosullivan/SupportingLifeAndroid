@@ -3,10 +3,11 @@
 <!-- TREATMENT RULES 										  	  -->
 <!-- ============================================================ -->
 
-<!-- Note: The <Symptom> element string must match a string 	  -->
-<!-- 	   element in the 'symptom_ids.xml' file (otherwise an 	  -->
-<!--       will be thrown at runtime when parsing the  			  -->
-<!--       'treatment_rules.xml' document)					  	  -->
+<!-- Note: The <SymptomCriteria> element string must match a 	  -->
+<!-- 	   element in the 'symptom_ids.xml' file.				  -->
+
+<!-- Note: The <Classification> element string must match a 	  -->
+<!-- 	   element in the 'classification_rules.xml' file.		  -->
 
 <TreatmentRules>
 	<!-- ============================================================ -->
