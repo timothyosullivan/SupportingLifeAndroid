@@ -192,7 +192,7 @@ public class ClassificationRuleEngine {
 		for (Classification classification : getSystemClassifications()) {
 			classificationApplies = patientHasClassification(classification, reviewItems, classificationMatch);
 			if (classificationApplies) {
-				patient.getClassifications().add(classificationMatch);
+				patient.getDiagnostics().add(new Diagnostic(classificationMatch));
 			}
 			classificationMatch = new Classification();
 		}
@@ -208,20 +208,21 @@ public class ClassificationRuleEngine {
 		
 		// 4. Now need to ensure we only report the highest priority classification in each
 		//	  classification grouping
-		List<Classification> uniqueClassificationGrouping = new ArrayList<Classification>();
-		for (Classification classification : patient.getClassifications()) {
+		List<Diagnostic> uniqueDiagnosticGrouping = new ArrayList<Diagnostic>();
+		for (Diagnostic diagnostic : patient.getDiagnostics()) {
+			Classification classification = diagnostic.getClassification();
 			String classificationId = classification.getCategory();
-			if (!ClassificationUtils.containsClassificationCategoryId(uniqueClassificationGrouping, classificationId)) {
-				Classification highestPriorityClassification = ClassificationUtils.retrieveHighestPriorityClassification(classificationId, patient.getClassifications());
-				uniqueClassificationGrouping.add(highestPriorityClassification);
+			if (!ClassificationUtils.containsClassificationCategoryId(uniqueDiagnosticGrouping, classificationId)) {
+				Classification highestPriorityClassification = ClassificationUtils.retrieveHighestPriorityClassification(classificationId, patient.getDiagnostics());
+				uniqueDiagnosticGrouping.add(new Diagnostic(highestPriorityClassification));
 			}
 		}
 		
 		// 5. Finally, we should order the classifications such that the highest priority 
 		//    classifications are listed first. This will help alert the HSA to the 
 		//    severity of the patient's condition.
-		Collections.sort(uniqueClassificationGrouping, new ClassificationComparator());
-		patient.setClassifications((ArrayList<Classification>) uniqueClassificationGrouping);
+		Collections.sort(uniqueDiagnosticGrouping, new DiagnosticComparator());
+		patient.setDiagnostics(uniqueDiagnosticGrouping);
 		
 		// DEBUG OUTPUT
 		// LoggerUtils.i(LOG_TAG, captureClassificationDebugOutput(patient.getClassifications()));
@@ -242,7 +243,7 @@ public class ClassificationRuleEngine {
 		Classification classificationMatch;
 		for(ClassificationRule classificationRule : classification.getClassificationRules()) {
 			for (ClassificationDiagnosed classificationDiagnosed : classificationRule.getClassificationsDiagnosed()) {
-				if (ClassificationUtils.containsClassificationName(classificationDiagnosed.getIdentifier(), patient.getClassifications())) {
+				if (ClassificationUtils.containsClassificationName(classificationDiagnosed.getIdentifier(), patient.getDiagnostics())) {
 					classificationMatch = new Classification();
 					ClassificationUtils.copyClassificationHeadlineDetails(classification, classificationMatch);
 					ClassificationDiagnosed classificationDiagnosedMatch = new ClassificationDiagnosed(classificationDiagnosed.getIdentifier(), 
@@ -250,7 +251,7 @@ public class ClassificationRuleEngine {
 					
 					classificationMatch.getClassificationRules().add(new ClassificationRule(classificationRule.getRule()));
 					classificationMatch.getClassificationRules().get(0).getClassificationsDiagnosed().add(classificationDiagnosedMatch);
-					patient.getClassifications().add(classificationMatch);
+					patient.getDiagnostics().add(new Diagnostic(classificationMatch));
 				}
 			}
 		}

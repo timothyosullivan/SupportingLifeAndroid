@@ -59,7 +59,7 @@ public class TreatmentRuleEngine {
 
 		setSystemTreatmentRules(new ArrayList<TreatmentRule>());
 		parseTreatmentRules(supportingLifeBaseActivity);
-	//	determinePatientTreatments(supportingLifeBaseActivity, classifications, reviewItems, patient);
+		determinePatientTreatments(supportingLifeBaseActivity, reviewItems, patient);
 	}
 
 	/**
@@ -146,70 +146,49 @@ public class TreatmentRuleEngine {
 			ex.printStackTrace();
 		}
 		// DEBUG OUTPUT
-		LoggerUtils.i(LOG_TAG, captureTreatmentsDebugOutput());
-		LoggerUtils.i(LOG_TAG, "--------------------------------------");
-		LoggerUtils.i(LOG_TAG, "--------------------------------------");
+//		LoggerUtils.i(LOG_TAG, captureTreatmentRulesDebugOutput(getSystemTreatmentRules()));
+//		LoggerUtils.i(LOG_TAG, "--------------------------------------");
+//		LoggerUtils.i(LOG_TAG, "--------------------------------------");
 		LoggerUtils.i(LOG_TAG, "--------------------------------------");
 	}
 	
 	/**
 	 * 
-	 * Responsible for determining patient classifications
+	 * Responsible for determining patient treatments
 	 * 
 	 * @param supportingLifeBaseActivity
 	 * @param reviewItems
 	 * @param patient 
 	 * 
 	 */
-/*	private void determinePatientClassifications(SupportingLifeBaseActivity supportingLifeBaseActivity, ArrayList<ReviewItem> reviewItems, Patient patient) {
-		// 1. iterate over all review items and perform first rudimentary check in assessing
-		//    if the symptom criteria applies
-		for (ReviewItem reviewItem : reviewItems) {
-			reviewItem.assessSymptom(supportingLifeBaseActivity);
+	private void determinePatientTreatments(SupportingLifeBaseActivity supportingLifeBaseActivity, 
+			ArrayList<ReviewItem> reviewItems, Patient patient) {
+
+		// 1. iterate over all patient classifications and assign 
+		//	  appropriate treatment(s)
+		for (Diagnostic diagnostic : patient.getDiagnostics()) {
+			for (TreatmentRule treatmentRule : getSystemTreatmentRules()) {
+				if (diagnostic.getClassification().getName().equalsIgnoreCase(treatmentRule.getClassification())) {
+					// classification match found so determine if all associated 
+					// treatments apply
+					for (Treatment treatment : treatmentRule.getTreatments()) {
+						if (treatment.getTreatmentCriterion().getSymptomCriteria() != null) {
+							// TODO
+						}
+						if (treatment.getTreatmentCriterion().getTreatmentCriteria() != null) {
+							// TODO
+						}
+						// add the recommended treatment to patient classification
+						diagnostic.getTreatmentRecommendations().add(treatment.getRecommendation());
+					}
+				}
+			} // end of for (TreatmentRule treatmentRule ...
 		}
-		
-		// 2. iterate over all classifications to determine if any fit the patient
-		// assessment
-		boolean classificationApplies = false;
-		Classification classificationMatch = new Classification();
-		for (Classification classification : getSystemClassifications()) {
-			classificationApplies = patientHasClassification(classification, reviewItems, classificationMatch);
-			if (classificationApplies) {
-				patient.getClassifications().add(classificationMatch);
-			}
-			classificationMatch = new Classification();
-		}
-		
-		// 3. Now need to iterate over all classifications assigned to the patient to check whether 
-		//	  any classification rules impact the patient
-		//	  e.g. <ClassificationRule rule="ANY_CLASSIFICATION">
-		// 				<ClassificationDiagnosed value="true">Severe Dehydration</ClassificationDiagnosed>
-		classificationMatch = new Classification();
-		for (Classification classification : retrieveSystemClassificationWithClassificationRule()) {
-			checkClassificationRuleAgainstPatientRecord(patient, classification);
-		}
-		
-		// 4. Now need to ensure we only report the highest priority classification in each
-		//	  classification grouping
-		List<Classification> uniqueClassificationGrouping = new ArrayList<Classification>();
-		for (Classification classification : patient.getClassifications()) {
-			String classificationId = classification.getCategory();
-			if (!ClassificationUtils.containsClassificationCategoryId(uniqueClassificationGrouping, classificationId)) {
-				Classification highestPriorityClassification = ClassificationUtils.retrieveHighestPriorityClassification(classificationId, patient.getClassifications());
-				uniqueClassificationGrouping.add(highestPriorityClassification);
-			}
-		}
-		
-		// 5. Finally, we should order the classifications such that the highest priority 
-		//    classifications are listed first. This will help alert the HSA to the 
-		//    severity of the patient's condition.
-		Collections.sort(uniqueClassificationGrouping, new ClassificationComparator());
-		patient.setClassifications((ArrayList<Classification>) uniqueClassificationGrouping);
 		
 		// DEBUG OUTPUT
-		// LoggerUtils.i(LOG_TAG, captureClassificationDebugOutput(patient.getClassifications()));
+		LoggerUtils.i(LOG_TAG, captureTreatmentsDebugOutput(patient.getDiagnostics()));
 	}
-*/
+
 	/**
 	 * 
 	 * Cross-references a patient record against a specific classification rule.
@@ -339,15 +318,39 @@ public class TreatmentRuleEngine {
 		return classifications;
 	}
 */
+	
 	/**
 	 * 
-	 * Provides debug output of all treatment rules passed to
+	 * Provides debug output of all treatments incorporated within the
+	 * diagnostic elements passed to the method
+	 * 
+	 * @param diagnostics
+	 * @return StringBuilder
+	 * 
+	 */
+	private StringBuilder captureTreatmentsDebugOutput(List<Diagnostic> diagnostics) {
+		StringBuilder debugOutput = new StringBuilder();
+		
+		for (Diagnostic diagnostic : diagnostics) {
+			debugOutput.append(diagnostic.getClassification().getName() + "\n");
+			for (String recommendedTreatment : diagnostic.getTreatmentRecommendations()) {
+				debugOutput.append(recommendedTreatment + "\n");
+			}
+		}
+		
+		return debugOutput;
+	}
+	
+	/**
+	 * 
+	 * Provides debug output of all treatments rules passed to
 	 * the method
 	 * 
 	 * @param treatmentRules
+	 * @return StringBuilder
 	 * 
 	 */
-	private StringBuilder captureTreatmentDebugOutput(List<TreatmentRule> treatmentRules) {
+	private StringBuilder captureTreatmentRuleDebugOutput(List<TreatmentRule> treatmentRules) {
 		StringBuilder debugOutput = new StringBuilder();
 		
 		for (TreatmentRule treatmentRule : treatmentRules){
@@ -357,14 +360,6 @@ public class TreatmentRuleEngine {
 		return debugOutput;
 	}	
 	
-	/**
-	 * 
-	 * Provides debug output of all treatments held in memory
-	 * 
-	 */
-	public StringBuilder captureTreatmentsDebugOutput() {
-		return captureTreatmentDebugOutput(getSystemTreatmentRules());
-	}
 
 	/**
 	 * Getter Method: getSystemTreatmentRules()

@@ -44,11 +44,11 @@ public class ClassificationAdapter extends BaseAdapter {
     }
 
     public Object getItem(int position) {
-        return getPatient().getClassifications().get(position);
+        return getPatient().getDiagnostics().get(position).getClassification();
     }
 
     public long getItemId(int position) {
-        return getPatient().getClassifications().get(position).hashCode();
+        return getPatient().getDiagnostics().get(position).getClassification().hashCode();
     }
 
     public View getView(int position, View view, ViewGroup container) {
@@ -60,7 +60,7 @@ public class ClassificationAdapter extends BaseAdapter {
         	        LayoutInflater inflater = LayoutInflater.from(getAssessmentClassificationsFragment().getActivity());
         			view = inflater.inflate(R.layout.classification_list_item_review, container, false);
         		}
-                Classification classification = getPatient().getClassifications().get(position);
+                Classification classification = getPatient().getDiagnostics().get(position).getClassification();
     			((TextView) view.findViewById(R.id.classification_list_item_label)).setText(classification.getName());
     			((TextView) view.findViewById(R.id.classification_list_item_value)).setText(classification.getType());
     			View classificationView = view.findViewById(R.id.classification_list_item);
@@ -99,7 +99,7 @@ public class ClassificationAdapter extends BaseAdapter {
 		// null pointer exception was being called here previously periodically as 
 		// AssessmentClassificationFragment was null when querying for number of classifications
 		// associated with Patient - so now holding this information locally
-		return getPatient().getClassifications().size();
+		return getPatient().getDiagnostics().size();
     }
 
 	/**

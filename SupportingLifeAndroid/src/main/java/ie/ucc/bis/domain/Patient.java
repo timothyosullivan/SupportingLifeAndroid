@@ -1,6 +1,7 @@
 package ie.ucc.bis.domain;
 
-import ie.ucc.bis.rule.engine.Classification;
+import ie.ucc.bis.rule.engine.Diagnostic;
+import ie.ucc.bis.rule.engine.Symptom;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -18,10 +19,12 @@ public class Patient implements Serializable {
 	private long patientId;
 	private String firstName;
 	private String surname;
-	private List<Classification> classifications;
+	private List<Symptom> symptoms;
+	private List<Diagnostic> diagnostics;
 	
 	public Patient() {
-		setClassifications(new ArrayList<Classification>());
+		setSymptoms(new ArrayList<Symptom>());
+		setDiagnostics(new ArrayList<Diagnostic>());
 	}
 
 	/**
@@ -31,6 +34,7 @@ public class Patient implements Serializable {
 	 * @param surname
 	 */
 	public Patient(String firstName, String surname) {
+		this();
 		this.setFirstName(firstName);
 		this.setSurname(surname);
 	}	
@@ -43,9 +47,8 @@ public class Patient implements Serializable {
 	 * @param surname
 	 */
 	public Patient(long patientId, String firstName, String surname) {
+		this(firstName, surname);
 		this.setPatientId(patientId);
-		this.setFirstName(firstName);
-		this.setSurname(surname);
 	}
 
 	/**
@@ -91,16 +94,30 @@ public class Patient implements Serializable {
 	}
 
 	/**
-	 * Getter Method: getClassifications()
+	 * Getter Method: getSymptoms()
 	 */
-	public List<Classification> getClassifications() {
-		return classifications;
+	public List<Symptom> getSymptoms() {
+		return symptoms;
 	}
 
 	/**
-	 * Setter Method: setClassifications()
+	 * Setter Method: setSymptoms()
 	 */
-	public void setClassifications(List<Classification> classifications) {
-		this.classifications = classifications;
+	public void setSymptoms(List<Symptom> symptoms) {
+		this.symptoms = symptoms;
+	}
+
+	/**
+	 * Getter Method: getDiagnostics()
+	 */
+	public List<Diagnostic> getDiagnostics() {
+		return diagnostics;
+	}
+
+	/**
+	 * Setter Method: setDiagnostics()
+	 */
+	public void setDiagnostics(List<Diagnostic> diagnostics) {
+		this.diagnostics = diagnostics;
 	}	
 }

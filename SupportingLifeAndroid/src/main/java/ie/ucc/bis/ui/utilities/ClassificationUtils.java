@@ -1,6 +1,7 @@
 package ie.ucc.bis.ui.utilities;
 
 import ie.ucc.bis.rule.engine.Classification;
+import ie.ucc.bis.rule.engine.Diagnostic;
 
 import java.util.List;
 
@@ -11,17 +12,18 @@ public class ClassificationUtils {
 	 * type of classification category from a list of classifications
 	 *  
 	 * @param classificationCategoryId
-	 * @param classifications
+	 * @param diagnostics
 	 * 
 	 * @return Classification
 	 */
 	public static Classification retrieveHighestPriorityClassification(String classificationCategoryId, 
-			List<Classification> classifications) {
+			List<Diagnostic> diagnostics) {
 		
 		int priority = -1;
 		Classification highestClassification = null;
 		
-		for (Classification classification : classifications) {
+		for (Diagnostic diagnostic : diagnostics) {
+			Classification classification = diagnostic.getClassification();
 			if (classification.getCategory().equals(classificationCategoryId)) {
 				if (highestClassification == null || classification.getPriority() < priority) {
 					highestClassification = classification;
@@ -33,17 +35,18 @@ public class ClassificationUtils {
 	}
 
 	/**
-	 * Utility method to determine whether a classification list contains
+	 * Utility method to determine whether a diagnostic list contains
 	 * a particular classification Category Id
 	 * 
-	 * @param classificationList
+	 * @param diagnosticList
 	 * @param classificationCategoryId
 	 * 
 	 * @return: True - if classification is in list
 	 */
-	public static boolean containsClassificationCategoryId(List<Classification> classificationList, String classificationCategoryId) {
+	public static boolean containsClassificationCategoryId(List<Diagnostic> diagnosticList, String classificationCategoryId) {
 		
-		for (Classification classification : classificationList) {
+		for (Diagnostic diagnostic : diagnosticList) {
+			Classification classification = diagnostic.getClassification();
 			if (classification.getCategory() != null && classification.getCategory().equals(classificationCategoryId)) {
 				return true;
 			}
@@ -52,16 +55,18 @@ public class ClassificationUtils {
 	}
 	
 	/**
-	 * Utility method to determine whether a classification list contains
+	 * Utility method to determine whether a diagnostic list contains
 	 * a particular classification (identified by it's name)
 	 * 
 	 * @param classificationName
-	 * @param classificationList
+	 * @param diagnosticList
 	 * 
 	 * @return: True - if classification is in list
 	 */
-	public static boolean containsClassificationName(String classificationName, List<Classification> classificationList) {
-		for (Classification classification : classificationList) {
+	public static boolean containsClassificationName(String classificationName, List<Diagnostic> diagnosticList) {
+
+		for (Diagnostic diagnostic : diagnosticList) {
+			Classification classification = diagnostic.getClassification();
 			if (classification.getName().equals(classificationName)) {
 				return true;
 			}
