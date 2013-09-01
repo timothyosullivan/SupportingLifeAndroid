@@ -4,7 +4,11 @@ import ie.ucc.bis.R;
 import ie.ucc.bis.domain.Patient;
 import ie.ucc.bis.rule.engine.Classification;
 import ie.ucc.bis.wizard.ui.AssessmentTreatmentsFragment;
+
+import java.util.List;
+
 import android.graphics.drawable.Drawable;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +17,8 @@ import android.widget.TextView;
 
 public class TreatmentAdapter extends BaseAdapter {
 	private static final int SIMPLE_ITEM_TYPE = 1;
+	private static final String BULLET_SYMBOL = "&#8226";
+	
 	private Patient patient;
 	
 	private AssessmentTreatmentsFragment assessmentTreatmentsFragment;
@@ -60,16 +66,34 @@ public class TreatmentAdapter extends BaseAdapter {
         	        LayoutInflater inflater = LayoutInflater.from(getAssessmentTreatmentsFragment().getActivity());
         			view = inflater.inflate(R.layout.treatment_list_item_review, container, false);
         		}
-                String treatments = getPatient().getDiagnostics().get(position).getTreatmentRecommendations().toString();
-    			((TextView) view.findViewById(R.id.treatment_list_item_desc)).setText(treatments);
-    			View treatmentView = view.findViewById(R.id.treatment_list_item);
-    			colourCodeTreatment(getPatient().getDiagnostics().get(position).getClassification(), treatmentView);
+        		String classificationTitle = getPatient().getDiagnostics().get(position).getClassification().getName();
+        		((TextView) view.findViewById(R.id.treatment_list_item_title)).setText(classificationTitle);
+                List<String> treatments = getPatient().getDiagnostics().get(position).getTreatmentRecommendations();
+                addBulletedListToTextView(treatments, ((TextView) view.findViewById(R.id.treatment_list_item_desc)));
+    		//	View treatmentView = view.findViewById(R.id.treatment_list_item);
+    		//	colourCodeTreatment(getPatient().getDiagnostics().get(position).getClassification(), treatmentView);
     			break;
         } // end of switch
         return view;
     }
 
-    /**
+	/**
+     * Method: addBulletedListToTextView
+     * 
+     * Responsible for adding a bulleted list to a textview
+     * 
+     * @param treatments
+     * @param textView
+     */
+    private void addBulletedListToTextView(List<String> treatments, TextView textView) {
+    	textView.setText("");
+    	for(String treatment : treatments) {
+    	    textView.append(Html.fromHtml(BULLET_SYMBOL + treatment)
+                    + System.getProperty("line.separator"));
+    	}
+	}
+
+	/**
      * Method: colourCodeTreatment
      * 
      * Responsible for colour coding classification based on the 
