@@ -81,8 +81,8 @@ public class TreatmentRuleEngine {
 		// assess whether 'severe dehydration' is the only severe classification
 		boolean onlySevereDehydration = true;
 		for (Classification classification : classifications) {
-			if (classification.getCategory().equals(ClassificationType.SEVERE) 
-					&& !classification.getName().equals(SEVERE_DEHYDRATION_CLASSIFICATION)) {
+			if (classification.getType().equalsIgnoreCase(ClassificationType.SEVERE.name()) 
+					&& !classification.getName().equalsIgnoreCase(SEVERE_DEHYDRATION_CLASSIFICATION)) {
 				onlySevereDehydration = false;
 				break;
 			}
@@ -91,12 +91,15 @@ public class TreatmentRuleEngine {
 		String symptomId = supportingLifeBaseActivity.getResources().getString(R.string.treatment_criteria_severe_dehydration_is_only_severe_classification);
 		ReviewItem severeDehydrationReviewItem = new ReviewItem(null, null, symptomId, null, -1);
 		if (onlySevereDehydration) {
-			severeDehydrationReviewItem.setDisplayValue(Response.YES.name());
+			severeDehydrationReviewItem.setSymptomValue(Response.YES.name());
 		}
 		else {
-			severeDehydrationReviewItem.setDisplayValue(Response.NO.name());
+			severeDehydrationReviewItem.setSymptomValue(Response.NO.name());
 		}
 		severeDehydrationReviewItem.setVisible(false);
+		
+		// add review item to list
+		reviewItems.add(severeDehydrationReviewItem);
 		
 	}
 
@@ -116,6 +119,7 @@ public class TreatmentRuleEngine {
 			TreatmentCriteria treatmentCriteria = null;
 			String symptomId = null;
 			String symptomName = null;
+			String treatmentName = null;
 			Symptom symptomCriteria = null;
 			String ruleAttrib = null;
 			
@@ -163,7 +167,9 @@ public class TreatmentRuleEngine {
 						else if (TREATMENT_CRITERIA.equalsIgnoreCase(elemName)) {
 							// <TreatmentCriteria>
 							ruleAttrib = xmlParser.getAttributeValue(null, VALUE_ATTRIB);
-							treatmentCriteria = new TreatmentCriteria(ruleAttrib, xmlParser.nextText());
+							
+							treatmentName = xmlParser.nextText();
+							treatmentCriteria = new TreatmentCriteria(treatmentName, ruleAttrib);
 							treatment.getTreatmentCriterion().getTreatmentCriteria().add(treatmentCriteria);
 						}
 						else if (RECOMMENDATION.equalsIgnoreCase(elemName)) {
@@ -234,8 +240,9 @@ public class TreatmentRuleEngine {
 						// check treatment criteria
 						List<TreatmentCriteria> treatmentCriterion = treatment.getTreatmentCriterion().getTreatmentCriteria();
 						if (symptomCriteriaPasses && (treatmentCriterion.size() != 0)) {
-							// TODO LAST PARAMETER
-							treatmentCriteriaPasses = checkTreatmentCriteria(treatmentCriterion, reviewItems, patient, 1);
+							if (CriteriaRule.ALL.name().equalsIgnoreCase(treatment.getTreatmentCriterion().getRule())) {
+								treatmentCriteriaPasses = checkTreatmentCriteria(treatmentCriterion, reviewItems, patient, treatmentCriterion.size());
+							}
 						}
 						else {
 							treatmentCriteriaPasses = true;
