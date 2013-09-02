@@ -1,6 +1,7 @@
 package ie.ucc.bis.wizard.model.review;
 
 import ie.ucc.bis.activity.SupportingLifeBaseActivity;
+import ie.ucc.bis.rule.engine.enums.Response;
 import ie.ucc.bis.ui.utilities.DateUtilities;
 
 import java.io.Serializable;
@@ -90,17 +91,17 @@ public class FastBreathingReviewItem extends ReviewItem implements Serializable 
 					 * 		--> 50 breaths per minute or more == Fast Breathing
 					 */
 					if ((monthsDifference > TWO_MONTHS) && (monthsDifference < TWELVE_MONTHS) && (Integer.getInteger(getDisplayValue()).intValue() > FIFTY_BREATHS_PER_MINUTE)) {
-						setSymptomValue(YES_RESPONSE);
+						setSymptomValue(Response.YES.name());
 					}
 					/* Rule:
 					 * [12 months < Child Age < 60 months] 
 					 * 		--> 40 breaths per minute or more == Fast Breathing
 					 */
 					else if ((monthsDifference > TWELVE_MONTHS) && (monthsDifference < FIVE_YEARS_IN_MONTHS) && (Integer.parseInt(getDisplayValue()) > FORTY_BREATHS_PER_MINUTE)) {
-						setSymptomValue(YES_RESPONSE);
+						setSymptomValue(Response.YES.name());
 					}
 					else {
-						setSymptomValue(NO_RESPONSE);
+						setSymptomValue(Response.NO.name());
 					}
 	    		} catch (ParseException e) {
 	    			e.printStackTrace();
@@ -108,7 +109,7 @@ public class FastBreathingReviewItem extends ReviewItem implements Serializable 
     		}
     	}
     	else {
-    		setSymptomValue(NO_RESPONSE);
+    		setSymptomValue(Response.NO.name());
     	}
     }
 	

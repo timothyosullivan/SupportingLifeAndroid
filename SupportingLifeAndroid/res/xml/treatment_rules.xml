@@ -84,7 +84,7 @@
 		<Classification>No Pneumonia: Cough or Cold</Classification>
 		<Treatment>
 			<CriteriaList rule="all">
-				<SymptomCriteria value="yes">breathing_assessment_cough_duration_more_than_thirty_days_symptom_id</SymptomCriteria>
+				<SymptomCriteria value="yes">breathing_assessment_cough_duration_symptom_id</SymptomCriteria>	<!-- Cough Duration > 30 days : YES -->
 			</CriteriaList>
 			<Recommendation>Refer for Assessment</Recommendation>
 		</Treatment>

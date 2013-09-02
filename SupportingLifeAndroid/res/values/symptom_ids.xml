@@ -43,7 +43,6 @@
 	<!-- Symptom Ids (NOT TO BE TRANSLATED!)-->
 	<string name="breathing_assessment_cough_difficult_breathing_symptom_id">cough_difficult_breathing</string>
 	<string name="breathing_assessment_cough_duration_symptom_id">cough_duration</string>
-	<string name="breathing_assessment_cough_duration_more_than_thirty_days_symptom_id">cough_duration_more_than_thirty_days</string>
 	<string name="breathing_assessment_fast_breathing_symptom_id">fast_breathing</string>
 	<string name="breathing_assessment_chest_indrawing_symptom_id">chest_indrawing</string>
 	<string name="breathing_assessment_stridor_symptom_id">stridor</string>

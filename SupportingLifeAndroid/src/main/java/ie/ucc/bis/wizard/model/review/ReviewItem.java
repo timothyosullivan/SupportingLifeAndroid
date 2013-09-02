@@ -15,9 +15,6 @@ public class ReviewItem implements Serializable {
 	 * Generated Serial ID
 	 */
 	private static final long serialVersionUID = -2027656980188256986L;
-	
-	protected final String YES_RESPONSE = "yes";
-	protected final String NO_RESPONSE = "no";
 
 	public static final int DEFAULT_WEIGHT = -1;
 	
@@ -27,6 +24,7 @@ public class ReviewItem implements Serializable {
     private String symptomId;
     private String pageKey;
     private boolean headerItem;
+    private boolean visible;
     private String symptomValue;
     private List<ReviewItem> dependees;
 
@@ -84,6 +82,7 @@ public class ReviewItem implements Serializable {
         setWeight(weight);
         setHeaderItem(headerItem);
         setSymptomValue(null);
+        setVisible(true);
     }
     
     /**
@@ -212,5 +211,19 @@ public class ReviewItem implements Serializable {
 	 */
 	public void setSymptomValue(String symptomValue) {
 		this.symptomValue = symptomValue;
+	}
+
+	/**
+	 * Getter Method: isVisible()
+	 */
+	public boolean isVisible() {
+		return visible;
+	}
+	
+	/**
+	 * Setter Method: setVisible()
+	 */
+	public void setVisible(boolean visible) {
+		this.visible = visible;
 	}
 }

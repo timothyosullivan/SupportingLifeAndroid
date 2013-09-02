@@ -76,6 +76,10 @@ public class AssessmentResultsActivity extends SupportingLifeBaseActivity {
  
         // attach the Tabs to the fragment classes and set the tab title.
         setTabsAdapter(new TabsAdapter(this, getViewPager()));
+        
+        // add assessment review items tab
+        getTabsAdapter().addTab(bar.newTab().setText(R.string.assessment_results_review_tab_title),
+        		AssessmentResultsReviewFragment.class, null);
        
         // add classifications tab
         getTabsAdapter().addTab(bar.newTab().setText(R.string.assessment_results_classifications_tab_title),
@@ -84,11 +88,10 @@ public class AssessmentResultsActivity extends SupportingLifeBaseActivity {
         // add treatments tab
         getTabsAdapter().addTab(bar.newTab().setText(R.string.assessment_results_treatments_tab_title),
         		AssessmentTreatmentsFragment.class, null);
-        
-        // add assessment review items tab
-        getTabsAdapter().addTab(bar.newTab().setText(R.string.assessment_results_review_tab_title),
-        		AssessmentResultsReviewFragment.class, null);
  
+        // open on classifications tab by default
+        getTabsAdapter().setDefaultTab();
+        
        if (savedInstanceState != null) {
             bar.setSelectedNavigationItem(savedInstanceState.getInt("tab", 0));
         }
@@ -109,6 +112,8 @@ public class AssessmentResultsActivity extends SupportingLifeBaseActivity {
 	 */
 	public static class TabsAdapter extends FragmentPagerAdapter implements ActionBar.TabListener, ViewPager.OnPageChangeListener {
 		
+		private static final int CLASSIFICATION_TAB_INDEX = 1;
+				
 		private final Context context;
 		private final ActionBar actionBar;
 		private final ViewPager viewPager;
@@ -141,6 +146,15 @@ public class AssessmentResultsActivity extends SupportingLifeBaseActivity {
 		 }
 		
 		
+		/**
+		 * Set the classifications tab to be the default tab
+		 */
+		public void setDefaultTab() {
+			getActionBar().selectTab(getActionBar().getTabAt(CLASSIFICATION_TAB_INDEX));
+			
+		}
+
+
 		/**
 		 * Responsible for adding the tabs and their associated
 		 * fragments

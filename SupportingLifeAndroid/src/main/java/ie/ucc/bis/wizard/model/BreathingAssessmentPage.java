@@ -3,6 +3,7 @@ package ie.ucc.bis.wizard.model;
 import ie.ucc.bis.R;
 import ie.ucc.bis.ui.utilities.ReviewItemUtilities;
 import ie.ucc.bis.wizard.model.listener.RadioGroupListener;
+import ie.ucc.bis.wizard.model.review.CoughDurationReviewItem;
 import ie.ucc.bis.wizard.model.review.FastBreathingReviewItem;
 import ie.ucc.bis.wizard.model.review.ReviewItem;
 import ie.ucc.bis.wizard.ui.BreathingAssessmentFragment;
@@ -68,7 +69,7 @@ public class BreathingAssessmentPage extends AbstractPage {
     	// for how long? (days) - cough duration
     	reviewItemLabel = resources.getString(R.string.breathing_assessment_review_cough_duration);
     	reviewItemSymptomId = resources.getString(R.string.breathing_assessment_cough_duration_symptom_id);
-    	reviewItems.add(new ReviewItem(reviewItemLabel, getPageData().getString(COUGH_DURATION_DATA_KEY), reviewItemSymptomId, getKey(), -1));
+    	reviewItems.add(new CoughDurationReviewItem(reviewItemLabel, getPageData().getString(COUGH_DURATION_DATA_KEY), reviewItemSymptomId, getKey(), -1));
  
     	// breaths per minute
     	reviewItemLabel = resources.getString(R.string.breathing_assessment_review_breaths_per_minute);

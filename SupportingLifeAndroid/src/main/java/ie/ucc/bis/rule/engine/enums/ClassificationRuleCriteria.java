@@ -1,4 +1,4 @@
-package ie.ucc.bis.rule.engine;
+package ie.ucc.bis.rule.engine.enums;
 
 public enum ClassificationRuleCriteria {
 	ANY_CLASSIFICATION(1);

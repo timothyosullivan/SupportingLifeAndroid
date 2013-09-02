@@ -1,4 +1,4 @@
-package ie.ucc.bis.rule.engine;
+package ie.ucc.bis.rule.engine.enums;
 
 public enum SymptomRuleCriteria {
 	ANY_SYMPTOM(1), TWO_SYMPTOMS_REQUIRED(2);

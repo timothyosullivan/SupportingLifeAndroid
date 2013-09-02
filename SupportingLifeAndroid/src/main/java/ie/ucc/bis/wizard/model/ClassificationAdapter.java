@@ -3,6 +3,7 @@ package ie.ucc.bis.wizard.model;
 import ie.ucc.bis.R;
 import ie.ucc.bis.domain.Patient;
 import ie.ucc.bis.rule.engine.Classification;
+import ie.ucc.bis.rule.engine.enums.ClassificationType;
 import ie.ucc.bis.wizard.ui.AssessmentClassificationsFragment;
 import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
@@ -81,11 +82,11 @@ public class ClassificationAdapter extends BaseAdapter {
      */
     private void colourCodeClassification(Classification classification, View classificationView) {
     	Drawable background = null;
-		if (classification.getType().equalsIgnoreCase(Classification.SEVERE_CLASSIFICATION_TYPE)) {
+		if (classification.getType().equalsIgnoreCase(ClassificationType.SEVERE.name())) {
 			background = getAssessmentClassificationsFragment().getResources().getDrawable(R.drawable.red_classification_list_item);
 			classificationView.setBackground(background);
 		}
-		else if (classification.getType().equalsIgnoreCase(Classification.MODERATE_CLASSIFICATION_TYPE)) {
+		else if (classification.getType().equalsIgnoreCase(ClassificationType.MODERATE.name())) {
 			background = getAssessmentClassificationsFragment().getResources().getDrawable(R.drawable.yellow_classification_list_item);
 			classificationView.setBackground(background);
 		}

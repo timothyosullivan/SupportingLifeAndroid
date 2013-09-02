@@ -61,31 +61,33 @@ public class ReviewAssessmentAdapter extends BaseAdapter {
     public View getView(int position, View view, ViewGroup container) {
         int itemType = getItemViewType(position);
     	ReviewItem reviewItem = getReviewListFragment().getCurrentReviewItems().get(position);
-                
-        switch (itemType) {
-        	case HEADER_ITEM_TYPE : 
-            	if (view == null) {
-            		LayoutInflater inflater = LayoutInflater.from(getReviewListFragment().getActivity());
-        			view = inflater.inflate(R.layout.list_item_header_review, container, false);
-            	}
-
-        		((TextView) view.findViewById(R.id.review_list_header)).setText(reviewItem.getTitle());
-        		break;
-        			
-        	case SIMPLE_ITEM_TYPE :
-            	if (view == null) {
-            		LayoutInflater inflater = LayoutInflater.from(getReviewListFragment().getActivity());
-            		view = inflater.inflate(R.layout.list_item_review, container, false);
-            	}
-    			((TextView) view.findViewById(R.id.review_list_item_label)).setText(reviewItem.getTitle());
-    			
-    			String displayItemValue = reviewItem.getDisplayValue();
-                if (TextUtils.isEmpty(displayItemValue)) {
-                	displayItemValue = DEFAULT_ITEM_VALUE;
-                }
-    			((TextView) view.findViewById(R.id.review_list_item_value)).setText(displayItemValue);
-    			break;
-        } // end of switch
+      
+    	if (reviewItem.isVisible()) {
+	        switch (itemType) {
+	        	case HEADER_ITEM_TYPE : 
+	            	if (view == null) {
+	            		LayoutInflater inflater = LayoutInflater.from(getReviewListFragment().getActivity());
+	        			view = inflater.inflate(R.layout.list_item_header_review, container, false);
+	            	}
+	
+	        		((TextView) view.findViewById(R.id.review_list_header)).setText(reviewItem.getTitle());
+	        		break;
+	        			
+	        	case SIMPLE_ITEM_TYPE :
+	            	if (view == null) {
+	            		LayoutInflater inflater = LayoutInflater.from(getReviewListFragment().getActivity());
+	            		view = inflater.inflate(R.layout.list_item_review, container, false);
+	            	}
+	    			((TextView) view.findViewById(R.id.review_list_item_label)).setText(reviewItem.getTitle());
+	    			
+	    			String displayItemValue = reviewItem.getDisplayValue();
+	                if (TextUtils.isEmpty(displayItemValue)) {
+	                	displayItemValue = DEFAULT_ITEM_VALUE;
+	                }
+	    			((TextView) view.findViewById(R.id.review_list_item_value)).setText(displayItemValue);
+	    			break;
+	        } // end of switch
+    	} // end of if
         return view;
     }
 

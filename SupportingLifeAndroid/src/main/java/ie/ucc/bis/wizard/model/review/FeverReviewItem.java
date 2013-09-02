@@ -2,6 +2,7 @@ package ie.ucc.bis.wizard.model.review;
 
 import ie.ucc.bis.R;
 import ie.ucc.bis.activity.SupportingLifeBaseActivity;
+import ie.ucc.bis.rule.engine.enums.Response;
 
 import java.io.Serializable;
 
@@ -57,7 +58,7 @@ public class FeverReviewItem extends ReviewItem implements Serializable {
     	
     		if (getDisplayValue().equals(resources.getString(R.string.assessment_wizard_radio_no))) {
     			// No
-    			setSymptomValue(NO_RESPONSE);
+    			setSymptomValue(Response.NO.name());
     		}
     		else if (getDisplayValue().equals(resources.getString(R.string.fever_assessment_radio_fever_history))) {
     			// History
