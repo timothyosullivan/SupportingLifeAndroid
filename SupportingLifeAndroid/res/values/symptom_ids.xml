@@ -19,6 +19,7 @@
 	
 	<!-- Symptom Ids (NOT TO BE TRANSLATED!)-->
 	<string name="general_patient_details_date_of_birth_symptom_id">date_of_birth</string>
+	<string name="general_patient_details_patient_two_years_or_older_symptom_id">patient_two_years_or_older</string>
 	<string name="general_patient_details_weight_symptom_id">weight</string>
 	<string name="general_patient_details_temperature_symptom_id">temperature</string>
 	<string name="general_patient_details_gender_symptom_id">gender</string>
@@ -55,6 +56,7 @@
 	<!-- Symptom Ids (NOT TO BE TRANSLATED!)-->
 	<string name="diarrhoea_assessment_diarrhoea_symptom_id">diarrhoea</string>
 	<string name="diarrhoea_assessment_diarrhoea_duration_symptom_id">diarrhoea_duration</string>
+	<string name="diarrhoea_assessment_diarrhoea_duration_fourteen_days_symptom_id">diarrhoea_duration_fourteen_days</string>
 	<string name="diarrhoea_assessment_blood_stools_symptom_id">blood_in_the_stools</string>
 	<string name="diarrhoea_assessment_sunken_eyes_symptom_id">sunken_eyes</string>
 	<string name="diarrhoea_assessment_restless_irritable_symptom_id">restless_irritable</string>

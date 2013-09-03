@@ -2,6 +2,7 @@ package ie.ucc.bis.wizard.model;
 
 import ie.ucc.bis.R;
 import ie.ucc.bis.wizard.model.listener.RadioGroupListener;
+import ie.ucc.bis.wizard.model.review.AgeIndicatorReviewItem;
 import ie.ucc.bis.wizard.model.review.ReviewItem;
 import ie.ucc.bis.wizard.ui.GeneralPatientDetailsFragment;
 
@@ -68,6 +69,13 @@ public class GeneralPatientDetailsPage extends AbstractPage {
     	reviewItemLabel = resources.getString(R.string.general_patient_details_review_date_of_birth);
     	reviewItemSymptomId = resources.getString(R.string.general_patient_details_date_of_birth_symptom_id);
     	reviewItems.add(new ReviewItem(reviewItemLabel, getPageData().getString(DATE_OF_BIRTH_DATA_KEY), reviewItemSymptomId, getKey(), -1));
+    	
+    	// review item to indicate whether patient is two years or older
+    	reviewItemSymptomId = resources.getString(R.string.general_patient_details_patient_two_years_or_older_symptom_id);
+    	ReviewItem ageIndicatorReviewItem = new AgeIndicatorReviewItem(null, getPageData().getString(DATE_OF_BIRTH_DATA_KEY), 
+    			reviewItemSymptomId, getKey(), -1);
+    	ageIndicatorReviewItem.setVisible(false);
+    	reviewItems.add(ageIndicatorReviewItem);
     	
     	// weight
     	reviewItemLabel = resources.getString(R.string.general_patient_details_review_weight);

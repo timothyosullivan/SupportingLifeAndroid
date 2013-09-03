@@ -63,7 +63,7 @@ public class TreatmentRuleEngine {
 
 		setSystemTreatmentRules(new ArrayList<TreatmentRule>());
 		parseTreatmentRules(supportingLifeBaseActivity);
-		addTreatmentCriteriaToReviewItems(supportingLifeBaseActivity, reviewItems, classifications);
+		addTreatmentCriteriaToReviewItems(supportingLifeBaseActivity, reviewItems, patient.getDiagnostics());
 		determinePatientTreatments(supportingLifeBaseActivity, reviewItems, patient);
 	}
 
@@ -72,17 +72,39 @@ public class TreatmentRuleEngine {
 	 * 
 	 * @param supportingLifeBaseActivity
 	 * @param reviewItems
-	 * @param classifications
+	 * @param patientDiagnostics
 	 * 
 	 */
 	private void addTreatmentCriteriaToReviewItems(SupportingLifeBaseActivity supportingLifeBaseActivity,
-			List<ReviewItem> reviewItems, List<Classification> classifications) {
+			List<ReviewItem> reviewItems, List<Diagnostic> patientDiagnostics) {
+		
+		// assess whether 'severe dehydration' is the only severe classification
+		severeDehydrationTreatmentCriteriaCheck(supportingLifeBaseActivity, reviewItems, patientDiagnostics);
+		
+		
+	}
+
+	/**
+	 * Responsible for determining whether 'Severe Dehydration' treatment criteria
+	 * applies in the case of the patient assessment i.e.
+	 * 
+	 * 	<CriteriaList rule="all">
+	 * 		<TreatmentCriteria value="no">treatment_criteria_severe_dehydration_is_only_severe_classification</TreatmentCriteria>
+	 * 	</CriteriaList>
+	 * 
+	 * @param supportingLifeBaseActivity
+	 * @param reviewItems
+	 * @param patientDiagnostics
+	 * 
+	 */
+	private void severeDehydrationTreatmentCriteriaCheck(SupportingLifeBaseActivity supportingLifeBaseActivity,
+			List<ReviewItem> reviewItems, List<Diagnostic> patientDiagnostics) {
 		
 		// assess whether 'severe dehydration' is the only severe classification
 		boolean onlySevereDehydration = true;
-		for (Classification classification : classifications) {
-			if (classification.getType().equalsIgnoreCase(ClassificationType.SEVERE.name()) 
-					&& !classification.getName().equalsIgnoreCase(SEVERE_DEHYDRATION_CLASSIFICATION)) {
+		for (Diagnostic diagnostic : patientDiagnostics) {
+			if (diagnostic.getClassification().getType().equalsIgnoreCase(ClassificationType.SEVERE.name()) 
+					&& !diagnostic.getClassification().getName().equalsIgnoreCase(SEVERE_DEHYDRATION_CLASSIFICATION)) {
 				onlySevereDehydration = false;
 				break;
 			}
@@ -100,7 +122,6 @@ public class TreatmentRuleEngine {
 		
 		// add review item to list
 		reviewItems.add(severeDehydrationReviewItem);
-		
 	}
 
 	/**

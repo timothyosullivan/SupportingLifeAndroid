@@ -191,7 +191,7 @@ public class ClassificationRuleEngine {
 		boolean classificationApplies = false;
 		Classification classificationMatch = new Classification();
 		for (Classification classification : getSystemClassifications()) {
-			classificationApplies = patientHasClassification(classification, reviewItems, classificationMatch);
+			classificationApplies = patientHasClassificationSymptoms(classification, reviewItems, classificationMatch);
 			if (classificationApplies) {
 				patient.getDiagnostics().add(new Diagnostic(classificationMatch));
 			}
@@ -204,7 +204,7 @@ public class ClassificationRuleEngine {
 		// 				<ClassificationDiagnosed value="true">Severe Dehydration</ClassificationDiagnosed>
 		classificationMatch = new Classification();
 		for (Classification classification : retrieveSystemClassificationWithClassificationRule()) {
-			checkClassificationRuleAgainstPatientRecord(patient, classification);
+			checkClassificationRuleAgainstPatientRecord(patient, classification, reviewItems);
 		}
 		
 		// 4. Now need to ensure we only report the highest priority classification in each
@@ -235,24 +235,44 @@ public class ClassificationRuleEngine {
 	 * If a match is found, then the associated classification will be added to the
 	 * patient record.
 	 * 
+	 * An example classification would be defined as follows:
+	 * 
+	 * 	<Classification>
+	 * 		<Category>persistent_diarrhoea</Category>
+	 * 		<Name>Severe Persistent Diarrhoea</Name>
+	 * 		<Type>SEVERE</Type>
+	 * 		<Priority>1</Priority>
+	 * 		<ClassificationRule rule="ANY_CLASSIFICATION">
+	 * 			<ClassificationDiagnosed value="true">Severe Dehydration</ClassificationDiagnosed>			<!-- Severe Dehyration (Classification) : TRUE -->
+	 * 			<ClassificationDiagnosed value="true">Some Dehydration</ClassificationDiagnosed>			<!-- Some Dehyration (Classification) : TRUE -->
+	 * 		</ClassificationRule>
+	 * 		<SymptomRule rule="ANY_SYMPTOM">
+	 * 			<Symptom value="yes">diarrhoea_assessment_diarrhoea_duration_fourteen_days_symptom_id</Symptom>			<!-- Diarrhoea Duration >= 14 DAYS -->
+	 * 		</SymptomRule>		
+	 * </Classification>
+	 * 
 	 * @param patient - i.e. patient record to be check
 	 * @param ClassificationRule - system classification rule to be checked
+	 * @param reviewItems 
 	 * 
 	 * 
 	 */
-	private void checkClassificationRuleAgainstPatientRecord(Patient patient, Classification classification) {
-		Classification classificationMatch;
+	private void checkClassificationRuleAgainstPatientRecord(Patient patient, Classification classification, ArrayList<ReviewItem> reviewItems) {
+		Classification classificationMatch = new Classification();;
 		for(ClassificationRule classificationRule : classification.getClassificationRules()) {
 			for (ClassificationDiagnosed classificationDiagnosed : classificationRule.getClassificationsDiagnosed()) {
 				if (ClassificationUtils.containsClassificationName(classificationDiagnosed.getIdentifier(), patient.getDiagnostics())) {
-					classificationMatch = new Classification();
-					ClassificationUtils.copyClassificationHeadlineDetails(classification, classificationMatch);
-					ClassificationDiagnosed classificationDiagnosedMatch = new ClassificationDiagnosed(classificationDiagnosed.getIdentifier(), 
-							classificationDiagnosed.getValue());
+					// the classification rule matches but need to also check any associated symtoms
 					
-					classificationMatch.getClassificationRules().add(new ClassificationRule(classificationRule.getRule()));
-					classificationMatch.getClassificationRules().get(0).getClassificationsDiagnosed().add(classificationDiagnosedMatch);
-					patient.getDiagnostics().add(new Diagnostic(classificationMatch));
+					boolean classificationApplies = patientHasClassificationSymptoms(classification, reviewItems, classificationMatch);
+					if (classificationApplies) {
+						ClassificationDiagnosed classificationDiagnosedMatch = new ClassificationDiagnosed(classificationDiagnosed.getIdentifier(), 
+								classificationDiagnosed.getValue());
+						
+						classificationMatch.getClassificationRules().add(new ClassificationRule(classificationRule.getRule()));
+						classificationMatch.getClassificationRules().get(0).getClassificationsDiagnosed().add(classificationDiagnosedMatch);
+						patient.getDiagnostics().add(new Diagnostic(classificationMatch));
+					}
 				}
 			}
 		}
@@ -267,7 +287,7 @@ public class ClassificationRuleEngine {
 	 * @param classificationMatch 
 	 * 
 	 */
-	private boolean patientHasClassification(Classification classification, ArrayList<ReviewItem> reviewItems, Classification classificationMatch) {
+	private boolean patientHasClassificationSymptoms(Classification classification, ArrayList<ReviewItem> reviewItems, Classification classificationMatch) {
 		boolean hasClassification = false;
 		
 		// determine the rule constraints on this classification
@@ -341,6 +361,9 @@ public class ClassificationRuleEngine {
 	 * 		<ClassificationDiagnosed value="true">Severe Dehydration</ClassificationDiagnosed>			<!-- Severe Dehyration (Classification) : TRUE -->
 	 * 		<ClassificationDiagnosed value="true">Some Dehydration</ClassificationDiagnosed>			<!-- Some Dehyration (Classification) : TRUE -->
 	 * 	</ClassificationRule>
+	 * 	<SymptomRule rule="ANY_SYMPTOM">
+	 * 		<Symptom value="yes">diarrhoea_assessment_diarrhoea_duration_fourteen_days_symptom_id</Symptom>			<!-- Diarrhoea Duration >= 14 DAYS -->
+	 *  </SymptomRule>		
 	 * </Classification>
 	 * 
 	 * @return List<Classification>

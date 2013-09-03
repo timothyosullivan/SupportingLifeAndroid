@@ -9,6 +9,5 @@
 	<!-- Treatment Criteria Ids (NOT TO BE TRANSLATED!)-->
 	<string name="treatment_criteria_severe_dehydration_is_only_severe_classification">treatment_criteria_severe_dehydration_is_only_severe_classification</string>
 	<string name="treatment_criteria_patient_has_at_least_one_severe_classification">treatment_criteria_patient_has_at_least_one_severe_classification</string>
-	<string name="treatment_criteria_patient_is_two_years_or_older">treatment_criteria_patient_is_two_years_or_older</string>
 
 </resources>

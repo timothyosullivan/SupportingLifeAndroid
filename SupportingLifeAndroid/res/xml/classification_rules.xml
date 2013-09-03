@@ -217,6 +217,9 @@
 			<ClassificationDiagnosed value="true">Severe Dehydration</ClassificationDiagnosed>			<!-- Severe Dehyration (Classification) : TRUE -->
 			<ClassificationDiagnosed value="true">Some Dehydration</ClassificationDiagnosed>			<!-- Some Dehyration (Classification) : TRUE -->
 		</ClassificationRule>
+		<SymptomRule rule="ANY_SYMPTOM">
+			<Symptom value="yes">diarrhoea_assessment_diarrhoea_duration_fourteen_days_symptom_id</Symptom>			<!-- Diarrhoea Duration >= 14 DAYS -->
+		</SymptomRule>		
 	</Classification>
 
 	<!-- ============================================================ -->

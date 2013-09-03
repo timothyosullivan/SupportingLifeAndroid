@@ -30,7 +30,7 @@ public class DateUtilities {
 	    }
 	    return monthsDifference;
 	}
-
+	
 	public static Calendar getCalendar(Date date) {
 	    Calendar cal = Calendar.getInstance(Locale.UK);
 	    cal.setTime(date);

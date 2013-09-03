@@ -53,7 +53,7 @@ public class GeneralPatientDetailsFragment extends Fragment {
 	/**
 	 * Constructor
 	 *
-	 */        
+	 */
     public GeneralPatientDetailsFragment() {}
 
     @Override

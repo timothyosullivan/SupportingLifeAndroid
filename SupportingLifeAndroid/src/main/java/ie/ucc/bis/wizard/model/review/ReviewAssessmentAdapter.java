@@ -2,24 +2,34 @@ package ie.ucc.bis.wizard.model.review;
 
 import ie.ucc.bis.R;
 import ie.ucc.bis.wizard.ui.ReviewListFragment;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.TextView;
 
-public class ReviewAssessmentAdapter extends BaseAdapter {
+public class ReviewAssessmentAdapter extends BaseAdapter implements Filterable {
 	private static final int HEADER_ITEM_TYPE = 0;
 	private static final int SIMPLE_ITEM_TYPE = 1;
 	private static final int MAX_TYPE_COUNT = 2;
 	private static final String DEFAULT_ITEM_VALUE = "--------";
 	
 	private ReviewListFragment reviewListFragment;
+	private List<ReviewItem> filteredReviewItems;
 	
     public ReviewAssessmentAdapter(ReviewListFragment reviewListFragment) {
 		super();
 		setReviewListFragment(reviewListFragment);
+		setFilteredReviewItems(new ArrayList<ReviewItem>());
+		// apply filter to remove review items which we indicated should be invisible
+		getFilter().filter(null);
 	}
 
 	@Override
@@ -31,7 +41,7 @@ public class ReviewAssessmentAdapter extends BaseAdapter {
     public int getItemViewType(int position) {
     	// need to ascertain if we are dealing with a header
     	// or just a simple list item
-    	ReviewItem reviewItem = getReviewListFragment().getCurrentReviewItems().get(position);
+    	ReviewItem reviewItem = getFilteredReviewItems().get(position);
     	if (reviewItem.isHeaderItem()) {
     		return HEADER_ITEM_TYPE;
     	}
@@ -51,48 +61,47 @@ public class ReviewAssessmentAdapter extends BaseAdapter {
     }
 
     public Object getItem(int position) {
-        return getReviewListFragment().getCurrentReviewItems().get(position);
+        return getFilteredReviewItems().get(position);
     }
 
     public long getItemId(int position) {
-        return getReviewListFragment().getCurrentReviewItems().get(position).hashCode();
+        return getFilteredReviewItems().get(position).hashCode();
     }
 
     public View getView(int position, View view, ViewGroup container) {
         int itemType = getItemViewType(position);
-    	ReviewItem reviewItem = getReviewListFragment().getCurrentReviewItems().get(position);
+    	ReviewItem reviewItem = getFilteredReviewItems().get(position);
       
-    	if (reviewItem.isVisible()) {
-	        switch (itemType) {
-	        	case HEADER_ITEM_TYPE : 
-	            	if (view == null) {
-	            		LayoutInflater inflater = LayoutInflater.from(getReviewListFragment().getActivity());
-	        			view = inflater.inflate(R.layout.list_item_header_review, container, false);
-	            	}
+        switch (itemType) {
+        	case HEADER_ITEM_TYPE : 
+            	if (view == null) {
+            		LayoutInflater inflater = LayoutInflater.from(getReviewListFragment().getActivity());
+        			view = inflater.inflate(R.layout.list_item_header_review, container, false);
+            	}
 	
-	        		((TextView) view.findViewById(R.id.review_list_header)).setText(reviewItem.getTitle());
-	        		break;
+        		((TextView) view.findViewById(R.id.review_list_header)).setText(reviewItem.getTitle());
+        		break;
 	        			
-	        	case SIMPLE_ITEM_TYPE :
-	            	if (view == null) {
-	            		LayoutInflater inflater = LayoutInflater.from(getReviewListFragment().getActivity());
-	            		view = inflater.inflate(R.layout.list_item_review, container, false);
-	            	}
-	    			((TextView) view.findViewById(R.id.review_list_item_label)).setText(reviewItem.getTitle());
+        	case SIMPLE_ITEM_TYPE :
+            	if (view == null) {
+            		LayoutInflater inflater = LayoutInflater.from(getReviewListFragment().getActivity());
+            		view = inflater.inflate(R.layout.list_item_review, container, false);
+            	}
+
+            	((TextView) view.findViewById(R.id.review_list_item_label)).setText(reviewItem.getTitle());
 	    			
-	    			String displayItemValue = reviewItem.getDisplayValue();
-	                if (TextUtils.isEmpty(displayItemValue)) {
-	                	displayItemValue = DEFAULT_ITEM_VALUE;
-	                }
-	    			((TextView) view.findViewById(R.id.review_list_item_value)).setText(displayItemValue);
-	    			break;
-	        } // end of switch
-    	} // end of if
+	   			String displayItemValue = reviewItem.getDisplayValue();
+	   			if (TextUtils.isEmpty(displayItemValue)) {
+	   				displayItemValue = DEFAULT_ITEM_VALUE;
+	   			}
+	    		((TextView) view.findViewById(R.id.review_list_item_value)).setText(displayItemValue);
+	    		break;
+        } // end of switch
         return view;
     }
 
     public int getCount() {
-        return getReviewListFragment().getCurrentReviewItems().size();
+        return getFilteredReviewItems().size();
     }
 
 	/**
@@ -107,5 +116,61 @@ public class ReviewAssessmentAdapter extends BaseAdapter {
 	 */
 	private void setReviewListFragment(ReviewListFragment reviewListFragment) {
 		this.reviewListFragment = reviewListFragment;
+	}
+
+	/**
+	 * Getter Method: getFilteredReviewItems()
+	 */
+	public List<ReviewItem> getFilteredReviewItems() {
+		return filteredReviewItems;
+	}
+
+	/**
+	 * Setter Method: setFilteredReviewItems()
+	 */
+	public void setFilteredReviewItems(List<ReviewItem> filteredReviewItems) {
+		this.filteredReviewItems = filteredReviewItems;
+	}
+
+	@Override
+	public Filter getFilter() {
+		Filter customFilter = new Filter() {
+				/* 
+				 * Responsible for filtering review items such that those items 
+				 * marked 'not visible' will be filtered out i.e. the adapter will
+				 * not fetch a view for those review items.
+				 * 
+				 * (non-Javadoc)
+				 * @see android.widget.Filter#performFiltering(java.lang.CharSequence)
+				 */
+				@Override
+				protected FilterResults performFiltering(CharSequence constraint) {
+					FilterResults filterResults = new FilterResults();
+					List<ReviewItem> filteredReviewItems = new ArrayList<ReviewItem>();
+					
+					for (ReviewItem reviewItem : getReviewListFragment().getCurrentReviewItems()) {
+						if (reviewItem.isVisible()) {
+							filteredReviewItems.add(reviewItem);
+						}
+					}
+					
+					filterResults.values = filteredReviewItems;
+					filterResults.count = filteredReviewItems.size();
+					return filterResults;	
+				}
+	
+				@SuppressWarnings("unchecked")
+				@Override
+				protected void publishResults(CharSequence constraint, FilterResults results) {
+					// Now we have to inform the adapter about the new filtered list 
+				    if (results.count == 0)
+				        notifyDataSetInvalidated();
+				    else {
+				        setFilteredReviewItems((List<ReviewItem>) results.values);
+				        notifyDataSetChanged();
+				    }
+	            }};
+            
+		return customFilter;
 	}
 }

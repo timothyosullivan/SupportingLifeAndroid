@@ -2,6 +2,7 @@ package ie.ucc.bis.wizard.model;
 
 import ie.ucc.bis.R;
 import ie.ucc.bis.wizard.model.listener.RadioGroupListener;
+import ie.ucc.bis.wizard.model.review.DiarrhoeaDurationIndicatorReviewItem;
 import ie.ucc.bis.wizard.model.review.FluidReviewItem;
 import ie.ucc.bis.wizard.model.review.ReviewItem;
 import ie.ucc.bis.wizard.model.review.SkinPinchReviewItem;
@@ -23,7 +24,7 @@ import android.support.v4.app.Fragment;
  */
 public class DiarrhoeaAssessmentPage extends AbstractPage {
     public static final String DIARRHOEA_DATA_KEY = "DIARRHOEA";
-    public static final String DIARRHOEA_DURATION_DATA_KEY = "DIARRHOEA_DURATION"; 
+    public static final String DIARRHOEA_DURATION_DATA_KEY = "DIARRHOEA_DURATION";
     public static final String BLOOD_STOOLS_DATA_KEY = "BLOOD_STOOLS";
     public static final String SUNKEN_EYES_DATA_KEY = "SUNKEN_EYES";
     public static final String LETHARGIC_OR_UNCONSCIOUS_DATA_KEY = "LETHARGIC_OR_UNCONSCIOUS";
@@ -73,6 +74,15 @@ public class DiarrhoeaAssessmentPage extends AbstractPage {
     	reviewItemLabel = resources.getString(R.string.diarrhoea_assessment_review_diarrhoea_duration);
     	reviewItemSymptomId = resources.getString(R.string.diarrhoea_assessment_diarrhoea_duration_symptom_id);
     	reviewItems.add(new ReviewItem(reviewItemLabel, getPageData().getString(DIARRHOEA_DURATION_DATA_KEY), reviewItemSymptomId, getKey(), -1));
+    	
+    	// diarrhoea duration indicator -> diarrhoea duration >= 14 days
+    	reviewItemLabel = resources.getString(R.string.diarrhoea_assessment_review_diarrhoea_duration);
+    	reviewItemSymptomId = resources.getString(R.string.diarrhoea_assessment_diarrhoea_duration_fourteen_days_symptom_id);
+    	ReviewItem diarrhoeaDurationIndicatoReviewItem = new DiarrhoeaDurationIndicatorReviewItem(null, 
+    			getPageData().getString(DIARRHOEA_DURATION_DATA_KEY), 
+    			reviewItemSymptomId, getKey(), -1);
+    	diarrhoeaDurationIndicatoReviewItem.setVisible(false);
+    	reviewItems.add(diarrhoeaDurationIndicatoReviewItem);
     	
     	// blood in the stools
     	reviewItemLabel = resources.getString(R.string.diarrhoea_assessment_review_blood_stools);

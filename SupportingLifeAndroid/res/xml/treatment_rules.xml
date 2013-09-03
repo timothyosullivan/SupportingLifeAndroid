@@ -136,7 +136,7 @@
 		<Treatment>
 			<CriteriaList rule="all">
 				<SymptomCriteria value="yes">diarrhoea_assessment_cholera_in_area_symptom_id</SymptomCriteria>
-				<TreatmentCriteria value="yes">treatment_criteria_patient_is_two_years_or_older</TreatmentCriteria>
+				<SymptomCriteria value="yes">general_patient_details_patient_two_years_or_older_symptom_id</SymptomCriteria>
 			</CriteriaList>
 			<Recommendation>Give antibiotic for cholera</Recommendation>
 		</Treatment>
