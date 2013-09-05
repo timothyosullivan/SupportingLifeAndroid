@@ -191,11 +191,13 @@ public class ClassificationRuleEngine {
 		boolean classificationApplies = false;
 		Classification classificationMatch = new Classification();
 		for (Classification classification : getSystemClassifications()) {
-			classificationApplies = patientHasClassificationSymptoms(classification, reviewItems, classificationMatch);
-			if (classificationApplies) {
-				patient.getDiagnostics().add(new Diagnostic(classificationMatch));
+			if (classification.getClassificationRules().size() == 0) {	// only consider those classifications without classification rules associated
+				classificationApplies = patientHasClassificationSymptoms(classification, reviewItems, classificationMatch);
+				if (classificationApplies) {
+					patient.getDiagnostics().add(new Diagnostic(classificationMatch));
+				}
+				classificationMatch = new Classification();
 			}
-			classificationMatch = new Classification();
 		}
 		
 		// 3. Now need to iterate over all classifications assigned to the patient to check whether 

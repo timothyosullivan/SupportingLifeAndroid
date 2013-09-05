@@ -25,7 +25,7 @@ public class AgeIndicatorReviewItem extends ReviewItem implements Serializable {
 	 */
 	private static final long serialVersionUID = 2349779612568891193L;
 
-	private static final int TWO_YEARS_IN_MONTHS = 24;
+	private static final int TWO_YEARS_IN_DAYS = 730;
     /**
      * Constructor for non-header, symptom review items
      * 
@@ -57,9 +57,9 @@ public class AgeIndicatorReviewItem extends ReviewItem implements Serializable {
 					Date birthDate = new SimpleDateFormat("dd MMMM yyyy", Locale.ENGLISH).parse(getDisplayValue());
 					Calendar cal = Calendar.getInstance();
 					
-					int monthsDifference = DateUtilities.getDiffMonths(birthDate, cal.getTime());
+					int daysDifference = DateUtilities.getDiffDays(birthDate, cal.getTime());
 
-					if (monthsDifference > TWO_YEARS_IN_MONTHS) {
+					if (daysDifference >= TWO_YEARS_IN_DAYS) {
 						setSymptomValue(Response.YES.name());
 					}
 					else {

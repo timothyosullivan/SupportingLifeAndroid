@@ -165,7 +165,7 @@
 		<Classification>Some Dehydration</Classification>
 		<Treatment>
 			<CriteriaList rule="all">
-				<TreatmentCriteria value="no">treatment_criteria_patient_has_at_least_one_severe_classification</TreatmentCriteria>
+				<TreatmentCriteria value="yes">treatment_criteria_severe_classification_present</TreatmentCriteria>
 			</CriteriaList>
 			<Recommendation>Refer URGENTLY to Hospital with mother giving frequent sips of ORS</Recommendation>
 		</Treatment>

@@ -78,10 +78,50 @@ public class TreatmentRuleEngine {
 	private void addTreatmentCriteriaToReviewItems(SupportingLifeBaseActivity supportingLifeBaseActivity,
 			List<ReviewItem> reviewItems, List<Diagnostic> patientDiagnostics) {
 		
+		// assess whether patient has at least one severe classification
+		severeClassificationTreatmentCriteriaCheck(supportingLifeBaseActivity, reviewItems, patientDiagnostics);
+		
 		// assess whether 'severe dehydration' is the only severe classification
 		severeDehydrationTreatmentCriteriaCheck(supportingLifeBaseActivity, reviewItems, patientDiagnostics);
+	}
+
+	/**
+	 * Responsible for determining whether patient has one severe classification
+	 * with respect to the patient assessment i.e.
+	 * 
+	 * 	<CriteriaList rule="all">
+	 * 		<TreatmentCriteria value="yes">treatment_criteria_severe_classification_present</TreatmentCriteria>
+	 * 	</CriteriaList>
+	 * 
+	 * @param supportingLifeBaseActivity
+	 * @param reviewItems
+	 * @param patientDiagnostics
+	 * 
+	 */
+	private void severeClassificationTreatmentCriteriaCheck(SupportingLifeBaseActivity supportingLifeBaseActivity,
+			List<ReviewItem> reviewItems, List<Diagnostic> patientDiagnostics) {
+
+		boolean hasSevereClassification = false;
 		
+		for (Diagnostic diagnostic : patientDiagnostics) {
+			if (diagnostic.getClassification().getType().equalsIgnoreCase(ClassificationType.SEVERE.name())) {
+				hasSevereClassification = true;
+				break;
+			}
+		}
 		
+		String symptomId = supportingLifeBaseActivity.getResources().getString(R.string.treatment_criteria_severe_classification_present);
+		ReviewItem severeClassificationPresentReviewItem = new ReviewItem(null, null, symptomId, null, -1);
+		if (hasSevereClassification) {
+			severeClassificationPresentReviewItem.setSymptomValue(Response.YES.name());
+		}
+		else {
+			severeClassificationPresentReviewItem.setSymptomValue(Response.NO.name());
+		}
+		severeClassificationPresentReviewItem.setVisible(false);
+		
+		// add review item to list
+		reviewItems.add(severeClassificationPresentReviewItem);		
 	}
 
 	/**

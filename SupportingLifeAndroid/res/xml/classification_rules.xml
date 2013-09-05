@@ -204,9 +204,13 @@
 	<!-- ============================================================ -->
 	<!-- Classification: Severe Persistent Diarrhoea 			  	  -->
 	<!-- Type: SEVERE												  -->
-	<!-- Classification: Severe Dehydration							  -->
+	<!-- Classification: (Severe Dehydration						  -->
 	<!-- 				 	   OR									  -->
-	<!--			     Some Dehydration							  -->
+	<!--			     Some Dehydration)							  -->
+	<!-- 				 AND										  -->
+	<!-- Symptoms: Diarrhoea										  -->
+	<!-- 		   AND												  -->
+	<!-- 		   Diarrhoea Duration for 14 days or more			  -->
 	<!-- ============================================================ -->
 	<Classification>
 		<Category>persistent_diarrhoea</Category>
@@ -229,6 +233,10 @@
 	<!-- Classification: Persistent Diarrhoea 					  	  -->
 	<!-- Type: MODERATE												  -->
 	<!-- Classification: NO Dehydration							  	  -->
+	<!-- 				 AND										  -->
+	<!-- Symptoms: Diarrhoea										  -->
+	<!-- 		   AND												  -->
+	<!-- 		   Diarrhoea Duration for 14 days or more			  -->
 	<!-- ============================================================ -->
 	<Classification>
 		<Category>persistent_diarrhoea</Category>
@@ -238,6 +246,9 @@
 		<ClassificationRule rule="ANY_CLASSIFICATION">
 			<ClassificationDiagnosed value="true">No Dehydration</ClassificationDiagnosed>				<!-- No Dehyration (Classification) : TRUE -->
 		</ClassificationRule>
+		<SymptomRule rule="ANY_SYMPTOM">
+			<Symptom value="yes">diarrhoea_assessment_diarrhoea_duration_fourteen_days_symptom_id</Symptom>			<!-- Diarrhoea Duration >= 14 DAYS -->
+		</SymptomRule>	
 	</Classification>
 
 	<!-- ============================================================ -->
