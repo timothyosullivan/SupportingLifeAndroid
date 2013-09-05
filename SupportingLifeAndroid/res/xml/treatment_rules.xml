@@ -433,7 +433,7 @@
 			<Recommendation>Give first dose of an appropriate antibiotic</Recommendation>
 		</Treatment>
 		<Treatment>
-			<CriteriaList rule="either">
+			<CriteriaList rule="any">
 				<SymptomCriteria value="yes">fever_assessment_cornea_clouding_symptom_id</SymptomCriteria>				<!-- Clouding of the Cornea -->
 				<SymptomCriteria value="yes">fever_assessment_pus_draining_symptom_id</SymptomCriteria>					<!-- Pus Discharge from the Eye -->
 			</CriteriaList>
@@ -532,7 +532,7 @@
 	<!--				AND											  -->
 	<!-- 			 Dry the ear by wicking 						  -->
 	<!--				AND											  -->
-	<!--			 Follow-up visit: 2 days						  -->
+	<!--			 Follow-up visit: 5 days						  -->
 	<!-- ============================================================ -->
 	<TreatmentRule>
 		<Classification>Acute Ear Infection</Classification>
@@ -546,7 +546,7 @@
 			<Recommendation>Dry the ear by wicking</Recommendation>
 		</Treatment>
 		<Treatment>
-			<Recommendation>Follow-up visit: 2 days</Recommendation>
+			<Recommendation>Follow-up visit: 5 days</Recommendation>
 		</Treatment>
 	</TreatmentRule>
 	
@@ -556,8 +556,25 @@
 	<!-- ============================================================ -->
 	<!-- Classification: Chronic Ear Infection					 	  -->
 	<!-- 													  		  -->
-	<!-- NEED TO DO......											  -->
+	<!-- Treatments: Dry the ear by wicking 						  -->
+	<!--				AND											  -->
+	<!--			 Treat with topical quinoline eardrops for 		  -->
+	<!-- 			 2 weeks										  -->
+	<!--				AND											  -->
+	<!--			 Follow-up visit: 5 days						  -->
 	<!-- ============================================================ -->
+	<TreatmentRule>
+		<Classification>Chronic Ear Infection</Classification>
+		<Treatment>
+			<Recommendation>Dry the ear by wicking</Recommendation>
+		</Treatment>
+		<Treatment>
+			<Recommendation>Treat with topical quinoline for 2 weeks</Recommendation>
+		</Treatment>
+		<Treatment>
+			<Recommendation>Follow-up visit: 5 days</Recommendation>
+		</Treatment>
+	</TreatmentRule>
 
 	<!-- ============================================================ -->
 	<!-- EAR PROBLEM				 								  -->
@@ -575,4 +592,17 @@
 		</Treatment>
 	</TreatmentRule>
 
+	<!-- ============================================================ -->
+	<!-- MALNUTRITION AND ANAEMIA	 								  -->
+	<!-- ============================================================ -->
+	<!-- ============================================================ -->
+	<!-- Classification: Severe Malnutrition or Severe Anaemia	 	  -->
+	<!-- Type: SEVERE										  		  -->
+	<!-- Symptoms: Visible Severe Wasting			  				  -->
+	<!-- 				OR											  -->
+	<!-- 		   Severe Palmar Pallor							  	  -->
+	<!-- 				OR 											  -->
+	<!-- 		   Oedema of Both Feet								  -->
+	<!-- ============================================================ -->
+	
 </TreatmentRules>

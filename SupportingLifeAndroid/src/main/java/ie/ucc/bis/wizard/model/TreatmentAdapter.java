@@ -1,8 +1,8 @@
 package ie.ucc.bis.wizard.model;
 
 import ie.ucc.bis.R;
-import ie.ucc.bis.domain.Patient;
 import ie.ucc.bis.rule.engine.Classification;
+import ie.ucc.bis.rule.engine.Diagnostic;
 import ie.ucc.bis.rule.engine.enums.ClassificationType;
 import ie.ucc.bis.wizard.ui.AssessmentTreatmentsFragment;
 
@@ -20,14 +20,14 @@ public class TreatmentAdapter extends BaseAdapter {
 	private static final int SIMPLE_ITEM_TYPE = 1;
 	private static final String BULLET_SYMBOL = "&#8226";
 	
-	private Patient patient;
+	private List<Diagnostic> patientDiagnostics;
 	
 	private AssessmentTreatmentsFragment assessmentTreatmentsFragment;
 	
-    public TreatmentAdapter(AssessmentTreatmentsFragment assessmentTreatmentsFragment, Patient patient) {
+    public TreatmentAdapter(AssessmentTreatmentsFragment assessmentTreatmentsFragment, List<Diagnostic> patientDiagnostics) {
 		super();
 		setAssessmentTreatmentsFragment(assessmentTreatmentsFragment);
-		setPatient(patient);
+		setPatientDiagnostics(patientDiagnostics);
 	}
 
 	@Override
@@ -51,11 +51,11 @@ public class TreatmentAdapter extends BaseAdapter {
     }
 
     public Object getItem(int position) {
-        return getPatient().getDiagnostics().get(position).getClassification();
+        return getPatientDiagnostics().get(position).getClassification();
     }
 
     public long getItemId(int position) {
-        return getPatient().getDiagnostics().get(position).getClassification().hashCode();
+        return getPatientDiagnostics().get(position).getClassification().hashCode();
     }
 
     public View getView(int position, View view, ViewGroup container) {
@@ -67,9 +67,9 @@ public class TreatmentAdapter extends BaseAdapter {
         	        LayoutInflater inflater = LayoutInflater.from(getAssessmentTreatmentsFragment().getActivity());
         			view = inflater.inflate(R.layout.treatment_list_item_review, container, false);
         		}
-        		String classificationTitle = getPatient().getDiagnostics().get(position).getClassification().getName();
+        		String classificationTitle = getPatientDiagnostics().get(position).getClassification().getName();
         		((TextView) view.findViewById(R.id.treatment_list_item_title)).setText(classificationTitle);
-                List<String> treatments = getPatient().getDiagnostics().get(position).getTreatmentRecommendations();
+                List<String> treatments = getPatientDiagnostics().get(position).getTreatmentRecommendations();
                 addBulletedListToTextView(treatments, ((TextView) view.findViewById(R.id.treatment_list_item_desc)));
     		//	View treatmentView = view.findViewById(R.id.treatment_list_item);
     		//	colourCodeTreatment(getPatient().getDiagnostics().get(position).getClassification(), treatmentView);
@@ -123,23 +123,22 @@ public class TreatmentAdapter extends BaseAdapter {
 		// null pointer exception was being called here previously periodically as 
 		// AssessmentClassificationFragment was null when querying for number of classifications
 		// associated with Patient - so now holding this information locally
-		return getPatient().getDiagnostics().size();
+		return getPatientDiagnostics().size();
     }
 
 	/**
-	 * Getter Method: getPatient()
+	 * Getter Method: getPatientDiagnostics()
 	 */
-	public Patient getPatient() {
-		return patient;
+	public List<Diagnostic> getPatientDiagnostics() {
+		return patientDiagnostics;
 	}
 
 	/**
-	 * Setter Method: setPatient()
+	 * Setter Method: setPatientDiagnostics()
 	 */
-	public void setPatient(Patient patient) {
-		this.patient = patient;
+	public void setPatientDiagnostics(List<Diagnostic> patientDiagnostics) {
+		this.patientDiagnostics = patientDiagnostics;
 	}
-
 	/**
 	 * Getter Method: getAssessmentTreatmentsFragment()
 	 */

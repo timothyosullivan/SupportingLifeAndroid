@@ -4,6 +4,7 @@ import ie.ucc.bis.rule.engine.Classification;
 import ie.ucc.bis.rule.engine.Diagnostic;
 
 import java.util.List;
+import java.util.Set;
 
 public class ClassificationUtils {
 
@@ -43,7 +44,7 @@ public class ClassificationUtils {
 	 * 
 	 * @return: True - if classification is in list
 	 */
-	public static boolean containsClassificationCategoryId(List<Diagnostic> diagnosticList, String classificationCategoryId) {
+	public static boolean containsClassificationCategoryId(Set<Diagnostic> diagnosticList, String classificationCategoryId) {
 		
 		for (Diagnostic diagnostic : diagnosticList) {
 			Classification classification = diagnostic.getClassification();

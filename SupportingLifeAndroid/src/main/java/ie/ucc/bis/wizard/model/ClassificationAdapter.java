@@ -1,10 +1,13 @@
 package ie.ucc.bis.wizard.model;
 
 import ie.ucc.bis.R;
-import ie.ucc.bis.domain.Patient;
 import ie.ucc.bis.rule.engine.Classification;
+import ie.ucc.bis.rule.engine.Diagnostic;
 import ie.ucc.bis.rule.engine.enums.ClassificationType;
 import ie.ucc.bis.wizard.ui.AssessmentClassificationsFragment;
+
+import java.util.List;
+
 import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,14 +17,14 @@ import android.widget.TextView;
 
 public class ClassificationAdapter extends BaseAdapter {
 	private static final int SIMPLE_ITEM_TYPE = 1;
-	private Patient patient;
+	private List<Diagnostic> patientDiagnostics;
 	
 	private AssessmentClassificationsFragment assessmentClassificationsFragment;
 	
-    public ClassificationAdapter(AssessmentClassificationsFragment assessmentClassificationsFragment, Patient patient) {
+    public ClassificationAdapter(AssessmentClassificationsFragment assessmentClassificationsFragment, List<Diagnostic> patientDiagnostics) {
 		super();
 		setAssessmentClassificationsFragment(assessmentClassificationsFragment);
-		setPatient(patient);
+		setPatientDiagnostics(patientDiagnostics);
 	}
 
 	@Override
@@ -45,11 +48,11 @@ public class ClassificationAdapter extends BaseAdapter {
     }
 
     public Object getItem(int position) {
-        return getPatient().getDiagnostics().get(position).getClassification();
+        return getPatientDiagnostics().get(position).getClassification();
     }
 
     public long getItemId(int position) {
-        return getPatient().getDiagnostics().get(position).getClassification().hashCode();
+        return getPatientDiagnostics().get(position).getClassification().hashCode();
     }
 
     public View getView(int position, View view, ViewGroup container) {
@@ -61,7 +64,7 @@ public class ClassificationAdapter extends BaseAdapter {
         	        LayoutInflater inflater = LayoutInflater.from(getAssessmentClassificationsFragment().getActivity());
         			view = inflater.inflate(R.layout.classification_list_item_review, container, false);
         		}
-                Classification classification = getPatient().getDiagnostics().get(position).getClassification();
+                Classification classification = getPatientDiagnostics().get(position).getClassification();
     			((TextView) view.findViewById(R.id.classification_list_item_label)).setText(classification.getName());
     			((TextView) view.findViewById(R.id.classification_list_item_value)).setText(classification.getType());
     			View classificationView = view.findViewById(R.id.classification_list_item);
@@ -100,7 +103,7 @@ public class ClassificationAdapter extends BaseAdapter {
 		// null pointer exception was being called here previously periodically as 
 		// AssessmentClassificationFragment was null when querying for number of classifications
 		// associated with Patient - so now holding this information locally
-		return getPatient().getDiagnostics().size();
+		return getPatientDiagnostics().size();
     }
 
 	/**
@@ -118,16 +121,16 @@ public class ClassificationAdapter extends BaseAdapter {
 	}
 
 	/**
-	 * Getter Method: getPatient()
+	 * Getter Method: getPatientDiagnostics()
 	 */
-	public Patient getPatient() {
-		return patient;
+	public List<Diagnostic> getPatientDiagnostics() {
+		return patientDiagnostics;
 	}
 
 	/**
-	 * Setter Method: setPatient()
+	 * Setter Method: setPatientDiagnostics()
 	 */
-	public void setPatient(Patient patient) {
-		this.patient = patient;
+	public void setPatientDiagnostics(List<Diagnostic> patientDiagnostics) {
+		this.patientDiagnostics = patientDiagnostics;
 	}
 }

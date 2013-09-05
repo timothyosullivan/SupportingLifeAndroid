@@ -1,8 +1,11 @@
 package ie.ucc.bis.wizard.ui;
 
+import java.util.ArrayList;
+
 import ie.ucc.bis.R;
 import ie.ucc.bis.activity.AssessmentResultsActivity;
 import ie.ucc.bis.domain.Patient;
+import ie.ucc.bis.rule.engine.Diagnostic;
 import ie.ucc.bis.wizard.model.TreatmentAdapter;
 import android.app.Activity;
 import android.os.Bundle;
@@ -38,7 +41,7 @@ public class AssessmentTreatmentsFragment extends ListFragment {
       
         // obtain a reference to the patient being dealt with...
         setPatient(((AssessmentResultsActivity) getActivity()).getPatient());          
-        setTreatmentAdapter(new TreatmentAdapter(this, getPatient()));
+        setTreatmentAdapter(new TreatmentAdapter(this, new ArrayList<Diagnostic>(getPatient().getDiagnostics())));
         setListAdapter(getTreatmentAdapter());
     }
     

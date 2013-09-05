@@ -11,6 +11,7 @@ import ie.ucc.bis.wizard.model.review.ReviewItem;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
 
 import org.xmlpull.v1.XmlPullParser;
@@ -211,7 +212,9 @@ public class ClassificationRuleEngine {
 		
 		// 4. Now need to ensure we only report the highest priority classification in each
 		//	  classification grouping
-		List<Diagnostic> uniqueDiagnosticGrouping = new ArrayList<Diagnostic>();
+		//	  This will also ensure via Diagnostic 'hashCode() / equals()' methods that only
+		//	  one instance of each classification name will be added
+		HashSet<Diagnostic> uniqueDiagnosticGrouping = new HashSet<Diagnostic>();
 		for (Diagnostic diagnostic : patient.getDiagnostics()) {
 			Classification classification = diagnostic.getClassification();
 			String classificationId = classification.getCategory();
@@ -224,9 +227,10 @@ public class ClassificationRuleEngine {
 		// 5. Finally, we should order the classifications such that the highest priority 
 		//    classifications are listed first. This will help alert the HSA to the 
 		//    severity of the patient's condition.
-		Collections.sort(uniqueDiagnosticGrouping, new DiagnosticComparator());
-		patient.setDiagnostics(uniqueDiagnosticGrouping);
-		
+		List<Diagnostic> uniqueDiagnosticGroupingList = new ArrayList<Diagnostic>(uniqueDiagnosticGrouping);
+		Collections.sort(uniqueDiagnosticGroupingList, new DiagnosticComparator());
+		patient.setDiagnostics(uniqueDiagnosticGroupingList);
+
 		// DEBUG OUTPUT
 		// LoggerUtils.i(LOG_TAG, captureClassificationDebugOutput(patient.getClassifications()));
 	}

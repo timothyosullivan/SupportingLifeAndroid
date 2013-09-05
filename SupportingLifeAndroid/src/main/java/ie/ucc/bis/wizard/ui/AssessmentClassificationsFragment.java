@@ -3,7 +3,11 @@ package ie.ucc.bis.wizard.ui;
 import ie.ucc.bis.R;
 import ie.ucc.bis.activity.AssessmentResultsActivity;
 import ie.ucc.bis.domain.Patient;
+import ie.ucc.bis.rule.engine.Diagnostic;
 import ie.ucc.bis.wizard.model.ClassificationAdapter;
+
+import java.util.ArrayList;
+
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.ListFragment;
@@ -38,7 +42,7 @@ public class AssessmentClassificationsFragment extends ListFragment {
       
         // obtain a reference to the patient being dealt with...
         setPatient(((AssessmentResultsActivity) getActivity()).getPatient());          
-        setClassificationAdapter(new ClassificationAdapter(this, getPatient()));
+        setClassificationAdapter(new ClassificationAdapter(this, new ArrayList<Diagnostic>(getPatient().getDiagnostics())));
         setListAdapter(getClassificationAdapter());
     }
     

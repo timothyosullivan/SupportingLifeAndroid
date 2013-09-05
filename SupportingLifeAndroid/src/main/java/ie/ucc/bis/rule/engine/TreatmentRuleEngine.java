@@ -293,6 +293,10 @@ public class TreatmentRuleEngine {
 							if (CriteriaRule.ALL.name().equalsIgnoreCase(treatment.getTreatmentCriterion().getRule())) {
 								symptomCriteriaPasses = checkSymptomCriteria(symptomCriterion, reviewItems, patient, symptomCriterion.size());
 							}
+							else if (CriteriaRule.ANY.name().equalsIgnoreCase(treatment.getTreatmentCriterion().getRule())) {
+								// only need a single symptom in order for the treatment to apply
+								symptomCriteriaPasses = checkSymptomCriteria(symptomCriterion, reviewItems, patient, 1);
+							}
 						}
 						else {
 							symptomCriteriaPasses = true;

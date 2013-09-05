@@ -668,8 +668,30 @@
 	<!-- 		   ((Ear Pus Discharge 								  -->
 	<!-- 				AND 										  -->
 	<!-- 		   Ear Pus Discharge less than 14 days)				  -->
-	<!-- 			    OR											  -->
-	<!--		   Ear Pain)							  			  -->
+	<!-- ============================================================ -->
+	<Classification>
+		<Category>ear_problem</Category>
+		<Name>Acute Ear Infection</Name>
+		<Type>MODERATE</Type>
+		<Priority>2</Priority>
+		<SymptomRule rule="ANY_SYMPTOM">
+			<Symptom value="yes">ear_assessment_ear_problem_symptom_id</Symptom>						<!-- Ear Problem : YES -->
+		</SymptomRule>
+		<SymptomRule rule="TWO_SYMPTOMS_REQUIRED">
+			<Symptom value="yes">ear_assessment_ear_discharge_symptom_id</Symptom>	 					<!-- Ear Pus Discharge : YES -->
+			<Symptom value="no">ear_assessment_ear_discharge_duration_symptom_id</Symptom>	 			<!-- Ear Pus Discharge >= 14 days : NO -->
+		</SymptomRule>
+	</Classification>
+
+	<!-- ============================================================ -->
+	<!-- EAR PROBLEM				 								  -->
+	<!-- ============================================================ -->
+	<!-- ============================================================ -->
+	<!-- Classification: Acute Ear Infection					 	  -->
+	<!-- Type: MODERATE										  		  -->
+	<!-- Symptoms: Ear Problem						  				  -->
+	<!-- 				AND											  -->
+	<!--		   Ear Pain							  			  	  -->
 	<!-- ============================================================ -->
 	<Classification>
 		<Category>ear_problem</Category>
@@ -680,7 +702,6 @@
 			<Symptom value="yes">ear_assessment_ear_problem_symptom_id</Symptom>						<!-- Ear Problem : YES -->
 		</SymptomRule>
 		<SymptomRule rule="ANY_SYMPTOM">
-			<Symptom value="no">ear_assessment_ear_discharge_duration_symptom_id</Symptom>	 			<!-- Ear Pus Discharge >= 14 days : NO -->
 			<Symptom value="yes">ear_assessment_ear_pain_symptom_id</Symptom>							<!-- Ear Pain : YES -->
 		</SymptomRule>
 	</Classification>

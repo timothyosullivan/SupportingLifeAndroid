@@ -39,6 +39,38 @@ public class Diagnostic implements Serializable {
 		setClassification(classification);
 	}
 
+	/* (non-Javadoc)
+	 * @see java.lang.Object#hashCode()
+	 */
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result
+				+ ((classification == null) ? 0 : classification.hashCode());
+		return result;
+	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (!(obj instanceof Diagnostic))
+			return false;
+		Diagnostic other = (Diagnostic) obj;
+		if (classification == null) {
+			if (other.classification != null)
+				return false;
+		} else if (!classification.equals(other.classification))
+			return false;
+		return true;
+	}
+
 	/**
 	 * Getter Method: getClassification()
 	 */
