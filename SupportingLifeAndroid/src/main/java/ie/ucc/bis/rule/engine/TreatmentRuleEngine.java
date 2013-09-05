@@ -280,7 +280,7 @@ public class TreatmentRuleEngine {
 		//	  appropriate treatment(s)
 		for (Diagnostic diagnostic : patient.getDiagnostics()) {
 			for (TreatmentRule treatmentRule : getSystemTreatmentRules()) {
-				if (diagnostic.getClassification().getName().equalsIgnoreCase(treatmentRule.getClassification())) {
+				if (diagnostic.getClassification().getName().equalsIgnoreCase(treatmentRule.getClassification())) {				
 					// classification match found so determine if all associated 
 					// treatments apply
 					for (Treatment treatment : treatmentRule.getTreatments()) {

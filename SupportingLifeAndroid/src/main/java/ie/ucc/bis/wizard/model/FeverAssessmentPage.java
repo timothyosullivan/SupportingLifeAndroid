@@ -3,6 +3,7 @@ package ie.ucc.bis.wizard.model;
 import ie.ucc.bis.R;
 import ie.ucc.bis.wizard.model.listener.RadioGroupCoordinatorListener;
 import ie.ucc.bis.wizard.model.listener.RadioGroupListener;
+import ie.ucc.bis.wizard.model.review.FeverDurationReviewItem;
 import ie.ucc.bis.wizard.model.review.FeverReviewItem;
 import ie.ucc.bis.wizard.model.review.MalariaReviewItem;
 import ie.ucc.bis.wizard.model.review.ReviewItem;
@@ -83,15 +84,15 @@ public class FeverAssessmentPage extends AbstractPage {
     	reviewItemSymptomId = resources.getString(R.string.fever_assessment_malaria_risk_symptom_id);
     	reviewItems.add(new MalariaReviewItem(reviewItemLabel, reviewItemValue, reviewItemSymptomId, getKey(), -1));
     	
-    	// duration
+    	// fever duration
     	reviewItemLabel = resources.getString(R.string.fever_assessment_review_duration);
     	reviewItemSymptomId = resources.getString(R.string.fever_assessment_duration_symptom_id);
-    	reviewItems.add(new ReviewItem(reviewItemLabel, getPageData().getString(DURATION_DATA_KEY), reviewItemSymptomId, getKey(), -1));
+    	reviewItems.add(new FeverDurationReviewItem(reviewItemLabel, getPageData().getString(DURATION_DATA_KEY), reviewItemSymptomId, getKey(), -1));
     	
     	// 'fever present every day'
     	reviewItemLabel = resources.getString(R.string.fever_assessment_review_present_every_day);
     	reviewItemValue = getPageData().getString(FEVER_PRESENT_EVERY_DAY_DATA_KEY + RadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
-    	reviewItemSymptomId = resources.getString(R.string.fever_assessment_pus_draining_symptom_id);
+    	reviewItemSymptomId = resources.getString(R.string.fever_assessment_present_every_day_symptom_id);
     	reviewItems.add(new ReviewItem(reviewItemLabel, reviewItemValue, reviewItemSymptomId, getKey(), -1));    	
 
     	// measles

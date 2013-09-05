@@ -74,7 +74,6 @@
 	<string name="fever_assessment_fever_symptom_id">fever</string>
 	<string name="fever_assessment_malaria_risk_symptom_id">malaria_risk</string>
 	<string name="fever_assessment_duration_symptom_id">fever_duration</string>
-	<string name="fever_assessment_duration_more_than_seven_days_symptom_id">fever_duration_more_than_seven_days</string>
 	<string name="fever_assessment_present_every_day_symptom_id">fever_present_every_day</string>
 	<string name="fever_assessment_measles_symptom_id">measles</string>
 	<string name="fever_assessment_stiff_neck_symptom_id">stiff_neck</string>
