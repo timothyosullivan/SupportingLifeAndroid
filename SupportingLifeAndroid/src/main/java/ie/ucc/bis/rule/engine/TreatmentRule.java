@@ -115,7 +115,6 @@ public class TreatmentRule implements Serializable {
 		StringBuffer debugOutput = new StringBuffer();
 
 		debugOutput.append("------------------------------------ \n");
-		debugOutput.append("Category: " + getCategory() + "\n");
 		debugOutput.append("Classification: " + getClassification() + "\n");
 		
 		if (getTreatments().size() != 0) {

@@ -2,6 +2,8 @@ package ie.ucc.bis.rule.engine;
 
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -11,11 +13,14 @@ import java.io.Serializable;
  * treatment_rules.xml e.g.
  * 
  * <Treatment>
- * 		<CriteriaList rule="all">
- * 			<SymptomCriteria value="yes">diarrhoea_assessment_cholera_in_area_symptom_id</SymptomCriteria>
- * 			<TreatmentCriterion value="yes">treatment_criteria_patient_is_two_years_or_older</TreatmentCriterion>
+ * 		<CriteriaList rule="any">
+ * 			<SymptomCriteria value="some">malnutrition_assessment_palmar_pallor_symptom_id</SymptomCriteria>
+ * 			<SymptomCriteria value="severe">malnutrition_assessment_palmar_pallor_symptom_id</SymptomCriteria>
  * 		</CriteriaList>
- * 		<Recommendation>Give antibiotic for cholera</Recommendation>
+ * 		<CriteriaList rule="all">
+ * 			<SymptomCriteria value="high malaria risk">fever_assessment_malaria_risk_symptom_id</SymptomCriteria>
+ * 		</CriteriaList>
+ * 		<Recommendation>Give Oral Antimalarial</Recommendation>
  * </Treatment>
  * 
  * @author TOSullivan
@@ -29,7 +34,7 @@ public class Treatment implements Serializable {
 	 */
 	private static final long serialVersionUID = 2969585100135738023L;
 
-	private TreatmentCriterion treatmentCriterion;
+	private List<TreatmentCriterion> treatmentCriterion;
 	private String recommendation;
 
  
@@ -38,21 +43,21 @@ public class Treatment implements Serializable {
 	 * 
 	 */
 	public Treatment() {
-		setTreatmentCriterion(new TreatmentCriterion());
+		setTreatmentCriterion(new ArrayList<TreatmentCriterion>());
 	}
 		
 
 	/**
 	 * Getter Method: getTreatmentCriterion()
 	 */
-	public TreatmentCriterion getTreatmentCriterion() {
+	public List<TreatmentCriterion> getTreatmentCriterion() {
 		return treatmentCriterion;
 	}
 
 	/**
 	 * Setter Method: setTreatmentCriterion()
 	 */
-	public void setTreatmentCriterion(TreatmentCriterion treatmentCriterion) {
+	public void setTreatmentCriterion(List<TreatmentCriterion> treatmentCriterion) {
 		this.treatmentCriterion = treatmentCriterion;
 	}
 
@@ -80,7 +85,10 @@ public class Treatment implements Serializable {
 
 		debugOutput.append("------------------------------------ \n");
 
-		debugOutput.append(getTreatmentCriterion().debugOutput());
+		for (TreatmentCriterion treatmentCriterion : getTreatmentCriterion()) {
+			debugOutput.append(treatmentCriterion.debugOutput());
+		}
+
 		debugOutput.append("Recommendation: " + getRecommendation() + "\n");
 		
 		return debugOutput.toString();

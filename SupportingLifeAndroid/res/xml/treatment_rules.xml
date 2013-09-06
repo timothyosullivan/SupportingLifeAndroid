@@ -585,7 +585,6 @@
 	<!-- Treatments: No additional treatment						  -->
 	<!-- ============================================================ -->
 	<TreatmentRule>
-		<Category>ear_problem</Category>
 		<Classification>No Ear Infection</Classification>
 		<Treatment>
 			<Recommendation>No additional treatment</Recommendation>
@@ -597,12 +596,109 @@
 	<!-- ============================================================ -->
 	<!-- ============================================================ -->
 	<!-- Classification: Severe Malnutrition or Severe Anaemia	 	  -->
-	<!-- Type: SEVERE										  		  -->
-	<!-- Symptoms: Visible Severe Wasting			  				  -->
-	<!-- 				OR											  -->
-	<!-- 		   Severe Palmar Pallor							  	  -->
-	<!-- 				OR 											  -->
-	<!-- 		   Oedema of Both Feet								  -->
+	<!-- 													  		  -->
+	<!-- Treatments: Refer Urgently to Hospital						  -->
+	<!--				AND											  -->
+	<!--			 Give Vitamin A									  -->
 	<!-- ============================================================ -->
+	<TreatmentRule>
+		<Classification>Severe Malnutrition or Severe Anaemia</Classification>
+		<Treatment>
+			<Recommendation>Refer Urgently to Hospital</Recommendation>
+		</Treatment>
+		<Treatment>
+			<Recommendation>Give Vitamin A</Recommendation>
+		</Treatment>
+	</TreatmentRule>
+	
+	<!-- ============================================================ -->
+	<!-- MALNUTRITION AND ANAEMIA	 								  -->
+	<!-- ============================================================ -->
+	<!-- ============================================================ -->
+	<!-- Classification: Anaemia or Very Low Weight	 	  			  -->
+	<!-- 													  		  -->
+	<!-- Treatments: Give Iron								  		  -->
+	<!--		   	  AND											  -->
+	<!--			 Follow-up Visit: 14 days						  -->
+	<!--			 (condition: if patient has 'palmar pallor')  	  -->
+	<!-- 			 =============									  -->
+	<!--			 Follow-up Visit: 30 days						  -->
+	<!--			 (condition: if patient has no 'palmar pallor'	  -->
+	<!-- 						 AND								  -->
+	<!-- 						 patient has very low weight for age) -->
+	<!-- 			 =============									  -->
+	<!--			 Give Oral Antimalarial							  -->
+	<!--			 (condition: if patient has 'palmar pallor'	  	  -->
+	<!-- 						 AND								  -->
+	<!-- 						 there is a high malaria risk) 		  -->
+	<!-- 			 =============									  -->
+	<!--			 Give Mebendazole								  -->
+	<!--			 (condition: if patient has 'palmar pallor'	  	  -->
+	<!-- 						 AND								  -->
+	<!-- 						 patient has not received a  		  -->
+	<!-- 						 mebendazole dose in the last  		  -->
+	<!-- 						 six months					 		  -->
+	<!-- 						 AND						 		  -->
+	<!-- 						 patient is two years or older)		  -->
+	<!-- 			 =============									  -->
+	<!-- 			 Advise mother when to return					  -->
+	<!-- ============================================================ -->
+	<TreatmentRule>
+		<Classification>Anaemia or Very Low Weight</Classification>
+		<Treatment>
+			<CriteriaList rule="any">
+				<SymptomCriteria value="some">malnutrition_assessment_palmar_pallor_symptom_id</SymptomCriteria>
+				<SymptomCriteria value="severe">malnutrition_assessment_palmar_pallor_symptom_id</SymptomCriteria>
+			</CriteriaList>
+			<Recommendation>Give Iron</Recommendation>
+			<Recommendation>Follow-up visit: 14 days</Recommendation>
+		</Treatment>
+		<Treatment>
+			<CriteriaList rule="all">
+				<SymptomCriteria value="no">malnutrition_assessment_palmar_pallor_symptom_id</SymptomCriteria>
+				<SymptomCriteria value="very low">malnutrition_assessment_weight_for_age_symptom_id</SymptomCriteria>
+			</CriteriaList>
+			<Recommendation>Follow-up visit: 30 days</Recommendation>
+		</Treatment>
+		<Treatment>
+			<CriteriaList rule="any">
+				<SymptomCriteria value="some">malnutrition_assessment_palmar_pallor_symptom_id</SymptomCriteria>
+				<SymptomCriteria value="severe">malnutrition_assessment_palmar_pallor_symptom_id</SymptomCriteria>
+			</CriteriaList>
+			<CriteriaList rule="all">
+				<SymptomCriteria value="high malaria risk">fever_assessment_malaria_risk_symptom_id</SymptomCriteria>
+			</CriteriaList>
+			<Recommendation>Give Oral Antimalarial</Recommendation>
+		</Treatment>
+		<Treatment>
+			<CriteriaList rule="any">
+				<SymptomCriteria value="some">malnutrition_assessment_palmar_pallor_symptom_id</SymptomCriteria>
+				<SymptomCriteria value="severe">malnutrition_assessment_palmar_pallor_symptom_id</SymptomCriteria>
+			</CriteriaList>
+			<CriteriaList rule="all">
+				<SymptomCriteria value="no">malnutrition_assessment_mebendazole_dose_symptom_id</SymptomCriteria>			<!-- Mebendazole Dose in the last six months: NO -->
+				<SymptomCriteria value="yes">general_patient_details_patient_two_years_or_older_symptom_id</SymptomCriteria>
+			</CriteriaList>
+			<Recommendation>Give Mebendazole</Recommendation>
+		</Treatment>
+		<Treatment>
+			<Recommendation>Advise mother when to return</Recommendation>
+		</Treatment>
+	</TreatmentRule>
+	
+	<!-- ============================================================ -->
+	<!-- MALNUTRITION AND ANAEMIA	 								  -->
+	<!-- ============================================================ -->
+	<!-- ============================================================ -->
+	<!-- Classification: No Anaemia or Not Very Low Weight		 	  -->
+	<!-- 													  		  -->
+	<!-- Treatments: Advise mother when to return					  -->
+	<!-- ============================================================ -->
+	<TreatmentRule>
+		<Classification>No Anaemia or Not Very Low Weight</Classification>
+		<Treatment>
+			<Recommendation>Advise mother when to return</Recommendation>
+		</Treatment>
+	</TreatmentRule>
 	
 </TreatmentRules>

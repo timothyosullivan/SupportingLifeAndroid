@@ -212,7 +212,7 @@ public class TreatmentRuleEngine {
 							// <CriteriaList>
 							ruleAttrib = xmlParser.getAttributeValue(null, RULE_ATTRIB);
 							treatmentCriterion = new TreatmentCriterion(ruleAttrib);
-							treatment.setTreatmentCriterion(treatmentCriterion);
+							treatment.getTreatmentCriterion().add(treatmentCriterion);
 						}
 						else if (SYMPTOM_CRITERIA.equalsIgnoreCase(elemName)) {
 							// <SymptomCriteria>
@@ -223,7 +223,7 @@ public class TreatmentRuleEngine {
 							symptomName = supportingLifeBaseActivity.getResources().getString(identifier);			
 							
 							symptomCriteria = new Symptom(symptomName, ruleAttrib);
-							treatment.getTreatmentCriterion().getSymptomCriteria().add(symptomCriteria);
+							treatment.getTreatmentCriterion().get(treatment.getTreatmentCriterion().size() - 1).getSymptomCriteria().add(symptomCriteria);
 						}
 						else if (TREATMENT_CRITERIA.equalsIgnoreCase(elemName)) {
 							// <TreatmentCriteria>
@@ -231,7 +231,7 @@ public class TreatmentRuleEngine {
 							
 							treatmentName = xmlParser.nextText();
 							treatmentCriteria = new TreatmentCriteria(treatmentName, ruleAttrib);
-							treatment.getTreatmentCriterion().getTreatmentCriteria().add(treatmentCriteria);
+							treatment.getTreatmentCriterion().get(treatment.getTreatmentCriterion().size() - 1).getTreatmentCriteria().add(treatmentCriteria);
 						}
 						else if (RECOMMENDATION.equalsIgnoreCase(elemName)) {
 							// <Recommendation>
@@ -258,9 +258,9 @@ public class TreatmentRuleEngine {
 			ex.printStackTrace();
 		}
 		// DEBUG OUTPUT
-//		LoggerUtils.i(LOG_TAG, captureTreatmentRulesDebugOutput(getSystemTreatmentRules()));
-//		LoggerUtils.i(LOG_TAG, "--------------------------------------");
-//		LoggerUtils.i(LOG_TAG, "--------------------------------------");
+		LoggerUtils.i(LOG_TAG, captureTreatmentRulesDebugOutput(getSystemTreatmentRules()));
+		LoggerUtils.i(LOG_TAG, "--------------------------------------");
+		LoggerUtils.i(LOG_TAG, "--------------------------------------");
 		LoggerUtils.i(LOG_TAG, "--------------------------------------");
 	}
 	
@@ -284,33 +284,45 @@ public class TreatmentRuleEngine {
 					// classification match found so determine if all associated 
 					// treatments apply
 					for (Treatment treatment : treatmentRule.getTreatments()) {
-						boolean symptomCriteriaPasses = false;
-						boolean treatmentCriteriaPasses = false;
+						boolean symptomCriteriaPasses = true;
+						boolean treatmentCriteriaPasses = true;
 						
 						// check symptom criteria
-						List<Symptom> symptomCriterion = treatment.getTreatmentCriterion().getSymptomCriteria();
-						if (symptomCriterion.size() != 0) {
-							if (CriteriaRule.ALL.name().equalsIgnoreCase(treatment.getTreatmentCriterion().getRule())) {
-								symptomCriteriaPasses = checkSymptomCriteria(symptomCriterion, reviewItems, patient, symptomCriterion.size());
+						for (TreatmentCriterion treatmentCriterion : treatment.getTreatmentCriterion()) {
+							List<Symptom> symptomCriterion = treatmentCriterion.getSymptomCriteria();
+							if (symptomCriterion.size() != 0) {
+								if (CriteriaRule.ALL.name().equalsIgnoreCase(treatmentCriterion.getRule())) {
+									symptomCriteriaPasses = checkSymptomCriteria(symptomCriterion, reviewItems, patient, symptomCriterion.size());
+								}
+								else if (CriteriaRule.ANY.name().equalsIgnoreCase(treatmentCriterion.getRule())) {
+									// only need a single symptom in order for the treatment to apply
+									symptomCriteriaPasses = checkSymptomCriteria(symptomCriterion, reviewItems, patient, 1);
+								}
 							}
-							else if (CriteriaRule.ANY.name().equalsIgnoreCase(treatment.getTreatmentCriterion().getRule())) {
-								// only need a single symptom in order for the treatment to apply
-								symptomCriteriaPasses = checkSymptomCriteria(symptomCriterion, reviewItems, patient, 1);
+							else {
+								symptomCriteriaPasses = true;
 							}
-						}
-						else {
-							symptomCriteriaPasses = true;
-						}
+							if (!symptomCriteriaPasses) {
+								// exit loop if any <CriteriaList> does not pass successfully
+								break;
+							}
+						} // end of for (Treatment treatment ...
 						
 						// check treatment criteria
-						List<TreatmentCriteria> treatmentCriterion = treatment.getTreatmentCriterion().getTreatmentCriteria();
-						if (symptomCriteriaPasses && (treatmentCriterion.size() != 0)) {
-							if (CriteriaRule.ALL.name().equalsIgnoreCase(treatment.getTreatmentCriterion().getRule())) {
-								treatmentCriteriaPasses = checkTreatmentCriteria(treatmentCriterion, reviewItems, patient, treatmentCriterion.size());
+						for (TreatmentCriterion treatmentCriterion : treatment.getTreatmentCriterion()) {
+							List<TreatmentCriteria> treatmentCriteria = treatmentCriterion.getTreatmentCriteria();
+							if (symptomCriteriaPasses && (treatmentCriteria.size() != 0)) {
+								if (CriteriaRule.ALL.name().equalsIgnoreCase(treatmentCriterion.getRule())) {
+									treatmentCriteriaPasses = checkTreatmentCriteria(treatmentCriteria, reviewItems, patient, treatmentCriteria.size());
+								}
 							}
-						}
-						else {
-							treatmentCriteriaPasses = true;
+							else {
+								treatmentCriteriaPasses = true;
+							}
+							if (!treatmentCriteriaPasses) {
+								// exit loop if any <CriteriaList> does not pass successfully
+								break;
+							}
 						}
 						
 						if (symptomCriteriaPasses && treatmentCriteriaPasses) {
@@ -429,7 +441,7 @@ public class TreatmentRuleEngine {
 	 * @return StringBuilder
 	 * 
 	 */
-	private StringBuilder captureTreatmentRuleDebugOutput(List<TreatmentRule> treatmentRules) {
+	private StringBuilder captureTreatmentRulesDebugOutput(List<TreatmentRule> treatmentRules) {
 		StringBuilder debugOutput = new StringBuilder();
 		
 		for (TreatmentRule treatmentRule : treatmentRules){
