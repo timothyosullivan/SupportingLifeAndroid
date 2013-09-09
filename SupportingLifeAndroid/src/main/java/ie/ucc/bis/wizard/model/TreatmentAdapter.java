@@ -13,6 +13,8 @@ import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
@@ -68,9 +70,22 @@ public class TreatmentAdapter extends BaseAdapter {
         			view = inflater.inflate(R.layout.treatment_list_item_review, container, false);
         		}
         		String classificationTitle = getPatientDiagnostics().get(position).getClassification().getName();
-        		((TextView) view.findViewById(R.id.treatment_list_item_title)).setText(classificationTitle);
+        		TextView classificationTitleText = (TextView) view.findViewById(R.id.treatment_list_item_title);
+        		classificationTitleText.setText(classificationTitle);
                 List<String> treatments = getPatientDiagnostics().get(position).getTreatmentRecommendations();
                 addBulletedListToTextView(treatments, ((TextView) view.findViewById(R.id.treatment_list_item_desc)));
+                
+                if (classificationTitle.equalsIgnoreCase(getAssessmentTreatmentsFragment().getClassificationTitleSelected())) {
+        	    	Animation anim = new AlphaAnimation(0.0f, 1.0f);
+        	    	anim.setDuration(200); //You can manage the time of the blink with this parameter
+        	    	anim.setStartOffset(20);
+        	    	anim.setRepeatMode(Animation.REVERSE);
+        	    	anim.setRepeatCount(Animation.INFINITE);
+        	    	classificationTitleText.startAnimation(anim);
+        	    	getAssessmentTreatmentsFragment().setClassificationTitleSelected(null);
+                }
+                
+                
     		//	View treatmentView = view.findViewById(R.id.treatment_list_item);
     		//	colourCodeTreatment(getPatient().getDiagnostics().get(position).getClassification(), treatmentView);
     			break;

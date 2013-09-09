@@ -15,6 +15,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+import android.widget.TextView;
 
 /**
  * Class: AssessmentClassificationsFragment
@@ -51,17 +52,17 @@ public class AssessmentClassificationsFragment extends ListFragment {
           
           ListView listView = (ListView) myFragmentView.findViewById(android.R.id.list);         
           listView.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
-          
+
     	  return myFragmentView;
     }
 
-    @Override
     public void onListItemClick(ListView l, View v, int position, long id) {
         Activity activity = getActivity();
         
         if (activity != null) {   
             // open the treatments tab and scroll to the relevant treatment
-			((AssessmentResultsActivity) getActivity()).getTabsAdapter().displayTreatmentTab();
+        	String classificationTitle = ((TextView) v.findViewById(R.id.classification_list_item_label)).getText().toString();
+			((AssessmentResultsActivity) getActivity()).displayTreatmentTab(position, classificationTitle);
         }
     }
     

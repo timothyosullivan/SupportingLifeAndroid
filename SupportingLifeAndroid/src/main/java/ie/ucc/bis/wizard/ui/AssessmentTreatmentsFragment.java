@@ -1,20 +1,19 @@
 package ie.ucc.bis.wizard.ui;
 
-import java.util.ArrayList;
-
 import ie.ucc.bis.R;
 import ie.ucc.bis.activity.AssessmentResultsActivity;
 import ie.ucc.bis.domain.Patient;
 import ie.ucc.bis.rule.engine.Diagnostic;
 import ie.ucc.bis.wizard.model.TreatmentAdapter;
-import android.app.Activity;
+
+import java.util.ArrayList;
+
 import android.os.Bundle;
 import android.support.v4.app.ListFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
-import android.widget.Toast;
 
 /**
  * Class: AssessmentTreatmentsFragment
@@ -29,6 +28,7 @@ public class AssessmentTreatmentsFragment extends ListFragment {
     
     private TreatmentAdapter treatmentAdapter;
     private Patient patient;
+    private String classificationTitleSelected;
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -51,20 +51,29 @@ public class AssessmentTreatmentsFragment extends ListFragment {
           
           ListView listView = (ListView) myFragmentView.findViewById(android.R.id.list);         
           listView.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
-          
+                    
     	  return myFragmentView;
     }
 
-    @Override
-    public void onListItemClick(ListView l, View v, int position, long id) {
-        Activity activity = getActivity();
-        
-        if (activity != null) {   
-            // Display a simple Toast to demonstrate that the click event is working. Notice that Fragments have a
-            // getString() method just like an Activity, so that you can quickly access your localized Strings.
-            Toast.makeText(activity, "TEST CLASSIFICATION CLICK", Toast.LENGTH_SHORT).show();
-        }
+	/**
+	 * Scroll to the relevant position in the list
+	 * and highlight temporarily
+	 * 
+	 * @param position 
+	 */
+    public void scrollToRelatedElement(int position, String classificationTitle) {
+    	
+    	// scroll to relevant element
+    	getListView().setSelection(position);
+    	setClassificationTitleSelected(classificationTitle);
+    	
+    	// call 'onListItemClick' action event listener method
+  //  	getListView().performItemClick(getListView(), position, position);
+    	
     }
+    
+    @Override
+    public void onListItemClick(ListView l, View v, int position, long id) {}
     
 	/**
 	 * Getter Method: getPatient()
@@ -92,5 +101,19 @@ public class AssessmentTreatmentsFragment extends ListFragment {
 	 */
 	public void setTreatmentAdapter(TreatmentAdapter treatmentAdapter) {
 		this.treatmentAdapter = treatmentAdapter;
+	}
+
+	/**
+	 * Getter Method: getClassificationTitleSelected()
+	 */
+	public String getClassificationTitleSelected() {
+		return classificationTitleSelected;
+	}
+
+	/**
+	 * Setter Method: setClassificationTitleSelected()
+	 */
+	public void setClassificationTitleSelected(String classificationTitleSelected) {
+		this.classificationTitleSelected = classificationTitleSelected;
 	}
 }

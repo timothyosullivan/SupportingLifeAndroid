@@ -41,7 +41,7 @@ public class AssessmentResultsActivity extends SupportingLifeBaseActivity {
 	private TabsAdapter TabsAdapter;
 	private ArrayList<ReviewItem> reviewItems;
 	private Patient patient;
-	
+
 	/* 
 	 * Method: onCreate() 
 	 * 
@@ -91,11 +91,29 @@ public class AssessmentResultsActivity extends SupportingLifeBaseActivity {
  
         // open on classifications tab by default
         getTabsAdapter().setDefaultTab();
-        
+
        if (savedInstanceState != null) {
             bar.setSelectedNavigationItem(savedInstanceState.getInt("tab", 0));
         }
 	}
+	
+	/**
+	 * Display the treatments tab and scroll to the
+	 * relevant classification
+	 * @param classificationTitle 
+	 * 
+	 * @param classificationName 
+	 */
+	public void displayTreatmentTab(int position, String classificationTitle) {
+		getTabsAdapter().displayTreatmentTab();
+		AssessmentTreatmentsFragment treatmentsFragment = (AssessmentTreatmentsFragment) 
+				getSupportFragmentManager().getFragments().get(TabsAdapter.TREATMENT_TAB_INDEX);
+
+		if (treatmentsFragment != null) {
+			treatmentsFragment.scrollToRelatedElement(position, classificationTitle);
+		}
+	}
+
 
 	@Override
 	protected void onSaveInstanceState(Bundle outState) {
@@ -112,8 +130,8 @@ public class AssessmentResultsActivity extends SupportingLifeBaseActivity {
 	 */
 	public static class TabsAdapter extends FragmentPagerAdapter implements ActionBar.TabListener, ViewPager.OnPageChangeListener {
 		
-		private static final int CLASSIFICATION_TAB_INDEX = 1;
-		private static final int TREATMENT_TAB_INDEX = 2;
+		private final int CLASSIFICATION_TAB_INDEX = 1;
+		private final int TREATMENT_TAB_INDEX = 2;
 				
 		private final Context context;
 		private final ActionBar actionBar;
@@ -153,12 +171,13 @@ public class AssessmentResultsActivity extends SupportingLifeBaseActivity {
 		public void setDefaultTab() {
 			getActionBar().selectTab(getActionBar().getTabAt(CLASSIFICATION_TAB_INDEX));	
 		}
-
+		
 		/**
 		 * Display the treatments tab
+		 * 
 		 */
 		public void displayTreatmentTab() {
-			getActionBar().selectTab(getActionBar().getTabAt(TREATMENT_TAB_INDEX));	
+			getActionBar().selectTab(getActionBar().getTabAt(TREATMENT_TAB_INDEX));
 		}
 
 		/**
