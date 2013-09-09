@@ -15,12 +15,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 public class TreatmentAdapter extends BaseAdapter {
 	private static final int SIMPLE_ITEM_TYPE = 1;
 	private static final String BULLET_SYMBOL = "&#8226";
+	private static final int TITLE_FLASH_COUNT = 3;
+	private static final long TITLE_FLASH_BLINK_DURATION = 300;
 	
 	private List<Diagnostic> patientDiagnostics;
 	
@@ -52,6 +55,11 @@ public class TreatmentAdapter extends BaseAdapter {
         return true;
     }
 
+    @Override
+    public boolean isEnabled(int position) {
+    	return false;
+    }
+    
     public Object getItem(int position) {
         return getPatientDiagnostics().get(position).getClassification();
     }
@@ -75,23 +83,53 @@ public class TreatmentAdapter extends BaseAdapter {
                 List<String> treatments = getPatientDiagnostics().get(position).getTreatmentRecommendations();
                 addBulletedListToTextView(treatments, ((TextView) view.findViewById(R.id.treatment_list_item_desc)));
                 
+                // animate the title of the treatment if the user has selected the treatment from the classifications tab
                 if (classificationTitle.equalsIgnoreCase(getAssessmentTreatmentsFragment().getClassificationTitleSelected())) {
-        	    	Animation anim = new AlphaAnimation(0.0f, 1.0f);
-        	    	anim.setDuration(200); //You can manage the time of the blink with this parameter
-        	    	anim.setStartOffset(20);
-        	    	anim.setRepeatMode(Animation.REVERSE);
-        	    	anim.setRepeatCount(Animation.INFINITE);
-        	    	classificationTitleText.startAnimation(anim);
-        	    	getAssessmentTreatmentsFragment().setClassificationTitleSelected(null);
+        	    	animateTreatmentTitle(classificationTitleText);
                 }
                 
-                
-    		//	View treatmentView = view.findViewById(R.id.treatment_list_item);
-    		//	colourCodeTreatment(getPatient().getDiagnostics().get(position).getClassification(), treatmentView);
+    			// View treatmentView = view.findViewById(R.id.treatment_list_item);
+    			// colourCodeTreatment(getPatientDiagnostics().get(position).getClassification(), treatmentView);
     			break;
         } // end of switch
         return view;
     }
+
+	/**
+     * Method: animateTreatmentTitle
+     * 
+     * Responsible for flashing the title of a treatment list item
+	 * 
+	 * @param classificationTitleText
+	 */
+	private void animateTreatmentTitle(final TextView classificationTitleText) {
+		classificationTitleText.setTextColor(getAssessmentTreatmentsFragment().getResources().getColor(R.color.Black));
+		// setPaintFlags(tvHide.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
+		
+		Animation anim = new AlphaAnimation(0.0f, 1.0f);
+		anim.setDuration(TITLE_FLASH_BLINK_DURATION); //You can manage the time of the blink with this parameter
+		anim.setRepeatMode(Animation.REVERSE);
+		anim.setRepeatCount(TITLE_FLASH_COUNT);
+		
+		anim.setAnimationListener(new AnimationListener() {
+	        @Override
+	        public void onAnimationEnd(Animation animation) {
+	        	// revert text colour back to its original green
+	        	classificationTitleText.setTextColor(getAssessmentTreatmentsFragment().getResources().getColor(R.color.DarkGreen));   
+	        }
+
+			@Override
+			public void onAnimationStart(Animation animation) {}
+
+			@Override
+			public void onAnimationRepeat(Animation animation) {}
+		});
+		
+		classificationTitleText.startAnimation(anim);
+		getAssessmentTreatmentsFragment().setClassificationTitleSelected(null);
+		
+		
+	}
 
 	/**
      * Method: addBulletedListToTextView

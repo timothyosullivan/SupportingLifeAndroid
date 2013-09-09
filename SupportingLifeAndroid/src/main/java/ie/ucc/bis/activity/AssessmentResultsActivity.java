@@ -20,6 +20,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.widget.BaseAdapter;
 
 /**
  * Class: AssessmentResultsActivity
@@ -110,6 +111,8 @@ public class AssessmentResultsActivity extends SupportingLifeBaseActivity {
 				getSupportFragmentManager().getFragments().get(TabsAdapter.TREATMENT_TAB_INDEX);
 
 		if (treatmentsFragment != null) {
+			// refresh adpater data set - gets view redrawn
+			((BaseAdapter) treatmentsFragment.getTreatmentAdapter()).notifyDataSetChanged();
 			treatmentsFragment.scrollToRelatedElement(position, classificationTitle);
 		}
 	}

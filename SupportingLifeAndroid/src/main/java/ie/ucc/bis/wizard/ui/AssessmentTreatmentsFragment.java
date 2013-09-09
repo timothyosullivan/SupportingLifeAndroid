@@ -63,13 +63,9 @@ public class AssessmentTreatmentsFragment extends ListFragment {
 	 */
     public void scrollToRelatedElement(int position, String classificationTitle) {
     	
-    	// scroll to relevant element
-    	getListView().setSelection(position);
     	setClassificationTitleSelected(classificationTitle);
-    	
-    	// call 'onListItemClick' action event listener method
-  //  	getListView().performItemClick(getListView(), position, position);
-    	
+    	// scroll to relevant element
+    	getListView().setSelection(position);    	
     }
     
     @Override
