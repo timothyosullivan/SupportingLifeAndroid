@@ -254,12 +254,6 @@ public class AssessmentWizardActivity extends SupportingLifeBaseActivity impleme
 			
 			// configure the activity animation transition effect
 			overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
-			
-//			runOnUiThread(new Runnable() {
-//				public void run() {  
-//				      Toast.makeText(getApplicationContext(), "Assessment Button clicked", Toast.LENGTH_SHORT).show();
-//				   }  
-//				});
 		}
     } // end of inner class
 

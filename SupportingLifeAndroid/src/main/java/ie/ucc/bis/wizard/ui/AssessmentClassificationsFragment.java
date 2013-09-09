@@ -15,7 +15,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
-import android.widget.Toast;
 
 /**
  * Class: AssessmentClassificationsFragment
@@ -61,9 +60,8 @@ public class AssessmentClassificationsFragment extends ListFragment {
         Activity activity = getActivity();
         
         if (activity != null) {   
-            // Display a simple Toast to demonstrate that the click event is working. Notice that Fragments have a
-            // getString() method just like an Activity, so that you can quickly access your localized Strings.
-            Toast.makeText(activity, "TEST CLASSIFICATION CLICK", Toast.LENGTH_SHORT).show();
+            // open the treatments tab and scroll to the relevant treatment
+			((AssessmentResultsActivity) getActivity()).getTabsAdapter().displayTreatmentTab();
         }
     }
     

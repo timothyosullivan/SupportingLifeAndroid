@@ -113,6 +113,7 @@ public class AssessmentResultsActivity extends SupportingLifeBaseActivity {
 	public static class TabsAdapter extends FragmentPagerAdapter implements ActionBar.TabListener, ViewPager.OnPageChangeListener {
 		
 		private static final int CLASSIFICATION_TAB_INDEX = 1;
+		private static final int TREATMENT_TAB_INDEX = 2;
 				
 		private final Context context;
 		private final ActionBar actionBar;
@@ -150,10 +151,15 @@ public class AssessmentResultsActivity extends SupportingLifeBaseActivity {
 		 * Set the classifications tab to be the default tab
 		 */
 		public void setDefaultTab() {
-			getActionBar().selectTab(getActionBar().getTabAt(CLASSIFICATION_TAB_INDEX));
-			
+			getActionBar().selectTab(getActionBar().getTabAt(CLASSIFICATION_TAB_INDEX));	
 		}
 
+		/**
+		 * Display the treatments tab
+		 */
+		public void displayTreatmentTab() {
+			getActionBar().selectTab(getActionBar().getTabAt(TREATMENT_TAB_INDEX));	
+		}
 
 		/**
 		 * Responsible for adding the tabs and their associated

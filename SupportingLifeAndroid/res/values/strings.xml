@@ -98,14 +98,14 @@
 	<string name="breathing_assessment_radio_cough_difficult_breathing">Does the child have cough or difficult breathing?
 	</string>
 	<string name="breathing_assessment_cough_duration">For how long? (days)</string>
-	<string name="breathing_assessment_breaths_per_minute">Breaths per minute:</string>	
+	<string name="breathing_assessment_breaths_per_minute">Breaths per minute:</string>
 	<string name="breathing_assessment_radio_chest_indrawing">Chest indrawing:</string>
 	<string name="breathing_assessment_radio_stridor">Stridor:</string>
 	
     <!-- Cough / Breathing Review -->
 	<string name="breathing_assessment_review_cough_difficult_breathing">Cough or Difficult Breathing</string>
 	<string name="breathing_assessment_review_cough_duration">For How Long? (days)</string>
-	<string name="breathing_assessment_review_breaths_per_minute">Breaths per Minute</string>	
+	<string name="breathing_assessment_review_breaths_per_minute">Breaths per Minute</string>
 	<string name="breathing_assessment_review_chest_indrawing">Chest Indrawing</string>
 	<string name="breathing_assessment_review_stridor">Stridor</string>
 	
@@ -312,7 +312,7 @@
     <!-- 2. Classifications Tab										  -->
 	<!-- 3. Recommended Treatments Tab 								  -->
     <!-- ============================================================ -->
-	<string name="assessment_results_review_tab_title">Patient Details</string>
+	<string name="assessment_results_review_tab_title">Assessment</string>
 	<string name="assessment_results_classifications_tab_title">Classifications</string>
 	<string name="classification_tab_arrow_image">Classification Arrow Image</string>
 	<string name="assessment_results_treatments_tab_title">Treatments</string>
