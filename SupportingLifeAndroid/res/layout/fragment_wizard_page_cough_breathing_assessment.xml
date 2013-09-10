@@ -108,6 +108,11 @@
 					android:layout_height="34dp"
 					android:contentDescription="TODO..."
 					android:src="@drawable/info_pop_up_icon"/>
+				<ImageView
+					android:layout_width="34dp"
+					android:layout_height="34dp"
+					android:contentDescription="TODO..."
+					android:src="@drawable/ic_severe_notification"/>
 			</LinearLayout>
 			<RadioGroup
 				android:id="@+id/breathing_assessment_radio_chest_indrawing"
