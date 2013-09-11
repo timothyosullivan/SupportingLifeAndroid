@@ -25,11 +25,11 @@
 	<string name="actionbar_about_description">About</string>
 	<string name="actionbar_search_description">Search</string>
 	<string name="actionbar_separator_description">Title Bar</string>
-
+ 
     <!-- ============================================================ -->
     <!-- DASHBOARD -->
     <!-- ============================================================ -->
-	<string name="dashboard_assessment_button">e-IMCI Assessment</string>
+	<string name="dashboard_hsa_profile">Profile</string>
 	<string name="dashboard_about_button">About</string>
 	<string name="dashboard_assessment_wizard_button">e-IMCI Assessment Wizard</string>
 	<string name="dashboard_training_button">Training</string>

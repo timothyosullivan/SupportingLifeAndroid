@@ -2,85 +2,93 @@
 <!-- ============================================================ -->
 <!-- DASHBOARD SCREEN -->
 <!-- ============================================================ -->
-
-<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+   
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 	style="@style/SupportingLifePage"
 	android:layout_width="fill_parent"
 	android:layout_height="fill_parent"
-	android:layout_weight="1"
-	android:columnCount="4"
 	android:orientation="vertical"
 	android:padding="6dip">
 
-	<!-- ============================================================ -->
-	<!-- E-IMCI ASSESSMENT BUTTON -->
-	<!-- ============================================================ -->
+	 <RelativeLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:orientation="vertical">
 
-	<Button
-		android:id="@+id/dashboard_assessment_button"
-		android:layout_width="132dp"
-		android:layout_height="90dp"
-		android:layout_column="0"
-		android:layout_gravity="left|center_vertical"
-		android:layout_row="9"
-		android:background="@drawable/dashboard_button"
-		android:onClick="onClickDashboardButton"
-		android:text="@string/dashboard_assessment_button"
-		android:textStyle="bold"
-		android:textSize="18sp"
-		android:textColor="@color/DarkGreen" />
+		<!-- ============================================================ -->
+		<!-- HSA PROFILE BUTTON -->
+		<!-- ============================================================ -->		
+		<Button android:id="@+id/dashboard_hsa_profile"
+			android:layout_width="152dp"
+			android:layout_height="90dp"
+			android:onClick="onClickDashboardButton"
+			android:background="@drawable/ic_dashboard_profile" />
+		
+		<TextView android:id="@+id/dashboard_hsa_profile_text" 
+		    android:layout_width="wrap_content" 
+		    android:layout_height="wrap_content" 
+		    android:layout_alignParentLeft="true" 
+		    android:layout_below="@+id/dashboard_hsa_profile" 
+		    android:layout_marginLeft="47dp" 
+		    android:text="@string/dashboard_hsa_profile" 
+		    android:textColor="@color/DarkGreen" 
+		    android:textSize="18sp" 
+		    android:textStyle="bold"/>	
 
-	<!-- ============================================================ -->
-	<!-- E-IMCI ASSESSMENT WIZARD BUTTON -->
-	<!-- ============================================================ -->
+		<!-- ============================================================ -->
+		<!-- E-IMCI ASSESSMENT WIZARD BUTTON -->
+		<!-- ============================================================ -->
+		<Button android:id="@+id/dashboard_assessment_wizard_button" 
+		    android:layout_width="132dp" 
+		    android:layout_height="90dp" 
+		    android:layout_above="@+id/dashboard_hsa_profile_text" 
+		    android:layout_toRightOf="@+id/dashboard_hsa_profile" 
+		    android:background="@drawable/dashboard_button" 
+		    android:onClick="onClickDashboardButton" 
+		    android:text="@string/dashboard_assessment_wizard_button" 
+		    android:textColor="@color/DarkGreen" 
+		    android:textSize="18sp" 
+		    android:textStyle="bold"/>
+	</RelativeLayout>
+ 
+	<View
+		android:id="@+id/divider"
+		android:layout_width="match_parent"
+		android:layout_height="10dp" />
 
-	<Button
-		android:id="@+id/dashboard_assessment_wizard_button"
-		android:layout_width="132dp"
-		android:layout_height="90dp"
-		android:layout_column="0"
-		android:layout_gravity="left|top"
-		android:layout_row="9"
-		android:background="@drawable/dashboard_button"
-		android:onClick="onClickDashboardButton"
-		android:text="@string/dashboard_assessment_wizard_button"
-		android:textStyle="bold"
-		android:textSize="18sp"
-		android:textColor="@color/DarkGreen" />
+	<RelativeLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:orientation="vertical">
+		<!-- ============================================================ -->
+		<!-- ABOUT BUTTON -->
+		<!-- ============================================================ -->
 
-	<!-- ============================================================ -->
-	<!-- ABOUT BUTTON -->
-	<!-- ============================================================ -->
-
-	<Button
-		android:id="@+id/dashboard_about_button"
-		android:layout_width="132dp"
-		android:layout_height="90dp"
-		android:layout_column="3"
-		android:layout_gravity="right|top"
-		android:layout_row="9"
-		android:background="@drawable/dashboard_button"
-		android:onClick="onClickDashboardButton"
-		android:text="@string/dashboard_about_button"
-		android:textStyle="bold"
-		android:textSize="18sp"
-		android:textColor="@color/DarkGreen" />
-
-	<!-- ============================================================ -->
-	<!-- TRAINING BUTTON -->
-	<!-- ============================================================ -->
-
-	<Button
-		android:id="@+id/dashboard_training_button"
-		android:layout_width="132dp"
-		android:layout_height="90dp"
-		android:layout_column="3"
-		android:layout_gravity="right|center_vertical"
-		android:layout_row="9"
-		android:background="@drawable/dashboard_button"
-		android:onClick="onClickDashboardButton"
-		android:text="@string/dashboard_training_button"
-		android:textStyle="bold"
-		android:textSize="18sp"
-		android:textColor="@color/DarkGreen" />
-</GridLayout>
+		<Button
+			android:id="@+id/dashboard_about_button"
+			android:layout_width="132dp"
+			android:layout_height="90dp"
+			android:background="@drawable/dashboard_button"
+			android:onClick="onClickDashboardButton"
+			android:text="@string/dashboard_about_button"
+			android:textStyle="bold"
+			android:textSize="18sp"
+			android:textColor="@color/DarkGreen" />
+	
+		<!-- ============================================================ -->
+		<!-- TRAINING BUTTON -->
+		<!-- ============================================================ -->
+		<Button android:id="@+id/dashboard_training_button"
+		     android:layout_width="132dp" 
+		     android:layout_height="90dp" 
+		     android:layout_alignParentRight="true" 
+		     android:layout_alignParentTop="true" 
+		     android:layout_marginRight="22dp" 
+		     android:background="@drawable/dashboard_button" 
+		     android:onClick="onClickDashboardButton" 
+		     android:text="@string/dashboard_training_button" 
+		     android:textColor="@color/DarkGreen" 
+		     android:textSize="18sp" 
+		     android:textStyle="bold"/>
+	</RelativeLayout>
+</LinearLayout>
