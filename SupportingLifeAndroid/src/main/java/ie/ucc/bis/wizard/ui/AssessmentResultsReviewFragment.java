@@ -2,14 +2,12 @@ package ie.ucc.bis.wizard.ui;
 
 import ie.ucc.bis.R;
 import ie.ucc.bis.activity.AssessmentResultsActivity;
-import ie.ucc.bis.wizard.model.review.ReviewAssessmentAdapter;
-import android.app.Activity;
+import ie.ucc.bis.wizard.model.AssessmentAdapter;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
-import android.widget.Toast;
 
 /**
  * Class: AssessmentResultsReviewFragment
@@ -22,7 +20,7 @@ import android.widget.Toast;
  */
 public class AssessmentResultsReviewFragment extends ReviewListFragment {
     
-    private ReviewAssessmentAdapter reviewAssessmentAdapter;
+    private AssessmentAdapter assessmentAdapter;
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -33,10 +31,10 @@ public class AssessmentResultsReviewFragment extends ReviewListFragment {
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         
-        setReviewAssessmentAdapter(new ReviewAssessmentAdapter(this));
+        setAssessmentAdapter(new AssessmentAdapter(this));
         // capture all the review items associated with each assessment page
         setCurrentReviewItems(((AssessmentResultsActivity) getActivity()).getReviewItems());
-        setListAdapter(getReviewAssessmentAdapter());
+        setListAdapter(getAssessmentAdapter());
     }    
     
     @Override
@@ -50,30 +48,19 @@ public class AssessmentResultsReviewFragment extends ReviewListFragment {
     }
 
     @Override
-    public void onListItemClick(ListView l, View v, int position, long id) {
-        Activity activity = getActivity();
-        
-        if (activity != null) {   
-    //        ListAdapter listAdapter = getListAdapter();
-    //        LocationModel locationModel = (LocationModel) listAdapter.getItem(position);
-            
-            // Display a simple Toast to demonstrate that the click event is working. Notice that Fragments have a
-            // getString() method just like an Activity, so that you can quickly access your localized Strings.
-            Toast.makeText(activity, "TEST ITEM CLICK", Toast.LENGTH_SHORT).show();
-        }
-    }
+    public void onListItemClick(ListView l, View v, int position, long id) {}
     
 	/**
-	 * Getter Method: getReviewAssessmentAdapter()
+	 * Getter Method: getAssessmentAdapter()
 	 */	
-	private ReviewAssessmentAdapter getReviewAssessmentAdapter() {
-		return reviewAssessmentAdapter;
+	private AssessmentAdapter getAssessmentAdapter() {
+		return assessmentAdapter;
 	}
 
 	/**
-	 * Setter Method: setReviewAssessmentAdapter()
+	 * Setter Method: setAssessmentAdapter()
 	 */
-	private void setReviewAssessmentAdapter(ReviewAssessmentAdapter reviewAssessmentAdapter) {
-		this.reviewAssessmentAdapter = reviewAssessmentAdapter;
+	private void setAssessmentAdapter(AssessmentAdapter assessmentAdapter) {
+		this.assessmentAdapter = assessmentAdapter;
 	}
 }

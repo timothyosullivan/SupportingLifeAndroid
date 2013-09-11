@@ -1,0 +1,23 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:baselineAligned="true"
+    android:orientation="horizontal"
+    android:paddingBottom="12dp"
+    android:paddingTop="12dp" >
+
+    <TextView
+        android:id="@+id/review_list_header"
+        style="?android:textAppearanceMedium"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:gravity="left|center_vertical"
+        android:layout_marginBottom="3dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="3dp"
+        android:layout_weight="3"
+        android:textStyle="bold"
+	    android:textColor="@color/DarkGreen" />
+
+</LinearLayout>
+ 

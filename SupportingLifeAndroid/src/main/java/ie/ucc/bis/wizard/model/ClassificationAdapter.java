@@ -8,11 +8,11 @@ import ie.ucc.bis.wizard.ui.AssessmentClassificationsFragment;
 
 import java.util.List;
 
-import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 public class ClassificationAdapter extends BaseAdapter {
@@ -66,24 +66,47 @@ public class ClassificationAdapter extends BaseAdapter {
         		}
                 Classification classification = getPatientDiagnostics().get(position).getClassification();
     			((TextView) view.findViewById(R.id.classification_list_item_label)).setText(classification.getName());
-    			((TextView) view.findViewById(R.id.classification_list_item_value)).setText(classification.getType());
-    			View classificationView = view.findViewById(R.id.classification_list_item);
-    			colourCodeClassification(classification, classificationView);
+    			
+    			ImageView severityImageView = (ImageView) view.findViewById(R.id.classification_list_item_classification_severity);
+    			colourCodeTreatment(getPatientDiagnostics().get(position).getClassification(), severityImageView);
     			break;
         } // end of switch
         return view;
     }
 
-    /**
-     * Method: colourCodeClassification
+    
+	/**
+     * Method: colourCodeTreatment
      * 
      * Responsible for colour coding classification based on the 
      * severity of the classification
      * 
      * @param classification
+     * @param severityImageView
+     */
+    private void colourCodeTreatment(Classification classification, ImageView severityImageView) {
+		if (classification.getType().equalsIgnoreCase(ClassificationType.SEVERE.name())) {
+			severityImageView.setImageResource(R.drawable.ic_severe_notification);
+		}
+		else if (classification.getType().equalsIgnoreCase(ClassificationType.MODERATE.name())) {
+			severityImageView.setImageResource(R.drawable.ic_moderate_notification);
+		}
+		else {
+			severityImageView.setImageResource(R.drawable.ic_low_notification);
+		}
+	}
+    
+    /**
+     * Method: colourCodeClassificationBackground
+     * 
+     * Responsible for colour coding background of classification based on the 
+     * severity of the classification
+     * 
+     * @param classification
      * @param classificationView
      */
-    private void colourCodeClassification(Classification classification, View classificationView) {
+/*
+    private void colourCodeClassificationBackground(Classification classification, View classificationView) {
     	Drawable background = null;
 		if (classification.getType().equalsIgnoreCase(ClassificationType.SEVERE.name())) {
 			background = getAssessmentClassificationsFragment().getResources().getDrawable(R.drawable.red_classification_list_item);
@@ -98,7 +121,7 @@ public class ClassificationAdapter extends BaseAdapter {
 			classificationView.setBackground(background);
 		}
 	}
-
+*/
 	public int getCount() {
 		// null pointer exception was being called here previously periodically as 
 		// AssessmentClassificationFragment was null when querying for number of classifications

@@ -6,38 +6,26 @@
     android:baselineAligned="true"
     android:paddingTop="12dp"
     android:paddingBottom="12dp">
-
+    
     <TextView
         android:id="@+id/classification_list_item_label"
         style="?android:textAppearanceMedium"
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:gravity="center"
+        android:gravity="left|center_vertical"
         android:layout_marginBottom="3dp"
         android:layout_marginLeft="5dp"
         android:layout_marginTop="3dp"
         android:layout_weight="3"
-        android:textColor="@color/Black" />
-    
-    <ImageView
-        android:id="@+id/classification_list_item_green_arrow"
-        android:layout_width="wrap_content"
-		android:layout_height="match_parent"
-		android:scaleType="fitCenter"
-		android:paddingLeft="10dp"
-		android:paddingRight="5dp"
-		android:contentDescription="@string/classification_tab_arrow_image"
-		android:src="@drawable/green_arrow"/>
-       
-    <TextView android:id="@+id/classification_list_item_value"
-        style="?android:textAppearanceMedium"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:layout_weight="2"
-        android:layout_marginTop="3dp"
-        android:layout_marginBottom="3dp"
-        android:layout_marginRight="5dp"
-        android:textColor="@color/Black"/>
+        android:textStyle="bold"
+	    android:textColor="@color/DarkGreen" />
 
+    <ImageView
+        android:id="@+id/classification_list_item_classification_severity"
+        android:layout_width="60dp" 
+        android:layout_height="60dp" 
+        android:scaleType="fitCenter" 
+        android:paddingLeft="10dp" 
+        android:paddingRight="10dp" 
+        android:contentDescription="@string/classification_severity_image_content_assist"/>
 </LinearLayout>

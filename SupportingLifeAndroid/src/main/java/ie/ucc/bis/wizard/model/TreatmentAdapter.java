@@ -8,7 +8,6 @@ import ie.ucc.bis.wizard.ui.AssessmentTreatmentsFragment;
 
 import java.util.List;
 
-import android.graphics.drawable.Drawable;
 import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,6 +16,7 @@ import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 public class TreatmentAdapter extends BaseAdapter {
@@ -83,13 +83,14 @@ public class TreatmentAdapter extends BaseAdapter {
                 List<String> treatments = getPatientDiagnostics().get(position).getTreatmentRecommendations();
                 addBulletedListToTextView(treatments, ((TextView) view.findViewById(R.id.treatment_list_item_desc)));
                 
+    			ImageView severityImageView = (ImageView) view.findViewById(R.id.treatment_list_item_classification_severity);
+    			colourCodeTreatment(getPatientDiagnostics().get(position).getClassification(), severityImageView);
+                
                 // animate the title of the treatment if the user has selected the treatment from the classifications tab
                 if (classificationTitle.equalsIgnoreCase(getAssessmentTreatmentsFragment().getClassificationTitleSelected())) {
         	    	animateTreatmentTitle(classificationTitleText);
+        	    	animateSeverityImage(severityImageView);
                 }
-                
-    			// View treatmentView = view.findViewById(R.id.treatment_list_item);
-    			// colourCodeTreatment(getPatientDiagnostics().get(position).getClassification(), treatmentView);
     			break;
         } // end of switch
         return view;
@@ -104,7 +105,6 @@ public class TreatmentAdapter extends BaseAdapter {
 	 */
 	private void animateTreatmentTitle(final TextView classificationTitleText) {
 		classificationTitleText.setTextColor(getAssessmentTreatmentsFragment().getResources().getColor(R.color.Black));
-		// setPaintFlags(tvHide.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
 		
 		Animation anim = new AlphaAnimation(0.0f, 1.0f);
 		anim.setDuration(TITLE_FLASH_BLINK_DURATION); //You can manage the time of the blink with this parameter
@@ -127,8 +127,23 @@ public class TreatmentAdapter extends BaseAdapter {
 		
 		classificationTitleText.startAnimation(anim);
 		getAssessmentTreatmentsFragment().setClassificationTitleSelected(null);
+	}
+	
+	/**
+     * Method: animateSeverityImage
+     * 
+     * Responsible for flashing the severity image of a treatment list item
+	 * 
+	 * @param severityImageView
+	 */
+	private void animateSeverityImage(final ImageView severityImageView) {
+
+		Animation anim = new AlphaAnimation(0.0f, 1.0f);
+		anim.setDuration(TITLE_FLASH_BLINK_DURATION); //You can manage the time of the blink with this parameter
+		anim.setRepeatMode(Animation.REVERSE);
+		anim.setRepeatCount(TITLE_FLASH_COUNT);
 		
-		
+		severityImageView.startAnimation(anim);
 	}
 
 	/**
@@ -154,21 +169,17 @@ public class TreatmentAdapter extends BaseAdapter {
      * severity of the classification
      * 
      * @param classification
-     * @param classificationView
+     * @param severityImageView
      */
-    private void colourCodeTreatment(Classification classification, View classificationView) {
-    	Drawable background = null;
+    private void colourCodeTreatment(Classification classification, ImageView severityImageView) {
 		if (classification.getType().equalsIgnoreCase(ClassificationType.SEVERE.name())) {
-			background = getAssessmentTreatmentsFragment().getResources().getDrawable(R.drawable.red_classification_list_item);
-			classificationView.setBackground(background);
+			severityImageView.setImageResource(R.drawable.ic_severe_notification);
 		}
 		else if (classification.getType().equalsIgnoreCase(ClassificationType.MODERATE.name())) {
-			background = getAssessmentTreatmentsFragment().getResources().getDrawable(R.drawable.yellow_classification_list_item);
-			classificationView.setBackground(background);
+			severityImageView.setImageResource(R.drawable.ic_moderate_notification);
 		}
 		else {
-			background = getAssessmentTreatmentsFragment().getResources().getDrawable(R.drawable.green_classification_list_item);
-			classificationView.setBackground(background);
+			severityImageView.setImageResource(R.drawable.ic_low_notification);
 		}
 	}
 

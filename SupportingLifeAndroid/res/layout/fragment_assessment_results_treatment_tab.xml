@@ -10,6 +10,7 @@
         android:layout_weight="1"
         android:saveEnabled="false"
         android:divider="?android:dividerHorizontal"
+        android:dividerHeight="2dp"
 		android:showDividers="middle"
         android:scrollbarStyle="outsideInset" />
 

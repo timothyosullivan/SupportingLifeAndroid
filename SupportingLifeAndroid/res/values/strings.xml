@@ -314,7 +314,9 @@
     <!-- ============================================================ -->
 	<string name="assessment_results_review_tab_title">Assessment</string>
 	<string name="assessment_results_classifications_tab_title">Classifications</string>
-	<string name="classification_tab_arrow_image">Classification Arrow Image</string>
+	<string name="classification_tab_arrow_image_content_assist">Classification Arrow Image</string>
+	<string name="classification_severity_image_content_assist">Classification Severity Image</string>
+
 	<string name="assessment_results_treatments_tab_title">Treatments</string>
           
     <!-- ============================================================ -->
