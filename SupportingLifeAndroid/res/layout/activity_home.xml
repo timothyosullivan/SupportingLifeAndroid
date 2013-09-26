@@ -26,7 +26,7 @@
 			android:layout_width="90dp"
 			android:layout_height="90dp"
 			android:layout_marginTop="20dp" 
-			android:layout_marginLeft="25dp"
+			android:layout_marginLeft="35dp"
 			android:background="@drawable/ic_dashboard_imci_assessment_button"
 			android:onClick="onClickDashboardButton" />
 		
@@ -36,7 +36,7 @@
 		    android:layout_alignParentLeft="true" 
 		    android:layout_below="@+id/ic_dashboard_imci_assessment_button"
 		    android:layout_marginTop="2dp" 
-		    android:layout_marginLeft="50dp" 
+		    android:layout_marginLeft="62dp" 
 		    android:text="@string/dashboard_imci_assessment_button"
 		    android:textColor="@color/DarkGreen" 
 		    android:textSize="18sp" 
@@ -50,7 +50,7 @@
 		    android:layout_width="90dp"
 		    android:layout_height="90dp"
 		    android:layout_marginTop="20dp" 
-			android:layout_marginRight="25dp" 
+			android:layout_marginRight="35dp" 
 		    android:layout_alignParentRight="true"
 		    android:background="@drawable/ic_dashboard_ccm_assessment_button"
 		    android:onClick="onClickDashboardButton" />
@@ -60,7 +60,7 @@
 		    android:layout_height="wrap_content" 
 		    android:layout_alignParentRight="true" 
 		    android:layout_below="@+id/dashboard_ccm_assessment_button"
-		    android:layout_marginRight="51dp" 
+		    android:layout_marginRight="61dp" 
 		    android:text="@string/dashboard_ccm_assessment_button"
 		    android:textColor="@color/DarkGreen" 
 		    android:textSize="18sp" 
@@ -69,7 +69,7 @@
  
 	<View
 		android:layout_width="match_parent"
-		android:layout_height="15dp" />
+		android:layout_height="20dp" />
 
 	<RelativeLayout
 		android:layout_width="match_parent"
@@ -84,7 +84,7 @@
 			android:layout_width="90dp"
 			android:layout_height="90dp"
 			android:layout_marginTop="20dp" 
-			android:layout_marginLeft="25dp"
+			android:layout_marginLeft="35dp"
 			android:background="@drawable/ic_dashboard_training_button"
 			android:onClick="onClickDashboardButton" />
 		
@@ -94,7 +94,7 @@
 		    android:layout_alignParentLeft="true" 
 		    android:layout_below="@+id/dashboard_training_button"
 		    android:layout_marginTop="2dp" 
-		    android:layout_marginLeft="38dp" 
+		    android:layout_marginLeft="40dp" 
 		    android:text="@string/dashboard_training_button"
 		    android:textColor="@color/DarkGreen" 
 		    android:textSize="18sp"
@@ -108,7 +108,7 @@
 		    android:layout_width="90dp"
 		    android:layout_height="90dp"
 		    android:layout_marginTop="20dp" 
-			android:layout_marginRight="25dp" 
+			android:layout_marginRight="35dp" 
 		    android:layout_alignParentRight="true"
 		    android:background="@drawable/ic_dashboard_search_button"
 		    android:onClick="onClickDashboardButton" />
@@ -119,7 +119,7 @@
 		    android:layout_alignParentRight="true" 
 		    android:layout_below="@+id/dashboard_search_button"
 		    android:layout_marginTop="2dp" 
-		    android:layout_marginRight="45dp" 
+		    android:layout_marginRight="49dp" 
 		    android:text="@string/dashboard_search_button"
 		    android:textColor="@color/DarkGreen" 
 		    android:textSize="18sp" 
@@ -128,7 +128,7 @@
 
 	<View
 		android:layout_width="match_parent"
-		android:layout_height="15dp" />
+		android:layout_height="20dp" />
  
 	<RelativeLayout
 		android:layout_width="match_parent"
@@ -143,7 +143,7 @@
 			android:layout_width="90dp"
 			android:layout_height="90dp"
 			android:layout_marginTop="20dp" 
-			android:layout_marginLeft="25dp"
+			android:layout_marginLeft="35dp"
 		    android:background="@drawable/ic_dashboard_profile_button"
 		    android:onClick="onClickDashboardButton" />
 		
@@ -152,7 +152,7 @@
 		    android:layout_height="wrap_content" 
 		    android:layout_alignParentLeft="true" 
 		    android:layout_below="@+id/dashboard_user_profile_button"
-		    android:layout_marginLeft="45dp" 
+		    android:layout_marginLeft="43dp" 
 		    android:text="@string/dashboard_user_profile_button"
 		    android:textColor="@color/DarkGreen" 
 		    android:textSize="18sp" 
@@ -166,7 +166,7 @@
 		    android:layout_width="90dp"
 		    android:layout_height="90dp"
 		    android:layout_marginTop="20dp" 
-			android:layout_marginRight="25dp"  
+			android:layout_marginRight="35dp"  
 		    android:layout_alignParentRight="true"
 			android:background="@drawable/ic_dashboard_about_button"
 			android:onClick="onClickDashboardButton" />
@@ -177,7 +177,7 @@
 		    android:layout_alignParentRight="true" 
 		    android:layout_below="@+id/dashboard_about_button"
 		    android:layout_marginTop="0dp" 
-		    android:layout_marginRight="48dp" 
+		    android:layout_marginRight="51dp" 
 		    android:text="@string/dashboard_about_button"
 		    android:textColor="@color/DarkGreen" 
 		    android:textSize="18sp"
