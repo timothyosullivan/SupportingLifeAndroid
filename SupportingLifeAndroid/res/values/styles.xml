@@ -24,20 +24,10 @@
     <style name="ActionBar" parent="@android:style/Widget.Holo.ActionBar">
         <item name="android:background">@color/DarkGreen</item>
 		<item name="android:titleTextStyle">@style/ActionBar.TextStyle</item>
-		<item name="android:actionButtonStyle">@style/ActionBar.ActionBarButton</item>
         <!-- below line removes default application icon from action bar -->
         <item name="android:icon">@android:color/transparent</item>
     </style>
-	
-    <!-- ============================================================ -->
-    <!-- ACTION BAR BUTTON STYLE -->
-    <!-- ============================================================ -->
-    <style name="ActionBar.ActionBarButton">
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:background">@drawable/actionbar_generic_button</item>
-    </style>
-    
+	    
     <!-- ============================================================ -->
     <!-- ACTION BAR SEPARATOR STYLE -->
     <!-- ============================================================ -->

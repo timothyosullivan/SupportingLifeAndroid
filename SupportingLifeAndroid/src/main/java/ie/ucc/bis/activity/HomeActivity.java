@@ -39,9 +39,6 @@ public class HomeActivity extends SupportingLifeBaseActivity {
 	public void onClickDashboardButton(View view) {
 		int id = view.getId();
 		switch(id) {
-//			case R.id.dashboard_assessment_button :
-//				startActivity(new Intent(getApplicationContext(), RecordPatientDetailsActivity.class));
-//				break;
 			case R.id.dashboard_about_button :
 				startActivity(new Intent(getApplicationContext(), AboutActivity.class));
 				break;

@@ -167,13 +167,13 @@ public abstract class SupportingLifeBaseActivity extends FragmentActivity {
 	}
 		
 	/**
-	 * Click Handler: Handle the click on the about button
+	 * Click Handler: Handle the click on the help button
 	 * 
 	 * @param view View
 	 * @return void
 	 */
-	public void onClickAbout(View view) {
-		startActivity(new Intent(getApplicationContext(), AboutActivity.class));
+	public void onClickHelp(View view) {
+		startActivity(new Intent(getApplicationContext(), HelpActivity.class));
 		
 		// configure the activity animation transition effect
 		overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
