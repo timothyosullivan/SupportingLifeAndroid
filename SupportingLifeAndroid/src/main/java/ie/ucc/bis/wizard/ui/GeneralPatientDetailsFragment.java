@@ -2,6 +2,7 @@ package ie.ucc.bis.wizard.ui;
 
 import ie.ucc.bis.R;
 import ie.ucc.bis.activity.SupportingLifeBaseActivity;
+import ie.ucc.bis.filter.InputFilterMinMax;
 import ie.ucc.bis.wizard.model.GeneralPatientDetailsPage;
 import ie.ucc.bis.wizard.model.listener.AssessmentWizardTextWatcher;
 import ie.ucc.bis.wizard.model.listener.RadioGroupListener;
@@ -10,6 +11,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.Html;
+import android.text.InputFilter;
 import android.text.InputType;
 import android.text.Spanned;
 import android.view.LayoutInflater;
@@ -29,6 +31,11 @@ import android.widget.TextView;
 public class GeneralPatientDetailsFragment extends Fragment {
 	
     private static final String ARG_PAGE_KEY = "PAGE_KEY";
+    
+    private static final int MIN_WEIGHT = 0;
+    private static final int MAX_WEIGHT = 100;
+    private static final int MIN_TEMPERATURE = 0;
+    private static final int MAX_TEMPERATURE = 50;
 
     private GeneralPatientDetailsPage generalPatientDetailsPage;    
     private PageFragmentCallbacks pageFragmentCallbacks;
@@ -86,6 +93,8 @@ public class GeneralPatientDetailsFragment extends Fragment {
         // weight
         setWeightEditText((EditText) rootView.findViewById(R.id.general_patient_details_weight));
         getWeightEditText().setText(getGeneralPatientDetailsPage().getPageData().getString(GeneralPatientDetailsPage.WEIGHT_DATA_KEY));
+        // apply min/max data entry filtering to the 'weight' UI element
+        getWeightEditText().setFilters(new InputFilter[] {new InputFilterMinMax(MIN_WEIGHT, MAX_WEIGHT)});
         
         // temperature label - add degree celsius postfix
         Spanned temperatureHeading = Html.fromHtml(getResources().getString(R.string.general_patient_details_temperature) + " (<sup>o</sup>" + "C)");
@@ -95,6 +104,8 @@ public class GeneralPatientDetailsFragment extends Fragment {
         // temperature textfield
         setTemperatureEditText((EditText) rootView.findViewById(R.id.general_patient_details_temperature));
         getTemperatureEditText().setText(getGeneralPatientDetailsPage().getPageData().getString(GeneralPatientDetailsPage.TEMPERATURE_DATA_KEY));
+        // apply min/max data entry filtering to the 'weight' UI element
+        getTemperatureEditText().setFilters(new InputFilter[] {new InputFilterMinMax(MIN_TEMPERATURE, MAX_TEMPERATURE)});
         
         // gender
         setGenderRadioGroup((RadioGroup) rootView.findViewById(R.id.general_patient_details_radio_gender));

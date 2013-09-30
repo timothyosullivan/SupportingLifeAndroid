@@ -2,6 +2,7 @@ package ie.ucc.bis.wizard.ui;
 
 import ie.ucc.bis.R;
 import ie.ucc.bis.activity.SupportingLifeBaseActivity;
+import ie.ucc.bis.filter.InputFilterMinMax;
 import ie.ucc.bis.ui.custom.ToggleButtonGroupTableLayout;
 import ie.ucc.bis.ui.utilities.ViewGroupUtilities;
 import ie.ucc.bis.wizard.model.DynamicView;
@@ -16,6 +17,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.Html;
+import android.text.InputFilter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,6 +36,9 @@ import android.widget.TextView;
 public class FeverAssessmentFragment extends Fragment {
 	
     private static final String ARG_PAGE_KEY = "PAGE_KEY";
+    
+    private static final int MIN_FEVER_DURATION = 1;
+    private static final int MAX_FEVER_DURATION = 365;
 
     private FeverAssessmentPage feverAssessmentPage;    
     private PageFragmentCallbacks pageFragmentCallbacks;
@@ -218,6 +223,8 @@ public class FeverAssessmentFragment extends Fragment {
         
         // fever duration
         setDurationEditText((EditText) rootView.findViewById(R.id.fever_assessment_fever_duration));
+        // apply min/max data entry filtering to the 'fever duration' UI element
+        getDurationEditText().setFilters(new InputFilter[] {new InputFilterMinMax(MIN_FEVER_DURATION, MAX_FEVER_DURATION)});
         
         // fever duration is a dynamic view within the UI
         setFeverDurationDynamicView(new DynamicView(rootView.findViewById(R.id.fever_assessment_view_fever_duration),

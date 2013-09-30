@@ -155,7 +155,8 @@
 			                android:layout_width="match_parent"
 			                android:layout_height="wrap_content"
 			                android:layout_marginBottom="10dp"
-			                android:inputType="number" />
+			                android:inputType="number"
+			                android:hint="@string/ear_assessment_ear_discharge_duration_hint"/>
 				</LinearLayout>
             <!-- ============================================================ -->
             <!-- TENDER SWELLING BEHIND THE EAR RADIO BUTTON GROUP -->

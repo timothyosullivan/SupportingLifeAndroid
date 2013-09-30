@@ -86,10 +86,10 @@
 						android:text="@string/fever_assessment_duration"/>
 					<EditText
 						android:id="@+id/fever_assessment_fever_duration"
-						android:layout_width="174dp"
+						android:layout_width="match_parent"
 						android:layout_height="match_parent"
 						android:inputType="number"
-						android:maxLength="3"/>
+						android:hint="@string/fever_assessment_fever_duration_hint"/>
 				</LinearLayout>
             
            	<!-- ============================================================ -->

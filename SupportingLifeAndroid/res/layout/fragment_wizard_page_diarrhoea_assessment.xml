@@ -77,7 +77,8 @@
 	                android:layout_width="match_parent"
 	                android:layout_height="wrap_content"
 	                android:layout_marginBottom="10dp"
-	                android:inputType="number" />
+	                android:inputType="number"
+	                android:hint="@string/diarrhoea_assessment_diarrhoea_duration_hint"/>
 	         </LinearLayout>
 	         		
 			<!-- ============================================================ -->

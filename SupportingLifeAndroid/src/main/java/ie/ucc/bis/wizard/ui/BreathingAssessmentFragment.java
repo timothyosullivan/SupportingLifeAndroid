@@ -2,6 +2,7 @@ package ie.ucc.bis.wizard.ui;
 
 import ie.ucc.bis.R;
 import ie.ucc.bis.activity.SupportingLifeBaseActivity;
+import ie.ucc.bis.filter.InputFilterMinMax;
 import ie.ucc.bis.ui.utilities.ViewGroupUtilities;
 import ie.ucc.bis.wizard.model.BreathingAssessmentPage;
 import ie.ucc.bis.wizard.model.DynamicView;
@@ -14,6 +15,7 @@ import java.util.Arrays;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.text.InputFilter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,6 +33,11 @@ import android.widget.TextView;
 public class BreathingAssessmentFragment extends Fragment {
 	
     private static final String ARG_PAGE_KEY = "PAGE_KEY";
+    
+    private static final int MIN_BREATHS_PER_MINUTE = 1;
+    private static final int MAX_BREATHS_PER_MINUTE = 100;
+    private static final int MIN_COUGH_DURATION = 1;
+    private static final int MAX_COUGH_DURATION = 365;
 
     private BreathingAssessmentPage breathingAssessmentPage;    
     private PageFragmentCallbacks pageFragmentCallbacks;
@@ -109,6 +116,8 @@ public class BreathingAssessmentFragment extends Fragment {
         // breaths per minute
         setBreathsPerMinuteEditText((EditText) rootView.findViewById(R.id.breathing_assessment_breaths_per_minute));
         getBreathsPerMinuteEditText().setText(getBreathingAssessmentPage().getPageData().getString(BreathingAssessmentPage.BREATHS_PER_MINUTE_DATA_KEY));
+        // apply min/max data entry filtering to the 'breaths per minute' UI element
+        getBreathsPerMinuteEditText().setFilters(new InputFilter[] {new InputFilterMinMax(MIN_BREATHS_PER_MINUTE, MAX_BREATHS_PER_MINUTE)});
         
         // chest indrawing
         setChestIndrawingRadioGroup((RadioGroup) rootView.findViewById(R.id.breathing_assessment_radio_chest_indrawing));
@@ -139,6 +148,8 @@ public class BreathingAssessmentFragment extends Fragment {
         // for how long? (days) - cough duration
         setCoughDurationEditText((EditText) rootView.findViewById(R.id.breathing_assessment_cough_duration));
         getCoughDurationEditText().setText(getBreathingAssessmentPage().getPageData().getString(BreathingAssessmentPage.COUGH_DURATION_DATA_KEY));
+        // apply min/max data entry filtering to the 'cough duration' UI element
+        getCoughDurationEditText().setFilters(new InputFilter[] {new InputFilterMinMax(MIN_COUGH_DURATION, MAX_COUGH_DURATION)});
 		       
         //  cough / difficult breathing duration is a dynamic view within the UI
         setCoughDifficultBreathingDurationDynamicView(new DynamicView(rootView.findViewById(R.id.breathing_assessment_view_cough_duration),

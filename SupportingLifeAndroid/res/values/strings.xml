@@ -73,6 +73,9 @@
     <!-- HINTS -->
 	<string name="general_patient_details_first_name_hint">Please enter your first name</string>
 	<string name="general_patient_details_surname_hint">Please enter your surname</string>
+	<string name="general_patient_details_weight_hint">number range between 0 and 100</string>
+	<string name="general_patient_details_temperature_hint">number range between 0 and 50</string>	
+	
 
     <!-- ============================================================ -->
     <!-- ASSESSMENT WIZARD BREAD-CRUMB UI -->
@@ -110,6 +113,10 @@
 	<string name="breathing_assessment_review_breaths_per_minute">Breaths per Minute</string>
 	<string name="breathing_assessment_review_chest_indrawing">Chest Indrawing</string>
 	<string name="breathing_assessment_review_stridor">Stridor</string>
+	
+    <!-- HINTS -->
+	<string name="breathing_assessment_breaths_per_minute_hint">number range between 1 and 100</string>
+	<string name="breathing_assessment_cough_duration_hint">number range between 1 and 365</string>
 	
     <!-- ============================================================ -->
     <!-- ASSESSMENT WIZARD BREAD-CRUMB UI -->
@@ -149,6 +156,9 @@
 	<string name="diarrhoea_assessment_review_cholera_in_area">Cholera in Area</string>
 	<string name="diarrhoea_assessment_review_child_fluid">Offer the Child Fluid</string>
 	<string name="diarrhoea_assessment_review_skin_pinch">Skin Pinch</string>
+	
+    <!-- HINTS -->
+	<string name="diarrhoea_assessment_diarrhoea_duration_hint">number range between 1 and 365</string>
 
     <!-- ============================================================ -->
     <!-- ASSESSMENT WIZARD BREAD-CRUMB UI -->
@@ -228,6 +238,9 @@
 	<string name="fever_assessment_review_pus_draining">Pus Draining from the Eye</string>
 	<string name="fever_assessment_review_cornea_clouding">Clouding of the Cornea</string>
 	<string name="fever_assessment_review_bulging_fontanel">Bulging Fontanel</string>
+	
+    <!-- HINTS -->
+	<string name="fever_assessment_fever_duration_hint">number range between 1 and 365</string>
 
     <!-- ============================================================ -->
     <!-- ASSESSMENT WIZARD BREAD-CRUMB UI -->
@@ -247,6 +260,9 @@
 	<string name="ear_assessment_review_ear_discharge_duration">For How Long? (days)</string>
 	<string name="ear_assessment_review_tender_swelling">Tender Swelling behind the Ear</string>
 	
+    <!-- HINTS -->
+	<string name="ear_assessment_ear_discharge_duration_hint">number range between 1 and 365</string>
+
     <!-- ============================================================ -->
     <!-- ASSESSMENT WIZARD BREAD-CRUMB UI -->
     <!-- STAGE 7: Malnutrition and Anaemia Assessment -->

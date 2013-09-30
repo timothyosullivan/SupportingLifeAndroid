@@ -2,6 +2,7 @@ package ie.ucc.bis.wizard.ui;
 
 import ie.ucc.bis.R;
 import ie.ucc.bis.activity.SupportingLifeBaseActivity;
+import ie.ucc.bis.filter.InputFilterMinMax;
 import ie.ucc.bis.ui.custom.ToggleButtonGroupTableLayout;
 import ie.ucc.bis.ui.utilities.RadioGroupUtilities;
 import ie.ucc.bis.ui.utilities.ViewGroupUtilities;
@@ -20,6 +21,7 @@ import java.util.Arrays;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.text.InputFilter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,6 +39,9 @@ import android.widget.TextView;
 public class DiarrhoeaAssessmentFragment extends Fragment {
 	
     private static final String ARG_PAGE_KEY = "PAGE_KEY";
+    
+    private static final int MIN_DIARRHOEA_DURATION = 1;
+    private static final int MAX_DIARRHOEA_DURATION = 365;
 
     private AbstractWizardModel wizardModel;
     
@@ -160,6 +165,8 @@ public class DiarrhoeaAssessmentFragment extends Fragment {
         // for how long? (days) - diarrhoea duration
         setDiarrhoeaDurationEditText((EditText) rootView.findViewById(R.id.diarrhoea_assessment_diarrhoea_duration));
         getDiarrhoeaDurationEditText().setText(getDiarrhoeaAssessmentPage().getPageData().getString(DiarrhoeaAssessmentPage.DIARRHOEA_DURATION_DATA_KEY));
+        // apply min/max data entry filtering to the 'diarrhoea duration' UI element
+        getDiarrhoeaDurationEditText().setFilters(new InputFilter[] {new InputFilterMinMax(MIN_DIARRHOEA_DURATION, MAX_DIARRHOEA_DURATION)});
 		       
         // diarrhoea duration is a dynamic view within the UI
         setDiarrhoeaDurationDynamicView(new DynamicView(rootView.findViewById(R.id.diarrhoea_assessment_view_diarrhoea_duration),

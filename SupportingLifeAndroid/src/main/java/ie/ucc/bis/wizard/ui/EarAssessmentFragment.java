@@ -2,6 +2,7 @@ package ie.ucc.bis.wizard.ui;
 
 import ie.ucc.bis.R;
 import ie.ucc.bis.activity.SupportingLifeBaseActivity;
+import ie.ucc.bis.filter.InputFilterMinMax;
 import ie.ucc.bis.ui.utilities.ViewGroupUtilities;
 import ie.ucc.bis.wizard.model.DynamicView;
 import ie.ucc.bis.wizard.model.EarAssessmentPage;
@@ -14,6 +15,7 @@ import java.util.Arrays;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.text.InputFilter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,6 +33,9 @@ import android.widget.TextView;
 public class EarAssessmentFragment extends Fragment {
 	
     private static final String ARG_PAGE_KEY = "PAGE_KEY";
+    
+    private static final int MIN_EAR_DISCHARGE_DURATION = 1;
+    private static final int MAX_EAR_DISCHARGE_DURATION = 365;
 
     private EarAssessmentPage earAssessmentPage;    
     private PageFragmentCallbacks pageFragmentCallbacks;
@@ -141,6 +146,8 @@ public class EarAssessmentFragment extends Fragment {
         // ear discharge duration
         setEarDischargeDurationEditText((EditText) rootView.findViewById(R.id.ear_assessment_ear_discharge_duration));
         getEarDischargeDurationEditText().setText(getEarAssessmentPage().getPageData().getString(EarAssessmentPage.EAR_DISCHARGE_DURATION_DATA_KEY));
+        // apply min/max data entry filtering to the 'ear discharge duration' UI element
+        getEarDischargeDurationEditText().setFilters(new InputFilter[] {new InputFilterMinMax(MIN_EAR_DISCHARGE_DURATION, MAX_EAR_DISCHARGE_DURATION)});
 		       
         //  ear discharge duration is a dynamic view within the UI
         setEarDischargeDurationDynamicView(new DynamicView(rootView.findViewById(R.id.ear_assessment_view_ear_discharge_duration),

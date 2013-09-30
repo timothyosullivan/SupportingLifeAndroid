@@ -86,7 +86,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
                 android:inputType="numberDecimal"
-                android:saveEnabled="false" />
+                android:saveEnabled="false"
+                android:hint="@string/general_patient_details_weight_hint"/>
 
             <!-- ============================================================ -->
             <!-- TEMPERATURE -->
@@ -103,7 +104,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
                 android:inputType="numberDecimal"
-                android:saveEnabled="false" />
+                android:saveEnabled="false"
+                android:hint="@string/general_patient_details_temperature_hint"/>
 
             <!-- ============================================================ -->
             <!-- GENDER -->
@@ -124,7 +126,7 @@
 
                 <RadioButton
                     android:id="@+id/general_patient_details_radio_gender_male"
-                    android:layout_width="112dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.67"
                     android:checked="false"
@@ -132,7 +134,7 @@
 
                 <RadioButton
                     android:id="@+id/general_patient_details_radio_gender_female"
-                    android:layout_width="118dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="top"
                     android:layout_weight="0.32"
