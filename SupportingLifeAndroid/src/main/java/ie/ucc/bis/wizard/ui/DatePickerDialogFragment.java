@@ -1,5 +1,6 @@
 package ie.ucc.bis.wizard.ui;
 
+import ie.ucc.bis.ui.utilities.DateUtilities;
 import ie.ucc.bis.wizard.model.AbstractPage;
 import ie.ucc.bis.wizard.model.DateDialogSetListener;
 
@@ -16,6 +17,8 @@ import android.support.v4.app.DialogFragment;
 import android.widget.EditText;
 
 public class DatePickerDialogFragment extends DialogFragment {
+	
+	private static final int MAX_AGE_OF_PATIENT = 5;
 
 	private AbstractPage page;
 	private String dataKey;
@@ -60,7 +63,11 @@ public class DatePickerDialogFragment extends DialogFragment {
 
 		// Create a new instance of DatePickerDialog and return it
 		DatePickerDialog datePickerDialog = new DatePickerDialog(getActivity(), new DateDialogSetListener(this), year, month, day);
+		// add constraint to date picker such that the user cannot pick a date further ahead in time than today
 		datePickerDialog.getDatePicker().setMaxDate(Calendar.getInstance().getTimeInMillis());
+		// add constraint to date picker such that the user cannot pick a date more than 5 years ago
+		datePickerDialog.getDatePicker().setMinDate(DateUtilities.retrieveTimeStampWithYearsSubtracted(MAX_AGE_OF_PATIENT));
+		
 		return datePickerDialog;
 	}
 

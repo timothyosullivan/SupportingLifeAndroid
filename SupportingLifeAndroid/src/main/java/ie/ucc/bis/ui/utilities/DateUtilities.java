@@ -48,6 +48,18 @@ public class DateUtilities {
 				/ (MILLISECONDS_IN_A_SECOND * SECONDS_IN_A_MINUTE * MINUTES_IN_A_HOUR * HOURS_IN_A_DAY)).intValue();
 	}	
 	
+	/**
+	 * Utility method to obtain a TimeStamp of a number of years ago from today
+	 * 
+	 * @param years
+	 * @return long - TimeStamp in milliseconds
+	 */
+	public static long retrieveTimeStampWithYearsSubtracted(int years) {
+	    Calendar cal = Calendar.getInstance(Locale.UK);
+	    // convert years to negative value
+	    cal.add(Calendar.YEAR, (years * -1));
+	    return cal.getTimeInMillis();
+	}
 	
 	public static Calendar getCalendar(Date date) {
 	    Calendar cal = Calendar.getInstance(Locale.UK);
