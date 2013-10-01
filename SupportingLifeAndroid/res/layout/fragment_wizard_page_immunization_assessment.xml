@@ -38,19 +38,12 @@
 
                 <RadioButton
                     android:id="@+id/immunization_assessment_radio_vaccine_bcg_already_received"
-                    android:layout_width="112dp"
-                    android:layout_height="wrap_content"
                     android:layout_weight="0.67"
-                    android:checked="false"
                     android:text="@string/immunization_assessment_radio_vaccine_already_received" />
 
                 <RadioButton
                     android:id="@+id/immunization_assessment_radio_vaccine_bcg_receive_today"
-                    android:layout_width="118dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="top"
-                    android:layout_weight="0.32"
-                    android:checked="false"
+                    android:layout_weight="0.33"
                     android:text="@string/immunization_assessment_radio_vaccine_receive_today" />
             </RadioGroup>
 
@@ -73,19 +66,12 @@
 
                 <RadioButton
                     android:id="@+id/immunization_assessment_radio_vaccine_measles_already_received"
-                    android:layout_width="112dp"
-                    android:layout_height="wrap_content"
                     android:layout_weight="0.67"
-                    android:checked="false"
                     android:text="@string/immunization_assessment_radio_vaccine_already_received" />
 
                 <RadioButton
                     android:id="@+id/immunization_assessment_radio_vaccine_measles_receive_today"
-                    android:layout_width="118dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="top"
-                    android:layout_weight="0.32"
-                    android:checked="false"
+                    android:layout_weight="0.33"
                     android:text="@string/immunization_assessment_radio_vaccine_receive_today" />
             </RadioGroup>
 

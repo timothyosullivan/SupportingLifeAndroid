@@ -39,19 +39,12 @@
 
                 <RadioButton
                     android:id="@+id/ear_assessment_radio_ear_problem_yes"
-                    android:layout_width="112dp"
-                    android:layout_height="wrap_content"
                     android:layout_weight="0.67"
-                    android:checked="false"
                     android:text="@string/assessment_wizard_radio_yes" />
 
                 <RadioButton
                     android:id="@+id/ear_assessment_radio_ear_problem_no"
-                    android:layout_width="118dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="top"
-                    android:layout_weight="0.32"
-                    android:checked="false"
+                    android:layout_weight="0.33"
                     android:text="@string/assessment_wizard_radio_no" />
             </RadioGroup>
 
@@ -74,19 +67,12 @@
 
                 <RadioButton
                     android:id="@+id/ear_assessment_radio_ear_pain_yes"
-                    android:layout_width="112dp"
-                    android:layout_height="wrap_content"
                     android:layout_weight="0.67"
-                    android:checked="false"
                     android:text="@string/assessment_wizard_radio_yes" />
 
                 <RadioButton
                     android:id="@+id/ear_assessment_radio_ear_pain_no"
-                    android:layout_width="118dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="top"
-                    android:layout_weight="0.32"
-                    android:checked="false"
+                    android:layout_weight="0.33"
                     android:text="@string/assessment_wizard_radio_no" />
             </RadioGroup>
 
@@ -119,19 +105,12 @@
 		
 		                <RadioButton
 		                    android:id="@+id/ear_assessment_radio_ear_discharge_yes"
-		                    android:layout_width="112dp"
-		                    android:layout_height="wrap_content"
 		                    android:layout_weight="0.67"
-		                    android:checked="false"
 		                    android:text="@string/assessment_wizard_radio_yes" />
 		
 		                <RadioButton
 		                    android:id="@+id/ear_assessment_radio_ear_discharge_no"
-		                    android:layout_width="118dp"
-		                    android:layout_height="wrap_content"
-		                    android:layout_gravity="top"
-		                    android:layout_weight="0.32"
-		                    android:checked="false"
+		                    android:layout_weight="0.33"
 		                    android:text="@string/assessment_wizard_radio_no" />
 		            </RadioGroup>
 	            </LinearLayout>
@@ -177,19 +156,12 @@
 
                 <RadioButton
                     android:id="@+id/ear_assessment_radio_tender_swelling_yes"
-                    android:layout_width="112dp"
-                    android:layout_height="wrap_content"
                     android:layout_weight="0.67"
-                    android:checked="false"
                     android:text="@string/assessment_wizard_radio_yes" />
 
                 <RadioButton
                     android:id="@+id/ear_assessment_radio_tender_swelling_no"
-                    android:layout_width="118dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="top"
-                    android:layout_weight="0.32"
-                    android:checked="false"
+                    android:layout_weight="0.33"
                     android:text="@string/assessment_wizard_radio_no" />
             </RadioGroup>
           </LinearLayout> <!-- end of ear discharge animated view -->

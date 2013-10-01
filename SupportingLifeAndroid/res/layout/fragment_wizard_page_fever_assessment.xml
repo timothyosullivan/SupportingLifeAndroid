@@ -43,13 +43,9 @@
 							android:layout_height="match_parent">
 							<RadioButton
 								android:id="@+id/fever_assessment_radio_fever_no"
-								android:layout_weight="0.67"
-								android:checked="false"
 								android:text="@string/fever_assessment_radio_fever_no"/>
 							<RadioButton
 								android:id="@+id/fever_assessment_radio_fever_history"
-								android:layout_weight="0.67"
-								android:checked="false"
 								android:text="@string/fever_assessment_radio_fever_history"/>
 						</TableRow>
 						<TableRow
@@ -57,13 +53,9 @@
 							android:layout_height="match_parent">
 							<RadioButton
 								android:id="@+id/fever_assessment_radio_fever_feels_hot"
-								android:layout_weight="0.67"
-								android:checked="false"
 								android:text="@string/fever_assessment_radio_fever_feels_hot"/>
 							<RadioButton
 								android:id="@+id/fever_assessment_radio_fever_temperature"
-								android:layout_weight="0.67"
-								android:checked="false"
 								android:text="@string/fever_assessment_radio_fever_temperature"/>						
 						</TableRow>
 					</ie.ucc.bis.ui.custom.ToggleButtonGroupTableLayout>
@@ -108,18 +100,11 @@
 				android:orientation="horizontal">
 				<RadioButton
 					android:id="@+id/fever_assessment_radio_present_every_day_yes"
-					android:layout_width="112dp"
-					android:layout_height="wrap_content"
 					android:layout_weight="0.67"
-					android:checked="false"
 					android:text="@string/assessment_wizard_radio_yes"/>
 				<RadioButton
 					android:id="@+id/fever_assessment_radio_present_every_day_no"
-					android:layout_width="118dp"
-					android:layout_height="wrap_content"
-					android:layout_gravity="top"
-					android:layout_weight="0.32"
-					android:checked="false"
+					android:layout_weight="0.33"
 					android:text="@string/assessment_wizard_radio_no"/>
 			</RadioGroup>			
 
@@ -139,26 +124,15 @@
 				android:orientation="horizontal">
 				<RadioButton
 					android:id="@+id/fever_assessment_radio_malaria_risk_high"
-					android:layout_width="112dp"
-					android:layout_height="wrap_content"
-					android:layout_weight="0.67"
-					android:checked="false"
+					android:layout_weight="0.33"
 					android:text="@string/fever_assessment_radio_malaria_risk_high"/>
 				<RadioButton
 					android:id="@+id/fever_assessment_radio_malaria_risk_low"
-					android:layout_width="118dp"
-					android:layout_height="wrap_content"
-					android:layout_gravity="top"
-					android:layout_weight="0.32"
-					android:checked="false"
+					android:layout_weight="0.33"
 					android:text="@string/fever_assessment_radio_malaria_risk_low"/>
 				<RadioButton
 					android:id="@+id/fever_assessment_radio_malaria_risk_no"
-					android:layout_width="118dp"
-					android:layout_height="match_parent"
-					android:layout_gravity="top"
-					android:layout_weight="0.19"
-					android:checked="false"
+					android:layout_weight="0.33"
 					android:text="@string/fever_assessment_radio_malaria_risk_no"/>
 			</RadioGroup>
 		
@@ -178,18 +152,11 @@
 				android:orientation="horizontal">
 				<RadioButton
 					android:id="@+id/fever_assessment_radio_measles_yes"
-					android:layout_width="112dp"
-					android:layout_height="wrap_content"
 					android:layout_weight="0.67"
-					android:checked="false"
 					android:text="@string/assessment_wizard_radio_yes"/>
 				<RadioButton
 					android:id="@+id/fever_assessment_radio_measles_no"
-					android:layout_width="118dp"
-					android:layout_height="wrap_content"
-					android:layout_gravity="top"
-					android:layout_weight="0.32"
-					android:checked="false"
+					android:layout_weight="0.33"
 					android:text="@string/assessment_wizard_radio_no"/>
 			</RadioGroup>
 
@@ -209,18 +176,11 @@
 				android:orientation="horizontal">
 				<RadioButton
 					android:id="@+id/fever_assessment_radio_stiff_neck_yes"
-					android:layout_width="112dp"
-					android:layout_height="wrap_content"
 					android:layout_weight="0.67"
-					android:checked="false"
 					android:text="@string/assessment_wizard_radio_yes"/>
 				<RadioButton
 					android:id="@+id/fever_assessment_radio_stiff_neck_no"
-					android:layout_width="118dp"
-					android:layout_height="wrap_content"
-					android:layout_gravity="top"
-					android:layout_weight="0.32"
-					android:checked="false"
+					android:layout_weight="0.33"
 					android:text="@string/assessment_wizard_radio_no"/>
 			</RadioGroup>
 		
@@ -240,18 +200,11 @@
 				android:orientation="horizontal">
 				<RadioButton
 					android:id="@+id/fever_assessment_radio_runny_nose_yes"
-					android:layout_width="112dp"
-					android:layout_height="wrap_content"
 					android:layout_weight="0.67"
-					android:checked="false"
 					android:text="@string/assessment_wizard_radio_yes"/>
 				<RadioButton
 					android:id="@+id/fever_assessment_radio_runny_nose_no"
-					android:layout_width="118dp"
-					android:layout_height="wrap_content"
-					android:layout_gravity="top"
-					android:layout_weight="0.32"
-					android:checked="false"
+					android:layout_weight="0.33"
 					android:text="@string/assessment_wizard_radio_no"/>
 			</RadioGroup>
 
@@ -271,18 +224,11 @@
 				android:orientation="horizontal">
 				<RadioButton
 					android:id="@+id/fever_assessment_radio_generalised_rash_yes"
-					android:layout_width="112dp"
-					android:layout_height="wrap_content"
 					android:layout_weight="0.67"
-					android:checked="false"
 					android:text="@string/assessment_wizard_radio_yes"/>
 				<RadioButton
 					android:id="@+id/fever_assessment_radio_generalised_rash_no"
-					android:layout_width="118dp"
-					android:layout_height="wrap_content"
-					android:layout_gravity="top"
-					android:layout_weight="0.32"
-					android:checked="false"
+					android:layout_weight="0.33"
 					android:text="@string/assessment_wizard_radio_no"/>
 			</RadioGroup>
 			
@@ -302,18 +248,11 @@
 				android:orientation="horizontal">
 				<RadioButton
 					android:id="@+id/fever_assessment_radio_cough_yes"
-					android:layout_width="112dp"
-					android:layout_height="wrap_content"
 					android:layout_weight="0.67"
-					android:checked="false"
 					android:text="@string/assessment_wizard_radio_yes"/>
 				<RadioButton
 					android:id="@+id/fever_assessment_radio_cough_no"
-					android:layout_width="118dp"
-					android:layout_height="wrap_content"
-					android:layout_gravity="top"
-					android:layout_weight="0.32"
-					android:checked="false"
+					android:layout_weight="0.33"
 					android:text="@string/assessment_wizard_radio_no"/>
 			</RadioGroup>
 			
@@ -333,18 +272,11 @@
 				android:orientation="horizontal">
 				<RadioButton
 					android:id="@+id/fever_assessment_radio_red_eyes_yes"
-					android:layout_width="112dp"
-					android:layout_height="wrap_content"
 					android:layout_weight="0.67"
-					android:checked="false"
 					android:text="@string/assessment_wizard_radio_yes"/>
 				<RadioButton
 					android:id="@+id/fever_assessment_radio_red_eyes_no"
-					android:layout_width="118dp"
-					android:layout_height="wrap_content"
-					android:layout_gravity="top"
-					android:layout_weight="0.32"
-					android:checked="false"
+					android:layout_weight="0.33"
 					android:text="@string/assessment_wizard_radio_no"/>
 			</RadioGroup>
 
@@ -376,18 +308,11 @@
 						android:orientation="horizontal">
 						<RadioButton
 							android:id="@+id/fever_assessment_radio_mouth_ulcers_yes"
-							android:layout_width="112dp"
-							android:layout_height="wrap_content"
 							android:layout_weight="0.67"
-							android:checked="false"
 							android:text="@string/assessment_wizard_radio_yes"/>
 						<RadioButton
 							android:id="@+id/fever_assessment_radio_mouth_ulcers_no"
-							android:layout_width="118dp"
-							android:layout_height="wrap_content"
-							android:layout_gravity="top"
-							android:layout_weight="0.32"
-							android:checked="false"
+							android:layout_weight="0.33"
 							android:text="@string/assessment_wizard_radio_no"/>
 					</RadioGroup>
 				</LinearLayout>
@@ -414,18 +339,11 @@
 						android:orientation="horizontal">
 						<RadioButton
 							android:id="@+id/fever_assessment_radio_deep_mouth_ulcers_yes"
-							android:layout_width="112dp"
-							android:layout_height="wrap_content"
 							android:layout_weight="0.67"
-							android:checked="false"
 							android:text="@string/assessment_wizard_radio_yes"/>
 						<RadioButton
 							android:id="@+id/fever_assessment_radio_deep_mouth_ulcers_no"
-							android:layout_width="118dp"
-							android:layout_height="wrap_content"
-							android:layout_gravity="top"
-							android:layout_weight="0.32"
-							android:checked="false"
+							android:layout_weight="0.33"
 							android:text="@string/assessment_wizard_radio_no"/>
 					</RadioGroup>
 				</LinearLayout>
@@ -452,18 +370,11 @@
 						android:orientation="horizontal">
 						<RadioButton
 							android:id="@+id/fever_assessment_radio_extensive_mouth_ulcers_yes"
-							android:layout_width="112dp"
-							android:layout_height="wrap_content"
 							android:layout_weight="0.67"
-							android:checked="false"
 							android:text="@string/assessment_wizard_radio_yes"/>
 						<RadioButton
 							android:id="@+id/fever_assessment_radio_extensive_mouth_ulcers_no"
-							android:layout_width="118dp"
-							android:layout_height="wrap_content"
-							android:layout_gravity="top"
-							android:layout_weight="0.32"
-							android:checked="false"
+							android:layout_weight="0.33"
 							android:text="@string/assessment_wizard_radio_no"/>
 						</RadioGroup>
 				</LinearLayout>
@@ -484,18 +395,11 @@
 					android:orientation="horizontal">
 					<RadioButton
 						android:id="@+id/fever_assessment_radio_pus_draining_yes"
-						android:layout_width="112dp"
-						android:layout_height="wrap_content"
 						android:layout_weight="0.67"
-						android:checked="false"
 						android:text="@string/assessment_wizard_radio_yes"/>
 					<RadioButton
 						android:id="@+id/fever_assessment_radio_pus_draining_no"
-						android:layout_width="118dp"
-						android:layout_height="wrap_content"
-						android:layout_gravity="top"
-						android:layout_weight="0.32"
-						android:checked="false"
+						android:layout_weight="0.33"
 						android:text="@string/assessment_wizard_radio_no"/>
 				</RadioGroup>
 				
@@ -515,18 +419,11 @@
 					android:orientation="horizontal">
 					<RadioButton
 						android:id="@+id/fever_assessment_radio_cornea_clouding_yes"
-						android:layout_width="112dp"
-						android:layout_height="wrap_content"
 						android:layout_weight="0.67"
-						android:checked="false"
 						android:text="@string/assessment_wizard_radio_yes"/>
 					<RadioButton
 						android:id="@+id/fever_assessment_radio_cornea_clouding_no"
-						android:layout_width="118dp"
-						android:layout_height="wrap_content"
-						android:layout_gravity="top"
-						android:layout_weight="0.32"
-						android:checked="false"
+						android:layout_weight="0.33"
 						android:text="@string/assessment_wizard_radio_no"/>
 				</RadioGroup>
 					
@@ -546,18 +443,11 @@
 					android:orientation="horizontal">
 					<RadioButton
 						android:id="@+id/fever_assessment_radio_bulging_fontanel_yes"
-						android:layout_width="112dp"
-						android:layout_height="wrap_content"
 						android:layout_weight="0.67"
-						android:checked="false"
 						android:text="@string/assessment_wizard_radio_yes"/>
 					<RadioButton
 						android:id="@+id/fever_assessment_radio_bulging_fontanel_no"
-						android:layout_width="118dp"
-						android:layout_height="wrap_content"
-						android:layout_gravity="top"
-						android:layout_weight="0.32"
-						android:checked="false"
+						android:layout_weight="0.33"
 						android:text="@string/assessment_wizard_radio_no"/>
 				</RadioGroup>
 			</LinearLayout>

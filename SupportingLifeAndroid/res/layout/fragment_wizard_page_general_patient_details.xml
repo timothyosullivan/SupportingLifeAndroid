@@ -126,19 +126,12 @@
 
                 <RadioButton
                     android:id="@+id/general_patient_details_radio_gender_male"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:layout_weight="0.67"
-                    android:checked="false"
                     android:text="@string/general_patient_details_radio_gender_male" />
 
                 <RadioButton
                     android:id="@+id/general_patient_details_radio_gender_female"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="top"
-                    android:layout_weight="0.32"
-                    android:checked="false"
+                    android:layout_weight="0.33"
                     android:text="@string/general_patient_details_radio_gender_female" />
             </RadioGroup>
 

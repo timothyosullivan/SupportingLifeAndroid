@@ -42,19 +42,12 @@
 	
 				    <RadioButton
 				        android:id="@+id/diarrhoea_assessment_radio_diarrhoea_yes"
-				        android:layout_width="112dp"
-				        android:layout_height="wrap_content"
 				        android:layout_weight="0.67"
-				        android:checked="false"
 				        android:text="@string/assessment_wizard_radio_yes" />
 	
 				    <RadioButton
 				        android:id="@+id/diarrhoea_assessment_radio_diarrhoea_no"
-				        android:layout_width="118dp"
-				        android:layout_height="wrap_content"
-				        android:layout_gravity="top"
-				        android:layout_weight="0.32"
-				        android:checked="false"
+				        android:layout_weight="0.33"
 				        android:text="@string/assessment_wizard_radio_no" />
 				</RadioGroup>
 			</LinearLayout>
@@ -99,19 +92,12 @@
 			    android:orientation="horizontal" >
 			    <RadioButton
 			        android:id="@+id/diarrhoea_assessment_radio_blood_stools_yes"
-			        android:layout_width="112dp"
-			        android:layout_height="wrap_content"
 			        android:layout_weight="0.67"
-			        android:checked="false"
 			        android:text="@string/assessment_wizard_radio_yes" />
 	
 			    <RadioButton
 			        android:id="@+id/diarrhoea_assessment_radio_blood_stools_no"
-			        android:layout_width="118dp"
-			        android:layout_height="wrap_content"
-			        android:layout_gravity="top"
-			        android:layout_weight="0.32"
-			        android:checked="false"
+			        android:layout_weight="0.33"
 			        android:text="@string/assessment_wizard_radio_no" />
 			</RadioGroup>
 	
@@ -134,19 +120,12 @@
 	
 		    <RadioButton
 		        android:id="@+id/diarrhoea_assessment_radio_sunken_eyes_yes"
-		        android:layout_width="112dp"
-		        android:layout_height="wrap_content"
 		        android:layout_weight="0.67"
-		        android:checked="false"
 		        android:text="@string/assessment_wizard_radio_yes" />
 	
 		    <RadioButton
 		        android:id="@+id/diarrhoea_assessment_radio_sunken_eyes_no"
-		        android:layout_width="118dp"
-		        android:layout_height="wrap_content"
-		        android:layout_gravity="top"
-		        android:layout_weight="0.32"
-		        android:checked="false"
+		        android:layout_weight="0.33"
 		        android:text="@string/assessment_wizard_radio_no" />
 		</RadioGroup>
 				
@@ -181,19 +160,12 @@
 		
 				<RadioButton
 		    	    android:id="@+id/diarrhoea_assessment_radio_lethargic_or_unconscious_yes"
-			        android:layout_width="112dp"
-			        android:layout_height="wrap_content"
-			        android:layout_weight="0.67"
-			        android:checked="false"
+		    	    android:layout_weight="0.67"
 				    android:text="@string/assessment_wizard_radio_yes" />
 		
 			    <RadioButton
 			        android:id="@+id/diarrhoea_assessment_radio_lethargic_or_unconscious_no"
-			        android:layout_width="118dp"
-			        android:layout_height="wrap_content"
-			        android:layout_gravity="top"
-			        android:layout_weight="0.32"
-			        android:checked="false"
+			        android:layout_weight="0.33"
 			        android:text="@string/assessment_wizard_radio_no" />
 			</RadioGroup>
 					    				
@@ -233,19 +205,12 @@
 	
 				<RadioButton
 					android:id="@+id/diarrhoea_assessment_radio_restless_irritable_yes"
-					android:layout_width="112dp"
-					android:layout_height="wrap_content"
 					android:layout_weight="0.67"
-					android:checked="false"
 					android:text="@string/assessment_wizard_radio_yes" />
 	
 			    <RadioButton
 			        android:id="@+id/diarrhoea_assessment_radio_restless_irritable_no"
-			        android:layout_width="118dp"
-			        android:layout_height="wrap_content"
-			        android:layout_gravity="top"
-			        android:layout_weight="0.32"
-			        android:checked="false"
+			        android:layout_weight="0.33"
 			        android:text="@string/assessment_wizard_radio_no" />
 			</RadioGroup>
 				
@@ -268,19 +233,12 @@
 
 			    <RadioButton
 			        android:id="@+id/diarrhoea_assessment_radio_cholera_in_area_yes"
-			        android:layout_width="112dp"
-			        android:layout_height="wrap_content"
 			        android:layout_weight="0.67"
-			        android:checked="false"
 			        android:text="@string/assessment_wizard_radio_yes" />
 
 			    <RadioButton
 			        android:id="@+id/diarrhoea_assessment_radio_cholera_in_area_no"
-			        android:layout_width="118dp"
-			        android:layout_height="wrap_content"
-			        android:layout_gravity="top"
-			        android:layout_weight="0.32"
-			        android:checked="false"
+			        android:layout_weight="0.33"
 			        android:text="@string/assessment_wizard_radio_no" />
 			</RadioGroup>
 	
@@ -306,14 +264,10 @@
 
                     <RadioButton
                         android:id="@+id/diarrhoea_assessment_radio_child_fluid_not_able"
-                        android:layout_weight="0.67"
-                        android:checked="false"
                         android:text="@string/diarrhoea_assessment_radio_child_fluid_not_able" />
 
                     <RadioButton
                         android:id="@+id/diarrhoea_assessment_radio_child_fluid_drinking_poorly"
-                        android:layout_weight="0.67"
-                        android:checked="false"
                         android:text="@string/diarrhoea_assessment_radio_child_fluid_drinking_poorly" />
                 </TableRow>
                 <TableRow
@@ -322,8 +276,6 @@
 
                     <RadioButton
                         android:id="@+id/diarrhoea_assessment_radio_child_fluid_drinking_eagerly"
-                        android:layout_weight="0.67"
-                        android:checked="false"
                         android:text="@string/diarrhoea_assessment_radio_child_fluid_drinking_eagerly" />
                 </TableRow>
             </ie.ucc.bis.ui.custom.ToggleButtonGroupTableLayout>
@@ -350,14 +302,10 @@
 
                     <RadioButton
                         android:id="@+id/diarrhoea_assessment_radio_skin_pinch_very_slowly"
-                        android:layout_weight="0.67"
-                        android:checked="false"
                         android:text="@string/diarrhoea_assessment_radio_skin_pinch_very_slowly" />
 
                     <RadioButton
                         android:id="@+id/diarrhoea_assessment_radio_skin_pinch_slowly"
-                        android:layout_weight="0.67"
-                        android:checked="false"
                         android:text="@string/diarrhoea_assessment_radio_skin_pinch_slowly" />
                 </TableRow>
                 <TableRow
@@ -366,8 +314,6 @@
 
                     <RadioButton
                         android:id="@+id/diarrhoea_assessment_radio_skin_pinch_immediate"
-                        android:layout_weight="0.67"
-                        android:checked="false"
                         android:text="@string/diarrhoea_assessment_radio_skin_pinch_immediate" />
                 </TableRow>
             </ie.ucc.bis.ui.custom.ToggleButtonGroupTableLayout>

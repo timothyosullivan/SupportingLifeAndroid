@@ -40,18 +40,11 @@
 					android:orientation="horizontal">
 				<RadioButton
 					android:id="@+id/breathing_assessment_radio_cough_difficult_breathing_yes"
-					android:layout_width="112dp"
-					android:layout_height="wrap_content"
 					android:layout_weight="0.67"
-					android:checked="false"
 					android:text="@string/assessment_wizard_radio_yes"/>
 				<RadioButton
 					android:id="@+id/breathing_assessment_radio_cough_difficult_breathing_no"
-					android:layout_width="118dp"
-					android:layout_height="wrap_content"
-					android:layout_gravity="top"
-					android:layout_weight="0.32"
-					android:checked="false"
+					android:layout_weight="0.33"
 					android:text="@string/assessment_wizard_radio_no"/>
 				</RadioGroup>
 			</LinearLayout>
@@ -113,18 +106,11 @@
 				android:orientation="horizontal">
 				<RadioButton
 					android:id="@+id/breathing_assessment_radio_chest_indrawing_yes"
-					android:layout_width="112dp"
-					android:layout_height="wrap_content"
 					android:layout_weight="0.67"
-					android:checked="false"
 					android:text="@string/assessment_wizard_radio_yes"/>
 				<RadioButton
 					android:id="@+id/breathing_assessment_radio_chest_indrawing_no"
-					android:layout_width="118dp"
-					android:layout_height="wrap_content"
-					android:layout_gravity="top"
-					android:layout_weight="0.32"
-					android:checked="false"
+					android:layout_weight="0.33"
 					android:text="@string/assessment_wizard_radio_no"/>
 			</RadioGroup>
 
@@ -144,18 +130,11 @@
 				android:orientation="horizontal">
 				<RadioButton
 					android:id="@+id/breathing_assessment_radio_stridor_yes"
-					android:layout_width="112dp"
-					android:layout_height="wrap_content"
 					android:layout_weight="0.67"
-					android:checked="false"
 					android:text="@string/assessment_wizard_radio_yes"/>
 				<RadioButton
 					android:id="@+id/breathing_assessment_radio_stridor_no"
-					android:layout_width="118dp"
-					android:layout_height="wrap_content"
-					android:layout_gravity="top"
-					android:layout_weight="0.32"
-					android:checked="false"
+					android:layout_weight="0.33"
 					android:text="@string/assessment_wizard_radio_no"/>
 			</RadioGroup>
 		</LinearLayout><!-- end of cough / difficult breathing animated view -->
