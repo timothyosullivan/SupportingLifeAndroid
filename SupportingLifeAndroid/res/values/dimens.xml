@@ -18,7 +18,7 @@
 	<!-- ============================================================ -->
 	<!-- ACTION BAR ICON -->
 	<!-- ============================================================ -->       
-    <dimen name="action_bar_icon_height">30dp</dimen>
+    <dimen name="action_bar_icon_height">25dp</dimen>
     <dimen name="action_bar_icon_width">30dp</dimen>
 
 	<!-- ============================================================ -->
