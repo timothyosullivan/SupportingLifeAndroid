@@ -70,16 +70,14 @@ public class AssessmentWizardPagerAdapter extends FragmentStatePagerAdapter {
 
 	/**
 	 * Getter Method: getAssessmentWizardActivity()
-	 * 
-	 */	    
+	 */
 	public AssessmentWizardActivity getAssessmentWizardActivity() {
 		return assessmentWizardActivity;
 	}
 
 	/**
 	 * Setter Method: setAssessmentWizardActivity()
-	 * 
-	 */  	
+	 */
 	public void setAssessmentWizardActivity(AssessmentWizardActivity assessmentWizardActivity) {
 		this.assessmentWizardActivity = assessmentWizardActivity;
 	}

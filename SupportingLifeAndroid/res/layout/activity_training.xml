@@ -19,4 +19,14 @@
         android:contentDescription="@string/supporting_life_tree_image"
         android:src="@drawable/supporting_life_tree" />
     
+	<!-- ============================================================ -->
+	<!-- TRAINING VIEW PAGER -->
+	<!-- ============================================================ -->
+    <android.support.v4.view.ViewPager
+	    android:id="@+id/training_view_pager"
+	    android:layout_width="match_parent"
+	    android:layout_height="match_parent"
+	    android:layout_gravity="center"
+	    android:overScrollMode="never" />
+    
 </LinearLayout>

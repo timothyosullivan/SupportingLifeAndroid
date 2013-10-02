@@ -272,7 +272,6 @@ public class StepPagerStrip extends View {
 
 	/**
 	 * Getter Method: getPageSelectedListener()
-	 * 
 	 */	     
 	public PageSelectedListener getPageSelectedListener() {
 		return pageSelectedListener;
@@ -280,7 +279,6 @@ public class StepPagerStrip extends View {
 	
 	/**
 	 * Setter Method: setPageSelectedListener()
-	 * 
 	 */ 
 	public void setPageSelectedListener(PageSelectedListener pageSelectedListener) {
 		this.pageSelectedListener = pageSelectedListener;
