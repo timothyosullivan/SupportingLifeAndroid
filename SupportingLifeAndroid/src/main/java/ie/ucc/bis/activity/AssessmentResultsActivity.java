@@ -2,12 +2,12 @@ package ie.ucc.bis.activity;
 
 import ie.ucc.bis.R;
 import ie.ucc.bis.domain.Patient;
+import ie.ucc.bis.imci.model.review.ReviewItem;
+import ie.ucc.bis.imci.ui.AssessmentClassificationsFragment;
+import ie.ucc.bis.imci.ui.AssessmentResultsReviewFragment;
+import ie.ucc.bis.imci.ui.AssessmentTreatmentsFragment;
 import ie.ucc.bis.rule.engine.ClassificationRuleEngine;
 import ie.ucc.bis.rule.engine.TreatmentRuleEngine;
-import ie.ucc.bis.wizard.model.review.ReviewItem;
-import ie.ucc.bis.wizard.ui.AssessmentClassificationsFragment;
-import ie.ucc.bis.wizard.ui.AssessmentResultsReviewFragment;
-import ie.ucc.bis.wizard.ui.AssessmentTreatmentsFragment;
 
 import java.util.ArrayList;
 

@@ -3,9 +3,9 @@ package ie.ucc.bis.ui.custom;
 import java.util.Arrays;
 import java.util.List;
 
-import ie.ucc.bis.wizard.model.AbstractPage;
-import ie.ucc.bis.wizard.model.DynamicView;
-import ie.ucc.bis.wizard.model.listener.RadioGroupCoordinatorListener;
+import ie.ucc.bis.imci.model.AbstractPage;
+import ie.ucc.bis.imci.model.DynamicView;
+import ie.ucc.bis.imci.model.listener.RadioGroupCoordinatorListener;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;

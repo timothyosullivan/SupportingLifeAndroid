@@ -2,7 +2,7 @@ package ie.ucc.bis.ui.utilities;
 
 import java.util.ArrayList;
 
-import ie.ucc.bis.wizard.model.review.ReviewItem;
+import ie.ucc.bis.imci.model.review.ReviewItem;
 
 public class ReviewItemUtilities {
 

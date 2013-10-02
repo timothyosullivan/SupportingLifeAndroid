@@ -1,6 +1,6 @@
 package ie.ucc.bis.ui.utilities;
 
-import ie.ucc.bis.wizard.model.DynamicView;
+import ie.ucc.bis.imci.model.DynamicView;
 
 import java.util.List;
 

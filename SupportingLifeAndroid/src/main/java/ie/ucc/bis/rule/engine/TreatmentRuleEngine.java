@@ -3,11 +3,11 @@ package ie.ucc.bis.rule.engine;
 import ie.ucc.bis.R;
 import ie.ucc.bis.activity.SupportingLifeBaseActivity;
 import ie.ucc.bis.domain.Patient;
+import ie.ucc.bis.imci.model.review.ReviewItem;
 import ie.ucc.bis.rule.engine.enums.ClassificationType;
 import ie.ucc.bis.rule.engine.enums.CriteriaRule;
 import ie.ucc.bis.rule.engine.enums.Response;
 import ie.ucc.bis.ui.utilities.LoggerUtils;
-import ie.ucc.bis.wizard.model.review.ReviewItem;
 
 import java.io.IOException;
 import java.util.ArrayList;
