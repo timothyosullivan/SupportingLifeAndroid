@@ -38,7 +38,6 @@ public class TrainingPagerAdapter extends FragmentStatePagerAdapter implements V
 
 	@Override
 	public Fragment getItem(int position) {
-		
 		float scale;
 		boolean centerPage;
 		
@@ -53,15 +52,12 @@ public class TrainingPagerAdapter extends FragmentStatePagerAdapter implements V
         }
         
         position = position % TrainingActivity.PAGES;
-
 		return TrainingFragment.create(getTrainingActivity(), position, scale, centerPage);
 	}
 
 	@Override
 	public int getCount() {
-		// return TrainingActivity.PAGES;
-		return TrainingActivity.PAGES * TrainingActivity.LOOPS;
-		// return Integer.MAX_VALUE;
+		return Integer.MAX_VALUE;
 	}
 
 	@Override
@@ -109,6 +105,9 @@ public class TrainingPagerAdapter extends FragmentStatePagerAdapter implements V
 		
 	}
 
+	@Override
+	public void onPageScrollStateChanged(int state) {}
+
 	/**
 	 * Method: modifyTutorialLayout
 	 * 
@@ -123,10 +122,7 @@ public class TrainingPagerAdapter extends FragmentStatePagerAdapter implements V
 	private void modifyTutorialLayout(LinearLayout pageLayout, int visibility, float scale) {
 		((TrainingCustomLayout) pageLayout.getChildAt(0)).adjustSize(scale);
 		pageLayout.getChildAt(1).setVisibility(visibility);
-	}
-
-	@Override
-	public void onPageScrollStateChanged(int state) {}
+	}	
 	
 	private LinearLayout getRootView(int position)
 	{
