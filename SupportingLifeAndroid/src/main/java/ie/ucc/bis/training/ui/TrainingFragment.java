@@ -2,7 +2,9 @@ package ie.ucc.bis.training.ui;
 
 import ie.ucc.bis.R;
 import ie.ucc.bis.activity.TrainingActivity;
+import ie.ucc.bis.activity.VideoViewerActivity;
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -10,7 +12,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 /**
  * Responsible for UI fragment to display a 
@@ -84,12 +85,11 @@ public class TrainingFragment extends Fragment {
 		imageView.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				if (v == imageView) {
-					Toast.makeText(getActivity(), "Clicked", Toast.LENGTH_SHORT).show();
-				}
+			//	Toast.makeText(getActivity(), "Clicked", Toast.LENGTH_SHORT).show();
+				startActivity(new Intent(getActivity().getApplicationContext(), VideoViewerActivity.class));
+				
 			}
 		});
-
 	}
 
 	@Override

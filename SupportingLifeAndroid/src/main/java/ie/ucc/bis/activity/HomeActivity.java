@@ -47,6 +47,7 @@ public class HomeActivity extends SupportingLifeBaseActivity {
 				break;
 			case R.id.dashboard_training_button :
 				startActivity(new Intent(getApplicationContext(), TrainingActivity.class));
+				break;
 			default : 
 				break;
 		} // end of switch

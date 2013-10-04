@@ -10,7 +10,6 @@ public class TrainingActivity extends SupportingLifeBaseActivity {
 	public final static int PAGES = 5;
 	public final static int LOOPS = 1000; 
 	public final static int FIRST_PAGE = PAGES * LOOPS / 2;
-	// public final static int FIRST_PAGE = PAGES / 2;
 	public final static float BIG_SCALE = 1.0f;
 	public final static float SMALL_SCALE = 0.7f;
 	public final static float DIFF_SCALE = BIG_SCALE - SMALL_SCALE;
