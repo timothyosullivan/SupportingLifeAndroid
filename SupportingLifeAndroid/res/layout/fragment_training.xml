@@ -1,46 +1,66 @@
+<!-- ============================================================ -->
+<!-- TRAINING PAGE -->
+<!-- ============================================================ -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/training_layout_root" 
     style="@style/SupportingLifePage"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:gravity="center">
- 
+    android:orientation="vertical">
+    
     <!-- ============================================================ -->
-    <!-- TRAINING PAGE -->
+    <!-- SCALED IMAGE OF TRAINING TUTORIAL -->
     <!-- ============================================================ -->
+	<ie.ucc.bis.training.ui.TrainingCustomLayout
+	    android:id="@+id/training_custom_layout"  
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:orientation="vertical"
+		android:gravity="center_horizontal">
 
-    <TextView style="@style/WizardPageTitle" />
-
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <ie.ucc.bis.training.ui.TrainingCustomLayout
-            android:id="@+id/training_custom_layout_root"  
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:gravity="center">
-
-            <!-- ============================================================ -->
-            <!-- VIDEO -->
-            <!-- ============================================================ -->
-            <VideoView android:id="@+id/VideoView"
-				android:layout_width="200dp"
-				android:layout_height="120dp"
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true" />
-            
-            <!-- ============================================================ -->
-            <!-- TRAINING TITLE -->
-            <!-- ============================================================ -->
-
-            <TextView android:id="@+id/training_video_title"
-                android:layout_width="wrap_content"
-	        	android:layout_height="wrap_content"
-	        	android:textSize="20sp"/>
-
-        </ie.ucc.bis.training.ui.TrainingCustomLayout>
-    </ScrollView>
-
+		<!-- ============================================================ -->
+		<!-- TRAINING IMAGE -->
+		<!-- ============================================================ -->    
+		<ImageView
+			android:id="@+id/training_image"
+			android:layout_width="200dp"
+			android:layout_height="150dp"
+			android:layout_marginTop="20dp"
+			android:contentDescription="@string/video_training_image"
+			android:background="@drawable/im_training_video_button"/>
+	</ie.ucc.bis.training.ui.TrainingCustomLayout>
+	
+	<!-- ============================================================ -->
+	<!-- TRAINING DESCRIPTION -->
+	<!-- ============================================================ -->
+	<LinearLayout android:id="@+id/training_tutorial_description"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:orientation="vertical">
+		
+		<!-- ============================================================ -->
+		<!-- LINE SEPARATOR -->
+		<!-- ============================================================ -->    		
+	    <ImageView
+	        android:id="@+id/training_first_line_separator"
+	        style="@style/TrainingScreenLineSeparator"
+	        android:contentDescription="@string/training_line_separator_description" />		
+		             
+		<!-- ============================================================ -->
+		<!-- TRAINING TITLE -->
+		<!-- ============================================================ -->
+		<TextView android:id="@+id/training_title"
+			android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:textSize="20sp"/>
+			
+		<!-- ============================================================ -->
+		<!-- LINE SEPARATOR -->
+		<!-- ============================================================ -->    		
+	    <ImageView
+	        android:id="@+id/training_second_line_separator"
+	        style="@style/TrainingScreenLineSeparator"
+	        android:contentDescription="@string/training_line_separator_description" />
+		    			
+	</LinearLayout>
 </LinearLayout>

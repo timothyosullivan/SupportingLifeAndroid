@@ -16,10 +16,11 @@ public class TrainingActivity extends SupportingLifeBaseActivity {
 	public final static float DIFF_SCALE = BIG_SCALE - SMALL_SCALE;
 
 	private static final int PAGE_MARGIN = -400;
+	private static final int OFF_SCREEN_PAGE_LIMIT = 2;
 	
 	private ViewPager trainingViewPager;
     private TrainingPagerAdapter trainingPagerAdapter;
-	
+	    
 	/**
 	 * onCreate method
 	 * 
@@ -49,13 +50,13 @@ public class TrainingActivity extends SupportingLifeBaseActivity {
         
         // Necessary or the pager will only have one extra page to show
         // make this at least however many pages you can see
-        getTrainingViewPager().setOffscreenPageLimit(3);
+        getTrainingViewPager().setOffscreenPageLimit(OFF_SCREEN_PAGE_LIMIT);
         
         // Set margin for pages as a negative number, so a part of next and 
         // previous pages will be showed
         getTrainingViewPager().setPageMargin(PAGE_MARGIN);    
 	}
-
+	
 	/**
 	 * Getter Method: getTrainingViewPager()
 	 */

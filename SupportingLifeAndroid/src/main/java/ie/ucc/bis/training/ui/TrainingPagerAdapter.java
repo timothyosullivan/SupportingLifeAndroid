@@ -7,7 +7,9 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.util.SparseArray;
+import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
 /**
  * TrainingPagerAdapter uses a Fragment to manage each training page. 
@@ -38,18 +40,21 @@ public class TrainingPagerAdapter extends FragmentStatePagerAdapter implements V
 	public Fragment getItem(int position) {
 		
 		float scale;
+		boolean centerPage;
 		
 		// make the first pager bigger than others
 		if (position == TrainingActivity.FIRST_PAGE) {
         	scale = TrainingActivity.BIG_SCALE;
+        	centerPage = true;
         }
 		else {
         	scale = TrainingActivity.SMALL_SCALE;
+        	centerPage = false;
         }
         
         position = position % TrainingActivity.PAGES;
 
-		return TrainingFragment.create(getTrainingActivity(), position, scale);
+		return TrainingFragment.create(getTrainingActivity(), position, scale, centerPage);
 	}
 
 	@Override
@@ -63,22 +68,22 @@ public class TrainingPagerAdapter extends FragmentStatePagerAdapter implements V
 	public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
 		
 		if (positionOffset >= 0f && positionOffset <= 1f) {
-			TrainingCustomLayout previousPage = getRootView(position - 1);
-			TrainingCustomLayout currentPage = getRootView(position);
-			TrainingCustomLayout nextPage = getRootView(position + 1);
+			LinearLayout previousPage = getRootView(position - 1);
+			LinearLayout currentPage = getRootView(position);
+			LinearLayout nextPage = getRootView(position + 1);
 
 			if (previousPage != null) {
-				previousPage.setPageScale(TrainingActivity.SMALL_SCALE 
+				((TrainingCustomLayout) previousPage.getChildAt(0)).adjustSize(TrainingActivity.SMALL_SCALE 
 						+ TrainingActivity.DIFF_SCALE * positionOffset);
 			}
 			
 			if (nextPage != null) {
-				nextPage.setPageScale(TrainingActivity.SMALL_SCALE 
+				((TrainingCustomLayout) nextPage.getChildAt(0)).adjustSize(TrainingActivity.SMALL_SCALE 
 						+ TrainingActivity.DIFF_SCALE * positionOffset);
 			}
 			
 			if (currentPage != null) {
-				currentPage.setPageScale(TrainingActivity.BIG_SCALE 
+				((TrainingCustomLayout) currentPage.getChildAt(0)).adjustSize(TrainingActivity.BIG_SCALE 
 						- TrainingActivity.DIFF_SCALE * positionOffset);
 			}
 		}
@@ -86,21 +91,48 @@ public class TrainingPagerAdapter extends FragmentStatePagerAdapter implements V
 
 	@Override
 	public void onPageSelected(int position) {
-		TrainingCustomLayout nextPage = getRootView(position + 1);
+		LinearLayout previousPageLayout = getRootView(position - 1);
+		LinearLayout currentPageLayout  = getRootView(position);
+		LinearLayout nextPageLayout  = getRootView(position + 1);
 		
-		if (nextPage != null) {
-			nextPage.setPageScale(TrainingActivity.SMALL_SCALE);
+		if (previousPageLayout  != null) {
+			modifyTutorialLayout(previousPageLayout, View.INVISIBLE, TrainingActivity.SMALL_SCALE);
 		}
+		
+		if (nextPageLayout  != null) {
+			modifyTutorialLayout(nextPageLayout, View.INVISIBLE, TrainingActivity.SMALL_SCALE);
+		}
+		
+		if (currentPageLayout != null) {
+			modifyTutorialLayout(currentPageLayout, View.VISIBLE, TrainingActivity.BIG_SCALE);
+		}
+		
+	}
+
+	/**
+	 * Method: modifyTutorialLayout
+	 * 
+	 * Called to manipulate the layout of a page
+	 * 		i.e. scale some aspects of the page and show/not show some ui components
+	 * 
+	 * @param pageLayout LinearLayout
+	 * @param visibility int
+	 * @param scale float
+	 * 
+	 */
+	private void modifyTutorialLayout(LinearLayout pageLayout, int visibility, float scale) {
+		((TrainingCustomLayout) pageLayout.getChildAt(0)).adjustSize(scale);
+		pageLayout.getChildAt(1).setVisibility(visibility);
 	}
 
 	@Override
 	public void onPageScrollStateChanged(int state) {}
 	
-	private TrainingCustomLayout getRootView(int position)
+	private LinearLayout getRootView(int position)
 	{
 		Fragment trainingFragment = getRegisteredFragment(position);
 		if (trainingFragment != null) {
-			return (TrainingCustomLayout) trainingFragment.getView().findViewById(R.id.training_custom_layout_root);
+			return (LinearLayout) trainingFragment.getView().findViewById(R.id.training_layout_root);
 		}
 		else {
 			return null;

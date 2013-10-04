@@ -340,7 +340,8 @@
     <!-- ============================================================ -->
     <!-- TRAINING SCREEN -->
     <!-- ============================================================ -->
-
+	<string name="video_training_image">Video Training Image</string>
+	<string name="training_line_separator_description">Training Screen Line Separator</string>
 
     <!-- ============================================================ -->
     <!-- ABOUT SCREEN -->

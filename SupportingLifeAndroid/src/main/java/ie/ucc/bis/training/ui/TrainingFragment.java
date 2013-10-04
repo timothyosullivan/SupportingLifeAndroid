@@ -3,18 +3,14 @@ package ie.ucc.bis.training.ui;
 import ie.ucc.bis.R;
 import ie.ucc.bis.activity.TrainingActivity;
 import android.app.Activity;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.DisplayMetrics;
-import android.view.Gravity;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.MediaController;
+import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.VideoView;
+import android.widget.Toast;
 
 /**
  * Responsible for UI fragment to display a 
@@ -27,21 +23,21 @@ public class TrainingFragment extends Fragment {
 	
 	private static final String POSITION = "POSITION";
 	private static final String SCALE = "SCALE";
-	private static final String VIDEO_PLAYING = "VIDEO_PLAYING";
+	private static final String CENTER_PAGE = "CENTER_PAGE";
 	
 	private int position;
 	private float scale;
-	private boolean videoPlaying;
+	private boolean centerPage;
 	
 	/**
 	 * Static Constructor
 	 */
-	public static Fragment create(TrainingActivity trainingActivity, int position, float scale)
+	public static Fragment create(TrainingActivity trainingActivity, int position, float scale, boolean centerPage)
 	{
 		Bundle args = new Bundle();
 		args.putInt(POSITION, position);
 		args.putFloat(SCALE, scale);
-		args.putBoolean(VIDEO_PLAYING, false);
+		args.putBoolean(CENTER_PAGE, centerPage);
 		return Fragment.instantiate(trainingActivity, TrainingFragment.class.getName(), args);
 	}
 
@@ -52,75 +48,49 @@ public class TrainingFragment extends Fragment {
         Bundle args = getArguments();
         setPosition(args.getInt(POSITION));
         setScale(args.getFloat(SCALE));
-        setVideoPlaying(args.getBoolean(VIDEO_PLAYING));
+        setCenterPage(args.getBoolean(CENTER_PAGE));
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_training, container, false);
+        
+		// configure image view
+		configureImageView(rootView);
+		TrainingCustomLayout trainingCustomLayout = (TrainingCustomLayout) rootView.findViewById(R.id.training_custom_layout);
+		float scale = this.getArguments().getFloat("scale");
+		trainingCustomLayout.adjustSize(scale);
 
-        TextView tv = (TextView) rootView.findViewById(R.id.training_video_title);
+		// configure title of training
+        TextView tv = (TextView) rootView.findViewById(R.id.training_title);
 		tv.setText("Position = " + getPosition());
 		
-		// configure video view
-		configureVideoView(rootView);
-				
-		TrainingCustomLayout trainingCustomLayout = (TrainingCustomLayout) rootView.findViewById(R.id.training_custom_layout_root);
-		float scale = this.getArguments().getFloat("scale");
-		trainingCustomLayout.setPageScale(scale);
+		// configure visibility of the descriptive text associated with the training tutorial
+		View videoDescDetails = (View) rootView.findViewById(R.id.training_tutorial_description);		
+		if (isCenterPage()) {
+			videoDescDetails.setVisibility(View.VISIBLE);
+		}
+		else {
+			videoDescDetails.setVisibility(View.INVISIBLE);
+		}		
 		
         return rootView;
     }
 
-	private void configureVideoView(View rootView) {
-        // Execute StreamVideo AsyncTask
-		final VideoView videoView = (VideoView) rootView.findViewById(R.id.VideoView);
+	private void configureImageView(View rootView) {
+		final ImageView imageView = (ImageView) rootView.findViewById(R.id.training_image);
 		
-		// Start the MediaController
-		MediaController mediaController = new MediaController(getActivity());
-		mediaController.setAnchorView(videoView);
-
-		// Get the URL from String VideoURL
-	//	Uri.parse("android.resource://com.testvideo/" + R.raw.video);
-		Uri videoURL = Uri.parse("android.resource://" + getActivity().getPackageName() + "/" + R.raw.android_sample_content);
-		videoView.setMediaController(mediaController);
-		videoView.setVideoURI(videoURL);
-		
-		videoView.setOnTouchListener(new View.OnTouchListener() {
+		imageView.setOnClickListener(new View.OnClickListener() {
 			@Override
-			public boolean onTouch(View v, MotionEvent event) {
-					if (isVideoPlaying()) {
-						// stop the video
-						videoView.stopPlayback();
-						
-//						DisplayMetrics metrics = new DisplayMetrics(); 
-//						getActivity().getWindowManager().getDefaultDisplay().getMetrics(metrics);
-//						android.widget.LinearLayout.LayoutParams params = (android.widget.LinearLayout.LayoutParams) videoView.getLayoutParams();
-//						params.width =  (int) (220*metrics.density);
-//						params.height = (int) (120*metrics.density);
-//						params.gravity = Gravity.CENTER_VERTICAL;
-//						videoView.setLayoutParams(params);
-						
-		//				setVideoPlaying(false);
-					}
-					else {
-			//			setVideoPlaying(true);
-//						DisplayMetrics metrics = new DisplayMetrics(); 
-//						getActivity().getWindowManager().getDefaultDisplay().getMetrics(metrics);
-//						android.widget.LinearLayout.LayoutParams params = (android.widget.LinearLayout.LayoutParams) videoView.getLayoutParams();
-//						params.width =  metrics.widthPixels;
-//						params.height = metrics.heightPixels;
-//						videoView.setLayoutParams(params);
-						
-						// start the video
-						videoView.start();
-					}
-				return true;
+			public void onClick(View v) {
+				if (v == imageView) {
+					Toast.makeText(getActivity(), "Clicked", Toast.LENGTH_SHORT).show();
+				}
 			}
 		});
-	}
 
+	}
 
 	@Override
     public void onAttach(Activity activity) {
@@ -161,16 +131,16 @@ public class TrainingFragment extends Fragment {
 	}
 
 	/**
-	 * Getter Method: isVideoPlaying()
+	 * Getter Method: isCenterPage()
 	 */
-	public boolean isVideoPlaying() {
-		return videoPlaying;
+	public boolean isCenterPage() {
+		return centerPage;
 	}
 
 	/**
-	 * Setter Method: setVideoPlaying()
+	 * Setter Method: setCenterPage()
 	 */
-	public void setVideoPlaying(boolean videoPlaying) {
-		this.videoPlaying = videoPlaying;
+	public void setCenterPage(boolean centerPage) {
+		this.centerPage = centerPage;
 	}
 }

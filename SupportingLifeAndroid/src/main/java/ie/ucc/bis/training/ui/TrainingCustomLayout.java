@@ -26,7 +26,7 @@ public class TrainingCustomLayout extends LinearLayout {
 		setWillNotDraw(false);
 	}
 	
-	public void setPageScale(float scale) {
+	public void adjustSize(float scale) {
 		setScale(scale);
 			
 		// if you want to see the scale every time, invokw
