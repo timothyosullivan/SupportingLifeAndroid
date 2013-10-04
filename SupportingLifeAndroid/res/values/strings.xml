@@ -343,6 +343,11 @@
     <!-- ============================================================ -->
 	<string name="video_training_image">Video Training Image</string>
 	<string name="training_line_separator_description">Training Screen Line Separator</string>
+	<string name="training_tutorial_title">Title:</string>	
+	<string name="training_tutorial_type">Tutorial Type:</string>
+	<string name="training_tutorial_description">Description:</string>
+	<string name="training_tutorial_created_date">Created Date:</string>
+	<string name="training_tutorial_created_by">Created By:</string>
 
     <!-- ============================================================ -->
     <!-- ABOUT SCREEN -->

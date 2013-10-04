@@ -33,34 +33,157 @@
 	<!-- ============================================================ -->
 	<!-- TRAINING DESCRIPTION -->
 	<!-- ============================================================ -->
-	<LinearLayout android:id="@+id/training_tutorial_description"
+	<LinearLayout android:id="@+id/training_tutorial_description_layout"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
 		android:orientation="vertical">
-		
-		<!-- ============================================================ -->
-		<!-- LINE SEPARATOR -->
-		<!-- ============================================================ -->    		
+			
 	    <ImageView
 	        android:id="@+id/training_first_line_separator"
 	        style="@style/TrainingScreenLineSeparator"
 	        android:contentDescription="@string/training_line_separator_description" />		
 		             
 		<!-- ============================================================ -->
-		<!-- TRAINING TITLE -->
+		<!-- TRAINING TUTORIAL TITLE -->
 		<!-- ============================================================ -->
-		<TextView android:id="@+id/training_title"
-			android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        android:textSize="20sp"/>
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:orientation="horizontal">
+		
+			<TextView
+			    android:id="@+id/training_tutorial_title_label"
+			    style="@style/TrainingLabel"
+				android:layout_width="wrap_content"
+				android:layout_height="match_parent"
+				android:text="@string/training_tutorial_title" />
 			
-		<!-- ============================================================ -->
-		<!-- LINE SEPARATOR -->
-		<!-- ============================================================ -->    		
+			<TextView
+			    android:id="@+id/training_tutorial_title"
+			    style="@style/TrainingText"
+				android:layout_width="wrap_content"
+				android:layout_height="match_parent"
+				android:enabled="false"
+				android:text=""/>
+		</LinearLayout>
+			  		
 	    <ImageView
 	        android:id="@+id/training_second_line_separator"
 	        style="@style/TrainingScreenLineSeparator"
 	        android:contentDescription="@string/training_line_separator_description" />
-		    			
+		    	
+		<!-- ============================================================ -->
+		<!-- TRAINING TUTORIAL TYPE -->
+		<!-- ============================================================ -->	    
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:orientation="horizontal">
+		
+			<TextView
+			    android:id="@+id/training_tutorial_type_label"
+			    style="@style/TrainingLabel"
+				android:layout_width="wrap_content"
+				android:layout_height="match_parent"
+				android:text="@string/training_tutorial_type" />
+			
+			<TextView
+			    android:id="@+id/training_tutorial_type"
+			    style="@style/TrainingText"
+				android:layout_width="wrap_content"
+				android:layout_height="match_parent"
+				android:text="Video"/>
+		</LinearLayout>
+
+	    <ImageView
+	        android:id="@+id/training_third_line_separator"
+	        style="@style/TrainingScreenLineSeparator"
+	        android:contentDescription="@string/training_line_separator_description" />
+	    
+		<!-- ============================================================ -->
+		<!-- TRAINING DESCRIPTION -->
+		<!-- ============================================================ -->	    
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:orientation="horizontal">
+		
+			<TextView
+			    android:id="@+id/training_tutorial_description_label"
+			    style="@style/TrainingLabel"
+				android:layout_width="wrap_content"
+				android:layout_height="match_parent"
+				android:text="@string/training_tutorial_description" />
+			
+            <EditText
+                android:id="@+id/training_tutorial_description"
+                style="@style/TrainingText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:gravity="top|left"
+                android:inputType="textMultiLine"
+                android:lines="4"
+                android:enabled="false"
+                android:saveEnabled="false"
+                android:scrollHorizontally="false" />
+		</LinearLayout>	    
+
+	    <ImageView
+	        android:id="@+id/training_fourth_line_separator"
+	        style="@style/TrainingScreenLineSeparator"
+	        android:contentDescription="@string/training_line_separator_description" />
+		    	
+		<!-- ============================================================ -->
+		<!-- TRAINING TUTORIAL CREATED DATE -->
+		<!-- ============================================================ -->	    
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:orientation="horizontal">
+		
+			<TextView
+			    android:id="@+id/training_tutorial_created_date_label"
+			    style="@style/TrainingLabel"
+				android:layout_width="wrap_content"
+				android:layout_height="match_parent"
+				android:text="@string/training_tutorial_created_date" />
+			
+			<TextView
+			    android:id="@+id/training_tutorial_created_date"
+			    style="@style/TrainingText"
+				android:layout_width="wrap_content"
+				android:layout_height="match_parent"
+				android:text=""/>
+		</LinearLayout>
+		
+	    <ImageView
+	        android:id="@+id/training_fifth_line_separator"
+	        style="@style/TrainingScreenLineSeparator"
+	        android:contentDescription="@string/training_line_separator_description" />
+		    	
+		<!-- ============================================================ -->
+		<!-- TRAINING TUTORIAL CREATED BY -->
+		<!-- ============================================================ -->	    
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:orientation="horizontal">
+		
+			<TextView
+			    android:id="@+id/training_tutorial_created_by_label"
+			    style="@style/TrainingLabel"
+				android:layout_width="wrap_content"
+				android:layout_height="match_parent"
+				android:text="@string/training_tutorial_created_by" />
+			
+			<TextView
+			    android:id="@+id/training_tutorial_created_by"
+			    style="@style/TrainingText"
+				android:layout_width="wrap_content"
+				android:layout_height="match_parent"
+				android:text=""/>
+		</LinearLayout>
+			    					    		
 	</LinearLayout>
 </LinearLayout>

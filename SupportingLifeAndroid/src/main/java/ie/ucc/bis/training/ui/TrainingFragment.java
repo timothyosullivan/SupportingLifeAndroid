@@ -64,11 +64,11 @@ public class TrainingFragment extends Fragment {
 		trainingCustomLayout.adjustSize(scale);
 
 		// configure title of training
-        TextView tv = (TextView) rootView.findViewById(R.id.training_title);
-		tv.setText("Position = " + getPosition());
+        TextView tv = (TextView) rootView.findViewById(R.id.training_tutorial_title);
+		tv.setText("Tutorial " + getPosition());
 		
 		// configure visibility of the descriptive text associated with the training tutorial
-		View videoDescDetails = (View) rootView.findViewById(R.id.training_tutorial_description);		
+		View videoDescDetails = (View) rootView.findViewById(R.id.training_tutorial_description_layout);		
 		if (isCenterPage()) {
 			videoDescDetails.setVisibility(View.VISIBLE);
 		}
