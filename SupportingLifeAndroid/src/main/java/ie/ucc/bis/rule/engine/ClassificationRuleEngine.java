@@ -21,7 +21,7 @@ import android.content.res.XmlResourceParser;
 
 
 /**
- * Class: ClassificationRuleEngine
+ * Class: TrainingTutorialParser
  * 
  * Responsible for parsing classification xml rules and
  * determining appropriate classifications for patient.

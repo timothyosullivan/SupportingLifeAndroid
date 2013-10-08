@@ -1,13 +1,14 @@
 package ie.ucc.bis.activity;
 
 import ie.ucc.bis.R;
+import ie.ucc.bis.training.TrainingTutorialParser;
 import ie.ucc.bis.training.ui.TrainingPagerAdapter;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 
 public class TrainingActivity extends SupportingLifeBaseActivity {
 	
-	public final static int PAGES = 5;
+	public final static int PAGES = 6;
 	public final static int LOOPS = 1000; 
 	public final static int FIRST_PAGE = PAGES * LOOPS / 2;
 	public final static float BIG_SCALE = 1.0f;
@@ -19,6 +20,7 @@ public class TrainingActivity extends SupportingLifeBaseActivity {
 	
 	private ViewPager trainingViewPager;
     private TrainingPagerAdapter trainingPagerAdapter;
+    private TrainingTutorialParser trainingTutorialParser;
 	    
 	/**
 	 * onCreate method
@@ -35,8 +37,12 @@ public class TrainingActivity extends SupportingLifeBaseActivity {
 		setContentView(R.layout.activity_training);	
 		setTitleFromActivityLabel(R.id.action_bar_title_text);
 		
+		// parse training tutorial details
+		setTrainingTutorialParser(new TrainingTutorialParser());
+		getTrainingTutorialParser().parseTrainingTutorials(this);
+		
 		// configure PagerAdapter for Training Screen
-		setTrainingPagerAdapter(new TrainingPagerAdapter(this, getSupportFragmentManager()));
+		setTrainingPagerAdapter(new TrainingPagerAdapter(this, getSupportFragmentManager(), getTrainingTutorialParser().getTutorials()));
 		
         // configure ViewPager for Training Screen
         setTrainingViewPager((ViewPager) findViewById(R.id.training_view_pager));
@@ -53,7 +59,11 @@ public class TrainingActivity extends SupportingLifeBaseActivity {
         
         // Set margin for pages as a negative number, so a part of next and 
         // previous pages will be showed
-        getTrainingViewPager().setPageMargin(PAGE_MARGIN);    
+        getTrainingViewPager().setPageMargin(PAGE_MARGIN);
+        
+		// add soft keyboard handler - essentially hiding soft
+		// keyboard when an EditText is not in focus
+		 addSoftKeyboardHandling(findViewById(R.id.training_tutorials));
 	}
 	
 	/**
@@ -84,5 +94,17 @@ public class TrainingActivity extends SupportingLifeBaseActivity {
 		this.trainingPagerAdapter = trainingPagerAdapter;
 	}
 
+	/**
+	 * Getter Method: getTrainingTutorialParser()
+	 */
+	public TrainingTutorialParser getTrainingTutorialParser() {
+		return trainingTutorialParser;
+	}
 
+	/**
+	 * Setter Method: setTrainingTutorialParser()
+	 */
+	public void setTrainingTutorialParser(TrainingTutorialParser trainingTutorialParser) {
+		this.trainingTutorialParser = trainingTutorialParser;
+	}
 }

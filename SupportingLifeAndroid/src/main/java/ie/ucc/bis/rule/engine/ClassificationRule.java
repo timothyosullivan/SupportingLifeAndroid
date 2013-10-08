@@ -81,7 +81,7 @@ public class ClassificationRule implements Serializable {
 	 * 
 	 */
 	public String debugOutput() {
-		StringBuffer debugOutput = new StringBuffer();
+		StringBuilder debugOutput = new StringBuilder();
 
 		debugOutput.append("Classification Rule: " + getRule() + "\n");
 		for (ClassificationDiagnosed classificationDiagnosed : getClassificationsDiagnosed()) {

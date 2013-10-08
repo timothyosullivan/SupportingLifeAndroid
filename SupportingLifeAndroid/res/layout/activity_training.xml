@@ -3,6 +3,7 @@
 <!-- TRAINING SCREEN -->
 <!-- ============================================================ -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/training_tutorials"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical" >

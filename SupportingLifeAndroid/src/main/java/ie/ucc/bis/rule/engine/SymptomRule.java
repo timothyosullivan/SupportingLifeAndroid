@@ -87,7 +87,7 @@ public class SymptomRule implements Serializable {
 	 * 
 	 */
 	public String debugOutput() {
-		StringBuffer debugOutput = new StringBuffer();
+		StringBuilder debugOutput = new StringBuilder();
 
 		debugOutput.append("Rule: " + getRule() + "\n");
 		for (Symptom symptom : getSymptoms()) {

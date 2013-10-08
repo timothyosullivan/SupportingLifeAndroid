@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ========================================================================= -->
+<!-- TRAINING SCREEN: 'DANGER SIGNS' TRAINING BUTTON CONFIGURATION  		   -->
+<!-- ========================================================================= -->
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_focused="true" android:state_pressed="true" android:drawable="@drawable/im_training_video_danger_signs_select"/>
+    <item android:state_focused="false" android:state_pressed="true" android:drawable="@drawable/im_training_video_danger_signs_select"/>
+    <item android:state_focused="true" android:drawable="@drawable/im_training_video_danger_signs_select"/>
+    <item android:state_focused="false" android:state_pressed="false" android:drawable="@drawable/im_training_video_danger_signs"/>
+</selector>

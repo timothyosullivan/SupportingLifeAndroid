@@ -1,8 +1,10 @@
 package ie.ucc.bis.training.ui;
 
 import ie.ucc.bis.R;
+import ie.ucc.bis.activity.SupportingLifeBaseActivity;
 import ie.ucc.bis.activity.TrainingActivity;
 import ie.ucc.bis.activity.VideoViewerActivity;
+import ie.ucc.bis.training.Tutorial;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -23,20 +25,30 @@ import android.widget.TextView;
 public class TrainingFragment extends Fragment {
 	
 	private static final String POSITION = "POSITION";
+	private static final String TUTORIAL = "TUTORIAL";
 	private static final String SCALE = "SCALE";
 	private static final String CENTER_PAGE = "CENTER_PAGE";
 	
 	private int position;
+	private Tutorial tutorial;
 	private float scale;
 	private boolean centerPage;
 	
 	/**
 	 * Static Constructor
+	 * 
+	 * @param trainingActivity
+	 * @param position
+	 * @param tutorial
+	 * @param scale
+	 * @param centerPage
+	 * 
 	 */
-	public static Fragment create(TrainingActivity trainingActivity, int position, float scale, boolean centerPage)
+	public static Fragment create(TrainingActivity trainingActivity, int position, Tutorial tutorial, float scale, boolean centerPage)
 	{
 		Bundle args = new Bundle();
 		args.putInt(POSITION, position);
+		args.putSerializable(TUTORIAL, tutorial);
 		args.putFloat(SCALE, scale);
 		args.putBoolean(CENTER_PAGE, centerPage);
 		return Fragment.instantiate(trainingActivity, TrainingFragment.class.getName(), args);
@@ -48,6 +60,7 @@ public class TrainingFragment extends Fragment {
         
         Bundle args = getArguments();
         setPosition(args.getInt(POSITION));
+        setTutorial((Tutorial) args.getSerializable(TUTORIAL));
         setScale(args.getFloat(SCALE));
         setCenterPage(args.getBoolean(CENTER_PAGE));
     }
@@ -63,31 +76,80 @@ public class TrainingFragment extends Fragment {
 		float scale = this.getArguments().getFloat("scale");
 		trainingCustomLayout.adjustSize(scale);
 
-		// configure title of training
-        TextView tv = (TextView) rootView.findViewById(R.id.training_tutorial_title);
-		tv.setText("Tutorial " + getPosition());
+		// configure title of tutorial
+        TextView title = (TextView) rootView.findViewById(R.id.training_tutorial_title);
+        title.setText(getTutorial().getTitle());
 		
-		// configure visibility of the descriptive text associated with the training tutorial
-		View videoDescDetails = (View) rootView.findViewById(R.id.training_tutorial_description_layout);		
-		if (isCenterPage()) {
-			videoDescDetails.setVisibility(View.VISIBLE);
-		}
-		else {
-			videoDescDetails.setVisibility(View.INVISIBLE);
-		}		
+		// configure type of tutorial
+        TextView type = (TextView) rootView.findViewById(R.id.training_tutorial_type);
+        type.setText(getTutorial().getType());
+        
+		// configure availability of tutorial
+        TextView availability = (TextView) rootView.findViewById(R.id.training_tutorial_availability);
+        availability.setText(getTutorial().getAvailability());
+
+		// configure description of tutorial
+        TextView description = (TextView) rootView.findViewById(R.id.training_tutorial_description);
+        description.setText(getTutorial().getDescription());
+        
+		// configure 'created date' of tutorial
+        TextView createdDate = (TextView) rootView.findViewById(R.id.training_tutorial_created_date);
+        createdDate.setText(getTutorial().getCreatedDate());
+
+		// configure 'created by' of tutorial
+        TextView createdBy = (TextView) rootView.findViewById(R.id.training_tutorial_created_by);
+        createdBy.setText(getTutorial().getCreatedBy());
+        
+		// configure visibility of tutorial headings and content
+		configureTutorialContentVisibility(rootView);
+		
+		// add soft keyboard handler - essentially hiding soft
+		// keyboard when an EditText is not in focus
+		((SupportingLifeBaseActivity) getActivity()).addSoftKeyboardHandling(rootView);
 		
         return rootView;
     }
 
+	/**
+	 * 
+	 * Responsible for configuring the visibility of the tutorial
+	 * headings and textual content
+	 * 
+	 * @param rootView 
+	 * 
+	 */
+	private void configureTutorialContentVisibility(View rootView) {
+		View tutorialDetails = (View) rootView.findViewById(R.id.training_tutorial_description_layout);		
+		if (isCenterPage()) {
+			tutorialDetails.setVisibility(View.VISIBLE);
+		}
+		else {
+			tutorialDetails.setVisibility(View.INVISIBLE);
+		}
+	}
+
+	/**
+	 * 
+	 * Responsible for configuring the display of the title image associated with the 
+	 * tutorial. Additionally, include a click handler to manage the display of the
+	 * actual tutorial.
+	 * 
+	 * @param rootView 
+	 * 
+	 */
 	private void configureImageView(View rootView) {
 		final ImageView imageView = (ImageView) rootView.findViewById(R.id.training_image);
+		
+		// configure the tutorial button image
+		String packageName = getActivity().getApplicationContext().getPackageName();
+		int imageResource = getResources().getIdentifier(getTutorial().getTitleImageName(), null, packageName);
+
+		imageView.setImageDrawable(getResources().getDrawable(imageResource));
 		
 		imageView.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-			//	Toast.makeText(getActivity(), "Clicked", Toast.LENGTH_SHORT).show();
-				startActivity(new Intent(getActivity().getApplicationContext(), VideoViewerActivity.class));
-				
+				startActivity(new Intent(getActivity().getApplicationContext(), VideoViewerActivity.class));		
 			}
 		});
 	}
@@ -114,6 +176,20 @@ public class TrainingFragment extends Fragment {
 	 */
 	public void setPosition(int position) {
 		this.position = position;
+	}
+
+	/**
+	 * Getter Method: getTutorial()
+	 */
+	public Tutorial getTutorial() {
+		return tutorial;
+	}
+
+	/**
+	 * Setter Method: setTutorial()
+	 */
+	public void setTutorial(Tutorial tutorial) {
+		this.tutorial = tutorial;
 	}
 
 	/**

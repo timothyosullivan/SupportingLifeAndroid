@@ -112,7 +112,7 @@ public class TreatmentRule implements Serializable {
 	 * 
 	 */
 	public String debugOutput() {
-		StringBuffer debugOutput = new StringBuffer();
+		StringBuilder debugOutput = new StringBuilder();
 
 		debugOutput.append("------------------------------------ \n");
 		debugOutput.append("Classification: " + getClassification() + "\n");

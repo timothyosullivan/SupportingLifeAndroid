@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ============================================================ -->
+<!-- TRAINING TUTORIALS 										  -->
+<!-- ============================================================ -->
+
+<Tutorials>
+	<!-- ============================================================ -->
+	<!-- TUTORIAL					 								  -->
+	<!-- ============================================================ -->
+	<!-- ============================================================ -->
+	<!-- Title: Checking Danger Signs (IMCI)				  		  -->
+	<!-- ============================================================ -->
+	<Tutorial>
+		<Title>Checking Danger Signs (IMCI)</Title>
+		<Type>Video</Type>
+		<Availability>Offline</Availability>
+		<CreatedDate>October 2013</CreatedDate>
+		<CreatedBy>Supporting Life Consortium</CreatedBy>
+		<Description>Video provides a step-by-step guide to checking the danger signs of a patient aged between 2 months and 5 years.</Description>
+		<TitleImageName>@drawable/im_training_danger_signs_tutorial_button</TitleImageName>
+		<VideoName></VideoName>
+	</Tutorial>
+	
+	<!-- ============================================================ -->
+	<!-- TUTORIAL					 								  -->
+	<!-- ============================================================ -->
+	<!-- ============================================================ -->
+	<!-- Title: Performing a Breathing Assessment (IMCI)	 		  -->
+	<!-- ============================================================ -->
+	<Tutorial>
+		<Title>Performing a Breathing Assessment (IMCI)</Title>
+		<Type>Video</Type>
+		<Availability>Offline</Availability>
+		<CreatedDate>October 2013</CreatedDate>
+		<CreatedBy>Supporting Life Consortium</CreatedBy>
+		<Description>Video provides a step-by-step guide to performing an IMCI-based breathing assessment.</Description>
+		<TitleImageName>@drawable/im_training_general_tutorial_button</TitleImageName>
+		<VideoName></VideoName>
+	</Tutorial>
+	
+	<!-- ============================================================ -->
+	<!-- TUTORIAL					 								  -->
+	<!-- ============================================================ -->
+	<!-- ============================================================ -->
+	<!-- Title: Performing a Diarrhoea Assessment (IMCI)	  		  -->
+	<!-- ============================================================ -->
+	<Tutorial>
+		<Title>Performing a Diarrhoea Assessment (IMCI)</Title>
+		<Type>Video</Type>
+		<Availability>Offline</Availability>
+		<CreatedDate>November 2013</CreatedDate>
+		<CreatedBy>Supporting Life Consortium</CreatedBy>
+		<Description>Video provides a step-by-step guide to performing an IMCI-based diarrhoea assessment.</Description>
+		<TitleImageName>@drawable/im_training_general_tutorial_button</TitleImageName>
+		<VideoName></VideoName>
+	</Tutorial>
+	
+	<!-- ============================================================ -->
+	<!-- TUTORIAL					 								  -->
+	<!-- ============================================================ -->
+	<!-- ============================================================ -->
+	<!-- Title: Performing a Fever Assessment (IMCI)		  		  -->
+	<!-- ============================================================ -->
+	<Tutorial>
+		<Title>Performing a Fever Assessment (IMCI)</Title>
+		<Type>Video</Type>
+		<Availability>Offline</Availability>
+		<CreatedDate>January 2014</CreatedDate>
+		<CreatedBy>Supporting Life Consortium</CreatedBy>
+		<Description>Video provides a step-by-step guide to performing an IMCI-based fever assessment.</Description>
+		<TitleImageName>@drawable/im_training_general_tutorial_button</TitleImageName>
+		<VideoName></VideoName>
+	</Tutorial>
+	
+	<!-- ============================================================ -->
+	<!-- TUTORIAL					 								  -->
+	<!-- ============================================================ -->
+	<!-- ============================================================ -->
+	<!-- Title: Performing an Ear Assessment (IMCI)			  		  -->
+	<!-- ============================================================ -->
+	<Tutorial>
+		<Title>Performing an Ear Assessment (IMCI)</Title>
+		<Type>Video</Type>
+		<Availability>Offline</Availability>
+		<CreatedDate>March 2014</CreatedDate>
+		<CreatedBy>Supporting Life Consortium</CreatedBy>
+		<Description>Video provides a step-by-step guide to performing an IMCI-based ear assessment.</Description>
+		<TitleImageName>@drawable/im_training_general_tutorial_button</TitleImageName>
+		<VideoName></VideoName>
+	</Tutorial>
+	
+	<!-- ============================================================ -->
+	<!-- TUTORIAL					 								  -->
+	<!-- ============================================================ -->
+	<!-- ============================================================ -->
+	<!-- Title: Performing a Malnutrition Assessment (IMCI)  		  -->
+	<!-- ============================================================ -->
+	<Tutorial>
+		<Title>Performing a Malnutrition Assessment (IMCI)</Title>
+		<Type>Video</Type>
+		<Availability>Offline</Availability>
+		<CreatedDate>March 2014</CreatedDate>
+		<CreatedBy>Supporting Life Consortium</CreatedBy>
+		<Description>Video provides a step-by-step guide to performing an IMCI-based malnutrition assessment.</Description>
+		<TitleImageName>@drawable/im_training_general_tutorial_button</TitleImageName>
+		<VideoName></VideoName>
+	</Tutorial>
+</Tutorials>

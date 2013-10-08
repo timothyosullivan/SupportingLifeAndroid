@@ -1,7 +1,10 @@
 package ie.ucc.bis.training.ui;
 
+import java.util.ArrayList;
+
 import ie.ucc.bis.R;
 import ie.ucc.bis.activity.TrainingActivity;
+import ie.ucc.bis.training.Tutorial;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
@@ -22,18 +25,21 @@ public class TrainingPagerAdapter extends FragmentStatePagerAdapter implements V
 
 	private TrainingActivity trainingActivity;
 	private FragmentManager fragmentManager;
+	private ArrayList<Tutorial> tutorials;
 	private SparseArray<Fragment> registeredFragments = new SparseArray<Fragment>();
 	
 	/**
 	 * Constructor
 	 * 
 	 * @param trainingActivity
+	 * @param tutorials 
 	 * @param fm
 	 */
-	public TrainingPagerAdapter(TrainingActivity trainingActivity, FragmentManager fragmentManager) {
+	public TrainingPagerAdapter(TrainingActivity trainingActivity, FragmentManager fragmentManager, ArrayList<Tutorial> tutorials) {
 		super(fragmentManager);
 		setTrainingActivity(trainingActivity);
 		setFragmentManager(fragmentManager);
+		setTutorials(tutorials);
 	}
 
 	@Override
@@ -52,7 +58,7 @@ public class TrainingPagerAdapter extends FragmentStatePagerAdapter implements V
         }
         
         position = position % TrainingActivity.PAGES;
-		return TrainingFragment.create(getTrainingActivity(), position, scale, centerPage);
+		return TrainingFragment.create(getTrainingActivity(), position, getTutorials().get(position), scale, centerPage);
 	}
 
 	@Override
@@ -192,5 +198,19 @@ public class TrainingPagerAdapter extends FragmentStatePagerAdapter implements V
 	 */
 	public void setRegisteredFragments(SparseArray<Fragment> registeredFragments) {
 		this.registeredFragments = registeredFragments;
+	}
+
+	/**
+	 * Getter Method: getTutorials()
+	 */
+	public ArrayList<Tutorial> getTutorials() {
+		return tutorials;
+	}
+
+	/**
+	 * Setter Method: setTutorials()
+	 */
+	public void setTutorials(ArrayList<Tutorial> tutorials) {
+		this.tutorials = tutorials;
 	}
 }
