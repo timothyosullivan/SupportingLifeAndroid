@@ -5,10 +5,6 @@ import ie.ucc.bis.imci.model.AbstractPage;
 import ie.ucc.bis.imci.model.AbstractWizardModel;
 import ie.ucc.bis.imci.model.ModelCallbacks;
 import ie.ucc.bis.imci.model.review.ReviewAssessmentAdapter;
-import ie.ucc.bis.imci.model.review.ReviewItem;
-
-import java.util.ArrayList;
-
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -28,7 +24,6 @@ public class ReviewFragment extends ReviewListFragment implements ModelCallbacks
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setFilteredReviewItems(new ArrayList<ReviewItem>());
         setReviewAssessmentAdapter(new ReviewAssessmentAdapter(this));
     }
 
@@ -79,19 +74,15 @@ public class ReviewFragment extends ReviewListFragment implements ModelCallbacks
        setCurrentReviewItems(getWizardModel().gatherAssessmentReviewItems());
 
         if (getReviewAssessmentAdapter() != null) {
+        	getReviewAssessmentAdapter().getFilter().filter(null);// apply filter to remove review items which we indicated should be invisible
+    		
         	getReviewAssessmentAdapter().notifyDataSetChanged();
         }
-    }
-    
-    @Override
-    public void onResume() {
-        super.onResume();
-        getReviewAssessmentAdapter().notifyDataSetInvalidated();
-    }    
+    }  
     
     @Override
     public void onListItemClick(ListView l, View v, int position, long id) {
-        getReviewFragmentCallbacks().onEditScreenAfterReview(getFilteredReviewItems().get(position).getPageKey());
+        getReviewFragmentCallbacks().onEditScreenAfterReview(getReviewAssessmentAdapter().getFilteredReviewItems().get(position).getPageKey());
     }
 
 	/**

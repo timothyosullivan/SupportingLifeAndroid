@@ -8,7 +8,6 @@ import android.support.v4.app.ListFragment;
 
 public class ReviewListFragment extends ListFragment {
     private List<ReviewItem> currentReviewItems;
-    private List<ReviewItem> filteredReviewItems;
     
 	/**
 	 * Getter Method: getCurrentReviewItems()
@@ -22,19 +21,5 @@ public class ReviewListFragment extends ListFragment {
 	 */
 	public void setCurrentReviewItems(List<ReviewItem> currentReviewItems) {
 		this.currentReviewItems = currentReviewItems;
-	}
-	
-	/**
-	 * Getter Method: getFilteredReviewItems()
-	 */
-	public List<ReviewItem> getFilteredReviewItems() {
-		return filteredReviewItems;
-	}
-
-	/**
-	 * Setter Method: setFilteredReviewItems()
-	 */
-	public void setFilteredReviewItems(List<ReviewItem> filteredReviewItems) {
-		this.filteredReviewItems = filteredReviewItems;
 	}
 }
