@@ -22,12 +22,10 @@ public class ReviewAssessmentAdapter extends BaseAdapter implements Filterable {
 	private static final String DEFAULT_ITEM_VALUE = "--------";
 	
 	private ReviewListFragment reviewListFragment;
-	private List<ReviewItem> filteredReviewItems;
 	
     public ReviewAssessmentAdapter(ReviewListFragment reviewListFragment) {
 		super();
 		setReviewListFragment(reviewListFragment);
-		setFilteredReviewItems(new ArrayList<ReviewItem>());
 		// apply filter to remove review items which we indicated should be invisible
 		getFilter().filter(null);
 	}
@@ -41,7 +39,7 @@ public class ReviewAssessmentAdapter extends BaseAdapter implements Filterable {
     public int getItemViewType(int position) {
     	// need to ascertain if we are dealing with a header
     	// or just a simple list item
-    	ReviewItem reviewItem = getFilteredReviewItems().get(position);
+    	ReviewItem reviewItem = getReviewListFragment().getFilteredReviewItems().get(position);
     	if (reviewItem.isHeaderItem()) {
     		return HEADER_ITEM_TYPE;
     	}
@@ -61,16 +59,16 @@ public class ReviewAssessmentAdapter extends BaseAdapter implements Filterable {
     }
 
     public Object getItem(int position) {
-        return getFilteredReviewItems().get(position);
+        return getReviewListFragment().getFilteredReviewItems().get(position);
     }
 
     public long getItemId(int position) {
-        return getFilteredReviewItems().get(position).hashCode();
+        return getReviewListFragment().getFilteredReviewItems().get(position).hashCode();
     }
 
     public View getView(int position, View view, ViewGroup container) {
         int itemType = getItemViewType(position);
-    	ReviewItem reviewItem = getFilteredReviewItems().get(position);
+    	ReviewItem reviewItem = getReviewListFragment().getFilteredReviewItems().get(position);
       
         switch (itemType) {
         	case HEADER_ITEM_TYPE : 
@@ -101,7 +99,7 @@ public class ReviewAssessmentAdapter extends BaseAdapter implements Filterable {
     }
 
     public int getCount() {
-        return getFilteredReviewItems().size();
+        return getReviewListFragment().getFilteredReviewItems().size();
     }
 
 	/**
@@ -117,19 +115,12 @@ public class ReviewAssessmentAdapter extends BaseAdapter implements Filterable {
 	private void setReviewListFragment(ReviewListFragment reviewListFragment) {
 		this.reviewListFragment = reviewListFragment;
 	}
-
-	/**
-	 * Getter Method: getFilteredReviewItems()
-	 */
-	public List<ReviewItem> getFilteredReviewItems() {
-		return filteredReviewItems;
-	}
-
-	/**
-	 * Setter Method: setFilteredReviewItems()
-	 */
-	public void setFilteredReviewItems(List<ReviewItem> filteredReviewItems) {
-		this.filteredReviewItems = filteredReviewItems;
+	
+	@Override
+	public void notifyDataSetChanged() {
+		// apply filter to remove review items which we indicated should be invisible
+		getFilter().filter(null);
+		super.notifyDataSetChanged();
 	}
 
 	@Override
@@ -146,16 +137,16 @@ public class ReviewAssessmentAdapter extends BaseAdapter implements Filterable {
 				@Override
 				protected FilterResults performFiltering(CharSequence constraint) {
 					FilterResults filterResults = new FilterResults();
-					List<ReviewItem> filteredReviewItems = new ArrayList<ReviewItem>();
+					getReviewListFragment().setFilteredReviewItems(new ArrayList<ReviewItem>());
 					
 					for (ReviewItem reviewItem : getReviewListFragment().getCurrentReviewItems()) {
 						if (reviewItem.isVisible()) {
-							filteredReviewItems.add(reviewItem);
+							getReviewListFragment().getFilteredReviewItems().add(reviewItem);
 						}
 					}
 					
-					filterResults.values = filteredReviewItems;
-					filterResults.count = filteredReviewItems.size();
+					filterResults.values = getReviewListFragment().getFilteredReviewItems();
+					filterResults.count = getReviewListFragment().getFilteredReviewItems().size();
 					return filterResults;	
 				}
 	
@@ -166,7 +157,7 @@ public class ReviewAssessmentAdapter extends BaseAdapter implements Filterable {
 				    if (results.count == 0)
 				        notifyDataSetInvalidated();
 				    else {
-				        setFilteredReviewItems((List<ReviewItem>) results.values);
+				    	getReviewListFragment().setFilteredReviewItems((List<ReviewItem>) results.values);
 				        notifyDataSetChanged();
 				    }
 	            }};

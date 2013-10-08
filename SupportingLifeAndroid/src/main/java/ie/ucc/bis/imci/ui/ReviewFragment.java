@@ -5,6 +5,10 @@ import ie.ucc.bis.imci.model.AbstractPage;
 import ie.ucc.bis.imci.model.AbstractWizardModel;
 import ie.ucc.bis.imci.model.ModelCallbacks;
 import ie.ucc.bis.imci.model.review.ReviewAssessmentAdapter;
+import ie.ucc.bis.imci.model.review.ReviewItem;
+
+import java.util.ArrayList;
+
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -24,6 +28,7 @@ public class ReviewFragment extends ReviewListFragment implements ModelCallbacks
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setFilteredReviewItems(new ArrayList<ReviewItem>());
         setReviewAssessmentAdapter(new ReviewAssessmentAdapter(this));
     }
 
@@ -57,8 +62,7 @@ public class ReviewFragment extends ReviewListFragment implements ModelCallbacks
         getWizardModel().registerListener(this);
         onPageTreeChanged();
     }
-
-   
+       
     public void onPageTreeChanged() {
         onPageDataChanged(null);
     }
@@ -75,13 +79,19 @@ public class ReviewFragment extends ReviewListFragment implements ModelCallbacks
        setCurrentReviewItems(getWizardModel().gatherAssessmentReviewItems());
 
         if (getReviewAssessmentAdapter() != null) {
-        	getReviewAssessmentAdapter().notifyDataSetInvalidated();
+        	getReviewAssessmentAdapter().notifyDataSetChanged();
         }
     }
-
+    
+    @Override
+    public void onResume() {
+        super.onResume();
+        getReviewAssessmentAdapter().notifyDataSetInvalidated();
+    }    
+    
     @Override
     public void onListItemClick(ListView l, View v, int position, long id) {
-        getReviewFragmentCallbacks().onEditScreenAfterReview(getCurrentReviewItems().get(position).getPageKey());
+        getReviewFragmentCallbacks().onEditScreenAfterReview(getFilteredReviewItems().get(position).getPageKey());
     }
 
 	/**

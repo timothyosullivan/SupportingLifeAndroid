@@ -307,8 +307,8 @@
 	<string name="immunization_assessment_radio_vaccine_receive_today">Receive Today</string>
 
     <!-- Immunization Status Review -->
-	<string name="immunization_assessment_review_vaccine_bcg">Vaccine: BCG</string>
-	<string name="immunization_assessment_review_vaccine_measles">Vaccine: Measles</string>
+	<string name="immunization_assessment_review_vaccine_bcg">BCG</string>
+	<string name="immunization_assessment_review_vaccine_measles">Measles</string>
 
     <!-- ============================================================ -->
     <!-- ASSESSMENT WIZARD BREAD-CRUMB UI -->
