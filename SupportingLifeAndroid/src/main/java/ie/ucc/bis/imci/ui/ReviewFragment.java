@@ -2,7 +2,7 @@ package ie.ucc.bis.imci.ui;
 
 import ie.ucc.bis.R;
 import ie.ucc.bis.assessment.model.AbstractPage;
-import ie.ucc.bis.assessment.model.AbstractWizardModel;
+import ie.ucc.bis.assessment.model.AbstractModel;
 import ie.ucc.bis.assessment.model.ModelCallbacks;
 import ie.ucc.bis.imci.model.review.ReviewAssessmentAdapter;
 import android.app.Activity;
@@ -15,7 +15,7 @@ import android.widget.TextView;
 
 public class ReviewFragment extends ReviewListFragment implements ModelCallbacks {
     private ReviewFragmentCallbacks reviewFragmentCallbacks;
-    private AbstractWizardModel wizardModel;
+    private AbstractModel wizardModel;
     private ReviewAssessmentAdapter reviewAssessmentAdapter;
 
     public ReviewFragment() {
@@ -116,14 +116,14 @@ public class ReviewFragment extends ReviewListFragment implements ModelCallbacks
 	/**
 	 * Getter Method: getWizardModel()
 	 */	
-	private AbstractWizardModel getWizardModel() {
+	private AbstractModel getWizardModel() {
 		return wizardModel;
 	}
 
 	/**
 	 * Setter Method: setWizardModel()
 	 */
-	private void setWizardModel(AbstractWizardModel wizardModel) {
+	private void setWizardModel(AbstractModel wizardModel) {
 		this.wizardModel = wizardModel;
 	}
 }

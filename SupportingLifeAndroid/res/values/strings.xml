@@ -17,7 +17,8 @@
 	<string name="activity_title_video_viewer">Video Viewer</string>
 	<string name="activity_title_record_patient_details">Assessment</string>
 	<string name="activity_title_submit_patient_record">Submission</string>
-	<string name="activity_title_record_patient_details_wizard">e-IMCI Assessment</string>
+	<string name="activity_title_record_imci_assessment">IMCI Assessment</string>
+	<string name="activity_title_record_ccm_assessment">CCM Assessment</string>
 	<string name="activity_title_assessment_results">e-IMCI Results</string>
 
     <!-- ============================================================ -->

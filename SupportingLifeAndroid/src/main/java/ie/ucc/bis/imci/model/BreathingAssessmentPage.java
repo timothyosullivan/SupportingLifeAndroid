@@ -2,7 +2,7 @@ package ie.ucc.bis.imci.model;
 
 import ie.ucc.bis.R;
 import ie.ucc.bis.assessment.model.AbstractPage;
-import ie.ucc.bis.assessment.model.AbstractWizardModel;
+import ie.ucc.bis.assessment.model.AbstractModel;
 import ie.ucc.bis.assessment.model.ModelCallbacks;
 import ie.ucc.bis.assessment.model.listener.RadioGroupListener;
 import ie.ucc.bis.assessment.model.review.ReviewItem;
@@ -54,7 +54,7 @@ public class BreathingAssessmentPage extends AbstractPage {
 	 */      
     @Override
     public void getReviewItems(ArrayList<ReviewItem> reviewItems) {
-    	Resources resources = ((AbstractWizardModel) getModelCallbacks()).getApplicationContext().getResources();
+    	Resources resources = ((AbstractModel) getModelCallbacks()).getApplicationContext().getResources();
     	String reviewItemLabel = null;
     	String reviewItemValue = null;
     	String reviewItemSymptomId = null;

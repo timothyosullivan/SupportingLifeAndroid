@@ -1,8 +1,8 @@
 package ie.ucc.bis.imci.ui;
 
-import ie.ucc.bis.assessment.model.AbstractWizardModel;
+import ie.ucc.bis.assessment.model.AbstractModel;
 
 public interface ReviewFragmentCallbacks {
-    public AbstractWizardModel getWizardModel();
+    public AbstractModel getWizardModel();
     public void onEditScreenAfterReview(String pageKey);
 }

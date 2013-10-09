@@ -2,7 +2,7 @@ package ie.ucc.bis.imci.model;
 
 import ie.ucc.bis.R;
 import ie.ucc.bis.assessment.model.AbstractPage;
-import ie.ucc.bis.assessment.model.AbstractWizardModel;
+import ie.ucc.bis.assessment.model.AbstractModel;
 import ie.ucc.bis.assessment.model.ModelCallbacks;
 import ie.ucc.bis.assessment.model.listener.RadioGroupListener;
 import ie.ucc.bis.assessment.model.review.ReviewItem;
@@ -57,7 +57,7 @@ public class DiarrhoeaAssessmentPage extends AbstractPage {
 	 */      
     @Override
     public void getReviewItems(ArrayList<ReviewItem> reviewItems) {
-    	Context appContext = ((AbstractWizardModel) getModelCallbacks()).getApplicationContext();
+    	Context appContext = ((AbstractModel) getModelCallbacks()).getApplicationContext();
     	Resources resources = appContext.getResources();
     	String reviewItemLabel = null;
     	String reviewItemValue = null;

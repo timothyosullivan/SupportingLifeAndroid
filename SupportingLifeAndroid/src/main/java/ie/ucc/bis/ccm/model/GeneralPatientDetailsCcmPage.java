@@ -1,13 +1,13 @@
-package ie.ucc.bis.imci.model;
+package ie.ucc.bis.ccm.model;
 
 import ie.ucc.bis.R;
-import ie.ucc.bis.assessment.model.AbstractPage;
 import ie.ucc.bis.assessment.model.AbstractModel;
+import ie.ucc.bis.assessment.model.AbstractPage;
 import ie.ucc.bis.assessment.model.ModelCallbacks;
 import ie.ucc.bis.assessment.model.listener.RadioGroupListener;
 import ie.ucc.bis.assessment.model.review.ReviewItem;
+import ie.ucc.bis.ccm.ui.GeneralPatientDetailsCcmFragment;
 import ie.ucc.bis.imci.model.review.AgeIndicatorReviewItem;
-import ie.ucc.bis.imci.ui.GeneralPatientDetailsFragment;
 
 import java.util.ArrayList;
 
@@ -21,7 +21,7 @@ import android.support.v4.app.Fragment;
  * 
  * Responsible for displaying registration form for general patient details
  */
-public class GeneralPatientDetailsPage extends AbstractPage {
+public class GeneralPatientDetailsCcmPage extends AbstractPage {
     public static final String FIRST_NAME_DATA_KEY = "FIRST_NAME";
     public static final String SURNAME_DATA_KEY = "SURNAME";
     public static final String DATE_OF_BIRTH_DATA_KEY = "DATE_OF_BIRTH";
@@ -30,16 +30,16 @@ public class GeneralPatientDetailsPage extends AbstractPage {
     public static final String GENDER_DATA_KEY = "GENDER";
     public static final String PROBLEMS_DATA_KEY = "PROBLEMS";
     
-    private GeneralPatientDetailsFragment generalPatientDetailsFragment;
+    private GeneralPatientDetailsCcmFragment generalPatientDetailsCcmFragment;
 
-    public GeneralPatientDetailsPage(ModelCallbacks callbacks, String title) {
+    public GeneralPatientDetailsCcmPage(ModelCallbacks callbacks, String title) {
         super(callbacks, title);
     }
 
     @Override
     public Fragment createFragment() {
-        setGeneralPatientDetailsFragment(GeneralPatientDetailsFragment.create(getKey()));
-        return getGeneralPatientDetailsFragment();
+        setGeneralPatientDetailsCcmFragment(GeneralPatientDetailsCcmFragment.create(getKey()));
+        return getGeneralPatientDetailsCcmFragment();
     }
 
 	/**
@@ -109,18 +109,18 @@ public class GeneralPatientDetailsPage extends AbstractPage {
     }
 
 	/**
-	 * Getter Method: getGeneralPatientDetailsFragment()
+	 * Getter Method: getGeneralPatientDetailsCcmFragment()
 	 * 
 	 */    
-	public GeneralPatientDetailsFragment getGeneralPatientDetailsFragment() {
-		return generalPatientDetailsFragment;
+	public GeneralPatientDetailsCcmFragment getGeneralPatientDetailsCcmFragment() {
+		return generalPatientDetailsCcmFragment;
 	}
 
 	/**
-	 * Setter Method: setGeneralPatientDetailsFragment()
+	 * Setter Method: setGeneralPatientDetailsCcmFragment()
 	 * 
 	 */		
-	public void setGeneralPatientDetailsFragment(GeneralPatientDetailsFragment generalPatientDetailsFragment) {
-		this.generalPatientDetailsFragment = generalPatientDetailsFragment;
+	public void setGeneralPatientDetailsCcmFragment(GeneralPatientDetailsCcmFragment generalPatientDetailsCcmFragment) {
+		this.generalPatientDetailsCcmFragment = generalPatientDetailsCcmFragment;
 	}
 }

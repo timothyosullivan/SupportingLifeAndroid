@@ -1,10 +1,10 @@
 package ie.ucc.bis.imci.model;
 
-import ie.ucc.bis.assessment.model.AbstractWizardModel;
+import ie.ucc.bis.assessment.model.AbstractModel;
 import ie.ucc.bis.assessment.model.PageList;
 import android.content.Context;
 
-public class ImciAssessmentModel extends AbstractWizardModel {
+public class ImciAssessmentModel extends AbstractModel {
 
 	public static final String GENERAL_PATIENT_DETAILS_PAGE_TITLE = "Patient Details";
 	public static final String DANGER_SIGNS_PAGE_TITLE = "Danger Signs";

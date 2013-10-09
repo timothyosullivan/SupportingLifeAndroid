@@ -3,7 +3,7 @@ package ie.ucc.bis.imci.ui;
 import ie.ucc.bis.R;
 import ie.ucc.bis.activity.SupportingLifeBaseActivity;
 import ie.ucc.bis.assessment.model.AbstractPage;
-import ie.ucc.bis.assessment.model.AbstractWizardModel;
+import ie.ucc.bis.assessment.model.AbstractModel;
 import ie.ucc.bis.assessment.model.listener.AssessmentWizardTextWatcher;
 import ie.ucc.bis.assessment.model.listener.RadioGroupCoordinatorListener;
 import ie.ucc.bis.assessment.model.listener.RadioGroupListener;
@@ -43,7 +43,7 @@ public class DiarrhoeaAssessmentFragment extends Fragment {
     private static final int MIN_DIARRHOEA_DURATION = 1;
     private static final int MAX_DIARRHOEA_DURATION = 365;
 
-    private AbstractWizardModel wizardModel;
+    private AbstractModel wizardModel;
     
     private DiarrhoeaAssessmentPage diarrhoeaAssessmentPage;    
     private PageFragmentCallbacks pageFragmentCallbacks;
@@ -472,14 +472,14 @@ public class DiarrhoeaAssessmentFragment extends Fragment {
 	/**
 	 * Getter Method: getWizardModel()
 	 */
-	public AbstractWizardModel getWizardModel() {
+	public AbstractModel getWizardModel() {
 		return wizardModel;
 	}
 
 	/**
 	 * Setter Method: setWizardModel()
 	 */	
-	public void setWizardModel(AbstractWizardModel wizardModel) {
+	public void setWizardModel(AbstractModel wizardModel) {
 		this.wizardModel = wizardModel;
 	}
 

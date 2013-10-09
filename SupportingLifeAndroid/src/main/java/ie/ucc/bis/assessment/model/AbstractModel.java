@@ -11,14 +11,14 @@ import android.content.Context;
 import android.os.Bundle;
 
 /**
- * Represents a wizard model, including the pages/steps in the wizard, their dependencies, and their
+ * Represents an assessment model, including the pages/steps in the assessment, their dependencies, and their
  * currently populated choices/values/selections.
  *
- * To create the SupportingLIFE breadcrumb UI wizard, extend this class 
+ * To create the SupportingLIFE breadcrumb UI assessment, extend this class 
  * and implement {@link #configurePageList()}.
  * 
  */
-public abstract class AbstractWizardModel implements ModelCallbacks {
+public abstract class AbstractModel implements ModelCallbacks {
 	private Context applicationContext;
 	private List<ModelCallbacks> modelListeners = new ArrayList<ModelCallbacks>();
     private PageList assessmentPages;
@@ -35,7 +35,7 @@ public abstract class AbstractWizardModel implements ModelCallbacks {
 	 * 
 	 * @param context Context
 	 */
-    public AbstractWizardModel(Context context) {
+    public AbstractModel(Context context) {
     	setApplicationContext(context);
         setAssessmentPages(configurePageList());
     }
@@ -106,7 +106,7 @@ public abstract class AbstractWizardModel implements ModelCallbacks {
 	 */       
     public Bundle save() {
         Bundle bundle = new Bundle();
-        for (AbstractPage page : getCurrentPageSequence()) {
+        for (AbstractPage page : getPageSequence()) {
             bundle.putBundle(page.getKey(), page.getPageData());
         }
         return bundle;
@@ -143,10 +143,9 @@ public abstract class AbstractWizardModel implements ModelCallbacks {
     }    
     
     /**
-     * Gets the current list of wizard steps, flattening nested (dependent) pages based on the
-     * user's choices.
+     * Gets the list of wizard steps
      */
-    public List<AbstractPage> getCurrentPageSequence() {
+    public List<AbstractPage> getPageSequence() {
         ArrayList<AbstractPage> flattened = new ArrayList<AbstractPage>();
         getAssessmentPages().flattenCurrentPageSequence(flattened);
         return flattened;
@@ -160,7 +159,7 @@ public abstract class AbstractWizardModel implements ModelCallbacks {
      */
 	public ArrayList<ReviewItem> gatherAssessmentReviewItems() {
 		ArrayList<ReviewItem> reviewItems = new ArrayList<ReviewItem>();
-        for (AbstractPage page : getCurrentPageSequence()) {
+        for (AbstractPage page : getPageSequence()) {
             page.getReviewItems(reviewItems);
         }
         

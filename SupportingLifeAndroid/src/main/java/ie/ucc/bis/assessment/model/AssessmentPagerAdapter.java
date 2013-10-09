@@ -1,6 +1,6 @@
 package ie.ucc.bis.assessment.model;
 
-import ie.ucc.bis.activity.ImciAssessmentActivity;
+import ie.ucc.bis.activity.AssessmentActivity;
 import ie.ucc.bis.imci.ui.ReviewFragment;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -8,29 +8,29 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 import android.view.ViewGroup;
 
 /**
- * AssessmentWizardPagerAdapter uses a Fragment to manage each page. 
+ * AssessmentPagerAdapter uses a Fragment to manage each page. 
  * This class also handles saving and restoring of fragment's state.
  * 
  * @author timothyosullivan
  *
  */
-public class AssessmentWizardPagerAdapter extends FragmentStatePagerAdapter {
+public class AssessmentPagerAdapter extends FragmentStatePagerAdapter {
     private int mCutOffPage;
     private Fragment mPrimaryItem;
-    private ImciAssessmentActivity assessmentWizardActivity;
+    private AssessmentActivity assessmentActivity;
 
-    public AssessmentWizardPagerAdapter(ImciAssessmentActivity assessmentWizardActivity, FragmentManager fm) {
+    public AssessmentPagerAdapter(AssessmentActivity assessmentActivity, FragmentManager fm) {
         super(fm);
-        setAssessmentWizardActivity(assessmentWizardActivity);
+        setAssessmentActivity(assessmentActivity);
     }
 
     @Override
     public Fragment getItem(int i) {
-        if (i >= getAssessmentWizardActivity().getCurrentPageSequence().size()) {
+        if (i >= getAssessmentActivity().getPageSequence().size()) {
             return new ReviewFragment();
         }
 
-        return getAssessmentWizardActivity().getCurrentPageSequence().get(i).createFragment();
+        return getAssessmentActivity().getPageSequence().get(i).createFragment();
     }
 
     @Override
@@ -53,7 +53,7 @@ public class AssessmentWizardPagerAdapter extends FragmentStatePagerAdapter {
     @Override
     public int getCount() {
         return Math.min(mCutOffPage + 1, 
-        		getAssessmentWizardActivity().getCurrentPageSequence() != null ? getAssessmentWizardActivity().getCurrentPageSequence().size() + 1
+        		getAssessmentActivity().getPageSequence() != null ? getAssessmentActivity().getPageSequence().size() + 1
         				: mCutOffPage + 1);
     }
 
@@ -69,16 +69,16 @@ public class AssessmentWizardPagerAdapter extends FragmentStatePagerAdapter {
     }
 
 	/**
-	 * Getter Method: getAssessmentWizardActivity()
+	 * Getter Method: getAssessmentActivity()
 	 */
-	public ImciAssessmentActivity getAssessmentWizardActivity() {
-		return assessmentWizardActivity;
+	public AssessmentActivity getAssessmentActivity() {
+		return assessmentActivity;
 	}
 
 	/**
-	 * Setter Method: setAssessmentWizardActivity()
+	 * Setter Method: setAssessmentActivity()
 	 */
-	public void setAssessmentWizardActivity(ImciAssessmentActivity assessmentWizardActivity) {
-		this.assessmentWizardActivity = assessmentWizardActivity;
+	public void setAssessmentActivity(AssessmentActivity assessmentActivity) {
+		this.assessmentActivity = assessmentActivity;
 	}
 }

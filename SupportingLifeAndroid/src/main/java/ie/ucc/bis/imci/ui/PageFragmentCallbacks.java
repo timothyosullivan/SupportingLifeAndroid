@@ -1,9 +1,9 @@
 package ie.ucc.bis.imci.ui;
 
 import ie.ucc.bis.assessment.model.AbstractPage;
-import ie.ucc.bis.assessment.model.AbstractWizardModel;
+import ie.ucc.bis.assessment.model.AbstractModel;
 
 public interface PageFragmentCallbacks {
-	AbstractWizardModel getWizardModel();
+	AbstractModel getWizardModel();
     AbstractPage getPage(String key);
 }

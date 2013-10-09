@@ -2,7 +2,7 @@ package ie.ucc.bis.activity;
 
 import ie.ucc.bis.R;
 import ie.ucc.bis.assessment.model.AssessmentPagerAdapter;
-import ie.ucc.bis.imci.model.ImciAssessmentModel;
+import ie.ucc.bis.ccm.model.CcmAssessmentModel;
 import ie.ucc.bis.imci.ui.PageSelectedListener;
 import ie.ucc.bis.imci.ui.StepPagerStrip;
 import android.app.AlertDialog;
@@ -13,7 +13,7 @@ import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.widget.Button;
 
-public class ImciAssessmentActivity extends AssessmentActivity {
+public class CcmAssessmentActivity extends AssessmentActivity {
     
 	/**
 	 * OnCreate method is called when the activity is first created.
@@ -31,7 +31,7 @@ public class ImciAssessmentActivity extends AssessmentActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         
-        setAssessmentModel(new ImciAssessmentModel(this));
+        setAssessmentModel(new CcmAssessmentModel(this));
         
         setContentView(R.layout.activity_assessment_wizard);
         
@@ -92,7 +92,7 @@ public class ImciAssessmentActivity extends AssessmentActivity {
 		// keyboard when an EditText is not in focus
 		 addSoftKeyboardHandling(findViewById(R.id.assessment_wizard));
     }
-
+    
     /**
      * Inner Class: NextButtonListener
      * 

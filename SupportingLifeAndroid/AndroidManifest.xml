@@ -45,7 +45,13 @@
         </activity>
         <activity
             android:name="ie.ucc.bis.activity.ImciAssessmentActivity"
-            android:label="@string/activity_title_record_patient_details_wizard"
+            android:label="@string/activity_title_record_imci_assessment"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateHidden" >
+        </activity>
+        <activity
+            android:name="ie.ucc.bis.activity.CcmAssessmentActivity"
+            android:label="@string/activity_title_record_ccm_assessment"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan|stateHidden" >
         </activity>
