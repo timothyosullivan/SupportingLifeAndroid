@@ -2,15 +2,15 @@ package ie.ucc.bis.imci.ui;
 
 import ie.ucc.bis.R;
 import ie.ucc.bis.activity.SupportingLifeBaseActivity;
-import ie.ucc.bis.imci.model.AbstractPage;
-import ie.ucc.bis.imci.model.AbstractWizardModel;
-import ie.ucc.bis.imci.model.AssessmentWizardModel;
+import ie.ucc.bis.assessment.model.AbstractPage;
+import ie.ucc.bis.assessment.model.AbstractWizardModel;
+import ie.ucc.bis.assessment.model.listener.AssessmentWizardTextWatcher;
+import ie.ucc.bis.assessment.model.listener.RadioGroupCoordinatorListener;
+import ie.ucc.bis.assessment.model.listener.RadioGroupListener;
+import ie.ucc.bis.imci.model.ImciAssessmentModel;
 import ie.ucc.bis.imci.model.DiarrhoeaAssessmentPage;
 import ie.ucc.bis.imci.model.DynamicView;
 import ie.ucc.bis.imci.model.GeneralDangerSignsPage;
-import ie.ucc.bis.imci.model.listener.AssessmentWizardTextWatcher;
-import ie.ucc.bis.imci.model.listener.RadioGroupCoordinatorListener;
-import ie.ucc.bis.imci.model.listener.RadioGroupListener;
 import ie.ucc.bis.ui.custom.InputFilterMinMax;
 import ie.ucc.bis.ui.custom.ToggleButtonGroupTableLayout;
 import ie.ucc.bis.ui.utilities.RadioGroupUtilities;
@@ -187,7 +187,7 @@ public class DiarrhoeaAssessmentFragment extends Fragment {
 	private void configureLethargicUnconsciousRadioGroup() {
 		// 1. retrieve the relevant page and ui element
 		//    where the radio group 'lethargic or unconscious' is being referenced
-        AbstractPage dangerSignsAssessmentPage = getWizardModel().findPageByKey(AssessmentWizardModel.DANGER_SIGNS_PAGE_TITLE);
+        AbstractPage dangerSignsAssessmentPage = getWizardModel().findPageByKey(ImciAssessmentModel.DANGER_SIGNS_PAGE_TITLE);
         String uiReferenceElement = GeneralDangerSignsPage.LETHARGIC_OR_UNCONSCIOUS_DATA_KEY + RadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY;
         
         // 2. retrieve the textual value (yes/no) of the radio group checked option

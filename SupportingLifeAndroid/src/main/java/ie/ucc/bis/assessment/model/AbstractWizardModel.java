@@ -1,6 +1,6 @@
-package ie.ucc.bis.imci.model;
+package ie.ucc.bis.assessment.model;
 
-import ie.ucc.bis.imci.model.review.ReviewItem;
+import ie.ucc.bis.assessment.model.review.ReviewItem;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -19,7 +19,7 @@ import android.os.Bundle;
  * 
  */
 public abstract class AbstractWizardModel implements ModelCallbacks {
-	protected Context applicationContext;
+	private Context applicationContext;
 	private List<ModelCallbacks> modelListeners = new ArrayList<ModelCallbacks>();
     private PageList assessmentPages;
 

@@ -2,6 +2,7 @@ package ie.ucc.bis.imci.model.review;
 
 import ie.ucc.bis.R;
 import ie.ucc.bis.activity.SupportingLifeBaseActivity;
+import ie.ucc.bis.assessment.model.review.ReviewItem;
 
 import java.io.Serializable;
 

@@ -1,6 +1,7 @@
 package ie.ucc.bis.imci.model.review;
 
 import ie.ucc.bis.R;
+import ie.ucc.bis.assessment.model.review.ReviewItem;
 import ie.ucc.bis.imci.ui.ReviewListFragment;
 
 import java.util.ArrayList;

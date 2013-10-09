@@ -1,10 +1,13 @@
 package ie.ucc.bis.imci.model;
 
 import ie.ucc.bis.R;
-import ie.ucc.bis.imci.model.listener.RadioGroupListener;
+import ie.ucc.bis.assessment.model.AbstractPage;
+import ie.ucc.bis.assessment.model.AbstractWizardModel;
+import ie.ucc.bis.assessment.model.ModelCallbacks;
+import ie.ucc.bis.assessment.model.listener.RadioGroupListener;
+import ie.ucc.bis.assessment.model.review.ReviewItem;
 import ie.ucc.bis.imci.model.review.DiarrhoeaDurationIndicatorReviewItem;
 import ie.ucc.bis.imci.model.review.FluidReviewItem;
-import ie.ucc.bis.imci.model.review.ReviewItem;
 import ie.ucc.bis.imci.model.review.SkinPinchReviewItem;
 import ie.ucc.bis.imci.ui.DiarrhoeaAssessmentFragment;
 
@@ -54,7 +57,7 @@ public class DiarrhoeaAssessmentPage extends AbstractPage {
 	 */      
     @Override
     public void getReviewItems(ArrayList<ReviewItem> reviewItems) {
-    	Context appContext = ((AbstractWizardModel) getModelCallbacks()).applicationContext;
+    	Context appContext = ((AbstractWizardModel) getModelCallbacks()).getApplicationContext();
     	Resources resources = appContext.getResources();
     	String reviewItemLabel = null;
     	String reviewItemValue = null;

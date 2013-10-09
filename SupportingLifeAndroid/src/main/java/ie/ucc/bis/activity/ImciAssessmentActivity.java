@@ -1,11 +1,11 @@
 package ie.ucc.bis.activity;
 
 import ie.ucc.bis.R;
-import ie.ucc.bis.imci.model.AbstractPage;
-import ie.ucc.bis.imci.model.AbstractWizardModel;
-import ie.ucc.bis.imci.model.AssessmentWizardModel;
-import ie.ucc.bis.imci.model.AssessmentWizardPagerAdapter;
-import ie.ucc.bis.imci.model.ModelCallbacks;
+import ie.ucc.bis.assessment.model.AbstractPage;
+import ie.ucc.bis.assessment.model.AbstractWizardModel;
+import ie.ucc.bis.assessment.model.AssessmentWizardPagerAdapter;
+import ie.ucc.bis.assessment.model.ModelCallbacks;
+import ie.ucc.bis.imci.model.ImciAssessmentModel;
 import ie.ucc.bis.imci.ui.PageFragmentCallbacks;
 import ie.ucc.bis.imci.ui.PageSelectedListener;
 import ie.ucc.bis.imci.ui.ReviewFragmentCallbacks;
@@ -30,7 +30,7 @@ public class ImciAssessmentActivity extends SupportingLifeBaseActivity implement
 	private ViewPager viewPager;
     private AssessmentWizardPagerAdapter suppLifeWizardPagerAdapter;
     private List<AbstractPage> currentPageSequence;
-    private AbstractWizardModel supportingLifeWizardModel = new AssessmentWizardModel(this);;
+    private AbstractWizardModel supportingLifeWizardModel = new ImciAssessmentModel(this);;
     private StepPagerStrip stepPagerStrip;
     
     private boolean mEditingAfterReview;

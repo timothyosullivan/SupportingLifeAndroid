@@ -1,9 +1,9 @@
 package ie.ucc.bis.imci.ui;
 
 import ie.ucc.bis.R;
-import ie.ucc.bis.imci.model.AbstractPage;
-import ie.ucc.bis.imci.model.AbstractWizardModel;
-import ie.ucc.bis.imci.model.ModelCallbacks;
+import ie.ucc.bis.assessment.model.AbstractPage;
+import ie.ucc.bis.assessment.model.AbstractWizardModel;
+import ie.ucc.bis.assessment.model.ModelCallbacks;
 import ie.ucc.bis.imci.model.review.ReviewAssessmentAdapter;
 import android.app.Activity;
 import android.os.Bundle;

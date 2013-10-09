@@ -1,8 +1,10 @@
 package ie.ucc.bis.imci.model;
 
+import ie.ucc.bis.assessment.model.AbstractWizardModel;
+import ie.ucc.bis.assessment.model.PageList;
 import android.content.Context;
 
-public class AssessmentWizardModel extends AbstractWizardModel {
+public class ImciAssessmentModel extends AbstractWizardModel {
 
 	public static final String GENERAL_PATIENT_DETAILS_PAGE_TITLE = "Patient Details";
 	public static final String DANGER_SIGNS_PAGE_TITLE = "Danger Signs";
@@ -19,7 +21,7 @@ public class AssessmentWizardModel extends AbstractWizardModel {
 	 * 
 	 * @param context Context
 	 */
-	public AssessmentWizardModel(Context context) {
+	public ImciAssessmentModel(Context context) {
 		super(context);
 	}
 

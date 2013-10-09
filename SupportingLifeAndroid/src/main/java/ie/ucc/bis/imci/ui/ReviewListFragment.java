@@ -1,6 +1,6 @@
 package ie.ucc.bis.imci.ui;
 
-import ie.ucc.bis.imci.model.review.ReviewItem;
+import ie.ucc.bis.assessment.model.review.ReviewItem;
 
 import java.util.List;
 

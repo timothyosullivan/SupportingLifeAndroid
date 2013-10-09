@@ -2,10 +2,10 @@ package ie.ucc.bis.imci.ui;
 
 import ie.ucc.bis.R;
 import ie.ucc.bis.activity.SupportingLifeBaseActivity;
+import ie.ucc.bis.assessment.model.listener.AssessmentWizardTextWatcher;
+import ie.ucc.bis.assessment.model.listener.DatePickerListener;
+import ie.ucc.bis.assessment.model.listener.RadioGroupListener;
 import ie.ucc.bis.imci.model.GeneralPatientDetailsPage;
-import ie.ucc.bis.imci.model.listener.AssessmentWizardTextWatcher;
-import ie.ucc.bis.imci.model.listener.DatePickerListener;
-import ie.ucc.bis.imci.model.listener.RadioGroupListener;
 import ie.ucc.bis.ui.custom.InputFilterMinMax;
 import android.app.Activity;
 import android.os.Bundle;

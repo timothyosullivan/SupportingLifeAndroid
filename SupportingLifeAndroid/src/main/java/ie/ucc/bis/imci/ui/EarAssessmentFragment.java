@@ -2,11 +2,11 @@ package ie.ucc.bis.imci.ui;
 
 import ie.ucc.bis.R;
 import ie.ucc.bis.activity.SupportingLifeBaseActivity;
+import ie.ucc.bis.assessment.model.listener.AssessmentWizardTextWatcher;
+import ie.ucc.bis.assessment.model.listener.RadioGroupCoordinatorListener;
+import ie.ucc.bis.assessment.model.listener.RadioGroupListener;
 import ie.ucc.bis.imci.model.DynamicView;
 import ie.ucc.bis.imci.model.EarAssessmentPage;
-import ie.ucc.bis.imci.model.listener.AssessmentWizardTextWatcher;
-import ie.ucc.bis.imci.model.listener.RadioGroupCoordinatorListener;
-import ie.ucc.bis.imci.model.listener.RadioGroupListener;
 import ie.ucc.bis.ui.custom.InputFilterMinMax;
 import ie.ucc.bis.ui.utilities.ViewGroupUtilities;
 

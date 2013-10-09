@@ -1,4 +1,4 @@
-package ie.ucc.bis.imci.model.review;
+package ie.ucc.bis.assessment.model.review;
 
 import ie.ucc.bis.activity.SupportingLifeBaseActivity;
 

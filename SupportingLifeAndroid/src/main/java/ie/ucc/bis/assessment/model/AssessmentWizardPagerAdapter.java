@@ -1,4 +1,4 @@
-package ie.ucc.bis.imci.model;
+package ie.ucc.bis.assessment.model;
 
 import ie.ucc.bis.activity.ImciAssessmentActivity;
 import ie.ucc.bis.imci.ui.ReviewFragment;

@@ -1,8 +1,8 @@
 package ie.ucc.bis.activity;
 
 import ie.ucc.bis.R;
+import ie.ucc.bis.assessment.model.review.ReviewItem;
 import ie.ucc.bis.domain.Patient;
-import ie.ucc.bis.imci.model.review.ReviewItem;
 import ie.ucc.bis.imci.ui.AssessmentClassificationsFragment;
 import ie.ucc.bis.imci.ui.AssessmentResultsReviewFragment;
 import ie.ucc.bis.imci.ui.AssessmentTreatmentsFragment;

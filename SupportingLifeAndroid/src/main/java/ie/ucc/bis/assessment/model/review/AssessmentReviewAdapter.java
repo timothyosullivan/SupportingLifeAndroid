@@ -1,7 +1,6 @@
-package ie.ucc.bis.imci.model;
+package ie.ucc.bis.assessment.model.review;
 
 import ie.ucc.bis.R;
-import ie.ucc.bis.imci.model.review.ReviewItem;
 import ie.ucc.bis.imci.ui.ReviewListFragment;
 
 import java.util.ArrayList;
@@ -16,7 +15,7 @@ import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.TextView;
 
-public class AssessmentAdapter extends BaseAdapter implements Filterable {
+public class AssessmentReviewAdapter extends BaseAdapter implements Filterable {
 	private static final int HEADER_ITEM_TYPE = 0;
 	private static final int SIMPLE_ITEM_TYPE = 1;
 	private static final int MAX_TYPE_COUNT = 2;
@@ -25,7 +24,7 @@ public class AssessmentAdapter extends BaseAdapter implements Filterable {
 	private ReviewListFragment reviewListFragment;
 	private List<ReviewItem> filteredReviewItems;
 	
-    public AssessmentAdapter(ReviewListFragment reviewListFragment) {
+    public AssessmentReviewAdapter(ReviewListFragment reviewListFragment) {
 		super();
 		setReviewListFragment(reviewListFragment);
 		setFilteredReviewItems(new ArrayList<ReviewItem>());

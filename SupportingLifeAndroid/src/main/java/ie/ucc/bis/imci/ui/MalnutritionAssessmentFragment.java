@@ -2,8 +2,8 @@ package ie.ucc.bis.imci.ui;
 
 import ie.ucc.bis.R;
 import ie.ucc.bis.activity.SupportingLifeBaseActivity;
+import ie.ucc.bis.assessment.model.listener.RadioGroupListener;
 import ie.ucc.bis.imci.model.MalnutritionAssessmentPage;
-import ie.ucc.bis.imci.model.listener.RadioGroupListener;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;

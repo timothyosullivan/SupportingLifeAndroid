@@ -2,8 +2,8 @@ package ie.ucc.bis.rule.engine;
 
 import ie.ucc.bis.R;
 import ie.ucc.bis.activity.SupportingLifeBaseActivity;
+import ie.ucc.bis.assessment.model.review.ReviewItem;
 import ie.ucc.bis.domain.Patient;
-import ie.ucc.bis.imci.model.review.ReviewItem;
 import ie.ucc.bis.rule.engine.enums.ClassificationType;
 import ie.ucc.bis.rule.engine.enums.CriteriaRule;
 import ie.ucc.bis.rule.engine.enums.Response;

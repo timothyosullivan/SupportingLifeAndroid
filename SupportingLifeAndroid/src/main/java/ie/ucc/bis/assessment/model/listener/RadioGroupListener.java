@@ -1,6 +1,6 @@
-package ie.ucc.bis.imci.model.listener;
+package ie.ucc.bis.assessment.model.listener;
 
-import ie.ucc.bis.imci.model.AbstractPage;
+import ie.ucc.bis.assessment.model.AbstractPage;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;

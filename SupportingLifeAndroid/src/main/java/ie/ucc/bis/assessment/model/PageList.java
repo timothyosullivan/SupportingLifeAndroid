@@ -1,4 +1,4 @@
-package ie.ucc.bis.imci.model;
+package ie.ucc.bis.assessment.model;
 
 import java.util.ArrayList;
 

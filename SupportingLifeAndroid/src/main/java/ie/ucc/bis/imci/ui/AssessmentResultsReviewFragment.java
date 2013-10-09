@@ -2,7 +2,7 @@ package ie.ucc.bis.imci.ui;
 
 import ie.ucc.bis.R;
 import ie.ucc.bis.activity.ImciAssessmentResultsActivity;
-import ie.ucc.bis.imci.model.AssessmentAdapter;
+import ie.ucc.bis.assessment.model.review.AssessmentReviewAdapter;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,7 +20,7 @@ import android.widget.ListView;
  */
 public class AssessmentResultsReviewFragment extends ReviewListFragment {
     
-    private AssessmentAdapter assessmentAdapter;
+    private AssessmentReviewAdapter assessmentAdapter;
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -31,7 +31,7 @@ public class AssessmentResultsReviewFragment extends ReviewListFragment {
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         
-        setAssessmentAdapter(new AssessmentAdapter(this));
+        setAssessmentAdapter(new AssessmentReviewAdapter(this));
         // capture all the review items associated with each assessment page
         setCurrentReviewItems(((ImciAssessmentResultsActivity) getActivity()).getReviewItems());
         setListAdapter(getAssessmentAdapter());
@@ -53,14 +53,14 @@ public class AssessmentResultsReviewFragment extends ReviewListFragment {
 	/**
 	 * Getter Method: getAssessmentAdapter()
 	 */	
-	private AssessmentAdapter getAssessmentAdapter() {
+	private AssessmentReviewAdapter getAssessmentAdapter() {
 		return assessmentAdapter;
 	}
 
 	/**
 	 * Setter Method: setAssessmentAdapter()
 	 */
-	private void setAssessmentAdapter(AssessmentAdapter assessmentAdapter) {
+	private void setAssessmentAdapter(AssessmentReviewAdapter assessmentAdapter) {
 		this.assessmentAdapter = assessmentAdapter;
 	}
 }

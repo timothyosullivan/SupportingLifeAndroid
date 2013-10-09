@@ -1,7 +1,7 @@
 package ie.ucc.bis.imci.ui;
 
-import ie.ucc.bis.imci.model.AbstractPage;
-import ie.ucc.bis.imci.model.DateDialogSetListener;
+import ie.ucc.bis.assessment.model.AbstractPage;
+import ie.ucc.bis.assessment.model.listener.DateDialogSetListener;
 import ie.ucc.bis.ui.utilities.DateUtilities;
 
 import java.text.ParseException;
