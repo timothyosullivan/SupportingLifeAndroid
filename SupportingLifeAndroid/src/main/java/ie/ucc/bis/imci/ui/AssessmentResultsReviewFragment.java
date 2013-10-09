@@ -1,7 +1,7 @@
 package ie.ucc.bis.imci.ui;
 
 import ie.ucc.bis.R;
-import ie.ucc.bis.activity.AssessmentResultsActivity;
+import ie.ucc.bis.activity.ImciAssessmentResultsActivity;
 import ie.ucc.bis.imci.model.AssessmentAdapter;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -33,7 +33,7 @@ public class AssessmentResultsReviewFragment extends ReviewListFragment {
         
         setAssessmentAdapter(new AssessmentAdapter(this));
         // capture all the review items associated with each assessment page
-        setCurrentReviewItems(((AssessmentResultsActivity) getActivity()).getReviewItems());
+        setCurrentReviewItems(((ImciAssessmentResultsActivity) getActivity()).getReviewItems());
         setListAdapter(getAssessmentAdapter());
     }    
     

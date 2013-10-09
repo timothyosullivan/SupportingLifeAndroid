@@ -36,7 +36,7 @@ import android.widget.BaseAdapter;
  * @author TOSullivan
  *
  */
-public class AssessmentResultsActivity extends SupportingLifeBaseActivity {
+public class ImciAssessmentResultsActivity extends SupportingLifeBaseActivity {
 	
 	private ViewPager ViewPager;
 	private TabsAdapter TabsAdapter;
@@ -60,7 +60,7 @@ public class AssessmentResultsActivity extends SupportingLifeBaseActivity {
         
         // extract the assessment page data sent by the assessment bread-crumb wizard
 		Intent intent = getIntent();
-        setReviewItems((ArrayList<ReviewItem>) intent.getSerializableExtra(AssessmentWizardActivity.ASSESSMENT_REVIEW_ITEMS));
+        setReviewItems((ArrayList<ReviewItem>) intent.getSerializableExtra(ImciAssessmentActivity.ASSESSMENT_REVIEW_ITEMS));
         
         // classify symptoms
         setPatient(new Patient());

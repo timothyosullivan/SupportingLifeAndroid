@@ -1,7 +1,7 @@
 package ie.ucc.bis.imci.ui;
 
 import ie.ucc.bis.R;
-import ie.ucc.bis.activity.AssessmentResultsActivity;
+import ie.ucc.bis.activity.ImciAssessmentResultsActivity;
 import ie.ucc.bis.domain.Patient;
 import ie.ucc.bis.imci.model.ClassificationAdapter;
 import ie.ucc.bis.rule.engine.Diagnostic;
@@ -41,7 +41,7 @@ public class AssessmentClassificationsFragment extends ListFragment {
         super.onActivityCreated(savedInstanceState);
       
         // obtain a reference to the patient being dealt with...
-        setPatient(((AssessmentResultsActivity) getActivity()).getPatient());          
+        setPatient(((ImciAssessmentResultsActivity) getActivity()).getPatient());          
         setClassificationAdapter(new ClassificationAdapter(this, new ArrayList<Diagnostic>(getPatient().getDiagnostics())));
         setListAdapter(getClassificationAdapter());
     }
@@ -62,7 +62,7 @@ public class AssessmentClassificationsFragment extends ListFragment {
         if (activity != null) {   
             // open the treatments tab and scroll to the relevant treatment
         	String classificationTitle = ((TextView) v.findViewById(R.id.classification_list_item_label)).getText().toString();
-			((AssessmentResultsActivity) getActivity()).displayTreatmentTab(position, classificationTitle);
+			((ImciAssessmentResultsActivity) getActivity()).displayTreatmentTab(position, classificationTitle);
         }
     }
     

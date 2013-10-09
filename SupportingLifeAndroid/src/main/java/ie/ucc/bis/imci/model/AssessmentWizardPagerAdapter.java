@@ -1,6 +1,6 @@
 package ie.ucc.bis.imci.model;
 
-import ie.ucc.bis.activity.AssessmentWizardActivity;
+import ie.ucc.bis.activity.ImciAssessmentActivity;
 import ie.ucc.bis.imci.ui.ReviewFragment;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -17,9 +17,9 @@ import android.view.ViewGroup;
 public class AssessmentWizardPagerAdapter extends FragmentStatePagerAdapter {
     private int mCutOffPage;
     private Fragment mPrimaryItem;
-    private AssessmentWizardActivity assessmentWizardActivity;
+    private ImciAssessmentActivity assessmentWizardActivity;
 
-    public AssessmentWizardPagerAdapter(AssessmentWizardActivity assessmentWizardActivity, FragmentManager fm) {
+    public AssessmentWizardPagerAdapter(ImciAssessmentActivity assessmentWizardActivity, FragmentManager fm) {
         super(fm);
         setAssessmentWizardActivity(assessmentWizardActivity);
     }
@@ -71,14 +71,14 @@ public class AssessmentWizardPagerAdapter extends FragmentStatePagerAdapter {
 	/**
 	 * Getter Method: getAssessmentWizardActivity()
 	 */
-	public AssessmentWizardActivity getAssessmentWizardActivity() {
+	public ImciAssessmentActivity getAssessmentWizardActivity() {
 		return assessmentWizardActivity;
 	}
 
 	/**
 	 * Setter Method: setAssessmentWizardActivity()
 	 */
-	public void setAssessmentWizardActivity(AssessmentWizardActivity assessmentWizardActivity) {
+	public void setAssessmentWizardActivity(ImciAssessmentActivity assessmentWizardActivity) {
 		this.assessmentWizardActivity = assessmentWizardActivity;
 	}
 }

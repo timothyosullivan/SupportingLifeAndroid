@@ -43,7 +43,7 @@ public class HomeActivity extends SupportingLifeBaseActivity {
 				startActivity(new Intent(getApplicationContext(), AboutActivity.class));
 				break;
 			case R.id.ic_dashboard_imci_assessment_button :
-				startActivity(new Intent(getApplicationContext(), AssessmentWizardActivity.class));
+				startActivity(new Intent(getApplicationContext(), ImciAssessmentActivity.class));
 				break;
 			case R.id.dashboard_training_button :
 				startActivity(new Intent(getApplicationContext(), TrainingActivity.class));

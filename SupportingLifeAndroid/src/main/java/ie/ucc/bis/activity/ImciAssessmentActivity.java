@@ -23,7 +23,7 @@ import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.widget.Button;
 
-public class AssessmentWizardActivity extends SupportingLifeBaseActivity implements PageFragmentCallbacks, ReviewFragmentCallbacks, ModelCallbacks {
+public class ImciAssessmentActivity extends SupportingLifeBaseActivity implements PageFragmentCallbacks, ReviewFragmentCallbacks, ModelCallbacks {
 
 	public static final String ASSESSMENT_REVIEW_ITEMS = "ASSESSMENT_REVIEW_ITEMS";
 	
@@ -248,7 +248,7 @@ public class AssessmentWizardActivity extends SupportingLifeBaseActivity impleme
     	
 		public void onClick(DialogInterface dialog, int which) {
 			
-			Intent intent = new Intent(getApplicationContext(), AssessmentResultsActivity.class);
+			Intent intent = new Intent(getApplicationContext(), ImciAssessmentResultsActivity.class);
 			intent.putExtra(ASSESSMENT_REVIEW_ITEMS, getSupportingLifeWizardModel().gatherAssessmentReviewItems());
 			startActivity(intent);
 			
