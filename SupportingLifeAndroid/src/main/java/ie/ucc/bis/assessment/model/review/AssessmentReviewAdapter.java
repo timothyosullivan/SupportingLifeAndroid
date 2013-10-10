@@ -28,6 +28,7 @@ public class AssessmentReviewAdapter extends BaseAdapter implements Filterable {
 		super();
 		setReviewListFragment(reviewListFragment);
 		setFilteredReviewItems(new ArrayList<ReviewItem>());
+		notifyDataSetChanged();
 		// apply filter to remove review items which we indicated should be invisible
 		getFilter().filter(null);
 	}
