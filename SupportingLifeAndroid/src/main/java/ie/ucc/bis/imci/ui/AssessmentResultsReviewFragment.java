@@ -2,7 +2,7 @@ package ie.ucc.bis.imci.ui;
 
 import ie.ucc.bis.R;
 import ie.ucc.bis.activity.ImciAssessmentResultsActivity;
-import ie.ucc.bis.assessment.model.review.AssessmentReviewAdapter;
+import ie.ucc.bis.imci.model.review.ReviewAssessmentAdapter;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,7 +20,7 @@ import android.widget.ListView;
  */
 public class AssessmentResultsReviewFragment extends ReviewListFragment {
     
-    private AssessmentReviewAdapter assessmentAdapter;
+    private ReviewAssessmentAdapter reviewAssessmentAdapter;
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -31,10 +31,10 @@ public class AssessmentResultsReviewFragment extends ReviewListFragment {
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         
-        setAssessmentAdapter(new AssessmentReviewAdapter(this));
+        setReviewAssessmentAdapter(new ReviewAssessmentAdapter(this));
         // capture all the review items associated with each assessment page
         setCurrentReviewItems(((ImciAssessmentResultsActivity) getActivity()).getReviewItems());
-        setListAdapter(getAssessmentAdapter());
+        setListAdapter(getReviewAssessmentAdapter());
     }    
     
     @Override
@@ -51,16 +51,16 @@ public class AssessmentResultsReviewFragment extends ReviewListFragment {
     public void onListItemClick(ListView l, View v, int position, long id) {}
     
 	/**
-	 * Getter Method: getAssessmentAdapter()
+	 * Getter Method: getReviewAssessmentAdapter()
 	 */	
-	private AssessmentReviewAdapter getAssessmentAdapter() {
-		return assessmentAdapter;
+	private ReviewAssessmentAdapter getReviewAssessmentAdapter() {
+		return reviewAssessmentAdapter;
 	}
 
 	/**
-	 * Setter Method: setAssessmentAdapter()
+	 * Setter Method: setReviewAssessmentAdapter()
 	 */
-	private void setAssessmentAdapter(AssessmentReviewAdapter assessmentAdapter) {
-		this.assessmentAdapter = assessmentAdapter;
+	private void setReviewAssessmentAdapter(ReviewAssessmentAdapter reviewAssessmentAdapter) {
+		this.reviewAssessmentAdapter = reviewAssessmentAdapter;
 	}
 }
