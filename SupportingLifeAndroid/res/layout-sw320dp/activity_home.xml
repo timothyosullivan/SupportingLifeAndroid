@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ============================================================ -->
+<!-- DASHBOARD SCREEN -->
+<!-- ============================================================ -->
+   
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	style="@style/SupportingLifePage"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+	android:orientation="vertical"
+	android:padding="6dip">
+
+	<View
+		android:layout_width="match_parent"
+		android:layout_height="7dp" />
+    
+	 <RelativeLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:orientation="vertical">
+
+		<!-- ============================================================ -->
+		<!-- IMCI ASSESSMENT WIZARD BUTTON -->
+		<!-- ============================================================ -->		
+		<Button android:id="@+id/ic_dashboard_imci_assessment_button"
+			android:layout_width="60dp"
+			android:layout_height="60dp"
+			android:layout_marginTop="20dp" 
+			android:layout_marginLeft="35dp"
+			android:background="@drawable/ic_dashboard_imci_assessment_button"
+			android:onClick="onClickDashboardButton" />
+		
+		<TextView android:id="@+id/dashboard_imci_assessment_button_text"
+		    android:layout_width="wrap_content" 
+		    android:layout_height="wrap_content" 
+		    android:layout_alignParentLeft="true" 
+		    android:layout_below="@+id/ic_dashboard_imci_assessment_button"
+		    android:layout_marginTop="2dp" 
+		    android:layout_marginLeft="45dp" 
+		    android:text="@string/dashboard_imci_assessment_button"
+		    android:textColor="@color/DarkGreen" 
+		    android:textSize="18sp" 
+		    android:textStyle="bold"/>
+		
+		<!-- ============================================================ -->
+		<!-- CCM ASSESSMENT BUTTON -->
+		<!-- ============================================================ -->
+		<Button
+		    android:id="@+id/dashboard_ccm_assessment_button"
+		    android:layout_width="60dp"
+		    android:layout_height="60dp"
+		    android:layout_marginTop="20dp" 
+			android:layout_marginRight="35dp" 
+		    android:layout_alignParentRight="true"
+		    android:background="@drawable/ic_dashboard_ccm_assessment_button"
+		    android:onClick="onClickDashboardButton" />
+		
+		<TextView android:id="@+id/dashboard_ccm_assessment_button_text"
+		    android:layout_width="wrap_content" 
+		    android:layout_height="wrap_content" 
+		    android:layout_alignParentRight="true" 
+		    android:layout_below="@+id/dashboard_ccm_assessment_button"
+		    android:layout_marginTop="2dp"
+		    android:layout_marginRight="45dp"
+		    android:text="@string/dashboard_ccm_assessment_button"
+		    android:textColor="@color/DarkGreen" 
+		    android:textSize="18sp" 
+		    android:textStyle="bold"/>
+	</RelativeLayout>
+ 
+	<View
+		android:layout_width="match_parent"
+		android:layout_height="20dp" />
+
+	<RelativeLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:orientation="vertical">
+		
+		<!-- ============================================================ -->
+		<!-- TRAINING BUTTON -->
+		<!-- ============================================================ -->
+		
+		<Button android:id="@+id/dashboard_training_button"
+			android:layout_width="60dp"
+			android:layout_height="60dp"
+			android:layout_marginTop="20dp" 
+			android:layout_marginLeft="35dp"
+			android:background="@drawable/ic_dashboard_training_button"
+			android:onClick="onClickDashboardButton" />
+		
+		<TextView android:id="@+id/dashboard_training_button_text"
+		    android:layout_width="wrap_content" 
+		    android:layout_height="wrap_content" 
+		    android:layout_alignParentLeft="true" 
+		    android:layout_below="@+id/dashboard_training_button"
+		    android:layout_marginTop="2dp" 
+		    android:layout_marginLeft="33dp" 
+		    android:text="@string/dashboard_training_button"
+		    android:textColor="@color/DarkGreen" 
+		    android:textSize="18sp"
+		    android:textStyle="bold"/>
+	
+		<!-- ============================================================ -->
+		<!-- SEARCH BUTTON -->
+		<!-- ============================================================ -->
+		<Button
+		    android:id="@+id/dashboard_search_button"
+		    android:layout_width="60dp"
+		    android:layout_height="60dp"
+		    android:layout_marginTop="20dp" 
+			android:layout_marginRight="35dp" 
+		    android:layout_alignParentRight="true"
+		    android:background="@drawable/ic_dashboard_search_button"
+		    android:onClick="onClickDashboardButton" />
+		
+		<TextView android:id="@+id/dashboard_search_text"
+		    android:layout_width="wrap_content" 
+		    android:layout_height="wrap_content" 
+		    android:layout_alignParentRight="true" 
+		    android:layout_below="@+id/dashboard_search_button"
+		    android:layout_marginTop="2dp" 
+		    android:layout_marginRight="41dp" 
+		    android:text="@string/dashboard_search_button"
+		    android:textColor="@color/DarkGreen" 
+		    android:textSize="18sp" 
+		    android:textStyle="bold"/>		
+	</RelativeLayout>
+
+	<View
+		android:layout_width="match_parent"
+		android:layout_height="20dp" />
+ 
+	<RelativeLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:orientation="vertical">
+
+		<!-- ============================================================ -->
+		<!-- USER PROFILE BUTTON -->
+		<!-- ============================================================ -->
+		<Button
+		    android:id="@+id/dashboard_user_profile_button"
+			android:layout_width="60dp"
+			android:layout_height="60dp"
+			android:layout_marginTop="20dp" 
+			android:layout_marginLeft="35dp"
+		    android:background="@drawable/ic_dashboard_profile_button"
+		    android:onClick="onClickDashboardButton" />
+		
+		<TextView android:id="@+id/dashboard_hsa_profile_text"
+		    android:layout_width="wrap_content" 
+		    android:layout_height="wrap_content" 
+		    android:layout_alignParentLeft="true" 
+		    android:layout_below="@+id/dashboard_user_profile_button"
+		    android:layout_marginTop="2dp" 
+		    android:layout_marginLeft="39dp" 
+		    android:text="@string/dashboard_user_profile_button"
+		    android:textColor="@color/DarkGreen" 
+		    android:textSize="18sp" 
+		    android:textStyle="bold"/>
+	   
+		<!-- ============================================================ -->
+		<!-- ABOUT BUTTON -->
+		<!-- ============================================================ -->
+		
+		<Button android:id="@+id/dashboard_about_button"
+		    android:layout_width="60dp"
+		    android:layout_height="60dp"
+		    android:layout_marginTop="20dp" 
+			android:layout_marginRight="35dp"  
+		    android:layout_alignParentRight="true"
+			android:background="@drawable/ic_dashboard_about_button"
+			android:onClick="onClickDashboardButton" />
+		
+		<TextView android:id="@+id/dashboard_about_button_text"
+		    android:layout_width="wrap_content" 
+		    android:layout_height="wrap_content" 
+		    android:layout_alignParentRight="true" 
+		    android:layout_below="@+id/dashboard_about_button"
+		    android:layout_marginTop="2dp" 
+		    android:layout_marginRight="42dp" 
+		    android:text="@string/dashboard_about_button"
+		    android:textColor="@color/DarkGreen" 
+		    android:textSize="18sp"
+		    android:textStyle="bold"/>		
+	</RelativeLayout>	
+
+			
+</LinearLayout>
