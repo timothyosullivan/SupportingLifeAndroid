@@ -145,8 +145,6 @@ public class ReviewAssessmentAdapter extends BaseAdapter implements Filterable {
 					filterResults.values = reviewItems;
 					filterResults.count = reviewItems.size();
 					
-					setFilteredReviewItems(reviewItems);
-					notifyDataSetChanged();
 					return filterResults;	
 				}
 	
