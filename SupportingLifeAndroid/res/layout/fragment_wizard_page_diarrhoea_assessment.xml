@@ -264,10 +264,12 @@
 
                     <RadioButton
                         android:id="@+id/diarrhoea_assessment_radio_child_fluid_not_able"
+                        android:layout_weight="0.5"
                         android:text="@string/diarrhoea_assessment_radio_child_fluid_not_able" />
 
                     <RadioButton
                         android:id="@+id/diarrhoea_assessment_radio_child_fluid_drinking_poorly"
+                        android:layout_weight="0.5"
                         android:text="@string/diarrhoea_assessment_radio_child_fluid_drinking_poorly" />
                 </TableRow>
                 <TableRow
@@ -302,10 +304,12 @@
 
                     <RadioButton
                         android:id="@+id/diarrhoea_assessment_radio_skin_pinch_very_slowly"
+                        android:layout_weight="0.5"
                         android:text="@string/diarrhoea_assessment_radio_skin_pinch_very_slowly" />
 
                     <RadioButton
                         android:id="@+id/diarrhoea_assessment_radio_skin_pinch_slowly"
+                        android:layout_weight="0.5"
                         android:text="@string/diarrhoea_assessment_radio_skin_pinch_slowly" />
                 </TableRow>
                 <TableRow
