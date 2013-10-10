@@ -134,16 +134,19 @@ public class ReviewAssessmentAdapter extends BaseAdapter implements Filterable {
 				@Override
 				protected FilterResults performFiltering(CharSequence constraint) {
 					FilterResults filterResults = new FilterResults();
-					setFilteredReviewItems(new ArrayList<ReviewItem>());
+					ArrayList<ReviewItem> reviewItems = new ArrayList<ReviewItem>();
 					
 					for (ReviewItem reviewItem : getReviewListFragment().getCurrentReviewItems()) {
 						if (reviewItem.isVisible()) {
-							getFilteredReviewItems().add(reviewItem);
+							reviewItems.add(reviewItem);
 						}
 					}
 					
-					filterResults.values = getFilteredReviewItems();
-					filterResults.count = getFilteredReviewItems().size();
+					filterResults.values = reviewItems;
+					filterResults.count = reviewItems.size();
+					
+					setFilteredReviewItems(reviewItems);
+					notifyDataSetChanged();
 					return filterResults;	
 				}
 	
