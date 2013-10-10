@@ -115,24 +115,31 @@
     </style>
     
 
-    <!-- ============================================================ -->
-    <!-- BREADCRUMB WIZARD RADIO BUTTON STYLE -->
-    <!-- NOTE: FOR SAMSUNG (JOD) DEVICE - PROBLEM WITH DEVICE MEANS   -->
-    <!-- 	   THAT IN ORDER TO GET THE RADIO BUTTON TEXT SHOWING	  -->
-    <!-- 	   ON THE RIGHT-HAND SIDE OF THE RADIO BUTTON, SET THE	  -->
-    <!-- 	   ATTRIBUTE paddingLeft to be "40dp"					  -->
-    <!-- ============================================================ -->
+    <!-- ============================================================================== -->
+    <!-- BREADCRUMB WIZARD RADIO BUTTON STYLE 						  					-->
+    <!-- NOTE: FOR SAMSUNG (JOD) HTC (JF) DEVICE - PROBLEM WITH DEVICES MEANS   		-->
+    <!-- 	   THAT IN ORDER TO GET THE RADIO BUTTON TEXT SHOWING	  					-->
+    <!-- 	   ON THE RIGHT-HAND SIDE OF THE RADIO BUTTON CLEANLY, THE	  				-->
+    <!-- 	   FOLLOWING NEEDS TO BE DONE:								  				-->
+    <!--															  					-->
+    <!-- 	   1.  <item name="android:button">@null</item>			  					-->
+    <!-- 	   2.  <item name="android:background">@android:color/transparent</item> 	-->
+    <!-- 	   3.  <item name="android:drawableLeft">@drawable/radio_button</item>		-->
+    <!-- 	   4.  <item name="android:drawablePadding">5dp</item>						-->
+    <!-- ============================================================================== -->
     <style name="RadioButton" parent="@android:style/Widget.CompoundButton.RadioButton">
-        <item name="android:button">@drawable/radio_button</item>
+        <item name="android:button">@null</item>
+        <item name="android:background">@android:color/transparent</item>
         <item name="android:paddingTop">15dp</item>
         <item name="android:paddingBottom">15dp</item>
         <item name="android:paddingRight">5dp</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_gravity">top|center|right</item>
+        <item name="android:layout_gravity">left|center_vertical</item>
         <item name="android:layout_weight">1</item>
         <item name="android:checked">false</item>
-        <item name="android:paddingLeft">5dp</item>
+        <item name="android:drawableLeft">@drawable/radio_button</item>
+        <item name="android:drawablePadding">5dp</item>
     </style>
 
     <!-- ============================================================ -->
