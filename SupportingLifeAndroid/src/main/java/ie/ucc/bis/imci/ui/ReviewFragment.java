@@ -51,11 +51,20 @@ public class ReviewFragment extends ReviewListFragment implements ModelCallbacks
             throw new ClassCastException("Activity must implement fragment's callbacks");
         }
 
-        setReviewFragmentCallbacks((ReviewFragmentCallbacks) activity);
+        /*
+         * May need to consider removing null pointer check and instead to prevent user
+         * navigating back from the 'assessment results' to the 'assessment review'
+         * activity via the back button - after a long period of time the 'ImciAssessmentActivity'
+         * may no longer be active
+         * 
+         */
+        if (activity != null) {
+        	setReviewFragmentCallbacks((ReviewFragmentCallbacks) activity);
 
-        setWizardModel(getReviewFragmentCallbacks().getWizardModel());
-        getWizardModel().registerListener(this);
-        onPageTreeChanged();
+        	setWizardModel(getReviewFragmentCallbacks().getWizardModel());
+        	getWizardModel().registerListener(this);
+        	onPageTreeChanged();
+        }
     }
        
     public void onPageTreeChanged() {
