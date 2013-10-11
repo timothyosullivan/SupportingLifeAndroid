@@ -2,14 +2,18 @@ package ie.ucc.bis.assessment.model.listener;
 
 import ie.ucc.bis.imci.ui.DatePickerDialogFragment;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Locale;
 
 import android.app.DatePickerDialog.OnDateSetListener;
-import java.text.DateFormat;
 import android.widget.DatePicker;
 
 public class DateDialogSetListener implements OnDateSetListener {
 
+	public static final String DATE_TIME_CUSTOM_FORMAT = "dd MMMM yyyy";
+	public static final Locale LOCALE = Locale.UK;
+	
 	private DatePickerDialogFragment datePickerDialogFragment;
 	
 	/**
@@ -26,10 +30,9 @@ public class DateDialogSetListener implements OnDateSetListener {
 
 		final Calendar calendar = Calendar.getInstance();
 		calendar.set(year, monthOfYear, dayOfMonth);
-		
-		DateFormat dateFormt = android.text.format.DateFormat.getLongDateFormat(getDatePickerDialogFragment().getActivity().getApplicationContext());
-		
-		String dateString = dateFormt.format(calendar.getTime()).toString();
+		SimpleDateFormat simpleDateFormat = new SimpleDateFormat(DATE_TIME_CUSTOM_FORMAT, LOCALE);
+				
+		String dateString = simpleDateFormat.format(calendar.getTime());
 		
 		// update data record associated with this page
 		getDatePickerDialogFragment().getPage().getPageData().putString(getDatePickerDialogFragment().getDataKey(),

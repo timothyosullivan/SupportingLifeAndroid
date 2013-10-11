@@ -8,7 +8,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.Locale;
 
 import android.app.DatePickerDialog;
 import android.app.Dialog;
@@ -50,7 +49,7 @@ public class DatePickerDialogFragment extends DialogFragment {
 		String datePreviouslyChosen = getPage().getPageData().getString(getDataKey());
 		if (datePreviouslyChosen != null) {
 			try {
-				Date previousDate = new SimpleDateFormat("dd MMMM yyyy", Locale.ENGLISH).parse(datePreviouslyChosen);
+				Date previousDate = new SimpleDateFormat(DateDialogSetListener.DATE_TIME_CUSTOM_FORMAT, DateDialogSetListener.LOCALE).parse(datePreviouslyChosen);
 				cal.setTime(previousDate);	
 			} catch (ParseException e) {
 				e.printStackTrace();

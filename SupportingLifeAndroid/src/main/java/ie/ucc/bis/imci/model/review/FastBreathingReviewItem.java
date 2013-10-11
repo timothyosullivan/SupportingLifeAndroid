@@ -1,18 +1,17 @@
 package ie.ucc.bis.imci.model.review;
 
 import ie.ucc.bis.activity.SupportingLifeBaseActivity;
+import ie.ucc.bis.assessment.model.listener.DateDialogSetListener;
 import ie.ucc.bis.assessment.model.review.ReviewItem;
 import ie.ucc.bis.rule.engine.enums.Response;
 import ie.ucc.bis.ui.utilities.DateUtilities;
 
 import java.io.Serializable;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
-
-import org.joda.time.DateTime;
-import org.joda.time.format.DateTimeFormat;
-import org.joda.time.format.DateTimeFormatter;
 
 import android.text.TextUtils;
 
@@ -83,13 +82,8 @@ public class FastBreathingReviewItem extends ReviewItem implements Serializable 
     		ReviewItem birthDateReviewItem = getDependees().get(0);
     		if (birthDateReviewItem.getDisplayValue() != null) {	
 				try {
-					// Date birthDate = new SimpleDateFormat("dd MMMM yyyy", Locale.ENGLISH).parse(birthDateReviewItem.getDisplayValue());
+					Date birthDate = new SimpleDateFormat(DateDialogSetListener.DATE_TIME_CUSTOM_FORMAT, DateDialogSetListener.LOCALE).parse(birthDateReviewItem.getDisplayValue());
 					Calendar cal = Calendar.getInstance();
-					
-					
-					DateTimeFormatter dateTimeFormatter = DateTimeFormat.forPattern("dd MMMM yyyy");
-					DateTime parsedDated = dateTimeFormatter.parseDateTime(birthDateReviewItem.getDisplayValue());
-					Date birthDate = parsedDated.toDate();
 					
 					int monthsDifference = DateUtilities.getDiffMonths(birthDate, cal.getTime());
 
@@ -110,7 +104,7 @@ public class FastBreathingReviewItem extends ReviewItem implements Serializable 
 					else {
 						setSymptomValue(Response.NO.name());
 					}
-	    		} catch (NumberFormatException e) {
+	    		} catch (ParseException e) {
 	    			e.printStackTrace();
 	    		}
     		}

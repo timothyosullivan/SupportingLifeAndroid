@@ -15,7 +15,6 @@
 		<spring.version>1.0.1.RELEASE</spring.version>
 		<json.version>1.9.12</json.version>
 		<android.api.level>17</android.api.level>
-		<joda.version>2.3</joda.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -45,11 +44,6 @@
 			<groupId>org.codehaus.jackson</groupId>
 			<artifactId>jackson-core-asl</artifactId>
 			<version>${json.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>joda-time</groupId>
-			<artifactId>joda-time</artifactId>
-			<version>${joda.version}</version>
 		</dependency>
 	</dependencies>
 	<build>
