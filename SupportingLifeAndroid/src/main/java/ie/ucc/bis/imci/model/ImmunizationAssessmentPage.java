@@ -54,16 +54,16 @@ public class ImmunizationAssessmentPage extends AbstractPage {
     	String reviewItemValue = null;
     	
     	// review header
-    	reviewItemLabel = resources.getString(R.string.immunization_assessment_title);
+    	reviewItemLabel = resources.getString(R.string.imci_immunization_assessment_title);
     	reviewItems.add(new ReviewItem(reviewItemLabel, getKey()));
     	
     	// BCG vaccine
-    	reviewItemLabel = resources.getString(R.string.immunization_assessment_review_vaccine_bcg);
+    	reviewItemLabel = resources.getString(R.string.imci_immunization_assessment_review_vaccine_bcg);
     	reviewItemValue = getPageData().getString(BCG_VACCINE_DATA_KEY + RadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
     	reviewItems.add(new ReviewItem(reviewItemLabel, reviewItemValue, null, getKey(), -1));
     	
     	// Measles vaccine
-    	reviewItemLabel = resources.getString(R.string.immunization_assessment_review_vaccine_measles);
+    	reviewItemLabel = resources.getString(R.string.imci_immunization_assessment_review_vaccine_measles);
     	reviewItemValue = getPageData().getString(MEASLES_VACCINE_DATA_KEY + RadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
     	reviewItems.add(new ReviewItem(reviewItemLabel, reviewItemValue, null, getKey(), -1));	
     }

@@ -28,21 +28,21 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="bottom"
-                android:text="@string/malnutrition_assessment_radio_oedema" />
+                android:text="@string/imci_malnutrition_assessment_radio_oedema" />
 
             <RadioGroup
-                android:id="@+id/malnutrition_assessment_radio_oedema"
+                android:id="@+id/imci_malnutrition_assessment_radio_oedema"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal" >
 
                 <RadioButton
-                    android:id="@+id/malnutrition_assessment_radio_oedema_yes"
+                    android:id="@+id/imci_malnutrition_assessment_radio_oedema_yes"
                     android:layout_weight="0.67"
                     android:text="@string/assessment_wizard_radio_yes" />
 
                 <RadioButton
-                    android:id="@+id/malnutrition_assessment_radio_oedema_no"
+                    android:id="@+id/imci_malnutrition_assessment_radio_oedema_no"
                     android:layout_weight="0.33"
                     android:text="@string/assessment_wizard_radio_no" />
             </RadioGroup>
@@ -56,23 +56,23 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="bottom"
-                android:text="@string/malnutrition_assessment_radio_weight_for_age" />
+                android:text="@string/imci_malnutrition_assessment_radio_weight_for_age" />
 
             <RadioGroup
-                android:id="@+id/malnutrition_assessment_radio_weight_for_age"
+                android:id="@+id/imci_malnutrition_assessment_radio_weight_for_age"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal" >
 
                 <RadioButton
-                    android:id="@+id/malnutrition_assessment_radio_weight_for_age_very_low"
+                    android:id="@+id/imci_malnutrition_assessment_radio_weight_for_age_very_low"
                     android:layout_weight="0.67"
-                    android:text="@string/malnutrition_assessment_radio_weight_for_age_very_low" />
+                    android:text="@string/imci_malnutrition_assessment_radio_weight_for_age_very_low" />
 
                 <RadioButton
-                    android:id="@+id/malnutrition_assessment_radio_weight_for_age_not_very_low"
+                    android:id="@+id/imci_malnutrition_assessment_radio_weight_for_age_not_very_low"
                     android:layout_weight="0.33"
-                    android:text="@string/malnutrition_assessment_radio_weight_for_age_not_very_low" />
+                    android:text="@string/imci_malnutrition_assessment_radio_weight_for_age_not_very_low" />
             </RadioGroup>
 
             <!-- ============================================================ -->
@@ -84,21 +84,21 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="bottom"
-                android:text="@string/malnutrition_assessment_radio_visible_severe_wasting" />
+                android:text="@string/imci_malnutrition_assessment_radio_visible_severe_wasting" />
 
             <RadioGroup
-                android:id="@+id/malnutrition_assessment_radio_visible_severe_wasting"
+                android:id="@+id/imci_malnutrition_assessment_radio_visible_severe_wasting"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal" >
 
                 <RadioButton
-                    android:id="@+id/malnutrition_assessment_radio_visible_severe_wasting_yes"
+                    android:id="@+id/imci_malnutrition_assessment_radio_visible_severe_wasting_yes"
                     android:layout_weight="0.67"
                     android:text="@string/assessment_wizard_radio_yes" />
 
                 <RadioButton
-                    android:id="@+id/malnutrition_assessment_radio_visible_severe_wasting_no"
+                    android:id="@+id/imci_malnutrition_assessment_radio_visible_severe_wasting_no"
                     android:layout_weight="0.33"
                     android:text="@string/assessment_wizard_radio_no" />
             </RadioGroup>
@@ -112,28 +112,28 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="bottom"
-                android:text="@string/malnutrition_assessment_radio_palmar_pallor" />
+                android:text="@string/imci_malnutrition_assessment_radio_palmar_pallor" />
 
             <RadioGroup
-                android:id="@+id/malnutrition_assessment_radio_palmar_pallor"
+                android:id="@+id/imci_malnutrition_assessment_radio_palmar_pallor"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal" >
 
                 <RadioButton
-                    android:id="@+id/malnutrition_assessment_radio_palmar_pallor_no"
+                    android:id="@+id/imci_malnutrition_assessment_radio_palmar_pallor_no"
                     android:layout_weight="0.33"
                     android:text="@string/assessment_wizard_radio_no" />
 
                 <RadioButton
-                    android:id="@+id/malnutrition_assessment_radio_palmar_pallor_some"
+                    android:id="@+id/imci_malnutrition_assessment_radio_palmar_pallor_some"
                     android:layout_weight="0.33"
-                    android:text="@string/malnutrition_assessment_radio_palmar_pallor_some" />
+                    android:text="@string/imci_malnutrition_assessment_radio_palmar_pallor_some" />
                 
                 <RadioButton
-                    android:id="@+id/malnutrition_assessment_radio_palmar_pallor_severe"
+                    android:id="@+id/imci_malnutrition_assessment_radio_palmar_pallor_severe"
                     android:layout_weight="0.33"
-                    android:text="@string/malnutrition_assessment_radio_palmar_pallor_severe" />
+                    android:text="@string/imci_malnutrition_assessment_radio_palmar_pallor_severe" />
             </RadioGroup>
 
             <!-- ============================================================ -->
@@ -145,21 +145,21 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="bottom"
-                android:text="@string/malnutrition_assessment_radio_mebendazole_dose" />
+                android:text="@string/imci_malnutrition_assessment_radio_mebendazole_dose" />
 
             <RadioGroup
-                android:id="@+id/malnutrition_assessment_radio_mebendazole_dose"
+                android:id="@+id/imci_malnutrition_assessment_radio_mebendazole_dose"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal" >
 
                 <RadioButton
-                    android:id="@+id/malnutrition_assessment_radio_mebendazole_dose_yes"
+                    android:id="@+id/imci_malnutrition_assessment_radio_mebendazole_dose_yes"
                     android:layout_weight="0.67"
                     android:text="@string/assessment_wizard_radio_yes" />
 
                 <RadioButton
-                    android:id="@+id/malnutrition_assessment_radio_mebendazole_dose_no"
+                    android:id="@+id/imci_malnutrition_assessment_radio_mebendazole_dose_no"
                     android:layout_weight="0.33"
                     android:text="@string/assessment_wizard_radio_no" />
             </RadioGroup>

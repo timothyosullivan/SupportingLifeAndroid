@@ -114,18 +114,18 @@ public class BreathingAssessmentFragment extends Fragment {
         configureCoughDifficultBreathingDurationAnimatedView(rootView);
                 
         // breaths per minute
-        setBreathsPerMinuteEditText((EditText) rootView.findViewById(R.id.breathing_assessment_breaths_per_minute));
+        setBreathsPerMinuteEditText((EditText) rootView.findViewById(R.id.imci_breathing_assessment_breaths_per_minute));
         getBreathsPerMinuteEditText().setText(getBreathingAssessmentPage().getPageData().getString(BreathingAssessmentPage.BREATHS_PER_MINUTE_DATA_KEY));
         // apply min/max data entry filtering to the 'breaths per minute' UI element
         getBreathsPerMinuteEditText().setFilters(new InputFilter[] {new InputFilterMinMax(MIN_BREATHS_PER_MINUTE, MAX_BREATHS_PER_MINUTE)});
         
         // chest indrawing
-        setChestIndrawingRadioGroup((RadioGroup) rootView.findViewById(R.id.breathing_assessment_radio_chest_indrawing));
+        setChestIndrawingRadioGroup((RadioGroup) rootView.findViewById(R.id.imci_breathing_assessment_radio_chest_indrawing));
         getChestIndrawingRadioGroup().check(getBreathingAssessmentPage()
         		.getPageData().getInt(BreathingAssessmentPage.CHEST_INDRAWING_DATA_KEY));
         
         // stridor
-        setStridorRadioGroup((RadioGroup) rootView.findViewById(R.id.breathing_assessment_radio_stridor));
+        setStridorRadioGroup((RadioGroup) rootView.findViewById(R.id.imci_breathing_assessment_radio_stridor));
         getStridorRadioGroup().check(getBreathingAssessmentPage()
         		.getPageData().getInt(BreathingAssessmentPage.STRIDOR_DATA_KEY));
         
@@ -138,25 +138,25 @@ public class BreathingAssessmentFragment extends Fragment {
     
 	private void configureCoughDifficultBreathingDurationAnimatedView(View rootView) {
 		// cough / difficult breathing view
-		setCoughDifficultBreathingView((View) rootView.findViewById(R.id.breathing_assessment_view_cough_difficult_breathing));
+		setCoughDifficultBreathingView((View) rootView.findViewById(R.id.imci_breathing_assessment_view_cough_difficult_breathing));
 		
         // does the child have cough or difficult breathing?
-        setCoughDifficultBreathingRadioGroup((RadioGroup) rootView.findViewById(R.id.breathing_assessment_radio_cough_difficult_breathing));
+        setCoughDifficultBreathingRadioGroup((RadioGroup) rootView.findViewById(R.id.imci_breathing_assessment_radio_cough_difficult_breathing));
         getCoughDifficultBreathingRadioGroup().check(getBreathingAssessmentPage()
         		.getPageData().getInt(BreathingAssessmentPage.COUGH_DIFFICULT_BREATHING_DATA_KEY));
         
         // for how long? (days) - cough duration
-        setCoughDurationEditText((EditText) rootView.findViewById(R.id.breathing_assessment_cough_duration));
+        setCoughDurationEditText((EditText) rootView.findViewById(R.id.imci_breathing_assessment_cough_duration));
         getCoughDurationEditText().setText(getBreathingAssessmentPage().getPageData().getString(BreathingAssessmentPage.COUGH_DURATION_DATA_KEY));
         // apply min/max data entry filtering to the 'cough duration' UI element
         getCoughDurationEditText().setFilters(new InputFilter[] {new InputFilterMinMax(MIN_COUGH_DURATION, MAX_COUGH_DURATION)});
 		       
         //  cough / difficult breathing duration is a dynamic view within the UI
-        setCoughDifficultBreathingDurationDynamicView(new DynamicView(rootView.findViewById(R.id.breathing_assessment_view_cough_duration),
-        									rootView.findViewById(R.id.breathing_assessment_cough_duration)));
+        setCoughDifficultBreathingDurationDynamicView(new DynamicView(rootView.findViewById(R.id.imci_breathing_assessment_view_cough_duration),
+        									rootView.findViewById(R.id.imci_breathing_assessment_cough_duration)));
                 
         // get a hold on the top level animated view
-        setAnimatedView(((ViewGroup) rootView.findViewById(R.id.breathing_assessment_cough_difficult_breathing_animated_view)));
+        setAnimatedView(((ViewGroup) rootView.findViewById(R.id.imci_breathing_assessment_cough_difficult_breathing_animated_view)));
 	}
 
     @Override

@@ -17,13 +17,13 @@ import java.util.List;
  * 		<Classification>Severe Dehydration</Classification>
  * 		<Treatment>
  * 			<CriteriaList rule="all">
- * 				<TreatmentCriterion value="no">treatment_criteria_severe_dehydration_is_only_severe_classification</TreatmentCriterion>
+ * 				<TreatmentCriterion value="no">imci_treatment_criteria_severe_dehydration_is_only_severe_classification</TreatmentCriterion>
  * 			</CriteriaList>
  * 			<Recommendation>Refer URGENTLY to Hospital with mother giving frequent sips of ORS</Recommendation>
  * 		</Treatment>
  * 		<Treatment>
  * 			<CriteriaList rule="all">
- * 				<TreatmentCriterion value="yes">treatment_criteria_severe_dehydration_is_only_severe_classification</TreatmentCriterion>
+ * 				<TreatmentCriterion value="yes">imci_treatment_criteria_severe_dehydration_is_only_severe_classification</TreatmentCriterion>
  * 			</CriteriaList>
  * 			<Recommendation>Give fluid for severe dehydration (Plan C)</Recommendation>
  * 		</Treatment>

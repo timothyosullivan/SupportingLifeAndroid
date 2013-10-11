@@ -58,36 +58,36 @@ public class EarAssessmentPage extends AbstractPage {
     	String reviewItemSymptomId = null;
     	
     	// review header
-    	reviewItemLabel = resources.getString(R.string.ear_assessment_title);
+    	reviewItemLabel = resources.getString(R.string.imci_ear_assessment_title);
     	reviewItems.add(new ReviewItem(reviewItemLabel, getKey()));
     	
     	// ear problem
-    	reviewItemLabel = resources.getString(R.string.ear_assessment_review_ear_problem);
+    	reviewItemLabel = resources.getString(R.string.imci_ear_assessment_review_ear_problem);
     	reviewItemValue = getPageData().getString(EAR_PROBLEM_DATA_KEY + RadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
-    	reviewItemSymptomId = resources.getString(R.string.ear_assessment_ear_problem_symptom_id);
+    	reviewItemSymptomId = resources.getString(R.string.imci_ear_assessment_ear_problem_symptom_id);
     	reviewItems.add(new ReviewItem(reviewItemLabel, reviewItemValue, reviewItemSymptomId, getKey(), -1));
     	
     	// ear pain
-    	reviewItemLabel = resources.getString(R.string.ear_assessment_review_ear_pain);
+    	reviewItemLabel = resources.getString(R.string.imci_ear_assessment_review_ear_pain);
     	reviewItemValue = getPageData().getString(EAR_PAIN_DATA_KEY + RadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
-    	reviewItemSymptomId = resources.getString(R.string.ear_assessment_ear_pain_symptom_id);
+    	reviewItemSymptomId = resources.getString(R.string.imci_ear_assessment_ear_pain_symptom_id);
     	reviewItems.add(new ReviewItem(reviewItemLabel, reviewItemValue, reviewItemSymptomId, getKey(), -1));
     	
     	// ear discharge
-    	reviewItemLabel = resources.getString(R.string.ear_assessment_review_ear_discharge);
+    	reviewItemLabel = resources.getString(R.string.imci_ear_assessment_review_ear_discharge);
     	reviewItemValue = getPageData().getString(EAR_DISCHARGE_DATA_KEY + RadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
-    	reviewItemSymptomId = resources.getString(R.string.ear_assessment_ear_discharge_symptom_id);
+    	reviewItemSymptomId = resources.getString(R.string.imci_ear_assessment_ear_discharge_symptom_id);
     	reviewItems.add(new ReviewItem(reviewItemLabel, reviewItemValue, reviewItemSymptomId, getKey(), -1));
     	
     	// for how long? (days) - ear discharge duration
-    	reviewItemLabel = resources.getString(R.string.ear_assessment_review_ear_discharge_duration);
-    	reviewItemSymptomId = resources.getString(R.string.ear_assessment_ear_discharge_duration_symptom_id);
+    	reviewItemLabel = resources.getString(R.string.imci_ear_assessment_review_ear_discharge_duration);
+    	reviewItemSymptomId = resources.getString(R.string.imci_ear_assessment_ear_discharge_duration_symptom_id);
     	reviewItems.add(new EarDischargeDurationReviewItem(reviewItemLabel, getPageData().getString(EAR_DISCHARGE_DURATION_DATA_KEY), reviewItemSymptomId, getKey(), -1));
     	
     	// tender swelling
-    	reviewItemLabel = resources.getString(R.string.ear_assessment_review_tender_swelling);
+    	reviewItemLabel = resources.getString(R.string.imci_ear_assessment_review_tender_swelling);
     	reviewItemValue = getPageData().getString(TENDER_SWELLING_DATA_KEY + RadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
-    	reviewItemSymptomId = resources.getString(R.string.ear_assessment_tender_swelling_symptom_id);
+    	reviewItemSymptomId = resources.getString(R.string.imci_ear_assessment_tender_swelling_symptom_id);
     	reviewItems.add(new ReviewItem(reviewItemLabel, reviewItemValue, reviewItemSymptomId, getKey(), -1));
     }
 

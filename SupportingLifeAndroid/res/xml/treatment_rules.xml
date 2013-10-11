@@ -81,7 +81,7 @@
 		<Classification>No Pneumonia: Cough or Cold</Classification>
 		<Treatment>
 			<CriteriaList rule="all">
-				<SymptomCriteria value="yes">breathing_assessment_cough_duration_symptom_id</SymptomCriteria>	<!-- Cough Duration > 30 days : YES -->
+				<SymptomCriteria value="yes">imci_breathing_assessment_cough_duration_symptom_id</SymptomCriteria>	<!-- Cough Duration > 30 days : YES -->
 			</CriteriaList>
 			<Recommendation>Refer for Assessment</Recommendation>
 		</Treatment>
@@ -119,20 +119,20 @@
 		<Classification>Severe Dehydration</Classification>
 		<Treatment>
 			<CriteriaList rule="all">
-				<TreatmentCriteria value="no">treatment_criteria_severe_dehydration_is_only_severe_classification</TreatmentCriteria>
+				<TreatmentCriteria value="no">imci_treatment_criteria_severe_dehydration_is_only_severe_classification</TreatmentCriteria>
 			</CriteriaList>
 			<Recommendation>Refer URGENTLY to Hospital with mother giving frequent sips of ORS</Recommendation>
 		</Treatment>
 		<Treatment>
 			<CriteriaList rule="all">
-				<TreatmentCriteria value="yes">treatment_criteria_severe_dehydration_is_only_severe_classification</TreatmentCriteria>
+				<TreatmentCriteria value="yes">imci_treatment_criteria_severe_dehydration_is_only_severe_classification</TreatmentCriteria>
 			</CriteriaList>
 			<Recommendation>Give fluid for severe dehydration (Plan C)</Recommendation>
 		</Treatment>
 		<Treatment>
 			<CriteriaList rule="all">
-				<SymptomCriteria value="yes">diarrhoea_assessment_cholera_in_area_symptom_id</SymptomCriteria>
-				<SymptomCriteria value="yes">general_patient_details_patient_two_years_or_older_symptom_id</SymptomCriteria>
+				<SymptomCriteria value="yes">imci_diarrhoea_assessment_cholera_in_area_symptom_id</SymptomCriteria>
+				<SymptomCriteria value="yes">imci_general_patient_details_patient_two_years_or_older_symptom_id</SymptomCriteria>
 			</CriteriaList>
 			<Recommendation>Give antibiotic for cholera</Recommendation>
 		</Treatment>
@@ -160,7 +160,7 @@
 		<Classification>Some Dehydration</Classification>
 		<Treatment>
 			<CriteriaList rule="all">
-				<TreatmentCriteria value="yes">treatment_criteria_severe_classification_present</TreatmentCriteria>
+				<TreatmentCriteria value="yes">imci_treatment_criteria_severe_classification_present</TreatmentCriteria>
 			</CriteriaList>
 			<Recommendation>Refer URGENTLY to Hospital with mother giving frequent sips of ORS</Recommendation>
 		</Treatment>
@@ -294,7 +294,7 @@
 		</Treatment>
 		<Treatment>
 			<CriteriaList rule="all">
-				<SymptomCriteria value="high temperature">fever_assessment_fever_symptom_id</SymptomCriteria>	<!-- Fever : High Temperature (> 37.5 degrees celsius) -->
+				<SymptomCriteria value="high temperature">imci_fever_assessment_fever_symptom_id</SymptomCriteria>	<!-- Fever : High Temperature (> 37.5 degrees celsius) -->
 			</CriteriaList>
 			<Recommendation>Give one dose of paracetamol in clinic for high fever</Recommendation>
 		</Treatment>
@@ -329,21 +329,21 @@
 		<Classification>Malaria</Classification>
 		<Treatment>
 			<CriteriaList rule="all">
-				<SymptomCriteria value="no">breathing_assessment_cough_difficult_breathing_symptom_id</SymptomCriteria>		<!-- No Cough Present -->
-				<SymptomCriteria value="yes">breathing_assessment_fast_breathing_symptom_id</SymptomCriteria>				<!-- Fast Breathing -->
+				<SymptomCriteria value="no">imci_breathing_assessment_cough_difficult_breathing_symptom_id</SymptomCriteria>		<!-- No Cough Present -->
+				<SymptomCriteria value="yes">imci_breathing_assessment_fast_breathing_symptom_id</SymptomCriteria>				<!-- Fast Breathing -->
 			</CriteriaList>
 			<Recommendation>Treat with oral antimalarial</Recommendation>
 		</Treatment>
 		<Treatment>
 			<CriteriaList rule="all">
-				<SymptomCriteria value="yes">breathing_assessment_cough_difficult_breathing_symptom_id</SymptomCriteria>	<!-- Cough Present -->
-				<SymptomCriteria value="yes">breathing_assessment_fast_breathing_symptom_id</SymptomCriteria>				<!-- Fast Breathing -->
+				<SymptomCriteria value="yes">imci_breathing_assessment_cough_difficult_breathing_symptom_id</SymptomCriteria>	<!-- Cough Present -->
+				<SymptomCriteria value="yes">imci_breathing_assessment_fast_breathing_symptom_id</SymptomCriteria>				<!-- Fast Breathing -->
 			</CriteriaList>
 			<Recommendation>Treat with Contrimoxazole for five days</Recommendation>
 		</Treatment>
 		<Treatment>
 			<CriteriaList rule="all">
-				<SymptomCriteria value="high temperature">fever_assessment_fever_symptom_id</SymptomCriteria>				<!-- Fever : High Temperature (> 37.5 degrees celsius) -->
+				<SymptomCriteria value="high temperature">imci_fever_assessment_fever_symptom_id</SymptomCriteria>				<!-- Fever : High Temperature (> 37.5 degrees celsius) -->
 			</CriteriaList>
 			<Recommendation>Give one dose of paracetamol in clinic for high fever</Recommendation>
 		</Treatment>
@@ -355,8 +355,8 @@
 		</Treatment>
 		<Treatment>
 			<CriteriaList rule="all">
-				<SymptomCriteria value="yes">fever_assessment_present_every_day_symptom_id</SymptomCriteria>				<!-- Fever present every day -->
-				<SymptomCriteria value="yes">fever_assessment_duration_symptom_id</SymptomCriteria>							<!-- Fever duration more than 7 days -->
+				<SymptomCriteria value="yes">imci_fever_assessment_present_every_day_symptom_id</SymptomCriteria>				<!-- Fever present every day -->
+				<SymptomCriteria value="yes">imci_fever_assessment_duration_symptom_id</SymptomCriteria>							<!-- Fever duration more than 7 days -->
 			</CriteriaList>
 			<Recommendation>Refer for Assessment</Recommendation>
 		</Treatment>
@@ -385,7 +385,7 @@
 		<Classification>Fever - Malaria Unlikely</Classification>
 		<Treatment>
 			<CriteriaList rule="all">
-				<SymptomCriteria value="high temperature">fever_assessment_fever_symptom_id</SymptomCriteria>				<!-- Fever : High Temperature (> 37.5 degrees celsius) -->
+				<SymptomCriteria value="high temperature">imci_fever_assessment_fever_symptom_id</SymptomCriteria>				<!-- Fever : High Temperature (> 37.5 degrees celsius) -->
 			</CriteriaList>
 			<Recommendation>Give one dose of paracetamol in clinic for high fever</Recommendation>
 		</Treatment>
@@ -397,8 +397,8 @@
 		</Treatment>
 		<Treatment>
 			<CriteriaList rule="all">
-				<SymptomCriteria value="yes">fever_assessment_present_every_day_symptom_id</SymptomCriteria>				<!-- Fever present every day -->
-				<SymptomCriteria value="yes">fever_assessment_duration_symptom_id</SymptomCriteria>							<!-- Fever duration more than 7 days -->
+				<SymptomCriteria value="yes">imci_fever_assessment_present_every_day_symptom_id</SymptomCriteria>				<!-- Fever present every day -->
+				<SymptomCriteria value="yes">imci_fever_assessment_duration_symptom_id</SymptomCriteria>							<!-- Fever duration more than 7 days -->
 			</CriteriaList>
 			<Recommendation>Refer for Assessment</Recommendation>
 		</Treatment>
@@ -434,8 +434,8 @@
 		</Treatment>
 		<Treatment>
 			<CriteriaList rule="any">
-				<SymptomCriteria value="yes">fever_assessment_cornea_clouding_symptom_id</SymptomCriteria>				<!-- Clouding of the Cornea -->
-				<SymptomCriteria value="yes">fever_assessment_pus_draining_symptom_id</SymptomCriteria>					<!-- Pus Discharge from the Eye -->
+				<SymptomCriteria value="yes">imci_fever_assessment_cornea_clouding_symptom_id</SymptomCriteria>				<!-- Clouding of the Cornea -->
+				<SymptomCriteria value="yes">imci_fever_assessment_pus_draining_symptom_id</SymptomCriteria>					<!-- Pus Discharge from the Eye -->
 			</CriteriaList>
 			<Recommendation>Apply tetracycline eye ointment</Recommendation>
 		</Treatment>
@@ -465,13 +465,13 @@
 		</Treatment>
 		<Treatment>
 			<CriteriaList rule="all">
-				<SymptomCriteria value="yes">fever_assessment_pus_draining_symptom_id</SymptomCriteria>					<!-- Pus Discharge from the Eye -->
+				<SymptomCriteria value="yes">imci_fever_assessment_pus_draining_symptom_id</SymptomCriteria>					<!-- Pus Discharge from the Eye -->
 			</CriteriaList>
 			<Recommendation>Apply tetracycline eye ointment</Recommendation>
 		</Treatment>
 		<Treatment>
 			<CriteriaList rule="all">
-				<SymptomCriteria value="yes">fever_assessment_mouth_ulcers_symptom_id</SymptomCriteria>					<!-- Mouth Ulcers -->
+				<SymptomCriteria value="yes">imci_fever_assessment_mouth_ulcers_symptom_id</SymptomCriteria>					<!-- Mouth Ulcers -->
 			</CriteriaList>
 			<Recommendation>Treat mouth ulcers with gentian violet</Recommendation>
 		</Treatment>
@@ -647,37 +647,37 @@
 		<Classification>Anaemia or Very Low Weight</Classification>
 		<Treatment>
 			<CriteriaList rule="any">
-				<SymptomCriteria value="some">malnutrition_assessment_palmar_pallor_symptom_id</SymptomCriteria>
-				<SymptomCriteria value="severe">malnutrition_assessment_palmar_pallor_symptom_id</SymptomCriteria>
+				<SymptomCriteria value="some">imci_malnutrition_assessment_palmar_pallor_symptom_id</SymptomCriteria>
+				<SymptomCriteria value="severe">imci_malnutrition_assessment_palmar_pallor_symptom_id</SymptomCriteria>
 			</CriteriaList>
 			<Recommendation>Give Iron</Recommendation>
 			<Recommendation>Follow-up visit: 14 days</Recommendation>
 		</Treatment>
 		<Treatment>
 			<CriteriaList rule="all">
-				<SymptomCriteria value="no">malnutrition_assessment_palmar_pallor_symptom_id</SymptomCriteria>
-				<SymptomCriteria value="very low">malnutrition_assessment_weight_for_age_symptom_id</SymptomCriteria>
+				<SymptomCriteria value="no">imci_malnutrition_assessment_palmar_pallor_symptom_id</SymptomCriteria>
+				<SymptomCriteria value="very low">imci_malnutrition_assessment_weight_for_age_symptom_id</SymptomCriteria>
 			</CriteriaList>
 			<Recommendation>Follow-up visit: 30 days</Recommendation>
 		</Treatment>
 		<Treatment>
 			<CriteriaList rule="any">
-				<SymptomCriteria value="some">malnutrition_assessment_palmar_pallor_symptom_id</SymptomCriteria>
-				<SymptomCriteria value="severe">malnutrition_assessment_palmar_pallor_symptom_id</SymptomCriteria>
+				<SymptomCriteria value="some">imci_malnutrition_assessment_palmar_pallor_symptom_id</SymptomCriteria>
+				<SymptomCriteria value="severe">imci_malnutrition_assessment_palmar_pallor_symptom_id</SymptomCriteria>
 			</CriteriaList>
 			<CriteriaList rule="all">
-				<SymptomCriteria value="high malaria risk">fever_assessment_malaria_risk_symptom_id</SymptomCriteria>
+				<SymptomCriteria value="high malaria risk">imci_fever_assessment_malaria_risk_symptom_id</SymptomCriteria>
 			</CriteriaList>
 			<Recommendation>Give Oral Antimalarial</Recommendation>
 		</Treatment>
 		<Treatment>
 			<CriteriaList rule="any">
-				<SymptomCriteria value="some">malnutrition_assessment_palmar_pallor_symptom_id</SymptomCriteria>
-				<SymptomCriteria value="severe">malnutrition_assessment_palmar_pallor_symptom_id</SymptomCriteria>
+				<SymptomCriteria value="some">imci_malnutrition_assessment_palmar_pallor_symptom_id</SymptomCriteria>
+				<SymptomCriteria value="severe">imci_malnutrition_assessment_palmar_pallor_symptom_id</SymptomCriteria>
 			</CriteriaList>
 			<CriteriaList rule="all">
-				<SymptomCriteria value="no">malnutrition_assessment_mebendazole_dose_symptom_id</SymptomCriteria>			<!-- Mebendazole Dose in the last six months: NO -->
-				<SymptomCriteria value="yes">general_patient_details_patient_two_years_or_older_symptom_id</SymptomCriteria>
+				<SymptomCriteria value="no">imci_malnutrition_assessment_mebendazole_dose_symptom_id</SymptomCriteria>			<!-- Mebendazole Dose in the last six months: NO -->
+				<SymptomCriteria value="yes">imci_general_patient_details_patient_two_years_or_older_symptom_id</SymptomCriteria>
 			</CriteriaList>
 			<Recommendation>Give Mebendazole</Recommendation>
 		</Treatment>

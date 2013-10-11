@@ -109,12 +109,12 @@ public class EarAssessmentFragment extends Fragment {
         ((TextView) rootView.findViewById(android.R.id.title)).setText(getEarAssessmentPage().getTitle());
                 
         // ear problem
-        setEarProblemRadioGroup((RadioGroup) rootView.findViewById(R.id.ear_assessment_radio_ear_problem));
+        setEarProblemRadioGroup((RadioGroup) rootView.findViewById(R.id.imci_ear_assessment_radio_ear_problem));
         getEarProblemRadioGroup().check(getEarAssessmentPage()
         		.getPageData().getInt(EarAssessmentPage.EAR_PROBLEM_DATA_KEY));
         
         // ear pain
-        setEarPainRadioGroup((RadioGroup) rootView.findViewById(R.id.ear_assessment_radio_ear_pain));
+        setEarPainRadioGroup((RadioGroup) rootView.findViewById(R.id.imci_ear_assessment_radio_ear_pain));
         getEarPainRadioGroup().check(getEarAssessmentPage()
         		.getPageData().getInt(EarAssessmentPage.EAR_PAIN_DATA_KEY));
         
@@ -123,7 +123,7 @@ public class EarAssessmentFragment extends Fragment {
         configureEarDischargeAnimatedView(rootView);
         
         // tender swelling
-        setTenderSwellingRadioGroup((RadioGroup) rootView.findViewById(R.id.ear_assessment_radio_tender_swelling));
+        setTenderSwellingRadioGroup((RadioGroup) rootView.findViewById(R.id.imci_ear_assessment_radio_tender_swelling));
         getTenderSwellingRadioGroup().check(getEarAssessmentPage()
         		.getPageData().getInt(EarAssessmentPage.TENDER_SWELLING_DATA_KEY));
         
@@ -136,25 +136,25 @@ public class EarAssessmentFragment extends Fragment {
     
 	private void configureEarDischargeAnimatedView(View rootView) {
 		// ear discharge view
-		setEarDischargeView((View) rootView.findViewById(R.id.ear_assessment_view_ear_discharge));
+		setEarDischargeView((View) rootView.findViewById(R.id.imci_ear_assessment_view_ear_discharge));
 		
         // ear discharge radio group
-        setEarDischargeRadioGroup((RadioGroup) rootView.findViewById(R.id.ear_assessment_radio_ear_discharge));
+        setEarDischargeRadioGroup((RadioGroup) rootView.findViewById(R.id.imci_ear_assessment_radio_ear_discharge));
         getEarDischargeRadioGroup().check(getEarAssessmentPage()
         		.getPageData().getInt(EarAssessmentPage.EAR_DISCHARGE_DATA_KEY));
         
         // ear discharge duration
-        setEarDischargeDurationEditText((EditText) rootView.findViewById(R.id.ear_assessment_ear_discharge_duration));
+        setEarDischargeDurationEditText((EditText) rootView.findViewById(R.id.imci_ear_assessment_ear_discharge_duration));
         getEarDischargeDurationEditText().setText(getEarAssessmentPage().getPageData().getString(EarAssessmentPage.EAR_DISCHARGE_DURATION_DATA_KEY));
         // apply min/max data entry filtering to the 'ear discharge duration' UI element
         getEarDischargeDurationEditText().setFilters(new InputFilter[] {new InputFilterMinMax(MIN_EAR_DISCHARGE_DURATION, MAX_EAR_DISCHARGE_DURATION)});
 		       
         //  ear discharge duration is a dynamic view within the UI
-        setEarDischargeDurationDynamicView(new DynamicView(rootView.findViewById(R.id.ear_assessment_view_ear_discharge_duration),
-        									rootView.findViewById(R.id.ear_assessment_ear_discharge_duration)));
+        setEarDischargeDurationDynamicView(new DynamicView(rootView.findViewById(R.id.imci_ear_assessment_view_ear_discharge_duration),
+        									rootView.findViewById(R.id.imci_ear_assessment_ear_discharge_duration)));
                 
         // get a hold on the top level animated view
-        setAnimatedView(((ViewGroup) rootView.findViewById(R.id.ear_assessment_discharge_animated_view)));
+        setAnimatedView(((ViewGroup) rootView.findViewById(R.id.imci_ear_assessment_discharge_animated_view)));
 	}
 
 

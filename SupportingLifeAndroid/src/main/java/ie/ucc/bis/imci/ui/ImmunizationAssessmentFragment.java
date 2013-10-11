@@ -61,12 +61,12 @@ public class ImmunizationAssessmentFragment extends Fragment {
         ((TextView) rootView.findViewById(android.R.id.title)).setText(getImmunizationAssessmentPage().getTitle());
                 
         // Vaccine: BCG
-        setBcgVaccineRadioGroup((RadioGroup) rootView.findViewById(R.id.immunization_assessment_radio_vaccine_bcg));
+        setBcgVaccineRadioGroup((RadioGroup) rootView.findViewById(R.id.imci_immunization_assessment_radio_vaccine_bcg));
         getBcgVaccineRadioGroup().check(getImmunizationAssessmentPage()
         		.getPageData().getInt(ImmunizationAssessmentPage.BCG_VACCINE_DATA_KEY));
         
         // Vaccine: Measles
-        setMeaslesVaccineRadioGroup((RadioGroup) rootView.findViewById(R.id.immunization_assessment_radio_vaccine_measles));
+        setMeaslesVaccineRadioGroup((RadioGroup) rootView.findViewById(R.id.imci_immunization_assessment_radio_vaccine_measles));
         getMeaslesVaccineRadioGroup().check(getImmunizationAssessmentPage()
         		.getPageData().getInt(ImmunizationAssessmentPage.MEASLES_VACCINE_DATA_KEY));
                 

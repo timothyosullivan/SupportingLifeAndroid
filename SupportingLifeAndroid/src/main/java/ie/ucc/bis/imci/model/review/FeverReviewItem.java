@@ -61,15 +61,15 @@ public class FeverReviewItem extends ReviewItem implements Serializable {
     			// No
     			setSymptomValue(Response.NO.name());
     		}
-    		else if (getDisplayValue().equals(resources.getString(R.string.fever_assessment_radio_fever_history))) {
+    		else if (getDisplayValue().equals(resources.getString(R.string.imci_fever_assessment_radio_fever_history))) {
     			// History
     			setSymptomValue(HISTORY);
     		}
-    		else if (getDisplayValue().equals(resources.getString(R.string.fever_assessment_radio_fever_feels_hot))) {
+    		else if (getDisplayValue().equals(resources.getString(R.string.imci_fever_assessment_radio_fever_feels_hot))) {
     			// Feels Hot
     			setSymptomValue(FEELS_HOT);
     		}
-    		else if (getDisplayValue().contains(resources.getString(R.string.fever_assessment_radio_fever_temperature))) {
+    		else if (getDisplayValue().contains(resources.getString(R.string.imci_fever_assessment_radio_fever_temperature))) {
     			// High Temperature
     			setSymptomValue(HIGH_TEMPERATURE);
     		}    		

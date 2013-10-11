@@ -64,27 +64,27 @@ public class MalnutritionAssessmentFragment extends Fragment {
         ((TextView) rootView.findViewById(android.R.id.title)).setText(getMalnutritionAssessmentPage().getTitle());
                 
         // oedema
-        setOedemaRadioGroup((RadioGroup) rootView.findViewById(R.id.malnutrition_assessment_radio_oedema));
+        setOedemaRadioGroup((RadioGroup) rootView.findViewById(R.id.imci_malnutrition_assessment_radio_oedema));
         getOedemaRadioGroup().check(getMalnutritionAssessmentPage()
         		.getPageData().getInt(MalnutritionAssessmentPage.OEDEMA_DATA_KEY));
         
         // weight for age
-        setWeightForAgeRadioGroup((RadioGroup) rootView.findViewById(R.id.malnutrition_assessment_radio_weight_for_age));
+        setWeightForAgeRadioGroup((RadioGroup) rootView.findViewById(R.id.imci_malnutrition_assessment_radio_weight_for_age));
         getWeightForAgeRadioGroup().check(getMalnutritionAssessmentPage()
         		.getPageData().getInt(MalnutritionAssessmentPage.WEIGHT_FOR_AGE_DATA_KEY));
         
         // visible severe wasting
-        setVisibleSevereWastingRadioGroup((RadioGroup) rootView.findViewById(R.id.malnutrition_assessment_radio_visible_severe_wasting));
+        setVisibleSevereWastingRadioGroup((RadioGroup) rootView.findViewById(R.id.imci_malnutrition_assessment_radio_visible_severe_wasting));
         getVisibleSevereWastingRadioGroup().check(getMalnutritionAssessmentPage()
         		.getPageData().getInt(MalnutritionAssessmentPage.VISIBLE_SEVERE_WASTING_DATA_KEY));
         
         // palmar pallor
-        setPalmarPallorRadioGroup((RadioGroup) rootView.findViewById(R.id.malnutrition_assessment_radio_palmar_pallor));
+        setPalmarPallorRadioGroup((RadioGroup) rootView.findViewById(R.id.imci_malnutrition_assessment_radio_palmar_pallor));
         getPalmarPallorRadioGroup().check(getMalnutritionAssessmentPage()
         		.getPageData().getInt(MalnutritionAssessmentPage.PALMAR_PALLOR_DATA_KEY));
         
         // mebendazaloe dose
-        setMebendazoleDoseRadioGroup((RadioGroup) rootView.findViewById(R.id.malnutrition_assessment_radio_mebendazole_dose));
+        setMebendazoleDoseRadioGroup((RadioGroup) rootView.findViewById(R.id.imci_malnutrition_assessment_radio_mebendazole_dose));
         getMebendazoleDoseRadioGroup().check(getMalnutritionAssessmentPage()
         		.getPageData().getInt(MalnutritionAssessmentPage.MEBENDAZOLE_DOSE_DATA_KEY));
         

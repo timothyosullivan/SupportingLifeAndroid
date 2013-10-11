@@ -79,41 +79,41 @@ public class GeneralPatientDetailsFragment extends Fragment {
         ((TextView) rootView.findViewById(android.R.id.title)).setText(getGeneralPatientDetailsPage().getTitle());
 
         // first name
-        setFirstNameEditText(((EditText) rootView.findViewById(R.id.general_patient_details_first_name)));
+        setFirstNameEditText(((EditText) rootView.findViewById(R.id.imci_general_patient_details_first_name)));
         getFirstNameEditText().setText(getGeneralPatientDetailsPage().getPageData().getString(GeneralPatientDetailsPage.FIRST_NAME_DATA_KEY));
 
         // surname
-        setSurnameEditText(((EditText) rootView.findViewById(R.id.general_patient_details_surname)));
+        setSurnameEditText(((EditText) rootView.findViewById(R.id.imci_general_patient_details_surname)));
         getSurnameEditText().setText(getGeneralPatientDetailsPage().getPageData().getString(GeneralPatientDetailsPage.SURNAME_DATA_KEY));
         
         // date of birth
-        setDateBirthEditText((EditText) rootView.findViewById(R.id.general_patient_details_date_of_birth));
+        setDateBirthEditText((EditText) rootView.findViewById(R.id.imci_general_patient_details_date_of_birth));
         getDateBirthEditText().setText(getGeneralPatientDetailsPage().getPageData().getString(GeneralPatientDetailsPage.DATE_OF_BIRTH_DATA_KEY));
 
         // weight
-        setWeightEditText((EditText) rootView.findViewById(R.id.general_patient_details_weight));
+        setWeightEditText((EditText) rootView.findViewById(R.id.imci_general_patient_details_weight));
         getWeightEditText().setText(getGeneralPatientDetailsPage().getPageData().getString(GeneralPatientDetailsPage.WEIGHT_DATA_KEY));
         // apply min/max data entry filtering to the 'weight' UI element
         getWeightEditText().setFilters(new InputFilter[] {new InputFilterMinMax(MIN_WEIGHT, MAX_WEIGHT)});
         
         // temperature label - add degree celsius postfix
-        Spanned temperatureHeading = Html.fromHtml(getResources().getString(R.string.general_patient_details_temperature) + " (<sup>o</sup>" + "C)");
-        TextView temperatureLabel = (TextView) rootView.findViewById(R.id.general_patient_details_temperature_label);
+        Spanned temperatureHeading = Html.fromHtml(getResources().getString(R.string.imci_general_patient_details_temperature) + " (<sup>o</sup>" + "C)");
+        TextView temperatureLabel = (TextView) rootView.findViewById(R.id.imci_general_patient_details_temperature_label);
         temperatureLabel.setText(temperatureHeading);
         
         // temperature textfield
-        setTemperatureEditText((EditText) rootView.findViewById(R.id.general_patient_details_temperature));
+        setTemperatureEditText((EditText) rootView.findViewById(R.id.imci_general_patient_details_temperature));
         getTemperatureEditText().setText(getGeneralPatientDetailsPage().getPageData().getString(GeneralPatientDetailsPage.TEMPERATURE_DATA_KEY));
         // apply min/max data entry filtering to the 'weight' UI element
         getTemperatureEditText().setFilters(new InputFilter[] {new InputFilterMinMax(MIN_TEMPERATURE, MAX_TEMPERATURE)});
         
         // gender
-        setGenderRadioGroup((RadioGroup) rootView.findViewById(R.id.general_patient_details_radio_gender));
+        setGenderRadioGroup((RadioGroup) rootView.findViewById(R.id.imci_general_patient_details_radio_gender));
         getGenderRadioGroup().check(getGeneralPatientDetailsPage()
         		.getPageData().getInt(GeneralPatientDetailsPage.GENDER_DATA_KEY));
         
         // what are the child's problems
-        setProblemsEditText((EditText) rootView.findViewById(R.id.general_patient_details_problems));
+        setProblemsEditText((EditText) rootView.findViewById(R.id.imci_general_patient_details_problems));
         getProblemsEditText().setText(getGeneralPatientDetailsPage().getPageData().getString(GeneralPatientDetailsPage.PROBLEMS_DATA_KEY));
         
 		// add soft keyboard handler - essentially hiding soft

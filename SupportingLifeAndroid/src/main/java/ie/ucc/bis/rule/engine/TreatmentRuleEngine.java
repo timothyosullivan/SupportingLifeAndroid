@@ -110,7 +110,7 @@ public class TreatmentRuleEngine {
 			}
 		}
 		
-		String symptomId = supportingLifeBaseActivity.getResources().getString(R.string.treatment_criteria_severe_classification_present);
+		String symptomId = supportingLifeBaseActivity.getResources().getString(R.string.imci_treatment_criteria_severe_classification_present);
 		ReviewItem severeClassificationPresentReviewItem = new ReviewItem(null, null, symptomId, null, -1);
 		if (hasSevereClassification) {
 			severeClassificationPresentReviewItem.setSymptomValue(Response.YES.name());
@@ -129,7 +129,7 @@ public class TreatmentRuleEngine {
 	 * applies in the case of the patient assessment i.e.
 	 * 
 	 * 	<CriteriaList rule="all">
-	 * 		<TreatmentCriteria value="no">treatment_criteria_severe_dehydration_is_only_severe_classification</TreatmentCriteria>
+	 * 		<TreatmentCriteria value="no">imci_treatment_criteria_severe_dehydration_is_only_severe_classification</TreatmentCriteria>
 	 * 	</CriteriaList>
 	 * 
 	 * @param supportingLifeBaseActivity
@@ -150,7 +150,7 @@ public class TreatmentRuleEngine {
 			}
 		}
 		
-		String symptomId = supportingLifeBaseActivity.getResources().getString(R.string.treatment_criteria_severe_dehydration_is_only_severe_classification);
+		String symptomId = supportingLifeBaseActivity.getResources().getString(R.string.imci_treatment_criteria_severe_dehydration_is_only_severe_classification);
 		ReviewItem severeDehydrationReviewItem = new ReviewItem(null, null, symptomId, null, -1);
 		if (onlySevereDehydration) {
 			severeDehydrationReviewItem.setSymptomValue(Response.YES.name());

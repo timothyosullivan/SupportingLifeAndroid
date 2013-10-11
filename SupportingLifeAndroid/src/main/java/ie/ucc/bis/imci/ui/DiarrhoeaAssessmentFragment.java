@@ -111,38 +111,38 @@ public class DiarrhoeaAssessmentFragment extends Fragment {
         configureDiarrhoeaDurationAnimatedView(rootView);
                
         // blood in the stools
-        setBloodStoolsRadioGroup((RadioGroup) rootView.findViewById(R.id.diarrhoea_assessment_radio_blood_stools));
+        setBloodStoolsRadioGroup((RadioGroup) rootView.findViewById(R.id.imci_diarrhoea_assessment_radio_blood_stools));
         getBloodStoolsRadioGroup().check(getDiarrhoeaAssessmentPage()
         		.getPageData().getInt(DiarrhoeaAssessmentPage.BLOOD_STOOLS_DATA_KEY));
         
         // sunken eyes
-        setSunkenEyesRadioGroup((RadioGroup) rootView.findViewById(R.id.diarrhoea_assessment_radio_sunken_eyes));
+        setSunkenEyesRadioGroup((RadioGroup) rootView.findViewById(R.id.imci_diarrhoea_assessment_radio_sunken_eyes));
         getSunkenEyesRadioGroup().check(getDiarrhoeaAssessmentPage()
         		.getPageData().getInt(DiarrhoeaAssessmentPage.SUNKEN_EYES_DATA_KEY));
         
         // lethargic or unconscious - ** This is fed from the 'General Danger Signs' Page / review item
         // will be set via onViewStateRestored(..) callback method
-        setLethargicUnconsciousRadioGroup((RadioGroup) rootView.findViewById(R.id.diarrhoea_assessment_radio_lethargic_or_unconscious));
+        setLethargicUnconsciousRadioGroup((RadioGroup) rootView.findViewById(R.id.imci_diarrhoea_assessment_radio_lethargic_or_unconscious));
         // disable user interaction with this radio group selection
         RadioGroupUtilities.toggleRadioButtonsEnabledState(getLethargicUnconsciousRadioGroup(), false);
       
         // restless / irritable
-        setRestlessIrritableRadioGroup((RadioGroup) rootView.findViewById(R.id.diarrhoea_assessment_radio_restless_irritable));
+        setRestlessIrritableRadioGroup((RadioGroup) rootView.findViewById(R.id.imci_diarrhoea_assessment_radio_restless_irritable));
         getRestlessIrritableRadioGroup().check(getDiarrhoeaAssessmentPage()
         		.getPageData().getInt(DiarrhoeaAssessmentPage.RESTLESS_IRRITABLE_DATA_KEY));
  
         // cholera in area
-        setCholeraInAreaRadioGroup((RadioGroup) rootView.findViewById(R.id.diarrhoea_assessment_radio_cholera_in_area));
+        setCholeraInAreaRadioGroup((RadioGroup) rootView.findViewById(R.id.imci_diarrhoea_assessment_radio_cholera_in_area));
         getCholeraInAreaRadioGroup().check(getDiarrhoeaAssessmentPage()
         		.getPageData().getInt(DiarrhoeaAssessmentPage.CHOLERA_IN_AREA_DATA_KEY));
         
         // offer the child fluid
-        setChildFluidRadioGroup((ToggleButtonGroupTableLayout) rootView.findViewById(R.id.diarrhoea_assessment_radio_child_fluid));
+        setChildFluidRadioGroup((ToggleButtonGroupTableLayout) rootView.findViewById(R.id.imci_diarrhoea_assessment_radio_child_fluid));
         getChildFluidRadioGroup().check(getDiarrhoeaAssessmentPage()
         		.getPageData().getInt(DiarrhoeaAssessmentPage.CHILD_FLUID_DATA_KEY));
        
         // skin pinch
-        setSkinPinchRadioGroup((ToggleButtonGroupTableLayout) rootView.findViewById(R.id.diarrhoea_assessment_radio_skin_pinch));
+        setSkinPinchRadioGroup((ToggleButtonGroupTableLayout) rootView.findViewById(R.id.imci_diarrhoea_assessment_radio_skin_pinch));
         getSkinPinchRadioGroup().check(getDiarrhoeaAssessmentPage()
         		.getPageData().getInt(DiarrhoeaAssessmentPage.SKIN_PINCH_DATA_KEY));
         
@@ -155,25 +155,25 @@ public class DiarrhoeaAssessmentFragment extends Fragment {
     
 	private void configureDiarrhoeaDurationAnimatedView(View rootView) {
 		// diarrhoea view
-		setDiarrhoeaView((View) rootView.findViewById(R.id.diarrhoea_assessment_view_diarrhoea));
+		setDiarrhoeaView((View) rootView.findViewById(R.id.imci_diarrhoea_assessment_view_diarrhoea));
 		
         // diarrhoea
-        setDiarrhoeaRadioGroup((RadioGroup) rootView.findViewById(R.id.diarrhoea_assessment_radio_diarrhoea));
+        setDiarrhoeaRadioGroup((RadioGroup) rootView.findViewById(R.id.imci_diarrhoea_assessment_radio_diarrhoea));
         getDiarrhoeaRadioGroup().check(getDiarrhoeaAssessmentPage()
         		.getPageData().getInt(DiarrhoeaAssessmentPage.DIARRHOEA_DATA_KEY));
         
         // for how long? (days) - diarrhoea duration
-        setDiarrhoeaDurationEditText((EditText) rootView.findViewById(R.id.diarrhoea_assessment_diarrhoea_duration));
+        setDiarrhoeaDurationEditText((EditText) rootView.findViewById(R.id.imci_diarrhoea_assessment_diarrhoea_duration));
         getDiarrhoeaDurationEditText().setText(getDiarrhoeaAssessmentPage().getPageData().getString(DiarrhoeaAssessmentPage.DIARRHOEA_DURATION_DATA_KEY));
         // apply min/max data entry filtering to the 'diarrhoea duration' UI element
         getDiarrhoeaDurationEditText().setFilters(new InputFilter[] {new InputFilterMinMax(MIN_DIARRHOEA_DURATION, MAX_DIARRHOEA_DURATION)});
 		       
         // diarrhoea duration is a dynamic view within the UI
-        setDiarrhoeaDurationDynamicView(new DynamicView(rootView.findViewById(R.id.diarrhoea_assessment_view_diarrhoea_duration),
-        									rootView.findViewById(R.id.diarrhoea_assessment_diarrhoea_duration)));
+        setDiarrhoeaDurationDynamicView(new DynamicView(rootView.findViewById(R.id.imci_diarrhoea_assessment_view_diarrhoea_duration),
+        									rootView.findViewById(R.id.imci_diarrhoea_assessment_diarrhoea_duration)));
                 
         // get a hold on the top level animated view
-        setAnimatedView(((ViewGroup) rootView.findViewById(R.id.diarrhoea_assessment_diarrhoea_animated_view)));
+        setAnimatedView(((ViewGroup) rootView.findViewById(R.id.imci_diarrhoea_assessment_diarrhoea_animated_view)));
 	}
     
 	/**
@@ -196,10 +196,10 @@ public class DiarrhoeaAssessmentFragment extends Fragment {
         if (radioGroupSetting != null) {        
 	        // 3. set this value on the lethargic/unconscious radio grouping on the diarrhoea assessment page
 	        if (radioGroupSetting.equals(getResources().getString(R.string.assessment_wizard_radio_yes))) {
-	        	getLethargicUnconsciousRadioGroup().check(R.id.diarrhoea_assessment_radio_lethargic_or_unconscious_yes);
+	        	getLethargicUnconsciousRadioGroup().check(R.id.imci_diarrhoea_assessment_radio_lethargic_or_unconscious_yes);
 	        }
 	        else if (radioGroupSetting.equals(getResources().getString(R.string.assessment_wizard_radio_no))) {
-	        	getLethargicUnconsciousRadioGroup().check(R.id.diarrhoea_assessment_radio_lethargic_or_unconscious_no);
+	        	getLethargicUnconsciousRadioGroup().check(R.id.imci_diarrhoea_assessment_radio_lethargic_or_unconscious_no);
 	        }
         }
 	}

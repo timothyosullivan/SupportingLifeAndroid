@@ -29,21 +29,21 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="bottom"
-                android:text="@string/ear_assessment_radio_ear_problem" />
+                android:text="@string/imci_ear_assessment_radio_ear_problem" />
 
             <RadioGroup
-                android:id="@+id/ear_assessment_radio_ear_problem"
+                android:id="@+id/imci_ear_assessment_radio_ear_problem"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal" >
 
                 <RadioButton
-                    android:id="@+id/ear_assessment_radio_ear_problem_yes"
+                    android:id="@+id/imci_ear_assessment_radio_ear_problem_yes"
                     android:layout_weight="0.67"
                     android:text="@string/assessment_wizard_radio_yes" />
 
                 <RadioButton
-                    android:id="@+id/ear_assessment_radio_ear_problem_no"
+                    android:id="@+id/imci_ear_assessment_radio_ear_problem_no"
                     android:layout_weight="0.33"
                     android:text="@string/assessment_wizard_radio_no" />
             </RadioGroup>
@@ -57,21 +57,21 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="bottom"
-                android:text="@string/ear_assessment_radio_ear_pain" />
+                android:text="@string/imci_ear_assessment_radio_ear_pain" />
 
             <RadioGroup
-                android:id="@+id/ear_assessment_radio_ear_pain"
+                android:id="@+id/imci_ear_assessment_radio_ear_pain"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal" >
 
                 <RadioButton
-                    android:id="@+id/ear_assessment_radio_ear_pain_yes"
+                    android:id="@+id/imci_ear_assessment_radio_ear_pain_yes"
                     android:layout_weight="0.67"
                     android:text="@string/assessment_wizard_radio_yes" />
 
                 <RadioButton
-                    android:id="@+id/ear_assessment_radio_ear_pain_no"
+                    android:id="@+id/imci_ear_assessment_radio_ear_pain_no"
                     android:layout_weight="0.33"
                     android:text="@string/assessment_wizard_radio_no" />
             </RadioGroup>
@@ -80,13 +80,13 @@
             <!-- EAR DISCHARGE RADIO BUTTON GROUP -->
             <!-- ============================================================ -->
 			<LinearLayout
-				android:id="@+id/ear_assessment_discharge_animated_view"
+				android:id="@+id/imci_ear_assessment_discharge_animated_view"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
 				android:animateLayoutChanges="true"
 				android:orientation="vertical">
                 <LinearLayout
-					android:id="@+id/ear_assessment_view_ear_discharge"
+					android:id="@+id/imci_ear_assessment_view_ear_discharge"
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
 					android:orientation="vertical">
@@ -95,21 +95,21 @@
 		                android:layout_width="match_parent"
 		                android:layout_height="match_parent"
 		                android:layout_gravity="bottom"
-		                android:text="@string/ear_assessment_radio_ear_discharge" />
+		                android:text="@string/imci_ear_assessment_radio_ear_discharge" />
 		
 		            <RadioGroup
-		                android:id="@+id/ear_assessment_radio_ear_discharge"
+		                android:id="@+id/imci_ear_assessment_radio_ear_discharge"
 		                android:layout_width="match_parent"
 		                android:layout_height="wrap_content"
 		                android:orientation="horizontal" >
 		
 		                <RadioButton
-		                    android:id="@+id/ear_assessment_radio_ear_discharge_yes"
+		                    android:id="@+id/imci_ear_assessment_radio_ear_discharge_yes"
 		                    android:layout_weight="0.67"
 		                    android:text="@string/assessment_wizard_radio_yes" />
 		
 		                <RadioButton
-		                    android:id="@+id/ear_assessment_radio_ear_discharge_no"
+		                    android:id="@+id/imci_ear_assessment_radio_ear_discharge_no"
 		                    android:layout_weight="0.33"
 		                    android:text="@string/assessment_wizard_radio_no" />
 		            </RadioGroup>
@@ -119,23 +119,23 @@
 				<!-- FOR HOW LONG? (EAR DISCHARGE DURATION) -->
 				<!-- ============================================================ -->
 				<LinearLayout
-					android:id="@+id/ear_assessment_view_ear_discharge_duration"
+					android:id="@+id/imci_ear_assessment_view_ear_discharge_duration"
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
 					android:paddingLeft="30dp"
 					android:orientation="vertical">
 					<TextView
-						android:id="@+id/ear_assessment_ear_discharge_duration_label"
+						android:id="@+id/imci_ear_assessment_ear_discharge_duration_label"
 						style="@style/WizardFormLabel"
-						android:text="@string/ear_assessment_ear_discharge_duration" />
+						android:text="@string/imci_ear_assessment_ear_discharge_duration" />
 			
 			            <EditText
-			                android:id="@+id/ear_assessment_ear_discharge_duration"
+			                android:id="@+id/imci_ear_assessment_ear_discharge_duration"
 			                android:layout_width="match_parent"
 			                android:layout_height="wrap_content"
 			                android:layout_marginBottom="10dp"
 			                android:inputType="number"
-			                android:hint="@string/ear_assessment_ear_discharge_duration_hint"/>
+			                android:hint="@string/imci_ear_assessment_ear_discharge_duration_hint"/>
 				</LinearLayout>
             <!-- ============================================================ -->
             <!-- TENDER SWELLING BEHIND THE EAR RADIO BUTTON GROUP -->
@@ -146,21 +146,21 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="bottom"
-                android:text="@string/ear_assessment_radio_tender_swelling" />
+                android:text="@string/imci_ear_assessment_radio_tender_swelling" />
 
             <RadioGroup
-                android:id="@+id/ear_assessment_radio_tender_swelling"
+                android:id="@+id/imci_ear_assessment_radio_tender_swelling"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal" >
 
                 <RadioButton
-                    android:id="@+id/ear_assessment_radio_tender_swelling_yes"
+                    android:id="@+id/imci_ear_assessment_radio_tender_swelling_yes"
                     android:layout_weight="0.67"
                     android:text="@string/assessment_wizard_radio_yes" />
 
                 <RadioButton
-                    android:id="@+id/ear_assessment_radio_tender_swelling_no"
+                    android:id="@+id/imci_ear_assessment_radio_tender_swelling_no"
                     android:layout_weight="0.33"
                     android:text="@string/assessment_wizard_radio_no" />
             </RadioGroup>

@@ -146,37 +146,37 @@ public class FeverAssessmentFragment extends Fragment {
         configureFeverDurationAnimatedView(rootView);
                         
         // malaria risk
-        setMalariaRiskRadioGroup((RadioGroup) rootView.findViewById(R.id.fever_assessment_radio_malaria_risk));
+        setMalariaRiskRadioGroup((RadioGroup) rootView.findViewById(R.id.imci_fever_assessment_radio_malaria_risk));
         getMalariaRiskRadioGroup().check(getFeverAssessmentPage()
         		.getPageData().getInt(FeverAssessmentPage.MALARIA_RISK_DATA_KEY));
         
         // measles
-        setMeaslesRadioGroup((RadioGroup) rootView.findViewById(R.id.fever_assessment_radio_measles));
+        setMeaslesRadioGroup((RadioGroup) rootView.findViewById(R.id.imci_fever_assessment_radio_measles));
         getMeaslesRadioGroup().check(getFeverAssessmentPage()
         		.getPageData().getInt(FeverAssessmentPage.MEASLES_DATA_KEY));
         
         // stiff neck
-        setStiffNeckRadioGroup((RadioGroup) rootView.findViewById(R.id.fever_assessment_radio_stiff_neck));
+        setStiffNeckRadioGroup((RadioGroup) rootView.findViewById(R.id.imci_fever_assessment_radio_stiff_neck));
         getStiffNeckRadioGroup().check(getFeverAssessmentPage()
         		.getPageData().getInt(FeverAssessmentPage.STIFF_NECK_DATA_KEY));
         
         // runny nose
-        setRunnyNoseRadioGroup((RadioGroup) rootView.findViewById(R.id.fever_assessment_radio_runny_nose));
+        setRunnyNoseRadioGroup((RadioGroup) rootView.findViewById(R.id.imci_fever_assessment_radio_runny_nose));
         getRunnyNoseRadioGroup().check(getFeverAssessmentPage()
         		.getPageData().getInt(FeverAssessmentPage.RUNNY_NOSE_DATA_KEY));
         
         // generalised rash
-        setGeneralisedRashRadioGroup((RadioGroup) rootView.findViewById(R.id.fever_assessment_radio_generalised_rash));
+        setGeneralisedRashRadioGroup((RadioGroup) rootView.findViewById(R.id.imci_fever_assessment_radio_generalised_rash));
         getGeneralisedRashRadioGroup().check(getFeverAssessmentPage()
         		.getPageData().getInt(FeverAssessmentPage.GENERALISED_RASH_DATA_KEY));
 
         // cough
-        setCoughRadioGroup((RadioGroup) rootView.findViewById(R.id.fever_assessment_radio_cough));
+        setCoughRadioGroup((RadioGroup) rootView.findViewById(R.id.imci_fever_assessment_radio_cough));
         getCoughRadioGroup().check(getFeverAssessmentPage()
         		.getPageData().getInt(FeverAssessmentPage.COUGH_DATA_KEY));
         
         // red eyes
-        setRedEyesRadioGroup((RadioGroup) rootView.findViewById(R.id.fever_assessment_radio_red_eyes));
+        setRedEyesRadioGroup((RadioGroup) rootView.findViewById(R.id.imci_fever_assessment_radio_red_eyes));
         getRedEyesRadioGroup().check(getFeverAssessmentPage()
         		.getPageData().getInt(FeverAssessmentPage.RED_EYES_DATA_KEY));
         
@@ -186,17 +186,17 @@ public class FeverAssessmentFragment extends Fragment {
         configureMouthUlcersAnimatedView(rootView);
         
         // pus draining from the eye
-        setPusDrainingRadioGroup((RadioGroup) rootView.findViewById(R.id.fever_assessment_radio_pus_draining));
+        setPusDrainingRadioGroup((RadioGroup) rootView.findViewById(R.id.imci_fever_assessment_radio_pus_draining));
         getPusDrainingRadioGroup().check(getFeverAssessmentPage()
         		.getPageData().getInt(FeverAssessmentPage.PUS_DRAINING_DATA_KEY));     
                        
         // clouding of the cornea
-        setCorneaCloudingRadioGroup((RadioGroup) rootView.findViewById(R.id.fever_assessment_radio_cornea_clouding));
+        setCorneaCloudingRadioGroup((RadioGroup) rootView.findViewById(R.id.imci_fever_assessment_radio_cornea_clouding));
         getCorneaCloudingRadioGroup().check(getFeverAssessmentPage()
         		.getPageData().getInt(FeverAssessmentPage.CORNEA_CLOUDING_DATA_KEY));
         
         // bulging fontanel
-        setBulgingFontanelRadioGroup((RadioGroup) rootView.findViewById(R.id.fever_assessment_radio_bulging_fontanel));
+        setBulgingFontanelRadioGroup((RadioGroup) rootView.findViewById(R.id.imci_fever_assessment_radio_bulging_fontanel));
         getBulgingFontanelRadioGroup().check(getFeverAssessmentPage()
         		.getPageData().getInt(FeverAssessmentPage.BULGING_FONTANEL_DATA_KEY));
                 
@@ -209,66 +209,66 @@ public class FeverAssessmentFragment extends Fragment {
 
 	private void configureFeverDurationAnimatedView(View rootView) {
 		// Fever view
-		setFeverView((View) rootView.findViewById(R.id.fever_assessment_view_fever));
+		setFeverView((View) rootView.findViewById(R.id.imci_fever_assessment_view_fever));
 		
         // need to add superscript text to the degree Celsius label of a 
         // fever radio button
-        RadioButton feverTempRadioButton = (RadioButton) rootView.findViewById(R.id.fever_assessment_radio_fever_temperature);
-        feverTempRadioButton.setText(Html.fromHtml(getText(R.string.fever_assessment_radio_fever_temperature) + "<sup>o</sup>" + "C"));
+        RadioButton feverTempRadioButton = (RadioButton) rootView.findViewById(R.id.imci_fever_assessment_radio_fever_temperature);
+        feverTempRadioButton.setText(Html.fromHtml(getText(R.string.imci_fever_assessment_radio_fever_temperature) + "<sup>o</sup>" + "C"));
                 
         // fever
-        setFeverCustomRadioGroup((ToggleButtonGroupTableLayout) rootView.findViewById(R.id.fever_assessment_radio_fever));
+        setFeverCustomRadioGroup((ToggleButtonGroupTableLayout) rootView.findViewById(R.id.imci_fever_assessment_radio_fever));
         getFeverCustomRadioGroup().check(getFeverAssessmentPage()
         		.getPageData().getInt(FeverAssessmentPage.FEVER_DATA_KEY));
         
         // fever duration
-        setDurationEditText((EditText) rootView.findViewById(R.id.fever_assessment_fever_duration));
+        setDurationEditText((EditText) rootView.findViewById(R.id.imci_fever_assessment_fever_duration));
         // apply min/max data entry filtering to the 'fever duration' UI element
         getDurationEditText().setFilters(new InputFilter[] {new InputFilterMinMax(MIN_FEVER_DURATION, MAX_FEVER_DURATION)});
         
         // fever duration is a dynamic view within the UI
-        setFeverDurationDynamicView(new DynamicView(rootView.findViewById(R.id.fever_assessment_view_fever_duration),
-        									rootView.findViewById(R.id.fever_assessment_fever_duration)));
+        setFeverDurationDynamicView(new DynamicView(rootView.findViewById(R.id.imci_fever_assessment_view_fever_duration),
+        									rootView.findViewById(R.id.imci_fever_assessment_fever_duration)));
         
         // has fever been present every day
-        setFeverPresentDailyRadioGroup((RadioGroup) rootView.findViewById(R.id.fever_assessment_radio_present_every_day));
+        setFeverPresentDailyRadioGroup((RadioGroup) rootView.findViewById(R.id.imci_fever_assessment_radio_present_every_day));
         getFeverPresentDailyRadioGroup().check(getFeverAssessmentPage()
         		.getPageData().getInt(FeverAssessmentPage.FEVER_PRESENT_EVERY_DAY_DATA_KEY));
         
         // get a hold on the top level animated view
-        setAnimatedFeverDurationView(((ViewGroup) rootView.findViewById(R.id.fever_assessment_duration_animated_view)));
+        setAnimatedFeverDurationView(((ViewGroup) rootView.findViewById(R.id.imci_fever_assessment_duration_animated_view)));
         
 	}
     
     
 	private void configureMouthUlcersAnimatedView(View rootView) {
 		// mouth ulcers
-        setMouthUlcersView((View) rootView.findViewById(R.id.fever_assessment_view_mouth_ulcers));
+        setMouthUlcersView((View) rootView.findViewById(R.id.imci_fever_assessment_view_mouth_ulcers));
                 
-        setMouthUlcersRadioGroup((RadioGroup) rootView.findViewById(R.id.fever_assessment_radio_mouth_ulcers));
+        setMouthUlcersRadioGroup((RadioGroup) rootView.findViewById(R.id.imci_fever_assessment_radio_mouth_ulcers));
         getMouthUlcersRadioGroup().check(getFeverAssessmentPage()
         		.getPageData().getInt(FeverAssessmentPage.MOUTH_ULCERS_DATA_KEY));
         
         // deep mouth ulcers
-        setDeepMouthUlcersRadioGroup((RadioGroup) rootView.findViewById(R.id.fever_assessment_radio_deep_mouth_ulcers));
+        setDeepMouthUlcersRadioGroup((RadioGroup) rootView.findViewById(R.id.imci_fever_assessment_radio_deep_mouth_ulcers));
         getDeepMouthUlcersRadioGroup().check(getFeverAssessmentPage()
         		.getPageData().getInt(FeverAssessmentPage.DEEP_MOUTH_ULCERS_DATA_KEY));
         
         // deep mouth ulcers is a dynamic view within the UI
-        setDeepMouthUlcersDynamicView(new DynamicView(rootView.findViewById(R.id.fever_assessment_view_deep_mouth_ulcers),
-        									rootView.findViewById(R.id.fever_assessment_radio_deep_mouth_ulcers)));
+        setDeepMouthUlcersDynamicView(new DynamicView(rootView.findViewById(R.id.imci_fever_assessment_view_deep_mouth_ulcers),
+        									rootView.findViewById(R.id.imci_fever_assessment_radio_deep_mouth_ulcers)));
                 
         // extensive mouth ulcers
-        setExtensiveMouthUlcersRadioGroup((RadioGroup) rootView.findViewById(R.id.fever_assessment_radio_extensive_mouth_ulcers));
+        setExtensiveMouthUlcersRadioGroup((RadioGroup) rootView.findViewById(R.id.imci_fever_assessment_radio_extensive_mouth_ulcers));
         getExtensiveMouthUlcersRadioGroup().check(getFeverAssessmentPage()
         		.getPageData().getInt(FeverAssessmentPage.EXTENSIVE_MOUTH_ULCERS_DATA_KEY));
 
         // extensive mouth ulcers is a dynamic view within the UI
-        setExtensiveMouthUlcersDynamicView(new DynamicView(rootView.findViewById(R.id.fever_assessment_view_extensive_mouth_ulcers),
-        									rootView.findViewById(R.id.fever_assessment_radio_extensive_mouth_ulcers)));
+        setExtensiveMouthUlcersDynamicView(new DynamicView(rootView.findViewById(R.id.imci_fever_assessment_view_extensive_mouth_ulcers),
+        									rootView.findViewById(R.id.imci_fever_assessment_radio_extensive_mouth_ulcers)));
         
         // get a hold on the top level animated view
-        setAnimatedView(((ViewGroup) rootView.findViewById(R.id.fever_assessment_animated_view)));
+        setAnimatedView(((ViewGroup) rootView.findViewById(R.id.imci_fever_assessment_animated_view)));
 	}
 
 

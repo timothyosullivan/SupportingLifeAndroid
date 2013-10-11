@@ -57,11 +57,11 @@ public class PalmarPallorReviewItem extends ReviewItem implements Serializable {
     	if (!TextUtils.isEmpty(getDisplayValue())) {
     		Resources resources = supportingLifeBaseActivity.getResources();
     	
-    		if (getDisplayValue().equals(resources.getString(R.string.malnutrition_assessment_radio_palmar_pallor_severe))) {
+    		if (getDisplayValue().equals(resources.getString(R.string.imci_malnutrition_assessment_radio_palmar_pallor_severe))) {
     			// Severe Palmar Pallor
     			setSymptomValue(SEVERE_PALMAR_PALLOR);
     		}
-    		else if (getDisplayValue().equals(resources.getString(R.string.malnutrition_assessment_radio_palmar_pallor_some))) {
+    		else if (getDisplayValue().equals(resources.getString(R.string.imci_malnutrition_assessment_radio_palmar_pallor_some))) {
     			// Some Palmar Pallor
     			setSymptomValue(SOME_PALMAR_PALLOR);
     		}

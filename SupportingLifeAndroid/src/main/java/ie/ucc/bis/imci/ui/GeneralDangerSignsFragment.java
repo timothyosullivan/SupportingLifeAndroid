@@ -64,27 +64,27 @@ public class GeneralDangerSignsFragment extends Fragment {
         ((TextView) rootView.findViewById(android.R.id.title)).setText(getGeneralDangerSignsPage().getTitle());
 
         // not able to drink or breastfeed
-        setDrinkBreastfeedRadioGroup((RadioGroup) rootView.findViewById(R.id.general_danger_signs_radio_drink_breastfeed));
+        setDrinkBreastfeedRadioGroup((RadioGroup) rootView.findViewById(R.id.imci_general_danger_signs_radio_drink_breastfeed));
         getDrinkBreastfeedRadioGroup().check(getGeneralDangerSignsPage()
         		.getPageData().getInt(GeneralDangerSignsPage.DRINK_BREASTFEED_DATA_KEY));
         
         // vomits everything
-        setVomitsRadioGroup((RadioGroup) rootView.findViewById(R.id.general_danger_signs_radio_vomits));
+        setVomitsRadioGroup((RadioGroup) rootView.findViewById(R.id.imci_general_danger_signs_radio_vomits));
         getVomitsRadioGroup().check(getGeneralDangerSignsPage()
         		.getPageData().getInt(GeneralDangerSignsPage.VOMITS_EVERYTHING_DATA_KEY));
         
         // history of convulsions
-        setConvulsionsRadioGroup((RadioGroup) rootView.findViewById(R.id.general_danger_signs_radio_convulsions));
+        setConvulsionsRadioGroup((RadioGroup) rootView.findViewById(R.id.imci_general_danger_signs_radio_convulsions));
         getConvulsionsRadioGroup().check(getGeneralDangerSignsPage()
         		.getPageData().getInt(GeneralDangerSignsPage.HISTORY_OF_CONVULSIONS_DATA_KEY));
         
         // lethargic or unconscious
-        setLethargicUnconsciousRadioGroup((RadioGroup) rootView.findViewById(R.id.general_danger_signs_radio_lethargic_or_unconscious));
+        setLethargicUnconsciousRadioGroup((RadioGroup) rootView.findViewById(R.id.imci_general_danger_signs_radio_lethargic_or_unconscious));
         getLethargicUnconsciousRadioGroup().check(getGeneralDangerSignsPage()
         		.getPageData().getInt(GeneralDangerSignsPage.LETHARGIC_OR_UNCONSCIOUS_DATA_KEY));
         
         // convulsing now
-        setConvulsingNowRadioGroup((RadioGroup) rootView.findViewById(R.id.general_danger_signs_radio_convulsing_now));
+        setConvulsingNowRadioGroup((RadioGroup) rootView.findViewById(R.id.imci_general_danger_signs_radio_convulsing_now));
         getConvulsingNowRadioGroup().check(getGeneralDangerSignsPage()
         		.getPageData().getInt(GeneralDangerSignsPage.CONVULSING_NOW_DATA_KEY));
         

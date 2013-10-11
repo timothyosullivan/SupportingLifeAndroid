@@ -28,23 +28,23 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="bottom"
-                android:text="@string/immunization_assessment_radio_vaccine_bcg" />
+                android:text="@string/imci_immunization_assessment_radio_vaccine_bcg" />
 
             <RadioGroup
-                android:id="@+id/immunization_assessment_radio_vaccine_bcg"
+                android:id="@+id/imci_immunization_assessment_radio_vaccine_bcg"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal" >
 
                 <RadioButton
-                    android:id="@+id/immunization_assessment_radio_vaccine_bcg_already_received"
+                    android:id="@+id/imci_immunization_assessment_radio_vaccine_bcg_already_received"
                     android:layout_weight="0.67"
-                    android:text="@string/immunization_assessment_radio_vaccine_already_received" />
+                    android:text="@string/imci_immunization_assessment_radio_vaccine_already_received" />
 
                 <RadioButton
-                    android:id="@+id/immunization_assessment_radio_vaccine_bcg_receive_today"
+                    android:id="@+id/imci_immunization_assessment_radio_vaccine_bcg_receive_today"
                     android:layout_weight="0.33"
-                    android:text="@string/immunization_assessment_radio_vaccine_receive_today" />
+                    android:text="@string/imci_immunization_assessment_radio_vaccine_receive_today" />
             </RadioGroup>
 
             <!-- ============================================================ -->
@@ -56,23 +56,23 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="bottom"
-                android:text="@string/immunization_assessment_radio_vaccine_measles" />
+                android:text="@string/imci_immunization_assessment_radio_vaccine_measles" />
 
             <RadioGroup
-                android:id="@+id/immunization_assessment_radio_vaccine_measles"
+                android:id="@+id/imci_immunization_assessment_radio_vaccine_measles"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal" >
 
                 <RadioButton
-                    android:id="@+id/immunization_assessment_radio_vaccine_measles_already_received"
+                    android:id="@+id/imci_immunization_assessment_radio_vaccine_measles_already_received"
                     android:layout_weight="0.67"
-                    android:text="@string/immunization_assessment_radio_vaccine_already_received" />
+                    android:text="@string/imci_immunization_assessment_radio_vaccine_already_received" />
 
                 <RadioButton
-                    android:id="@+id/immunization_assessment_radio_vaccine_measles_receive_today"
+                    android:id="@+id/imci_immunization_assessment_radio_vaccine_measles_receive_today"
                     android:layout_weight="0.33"
-                    android:text="@string/immunization_assessment_radio_vaccine_receive_today" />
+                    android:text="@string/imci_immunization_assessment_radio_vaccine_receive_today" />
             </RadioGroup>
 
         </LinearLayout>

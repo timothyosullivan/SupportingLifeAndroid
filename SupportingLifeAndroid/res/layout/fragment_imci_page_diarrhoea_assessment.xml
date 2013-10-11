@@ -13,7 +13,7 @@
     	android:layout_width="match_parent" >
     	
 		<LinearLayout
-		    android:id="@+id/diarrhoea_assessment_diarrhoea_animated_view"
+		    android:id="@+id/imci_diarrhoea_assessment_diarrhoea_animated_view"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 			android:animateLayoutChanges="true"
@@ -23,7 +23,7 @@
 			<!-- DIARRHOEA RADIO BUTTON GROUP -->
 			<!-- ============================================================ -->               
 			<LinearLayout
-				android:id="@+id/diarrhoea_assessment_view_diarrhoea"
+				android:id="@+id/imci_diarrhoea_assessment_view_diarrhoea"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
 				android:orientation="vertical">
@@ -32,21 +32,21 @@
 				    android:layout_width="match_parent"
 				    android:layout_height="match_parent"
 				    android:layout_gravity="bottom"
-				    android:text="@string/diarrhoea_assessment_radio_diarrhoea" />
+				    android:text="@string/imci_diarrhoea_assessment_radio_diarrhoea" />
 				
 				<RadioGroup
-				    android:id="@+id/diarrhoea_assessment_radio_diarrhoea"
+				    android:id="@+id/imci_diarrhoea_assessment_radio_diarrhoea"
 				    android:layout_width="match_parent"
 				    android:layout_height="wrap_content"
 				    android:orientation="horizontal" >
 	
 				    <RadioButton
-				        android:id="@+id/diarrhoea_assessment_radio_diarrhoea_yes"
+				        android:id="@+id/imci_diarrhoea_assessment_radio_diarrhoea_yes"
 				        android:layout_weight="0.67"
 				        android:text="@string/assessment_wizard_radio_yes" />
 	
 				    <RadioButton
-				        android:id="@+id/diarrhoea_assessment_radio_diarrhoea_no"
+				        android:id="@+id/imci_diarrhoea_assessment_radio_diarrhoea_no"
 				        android:layout_weight="0.33"
 				        android:text="@string/assessment_wizard_radio_no" />
 				</RadioGroup>
@@ -55,23 +55,23 @@
 	        <!-- FOR HOW LONG? (DIARRHOEA DURATION) -->
 	        <!-- ============================================================ -->
 	        <LinearLayout
-				android:id="@+id/diarrhoea_assessment_view_diarrhoea_duration"
+				android:id="@+id/imci_diarrhoea_assessment_view_diarrhoea_duration"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
 				android:paddingLeft="30dp"
 				android:orientation="vertical">
 	            <TextView
-	                android:id="@+id/diarrhoea_assessment_diarrhoea_duration_label"
+	                android:id="@+id/imci_diarrhoea_assessment_diarrhoea_duration_label"
 	                style="@style/WizardFormLabel"
-	                android:text="@string/diarrhoea_assessment_diarrhoea_duration" />
+	                android:text="@string/imci_diarrhoea_assessment_diarrhoea_duration" />
 	
 	            <EditText
-	                android:id="@+id/diarrhoea_assessment_diarrhoea_duration"
+	                android:id="@+id/imci_diarrhoea_assessment_diarrhoea_duration"
 	                android:layout_width="match_parent"
 	                android:layout_height="wrap_content"
 	                android:layout_marginBottom="10dp"
 	                android:inputType="number"
-	                android:hint="@string/diarrhoea_assessment_diarrhoea_duration_hint"/>
+	                android:hint="@string/imci_diarrhoea_assessment_diarrhoea_duration_hint"/>
 	         </LinearLayout>
 	         		
 			<!-- ============================================================ -->
@@ -83,20 +83,20 @@
 			    android:layout_width="match_parent"
 			    android:layout_height="match_parent"
 			    android:layout_gravity="bottom"
-			    android:text="@string/diarrhoea_assessment_radio_blood_stools" />
+			    android:text="@string/imci_diarrhoea_assessment_radio_blood_stools" />
 				
 			<RadioGroup
-			    android:id="@+id/diarrhoea_assessment_radio_blood_stools"
+			    android:id="@+id/imci_diarrhoea_assessment_radio_blood_stools"
 			    android:layout_width="match_parent"
 			    android:layout_height="wrap_content"
 			    android:orientation="horizontal" >
 			    <RadioButton
-			        android:id="@+id/diarrhoea_assessment_radio_blood_stools_yes"
+			        android:id="@+id/imci_diarrhoea_assessment_radio_blood_stools_yes"
 			        android:layout_weight="0.67"
 			        android:text="@string/assessment_wizard_radio_yes" />
 	
 			    <RadioButton
-			        android:id="@+id/diarrhoea_assessment_radio_blood_stools_no"
+			        android:id="@+id/imci_diarrhoea_assessment_radio_blood_stools_no"
 			        android:layout_weight="0.33"
 			        android:text="@string/assessment_wizard_radio_no" />
 			</RadioGroup>
@@ -110,21 +110,21 @@
 			    android:layout_width="match_parent"
 			    android:layout_height="match_parent"
 			    android:layout_gravity="bottom"
-			    android:text="@string/diarrhoea_assessment_radio_sunken_eyes" />
+			    android:text="@string/imci_diarrhoea_assessment_radio_sunken_eyes" />
 				
 			<RadioGroup
-			    android:id="@+id/diarrhoea_assessment_radio_sunken_eyes"
+			    android:id="@+id/imci_diarrhoea_assessment_radio_sunken_eyes"
 			    android:layout_width="match_parent"
 			    android:layout_height="wrap_content"
 			    android:orientation="horizontal" >
 	
 		    <RadioButton
-		        android:id="@+id/diarrhoea_assessment_radio_sunken_eyes_yes"
+		        android:id="@+id/imci_diarrhoea_assessment_radio_sunken_eyes_yes"
 		        android:layout_weight="0.67"
 		        android:text="@string/assessment_wizard_radio_yes" />
 	
 		    <RadioButton
-		        android:id="@+id/diarrhoea_assessment_radio_sunken_eyes_no"
+		        android:id="@+id/imci_diarrhoea_assessment_radio_sunken_eyes_no"
 		        android:layout_weight="0.33"
 		        android:text="@string/assessment_wizard_radio_no" />
 		</RadioGroup>
@@ -149,22 +149,22 @@
 			    android:layout_height="wrap_content"
 			    android:layout_gravity="bottom"
 			    android:paddingLeft="10dp"
-			    android:text="@string/diarrhoea_assessment_radio_lethargic_or_unconscious" />
+			    android:text="@string/imci_diarrhoea_assessment_radio_lethargic_or_unconscious" />
 					
 			<RadioGroup
-			    android:id="@+id/diarrhoea_assessment_radio_lethargic_or_unconscious"
+			    android:id="@+id/imci_diarrhoea_assessment_radio_lethargic_or_unconscious"
 			    android:layout_width="match_parent"
 			    android:layout_height="wrap_content"
 			    android:paddingLeft="10dp"
 			    android:orientation="horizontal" >
 		
 				<RadioButton
-		    	    android:id="@+id/diarrhoea_assessment_radio_lethargic_or_unconscious_yes"
+		    	    android:id="@+id/imci_diarrhoea_assessment_radio_lethargic_or_unconscious_yes"
 		    	    android:layout_weight="0.67"
 				    android:text="@string/assessment_wizard_radio_yes" />
 		
 			    <RadioButton
-			        android:id="@+id/diarrhoea_assessment_radio_lethargic_or_unconscious_no"
+			        android:id="@+id/imci_diarrhoea_assessment_radio_lethargic_or_unconscious_no"
 			        android:layout_weight="0.33"
 			        android:text="@string/assessment_wizard_radio_no" />
 			</RadioGroup>
@@ -176,7 +176,7 @@
 			   	android:layout_gravity="bottom"
 			   	android:layout_marginLeft="5dp"
 			   	android:layout_marginBottom="5dp"
-			   	android:text="@string/diarrhoea_assessment_radio_lethargic_disabled_note" />
+			   	android:text="@string/imci_diarrhoea_assessment_radio_lethargic_disabled_note" />
 					
 		</LinearLayout>
 	
@@ -195,21 +195,21 @@
 				android:layout_width="match_parent"
 				android:layout_height="match_parent"
 				android:layout_gravity="bottom"
-				android:text="@string/diarrhoea_assessment_radio_restless_irritable" />
+				android:text="@string/imci_diarrhoea_assessment_radio_restless_irritable" />
 				
 			<RadioGroup
-				android:id="@+id/diarrhoea_assessment_radio_restless_irritable"
+				android:id="@+id/imci_diarrhoea_assessment_radio_restless_irritable"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
 				android:orientation="horizontal" >
 	
 				<RadioButton
-					android:id="@+id/diarrhoea_assessment_radio_restless_irritable_yes"
+					android:id="@+id/imci_diarrhoea_assessment_radio_restless_irritable_yes"
 					android:layout_weight="0.67"
 					android:text="@string/assessment_wizard_radio_yes" />
 	
 			    <RadioButton
-			        android:id="@+id/diarrhoea_assessment_radio_restless_irritable_no"
+			        android:id="@+id/imci_diarrhoea_assessment_radio_restless_irritable_no"
 			        android:layout_weight="0.33"
 			        android:text="@string/assessment_wizard_radio_no" />
 			</RadioGroup>
@@ -223,21 +223,21 @@
 			    android:layout_width="match_parent"
 			    android:layout_height="match_parent"
 			    android:layout_gravity="bottom"
-			    android:text="@string/diarrhoea_assessment_radio_cholera_in_area" />
+			    android:text="@string/imci_diarrhoea_assessment_radio_cholera_in_area" />
 			
 			<RadioGroup
-			    android:id="@+id/diarrhoea_assessment_radio_cholera_in_area"
+			    android:id="@+id/imci_diarrhoea_assessment_radio_cholera_in_area"
 			    android:layout_width="match_parent"
 			    android:layout_height="wrap_content"
 			    android:orientation="horizontal" >
 
 			    <RadioButton
-			        android:id="@+id/diarrhoea_assessment_radio_cholera_in_area_yes"
+			        android:id="@+id/imci_diarrhoea_assessment_radio_cholera_in_area_yes"
 			        android:layout_weight="0.67"
 			        android:text="@string/assessment_wizard_radio_yes" />
 
 			    <RadioButton
-			        android:id="@+id/diarrhoea_assessment_radio_cholera_in_area_no"
+			        android:id="@+id/imci_diarrhoea_assessment_radio_cholera_in_area_no"
 			        android:layout_weight="0.33"
 			        android:text="@string/assessment_wizard_radio_no" />
 			</RadioGroup>
@@ -251,10 +251,10 @@
 			    android:layout_width="match_parent"
 			    android:layout_height="match_parent"
 			    android:layout_gravity="bottom"
-			    android:text="@string/diarrhoea_assessment_radio_child_fluid" />
+			    android:text="@string/imci_diarrhoea_assessment_radio_child_fluid" />
 			
 			<ie.ucc.bis.ui.custom.ToggleButtonGroupTableLayout
-                android:id="@+id/diarrhoea_assessment_radio_child_fluid"
+                android:id="@+id/imci_diarrhoea_assessment_radio_child_fluid"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" >
 
@@ -263,22 +263,22 @@
                     android:layout_height="match_parent" >
 
                     <RadioButton
-                        android:id="@+id/diarrhoea_assessment_radio_child_fluid_not_able"
+                        android:id="@+id/imci_diarrhoea_assessment_radio_child_fluid_not_able"
                         android:layout_weight="0.5"
-                        android:text="@string/diarrhoea_assessment_radio_child_fluid_not_able" />
+                        android:text="@string/imci_diarrhoea_assessment_radio_child_fluid_not_able" />
 
                     <RadioButton
-                        android:id="@+id/diarrhoea_assessment_radio_child_fluid_drinking_poorly"
+                        android:id="@+id/imci_diarrhoea_assessment_radio_child_fluid_drinking_poorly"
                         android:layout_weight="0.5"
-                        android:text="@string/diarrhoea_assessment_radio_child_fluid_drinking_poorly" />
+                        android:text="@string/imci_diarrhoea_assessment_radio_child_fluid_drinking_poorly" />
                 </TableRow>
                 <TableRow
                     android:layout_width="match_parent"
                     android:layout_height="match_parent" >
 
                     <RadioButton
-                        android:id="@+id/diarrhoea_assessment_radio_child_fluid_drinking_eagerly"
-                        android:text="@string/diarrhoea_assessment_radio_child_fluid_drinking_eagerly" />
+                        android:id="@+id/imci_diarrhoea_assessment_radio_child_fluid_drinking_eagerly"
+                        android:text="@string/imci_diarrhoea_assessment_radio_child_fluid_drinking_eagerly" />
                 </TableRow>
             </ie.ucc.bis.ui.custom.ToggleButtonGroupTableLayout>
 				    
@@ -291,10 +291,10 @@
 			    android:layout_width="match_parent"
 			    android:layout_height="match_parent"
 			    android:layout_gravity="bottom"
-			    android:text="@string/diarrhoea_assessment_radio_skin_pinch" />
+			    android:text="@string/imci_diarrhoea_assessment_radio_skin_pinch" />
 						
 			<ie.ucc.bis.ui.custom.ToggleButtonGroupTableLayout
-                android:id="@+id/diarrhoea_assessment_radio_skin_pinch"
+                android:id="@+id/imci_diarrhoea_assessment_radio_skin_pinch"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" >
 
@@ -303,22 +303,22 @@
                     android:layout_height="match_parent" >
 
                     <RadioButton
-                        android:id="@+id/diarrhoea_assessment_radio_skin_pinch_very_slowly"
+                        android:id="@+id/imci_diarrhoea_assessment_radio_skin_pinch_very_slowly"
                         android:layout_weight="0.5"
-                        android:text="@string/diarrhoea_assessment_radio_skin_pinch_very_slowly" />
+                        android:text="@string/imci_diarrhoea_assessment_radio_skin_pinch_very_slowly" />
 
                     <RadioButton
-                        android:id="@+id/diarrhoea_assessment_radio_skin_pinch_slowly"
+                        android:id="@+id/imci_diarrhoea_assessment_radio_skin_pinch_slowly"
                         android:layout_weight="0.5"
-                        android:text="@string/diarrhoea_assessment_radio_skin_pinch_slowly" />
+                        android:text="@string/imci_diarrhoea_assessment_radio_skin_pinch_slowly" />
                 </TableRow>
                 <TableRow
                     android:layout_width="match_parent"
                     android:layout_height="match_parent" >
 
                     <RadioButton
-                        android:id="@+id/diarrhoea_assessment_radio_skin_pinch_immediate"
-                        android:text="@string/diarrhoea_assessment_radio_skin_pinch_immediate" />
+                        android:id="@+id/imci_diarrhoea_assessment_radio_skin_pinch_immediate"
+                        android:text="@string/imci_diarrhoea_assessment_radio_skin_pinch_immediate" />
                 </TableRow>
             </ie.ucc.bis.ui.custom.ToggleButtonGroupTableLayout>
         </LinearLayout>

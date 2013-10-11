@@ -13,7 +13,7 @@
 		android:layout_width="match_parent"
 		android:layout_height="match_parent">
 		<LinearLayout
-		    android:id="@+id/breathing_assessment_cough_difficult_breathing_animated_view"
+		    android:id="@+id/imci_breathing_assessment_cough_difficult_breathing_animated_view"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 			android:animateLayoutChanges="true"
@@ -23,7 +23,7 @@
 			<!-- COUGH OR DIFFICULT BREATHING RADIO BUTTON GROUP -->
 			<!-- ============================================================ -->
 			<LinearLayout
-				android:id="@+id/breathing_assessment_view_cough_difficult_breathing"
+				android:id="@+id/imci_breathing_assessment_view_cough_difficult_breathing"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
 				android:orientation="vertical">
@@ -32,18 +32,18 @@
 					android:layout_width="match_parent"
 					android:layout_height="match_parent"
 					android:layout_gravity="bottom"
-					android:text="@string/breathing_assessment_radio_cough_difficult_breathing"/>
+					android:text="@string/imci_breathing_assessment_radio_cough_difficult_breathing"/>
 				<RadioGroup
-					android:id="@+id/breathing_assessment_radio_cough_difficult_breathing"
+					android:id="@+id/imci_breathing_assessment_radio_cough_difficult_breathing"
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
 					android:orientation="horizontal">
 				<RadioButton
-					android:id="@+id/breathing_assessment_radio_cough_difficult_breathing_yes"
+					android:id="@+id/imci_breathing_assessment_radio_cough_difficult_breathing_yes"
 					android:layout_weight="0.67"
 					android:text="@string/assessment_wizard_radio_yes"/>
 				<RadioButton
-					android:id="@+id/breathing_assessment_radio_cough_difficult_breathing_no"
+					android:id="@+id/imci_breathing_assessment_radio_cough_difficult_breathing_no"
 					android:layout_weight="0.33"
 					android:text="@string/assessment_wizard_radio_no"/>
 				</RadioGroup>
@@ -52,38 +52,38 @@
 	        <!-- FOR HOW LONG? (COUGH / DIFFICULT BREATHING DURATION) -->
 	        <!-- ============================================================ -->
             <LinearLayout
-				android:id="@+id/breathing_assessment_view_cough_duration"
+				android:id="@+id/imci_breathing_assessment_view_cough_duration"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
 				android:paddingLeft="30dp"
 				android:orientation="vertical">
 				<TextView
-					android:id="@+id/breathing_assessment_cough_duration_label"
+					android:id="@+id/imci_breathing_assessment_cough_duration_label"
 					style="@style/WizardFormLabel"
-					android:text="@string/breathing_assessment_cough_duration"/>
+					android:text="@string/imci_breathing_assessment_cough_duration"/>
 				<EditText
-					android:id="@+id/breathing_assessment_cough_duration"
+					android:id="@+id/imci_breathing_assessment_cough_duration"
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
 					android:layout_marginBottom="10dp"
 					android:inputType="number"
-					android:hint="@string/breathing_assessment_cough_duration_hint"/>
+					android:hint="@string/imci_breathing_assessment_cough_duration_hint"/>
 			</LinearLayout>
            
             <!-- ============================================================ -->
             <!-- BREATHS PER MINUTE -->
             <!-- ============================================================ -->
 			<TextView
-				android:id="@+id/breathing_assessment_breaths_per_minute_label"
+				android:id="@+id/imci_breathing_assessment_breaths_per_minute_label"
 				style="@style/WizardFormLabel"
-				android:text="@string/breathing_assessment_breaths_per_minute"/>
+				android:text="@string/imci_breathing_assessment_breaths_per_minute"/>
 			<EditText
-				android:id="@+id/breathing_assessment_breaths_per_minute"
+				android:id="@+id/imci_breathing_assessment_breaths_per_minute"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
 				android:layout_marginBottom="10dp"
 				android:inputType="number"
-				android:hint="@string/breathing_assessment_breaths_per_minute_hint"/>
+				android:hint="@string/imci_breathing_assessment_breaths_per_minute_hint"/>
 
 			<!-- ============================================================ -->
 			<!-- CHEST INDRAWING RADIO BUTTON GROUP -->
@@ -97,19 +97,19 @@
 					android:layout_width="wrap_content"
 					android:layout_height="match_parent"
 					android:layout_gravity="bottom"
-					android:text="@string/breathing_assessment_radio_chest_indrawing"/>
+					android:text="@string/imci_breathing_assessment_radio_chest_indrawing"/>
 			</LinearLayout>
 			<RadioGroup
-				android:id="@+id/breathing_assessment_radio_chest_indrawing"
+				android:id="@+id/imci_breathing_assessment_radio_chest_indrawing"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
 				android:orientation="horizontal">
 				<RadioButton
-					android:id="@+id/breathing_assessment_radio_chest_indrawing_yes"
+					android:id="@+id/imci_breathing_assessment_radio_chest_indrawing_yes"
 					android:layout_weight="0.67"
 					android:text="@string/assessment_wizard_radio_yes"/>
 				<RadioButton
-					android:id="@+id/breathing_assessment_radio_chest_indrawing_no"
+					android:id="@+id/imci_breathing_assessment_radio_chest_indrawing_no"
 					android:layout_weight="0.33"
 					android:text="@string/assessment_wizard_radio_no"/>
 			</RadioGroup>
@@ -122,18 +122,18 @@
 				android:layout_width="match_parent"
 				android:layout_height="match_parent"
 				android:layout_gravity="bottom"
-				android:text="@string/breathing_assessment_radio_stridor"/>
+				android:text="@string/imci_breathing_assessment_radio_stridor"/>
 			<RadioGroup
-				android:id="@+id/breathing_assessment_radio_stridor"
+				android:id="@+id/imci_breathing_assessment_radio_stridor"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
 				android:orientation="horizontal">
 				<RadioButton
-					android:id="@+id/breathing_assessment_radio_stridor_yes"
+					android:id="@+id/imci_breathing_assessment_radio_stridor_yes"
 					android:layout_weight="0.67"
 					android:text="@string/assessment_wizard_radio_yes"/>
 				<RadioButton
-					android:id="@+id/breathing_assessment_radio_stridor_no"
+					android:id="@+id/imci_breathing_assessment_radio_stridor_no"
 					android:layout_weight="0.33"
 					android:text="@string/assessment_wizard_radio_no"/>
 			</RadioGroup>

@@ -56,15 +56,15 @@ public class SkinPinchReviewItem extends ReviewItem implements Serializable {
     	if (!TextUtils.isEmpty(getDisplayValue())) {
     		Resources resources = supportingLifeBaseActivity.getResources();
     	
-    		if (getDisplayValue().equals(resources.getString(R.string.diarrhoea_assessment_radio_skin_pinch_very_slowly))) {
+    		if (getDisplayValue().equals(resources.getString(R.string.imci_diarrhoea_assessment_radio_skin_pinch_very_slowly))) {
     			// Very Slowly
     			setSymptomValue(VERY_SLOWLY);
     		}
-    		else if (getDisplayValue().equals(resources.getString(R.string.diarrhoea_assessment_radio_skin_pinch_slowly))) {
+    		else if (getDisplayValue().equals(resources.getString(R.string.imci_diarrhoea_assessment_radio_skin_pinch_slowly))) {
     			// Slowly
     			setSymptomValue(SLOWLY);
     		}
-    		else if (getDisplayValue().equals(resources.getString(R.string.diarrhoea_assessment_radio_skin_pinch_immediate))) {
+    		else if (getDisplayValue().equals(resources.getString(R.string.imci_diarrhoea_assessment_radio_skin_pinch_immediate))) {
     			// Immediate
     			setSymptomValue(IMMEDIATE);
     		}

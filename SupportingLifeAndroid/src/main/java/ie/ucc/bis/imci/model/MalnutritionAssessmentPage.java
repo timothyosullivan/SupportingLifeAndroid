@@ -60,37 +60,37 @@ public class MalnutritionAssessmentPage extends AbstractPage {
     	String reviewItemSymptomId = null;
     	
     	// review header
-    	reviewItemLabel = resources.getString(R.string.malnutrition_assessment_title);
+    	reviewItemLabel = resources.getString(R.string.imci_malnutrition_assessment_title);
     	reviewItems.add(new ReviewItem(reviewItemLabel, getKey()));
     	
     	// oedema of both feet
-    	reviewItemLabel = resources.getString(R.string.malnutrition_assessment_review_oedema);
+    	reviewItemLabel = resources.getString(R.string.imci_malnutrition_assessment_review_oedema);
     	reviewItemValue = getPageData().getString(OEDEMA_DATA_KEY + RadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
-    	reviewItemSymptomId = resources.getString(R.string.malnutrition_assessment_oedema_symptom_id);
+    	reviewItemSymptomId = resources.getString(R.string.imci_malnutrition_assessment_oedema_symptom_id);
     	reviewItems.add(new ReviewItem(reviewItemLabel, reviewItemValue, reviewItemSymptomId, getKey(), -1));
     	
     	// weight for age
-    	reviewItemLabel = resources.getString(R.string.malnutrition_assessment_review_weight_for_age);
+    	reviewItemLabel = resources.getString(R.string.imci_malnutrition_assessment_review_weight_for_age);
     	reviewItemValue = getPageData().getString(WEIGHT_FOR_AGE_DATA_KEY + RadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
-    	reviewItemSymptomId = resources.getString(R.string.malnutrition_assessment_weight_for_age_symptom_id);
+    	reviewItemSymptomId = resources.getString(R.string.imci_malnutrition_assessment_weight_for_age_symptom_id);
     	reviewItems.add(new WeightForAgeReviewItem(reviewItemLabel, reviewItemValue, reviewItemSymptomId, getKey(), -1));
     	
     	// visible severe wasting
-    	reviewItemLabel = resources.getString(R.string.malnutrition_assessment_review_visible_severe_wasting);
+    	reviewItemLabel = resources.getString(R.string.imci_malnutrition_assessment_review_visible_severe_wasting);
     	reviewItemValue = getPageData().getString(VISIBLE_SEVERE_WASTING_DATA_KEY + RadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
-    	reviewItemSymptomId = resources.getString(R.string.malnutrition_assessment_visible_severe_wasting_symptom_id);
+    	reviewItemSymptomId = resources.getString(R.string.imci_malnutrition_assessment_visible_severe_wasting_symptom_id);
     	reviewItems.add(new ReviewItem(reviewItemLabel, reviewItemValue, reviewItemSymptomId, getKey(), -1));
     	
     	// palmar pallor
-    	reviewItemLabel = resources.getString(R.string.malnutrition_assessment_review_palmar_pallor);
+    	reviewItemLabel = resources.getString(R.string.imci_malnutrition_assessment_review_palmar_pallor);
     	reviewItemValue = getPageData().getString(PALMAR_PALLOR_DATA_KEY + RadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
-    	reviewItemSymptomId = resources.getString(R.string.malnutrition_assessment_palmar_pallor_symptom_id);
+    	reviewItemSymptomId = resources.getString(R.string.imci_malnutrition_assessment_palmar_pallor_symptom_id);
     	reviewItems.add(new PalmarPallorReviewItem(reviewItemLabel, reviewItemValue, reviewItemSymptomId, getKey(), -1));    	
     	
     	// mebendazole dose
-    	reviewItemLabel = resources.getString(R.string.malnutrition_assessment_review_mebendazole_dose);
+    	reviewItemLabel = resources.getString(R.string.imci_malnutrition_assessment_review_mebendazole_dose);
     	reviewItemValue = getPageData().getString(MEBENDAZOLE_DOSE_DATA_KEY + RadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
-    	reviewItemSymptomId = resources.getString(R.string.malnutrition_assessment_mebendazole_dose_symptom_id);
+    	reviewItemSymptomId = resources.getString(R.string.imci_malnutrition_assessment_mebendazole_dose_symptom_id);
     	reviewItems.add(new ReviewItem(reviewItemLabel, reviewItemValue, reviewItemSymptomId, getKey(), -1));      	
     }
 

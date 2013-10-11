@@ -56,15 +56,15 @@ public class MalariaReviewItem extends ReviewItem implements Serializable {
     	if (!TextUtils.isEmpty(getDisplayValue())) {
     		Resources resources = supportingLifeBaseActivity.getResources();
     	
-    		if (getDisplayValue().equals(resources.getString(R.string.fever_assessment_radio_malaria_risk_high))) {
+    		if (getDisplayValue().equals(resources.getString(R.string.imci_fever_assessment_radio_malaria_risk_high))) {
     			// High Malaria Risk
     			setSymptomValue(HIGH_MALARIA_RISK);
     		}
-    		else if (getDisplayValue().equals(resources.getString(R.string.fever_assessment_radio_malaria_risk_low))) {
+    		else if (getDisplayValue().equals(resources.getString(R.string.imci_fever_assessment_radio_malaria_risk_low))) {
     			// Low Malaria Risk
     			setSymptomValue(LOW_MALARIA_RISK);
     		}
-    		else if (getDisplayValue().equals(resources.getString(R.string.fever_assessment_radio_malaria_risk_no))) {
+    		else if (getDisplayValue().equals(resources.getString(R.string.imci_fever_assessment_radio_malaria_risk_no))) {
     			// No Malaria Risk
     			setSymptomValue(NO_MALARIA_RISK);
     		}

@@ -56,15 +56,15 @@ public class FluidReviewItem extends ReviewItem implements Serializable {
     	if (!TextUtils.isEmpty(getDisplayValue())) {
     		Resources resources = supportingLifeBaseActivity.getResources();
     	
-    		if (getDisplayValue().equals(resources.getString(R.string.diarrhoea_assessment_radio_child_fluid_not_able))) {
+    		if (getDisplayValue().equals(resources.getString(R.string.imci_diarrhoea_assessment_radio_child_fluid_not_able))) {
     			// Not Able To Drink
     			setSymptomValue(NOT_ABLE_TO_DRINK);
     		}
-    		else if (getDisplayValue().equals(resources.getString(R.string.diarrhoea_assessment_radio_child_fluid_drinking_poorly))) {
+    		else if (getDisplayValue().equals(resources.getString(R.string.imci_diarrhoea_assessment_radio_child_fluid_drinking_poorly))) {
     			// Drinking Poorly
     			setSymptomValue(DRINKING_POORLY);
     		}
-    		else if (getDisplayValue().equals(resources.getString(R.string.diarrhoea_assessment_radio_child_fluid_drinking_eagerly))) {
+    		else if (getDisplayValue().equals(resources.getString(R.string.imci_diarrhoea_assessment_radio_child_fluid_drinking_eagerly))) {
     			// Drinking Eagerly
     			setSymptomValue(DRINKING_EAGERLY);
     		}

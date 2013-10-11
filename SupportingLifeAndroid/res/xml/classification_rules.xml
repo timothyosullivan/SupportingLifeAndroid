@@ -25,17 +25,17 @@
 		<Type>SEVERE</Type>
 		<Priority>1</Priority>
 		<SymptomRule rule="ANY_SYMPTOM">
-			<Symptom value="yes">breathing_assessment_cough_difficult_breathing_symptom_id</Symptom>	<!-- Cough or Difficult Breathing : YES -->
+			<Symptom value="yes">imci_breathing_assessment_cough_difficult_breathing_symptom_id</Symptom>	<!-- Cough or Difficult Breathing : YES -->
 		</SymptomRule>
 		<SymptomRule rule="ANY_SYMPTOM">
-			<Symptom value="yes">breathing_assessment_chest_indrawing_symptom_id</Symptom> 				<!-- Chest Indrawing : YES -->
-			<Symptom value="yes">breathing_assessment_stridor_symptom_id</Symptom> 						<!-- Stridor : YES -->
+			<Symptom value="yes">imci_breathing_assessment_chest_indrawing_symptom_id</Symptom> 			<!-- Chest Indrawing : YES -->
+			<Symptom value="yes">imci_breathing_assessment_stridor_symptom_id</Symptom> 					<!-- Stridor : YES -->
 			<!-- Any general danger sign -->
-			<Symptom value="yes">general_danger_signs_drink_breastfeed_symptom_id</Symptom> 			<!-- Not Able to Drink or Breastfeed : YES -->
-			<Symptom value="yes">general_danger_signs_vomits_everything_symptom_id</Symptom> 			<!-- Vomits Everything : YES -->
-			<Symptom value="yes">general_danger_signs_convulsions_symptom_id</Symptom> 					<!-- History of Convulsions : YES -->
-			<Symptom value="yes">general_danger_signs_lethargic_or_unconscious_symptom_id</Symptom>		<!-- Lethargic or Unconscious : YES -->
-			<Symptom value="yes">general_danger_signs_convulsing_now_symptom_id</Symptom>				<!-- Convulsing Now : YES -->
+			<Symptom value="yes">imci_general_danger_signs_drink_breastfeed_symptom_id</Symptom> 			<!-- Not Able to Drink or Breastfeed : YES -->
+			<Symptom value="yes">imci_general_danger_signs_vomits_everything_symptom_id</Symptom> 			<!-- Vomits Everything : YES -->
+			<Symptom value="yes">imci_general_danger_signs_convulsions_symptom_id</Symptom> 				<!-- History of Convulsions : YES -->
+			<Symptom value="yes">imci_general_danger_signs_lethargic_or_unconscious_symptom_id</Symptom>	<!-- Lethargic or Unconscious : YES -->
+			<Symptom value="yes">imci_general_danger_signs_convulsing_now_symptom_id</Symptom>				<!-- Convulsing Now : YES -->
 		</SymptomRule>
 	</Classification>
 
@@ -55,10 +55,10 @@
 		<Type>MODERATE</Type>
 		<Priority>2</Priority>
 		<SymptomRule rule="ANY_SYMPTOM">
-			<Symptom value="yes">breathing_assessment_cough_difficult_breathing_symptom_id</Symptom>	<!-- Cough or Difficult Breathing : YES -->
+			<Symptom value="yes">imci_breathing_assessment_cough_difficult_breathing_symptom_id</Symptom>	<!-- Cough or Difficult Breathing : YES -->
 		</SymptomRule>
 		<SymptomRule rule="ANY_SYMPTOM">
-			<Symptom value="yes">breathing_assessment_fast_breathing_symptom_id</Symptom> 				<!-- Fast Breathing : YES -->
+			<Symptom value="yes">imci_breathing_assessment_fast_breathing_symptom_id</Symptom> 				<!-- Fast Breathing : YES -->
 		</SymptomRule>
 	</Classification>
 
@@ -78,36 +78,36 @@
 		<Type>LOW</Type>
 		<Priority>3</Priority>
 		<SymptomRule rule="ANY_SYMPTOM">
-			<Symptom value="yes">breathing_assessment_cough_difficult_breathing_symptom_id</Symptom>	<!-- Cough or Difficult Breathing : YES -->
+			<Symptom value="yes">imci_breathing_assessment_cough_difficult_breathing_symptom_id</Symptom>	<!-- Cough or Difficult Breathing : YES -->
 		</SymptomRule>
 		<SymptomRule rule="ANY_SYMPTOM">
-			<Symptom value="no">breathing_assessment_fast_breathing_symptom_id</Symptom> 				<!-- Fast Breathing : NO -->
+			<Symptom value="no">imci_breathing_assessment_fast_breathing_symptom_id</Symptom> 				<!-- Fast Breathing : NO -->
 		</SymptomRule>
 		<SymptomRule rule="ANY_SYMPTOM">
-			<Symptom value="no">breathing_assessment_chest_indrawing_symptom_id</Symptom> 				<!-- Chest Indrawing : NO -->
+			<Symptom value="no">imci_breathing_assessment_chest_indrawing_symptom_id</Symptom> 				<!-- Chest Indrawing : NO -->
 		</SymptomRule>
 		<SymptomRule rule="ANY_SYMPTOM">
-			<Symptom value="no">breathing_assessment_stridor_symptom_id</Symptom> 						<!-- Stridor : NO -->
+			<Symptom value="no">imci_breathing_assessment_stridor_symptom_id</Symptom> 						<!-- Stridor : NO -->
 		</SymptomRule>
 		<SymptomRule rule="ANY_SYMPTOM">
 			<!-- general danger sign -->
-			<Symptom value="no">general_danger_signs_drink_breastfeed_symptom_id</Symptom> 				<!-- Not Able to Drink or Breastfeed : NO -->
+			<Symptom value="no">imci_general_danger_signs_drink_breastfeed_symptom_id</Symptom> 			<!-- Not Able to Drink or Breastfeed : NO -->
 		</SymptomRule>
 		<SymptomRule rule="ANY_SYMPTOM">
 		    <!-- general danger sign -->
-			<Symptom value="no">general_danger_signs_vomits_everything_symptom_id</Symptom> 			<!-- Vomits Everything : NO -->
+			<Symptom value="no">imci_general_danger_signs_vomits_everything_symptom_id</Symptom> 			<!-- Vomits Everything : NO -->
 		</SymptomRule>
 		<SymptomRule rule="ANY_SYMPTOM">
 		    <!-- general danger sign -->
-			<Symptom value="no">general_danger_signs_convulsions_symptom_id</Symptom> 					<!-- History of Convulsions : NO -->
+			<Symptom value="no">imci_general_danger_signs_convulsions_symptom_id</Symptom> 					<!-- History of Convulsions : NO -->
 		</SymptomRule>
 		<SymptomRule rule="ANY_SYMPTOM">
 		    <!-- general danger sign -->
-			<Symptom value="no">general_danger_signs_lethargic_or_unconscious_symptom_id</Symptom>		<!-- Lethargic or Unconscious : NO -->
+			<Symptom value="no">imci_general_danger_signs_lethargic_or_unconscious_symptom_id</Symptom>		<!-- Lethargic or Unconscious : NO -->
 		</SymptomRule>
 		<SymptomRule rule="ANY_SYMPTOM">
 		    <!-- general danger sign -->
-			<Symptom value="no">general_danger_signs_convulsing_now_symptom_id</Symptom>				<!-- Convulsing Now : NO -->
+			<Symptom value="no">imci_general_danger_signs_convulsing_now_symptom_id</Symptom>				<!-- Convulsing Now : NO -->
 		</SymptomRule>
 	</Classification>
 		
@@ -132,14 +132,14 @@
 		<Type>SEVERE</Type>
 		<Priority>1</Priority>
 		<SymptomRule rule="ANY_SYMPTOM">
-			<Symptom value="yes">diarrhoea_assessment_diarrhoea_symptom_id</Symptom>					<!-- Diarrhoea  : YES-->
+			<Symptom value="yes">imci_diarrhoea_assessment_diarrhoea_symptom_id</Symptom>					<!-- Diarrhoea  : YES-->
 		</SymptomRule>
 		<SymptomRule rule="TWO_SYMPTOMS_REQUIRED">
-			<Symptom value="yes">general_danger_signs_lethargic_or_unconscious_symptom_id</Symptom>		<!-- Lethargic or Unconscious : YES -->
-			<Symptom value="yes">diarrhoea_assessment_sunken_eyes_symptom_id</Symptom>					<!-- Sunken Eyes : YES -->
-			<Symptom value="not able to drink">diarrhoea_assessment_child_fluid_symptom_id</Symptom>	<!-- Offer the Child Fluid : Not Able to Drink -->
-			<Symptom value="drinking poorly">diarrhoea_assessment_child_fluid_symptom_id</Symptom>		<!-- Offer the Child Fluid : Drinking Poorly -->
-			<Symptom value="very slowly">diarrhoea_assessment_skin_pinch_symptom_id</Symptom>			<!-- Skin Pinch : Very Slowly -->
+			<Symptom value="yes">imci_general_danger_signs_lethargic_or_unconscious_symptom_id</Symptom>	<!-- Lethargic or Unconscious : YES -->
+			<Symptom value="yes">imci_diarrhoea_assessment_sunken_eyes_symptom_id</Symptom>					<!-- Sunken Eyes : YES -->
+			<Symptom value="not able to drink">imci_diarrhoea_assessment_child_fluid_symptom_id</Symptom>	<!-- Offer the Child Fluid : Not Able to Drink -->
+			<Symptom value="drinking poorly">imci_diarrhoea_assessment_child_fluid_symptom_id</Symptom>		<!-- Offer the Child Fluid : Drinking Poorly -->
+			<Symptom value="very slowly">imci_diarrhoea_assessment_skin_pinch_symptom_id</Symptom>			<!-- Skin Pinch : Very Slowly -->
 		</SymptomRule>
 	</Classification>
 	
@@ -163,13 +163,13 @@
 		<Type>MODERATE</Type>
 		<Priority>2</Priority>
 		<SymptomRule rule="ANY_SYMPTOM">
-			<Symptom value="yes">diarrhoea_assessment_diarrhoea_symptom_id</Symptom>					<!-- Diarrhoea  : YES-->
+			<Symptom value="yes">imci_diarrhoea_assessment_diarrhoea_symptom_id</Symptom>					<!-- Diarrhoea  : YES-->
 		</SymptomRule>
 		<SymptomRule rule="TWO_SYMPTOMS_REQUIRED">
-			<Symptom value="yes">diarrhoea_assessment_restless_irritable_symptom_id</Symptom>			<!-- Restless, Irritable : YES -->
-			<Symptom value="yes">diarrhoea_assessment_sunken_eyes_symptom_id</Symptom>					<!-- Sunken Eyes : YES -->
-			<Symptom value="drinking eagerly">diarrhoea_assessment_child_fluid_symptom_id</Symptom>		<!-- Offer the Child Fluid : Drinks Eagerly, Thirsty -->
-			<Symptom value="slowly">diarrhoea_assessment_skin_pinch_symptom_id</Symptom>				<!-- Skin Pinch : Slowly -->
+			<Symptom value="yes">imci_diarrhoea_assessment_restless_irritable_symptom_id</Symptom>			<!-- Restless, Irritable : YES -->
+			<Symptom value="yes">imci_diarrhoea_assessment_sunken_eyes_symptom_id</Symptom>					<!-- Sunken Eyes : YES -->
+			<Symptom value="drinking eagerly">imci_diarrhoea_assessment_child_fluid_symptom_id</Symptom>	<!-- Offer the Child Fluid : Drinks Eagerly, Thirsty -->
+			<Symptom value="slowly">imci_diarrhoea_assessment_skin_pinch_symptom_id</Symptom>				<!-- Skin Pinch : Slowly -->
 		</SymptomRule>
 	</Classification>
 	
@@ -194,7 +194,7 @@
 		<Type>LOW</Type>
 		<Priority>3</Priority>
 		<SymptomRule rule="ANY_SYMPTOM">
-			<Symptom value="yes">diarrhoea_assessment_diarrhoea_symptom_id</Symptom>					<!-- Diarrhoea : YES-->
+			<Symptom value="yes">imci_diarrhoea_assessment_diarrhoea_symptom_id</Symptom>					<!-- Diarrhoea : YES-->
 		</SymptomRule>
 	</Classification>
 
@@ -222,7 +222,7 @@
 			<ClassificationDiagnosed value="true">Some Dehydration</ClassificationDiagnosed>			<!-- Some Dehyration (Classification) : TRUE -->
 		</ClassificationRule>
 		<SymptomRule rule="ANY_SYMPTOM">
-			<Symptom value="yes">diarrhoea_assessment_diarrhoea_duration_fourteen_days_symptom_id</Symptom>			<!-- Diarrhoea Duration >= 14 DAYS -->
+			<Symptom value="yes">imci_diarrhoea_assessment_diarrhoea_duration_fourteen_days_symptom_id</Symptom>	<!-- Diarrhoea Duration >= 14 DAYS -->
 		</SymptomRule>		
 	</Classification>
 
@@ -247,7 +247,7 @@
 			<ClassificationDiagnosed value="true">No Dehydration</ClassificationDiagnosed>				<!-- No Dehyration (Classification) : TRUE -->
 		</ClassificationRule>
 		<SymptomRule rule="ANY_SYMPTOM">
-			<Symptom value="yes">diarrhoea_assessment_diarrhoea_duration_fourteen_days_symptom_id</Symptom>			<!-- Diarrhoea Duration >= 14 DAYS -->
+			<Symptom value="yes">imci_diarrhoea_assessment_diarrhoea_duration_fourteen_days_symptom_id</Symptom>	<!-- Diarrhoea Duration >= 14 DAYS -->
 		</SymptomRule>	
 	</Classification>
 
@@ -267,10 +267,10 @@
 		<Type>MODERATE</Type>
 		<Priority>2</Priority>
 		<SymptomRule rule="ANY_SYMPTOM">
-			<Symptom value="yes">diarrhoea_assessment_diarrhoea_symptom_id</Symptom>					<!-- Diarrhoea : YES-->
+			<Symptom value="yes">imci_diarrhoea_assessment_diarrhoea_symptom_id</Symptom>					<!-- Diarrhoea : YES-->
 		</SymptomRule>
 		<SymptomRule rule="ANY_SYMPTOM">
-			<Symptom value="yes">diarrhoea_assessment_blood_stools_symptom_id</Symptom>					<!-- Blood in the Stool : YES-->
+			<Symptom value="yes">imci_diarrhoea_assessment_blood_stools_symptom_id</Symptom>				<!-- Blood in the Stool : YES-->
 		</SymptomRule>
 	</Classification>
 
@@ -292,21 +292,21 @@
 		<Type>SEVERE</Type>
 		<Priority>1</Priority>
 		<SymptomRule rule="ANY_SYMPTOM">
-			<Symptom value="history">fever_assessment_fever_symptom_id</Symptom>						<!-- Fever : History -->
-			<Symptom value="feels hot">fever_assessment_fever_symptom_id</Symptom>						<!-- Fever : Feels Hot -->
-			<Symptom value="high temperature">fever_assessment_fever_symptom_id</Symptom>				<!-- Fever : High Temperature -->
+			<Symptom value="history">imci_fever_assessment_fever_symptom_id</Symptom>						<!-- Fever : History -->
+			<Symptom value="feels hot">imci_fever_assessment_fever_symptom_id</Symptom>						<!-- Fever : Feels Hot -->
+			<Symptom value="high temperature">imci_fever_assessment_fever_symptom_id</Symptom>				<!-- Fever : High Temperature -->
 		</SymptomRule>
 		<SymptomRule rule="ANY_SYMPTOM">
-			<Symptom value="yes">fever_assessment_stiff_neck_symptom_id</Symptom> 						<!-- Stiff Neck : YES -->
+			<Symptom value="yes">imci_fever_assessment_stiff_neck_symptom_id</Symptom> 						<!-- Stiff Neck : YES -->
 			<!-- Any general danger sign -->
-			<Symptom value="yes">general_danger_signs_drink_breastfeed_symptom_id</Symptom> 			<!-- Not Able to Drink or Breastfeed : YES -->
-			<Symptom value="yes">general_danger_signs_vomits_everything_symptom_id</Symptom> 			<!-- Vomits Everything : YES -->
-			<Symptom value="yes">general_danger_signs_convulsions_symptom_id</Symptom> 					<!-- History of Convulsions : YES -->
-			<Symptom value="yes">general_danger_signs_lethargic_or_unconscious_symptom_id</Symptom>		<!-- Lethargic or Unconscious : YES -->
-			<Symptom value="yes">general_danger_signs_convulsing_now_symptom_id</Symptom>				<!-- Convulsing Now : YES -->
+			<Symptom value="yes">imci_general_danger_signs_drink_breastfeed_symptom_id</Symptom> 			<!-- Not Able to Drink or Breastfeed : YES -->
+			<Symptom value="yes">imci_general_danger_signs_vomits_everything_symptom_id</Symptom> 			<!-- Vomits Everything : YES -->
+			<Symptom value="yes">imci_general_danger_signs_convulsions_symptom_id</Symptom> 				<!-- History of Convulsions : YES -->
+			<Symptom value="yes">imci_general_danger_signs_lethargic_or_unconscious_symptom_id</Symptom>	<!-- Lethargic or Unconscious : YES -->
+			<Symptom value="yes">imci_general_danger_signs_convulsing_now_symptom_id</Symptom>				<!-- Convulsing Now : YES -->
 		</SymptomRule>
 		<SymptomRule rule="ANY_SYMPTOM">
-			<Symptom value="high malaria risk">fever_assessment_malaria_risk_symptom_id</Symptom>		<!-- Malaria Risk : High Malaria Risk -->
+			<Symptom value="high malaria risk">imci_fever_assessment_malaria_risk_symptom_id</Symptom>		<!-- Malaria Risk : High Malaria Risk -->
 		</SymptomRule>
 	</Classification>
 
@@ -326,12 +326,12 @@
 		<Type>MODERATE</Type>
 		<Priority>2</Priority>
 		<SymptomRule rule="ANY_SYMPTOM">
-			<Symptom value="history">fever_assessment_fever_symptom_id</Symptom>						<!-- Fever : History -->
-			<Symptom value="feels hot">fever_assessment_fever_symptom_id</Symptom>						<!-- Fever : Feels Hot -->
-			<Symptom value="high temperature">fever_assessment_fever_symptom_id</Symptom>				<!-- Fever : High Temperature -->
+			<Symptom value="history">imci_fever_assessment_fever_symptom_id</Symptom>						<!-- Fever : History -->
+			<Symptom value="feels hot">imci_fever_assessment_fever_symptom_id</Symptom>						<!-- Fever : Feels Hot -->
+			<Symptom value="high temperature">imci_fever_assessment_fever_symptom_id</Symptom>				<!-- Fever : High Temperature -->
 		</SymptomRule>
 		<SymptomRule rule="ANY_SYMPTOM">
-			<Symptom value="high malaria risk">fever_assessment_malaria_risk_symptom_id</Symptom>		<!-- Malaria Risk : High Malaria Risk -->
+			<Symptom value="high malaria risk">imci_fever_assessment_malaria_risk_symptom_id</Symptom>		<!-- Malaria Risk : High Malaria Risk -->
 		</SymptomRule>
 	</Classification>
 	
@@ -353,21 +353,21 @@
 		<Type>SEVERE</Type>
 		<Priority>1</Priority>
 		<SymptomRule rule="ANY_SYMPTOM">
-			<Symptom value="history">fever_assessment_fever_symptom_id</Symptom>						<!-- Fever : History -->
-			<Symptom value="feels hot">fever_assessment_fever_symptom_id</Symptom>						<!-- Fever : Feels Hot -->
-			<Symptom value="high temperature">fever_assessment_fever_symptom_id</Symptom>				<!-- Fever : High Temperature -->
+			<Symptom value="history">imci_fever_assessment_fever_symptom_id</Symptom>						<!-- Fever : History -->
+			<Symptom value="feels hot">imci_fever_assessment_fever_symptom_id</Symptom>						<!-- Fever : Feels Hot -->
+			<Symptom value="high temperature">imci_fever_assessment_fever_symptom_id</Symptom>				<!-- Fever : High Temperature -->
 		</SymptomRule>
 		<SymptomRule rule="ANY_SYMPTOM">
-			<Symptom value="yes">fever_assessment_stiff_neck_symptom_id</Symptom> 						<!-- Stiff Neck : YES -->
+			<Symptom value="yes">imci_fever_assessment_stiff_neck_symptom_id</Symptom> 						<!-- Stiff Neck : YES -->
 			<!-- Any general danger sign -->
-			<Symptom value="yes">general_danger_signs_drink_breastfeed_symptom_id</Symptom> 			<!-- Not Able to Drink or Breastfeed : YES -->
-			<Symptom value="yes">general_danger_signs_vomits_everything_symptom_id</Symptom> 			<!-- Vomits Everything : YES -->
-			<Symptom value="yes">general_danger_signs_convulsions_symptom_id</Symptom> 					<!-- History of Convulsions : YES -->
-			<Symptom value="yes">general_danger_signs_lethargic_or_unconscious_symptom_id</Symptom>		<!-- Lethargic or Unconscious : YES -->
-			<Symptom value="yes">general_danger_signs_convulsing_now_symptom_id</Symptom>				<!-- Convulsing Now : YES -->
+			<Symptom value="yes">imci_general_danger_signs_drink_breastfeed_symptom_id</Symptom> 			<!-- Not Able to Drink or Breastfeed : YES -->
+			<Symptom value="yes">imci_general_danger_signs_vomits_everything_symptom_id</Symptom> 			<!-- Vomits Everything : YES -->
+			<Symptom value="yes">imci_general_danger_signs_convulsions_symptom_id</Symptom> 				<!-- History of Convulsions : YES -->
+			<Symptom value="yes">imci_general_danger_signs_lethargic_or_unconscious_symptom_id</Symptom>	<!-- Lethargic or Unconscious : YES -->
+			<Symptom value="yes">imci_general_danger_signs_convulsing_now_symptom_id</Symptom>				<!-- Convulsing Now : YES -->
 		</SymptomRule>
 		<SymptomRule rule="ANY_SYMPTOM">
-			<Symptom value="low malaria risk">fever_assessment_malaria_risk_symptom_id</Symptom>		<!-- Malaria Risk : Low Malaria Risk -->
+			<Symptom value="low malaria risk">imci_fever_assessment_malaria_risk_symptom_id</Symptom>		<!-- Malaria Risk : Low Malaria Risk -->
 		</SymptomRule>
 	</Classification>
 
@@ -393,18 +393,18 @@
 		<Type>MODERATE</Type>
 		<Priority>2</Priority>
 		<SymptomRule rule="ANY_SYMPTOM">
-			<Symptom value="history">fever_assessment_fever_symptom_id</Symptom>						<!-- Fever : History -->
-			<Symptom value="feels hot">fever_assessment_fever_symptom_id</Symptom>						<!-- Fever : Feels Hot -->
-			<Symptom value="high temperature">fever_assessment_fever_symptom_id</Symptom>				<!-- Fever : High Temperature -->
+			<Symptom value="history">imci_fever_assessment_fever_symptom_id</Symptom>					<!-- Fever : History -->
+			<Symptom value="feels hot">imci_fever_assessment_fever_symptom_id</Symptom>					<!-- Fever : Feels Hot -->
+			<Symptom value="high temperature">imci_fever_assessment_fever_symptom_id</Symptom>			<!-- Fever : High Temperature -->
 		</SymptomRule>
 		<SymptomRule rule="ANY_SYMPTOM">
-			<Symptom value="no">fever_assessment_runny_nose_symptom_id</Symptom> 						<!-- Runny Nose : NO -->
+			<Symptom value="no">imci_fever_assessment_runny_nose_symptom_id</Symptom> 					<!-- Runny Nose : NO -->
 		</SymptomRule>
 		<SymptomRule rule="ANY_SYMPTOM">
-			<Symptom value="no">fever_assessment_measles_symptom_id</Symptom> 							<!-- Measles : NO -->
+			<Symptom value="no">imci_fever_assessment_measles_symptom_id</Symptom> 						<!-- Measles : NO -->
 		</SymptomRule>
 		<SymptomRule rule="ANY_SYMPTOM">
-			<Symptom value="low malaria risk">fever_assessment_malaria_risk_symptom_id</Symptom>		<!-- Malaria Risk : Low Malaria Risk -->
+			<Symptom value="low malaria risk">imci_fever_assessment_malaria_risk_symptom_id</Symptom>	<!-- Malaria Risk : Low Malaria Risk -->
 		</SymptomRule>
 	</Classification>
 
@@ -430,16 +430,16 @@
 		<Type>LOW</Type>
 		<Priority>3</Priority>
 		<SymptomRule rule="ANY_SYMPTOM">
-			<Symptom value="history">fever_assessment_fever_symptom_id</Symptom>						<!-- Fever : History -->
-			<Symptom value="feels hot">fever_assessment_fever_symptom_id</Symptom>						<!-- Fever : Feels Hot -->
-			<Symptom value="high temperature">fever_assessment_fever_symptom_id</Symptom>				<!-- Fever : High Temperature -->
+			<Symptom value="history">imci_fever_assessment_fever_symptom_id</Symptom>					<!-- Fever : History -->
+			<Symptom value="feels hot">imci_fever_assessment_fever_symptom_id</Symptom>					<!-- Fever : Feels Hot -->
+			<Symptom value="high temperature">imci_fever_assessment_fever_symptom_id</Symptom>			<!-- Fever : High Temperature -->
 		</SymptomRule>
 		<SymptomRule rule="ANY_SYMPTOM">
-			<Symptom value="yes">fever_assessment_runny_nose_symptom_id</Symptom> 						<!-- Runny Nose : YES -->
-			<Symptom value="yes">fever_assessment_measles_symptom_id</Symptom> 							<!-- Measles : YES -->
+			<Symptom value="yes">imci_fever_assessment_runny_nose_symptom_id</Symptom> 					<!-- Runny Nose : YES -->
+			<Symptom value="yes">imci_fever_assessment_measles_symptom_id</Symptom> 					<!-- Measles : YES -->
 		</SymptomRule>
 		<SymptomRule rule="ANY_SYMPTOM">
-			<Symptom value="low malaria risk">fever_assessment_malaria_risk_symptom_id</Symptom>		<!-- Malaria Risk : Low Malaria Risk -->
+			<Symptom value="low malaria risk">imci_fever_assessment_malaria_risk_symptom_id</Symptom>	<!-- Malaria Risk : Low Malaria Risk -->
 		</SymptomRule>
 	</Classification>
 
@@ -462,21 +462,21 @@
 		<Type>MODERATE</Type>
 		<Priority>2</Priority>
 		<SymptomRule rule="ANY_SYMPTOM">
-			<Symptom value="history">fever_assessment_fever_symptom_id</Symptom>						<!-- Fever : History -->
-			<Symptom value="feels hot">fever_assessment_fever_symptom_id</Symptom>						<!-- Fever : Feels Hot -->
-			<Symptom value="high temperature">fever_assessment_fever_symptom_id</Symptom>				<!-- Fever : High Temperature -->
+			<Symptom value="history">imci_fever_assessment_fever_symptom_id</Symptom>					<!-- Fever : History -->
+			<Symptom value="feels hot">imci_fever_assessment_fever_symptom_id</Symptom>					<!-- Fever : Feels Hot -->
+			<Symptom value="high temperature">imci_fever_assessment_fever_symptom_id</Symptom>			<!-- Fever : High Temperature -->
 		</SymptomRule>
 		<SymptomRule rule="ANY_SYMPTOM">
-			<Symptom value="yes">fever_assessment_stiff_neck_symptom_id</Symptom> 						<!-- Stiff Neck : YES -->
+			<Symptom value="yes">imci_fever_assessment_stiff_neck_symptom_id</Symptom> 					<!-- Stiff Neck : YES -->
 			<!-- Any general danger sign -->
-			<Symptom value="yes">general_danger_signs_drink_breastfeed_symptom_id</Symptom> 			<!-- Not Able to Drink or Breastfeed : YES -->
-			<Symptom value="yes">general_danger_signs_vomits_everything_symptom_id</Symptom> 			<!-- Vomits Everything : YES -->
-			<Symptom value="yes">general_danger_signs_convulsions_symptom_id</Symptom> 					<!-- History of Convulsions : YES -->
-			<Symptom value="yes">general_danger_signs_lethargic_or_unconscious_symptom_id</Symptom>		<!-- Lethargic or Unconscious : YES -->
-			<Symptom value="yes">general_danger_signs_convulsing_now_symptom_id</Symptom>				<!-- Convulsing Now : YES -->
+			<Symptom value="yes">imci_general_danger_signs_drink_breastfeed_symptom_id</Symptom> 		<!-- Not Able to Drink or Breastfeed : YES -->
+			<Symptom value="yes">imci_general_danger_signs_vomits_everything_symptom_id</Symptom> 		<!-- Vomits Everything : YES -->
+			<Symptom value="yes">imci_general_danger_signs_convulsions_symptom_id</Symptom> 			<!-- History of Convulsions : YES -->
+			<Symptom value="yes">imci_general_danger_signs_lethargic_or_unconscious_symptom_id</Symptom>	<!-- Lethargic or Unconscious : YES -->
+			<Symptom value="yes">imci_general_danger_signs_convulsing_now_symptom_id</Symptom>				<!-- Convulsing Now : YES -->
 		</SymptomRule>
 		<SymptomRule rule="ANY_SYMPTOM">
-			<Symptom value="no malaria risk">fever_assessment_malaria_risk_symptom_id</Symptom>			<!-- Malaria Risk : No Malaria Risk -->
+			<Symptom value="no malaria risk">imci_fever_assessment_malaria_risk_symptom_id</Symptom>	<!-- Malaria Risk : No Malaria Risk -->
 		</SymptomRule>
 	</Classification>
 	
@@ -500,35 +500,35 @@
 		<Type>LOW</Type>
 		<Priority>3</Priority>
 		<SymptomRule rule="ANY_SYMPTOM">
-			<Symptom value="history">fever_assessment_fever_symptom_id</Symptom>						<!-- Fever : History -->
-			<Symptom value="feels hot">fever_assessment_fever_symptom_id</Symptom>						<!-- Fever : Feels Hot -->
-			<Symptom value="high temperature">fever_assessment_fever_symptom_id</Symptom>				<!-- Fever : High Temperature -->
+			<Symptom value="history">imci_fever_assessment_fever_symptom_id</Symptom>						<!-- Fever : History -->
+			<Symptom value="feels hot">imci_fever_assessment_fever_symptom_id</Symptom>						<!-- Fever : Feels Hot -->
+			<Symptom value="high temperature">imci_fever_assessment_fever_symptom_id</Symptom>				<!-- Fever : High Temperature -->
 		</SymptomRule>
 		<SymptomRule rule="ANY_SYMPTOM">
 			<!-- general danger sign -->
-			<Symptom value="no">general_danger_signs_drink_breastfeed_symptom_id</Symptom> 				<!-- Not Able to Drink or Breastfeed : NO -->
+			<Symptom value="no">imci_general_danger_signs_drink_breastfeed_symptom_id</Symptom> 			<!-- Not Able to Drink or Breastfeed : NO -->
 		</SymptomRule>
 		<SymptomRule rule="ANY_SYMPTOM">
 		    <!-- general danger sign -->
-			<Symptom value="no">general_danger_signs_vomits_everything_symptom_id</Symptom> 			<!-- Vomits Everything : NO -->
+			<Symptom value="no">imci_general_danger_signs_vomits_everything_symptom_id</Symptom> 			<!-- Vomits Everything : NO -->
 		</SymptomRule>
 		<SymptomRule rule="ANY_SYMPTOM">
 		    <!-- general danger sign -->
-			<Symptom value="no">general_danger_signs_convulsions_symptom_id</Symptom> 					<!-- History of Convulsions : NO -->
+			<Symptom value="no">imci_general_danger_signs_convulsions_symptom_id</Symptom> 					<!-- History of Convulsions : NO -->
 		</SymptomRule>
 		<SymptomRule rule="ANY_SYMPTOM">
 		    <!-- general danger sign -->
-			<Symptom value="no">general_danger_signs_lethargic_or_unconscious_symptom_id</Symptom>		<!-- Lethargic or Unconscious : NO -->
+			<Symptom value="no">imci_general_danger_signs_lethargic_or_unconscious_symptom_id</Symptom>		<!-- Lethargic or Unconscious : NO -->
 		</SymptomRule>
 		<SymptomRule rule="ANY_SYMPTOM">
 		    <!-- general danger sign -->
-			<Symptom value="no">general_danger_signs_convulsing_now_symptom_id</Symptom>				<!-- Convulsing Now : NO -->
+			<Symptom value="no">imci_general_danger_signs_convulsing_now_symptom_id</Symptom>				<!-- Convulsing Now : NO -->
 		</SymptomRule>
 		<SymptomRule rule="ANY_SYMPTOM">
-			<Symptom value="no">fever_assessment_stiff_neck_symptom_id</Symptom> 						<!-- Stiff Neck : NO -->
+			<Symptom value="no">imci_fever_assessment_stiff_neck_symptom_id</Symptom> 						<!-- Stiff Neck : NO -->
 		</SymptomRule>
 		<SymptomRule rule="ANY_SYMPTOM">
-			<Symptom value="no malaria risk">fever_assessment_malaria_risk_symptom_id</Symptom>			<!-- Malaria Risk : No Malaria Risk -->
+			<Symptom value="no malaria risk">imci_fever_assessment_malaria_risk_symptom_id</Symptom>		<!-- Malaria Risk : No Malaria Risk -->
 		</SymptomRule>
 	</Classification>
 
@@ -556,23 +556,23 @@
 		<Type>SEVERE</Type>
 		<Priority>1</Priority>
 		<SymptomRule rule="ANY_SYMPTOM">
-			<Symptom value="yes">fever_assessment_measles_symptom_id</Symptom>							<!-- Fever : Measles Now or within Last Three Months -->
+			<Symptom value="yes">imci_fever_assessment_measles_symptom_id</Symptom>						<!-- Fever : Measles Now or within Last Three Months -->
 		</SymptomRule>
 		<SymptomRule rule="ANY_SYMPTOM">
-			<Symptom value="history">fever_assessment_fever_symptom_id</Symptom>						<!-- Fever : History -->
-			<Symptom value="feels hot">fever_assessment_fever_symptom_id</Symptom>						<!-- Fever : Feels Hot -->
-			<Symptom value="high temperature">fever_assessment_fever_symptom_id</Symptom>				<!-- Fever : High Temperature -->
+			<Symptom value="history">imci_fever_assessment_fever_symptom_id</Symptom>					<!-- Fever : History -->
+			<Symptom value="feels hot">imci_fever_assessment_fever_symptom_id</Symptom>					<!-- Fever : Feels Hot -->
+			<Symptom value="high temperature">imci_fever_assessment_fever_symptom_id</Symptom>			<!-- Fever : High Temperature -->
 		</SymptomRule>
 		<SymptomRule rule="ANY_SYMPTOM">
-			<Symptom value="yes">fever_assessment_cornea_clouding_symptom_id</Symptom> 					<!-- Clouding of the Cornea : YES -->
-			<Symptom value="yes">fever_assessment_deep_mouth_ulcers_symptom_id</Symptom> 				<!-- Deep Mouth Ulcers : YES -->
-			<Symptom value="yes">fever_assessment_extensive_mouth_ulcers_symptom_id</Symptom> 			<!-- Extensive Mouth Ulcers : YES -->
+			<Symptom value="yes">imci_fever_assessment_cornea_clouding_symptom_id</Symptom> 			<!-- Clouding of the Cornea : YES -->
+			<Symptom value="yes">imci_fever_assessment_deep_mouth_ulcers_symptom_id</Symptom> 			<!-- Deep Mouth Ulcers : YES -->
+			<Symptom value="yes">imci_fever_assessment_extensive_mouth_ulcers_symptom_id</Symptom> 		<!-- Extensive Mouth Ulcers : YES -->
 			<!-- Any general danger sign -->
-			<Symptom value="yes">general_danger_signs_drink_breastfeed_symptom_id</Symptom> 			<!-- Not Able to Drink or Breastfeed : YES -->
-			<Symptom value="yes">general_danger_signs_vomits_everything_symptom_id</Symptom> 			<!-- Vomits Everything : YES -->
-			<Symptom value="yes">general_danger_signs_convulsions_symptom_id</Symptom> 					<!-- History of Convulsions : YES -->
-			<Symptom value="yes">general_danger_signs_lethargic_or_unconscious_symptom_id</Symptom>		<!-- Lethargic or Unconscious : YES -->
-			<Symptom value="yes">general_danger_signs_convulsing_now_symptom_id</Symptom>				<!-- Convulsing Now : YES -->
+			<Symptom value="yes">imci_general_danger_signs_drink_breastfeed_symptom_id</Symptom> 		<!-- Not Able to Drink or Breastfeed : YES -->
+			<Symptom value="yes">imci_general_danger_signs_vomits_everything_symptom_id</Symptom> 		<!-- Vomits Everything : YES -->
+			<Symptom value="yes">imci_general_danger_signs_convulsions_symptom_id</Symptom> 			<!-- History of Convulsions : YES -->
+			<Symptom value="yes">imci_general_danger_signs_lethargic_or_unconscious_symptom_id</Symptom>	<!-- Lethargic or Unconscious : YES -->
+			<Symptom value="yes">imci_general_danger_signs_convulsing_now_symptom_id</Symptom>			<!-- Convulsing Now : YES -->
 		</SymptomRule>
 	</Classification>
 
@@ -596,16 +596,16 @@
 		<Type>MODERATE</Type>
 		<Priority>2</Priority>
 		<SymptomRule rule="ANY_SYMPTOM">
-			<Symptom value="yes">fever_assessment_measles_symptom_id</Symptom>							<!-- Fever : Measles Now or within Last Three Months -->
+			<Symptom value="yes">imci_fever_assessment_measles_symptom_id</Symptom>						<!-- Fever : Measles Now or within Last Three Months -->
 		</SymptomRule>
 		<SymptomRule rule="ANY_SYMPTOM">
-			<Symptom value="history">fever_assessment_fever_symptom_id</Symptom>						<!-- Fever : History -->
-			<Symptom value="feels hot">fever_assessment_fever_symptom_id</Symptom>						<!-- Fever : Feels Hot -->
-			<Symptom value="high temperature">fever_assessment_fever_symptom_id</Symptom>				<!-- Fever : High Temperature -->
+			<Symptom value="history">imci_fever_assessment_fever_symptom_id</Symptom>					<!-- Fever : History -->
+			<Symptom value="feels hot">imci_fever_assessment_fever_symptom_id</Symptom>					<!-- Fever : Feels Hot -->
+			<Symptom value="high temperature">imci_fever_assessment_fever_symptom_id</Symptom>			<!-- Fever : High Temperature -->
 		</SymptomRule>
 		<SymptomRule rule="ANY_SYMPTOM">
-			<Symptom value="yes">fever_assessment_pus_draining_symptom_id</Symptom> 					<!-- Pus Draining from the Eye : YES -->
-			<Symptom value="yes">fever_assessment_mouth_ulcers_symptom_id</Symptom> 					<!-- Mouth Ulcers : YES -->
+			<Symptom value="yes">imci_fever_assessment_pus_draining_symptom_id</Symptom> 				<!-- Pus Draining from the Eye : YES -->
+			<Symptom value="yes">imci_fever_assessment_mouth_ulcers_symptom_id</Symptom> 				<!-- Mouth Ulcers : YES -->
 		</SymptomRule>
 	</Classification>
 
@@ -625,12 +625,12 @@
 		<Type>LOW</Type>
 		<Priority>3</Priority>
 		<SymptomRule rule="ANY_SYMPTOM">
-			<Symptom value="yes">fever_assessment_measles_symptom_id</Symptom>							<!-- Fever : Measles Now or within Last Three Months -->
+			<Symptom value="yes">imci_fever_assessment_measles_symptom_id</Symptom>						<!-- Fever : Measles Now or within Last Three Months -->
 		</SymptomRule>
 		<SymptomRule rule="ANY_SYMPTOM">
-			<Symptom value="history">fever_assessment_fever_symptom_id</Symptom>						<!-- Fever : History -->
-			<Symptom value="feels hot">fever_assessment_fever_symptom_id</Symptom>						<!-- Fever : Feels Hot -->
-			<Symptom value="high temperature">fever_assessment_fever_symptom_id</Symptom>				<!-- Fever : High Temperature -->
+			<Symptom value="history">imci_fever_assessment_fever_symptom_id</Symptom>					<!-- Fever : History -->
+			<Symptom value="feels hot">imci_fever_assessment_fever_symptom_id</Symptom>					<!-- Fever : Feels Hot -->
+			<Symptom value="high temperature">imci_fever_assessment_fever_symptom_id</Symptom>			<!-- Fever : High Temperature -->
 		</SymptomRule>
 	</Classification>
 	
@@ -650,10 +650,10 @@
 		<Type>SEVERE</Type>
 		<Priority>1</Priority>
 		<SymptomRule rule="ANY_SYMPTOM">
-			<Symptom value="yes">ear_assessment_ear_problem_symptom_id</Symptom>						<!-- Ear Problem : YES -->
+			<Symptom value="yes">imci_ear_assessment_ear_problem_symptom_id</Symptom>					<!-- Ear Problem : YES -->
 		</SymptomRule>
 		<SymptomRule rule="ANY_SYMPTOM">
-			<Symptom value="yes">ear_assessment_tender_swelling_symptom_id</Symptom> 					<!-- Tender Swelling behind the Ear : YES -->
+			<Symptom value="yes">imci_ear_assessment_tender_swelling_symptom_id</Symptom> 				<!-- Tender Swelling behind the Ear : YES -->
 		</SymptomRule>
 	</Classification>
 
@@ -675,11 +675,11 @@
 		<Type>MODERATE</Type>
 		<Priority>2</Priority>
 		<SymptomRule rule="ANY_SYMPTOM">
-			<Symptom value="yes">ear_assessment_ear_problem_symptom_id</Symptom>						<!-- Ear Problem : YES -->
+			<Symptom value="yes">imci_ear_assessment_ear_problem_symptom_id</Symptom>					<!-- Ear Problem : YES -->
 		</SymptomRule>
 		<SymptomRule rule="TWO_SYMPTOMS_REQUIRED">
-			<Symptom value="yes">ear_assessment_ear_discharge_symptom_id</Symptom>	 					<!-- Ear Pus Discharge : YES -->
-			<Symptom value="no">ear_assessment_ear_discharge_duration_symptom_id</Symptom>	 			<!-- Ear Pus Discharge >= 14 days : NO -->
+			<Symptom value="yes">imci_ear_assessment_ear_discharge_symptom_id</Symptom>	 				<!-- Ear Pus Discharge : YES -->
+			<Symptom value="no">imci_ear_assessment_ear_discharge_duration_symptom_id</Symptom>	 		<!-- Ear Pus Discharge >= 14 days : NO -->
 		</SymptomRule>
 	</Classification>
 
@@ -699,10 +699,10 @@
 		<Type>MODERATE</Type>
 		<Priority>2</Priority>
 		<SymptomRule rule="ANY_SYMPTOM">
-			<Symptom value="yes">ear_assessment_ear_problem_symptom_id</Symptom>						<!-- Ear Problem : YES -->
+			<Symptom value="yes">imci_ear_assessment_ear_problem_symptom_id</Symptom>					<!-- Ear Problem : YES -->
 		</SymptomRule>
 		<SymptomRule rule="ANY_SYMPTOM">
-			<Symptom value="yes">ear_assessment_ear_pain_symptom_id</Symptom>							<!-- Ear Pain : YES -->
+			<Symptom value="yes">imci_ear_assessment_ear_pain_symptom_id</Symptom>						<!-- Ear Pain : YES -->
 		</SymptomRule>
 	</Classification>
 
@@ -724,13 +724,13 @@
 		<Type>MODERATE</Type>
 		<Priority>2</Priority>
 		<SymptomRule rule="ANY_SYMPTOM">
-			<Symptom value="yes">ear_assessment_ear_problem_symptom_id</Symptom>						<!-- Ear Problem : YES -->
+			<Symptom value="yes">imci_ear_assessment_ear_problem_symptom_id</Symptom>					<!-- Ear Problem : YES -->
 		</SymptomRule>
 		<SymptomRule rule="ANY_SYMPTOM">
-			<Symptom value="yes">ear_assessment_ear_discharge_symptom_id</Symptom>						<!-- Ear Pus Discharge : YES -->
+			<Symptom value="yes">imci_ear_assessment_ear_discharge_symptom_id</Symptom>					<!-- Ear Pus Discharge : YES -->
 		</SymptomRule>
 		<SymptomRule rule="ANY_SYMPTOM">
-			<Symptom value="yes">ear_assessment_ear_discharge_duration_symptom_id</Symptom>				<!-- Ear Pus Discharge >= 14 days : YES -->
+			<Symptom value="yes">imci_ear_assessment_ear_discharge_duration_symptom_id</Symptom>		<!-- Ear Pus Discharge >= 14 days : YES -->
 		</SymptomRule>
 	</Classification>
 
@@ -752,13 +752,13 @@
 		<Type>LOW</Type>
 		<Priority>3</Priority>
 		<SymptomRule rule="ANY_SYMPTOM">
-			<Symptom value="yes">ear_assessment_ear_problem_symptom_id</Symptom>						<!-- Ear Problem : YES -->
+			<Symptom value="yes">imci_ear_assessment_ear_problem_symptom_id</Symptom>					<!-- Ear Problem : YES -->
 		</SymptomRule>
 		<SymptomRule rule="ANY_SYMPTOM">
-			<Symptom value="no">ear_assessment_ear_pain_symptom_id</Symptom>							<!-- Ear Pain : NO -->
+			<Symptom value="no">imci_ear_assessment_ear_pain_symptom_id</Symptom>						<!-- Ear Pain : NO -->
 		</SymptomRule>
 		<SymptomRule rule="ANY_SYMPTOM">
-			<Symptom value="no">ear_assessment_ear_discharge_symptom_id</Symptom>						<!-- Ear Pus Discharge : NO -->
+			<Symptom value="no">imci_ear_assessment_ear_discharge_symptom_id</Symptom>					<!-- Ear Pus Discharge : NO -->
 		</SymptomRule>
 	</Classification>
 
@@ -780,9 +780,9 @@
 		<Type>SEVERE</Type>
 		<Priority>1</Priority>
 		<SymptomRule rule="ANY_SYMPTOM">
-			<Symptom value="yes">malnutrition_assessment_visible_severe_wasting_symptom_id</Symptom>	<!-- Visible Severe Wasting : YES -->
-			<Symptom value="severe">malnutrition_assessment_palmar_pallor_symptom_id</Symptom>	 		<!-- Palmar Pallor : Severe -->
-			<Symptom value="yes">malnutrition_assessment_oedema_symptom_id</Symptom>					<!-- Oedema of Both Feet : YES -->
+			<Symptom value="yes">imci_malnutrition_assessment_visible_severe_wasting_symptom_id</Symptom>	<!-- Visible Severe Wasting : YES -->
+			<Symptom value="severe">imci_malnutrition_assessment_palmar_pallor_symptom_id</Symptom>	 		<!-- Palmar Pallor : Severe -->
+			<Symptom value="yes">imci_malnutrition_assessment_oedema_symptom_id</Symptom>					<!-- Oedema of Both Feet : YES -->
 		</SymptomRule>
 	</Classification>
 	
@@ -802,8 +802,8 @@
 		<Type>MODERATE</Type>
 		<Priority>2</Priority>
 		<SymptomRule rule="ANY_SYMPTOM">
-			<Symptom value="some">malnutrition_assessment_palmar_pallor_symptom_id</Symptom>			<!-- Palmar Pallor : Some -->
-			<Symptom value="very low">malnutrition_assessment_weight_for_age_symptom_id</Symptom>		<!-- Weight for Age : Very Low -->
+			<Symptom value="some">imci_malnutrition_assessment_palmar_pallor_symptom_id</Symptom>			<!-- Palmar Pallor : Some -->
+			<Symptom value="very low">imci_malnutrition_assessment_weight_for_age_symptom_id</Symptom>		<!-- Weight for Age : Very Low -->
 		</SymptomRule>
 	</Classification>
 	
@@ -823,16 +823,16 @@
 		<Type>LOW</Type>
 		<Priority>3</Priority>
 		<SymptomRule rule="ANY_SYMPTOM">
-			<Symptom value="no">malnutrition_assessment_oedema_symptom_id</Symptom>						<!-- Oedema of Both Feet : NO -->
+			<Symptom value="no">imci_malnutrition_assessment_oedema_symptom_id</Symptom>				<!-- Oedema of Both Feet : NO -->
 		</SymptomRule>
 		<SymptomRule rule="ANY_SYMPTOM">
-			<Symptom value="not very low">malnutrition_assessment_weight_for_age_symptom_id</Symptom>	<!-- Weight for Age : Not Very Low -->
+			<Symptom value="not very low">imci_malnutrition_assessment_weight_for_age_symptom_id</Symptom>	<!-- Weight for Age : Not Very Low -->
 		</SymptomRule>
 		<SymptomRule rule="ANY_SYMPTOM">
-			<Symptom value="no">malnutrition_assessment_visible_severe_wasting_symptom_id</Symptom>		<!-- Visible Severe Wasting : NO -->
+			<Symptom value="no">imci_malnutrition_assessment_visible_severe_wasting_symptom_id</Symptom>	<!-- Visible Severe Wasting : NO -->
 		</SymptomRule>
 		<SymptomRule rule="ANY_SYMPTOM">
-			<Symptom value="no">malnutrition_assessment_palmar_pallor_symptom_id</Symptom>				<!-- Palmar Pallor : NO -->
+			<Symptom value="no">imci_malnutrition_assessment_palmar_pallor_symptom_id</Symptom>			<!-- Palmar Pallor : NO -->
 		</SymptomRule>
 	</Classification>
 

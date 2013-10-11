@@ -79,15 +79,15 @@ public class ImciAssessmentResultsActivity extends SupportingLifeBaseActivity {
         setTabsAdapter(new TabsAdapter(this, getViewPager()));
         
         // add assessment review items tab
-        getTabsAdapter().addTab(bar.newTab().setText(R.string.assessment_results_review_tab_title),
+        getTabsAdapter().addTab(bar.newTab().setText(R.string.imci_assessment_results_review_tab_title),
         		AssessmentResultsReviewFragment.class, null);
        
         // add classifications tab
-        getTabsAdapter().addTab(bar.newTab().setText(R.string.assessment_results_classifications_tab_title),
+        getTabsAdapter().addTab(bar.newTab().setText(R.string.imci_assessment_results_classifications_tab_title),
         		AssessmentClassificationsFragment.class, null);
         
         // add treatments tab
-        getTabsAdapter().addTab(bar.newTab().setText(R.string.assessment_results_treatments_tab_title),
+        getTabsAdapter().addTab(bar.newTab().setText(R.string.imci_assessment_results_treatments_tab_title),
         		AssessmentTreatmentsFragment.class, null);
  
         // open on classifications tab by default

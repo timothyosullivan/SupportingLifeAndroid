@@ -55,11 +55,11 @@ public class WeightForAgeReviewItem extends ReviewItem implements Serializable {
     	if (!TextUtils.isEmpty(getDisplayValue())) {
     		Resources resources = supportingLifeBaseActivity.getResources();
     	
-    		if (getDisplayValue().equals(resources.getString(R.string.malnutrition_assessment_radio_weight_for_age_very_low))) {
+    		if (getDisplayValue().equals(resources.getString(R.string.imci_malnutrition_assessment_radio_weight_for_age_very_low))) {
     			// Very Low (Weight For Age)
     			setSymptomValue(VERY_LOW);
     		}
-    		else if (getDisplayValue().equals(resources.getString(R.string.malnutrition_assessment_radio_weight_for_age_not_very_low))) {
+    		else if (getDisplayValue().equals(resources.getString(R.string.imci_malnutrition_assessment_radio_weight_for_age_not_very_low))) {
     			// Not Very Low (Weight For Age)
     			setSymptomValue(NOT_VERY_LOW);
     		}    		

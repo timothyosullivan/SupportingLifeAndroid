@@ -26,21 +26,21 @@
 			    android:layout_width="match_parent"
 			    android:layout_height="match_parent"
 			    android:layout_gravity="bottom"
-			    android:text="@string/general_danger_signs_radio_drink_breastfeed" />
+			    android:text="@string/imci_general_danger_signs_radio_drink_breastfeed" />
 			
 			<RadioGroup
-			    android:id="@+id/general_danger_signs_radio_drink_breastfeed"
+			    android:id="@+id/imci_general_danger_signs_radio_drink_breastfeed"
 			    android:layout_width="match_parent"
 			    android:layout_height="wrap_content"
 			    android:orientation="horizontal" >
 
 			    <RadioButton
-			        android:id="@+id/general_danger_signs_radio_drink_breastfeed_yes"
+			        android:id="@+id/imci_general_danger_signs_radio_drink_breastfeed_yes"
 			        android:layout_weight="0.67"
 			        android:text="@string/assessment_wizard_radio_yes" />
 
 			    <RadioButton
-			        android:id="@+id/general_danger_signs_radio_drink_breastfeed_no"
+			        android:id="@+id/imci_general_danger_signs_radio_drink_breastfeed_no"
 			        android:layout_weight="0.33"
 			        android:text="@string/assessment_wizard_radio_no" />
 
@@ -55,21 +55,21 @@
 			    android:layout_width="match_parent"
 			    android:layout_height="match_parent"
 			    android:layout_gravity="bottom"
-			    android:text="@string/general_danger_signs_radio_vomits" />
+			    android:text="@string/imci_general_danger_signs_radio_vomits" />
 			
 			<RadioGroup
-			    android:id="@+id/general_danger_signs_radio_vomits"
+			    android:id="@+id/imci_general_danger_signs_radio_vomits"
 			    android:layout_width="match_parent"
 			    android:layout_height="wrap_content"
 			    android:orientation="horizontal" >
 
 			    <RadioButton
-			        android:id="@+id/general_danger_signs_radio_vomits_yes"
+			        android:id="@+id/imci_general_danger_signs_radio_vomits_yes"
 			        android:layout_weight="0.67"
 			        android:text="@string/assessment_wizard_radio_yes" />
 
 			    <RadioButton
-			        android:id="@+id/general_danger_signs_radio_vomits_no"
+			        android:id="@+id/imci_general_danger_signs_radio_vomits_no"
 			        android:layout_weight="0.33"
 			        android:text="@string/assessment_wizard_radio_no" />
 
@@ -84,21 +84,21 @@
 			    android:layout_width="match_parent"
 			    android:layout_height="match_parent"
 			    android:layout_gravity="bottom"
-			    android:text="@string/general_danger_signs_radio_convulsions" />
+			    android:text="@string/imci_general_danger_signs_radio_convulsions" />
 			
 			<RadioGroup
-			    android:id="@+id/general_danger_signs_radio_convulsions"
+			    android:id="@+id/imci_general_danger_signs_radio_convulsions"
 			    android:layout_width="match_parent"
 			    android:layout_height="wrap_content"
 			    android:orientation="horizontal" >
 
 			    <RadioButton
-			        android:id="@+id/general_danger_signs_radio_convulsions_yes"
+			        android:id="@+id/imci_general_danger_signs_radio_convulsions_yes"
 			        android:layout_weight="0.67"
 			        android:text="@string/assessment_wizard_radio_yes" />
 
 			    <RadioButton
-			        android:id="@+id/general_danger_signs_radio_convulsions_no"
+			        android:id="@+id/imci_general_danger_signs_radio_convulsions_no"
 			        android:layout_weight="0.33"
 			        android:text="@string/assessment_wizard_radio_no" />
 
@@ -113,21 +113,21 @@
 			    android:layout_width="match_parent"
 			    android:layout_height="match_parent"
 			    android:layout_gravity="bottom"
-			    android:text="@string/general_danger_signs_radio_lethargic_or_unconscious" />
+			    android:text="@string/imci_general_danger_signs_radio_lethargic_or_unconscious" />
 			
 			<RadioGroup
-			    android:id="@+id/general_danger_signs_radio_lethargic_or_unconscious"
+			    android:id="@+id/imci_general_danger_signs_radio_lethargic_or_unconscious"
 			    android:layout_width="match_parent"
 			    android:layout_height="wrap_content"
 			    android:orientation="horizontal" >
 
 			    <RadioButton
-			        android:id="@+id/general_danger_signs_radio_lethargic_or_unconscious_yes"
+			        android:id="@+id/imci_general_danger_signs_radio_lethargic_or_unconscious_yes"
 			        android:layout_weight="0.67"
 			        android:text="@string/assessment_wizard_radio_yes" />
 
 			    <RadioButton
-			        android:id="@+id/general_danger_signs_radio_lethargic_or_unconscious_no"
+			        android:id="@+id/imci_general_danger_signs_radio_lethargic_or_unconscious_no"
 			        android:layout_weight="0.33"
 			        android:text="@string/assessment_wizard_radio_no" />
 
@@ -142,21 +142,21 @@
 			    android:layout_width="match_parent"
 			    android:layout_height="match_parent"
 			    android:layout_gravity="bottom"
-			    android:text="@string/general_danger_signs_radio_convulsing_now" />
+			    android:text="@string/imci_general_danger_signs_radio_convulsing_now" />
 			
 			<RadioGroup
-			    android:id="@+id/general_danger_signs_radio_convulsing_now"
+			    android:id="@+id/imci_general_danger_signs_radio_convulsing_now"
 			    android:layout_width="match_parent"
 			    android:layout_height="wrap_content"
 			    android:orientation="horizontal" >
 
 			    <RadioButton
-			        android:id="@+id/general_danger_signs_radio_convulsing_now_yes"
+			        android:id="@+id/imci_general_danger_signs_radio_convulsing_now_yes"
 			        android:layout_weight="0.67"
 			        android:text="@string/assessment_wizard_radio_yes" />
 
 			    <RadioButton
-			        android:id="@+id/general_danger_signs_radio_convulsing_now_no"
+			        android:id="@+id/imci_general_danger_signs_radio_convulsing_now_no"
 			        android:layout_weight="0.33"
 			        android:text="@string/assessment_wizard_radio_no" />
 

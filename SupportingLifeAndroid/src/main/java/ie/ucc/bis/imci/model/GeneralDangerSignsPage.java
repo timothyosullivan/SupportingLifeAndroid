@@ -57,37 +57,37 @@ public class GeneralDangerSignsPage extends AbstractPage {
     	String reviewItemSymptomId = null;
 
     	// review header
-    	reviewItemLabel = resources.getString(R.string.general_danger_signs_title);
+    	reviewItemLabel = resources.getString(R.string.imci_general_danger_signs_title);
     	reviewItems.add(new ReviewItem(reviewItemLabel, getKey()));
     	
     	// not able to drink or breastfeed
-    	reviewItemLabel = resources.getString(R.string.general_danger_signs_review_drink_breastfeed);
+    	reviewItemLabel = resources.getString(R.string.imci_general_danger_signs_review_drink_breastfeed);
     	reviewItemValue = getPageData().getString(DRINK_BREASTFEED_DATA_KEY + RadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
-    	reviewItemSymptomId = resources.getString(R.string.general_danger_signs_drink_breastfeed_symptom_id);
+    	reviewItemSymptomId = resources.getString(R.string.imci_general_danger_signs_drink_breastfeed_symptom_id);
     	reviewItems.add(new ReviewItem(reviewItemLabel, reviewItemValue, reviewItemSymptomId, getKey(), -1));    	
     	
     	// vomits everythings
-    	reviewItemLabel = resources.getString(R.string.general_danger_signs_review_vomits);
+    	reviewItemLabel = resources.getString(R.string.imci_general_danger_signs_review_vomits);
     	reviewItemValue = getPageData().getString(VOMITS_EVERYTHING_DATA_KEY + RadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
-    	reviewItemSymptomId = resources.getString(R.string.general_danger_signs_vomits_everything_symptom_id);
+    	reviewItemSymptomId = resources.getString(R.string.imci_general_danger_signs_vomits_everything_symptom_id);
     	reviewItems.add(new ReviewItem(reviewItemLabel, reviewItemValue, reviewItemSymptomId, getKey(), -1));
     	
     	// history of convulsions
-    	reviewItemLabel = resources.getString(R.string.general_danger_signs_review_convulsions);
+    	reviewItemLabel = resources.getString(R.string.imci_general_danger_signs_review_convulsions);
     	reviewItemValue = getPageData().getString(HISTORY_OF_CONVULSIONS_DATA_KEY + RadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
-     	reviewItemSymptomId = resources.getString(R.string.general_danger_signs_convulsions_symptom_id);
+     	reviewItemSymptomId = resources.getString(R.string.imci_general_danger_signs_convulsions_symptom_id);
     	reviewItems.add(new ReviewItem(reviewItemLabel, reviewItemValue, reviewItemSymptomId, getKey(), -1));
     	
     	// lethargic or unconscious
-    	reviewItemLabel = resources.getString(R.string.general_danger_signs_review_lethargic_or_unconscious);
+    	reviewItemLabel = resources.getString(R.string.imci_general_danger_signs_review_lethargic_or_unconscious);
     	reviewItemValue = getPageData().getString(LETHARGIC_OR_UNCONSCIOUS_DATA_KEY + RadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
-     	reviewItemSymptomId = resources.getString(R.string.general_danger_signs_lethargic_or_unconscious_symptom_id);
+     	reviewItemSymptomId = resources.getString(R.string.imci_general_danger_signs_lethargic_or_unconscious_symptom_id);
     	reviewItems.add(new ReviewItem(reviewItemLabel, reviewItemValue, reviewItemSymptomId, getKey(), -1));
     	
     	// convulsing now
-    	reviewItemLabel = resources.getString(R.string.general_danger_signs_review_convulsing_now);
+    	reviewItemLabel = resources.getString(R.string.imci_general_danger_signs_review_convulsing_now);
     	reviewItemValue = getPageData().getString(CONVULSING_NOW_DATA_KEY + RadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
-     	reviewItemSymptomId = resources.getString(R.string.general_danger_signs_convulsing_now_symptom_id);
+     	reviewItemSymptomId = resources.getString(R.string.imci_general_danger_signs_convulsing_now_symptom_id);
     	reviewItems.add(new ReviewItem(reviewItemLabel, reviewItemValue, reviewItemSymptomId, getKey(), -1));
     }
 
