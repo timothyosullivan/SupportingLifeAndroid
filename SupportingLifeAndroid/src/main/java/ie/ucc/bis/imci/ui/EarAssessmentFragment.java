@@ -105,7 +105,7 @@ public class EarAssessmentFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_wizard_page_ear_assessment, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_imci_page_ear_assessment, container, false);
         ((TextView) rootView.findViewById(android.R.id.title)).setText(getEarAssessmentPage().getTitle());
                 
         // ear problem

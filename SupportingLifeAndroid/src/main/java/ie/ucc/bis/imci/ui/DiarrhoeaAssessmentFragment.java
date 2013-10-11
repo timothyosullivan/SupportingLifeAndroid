@@ -103,7 +103,7 @@ public class DiarrhoeaAssessmentFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_wizard_page_diarrhoea_assessment, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_imci_page_diarrhoea_assessment, container, false);
         ((TextView) rootView.findViewById(android.R.id.title)).setText(getDiarrhoeaAssessmentPage().getTitle());
 
         // configure the animated view of diarrhoea duration 

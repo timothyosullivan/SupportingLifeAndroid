@@ -47,7 +47,7 @@ public class AssessmentTreatmentsFragment extends ListFragment {
     
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-    	  View myFragmentView = inflater.inflate(R.layout.fragment_assessment_results_treatment_tab, container, false);
+    	  View myFragmentView = inflater.inflate(R.layout.fragment_imci_assessment_results_treatment_tab, container, false);
           
           ListView listView = (ListView) myFragmentView.findViewById(android.R.id.list);         
           listView.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
