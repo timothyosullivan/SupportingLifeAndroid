@@ -348,19 +348,23 @@
 
     <!-- Gender -->
 	<string name="ccm_general_patient_details_radio_gender_label">Gender:</string>
-	<string name="ccm_general_patient_details_radio_gender_male">Male</string>
-	<string name="ccm_general_patient_details_radio_gender_female">Female</string>
+	<string name="ccm_general_patient_details_radio_gender_boy">Boy</string>
+	<string name="ccm_general_patient_details_radio_gender_girl">Girl</string>
 		
 	<string name="ccm_general_patient_details_caregiver_label">Caregiver:</string>
 	<string name="ccm_general_patient_details_physical_address_label">Physical Address:</string>
-	<string name="ccm_general_patient_details_village_label">Village:</string>
+	<string name="ccm_general_patient_details_village_label">Village/TA:</string>
 	
     <!-- Patient Details Review -->
     <string name="ccm_general_patient_details_review_today_date">Today\'s Date</string>
+    <string name="ccm_general_patient_details_review_hsa_identifier">HSA</string>
 	<string name="ccm_general_patient_details_review_first_name">First Name</string>
 	<string name="ccm_general_patient_details_review_surname">Surname</string>
 	<string name="ccm_general_patient_details_review_date_of_birth">Date of Birth</string>
 	<string name="ccm_general_patient_details_review_gender">Gender</string>
+	<string name="ccm_general_patient_details_review_caregiver">Caregiver</string>
+	<string name="ccm_general_patient_details_review_physical_address">Physical Address</string>
+	<string name="ccm_general_patient_details_review_village">Village/TA</string>
 
     <!-- HINTS -->
     <string name="ccm_general_patient_details_hsa_identifier_hint">Please enter HSA identifier</string>

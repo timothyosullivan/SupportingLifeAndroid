@@ -24,10 +24,15 @@ import android.support.v4.app.Fragment;
  */
 public class GeneralPatientDetailsCcmPage extends AbstractPage {
     public static final String TODAY_DATE_DATA_KEY = "TODAY_DATE";
+	public static final String HEALTH_SURVEILLANCE_ASSISTANT_DATA_KEY = "HEALTH_SURVEILLANCE_ASSISTANT";
     public static final String FIRST_NAME_DATA_KEY = "FIRST_NAME";
     public static final String SURNAME_DATA_KEY = "SURNAME";
     public static final String DATE_OF_BIRTH_DATA_KEY = "DATE_OF_BIRTH";
     public static final String GENDER_DATA_KEY = "GENDER";
+	public static final String CAREGIVER_DATA_KEY = "CAREGIVER_DATA_KEY";
+	public static final String PHYSICAL_ADDRESS_DATA_KEY = "PHYSICAL_ADDRESS";
+	public static final String VILLAGE_DATA_KEY = "VILLAGE";
+
     
     private GeneralPatientDetailsCcmFragment generalPatientDetailsCcmFragment;
 
@@ -63,11 +68,15 @@ public class GeneralPatientDetailsCcmPage extends AbstractPage {
     	reviewItemLabel = resources.getString(R.string.ccm_general_patient_details_review_today_date);
     	reviewItems.add(new ReviewItem(reviewItemLabel, getPageData().getString(TODAY_DATE_DATA_KEY), getKey(), -1));
     	
-    	// first name
+        // Health Surveillance Assistant (HSA)
+    	reviewItemLabel = resources.getString(R.string.ccm_general_patient_details_review_hsa_identifier);
+    	reviewItems.add(new ReviewItem(reviewItemLabel, getPageData().getString(HEALTH_SURVEILLANCE_ASSISTANT_DATA_KEY), getKey(), -1));
+    	
+    	// child's first name
     	reviewItemLabel = resources.getString(R.string.ccm_general_patient_details_review_first_name);
     	reviewItems.add(new ReviewItem(reviewItemLabel, getPageData().getString(FIRST_NAME_DATA_KEY), getKey(), -1));
     	
-    	// surname
+    	// child's surname
     	reviewItemLabel = resources.getString(R.string.ccm_general_patient_details_review_surname);
     	reviewItems.add(new ReviewItem(reviewItemLabel, getPageData().getString(SURNAME_DATA_KEY), getKey(), -1));
     	
@@ -80,7 +89,21 @@ public class GeneralPatientDetailsCcmPage extends AbstractPage {
     	reviewItemLabel = resources.getString(R.string.ccm_general_patient_details_review_gender);
     	reviewItemSymptomId = resources.getString(R.string.ccm_general_patient_details_gender_symptom_id);
     	reviewItemValue = getPageData().getString(GENDER_DATA_KEY + RadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
-    	reviewItems.add(new ReviewItem(reviewItemLabel, reviewItemValue, reviewItemSymptomId, getKey(), -1));	
+    	reviewItems.add(new ReviewItem(reviewItemLabel, reviewItemValue, reviewItemSymptomId, getKey(), -1));
+    	
+    	// relationship
+    	
+    	
+    	// specify relationship
+    	
+    	
+        // physical address
+    	reviewItemLabel = resources.getString(R.string.ccm_general_patient_details_review_physical_address);
+    	reviewItems.add(new ReviewItem(reviewItemLabel, getPageData().getString(PHYSICAL_ADDRESS_DATA_KEY), getKey(), -1));
+        
+        // village/TA
+    	reviewItemLabel = resources.getString(R.string.ccm_general_patient_details_review_village);
+    	reviewItems.add(new ReviewItem(reviewItemLabel, getPageData().getString(VILLAGE_DATA_KEY), getKey(), -1));
     }
 
     @Override
