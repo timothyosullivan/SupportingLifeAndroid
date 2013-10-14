@@ -29,7 +29,7 @@
 					android:layout_height="wrap_content"
 					android:orientation="vertical">
 					<TextView
-						style="@style/WizardFormLabel"
+						style="@style/AssessmentFormLabel"
 						android:layout_width="match_parent"
 						android:layout_height="match_parent"
 						android:layout_gravity="bottom"
@@ -71,7 +71,7 @@
 					android:paddingLeft="30dp"
 					android:orientation="vertical">
 					<TextView
-						style="@style/WizardFormLabel"
+						style="@style/AssessmentFormLabel"
 						android:layout_width="match_parent"
 						android:layout_height="match_parent"
 						android:layout_gravity="bottom"
@@ -88,7 +88,7 @@
 			<!-- 'FEVER BEEN PRESENT EVERY DAY' RADIO BUTTON GROUP -->
 			<!-- ============================================================ -->
 			<TextView
-				style="@style/WizardFormLabel"
+				style="@style/AssessmentFormLabel"
 				android:layout_width="match_parent"
 				android:layout_height="match_parent"
 				android:layout_gravity="bottom"
@@ -112,7 +112,7 @@
             <!-- MALARIA RISK RADIO BUTTON GROUP -->
             <!-- ============================================================ -->
 			<TextView
-				style="@style/WizardFormLabel"
+				style="@style/AssessmentFormLabel"
 				android:layout_width="match_parent"
 				android:layout_height="match_parent"
 				android:layout_gravity="bottom"
@@ -140,7 +140,7 @@
 			<!-- MEASLES RADIO BUTTON GROUP -->
 			<!-- ============================================================ -->
 			<TextView
-				style="@style/WizardFormLabel"
+				style="@style/AssessmentFormLabel"
 				android:layout_width="match_parent"
 				android:layout_height="match_parent"
 				android:layout_gravity="bottom"
@@ -164,7 +164,7 @@
 			<!-- STIFF NECK RADIO BUTTON GROUP -->
 			<!-- ============================================================ -->
 			<TextView
-				style="@style/WizardFormLabel"
+				style="@style/AssessmentFormLabel"
 				android:layout_width="match_parent"
 				android:layout_height="match_parent"
 				android:layout_gravity="bottom"
@@ -188,7 +188,7 @@
 			<!-- RUNNY NOSE RADIO BUTTON GROUP -->
 			<!-- ============================================================ -->
 			<TextView
-				style="@style/WizardFormLabel"
+				style="@style/AssessmentFormLabel"
 				android:layout_width="match_parent"
 				android:layout_height="match_parent"
 				android:layout_gravity="bottom"
@@ -212,7 +212,7 @@
 			<!-- GENERALISED RASH RADIO BUTTON GROUP -->
 			<!-- ============================================================ -->
 			<TextView
-				style="@style/WizardFormLabel"
+				style="@style/AssessmentFormLabel"
 				android:layout_width="match_parent"
 				android:layout_height="match_parent"
 				android:layout_gravity="bottom"
@@ -236,7 +236,7 @@
 			<!-- COUGH RADIO BUTTON GROUP -->
 			<!-- ============================================================ -->
 			<TextView
-				style="@style/WizardFormLabel"
+				style="@style/AssessmentFormLabel"
 				android:layout_width="match_parent"
 				android:layout_height="match_parent"
 				android:layout_gravity="bottom"
@@ -260,7 +260,7 @@
 			<!-- RED EYES RADIO BUTTON GROUP -->
 			<!-- ============================================================ -->
 			<TextView
-				style="@style/WizardFormLabel"
+				style="@style/AssessmentFormLabel"
 				android:layout_width="match_parent"
 				android:layout_height="match_parent"
 				android:layout_gravity="bottom"
@@ -296,7 +296,7 @@
 					android:layout_height="wrap_content"
 					android:orientation="vertical">
 					<TextView
-						style="@style/WizardFormLabel"
+						style="@style/AssessmentFormLabel"
 						android:layout_width="match_parent"
 						android:layout_height="match_parent"
 						android:layout_gravity="bottom"
@@ -327,7 +327,7 @@
 					android:paddingLeft="30dp"
 					android:orientation="vertical">
 					<TextView
-						style="@style/WizardFormLabel"
+						style="@style/AssessmentFormLabel"
 						android:layout_width="match_parent"
 						android:layout_height="match_parent"
 						android:layout_gravity="bottom"
@@ -358,7 +358,7 @@
 					android:paddingLeft="30dp"
 					android:orientation="vertical">
 					<TextView
-						style="@style/WizardFormLabel"
+						style="@style/AssessmentFormLabel"
 						android:layout_width="match_parent"
 						android:layout_height="match_parent"
 						android:layout_gravity="bottom"
@@ -383,7 +383,7 @@
 				<!-- PUS DRAINING FROM THE EYE RADIO BUTTON GROUP -->
 				<!-- ============================================================ -->
 				<TextView
-					style="@style/WizardFormLabel"
+					style="@style/AssessmentFormLabel"
 					android:layout_width="match_parent"
 					android:layout_height="match_parent"
 					android:layout_gravity="bottom"
@@ -407,7 +407,7 @@
 				<!-- CLOUDING OF THE CORNEA RADIO BUTTON GROUP -->
 				<!-- ============================================================ -->
 				<TextView
-					style="@style/WizardFormLabel"
+					style="@style/AssessmentFormLabel"
 					android:layout_width="match_parent"
 					android:layout_height="match_parent"
 					android:layout_gravity="bottom"
@@ -431,7 +431,7 @@
 				<!-- BULGING FONTANEL RADIO BUTTON GROUP -->
 				<!-- ============================================================ -->
 		 		<TextView
-					style="@style/WizardFormLabel"
+					style="@style/AssessmentFormLabel"
 					android:layout_width="match_parent"
 					android:layout_height="match_parent"
 					android:layout_gravity="bottom"

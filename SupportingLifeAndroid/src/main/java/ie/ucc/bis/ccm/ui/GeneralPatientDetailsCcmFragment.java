@@ -8,14 +8,11 @@ import ie.ucc.bis.assessment.model.listener.RadioGroupListener;
 import ie.ucc.bis.ccm.model.GeneralPatientDetailsCcmPage;
 import ie.ucc.bis.imci.model.GeneralPatientDetailsPage;
 import ie.ucc.bis.imci.ui.PageFragmentCallbacks;
-import ie.ucc.bis.ui.custom.InputFilterMinMax;
+import ie.ucc.bis.ui.utilities.DateUtilities;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.text.Html;
-import android.text.InputFilter;
 import android.text.InputType;
-import android.text.Spanned;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,20 +31,13 @@ public class GeneralPatientDetailsCcmFragment extends Fragment {
 	
     private static final String ARG_PAGE_KEY = "PAGE_KEY";
     
-    private static final int MIN_WEIGHT = 0;
-    private static final int MAX_WEIGHT = 100;
-    private static final int MIN_TEMPERATURE = 0;
-    private static final int MAX_TEMPERATURE = 50;
-
     private GeneralPatientDetailsCcmPage generalPatientDetailsCcmPage;    
     private PageFragmentCallbacks pageFragmentCallbacks;
     private String pageKey;
+    private TextView todayDateTextView;
     private EditText firstNameEditText;
     private EditText surnameEditText;
     private EditText dateBirthEditText;
-    private EditText weightEditText;
-    private EditText temperatureEditText;
-    private EditText problemsEditText;
     private RadioGroup genderRadioGroup;
     
     public static GeneralPatientDetailsCcmFragment create(String pageKey) {
@@ -80,6 +70,10 @@ public class GeneralPatientDetailsCcmFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_ccm_page_general_patient_details, container, false);
         ((TextView) rootView.findViewById(android.R.id.title)).setText(getGeneralPatientDetailsCcmPage().getTitle());
 
+        // today's date
+        setTodayDateTextView(((TextView) rootView.findViewById(R.id.ccm_general_patient_details_today_date)));
+        getTodayDateTextView().setText(DateUtilities.getTodaysDate());        
+        
         // first name
         setFirstNameEditText(((EditText) rootView.findViewById(R.id.ccm_general_patient_details_first_name)));
         getFirstNameEditText().setText(getGeneralPatientDetailsCcmPage().getPageData().getString(GeneralPatientDetailsPage.FIRST_NAME_DATA_KEY));
@@ -91,33 +85,12 @@ public class GeneralPatientDetailsCcmFragment extends Fragment {
         // date of birth
         setDateBirthEditText((EditText) rootView.findViewById(R.id.ccm_general_patient_details_date_of_birth));
         getDateBirthEditText().setText(getGeneralPatientDetailsCcmPage().getPageData().getString(GeneralPatientDetailsPage.DATE_OF_BIRTH_DATA_KEY));
-
-        // weight
-        setWeightEditText((EditText) rootView.findViewById(R.id.ccm_general_patient_details_weight));
-        getWeightEditText().setText(getGeneralPatientDetailsCcmPage().getPageData().getString(GeneralPatientDetailsPage.WEIGHT_DATA_KEY));
-        // apply min/max data entry filtering to the 'weight' UI element
-        getWeightEditText().setFilters(new InputFilter[] {new InputFilterMinMax(MIN_WEIGHT, MAX_WEIGHT)});
-        
-        // temperature label - add degree celsius postfix
-        Spanned temperatureHeading = Html.fromHtml(getResources().getString(R.string.imci_general_patient_details_temperature) + " (<sup>o</sup>" + "C)");
-        TextView temperatureLabel = (TextView) rootView.findViewById(R.id.ccm_general_patient_details_temperature_label);
-        temperatureLabel.setText(temperatureHeading);
-        
-        // temperature textfield
-        setTemperatureEditText((EditText) rootView.findViewById(R.id.ccm_general_patient_details_temperature));
-        getTemperatureEditText().setText(getGeneralPatientDetailsCcmPage().getPageData().getString(GeneralPatientDetailsPage.TEMPERATURE_DATA_KEY));
-        // apply min/max data entry filtering to the 'weight' UI element
-        getTemperatureEditText().setFilters(new InputFilter[] {new InputFilterMinMax(MIN_TEMPERATURE, MAX_TEMPERATURE)});
-        
+       
         // gender
         setGenderRadioGroup((RadioGroup) rootView.findViewById(R.id.ccm_general_patient_details_radio_gender));
         getGenderRadioGroup().check(getGeneralPatientDetailsCcmPage()
         		.getPageData().getInt(GeneralPatientDetailsPage.GENDER_DATA_KEY));
-        
-        // what are the child's problems
-        setProblemsEditText((EditText) rootView.findViewById(R.id.ccm_general_patient_details_problems));
-        getProblemsEditText().setText(getGeneralPatientDetailsCcmPage().getPageData().getString(GeneralPatientDetailsPage.PROBLEMS_DATA_KEY));
-        
+
 		// add soft keyboard handler - essentially hiding soft
 		// keyboard when an EditText is not in focus
 		((SupportingLifeBaseActivity) getActivity()).addSoftKeyboardHandling(rootView);
@@ -159,22 +132,10 @@ public class GeneralPatientDetailsCcmFragment extends Fragment {
         
         // turn off soft keyboard input method for 'Date of Birth' EditText
         getDateBirthEditText().setInputType(InputType.TYPE_NULL);
-        
-        getWeightEditText().addTextChangedListener(
-        		new AssessmentWizardTextWatcher(getGeneralPatientDetailsCcmPage(), 
-        				GeneralPatientDetailsPage.WEIGHT_DATA_KEY));
-        
-        getTemperatureEditText().addTextChangedListener(
-        		new AssessmentWizardTextWatcher(getGeneralPatientDetailsCcmPage(), 
-        				GeneralPatientDetailsPage.TEMPERATURE_DATA_KEY));
       
         getGenderRadioGroup().setOnCheckedChangeListener(
         		new RadioGroupListener(getGeneralPatientDetailsCcmPage(),
         				GeneralPatientDetailsPage.GENDER_DATA_KEY));
-        
-        getProblemsEditText().addTextChangedListener(
-        		new AssessmentWizardTextWatcher(getGeneralPatientDetailsCcmPage(), 
-        				GeneralPatientDetailsPage.PROBLEMS_DATA_KEY));
     }
 
 	/**
@@ -220,8 +181,22 @@ public class GeneralPatientDetailsCcmFragment extends Fragment {
 	}
 
 	/**
+	 * Getter Method: getTodayDateTextView()
+	 */
+	public TextView getTodayDateTextView() {
+		return todayDateTextView;
+	}
+
+	/**
+	 * Setter Method: setTodayDateTextView()
+	 */	
+	public void setTodayDateTextView(TextView todayDateTextView) {
+		this.todayDateTextView = todayDateTextView;
+	}
+
+	/**
 	 * Getter Method: getFirstNameEditText()
-	 */		
+	 */
 	public EditText getFirstNameEditText() {
 		return firstNameEditText;
 	}
@@ -273,47 +248,5 @@ public class GeneralPatientDetailsCcmFragment extends Fragment {
 	 */	
 	public void setDateBirthEditText(EditText dateBirthEditText) {
 		this.dateBirthEditText = dateBirthEditText;
-	}
-
-	/**
-	 * Getter Method: getWeightEditText()
-	 */
-	public EditText getWeightEditText() {
-		return weightEditText;
-	}
-
-	/**
-	 * Setter Method: setWeightEditText()
-	 */
-	public void setWeightEditText(EditText weightEditText) {
-		this.weightEditText = weightEditText;
-	}
-
-	/**
-	 * Getter Method: getTemperatureEditText()
-	 */
-	public EditText getTemperatureEditText() {
-		return temperatureEditText;
-	}
-
-	/**
-	 * Setter Method: setTemperatureEditText()
-	 */
-	public void setTemperatureEditText(EditText temperatureEditText) {
-		this.temperatureEditText = temperatureEditText;
-	}
-
-	/**
-	 * Getter Method: getProblemsEditText()
-	 */
-	public EditText getProblemsEditText() {
-		return problemsEditText;
-	}
-
-	/**
-	 * Setter Method: setProblemsEditText()
-	 */
-	public void setProblemsEditText(EditText problemsEditText) {
-		this.problemsEditText = problemsEditText;
 	}
 }

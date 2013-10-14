@@ -24,7 +24,7 @@
             <!-- ============================================================ -->
 
             <TextView
-                style="@style/WizardFormLabel"
+                style="@style/AssessmentFormLabel"
                 android:text="@string/imci_general_patient_details_first_name" />
 
             <EditText
@@ -41,7 +41,7 @@
             <!-- ============================================================ -->
 
             <TextView
-                style="@style/WizardFormLabel"
+                style="@style/AssessmentFormLabel"
                 android:text="@string/imci_general_patient_details_surname" />
 
             <EditText
@@ -61,7 +61,7 @@
             <!-- ============================================================ -->
 
             <TextView
-                style="@style/WizardFormLabel"
+                style="@style/AssessmentFormLabel"
                 android:text="@string/imci_general_patient_details_date_of_birth" />
 
             <EditText
@@ -77,7 +77,7 @@
             <!-- ============================================================ -->
 
             <TextView
-                style="@style/WizardFormLabel"
+                style="@style/AssessmentFormLabel"
                 android:text="@string/imci_general_patient_details_weight" />
 
             <EditText
@@ -95,7 +95,7 @@
 
             <TextView
                 android:id="@+id/imci_general_patient_details_temperature_label"
-                style="@style/WizardFormLabel"
+                style="@style/AssessmentFormLabel"
                 android:text="@string/imci_general_patient_details_temperature" />
 
             <EditText
@@ -112,7 +112,7 @@
             <!-- ============================================================ -->
 
             <TextView
-                style="@style/WizardFormLabel"
+                style="@style/AssessmentFormLabel"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="bottom"
@@ -140,7 +140,7 @@
             <!-- ============================================================ -->
 
             <TextView
-                style="@style/WizardFormLabel"
+                style="@style/AssessmentFormLabel"
                 android:text="@string/imci_general_patient_details_problems" />
 
             <EditText

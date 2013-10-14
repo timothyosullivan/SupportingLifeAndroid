@@ -28,7 +28,7 @@
 				android:layout_height="wrap_content"
 				android:orientation="vertical">
 				<TextView
-				    style="@style/WizardFormLabel"
+				    style="@style/AssessmentFormLabel"
 				    android:layout_width="match_parent"
 				    android:layout_height="match_parent"
 				    android:layout_gravity="bottom"
@@ -62,7 +62,7 @@
 				android:orientation="vertical">
 	            <TextView
 	                android:id="@+id/imci_diarrhoea_assessment_diarrhoea_duration_label"
-	                style="@style/WizardFormLabel"
+	                style="@style/AssessmentFormLabel"
 	                android:text="@string/imci_diarrhoea_assessment_diarrhoea_duration" />
 	
 	            <EditText
@@ -79,7 +79,7 @@
 			<!-- ============================================================ -->               
 				
 			<TextView
-			    style="@style/WizardFormLabel"
+			    style="@style/AssessmentFormLabel"
 			    android:layout_width="match_parent"
 			    android:layout_height="match_parent"
 			    android:layout_gravity="bottom"
@@ -106,7 +106,7 @@
 			<!-- ============================================================ -->               
 				
 			<TextView
-			    style="@style/WizardFormLabel"
+			    style="@style/AssessmentFormLabel"
 			    android:layout_width="match_parent"
 			    android:layout_height="match_parent"
 			    android:layout_gravity="bottom"
@@ -144,7 +144,7 @@
 		    android:orientation="vertical" >
 				
 			<TextView
-			    style="@style/WizardFormLabel"
+			    style="@style/AssessmentFormLabel"
 			    android:layout_width="match_parent"
 			    android:layout_height="wrap_content"
 			    android:layout_gravity="bottom"
@@ -170,7 +170,7 @@
 			</RadioGroup>
 					    				
 			<TextView
-			   	style="@style/WizardFormNote"
+			   	style="@style/AssessmentFormNote"
 			   	android:layout_width="match_parent"
 			   	android:layout_height="match_parent"
 			   	android:layout_gravity="bottom"
@@ -191,7 +191,7 @@
 			android:orientation="vertical" >
 							
 			<TextView
-				style="@style/WizardFormLabel"
+				style="@style/AssessmentFormLabel"
 				android:layout_width="match_parent"
 				android:layout_height="match_parent"
 				android:layout_gravity="bottom"
@@ -219,7 +219,7 @@
 			<!-- ============================================================ -->               
 			
 			<TextView
-			    style="@style/WizardFormLabel"
+			    style="@style/AssessmentFormLabel"
 			    android:layout_width="match_parent"
 			    android:layout_height="match_parent"
 			    android:layout_gravity="bottom"
@@ -247,7 +247,7 @@
 			<!-- ============================================================ -->               
 			
 			<TextView
-			    style="@style/WizardFormLabel"
+			    style="@style/AssessmentFormLabel"
 			    android:layout_width="match_parent"
 			    android:layout_height="match_parent"
 			    android:layout_gravity="bottom"
@@ -287,7 +287,7 @@
 			<!-- ============================================================ -->               
 			
 			<TextView
-			    style="@style/WizardFormLabel"
+			    style="@style/AssessmentFormLabel"
 			    android:layout_width="match_parent"
 			    android:layout_height="match_parent"
 			    android:layout_gravity="bottom"

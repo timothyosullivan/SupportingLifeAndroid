@@ -76,8 +76,8 @@
 	<string name="imci_general_patient_details_review_problems">Problems</string>
 
     <!-- HINTS -->
-	<string name="imci_general_patient_details_first_name_hint">Please enter your first name</string>
-	<string name="imci_general_patient_details_surname_hint">Please enter your surname</string>
+	<string name="imci_general_patient_details_first_name_hint">Please enter child\'s first name</string>
+	<string name="imci_general_patient_details_surname_hint">Please enter child\'s surname</string>
 	<string name="imci_general_patient_details_weight_hint">Enter value between 0 and 100</string>
 	<string name="imci_general_patient_details_temperature_hint">Enter value between 0 and 50</string>	
 	
@@ -340,34 +340,35 @@
     <!-- STAGE 1: GENERAL PATIENT DETAILS -->
     <!-- ============================================================ -->
 	<string name="ccm_general_patient_details_title">Patient Details</string>
-	<string name="ccm_general_patient_details_first_name">First Name:</string>
-	<string name="ccm_general_patient_details_surname">Surname:</string>
-	<string name="ccm_general_patient_details_date_of_birth">Date of Birth:</string>
-	<string name="ccm_general_patient_details_weight">Weight (kg):</string>
-	<string name="ccm_general_patient_details_temperature">Temperature</string>
+	<string name="ccm_general_patient_details_today_date_label">Today\'s Date:</string>
+	<string name="ccm_general_patient_details_hsa_identifier_label">Health Surveillance Assistant (HSA):</string>
+	<string name="ccm_general_patient_details_first_name_label">First Name:</string>
+	<string name="ccm_general_patient_details_surname_label">Surname:</string>
+	<string name="ccm_general_patient_details_date_of_birth_label">Date of Birth:</string>
+
     <!-- Gender -->
-	<string name="ccm_general_patient_details_radio_gender">Gender:</string>
+	<string name="ccm_general_patient_details_radio_gender_label">Gender:</string>
 	<string name="ccm_general_patient_details_radio_gender_male">Male</string>
 	<string name="ccm_general_patient_details_radio_gender_female">Female</string>
-    <!-- Problems -->
-	<string name="ccm_general_patient_details_problems">What are the child\'s problems?:</string>
-
+		
+	<string name="ccm_general_patient_details_caregiver_label">Caregiver:</string>
+	<string name="ccm_general_patient_details_physical_address_label">Physical Address:</string>
+	<string name="ccm_general_patient_details_village_label">Village:</string>
+	
     <!-- Patient Details Review -->
+    <string name="ccm_general_patient_details_review_today_date">Today\'s Date</string>
 	<string name="ccm_general_patient_details_review_first_name">First Name</string>
 	<string name="ccm_general_patient_details_review_surname">Surname</string>
 	<string name="ccm_general_patient_details_review_date_of_birth">Date of Birth</string>
-	<string name="ccm_general_patient_details_review_weight">Weight (kg)</string>
-	<string name="ccm_general_patient_details_review_temperature">Temperature</string>
 	<string name="ccm_general_patient_details_review_gender">Gender</string>
-	<string name="ccm_general_patient_details_review_problems">Problems</string>
 
     <!-- HINTS -->
-	<string name="ccm_general_patient_details_first_name_hint">Please enter your first name</string>
-	<string name="ccm_general_patient_details_surname_hint">Please enter your surname</string>
-	<string name="ccm_general_patient_details_weight_hint">Enter value between 0 and 100</string>
-	<string name="ccm_general_patient_details_temperature_hint">Enter value between 0 and 50</string>	
-	
-	
+    <string name="ccm_general_patient_details_hsa_identifier_hint">Please enter HSA identifier</string>
+	<string name="ccm_general_patient_details_first_name_hint">Please enter child\'s first name</string>
+	<string name="ccm_general_patient_details_surname_hint">Please enter child\'s surname</string>
+	<string name="ccm_general_patient_details_caregiver_hint">Please enter caregiver\'s name</string>	
+	<string name="ccm_general_patient_details_physical_address_hint">Please enter child\'s physical address</string>
+	<string name="ccm_general_patient_details_village_hint">Please enter child\'s village</string>
 	
 	<!-- ============================================================ -->
     <!-- ASSESSMENT WIZARD BREAD-CRUMB UI -->

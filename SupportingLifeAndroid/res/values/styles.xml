@@ -85,9 +85,9 @@
 	</style>
 
     <!-- ============================================================ -->
-    <!-- BREADCRUMB WIZARD FORM LABEL STYLE -->
+    <!-- BREADCRUMB ASSESSMENT FORM LABEL STYLE -->
     <!-- ============================================================ -->
-	<style name="WizardFormLabel">
+	<style name="AssessmentFormLabel">
 		<item name="android:layout_width">match_parent</item>
 		<item name="android:layout_height">wrap_content</item>
 		<item name="android:layout_marginBottom">3dp</item>
@@ -100,9 +100,9 @@
 	</style>
     
     <!-- ============================================================ -->
-    <!-- BREADCRUMB WIZARD FORM NOTE STYLE -->
+    <!-- BREADCRUMB ASSESSMENT FORM NOTE STYLE -->
     <!-- ============================================================ -->
-	<style name="WizardFormNote">
+	<style name="AssessmentFormNote">
 		<item name="android:layout_width">match_parent</item>
 		<item name="android:layout_height">wrap_content</item>
 		<item name="android:layout_marginBottom">2dp</item>
@@ -113,7 +113,20 @@
 		<item name="android:paddingRight">12dp</item>
 		<item name="android:paddingTop">5dp</item>
 	</style>
-    
+  
+    <!-- ============================================================ -->
+    <!-- BREADCRUMB ASSESSMENT DISABLED TEXTVIEW STYLE -->
+    <!-- ============================================================ -->
+	<style name="AssessmentDisabledTextView">
+		<item name="android:layout_width">match_parent</item>
+		<item name="android:layout_height">wrap_content</item>
+		<item name="android:textColor">@color/DarkGray</item>
+		<item name="android:textStyle">bold</item>
+		<item name="android:paddingLeft">4dp</item>
+		<item name="android:paddingRight">12dp</item>
+		<item name="android:paddingTop">5dp</item>
+		<item name="android:textSize">16sp</item>
+	</style>
 
     <!-- ============================================================================== -->
     <!-- BREADCRUMB WIZARD RADIO BUTTON STYLE 						  					-->

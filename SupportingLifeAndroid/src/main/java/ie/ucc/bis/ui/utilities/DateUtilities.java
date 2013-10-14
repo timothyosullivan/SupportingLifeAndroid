@@ -1,10 +1,15 @@
 package ie.ucc.bis.ui.utilities;
 
+import ie.ucc.bis.assessment.model.listener.DateDialogSetListener;
+
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
 /**
+ * 
+ * Class providing Date/Time utility methods 
  * 
  * @author timothyosullivan
  */
@@ -69,6 +74,18 @@ public class DateUtilities {
 	    Calendar cal = Calendar.getInstance(Locale.UK);
 	    cal.setTime(date);
 	    return cal;
+	}
+	
+	/**
+	 * Utility method to return today's date
+	 * 
+	 * @return String - TimeStamp in milliseconds
+	 */
+	public static String getTodaysDate() {
+		Calendar cal = Calendar.getInstance(Locale.UK);
+		SimpleDateFormat dateFormat = new SimpleDateFormat(DateDialogSetListener.DATE_TIME_CUSTOM_FORMAT, DateDialogSetListener.LOCALE);
+				
+		return dateFormat.format(cal.getTime());
 	}
 	
 }

@@ -25,7 +25,7 @@
             <!-- ============================================================ -->
 
             <TextView
-                style="@style/WizardFormLabel"
+                style="@style/AssessmentFormLabel"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="bottom"
@@ -53,7 +53,7 @@
             <!-- ============================================================ -->
 
             <TextView
-                style="@style/WizardFormLabel"
+                style="@style/AssessmentFormLabel"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="bottom"
@@ -91,7 +91,7 @@
 					android:layout_height="wrap_content"
 					android:orientation="vertical">
 		            <TextView
-		                style="@style/WizardFormLabel"
+		                style="@style/AssessmentFormLabel"
 		                android:layout_width="match_parent"
 		                android:layout_height="match_parent"
 		                android:layout_gravity="bottom"
@@ -126,7 +126,7 @@
 					android:orientation="vertical">
 					<TextView
 						android:id="@+id/imci_ear_assessment_ear_discharge_duration_label"
-						style="@style/WizardFormLabel"
+						style="@style/AssessmentFormLabel"
 						android:text="@string/imci_ear_assessment_ear_discharge_duration" />
 			
 			            <EditText
@@ -142,7 +142,7 @@
             <!-- ============================================================ -->
 
             <TextView
-                style="@style/WizardFormLabel"
+                style="@style/AssessmentFormLabel"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="bottom"

@@ -4,8 +4,8 @@
     android:layout_height="match_parent" >
 
     <!-- ============================================================ -->
-    <!-- ASSESSMENT BREAD-CRUMB WIZARD UI -->
-    <!-- CCM ASSESSMENT PAGE: GENERAL PATIENT DETAILS -->
+    <!-- ASSESSMENT BREAD-CRUMB WIZARD UI 							  -->
+    <!-- CCM ASSESSMENT PAGE: GENERAL PATIENT DETAILS 				  -->
     <!-- ============================================================ -->
 
     <TextView style="@style/WizardPageTitle" />
@@ -20,29 +20,51 @@
             android:orientation="vertical" >
 
             <!-- ============================================================ -->
-            <!-- TODAY'S DATE -->
+            <!-- TODAY'S DATE 												  -->
+            <!-- ============================================================ -->
+
+	        <LinearLayout
+	            android:layout_width="match_parent"
+	            android:layout_height="wrap_content"
+	            android:orientation="horizontal" >
+	            <TextView
+	                style="@style/AssessmentFormLabel"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:text="@string/ccm_general_patient_details_today_date_label" />
+	
+	            <TextView
+	                style="@style/AssessmentDisabledTextView"
+	                android:id="@+id/ccm_general_patient_details_today_date"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:enabled="false"/>
+			</LinearLayout>
+            
+            <!-- ============================================================ -->
+            <!-- HSA IDENTIFIER 											  -->
             <!-- ============================================================ -->
 
             <TextView
-                style="@style/WizardFormLabel"
-                android:text="@string/ccm_general_patient_details_first_name" />
+                style="@style/AssessmentFormLabel"
+                android:text="@string/ccm_general_patient_details_hsa_identifier_label" />
 
             <EditText
-                android:id="@+id/ccm_general_patient_details_first_name"
+                android:id="@+id/ccm_general_patient_details_hsa_identifier"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
-                android:hint="@string/ccm_general_patient_details_first_name_hint"
+                android:hint="@string/ccm_general_patient_details_hsa_identifier_hint"
                 android:inputType="textCapWords"
                 android:saveEnabled="false" />
             
             <!-- ============================================================ -->
-            <!-- FIRST NAME -->
+            <!-- CHILD'S FIRST NAME 										  -->
             <!-- ============================================================ -->
 
             <TextView
-                style="@style/WizardFormLabel"
-                android:text="@string/ccm_general_patient_details_first_name" />
+                style="@style/AssessmentFormLabel"
+                android:text="@string/ccm_general_patient_details_first_name_label" />
 
             <EditText
                 android:id="@+id/ccm_general_patient_details_first_name"
@@ -54,12 +76,12 @@
                 android:saveEnabled="false" />
 
             <!-- ============================================================ -->
-            <!-- SURNAME -->
+            <!-- CHILD'S SURNAME 											  -->
             <!-- ============================================================ -->
 
             <TextView
-                style="@style/WizardFormLabel"
-                android:text="@string/ccm_general_patient_details_surname" />
+                style="@style/AssessmentFormLabel"
+                android:text="@string/ccm_general_patient_details_surname_label" />
 
             <EditText
                 android:id="@+id/ccm_general_patient_details_surname"
@@ -71,15 +93,15 @@
                 android:saveEnabled="false" />
 
             <!-- ============================================================ -->
-            <!-- DATE OF BIRTH -->
+            <!-- DATE OF BIRTH 												  -->
             <!-- Intention is to display a text box that looks like a spinner -->
-            <!-- to activate a date picker dialog. This is analoguos to the -->
-            <!-- approach in the Google Calendar App -->
+            <!-- to activate a date picker dialog. This is analoguos to the   -->
+            <!-- approach in the Google Calendar App 						  -->
             <!-- ============================================================ -->
 
             <TextView
-                style="@style/WizardFormLabel"
-                android:text="@string/ccm_general_patient_details_date_of_birth" />
+                style="@style/AssessmentFormLabel"
+                android:text="@string/ccm_general_patient_details_date_of_birth_label" />
 
             <EditText
                 android:id="@+id/ccm_general_patient_details_date_of_birth"
@@ -88,52 +110,17 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
                 android:saveEnabled="false" />
-
+            
             <!-- ============================================================ -->
-            <!-- WEIGHT -->
-            <!-- ============================================================ -->
-
-            <TextView
-                style="@style/WizardFormLabel"
-                android:text="@string/ccm_general_patient_details_weight" />
-
-            <EditText
-                android:id="@+id/ccm_general_patient_details_weight"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:inputType="numberDecimal"
-                android:saveEnabled="false"
-                android:hint="@string/ccm_general_patient_details_weight_hint"/>
-
-            <!-- ============================================================ -->
-            <!-- TEMPERATURE -->
+            <!-- GENDER 													  -->
             <!-- ============================================================ -->
 
             <TextView
-                android:id="@+id/ccm_general_patient_details_temperature_label"
-                style="@style/WizardFormLabel"
-                android:text="@string/ccm_general_patient_details_temperature" />
-
-            <EditText
-                android:id="@+id/ccm_general_patient_details_temperature"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:inputType="numberDecimal"
-                android:saveEnabled="false"
-                android:hint="@string/ccm_general_patient_details_temperature_hint"/>
-
-            <!-- ============================================================ -->
-            <!-- GENDER -->
-            <!-- ============================================================ -->
-
-            <TextView
-                style="@style/WizardFormLabel"
+                style="@style/AssessmentFormLabel"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="bottom"
-                android:text="@string/ccm_general_patient_details_radio_gender" />
+                android:text="@string/ccm_general_patient_details_radio_gender_label" />
 
             <RadioGroup
                 android:id="@+id/ccm_general_patient_details_radio_gender"
@@ -153,15 +140,32 @@
             </RadioGroup>
 
             <!-- ============================================================ -->
-            <!-- PROBLEMS -->
+            <!-- CAREGIVER'S NAME											  -->
             <!-- ============================================================ -->
 
             <TextView
-                style="@style/WizardFormLabel"
-                android:text="@string/ccm_general_patient_details_problems" />
+                style="@style/AssessmentFormLabel"
+                android:text="@string/ccm_general_patient_details_caregiver_label" />
 
             <EditText
-                android:id="@+id/ccm_general_patient_details_problems"
+                android:id="@+id/ccm_general_patient_details_caregiver"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:hint="@string/ccm_general_patient_details_caregiver_hint"
+                android:inputType="textCapWords"
+                android:saveEnabled="false" />
+
+            <!-- ============================================================ -->
+            <!-- PHYSICAL ADDRESS -->
+            <!-- ============================================================ -->
+
+            <TextView
+                style="@style/AssessmentFormLabel"
+                android:text="@string/ccm_general_patient_details_physical_address_label" />
+
+            <EditText
+                android:id="@+id/ccm_general_patient_details_physical_address"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
@@ -169,7 +173,26 @@
                 android:inputType="textMultiLine"
                 android:lines="5"
                 android:saveEnabled="false"
-                android:scrollHorizontally="false" />
+                android:scrollHorizontally="false"
+                android:hint="@string/ccm_general_patient_details_physical_address_hint" />
+            
+
+            <!-- ============================================================ -->
+            <!-- VILLAGE/TA -->
+            <!-- ============================================================ -->
+
+            <TextView
+                style="@style/AssessmentFormLabel"
+                android:text="@string/ccm_general_patient_details_village_label" />
+
+            <EditText
+                android:id="@+id/ccm_general_patient_details_village"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:inputType="numberDecimal"
+                android:saveEnabled="false"
+                android:hint="@string/ccm_general_patient_details_village_hint"/>
         </LinearLayout>
     </ScrollView>
 

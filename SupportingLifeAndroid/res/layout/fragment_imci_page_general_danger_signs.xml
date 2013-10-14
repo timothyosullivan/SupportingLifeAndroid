@@ -22,7 +22,7 @@
 			<!-- ============================================================ -->               
 			
 			<TextView
-			    style="@style/WizardFormLabel"
+			    style="@style/AssessmentFormLabel"
 			    android:layout_width="match_parent"
 			    android:layout_height="match_parent"
 			    android:layout_gravity="bottom"
@@ -51,7 +51,7 @@
 			<!-- ============================================================ -->               
 			
 			<TextView
-			    style="@style/WizardFormLabel"
+			    style="@style/AssessmentFormLabel"
 			    android:layout_width="match_parent"
 			    android:layout_height="match_parent"
 			    android:layout_gravity="bottom"
@@ -80,7 +80,7 @@
 			<!-- ============================================================ -->               
 			
 			<TextView
-			    style="@style/WizardFormLabel"
+			    style="@style/AssessmentFormLabel"
 			    android:layout_width="match_parent"
 			    android:layout_height="match_parent"
 			    android:layout_gravity="bottom"
@@ -109,7 +109,7 @@
 			<!-- ============================================================ -->               
 			
 			<TextView
-			    style="@style/WizardFormLabel"
+			    style="@style/AssessmentFormLabel"
 			    android:layout_width="match_parent"
 			    android:layout_height="match_parent"
 			    android:layout_gravity="bottom"
@@ -138,7 +138,7 @@
 			<!-- ============================================================ -->               
 			
 			<TextView
-			    style="@style/WizardFormLabel"
+			    style="@style/AssessmentFormLabel"
 			    android:layout_width="match_parent"
 			    android:layout_height="match_parent"
 			    android:layout_gravity="bottom"
