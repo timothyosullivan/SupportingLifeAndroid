@@ -11,7 +11,8 @@ import android.text.TextUtils;
 /**
  * Responsible for determining if, based on the user input,
  * whether the patient has had diarrhoea for 14 days or more.
- *
+ * 
+ * @author timothyosullivan
  */
 public class DiarrhoeaDurationIndicatorReviewItem extends ReviewItem implements Serializable {
 

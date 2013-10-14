@@ -29,7 +29,8 @@ import android.text.TextUtils;
  * 
  * [12 months < Child Age < 5 years] 
  * 		--> 40 breaths per minute or more == Fast Breathing
- *
+ * 
+ * @author timothyosullivan
  */
 public class FastBreathingReviewItem extends ReviewItem implements Serializable {
 

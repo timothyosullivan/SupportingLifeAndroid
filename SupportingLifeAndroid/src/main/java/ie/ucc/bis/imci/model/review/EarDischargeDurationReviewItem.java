@@ -13,7 +13,8 @@ import android.text.TextUtils;
  * 
  * Responsible for determining if, based on the user input,
  * whether the ear pus discharge duration is greater\less than 14 days.
- *
+ * 
+ * @author timothyosullivan
  */
 public class EarDischargeDurationReviewItem extends ReviewItem implements Serializable {
 

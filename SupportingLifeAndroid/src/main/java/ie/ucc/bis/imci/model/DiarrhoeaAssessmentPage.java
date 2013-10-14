@@ -24,6 +24,8 @@ import android.support.v4.app.Fragment;
  * 
  * Responsible for displaying form to record the diarrhoea
  * assessment of a patient
+ * 
+ * @author timothyosullivan
  */
 public class DiarrhoeaAssessmentPage extends AbstractPage {
     public static final String DIARRHOEA_DATA_KEY = "DIARRHOEA";

@@ -17,7 +17,9 @@ import android.os.Bundle;
  * To create the SupportingLIFE breadcrumb UI assessment, extend this class 
  * and implement {@link #configurePageList()}.
  * 
+ * @author timothyosullivan
  */
+
 public abstract class AbstractModel implements ModelCallbacks {
 	private Context applicationContext;
 	private List<ModelCallbacks> modelListeners = new ArrayList<ModelCallbacks>();

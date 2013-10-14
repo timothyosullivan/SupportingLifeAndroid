@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 /**
  * Represents a list (ArrayList) of bread-crumb UI Wizard assessment pages.
+ * 
+ * @author timothyosullivan
  */
 public class PageList extends ArrayList<AbstractPage> implements PageTreeNode {
 	private static final long serialVersionUID = 1934134441792428239L;

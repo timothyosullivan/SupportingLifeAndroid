@@ -21,6 +21,8 @@ import android.support.v4.app.Fragment;
  * 
  * Responsible for displaying form to record general dangers
  * of a patient
+ * 
+ * @author timothyosullivan
  */
 public class GeneralDangerSignsPage extends AbstractPage {
     public static final String DRINK_BREASTFEED_DATA_KEY = "DRINK_BREASTFEED";

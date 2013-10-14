@@ -15,6 +15,11 @@ import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.widget.EditText;
 
+/**
+ * 
+ * @author timothyosullivan
+ */
+
 public class DatePickerDialogFragment extends DialogFragment {
 	
 	private static final int MAX_AGE_OF_PATIENT = 5;

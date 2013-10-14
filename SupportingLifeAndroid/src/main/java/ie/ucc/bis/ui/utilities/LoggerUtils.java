@@ -2,6 +2,10 @@ package ie.ucc.bis.ui.utilities;
 
 import android.util.Log;
 
+/**
+ * 
+ * @author timothyosullivan
+ */
 public class LoggerUtils {
 
 private static final int LOGGER_ENTRY_MAX_LEN = 4000;

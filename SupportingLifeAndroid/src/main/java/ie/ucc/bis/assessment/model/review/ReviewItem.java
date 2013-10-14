@@ -9,6 +9,8 @@ import java.util.List;
  * Represents a single line item on the final review page.
  *
  * @see ie.ucc.bis.imci.ui.ReviewFragment
+ * 
+ * @author timothyosullivan
  */
 public class ReviewItem implements Serializable {
     /**

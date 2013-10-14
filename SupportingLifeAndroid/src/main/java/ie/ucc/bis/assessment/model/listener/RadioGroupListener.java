@@ -5,6 +5,11 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
 
+/**
+ * 
+ * @author timothyosullivan
+ */
+
 public class RadioGroupListener implements OnCheckedChangeListener {
 	
 	public static final String RADIO_BUTTON_TEXT_DATA_KEY = "RadioButtonText";

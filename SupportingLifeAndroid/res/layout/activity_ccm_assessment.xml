@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- ============================================================ -->
-<!-- E-IMCI PATIENT ASSESSMENT WIZARD -->
+<!-- CCM PATIENT ASSESSMENT 										  -->
 <!-- ============================================================ -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
@@ -11,7 +11,7 @@
     android:focusableInTouchMode="true" >
 
     <!-- ============================================================ -->
-    <!-- BREADCRUMB WIZARD UI -->
+    <!-- BREADCRUMB UI 												  -->
     <!-- ============================================================ -->
 	<ie.ucc.bis.imci.ui.StepPagerStrip
 		android:id="@+id/strip"
@@ -19,7 +19,7 @@
 		android:layout_height="wrap_content"
 		android:layout_marginLeft="16dp"
 		android:layout_marginRight="16dp"
-		android:gravity="left"
+		android:gravity="center"
 		android:paddingBottom="8dp"
 		android:paddingTop="16dp" />
 

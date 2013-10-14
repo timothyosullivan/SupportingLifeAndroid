@@ -6,6 +6,10 @@ import ie.ucc.bis.rule.engine.Diagnostic;
 import java.util.List;
 import java.util.Set;
 
+/**
+ * 
+ * @author timothyosullivan
+ */
 public class ClassificationUtils {
 
 	/**

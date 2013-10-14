@@ -7,6 +7,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 
+/**
+ * 
+ * @author timothyosullivan
+ */
+
 public class RecordPatientDetailsActivity extends SupportingLifeBaseActivity {
 
 	public final static String EXTRA_MESSAGE = "ie.ucc.bis.supportinglife.MESSAGE";

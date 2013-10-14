@@ -19,6 +19,11 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+/**
+ * 
+ * @author timothyosullivan
+ */
+
 public class TreatmentAdapter extends BaseAdapter {
 	private static final int SIMPLE_ITEM_TYPE = 1;
 	private static final String BULLET_SYMBOL = "&#8226";

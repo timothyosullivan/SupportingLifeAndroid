@@ -6,6 +6,10 @@ import android.graphics.Canvas;
 import android.util.AttributeSet;
 import android.widget.LinearLayout;
 
+/**
+ * 
+ * @author timothyosullivan
+ */
 public class TrainingCustomLayout extends LinearLayout {
 	
 	private float scale = TrainingActivity.BIG_SCALE;

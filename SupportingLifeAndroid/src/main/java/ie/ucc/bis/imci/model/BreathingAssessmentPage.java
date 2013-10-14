@@ -25,6 +25,8 @@ import android.support.v4.app.Fragment;
  * Responsible for displaying form to record breathing & 
  * cough assessment of a patient
  * 
+ * @author timothyosullivan
+ * 
  */
 public class BreathingAssessmentPage extends AbstractPage {
     public static final String COUGH_DIFFICULT_BREATHING_DATA_KEY = "COUGH_DIFFICULT_BREATHING";

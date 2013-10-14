@@ -7,6 +7,7 @@ import android.text.Spanned;
  * Utility class to filter an input element on the UI according 
  * to the minimum and maximum values specified.
  * 
+ * @author timothyosullivan
  */
 public class InputFilterMinMax implements InputFilter {
 

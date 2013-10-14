@@ -15,6 +15,11 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+/**
+ * 
+ * @author timothyosullivan
+ */
+
 public class ClassificationAdapter extends BaseAdapter {
 	private static final int SIMPLE_ITEM_TYPE = 1;
 	private List<Diagnostic> patientDiagnostics;

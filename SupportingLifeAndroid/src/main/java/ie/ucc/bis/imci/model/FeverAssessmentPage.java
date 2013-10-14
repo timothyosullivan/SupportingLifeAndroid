@@ -25,6 +25,8 @@ import android.support.v4.app.Fragment;
  * 
  * Responsible for displaying form to record the fever
  * assessment of a patient
+ * 
+ * @author timothyosullivan
  */
 public class FeverAssessmentPage extends AbstractPage {
     public static final String FEVER_DATA_KEY = "FEVER";

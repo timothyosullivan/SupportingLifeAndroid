@@ -13,6 +13,11 @@ import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.widget.Button;
 
+/**
+ * 
+ * @author timothyosullivan
+ */
+
 public class ImciAssessmentActivity extends AssessmentActivity {
     
 	/**
@@ -33,7 +38,7 @@ public class ImciAssessmentActivity extends AssessmentActivity {
         
         setAssessmentModel(new ImciAssessmentModel(this));
         
-        setContentView(R.layout.activity_assessment_wizard);
+        setContentView(R.layout.activity_imci_assessment);
         
         setTitleFromActivityLabel(R.id.action_bar_title_text);
         

@@ -22,6 +22,8 @@ import android.support.v4.app.Fragment;
  * 
  * Responsible for displaying form to record the ear
  * assessment of a patient
+ * 
+ * @author timothyosullivan
  */
 public class EarAssessmentPage extends AbstractPage {
     public static final String EAR_PROBLEM_DATA_KEY = "EAR_PROBLEM";

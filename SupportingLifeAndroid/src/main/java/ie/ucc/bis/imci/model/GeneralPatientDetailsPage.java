@@ -20,6 +20,8 @@ import android.support.v4.app.Fragment;
  * Stage in bread-crumb UI Wizard: 1
  * 
  * Responsible for displaying registration form for general patient details
+ * 
+ * @author timothyosullivan
  */
 public class GeneralPatientDetailsPage extends AbstractPage {
     public static final String FIRST_NAME_DATA_KEY = "FIRST_NAME";

@@ -15,11 +15,13 @@ import android.content.res.Resources;
 import android.support.v4.app.Fragment;
 
 /**
- * Page Title: General Patient Details
+ * Page Title: CCM General Patient Details
  * 
- * Stage in bread-crumb UI Wizard: 1
+ * Stage in CCM bread-crumb UI Wizard: 1
  * 
- * Responsible for displaying registration form for general patient details
+ * Responsible for displaying registration form for CCM general patient details
+ * 
+ * @author timothyosullivan
  */
 public class GeneralPatientDetailsCcmPage extends AbstractPage {
     public static final String FIRST_NAME_DATA_KEY = "FIRST_NAME";

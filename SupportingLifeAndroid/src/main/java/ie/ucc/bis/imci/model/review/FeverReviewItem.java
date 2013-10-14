@@ -16,6 +16,7 @@ import android.text.TextUtils;
  * Responsible for applying the correct Symptom value to this review item 
  * during the assessSymptom review stage
  * 
+ * @author timothyosullivan
  */
 public class FeverReviewItem extends ReviewItem implements Serializable {
 

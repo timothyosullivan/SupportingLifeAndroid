@@ -8,6 +8,7 @@ import android.view.View;
 /**
  * This is a simple activity that demonstrates the Supporting LIFE dashboard user interface.
  *
+ * @author timothyosullivan
  */
 
 public class HomeActivity extends SupportingLifeBaseActivity {

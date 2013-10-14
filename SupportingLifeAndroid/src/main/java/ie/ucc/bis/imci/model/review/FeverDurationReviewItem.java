@@ -13,7 +13,8 @@ import android.text.TextUtils;
  * 
  * Responsible for determining if, based on the user input,
  * whether the fever duration is greater\less than 7 days.
- *
+ * 
+ * @author timothyosullivan
  */
 public class FeverDurationReviewItem extends ReviewItem implements Serializable {
 

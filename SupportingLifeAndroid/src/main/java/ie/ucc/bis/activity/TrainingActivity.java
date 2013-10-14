@@ -6,6 +6,11 @@ import ie.ucc.bis.training.ui.TrainingPagerAdapter;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 
+/**
+ * 
+ * @author timothyosullivan
+ */
+
 public class TrainingActivity extends SupportingLifeBaseActivity {
 	
 	public final static int PAGES = 6;

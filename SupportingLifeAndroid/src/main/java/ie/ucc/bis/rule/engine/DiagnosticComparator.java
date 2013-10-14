@@ -17,6 +17,7 @@ public class DiagnosticComparator implements Comparator<Diagnostic> {
 	 * 		2 -> MODERATE
 	 * 		3 -> LOW
 	 * 
+	 * @author timothyosullivan
 	 */
 	@Override
 	public int compare(Diagnostic firstDiagnostic, Diagnostic secondDiagnostic) {

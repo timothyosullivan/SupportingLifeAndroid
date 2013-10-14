@@ -14,6 +14,11 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.widget.TextView;
 
+/**
+ * 
+ * @author timothyosullivan
+ */
+
 public class SubmitPatientRecordActivity extends SupportingLifeBaseActivity {
 	
 	private NetworkCommunicationAsyncTask task;

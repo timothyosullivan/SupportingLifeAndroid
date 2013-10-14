@@ -1,5 +1,10 @@
 package ie.ucc.bis.rule.engine.enums;
 
+/**
+ * 
+ * @author timothyosullivan
+ */
+
 public enum SymptomRuleCriteria {
 	ANY_SYMPTOM(1), TWO_SYMPTOMS_REQUIRED(2);
 	

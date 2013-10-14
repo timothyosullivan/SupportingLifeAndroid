@@ -18,6 +18,7 @@ import android.text.TextUtils;
  * Responsible for determining if, based on the user input,
  * whether the age of the patient is two years or more.
  *
+ * @author timothyosullivan
  */
 public class AgeIndicatorReviewItem extends ReviewItem implements Serializable {
 

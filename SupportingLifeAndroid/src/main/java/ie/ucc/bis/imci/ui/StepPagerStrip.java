@@ -16,6 +16,7 @@ import android.view.View;
 /**
  * Represents the bread-crumb visual indicator on the wizard
  * 
+ * @author timothyosullivan
  */
 public class StepPagerStrip extends View {
     private static final int[] ATTRS = new int[]{

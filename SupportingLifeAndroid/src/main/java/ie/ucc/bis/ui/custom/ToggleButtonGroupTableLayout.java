@@ -17,6 +17,10 @@ import android.widget.RadioGroup;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 
+/**
+ * 
+ * @author timothyosullivan
+ */
 public class ToggleButtonGroupTableLayout extends TableLayout implements OnClickListener {
 	
 	private RadioButton activeRadioButton;

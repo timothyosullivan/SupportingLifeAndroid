@@ -18,6 +18,11 @@ import ie.ucc.bis.imci.ui.PageFragmentCallbacks;
 import ie.ucc.bis.imci.ui.ReviewFragmentCallbacks;
 import ie.ucc.bis.imci.ui.StepPagerStrip;
 
+/**
+ * 
+ * @author timothyosullivan
+ */
+
 public class AssessmentActivity extends SupportingLifeBaseActivity implements
 		PageFragmentCallbacks, ReviewFragmentCallbacks, ModelCallbacks {
 

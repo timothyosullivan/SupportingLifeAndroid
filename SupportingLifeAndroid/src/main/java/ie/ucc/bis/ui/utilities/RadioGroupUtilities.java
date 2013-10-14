@@ -3,6 +3,10 @@ package ie.ucc.bis.ui.utilities;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
+/**
+ * 
+ * @author timothyosullivan
+ */
 public class RadioGroupUtilities {
 
 	/**

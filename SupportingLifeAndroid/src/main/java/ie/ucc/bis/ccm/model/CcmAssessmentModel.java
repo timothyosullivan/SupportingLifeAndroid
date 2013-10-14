@@ -4,6 +4,11 @@ import ie.ucc.bis.assessment.model.AbstractModel;
 import ie.ucc.bis.assessment.model.PageList;
 import android.content.Context;
 
+/**
+ * 
+ * @author timothyosullivan
+ */
+
 public class CcmAssessmentModel extends AbstractModel {
 
 	public static final String CCM_GENERAL_PATIENT_DETAILS_PAGE_TITLE = "Patient Details";

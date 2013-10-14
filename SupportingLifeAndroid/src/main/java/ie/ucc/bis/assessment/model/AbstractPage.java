@@ -9,6 +9,8 @@ import android.support.v4.app.Fragment;
 
 /**
  * Represents a single page in the bread-crumb UI wizard.
+ * 
+ * @author timothyosullivan
  */
 public abstract class AbstractPage implements PageTreeNode {
     /**

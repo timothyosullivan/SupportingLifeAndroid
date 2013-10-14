@@ -4,6 +4,10 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
+/**
+ * 
+ * @author timothyosullivan
+ */
 public class DateUtilities {
 	
 	private static final int NUMBER_OF_MONTHS_IN_YEAR = 12;

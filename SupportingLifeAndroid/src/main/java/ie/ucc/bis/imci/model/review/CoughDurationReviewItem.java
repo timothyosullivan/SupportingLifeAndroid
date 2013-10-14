@@ -13,7 +13,8 @@ import android.text.TextUtils;
  * 
  * Responsible for determining if, based on the user input,
  * whether the cough duration is greater\less than 30 days.
- *
+ * 
+ * @author timothyosullivan
  */
 public class CoughDurationReviewItem extends ReviewItem implements Serializable {
 

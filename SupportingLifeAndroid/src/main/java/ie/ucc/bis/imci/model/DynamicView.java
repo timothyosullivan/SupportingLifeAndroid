@@ -2,6 +2,11 @@ package ie.ucc.bis.imci.model;
 
 import android.view.View;
 
+/**
+ * 
+ * @author timothyosullivan
+ */
+
 public class DynamicView {
 	private View wrappedView;
 	private View controlledElement;

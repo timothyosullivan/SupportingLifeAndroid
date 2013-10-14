@@ -1,5 +1,10 @@
 package ie.ucc.bis.rule.engine.enums;
 
+/**
+ * 
+ * @author timothyosullivan
+ */
+
 public enum ClassificationType {
 	SEVERE(1), MODERATE(2), LOW(3);
 	

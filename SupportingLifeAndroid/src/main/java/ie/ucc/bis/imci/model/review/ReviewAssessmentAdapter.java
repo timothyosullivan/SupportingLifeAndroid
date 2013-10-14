@@ -16,6 +16,11 @@ import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.TextView;
 
+/**
+ * 
+ * @author timothyosullivan
+ */
+
 public class ReviewAssessmentAdapter extends BaseAdapter implements Filterable {
 	private static final int HEADER_ITEM_TYPE = 0;
 	private static final int SIMPLE_ITEM_TYPE = 1;

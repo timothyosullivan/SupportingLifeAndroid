@@ -6,6 +6,11 @@ import java.util.List;
 
 import android.support.v4.app.ListFragment;
 
+/**
+ * 
+ * @author timothyosullivan
+ */
+
 public class ReviewListFragment extends ListFragment {
     private List<ReviewItem> currentReviewItems;
     

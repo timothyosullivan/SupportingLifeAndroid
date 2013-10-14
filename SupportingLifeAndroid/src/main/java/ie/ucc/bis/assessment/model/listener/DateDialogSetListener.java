@@ -9,6 +9,11 @@ import java.util.Locale;
 import android.app.DatePickerDialog.OnDateSetListener;
 import android.widget.DatePicker;
 
+/**
+ * 
+ * @author timothyosullivan
+ */
+
 public class DateDialogSetListener implements OnDateSetListener {
 
 	public static final String DATE_TIME_CUSTOM_FORMAT = "dd MMMM yyyy";
