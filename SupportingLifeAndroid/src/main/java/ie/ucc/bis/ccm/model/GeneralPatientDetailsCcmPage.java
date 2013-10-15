@@ -100,6 +100,12 @@ public class GeneralPatientDetailsCcmPage extends AbstractPage {
     	// relationship / specify relationship
     	reviewItemLabel = resources.getString(R.string.ccm_general_patient_details_review_relationship);
     	reviewItemValue = getPageData().getString(RELATIONSHIP_DATA_KEY + RadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
+    	// need to determine if 'Other' was selected as the relationship type
+    	if ((reviewItemValue != null) && 
+    			(reviewItemValue.equalsIgnoreCase(resources.getString(R.string.ccm_general_patient_details_radio_relationship_other)))) {
+    		// in this case we relationship type to the text entered on the 'Specify Relationship' textfield
+    		reviewItemValue = getPageData().getString(RELATIONSHIP_SPECIFIED_DATA_KEY);
+    	}
     	reviewItems.add(new ReviewItem(reviewItemLabel, reviewItemValue, getKey(), -1)); 	
     	
         // physical address
