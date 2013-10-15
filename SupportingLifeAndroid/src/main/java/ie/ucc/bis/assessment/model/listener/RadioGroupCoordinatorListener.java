@@ -3,6 +3,7 @@ package ie.ucc.bis.assessment.model.listener;
 import ie.ucc.bis.assessment.model.AbstractPage;
 import ie.ucc.bis.imci.model.DynamicView;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -24,9 +25,11 @@ import android.widget.RadioGroup.OnCheckedChangeListener;
 public class RadioGroupCoordinatorListener implements OnCheckedChangeListener {
 	
 	public static final String RADIO_BUTTON_TEXT_DATA_KEY = "RadioButtonText";
+	public static final String DEFAULT_RADIO_BUTTON_ANIMATE_UP_TEXT = "No";
 	
 	private AbstractPage page;
 	private String dataKey;
+	private List<String> radioButtonAnimateUpText;
 	private List<DynamicView> dynamicViews;
 	private ViewGroup parentView;
 	private final int indexPosition;
@@ -38,6 +41,10 @@ public class RadioGroupCoordinatorListener implements OnCheckedChangeListener {
 		setDynamicViews(Arrays.asList(dynamicView));
 		setParentView(parentView);
 		this.indexPosition = indexPosition;
+		
+		List<String> animateUpRadioButtonTextTriggers = new ArrayList<String>();
+		animateUpRadioButtonTextTriggers.add(DEFAULT_RADIO_BUTTON_ANIMATE_UP_TEXT);
+		setRadioButtonAnimateUpText(animateUpRadioButtonTextTriggers);
 	}
 	
 	public RadioGroupCoordinatorListener(AbstractPage page, String dataKey, List<DynamicView> dynamicViews, 
@@ -47,6 +54,20 @@ public class RadioGroupCoordinatorListener implements OnCheckedChangeListener {
 		setDynamicViews(dynamicViews);
 		setParentView(parentView);
 		this.indexPosition = indexPosition;
+		
+		List<String> animateUpRadioButtonTextTriggers = new ArrayList<String>();
+		animateUpRadioButtonTextTriggers.add(DEFAULT_RADIO_BUTTON_ANIMATE_UP_TEXT);
+		setRadioButtonAnimateUpText(animateUpRadioButtonTextTriggers);
+	}
+	
+	public RadioGroupCoordinatorListener(AbstractPage page, String dataKey, List<DynamicView> dynamicViews, 
+			ViewGroup parentView, int indexPosition, List<String> animateUpTextTriggers) {
+		setPage(page);
+		setDataKey(dataKey);
+		setDynamicViews(dynamicViews);
+		setParentView(parentView);
+		this.indexPosition = indexPosition;
+		setRadioButtonAnimateUpText(animateUpTextTriggers);
 	}
 	
 	public void onCheckedChanged(RadioGroup group, int checkedId) {
@@ -60,8 +81,8 @@ public class RadioGroupCoordinatorListener implements OnCheckedChangeListener {
     	// a view from page data
 		getPage().getPageData().putInt(dataKey, checkedId);
 		
-		// Thirdly, need to handle the View(s) that this RadioButton is controlling		
-		if (radioButton.getText().toString().equals("No")) {
+		// Thirdly, need to handle the View(s) that this RadioButton is controlling
+		if (radioButtonAnimateUpEvent(radioButton.getText().toString())) {
 			for (DynamicView dynamicView : getDynamicViews()) {
 				if (dynamicView.getControlledElement() instanceof RadioGroup) {
 					((RadioGroup) dynamicView.getControlledElement()).clearCheck();
@@ -84,6 +105,24 @@ public class RadioGroupCoordinatorListener implements OnCheckedChangeListener {
 	    getPage().notifyDataChanged();
 	}
 	
+	/**
+	 * Method responsible for determining whether an animate up event should occur 
+	 * on the dynamic view given the radio button selected
+	 * 
+	 * 
+	 * @param string
+	 * @return - boolean (if this constitutes an animateUpEvent)
+	 */
+	private boolean radioButtonAnimateUpEvent(String radioButtonClickedText) {
+		
+		for (String animateUpText : getRadioButtonAnimateUpText()) {
+			if (animateUpText.equalsIgnoreCase(radioButtonClickedText)) {
+				return true;
+			}
+		}
+		return false;
+	}
+
 	/**
 	 * Getter Method: getPage()
 	 */
@@ -110,6 +149,20 @@ public class RadioGroupCoordinatorListener implements OnCheckedChangeListener {
 	 */
 	public void setDataKey(String dataKey) {
 		this.dataKey = dataKey;
+	}
+
+	/**
+	 * Getter Method: getRadioButtonAnimateUpText()
+	 */
+	public List<String> getRadioButtonAnimateUpText() {
+		return radioButtonAnimateUpText;
+	}
+	
+	/**
+	 * Setter Method: setRadioButtonAnimateUpText()
+	 */
+	public void setRadioButtonAnimateUpText(List<String> radioButtonAnimateUpText) {
+		this.radioButtonAnimateUpText = radioButtonAnimateUpText;
 	}
 
 	/**

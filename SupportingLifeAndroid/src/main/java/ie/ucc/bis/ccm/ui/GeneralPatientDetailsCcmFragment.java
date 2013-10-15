@@ -4,10 +4,18 @@ import ie.ucc.bis.R;
 import ie.ucc.bis.activity.SupportingLifeBaseActivity;
 import ie.ucc.bis.assessment.model.listener.AssessmentWizardTextWatcher;
 import ie.ucc.bis.assessment.model.listener.DatePickerListener;
+import ie.ucc.bis.assessment.model.listener.RadioGroupCoordinatorListener;
 import ie.ucc.bis.assessment.model.listener.RadioGroupListener;
 import ie.ucc.bis.ccm.model.GeneralPatientDetailsCcmPage;
+import ie.ucc.bis.imci.model.DynamicView;
 import ie.ucc.bis.imci.ui.PageFragmentCallbacks;
 import ie.ucc.bis.ui.utilities.DateUtilities;
+import ie.ucc.bis.ui.utilities.ViewGroupUtilities;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -40,8 +48,14 @@ public class GeneralPatientDetailsCcmFragment extends Fragment {
     private EditText dateBirthEditText;
     private RadioGroup genderRadioGroup;
     private EditText caregiverEditText;
+    private RadioGroup relationshipRadioGroup;
+    private EditText relationshipSpecifiedEditText;
     private EditText physicalAddressEditText;
     private EditText villageEditText;
+    private ViewGroup animatedRelationshipSpecifiedView;
+    private View relationshipView;
+    private DynamicView relationshipSpecifiedDynamicView;
+    private Boolean animatedRelationshipViewInVisibleState;
     
     public static GeneralPatientDetailsCcmFragment create(String pageKey) {
         Bundle args = new Bundle();
@@ -49,6 +63,7 @@ public class GeneralPatientDetailsCcmFragment extends Fragment {
 
         GeneralPatientDetailsCcmFragment fragment = new GeneralPatientDetailsCcmFragment();
         fragment.setArguments(args);
+        fragment.setAnimatedRelationshipViewInVisibleState(false);
         return fragment;
     }
 
@@ -66,7 +81,33 @@ public class GeneralPatientDetailsCcmFragment extends Fragment {
         setPageKey(args.getString(ARG_PAGE_KEY));
         setGeneralPatientDetailsCcmPage((GeneralPatientDetailsCcmPage) getPageFragmentCallbacks().getPage(getPageKey()));
     }
+    
+    @Override
+    public void onSaveInstanceState(Bundle savedInstanceState) {      
+      if (getAnimatedRelationshipSpecifiedView().indexOfChild(getRelationshipSpecifiedDynamicView().getWrappedView()) != -1) {
+    	  // Animated Fever view is visible
+    	  savedInstanceState.putBoolean("animatedRelationshipViewInVisibleState", true);
+      }
+      else {
+    	  // Animated Fever view is invisible
+    	  savedInstanceState.putBoolean("animatedRelationshipViewInVisibleState", false);
+      }
+      super.onSaveInstanceState(savedInstanceState);
+    }
 
+    @Override
+    public void onViewStateRestored(Bundle savedInstanceState) {
+    	super.onViewStateRestored(savedInstanceState);
+    	if (savedInstanceState != null) {
+    		setAnimatedRelationshipViewInVisibleState(savedInstanceState.getBoolean("animatedRelationshipViewInVisibleState"));
+    	}
+
+    	if (!isAnimatedRelationshipViewInVisibleState()) {
+    		ViewGroupUtilities.removeDynamicViews(getAnimatedRelationshipSpecifiedView(), Arrays.asList(getRelationshipSpecifiedDynamicView()));
+    	}
+
+    }
+    
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
@@ -122,35 +163,24 @@ public class GeneralPatientDetailsCcmFragment extends Fragment {
     
     
 	private void configureRelationshipAnimatedView(View rootView) {
-		// Fever view
-//		setFeverView((View) rootView.findViewById(R.id.imci_fever_assessment_view_fever));
-//		
-//        // need to add superscript text to the degree Celsius label of a 
-//        // fever radio button
-//        RadioButton feverTempRadioButton = (RadioButton) rootView.findViewById(R.id.imci_fever_assessment_radio_fever_temperature);
-//        feverTempRadioButton.setText(Html.fromHtml(getText(R.string.imci_fever_assessment_radio_fever_temperature) + "<sup>o</sup>" + "C"));
-//                
-//        // fever
-//        setFeverCustomRadioGroup((ToggleButtonGroupTableLayout) rootView.findViewById(R.id.imci_fever_assessment_radio_fever));
-//        getFeverCustomRadioGroup().check(getFeverAssessmentPage()
-//        		.getPageData().getInt(FeverAssessmentPage.FEVER_DATA_KEY));
-//        
-//        // fever duration
-//        setDurationEditText((EditText) rootView.findViewById(R.id.imci_fever_assessment_fever_duration));
-//        // apply min/max data entry filtering to the 'fever duration' UI element
-//        getDurationEditText().setFilters(new InputFilter[] {new InputFilterMinMax(MIN_FEVER_DURATION, MAX_FEVER_DURATION)});
-//        
-//        // fever duration is a dynamic view within the UI
-//        setFeverDurationDynamicView(new DynamicView(rootView.findViewById(R.id.imci_fever_assessment_view_fever_duration),
-//        									rootView.findViewById(R.id.imci_fever_assessment_fever_duration)));
-//        
-//        // has fever been present every day
-//        setFeverPresentDailyRadioGroup((RadioGroup) rootView.findViewById(R.id.imci_fever_assessment_radio_present_every_day));
-//        getFeverPresentDailyRadioGroup().check(getFeverAssessmentPage()
-//        		.getPageData().getInt(FeverAssessmentPage.FEVER_PRESENT_EVERY_DAY_DATA_KEY));
-//        
-//        // get a hold on the top level animated view
-//        setAnimatedFeverDurationView(((ViewGroup) rootView.findViewById(R.id.imci_fever_assessment_duration_animated_view)));
+		// Relationship view
+		setRelationshipView((View) rootView.findViewById(R.id.ccm_general_patient_details_view_relationship));
+
+        // relationship
+        setRelationshipRadioGroup((RadioGroup) rootView.findViewById(R.id.ccm_general_patient_details_radio_relationship));
+        getRelationshipRadioGroup().check(getGeneralPatientDetailsCcmPage()
+        		.getPageData().getInt(GeneralPatientDetailsCcmPage.RELATIONSHIP_DATA_KEY));
+        
+        // specify relationship
+        setRelationshipSpecifiedEditText((EditText) rootView.findViewById(R.id.ccm_general_patient_details_relationship_specified));
+        getRelationshipSpecifiedEditText().setText(getGeneralPatientDetailsCcmPage().getPageData().getString(GeneralPatientDetailsCcmPage.RELATIONSHIP_SPECIFIED_DATA_KEY));
+        
+        // 'specify relationship' is a dynamic view within the UI
+        setRelationshipSpecifiedDynamicView(new DynamicView(rootView.findViewById(R.id.ccm_general_patient_details_view_relationship_specified),
+        									rootView.findViewById(R.id.ccm_general_patient_details_relationship_specified)));
+        
+        // get a hold on the top level animated view
+        setAnimatedRelationshipSpecifiedView(((ViewGroup) rootView.findViewById(R.id.ccm_general_patient_details_relationship_animated_view)));
         
 	}
 
@@ -213,6 +243,9 @@ public class GeneralPatientDetailsCcmFragment extends Fragment {
         		new AssessmentWizardTextWatcher(getGeneralPatientDetailsCcmPage(), 
         				GeneralPatientDetailsCcmPage.CAREGIVER_DATA_KEY));
         
+        // add dynamic view listener to relationship radio group
+        addRelationshipDynamicViewListener();  
+                
         // physical address
         getPhysicalAddressEditText().addTextChangedListener(
         		new AssessmentWizardTextWatcher(getGeneralPatientDetailsCcmPage(), 
@@ -224,6 +257,33 @@ public class GeneralPatientDetailsCcmFragment extends Fragment {
         				GeneralPatientDetailsCcmPage.VILLAGE_DATA_KEY));
     }
 
+	/**
+	 * addRelationshipDynamicViewListener()
+	 * 
+	 * Responsible for adding a listener to the Relationship view
+	 * 
+	 */
+	private void addRelationshipDynamicViewListener() {
+        int indexPosition = getAnimatedRelationshipSpecifiedView().indexOfChild(getRelationshipView()) + 1;
+        
+		List<String> animateUpRadioButtonTextTriggers = new ArrayList<String>();
+		animateUpRadioButtonTextTriggers.add(getResources().getString(R.string.ccm_general_patient_details_radio_relationship_mother));
+		animateUpRadioButtonTextTriggers.add(getResources().getString(R.string.ccm_general_patient_details_radio_relationship_father));
+        
+        getRelationshipRadioGroup().setOnCheckedChangeListener(
+        		new RadioGroupCoordinatorListener(getGeneralPatientDetailsCcmPage(),
+        				GeneralPatientDetailsCcmPage.RELATIONSHIP_DATA_KEY, 
+        				Arrays.asList(getRelationshipSpecifiedDynamicView()),
+        				getAnimatedRelationshipSpecifiedView(),
+        				indexPosition,
+        				animateUpRadioButtonTextTriggers));
+        
+        // add listener to 'specify relationship'
+        getRelationshipSpecifiedEditText().addTextChangedListener(
+        		new AssessmentWizardTextWatcher(getGeneralPatientDetailsCcmPage(), 
+        				GeneralPatientDetailsCcmPage.RELATIONSHIP_SPECIFIED_DATA_KEY));
+	}  
+    
 	/**
 	 * Getter Method: getGeneralPatientDetailsCcmPage()
 	 */
@@ -365,6 +425,34 @@ public class GeneralPatientDetailsCcmFragment extends Fragment {
 	}
 
 	/**
+	 * Getter Method: getRelationshipRadioGroup()
+	 */
+	public RadioGroup getRelationshipRadioGroup() {
+		return relationshipRadioGroup;
+	}
+
+	/**
+	 * Setter Method: setRelationshipRadioGroup()
+	 */
+	public void setRelationshipRadioGroup(RadioGroup relationshipRadioGroup) {
+		this.relationshipRadioGroup = relationshipRadioGroup;
+	}
+
+	/**
+	 * Getter Method: getRelationshipSpecifiedEditText()
+	 */
+	public EditText getRelationshipSpecifiedEditText() {
+		return relationshipSpecifiedEditText;
+	}
+
+	/**
+	 * Setter Method: setRelationshipSpecifiedEditText()
+	 */
+	public void setRelationshipSpecifiedEditText(EditText relationshipSpecifiedEditText) {
+		this.relationshipSpecifiedEditText = relationshipSpecifiedEditText;
+	}
+
+	/**
 	 * Getter Method: getPhysicalAddressEditText()
 	 */
 	public EditText getPhysicalAddressEditText() {
@@ -390,5 +478,61 @@ public class GeneralPatientDetailsCcmFragment extends Fragment {
 	 */
 	public void setVillageEditText(EditText villageEditText) {
 		this.villageEditText = villageEditText;
+	}
+
+	/**
+	 * Getter Method: getAnimatedRelationshipSpecifiedView()
+	 */
+	public ViewGroup getAnimatedRelationshipSpecifiedView() {
+		return animatedRelationshipSpecifiedView;
+	}
+
+	/**
+	 * Setter Method: setAnimatedRelationshipSpecifiedView()
+	 */
+	public void setAnimatedRelationshipSpecifiedView(ViewGroup animatedRelationshipSpecifiedView) {
+		this.animatedRelationshipSpecifiedView = animatedRelationshipSpecifiedView;
+	}
+
+	/**
+	 * Getter Method: getRelationshipView()
+	 */
+	public View getRelationshipView() {
+		return relationshipView;
+	}
+
+	/**
+	 * Setter Method: setRelationshipView()
+	 */
+	public void setRelationshipView(View relationshipView) {
+		this.relationshipView = relationshipView;
+	}
+
+	/**
+	 * Getter Method: getRelationshipSpecifiedDynamicView()
+	 */
+	public DynamicView getRelationshipSpecifiedDynamicView() {
+		return relationshipSpecifiedDynamicView;
+	}
+
+	/**
+	 * Setter Method: setRelationshipSpecifiedDynamicView()
+	 */
+	public void setRelationshipSpecifiedDynamicView(DynamicView relationshipOtherDynamicView) {
+		this.relationshipSpecifiedDynamicView = relationshipOtherDynamicView;
+	}
+
+	/**
+	 * Getter Method: isAnimatedRelationshipViewInVisibleState()
+	 */
+	public Boolean isAnimatedRelationshipViewInVisibleState() {
+		return animatedRelationshipViewInVisibleState;
+	}
+
+	/**
+	 * Setter Method: setAnimatedRelationshipViewInVisibleState()
+	 */
+	public void setAnimatedRelationshipViewInVisibleState(Boolean animatedRelationshipViewInVisibleState) {
+		this.animatedRelationshipViewInVisibleState = animatedRelationshipViewInVisibleState;
 	}
 }

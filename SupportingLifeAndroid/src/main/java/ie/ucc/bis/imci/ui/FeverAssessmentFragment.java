@@ -119,20 +119,19 @@ public class FeverAssessmentFragment extends Fragment {
     
     @Override
     public void onViewStateRestored(Bundle savedInstanceState) {
-      super.onViewStateRestored(savedInstanceState);
-      if (savedInstanceState != null) {
-    	  setAnimatedViewInVisibleState(savedInstanceState.getBoolean("animatedViewInVisibleState"));
-    	  setAnimatedFeverViewInVisibleState(savedInstanceState.getBoolean("animatedFeverViewInVisibleState"));
-      }
-      
-      if (!isAnimatedViewInVisibleState()) {
-	        ViewGroupUtilities.removeDynamicViews(getAnimatedView(), Arrays.asList(getDeepMouthUlcersDynamicView(), getExtensiveMouthUlcersDynamicView()));
-      }
-      
-      if (!isAnimatedFeverViewInVisibleState()) {
-	        ViewGroupUtilities.removeDynamicViews(getAnimatedFeverDurationView(), Arrays.asList(getFeverDurationDynamicView()));
-    }
-      
+    	super.onViewStateRestored(savedInstanceState);
+    	if (savedInstanceState != null) {
+    		setAnimatedViewInVisibleState(savedInstanceState.getBoolean("animatedViewInVisibleState"));
+    		setAnimatedFeverViewInVisibleState(savedInstanceState.getBoolean("animatedFeverViewInVisibleState"));
+    	}
+
+    	if (!isAnimatedViewInVisibleState()) {
+    		ViewGroupUtilities.removeDynamicViews(getAnimatedView(), Arrays.asList(getDeepMouthUlcersDynamicView(), getExtensiveMouthUlcersDynamicView()));
+    	}
+
+    	if (!isAnimatedFeverViewInVisibleState()) {
+    		ViewGroupUtilities.removeDynamicViews(getAnimatedFeverDurationView(), Arrays.asList(getFeverDurationDynamicView()));
+    	}    
     }
 
     @Override
@@ -237,7 +236,6 @@ public class FeverAssessmentFragment extends Fragment {
         
         // get a hold on the top level animated view
         setAnimatedFeverDurationView(((ViewGroup) rootView.findViewById(R.id.imci_fever_assessment_duration_animated_view)));
-        
 	}
     
     

@@ -352,6 +352,17 @@
 	<string name="ccm_general_patient_details_radio_gender_girl">Girl</string>
 		
 	<string name="ccm_general_patient_details_caregiver_label">Caregiver:</string>
+	
+	<!-- Relationship -->
+	<string name="ccm_general_patient_details_radio_relationship_label">Relationship:</string>
+	<string name="ccm_general_patient_details_radio_relationship_mother">Mother</string>
+	<string name="ccm_general_patient_details_radio_relationship_father">Father</string>
+	<string name="ccm_general_patient_details_radio_relationship_other">Other</string>
+	
+	<!-- Specify Relationship -->
+	<string name="ccm_general_patient_details_relationship_specified_label">Specify Relationship:</string>
+	
+	<!-- Physical Address & Village -->	
 	<string name="ccm_general_patient_details_physical_address_label">Physical Address:</string>
 	<string name="ccm_general_patient_details_village_label">Village/TA:</string>
 	
@@ -362,6 +373,9 @@
 	<string name="ccm_general_patient_details_review_surname">Surname</string>
 	<string name="ccm_general_patient_details_review_date_of_birth">Date of Birth</string>
 	<string name="ccm_general_patient_details_review_gender">Gender</string>
+	<string name="ccm_general_patient_details_review_relationship">Relationship</string>
+	
+	
 	<string name="ccm_general_patient_details_review_caregiver">Caregiver</string>
 	<string name="ccm_general_patient_details_review_physical_address">Physical Address</string>
 	<string name="ccm_general_patient_details_review_village">Village/TA</string>
@@ -370,7 +384,8 @@
     <string name="ccm_general_patient_details_hsa_identifier_hint">Please enter HSA identifier</string>
 	<string name="ccm_general_patient_details_first_name_hint">Please enter child\'s first name</string>
 	<string name="ccm_general_patient_details_surname_hint">Please enter child\'s surname</string>
-	<string name="ccm_general_patient_details_caregiver_hint">Please enter caregiver\'s name</string>	
+	<string name="ccm_general_patient_details_caregiver_hint">Please enter caregiver\'s name</string>
+	<string name="ccm_general_patient_details_relationship_specified_hint">Please enter relationship type</string>
 	<string name="ccm_general_patient_details_physical_address_hint">Please enter child\'s physical address</string>
 	<string name="ccm_general_patient_details_village_hint">Please enter child\'s village</string>
 	

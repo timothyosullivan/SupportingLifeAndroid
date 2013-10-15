@@ -32,6 +32,8 @@ public class GeneralPatientDetailsCcmPage extends AbstractPage {
 	public static final String CAREGIVER_DATA_KEY = "CAREGIVER_DATA_KEY";
 	public static final String PHYSICAL_ADDRESS_DATA_KEY = "PHYSICAL_ADDRESS";
 	public static final String VILLAGE_DATA_KEY = "VILLAGE";
+	public static final String RELATIONSHIP_DATA_KEY = "RELATIONSHIP_DATA_KEY";
+	public static final String RELATIONSHIP_SPECIFIED_DATA_KEY = "RELATIONSHIP_SPECIFIED_DATA_KEY";
 
     
     private GeneralPatientDetailsCcmFragment generalPatientDetailsCcmFragment;
@@ -91,11 +93,14 @@ public class GeneralPatientDetailsCcmPage extends AbstractPage {
     	reviewItemValue = getPageData().getString(GENDER_DATA_KEY + RadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
     	reviewItems.add(new ReviewItem(reviewItemLabel, reviewItemValue, reviewItemSymptomId, getKey(), -1));
     	
-    	// relationship
+    	// caregiver
+    	reviewItemLabel = resources.getString(R.string.ccm_general_patient_details_review_caregiver);
+    	reviewItems.add(new ReviewItem(reviewItemLabel, getPageData().getString(CAREGIVER_DATA_KEY), getKey(), -1));
     	
-    	
-    	// specify relationship
-    	
+    	// relationship / specify relationship
+    	reviewItemLabel = resources.getString(R.string.ccm_general_patient_details_review_relationship);
+    	reviewItemValue = getPageData().getString(RELATIONSHIP_DATA_KEY + RadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
+    	reviewItems.add(new ReviewItem(reviewItemLabel, reviewItemValue, getKey(), -1)); 	
     	
         // physical address
     	reviewItemLabel = resources.getString(R.string.ccm_general_patient_details_review_physical_address);
