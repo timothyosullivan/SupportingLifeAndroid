@@ -336,8 +336,8 @@
     <!-- ============================================================ -->
 	
     <!-- ============================================================ -->
-    <!-- CCM ASSESSMENT WIZARD BREAD-CRUMB UI -->
-    <!-- STAGE 1: GENERAL PATIENT DETAILS -->
+    <!-- CCM ASSESSMENT WIZARD BREAD-CRUMB UI 						  -->
+    <!-- STAGE 1: GENERAL PATIENT DETAILS 							  -->
     <!-- ============================================================ -->
 	<string name="ccm_general_patient_details_title">Patient Details</string>
 	<string name="ccm_general_patient_details_today_date_label">Today\'s Date:</string>
@@ -388,6 +388,16 @@
 	<string name="ccm_general_patient_details_relationship_specified_hint">Please enter relationship type</string>
 	<string name="ccm_general_patient_details_physical_address_hint">Please enter child\'s physical address</string>
 	<string name="ccm_general_patient_details_village_hint">Please enter child\'s village</string>
+	
+
+    <!-- ============================================================ -->
+    <!-- CCM ASSESSMENT WIZARD BREAD-CRUMB UI 						  -->
+    <!-- STAGE 2: ASK ASSESSMENT									  -->
+    <!-- ============================================================ -->
+	<string name="ccm_ask_assessment_title">Ask Assessment</string>
+	
+	
+	
 	
 	<!-- ============================================================ -->
     <!-- ASSESSMENT WIZARD BREAD-CRUMB UI -->

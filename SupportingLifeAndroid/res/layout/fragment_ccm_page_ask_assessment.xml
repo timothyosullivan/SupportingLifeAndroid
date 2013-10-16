@@ -1,0 +1,266 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/SupportingLifePage"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <!-- ============================================================ -->
+    <!-- ASSESSMENT BREAD-CRUMB WIZARD UI 							  -->
+    <!-- CCM ASSESSMENT PAGE: ASK ASSESSMENT				  		  -->
+    <!-- ============================================================ -->
+ 
+    <TextView style="@style/WizardPageTitle" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="218dp"
+            android:orientation="vertical" >
+
+            <!-- ============================================================ -->
+	        <!-- WHAT ARE THE CHILD'S PROBLEMS								  -->
+	        <!-- ============================================================ -->
+	
+	            <TextView
+	                style="@style/AssessmentFormLabel"
+	                android:text="@string/ccm_ask_assessment_problems_label" />
+	
+	            <EditText
+	                android:id="@+id/ccm_ask_assessment_problems"
+	                android:layout_width="match_parent"
+	                android:layout_height="wrap_content"
+	                android:layout_marginBottom="10dp"
+	                android:gravity="top|left"
+	                android:inputType="textMultiLine"
+	                android:lines="5"
+	                android:saveEnabled="false"
+	                android:scrollHorizontally="false"
+	                android:hint="@string/ccm_ask_assessment_problems_hint" />
+	            
+            
+            <!-- ============================================================ -->
+            <!-- HSA IDENTIFIER 											  -->
+            <!-- ============================================================ -->
+
+            <TextView
+                style="@style/AssessmentFormLabel"
+                android:text="@string/ccm_general_patient_details_hsa_identifier_label" />
+
+            <EditText
+                android:id="@+id/ccm_general_patient_details_hsa_identifier"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:hint="@string/ccm_general_patient_details_hsa_identifier_hint"
+                android:inputType="textCapWords"
+                android:saveEnabled="false" />
+            
+            <!-- ============================================================ -->
+            <!-- CHILD'S FIRST NAME 										  -->
+            <!-- ============================================================ -->
+
+            <TextView
+                style="@style/AssessmentFormLabel"
+                android:text="@string/ccm_general_patient_details_first_name_label" />
+
+            <EditText
+                android:id="@+id/ccm_general_patient_details_first_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:hint="@string/ccm_general_patient_details_first_name_hint"
+                android:inputType="textCapWords"
+                android:saveEnabled="false" />
+
+            <!-- ============================================================ -->
+            <!-- CHILD'S SURNAME 											  -->
+            <!-- ============================================================ -->
+
+            <TextView
+                style="@style/AssessmentFormLabel"
+                android:text="@string/ccm_general_patient_details_surname_label" />
+
+            <EditText
+                android:id="@+id/ccm_general_patient_details_surname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:hint="@string/ccm_general_patient_details_surname_hint"
+                android:inputType="textCapWords"
+                android:saveEnabled="false" />
+
+            <!-- ============================================================ -->
+            <!-- DATE OF BIRTH 												  -->
+            <!-- Intention is to display a text box that looks like a spinner -->
+            <!-- to activate a date picker dialog. This is analoguos to the   -->
+            <!-- approach in the Google Calendar App 						  -->
+            <!-- ============================================================ -->
+
+            <TextView
+                style="@style/AssessmentFormLabel"
+                android:text="@string/ccm_general_patient_details_date_of_birth_label" />
+
+            <EditText
+                android:id="@+id/ccm_general_patient_details_date_of_birth"
+                style="@android:style/Widget.Holo.Light.Spinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:saveEnabled="false" />
+            
+            <!-- ============================================================ -->
+            <!-- GENDER 													  -->
+            <!-- ============================================================ -->
+
+            <TextView
+                style="@style/AssessmentFormLabel"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="bottom"
+                android:text="@string/ccm_general_patient_details_radio_gender_label" />
+
+            <RadioGroup
+                android:id="@+id/ccm_general_patient_details_radio_gender"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+
+                <RadioButton
+                    android:id="@+id/ccm_general_patient_details_radio_gender_boy"
+                    android:layout_weight="0.67"
+                    android:text="@string/ccm_general_patient_details_radio_gender_boy" />
+
+                <RadioButton
+                    android:id="@+id/ccm_general_patient_details_radio_gender_girl"
+                    android:layout_weight="0.33"
+                    android:text="@string/ccm_general_patient_details_radio_gender_girl" />
+            </RadioGroup>
+
+            <!-- ============================================================ -->
+            <!-- CAREGIVER'S NAME											  -->
+            <!-- ============================================================ -->
+
+            <TextView
+                style="@style/AssessmentFormLabel"
+                android:text="@string/ccm_general_patient_details_caregiver_label" />
+
+            <EditText
+                android:id="@+id/ccm_general_patient_details_caregiver"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:hint="@string/ccm_general_patient_details_caregiver_hint"
+                android:inputType="textCapWords"
+                android:saveEnabled="false" />
+
+			<!-- ============================================================ -->
+            <!-- RELATIONSHIP												  -->
+            <!-- ============================================================ -->
+            <LinearLayout
+				android:id="@+id/ccm_general_patient_details_relationship_animated_view"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:animateLayoutChanges="true"
+				android:orientation="vertical">
+				<LinearLayout
+					android:id="@+id/ccm_general_patient_details_view_relationship"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:orientation="vertical">
+		            <TextView
+		                style="@style/AssessmentFormLabel"
+		                android:layout_width="match_parent"
+		                android:layout_height="match_parent"
+		                android:layout_gravity="bottom"
+		                android:text="@string/ccm_general_patient_details_radio_relationship_label" />
+		
+		            <RadioGroup
+		                android:id="@+id/ccm_general_patient_details_radio_relationship"
+		                android:layout_width="match_parent"
+		                android:layout_height="wrap_content"
+		                android:orientation="horizontal" >
+		
+		                <RadioButton
+		                    android:id="@+id/ccm_general_patient_details_radio_relationship_mother"
+		                    android:layout_weight="0.67"
+		                    android:text="@string/ccm_general_patient_details_radio_relationship_mother" />
+		
+		                <RadioButton
+		                    android:id="@+id/ccm_general_patient_details_radio_relationship_father"
+		                    android:layout_weight="0.33"
+		                    android:text="@string/ccm_general_patient_details_radio_relationship_father" />
+		                
+		                <RadioButton
+		                    android:id="@+id/ccm_general_patient_details_radio_relationship_other"
+		                    android:layout_weight="0.33"
+		                    android:text="@string/ccm_general_patient_details_radio_relationship_other" />
+		            </RadioGroup>
+	            </LinearLayout>
+
+				<!-- ============================================================ -->
+	            <!-- SPECIFY RELATIONSHIP										  -->
+	            <!-- ============================================================ -->
+				<LinearLayout
+					android:id="@+id/ccm_general_patient_details_view_relationship_specified"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:paddingLeft="30dp"
+					android:orientation="vertical">
+					<TextView
+						android:id="@+id/ccm_general_patient_details_relationship_specified_label"
+						style="@style/AssessmentFormLabel"
+						android:text="@string/ccm_general_patient_details_relationship_specified_label" />
+			
+			            <EditText
+			                android:id="@+id/ccm_general_patient_details_relationship_specified"
+			                android:layout_width="match_parent"
+			                android:layout_height="wrap_content"
+			                android:layout_marginBottom="10dp"
+			                android:inputType="textCapWords"
+			                android:hint="@string/ccm_general_patient_details_relationship_specified_hint"/>
+				</LinearLayout>
+			
+	            <!-- ============================================================ -->
+	            <!-- PHYSICAL ADDRESS -->
+	            <!-- ============================================================ -->
+	
+	            <TextView
+	                style="@style/AssessmentFormLabel"
+	                android:text="@string/ccm_general_patient_details_physical_address_label" />
+	
+	            <EditText
+	                android:id="@+id/ccm_general_patient_details_physical_address"
+	                android:layout_width="match_parent"
+	                android:layout_height="wrap_content"
+	                android:layout_marginBottom="10dp"
+	                android:gravity="top|left"
+	                android:inputType="textMultiLine"
+	                android:lines="5"
+	                android:saveEnabled="false"
+	                android:scrollHorizontally="false"
+	                android:hint="@string/ccm_general_patient_details_physical_address_hint" />
+	            
+	
+	            <!-- ============================================================ -->
+	            <!-- VILLAGE/TA -->
+	            <!-- ============================================================ -->
+	
+	            <TextView
+	                style="@style/AssessmentFormLabel"
+	                android:text="@string/ccm_general_patient_details_village_label" />
+	
+	            <EditText
+	                android:id="@+id/ccm_general_patient_details_village"
+	                android:layout_width="match_parent"
+	                android:layout_height="wrap_content"
+	                android:layout_marginBottom="10dp"
+	                android:inputType="textCapWords"
+	                android:saveEnabled="false"
+	                android:hint="@string/ccm_general_patient_details_village_hint"/>
+			</LinearLayout> <!-- end of relationship animated view -->
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

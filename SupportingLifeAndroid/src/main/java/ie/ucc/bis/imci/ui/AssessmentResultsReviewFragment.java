@@ -12,7 +12,7 @@ import android.widget.ListView;
 /**
  * Class: AssessmentResultsReviewFragment
  * 
- * Responsible for displaying the assessment 
+ * Responsible for displaying the assessment
  * review items list  
  * 
  * @author TOSullivan
