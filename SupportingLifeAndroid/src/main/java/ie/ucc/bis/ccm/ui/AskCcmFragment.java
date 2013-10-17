@@ -3,10 +3,16 @@ package ie.ucc.bis.ccm.ui;
 import ie.ucc.bis.R;
 import ie.ucc.bis.activity.SupportingLifeBaseActivity;
 import ie.ucc.bis.assessment.model.listener.AssessmentWizardTextWatcher;
-import ie.ucc.bis.assessment.model.listener.RadioGroupListener;
+import ie.ucc.bis.assessment.model.listener.RadioGroupCoordinatorListener;
 import ie.ucc.bis.ccm.model.AskCcmPage;
 import ie.ucc.bis.imci.model.DynamicView;
 import ie.ucc.bis.imci.ui.PageFragmentCallbacks;
+import ie.ucc.bis.ui.utilities.ViewGroupUtilities;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -33,10 +39,11 @@ public class AskCcmFragment extends Fragment {
     private String pageKey;
     private EditText problemsEditText;
     private RadioGroup coughRadioGroup;
-    private ViewGroup animatedRelationshipSpecifiedView;
-    private View relationshipView;
-    private DynamicView relationshipSpecifiedDynamicView;
-    private Boolean animatedRelationshipViewInVisibleState;
+    private EditText coughDurationEditText;
+    private ViewGroup animatedTopLevelView;
+    private View coughView;
+    private DynamicView coughDurationDynamicView;
+    private Boolean animatedCoughDurationViewInVisibleState;
     
     public static AskCcmFragment create(String pageKey) {
         Bundle args = new Bundle();
@@ -44,7 +51,7 @@ public class AskCcmFragment extends Fragment {
 
         AskCcmFragment fragment = new AskCcmFragment();
         fragment.setArguments(args);
-        fragment.setAnimatedRelationshipViewInVisibleState(false);
+        fragment.setAnimatedCoughDurationViewInVisibleState(false);
         return fragment;
     }
 
@@ -65,28 +72,28 @@ public class AskCcmFragment extends Fragment {
     
     @Override
     public void onSaveInstanceState(Bundle savedInstanceState) {      
-/*      if (getAnimatedRelationshipSpecifiedView().indexOfChild(getRelationshipSpecifiedDynamicView().getWrappedView()) != -1) {
-    	  // Animated Fever view is visible
-    	  savedInstanceState.putBoolean("animatedRelationshipViewInVisibleState", true);
+      if (getAnimatedTopLevelView().indexOfChild(getCoughDurationDynamicView().getWrappedView()) != -1) {
+    	  // Animated Cough Duration view is visible
+    	  savedInstanceState.putBoolean("animatedCoughDurationViewInVisibleState", true);
       }
       else {
-    	  // Animated Fever view is invisible
-    	  savedInstanceState.putBoolean("animatedRelationshipViewInVisibleState", false);
-      } */
+    	  // Animated Cough Duration view is invisible
+    	  savedInstanceState.putBoolean("animatedCoughDurationViewInVisibleState", false);
+      } 
       super.onSaveInstanceState(savedInstanceState);
     }
 
     @Override
     public void onViewStateRestored(Bundle savedInstanceState) {
     	super.onViewStateRestored(savedInstanceState);
-/*    	if (savedInstanceState != null) {
-    		setAnimatedRelationshipViewInVisibleState(savedInstanceState.getBoolean("animatedRelationshipViewInVisibleState"));
+    	if (savedInstanceState != null) {
+    		setAnimatedCoughDurationViewInVisibleState(savedInstanceState.getBoolean("animatedCoughDurationViewInVisibleState"));
     	}
 
-    	if (!isAnimatedRelationshipViewInVisibleState()) {
-    		ViewGroupUtilities.removeDynamicViews(getAnimatedRelationshipSpecifiedView(), Arrays.asList(getRelationshipSpecifiedDynamicView()));
+    	if (!isAnimatedCoughDurationViewInVisibleState()) {
+    		ViewGroupUtilities.removeDynamicViews(getAnimatedTopLevelView(), Arrays.asList(getCoughDurationDynamicView()));
     	}
-*/
+
     }
     
     @Override
@@ -100,38 +107,35 @@ public class AskCcmFragment extends Fragment {
         getProblemsEditText().setText(getAskCcmPage().getPageData().getString(AskCcmPage.PROBLEMS_DATA_KEY));
         
         // cough
-        setCoughRadioGroup((RadioGroup) rootView.findViewById(R.id.ccm_ask_assessment_radio_cough));
-        getCoughRadioGroup().check(getAskCcmPage()
-        		.getPageData().getInt(AskCcmPage.COUGH_DATA_KEY));
-        
+        configureCoughDurationAnimatedView(rootView);
+                
 		// add soft keyboard handler - essentially hiding soft
 		// keyboard when an EditText is not in focus
 		((SupportingLifeBaseActivity) getActivity()).addSoftKeyboardHandling(rootView);
 
         return rootView;
     }
-    
-    
-/*	private void configureRelationshipAnimatedView(View rootView) {
-		// Relationship view
-		setRelationshipView((View) rootView.findViewById(R.id.ccm_general_patient_details_view_relationship));
+      
+	private void configureCoughDurationAnimatedView(View rootView) {
+		// Cough view
+		setCoughView((View) rootView.findViewById(R.id.ccm_ask_assessment_view_cough));
 
-        // relationship
-        setRelationshipRadioGroup((RadioGroup) rootView.findViewById(R.id.ccm_general_patient_details_radio_relationship));
-        getRelationshipRadioGroup().check(getGeneralPatientDetailsCcmPage()
-        		.getPageData().getInt(GeneralPatientDetailsCcmPage.RELATIONSHIP_DATA_KEY));
+        // cough radio group
+        setCoughRadioGroup((RadioGroup) rootView.findViewById(R.id.ccm_ask_assessment_radio_cough));
+        getCoughRadioGroup().check(getAskCcmPage()
+        		.getPageData().getInt(AskCcmPage.COUGH_DATA_KEY));
         
-        // specify relationship
-        setRelationshipSpecifiedEditText((EditText) rootView.findViewById(R.id.ccm_general_patient_details_relationship_specified));
-        getRelationshipSpecifiedEditText().setText(getGeneralPatientDetailsCcmPage().getPageData().getString(GeneralPatientDetailsCcmPage.RELATIONSHIP_SPECIFIED_DATA_KEY));
+        // cough duration
+        setCoughDurationEditText((EditText) rootView.findViewById(R.id.ccm_ask_assessment_cough_duration));
+        getCoughDurationEditText().setText(getAskCcmPage().getPageData().getString(AskCcmPage.COUGH_DURATION_DATA_KEY));
         
-        // 'specify relationship' is a dynamic view within the UI
-        setRelationshipSpecifiedDynamicView(new DynamicView(rootView.findViewById(R.id.ccm_general_patient_details_view_relationship_specified),
-        									rootView.findViewById(R.id.ccm_general_patient_details_relationship_specified)));
+        // 'cough duration' is a dynamic view within the UI
+        setCoughDurationDynamicView(new DynamicView(rootView.findViewById(R.id.ccm_ask_assessment_view_cough_duration),
+        									rootView.findViewById(R.id.ccm_ask_assessment_cough_duration)));
         
         // get a hold on the top level animated view
-        setAnimatedRelationshipSpecifiedView(((ViewGroup) rootView.findViewById(R.id.ccm_general_patient_details_relationship_animated_view)));
-	} */
+        setAnimatedTopLevelView(((ViewGroup) rootView.findViewById(R.id.ccm_ask_assessment_animated_top_level_view)));
+	}
 
     @Override
     public void onAttach(Activity activity) {
@@ -158,44 +162,38 @@ public class AskCcmFragment extends Fragment {
         getProblemsEditText().addTextChangedListener(
         		new AssessmentWizardTextWatcher(getAskCcmPage(), 
         				AskCcmPage.PROBLEMS_DATA_KEY));
-
-        // cough
-        getCoughRadioGroup().setOnCheckedChangeListener(
-        		new RadioGroupListener(getAskCcmPage(),
-        				AskCcmPage.COUGH_DATA_KEY));
-
         
-        // add dynamic view listener to relationship radio group
-  //      addRelationshipDynamicViewListener();  
+        // add dynamic view listener to cough radio group
+        addCoughDynamicViewListener();  
 
     }
 
 	/**
-	 * addRelationshipDynamicViewListener()
+	 * addCoughDynamicViewListener()
 	 * 
-	 * Responsible for adding a listener to the Relationship view
+	 * Responsible for adding a listener to the Cough Radio Group
 	 * 
 	 */
-/*	private void addRelationshipDynamicViewListener() {
-        int indexPosition = getAnimatedRelationshipSpecifiedView().indexOfChild(getRelationshipView()) + 1;
+	private void addCoughDynamicViewListener() {
+        int indexPosition = getAnimatedTopLevelView().indexOfChild(getCoughView()) + 1;
         
 		List<String> animateUpRadioButtonTextTriggers = new ArrayList<String>();
-		animateUpRadioButtonTextTriggers.add(getResources().getString(R.string.ccm_general_patient_details_radio_relationship_mother));
-		animateUpRadioButtonTextTriggers.add(getResources().getString(R.string.ccm_general_patient_details_radio_relationship_father));
+		animateUpRadioButtonTextTriggers.add(getResources().getString(R.string.assessment_wizard_radio_no));
         
-        getRelationshipRadioGroup().setOnCheckedChangeListener(
-        		new RadioGroupCoordinatorListener(getGeneralPatientDetailsCcmPage(),
-        				GeneralPatientDetailsCcmPage.RELATIONSHIP_DATA_KEY, 
-        				Arrays.asList(getRelationshipSpecifiedDynamicView()),
-        				getAnimatedRelationshipSpecifiedView(),
+		// add listener to 'cough'
+		getCoughRadioGroup().setOnCheckedChangeListener(
+        		new RadioGroupCoordinatorListener(getAskCcmPage(),
+        				AskCcmPage.COUGH_DATA_KEY, 
+        				Arrays.asList(getCoughDurationDynamicView()),
+        				getAnimatedTopLevelView(),
         				indexPosition,
         				animateUpRadioButtonTextTriggers));
         
-        // add listener to 'specify relationship'
-        getRelationshipSpecifiedEditText().addTextChangedListener(
-        		new AssessmentWizardTextWatcher(getGeneralPatientDetailsCcmPage(), 
-        				GeneralPatientDetailsCcmPage.RELATIONSHIP_SPECIFIED_DATA_KEY));
-	}   */
+        // add listener to 'cough duration'
+        getCoughDurationEditText().addTextChangedListener(
+        		new AssessmentWizardTextWatcher(getAskCcmPage(), 
+        				AskCcmPage.COUGH_DURATION_DATA_KEY));
+	}
     
 	/**
 	 * Getter Method: getAskCcmPage()
@@ -268,58 +266,72 @@ public class AskCcmFragment extends Fragment {
 	}
 
 	/**
-	 * Getter Method: getAnimatedRelationshipSpecifiedView()
+	 * Getter Method: getCoughDurationEditText()
 	 */
-	public ViewGroup getAnimatedRelationshipSpecifiedView() {
-		return animatedRelationshipSpecifiedView;
+	public EditText getCoughDurationEditText() {
+		return coughDurationEditText;
 	}
 
 	/**
-	 * Setter Method: setAnimatedRelationshipSpecifiedView()
+	 * Setter Method: setCoughDurationEditText()
 	 */
-	public void setAnimatedRelationshipSpecifiedView(ViewGroup animatedRelationshipSpecifiedView) {
-		this.animatedRelationshipSpecifiedView = animatedRelationshipSpecifiedView;
+	public void setCoughDurationEditText(EditText coughDurationEditText) {
+		this.coughDurationEditText = coughDurationEditText;
 	}
 
 	/**
-	 * Getter Method: getRelationshipView()
+	 * Getter Method: getAnimatedTopLevelView()
 	 */
-	public View getRelationshipView() {
-		return relationshipView;
+	public ViewGroup getAnimatedTopLevelView() {
+		return animatedTopLevelView;
 	}
 
 	/**
-	 * Setter Method: setRelationshipView()
+	 * Setter Method: setAnimatedTopLevelView()
 	 */
-	public void setRelationshipView(View relationshipView) {
-		this.relationshipView = relationshipView;
+	public void setAnimatedTopLevelView(ViewGroup animatedTopLevelView) {
+		this.animatedTopLevelView = animatedTopLevelView;
 	}
 
 	/**
-	 * Getter Method: getRelationshipSpecifiedDynamicView()
+	 * Getter Method: getCoughView()
 	 */
-	public DynamicView getRelationshipSpecifiedDynamicView() {
-		return relationshipSpecifiedDynamicView;
+	public View getCoughView() {
+		return coughView;
 	}
 
 	/**
-	 * Setter Method: setRelationshipSpecifiedDynamicView()
+	 * Setter Method: setCoughView()
 	 */
-	public void setRelationshipSpecifiedDynamicView(DynamicView relationshipOtherDynamicView) {
-		this.relationshipSpecifiedDynamicView = relationshipOtherDynamicView;
+	public void setCoughView(View coughView) {
+		this.coughView = coughView;
 	}
 
 	/**
-	 * Getter Method: isAnimatedRelationshipViewInVisibleState()
+	 * Getter Method: getCoughDurationDynamicView()
 	 */
-	public Boolean isAnimatedRelationshipViewInVisibleState() {
-		return animatedRelationshipViewInVisibleState;
+	public DynamicView getCoughDurationDynamicView() {
+		return coughDurationDynamicView;
 	}
 
 	/**
-	 * Setter Method: setAnimatedRelationshipViewInVisibleState()
+	 * Setter Method: setCoughDurationDynamicView()
 	 */
-	public void setAnimatedRelationshipViewInVisibleState(Boolean animatedRelationshipViewInVisibleState) {
-		this.animatedRelationshipViewInVisibleState = animatedRelationshipViewInVisibleState;
+	public void setCoughDurationDynamicView(DynamicView coughDurationDynamicView) {
+		this.coughDurationDynamicView = coughDurationDynamicView;
+	}
+
+	/**
+	 * Getter Method: isAnimatedCoughDurationViewInVisibleState()
+	 */
+	public Boolean isAnimatedCoughDurationViewInVisibleState() {
+		return animatedCoughDurationViewInVisibleState;
+	}
+
+	/**
+	 * Setter Method: setAnimatedCoughDurationViewInVisibleState()
+	 */
+	public void setAnimatedCoughDurationViewInVisibleState(Boolean animatedCoughDurationViewInVisibleState) {
+		this.animatedCoughDurationViewInVisibleState = animatedCoughDurationViewInVisibleState;
 	}
 }

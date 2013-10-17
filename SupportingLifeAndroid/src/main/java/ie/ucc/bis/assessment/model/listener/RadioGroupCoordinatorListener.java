@@ -97,7 +97,7 @@ public class RadioGroupCoordinatorListener implements OnCheckedChangeListener {
 				}
 			}
 		}	
-		else { // user has selected 'YES'
+		else { // e.g. user has selected 'YES'
 			for (int counter = 0; counter < getDynamicViews().size(); counter++) {
 				getParentView().addView(getDynamicViews().get(counter).getWrappedView(), getIndexPosition() + counter);
 			}
