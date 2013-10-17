@@ -134,11 +134,21 @@
     <!-- ============================================================ -->    
     
     <!-- ============================================================ -->
-    <!-- CCM ASSESSMENT BREAD-CRUMB UI -->
-    <!-- STAGE 1: GENERAL PATIENT DETAILS -->
+    <!-- CCM ASSESSMENT BREAD-CRUMB UI 								  -->
+    <!-- STAGE 1: GENERAL PATIENT DETAILS 							  -->
     <!-- ============================================================ -->
 	
 	<!-- Symptom Ids (NOT TO BE TRANSLATED!)-->
 	<string name="ccm_general_patient_details_date_of_birth_symptom_id">date_of_birth</string>
 	<string name="ccm_general_patient_details_gender_symptom_id">gender</string>
+	
+    <!-- ============================================================ -->
+    <!-- CCM ASSESSMENT BREAD-CRUMB UI 								  -->
+    <!-- STAGE 2: ASK ASSESSMENT 									  -->
+    <!-- ============================================================ -->
+    
+	<!-- Symptom Ids (NOT TO BE TRANSLATED!)-->
+	<string name="ccm_ask_assessment_problems_symptom_id">problems</string>
+	<string name="ccm_ask_assessment_cough_symptom_id">cough</string>
+    
 </resources>

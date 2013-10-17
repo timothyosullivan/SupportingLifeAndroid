@@ -6,7 +6,7 @@ import ie.ucc.bis.assessment.model.AbstractPage;
 import ie.ucc.bis.assessment.model.ModelCallbacks;
 import ie.ucc.bis.assessment.model.listener.RadioGroupListener;
 import ie.ucc.bis.assessment.model.review.ReviewItem;
-import ie.ucc.bis.ccm.ui.GeneralPatientDetailsCcmFragment;
+import ie.ucc.bis.ccm.ui.AskCcmFragment;
 
 import java.util.ArrayList;
 
@@ -23,20 +23,10 @@ import android.support.v4.app.Fragment;
  * @author timothyosullivan
  */
 public class AskCcmPage extends AbstractPage {
-    public static final String TODAY_DATE_DATA_KEY = "TODAY_DATE";
-	public static final String HEALTH_SURVEILLANCE_ASSISTANT_DATA_KEY = "HEALTH_SURVEILLANCE_ASSISTANT";
-    public static final String FIRST_NAME_DATA_KEY = "FIRST_NAME";
-    public static final String SURNAME_DATA_KEY = "SURNAME";
-    public static final String DATE_OF_BIRTH_DATA_KEY = "DATE_OF_BIRTH";
-    public static final String GENDER_DATA_KEY = "GENDER";
-	public static final String CAREGIVER_DATA_KEY = "CAREGIVER_DATA_KEY";
-	public static final String PHYSICAL_ADDRESS_DATA_KEY = "PHYSICAL_ADDRESS";
-	public static final String VILLAGE_DATA_KEY = "VILLAGE";
-	public static final String RELATIONSHIP_DATA_KEY = "RELATIONSHIP_DATA_KEY";
-	public static final String RELATIONSHIP_SPECIFIED_DATA_KEY = "RELATIONSHIP_SPECIFIED_DATA_KEY";
-
+	public static final String PROBLEMS_DATA_KEY = "PROBLEMS";
+    public static final String COUGH_DATA_KEY = "COUGH";
     
-    private GeneralPatientDetailsCcmFragment generalPatientDetailsCcmFragment;
+    private AskCcmFragment askCcmFragment;
 
     public AskCcmPage(ModelCallbacks callbacks, String title) {
         super(callbacks, title);
@@ -44,14 +34,14 @@ public class AskCcmPage extends AbstractPage {
 
     @Override
     public Fragment createFragment() {
-        setGeneralPatientDetailsCcmFragment(GeneralPatientDetailsCcmFragment.create(getKey()));
-        return getGeneralPatientDetailsCcmFragment();
+        setAskCcmFragment(AskCcmFragment.create(getKey()));
+        return getAskCcmFragment();
     }
 
 	/**
 	 * Method: getReviewItems
 	 * 
-	 * Define the review items associated with the 'general patient details' page.
+	 * Define the review items associated with the 'ask assessment' page.
 	 * 
 	 * @param reviewItems : ArrayList<ReviewItem>
 	 */      
@@ -63,58 +53,21 @@ public class AskCcmPage extends AbstractPage {
     	String reviewItemSymptomId = null;
     	
     	// review header
-    	reviewItemLabel = resources.getString(R.string.ccm_general_patient_details_title);
+    	reviewItemLabel = resources.getString(R.string.ccm_ask_assessment_title);
     	reviewItems.add(new ReviewItem(reviewItemLabel, getKey()));	
-  
-    	// today's date
-    	reviewItemLabel = resources.getString(R.string.ccm_general_patient_details_review_today_date);
-    	reviewItems.add(new ReviewItem(reviewItemLabel, getPageData().getString(TODAY_DATE_DATA_KEY), getKey(), -1));
-    	
-        // Health Surveillance Assistant (HSA)
-    	reviewItemLabel = resources.getString(R.string.ccm_general_patient_details_review_hsa_identifier);
-    	reviewItems.add(new ReviewItem(reviewItemLabel, getPageData().getString(HEALTH_SURVEILLANCE_ASSISTANT_DATA_KEY), getKey(), -1));
-    	
-    	// child's first name
-    	reviewItemLabel = resources.getString(R.string.ccm_general_patient_details_review_first_name);
-    	reviewItems.add(new ReviewItem(reviewItemLabel, getPageData().getString(FIRST_NAME_DATA_KEY), getKey(), -1));
-    	
-    	// child's surname
-    	reviewItemLabel = resources.getString(R.string.ccm_general_patient_details_review_surname);
-    	reviewItems.add(new ReviewItem(reviewItemLabel, getPageData().getString(SURNAME_DATA_KEY), getKey(), -1));
-    	
-    	// date of birth
-    	reviewItemLabel = resources.getString(R.string.ccm_general_patient_details_review_date_of_birth);
-    	reviewItemSymptomId = resources.getString(R.string.ccm_general_patient_details_date_of_birth_symptom_id);
-    	reviewItems.add(new ReviewItem(reviewItemLabel, getPageData().getString(DATE_OF_BIRTH_DATA_KEY), reviewItemSymptomId, getKey(), -1));
-    	    	    	
-    	// gender
-    	reviewItemLabel = resources.getString(R.string.ccm_general_patient_details_review_gender);
-    	reviewItemSymptomId = resources.getString(R.string.ccm_general_patient_details_gender_symptom_id);
-    	reviewItemValue = getPageData().getString(GENDER_DATA_KEY + RadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
+      	
+        // child's problems
+    	reviewItemLabel = resources.getString(R.string.ccm_ask_assessment_review_problems);
+    	reviewItemSymptomId = resources.getString(R.string.ccm_ask_assessment_problems_symptom_id);
+    	reviewItems.add(new ReviewItem(reviewItemLabel, getPageData().getString(PROBLEMS_DATA_KEY), reviewItemSymptomId, getKey(), -1));
+    	    	    	    	
+    	// cough
+    	reviewItemLabel = resources.getString(R.string.ccm_ask_assessment_review_cough);
+    	reviewItemValue = getPageData().getString(COUGH_DATA_KEY + RadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
+    	reviewItemSymptomId = resources.getString(R.string.ccm_ask_assessment_cough_symptom_id);
     	reviewItems.add(new ReviewItem(reviewItemLabel, reviewItemValue, reviewItemSymptomId, getKey(), -1));
     	
-    	// caregiver
-    	reviewItemLabel = resources.getString(R.string.ccm_general_patient_details_review_caregiver);
-    	reviewItems.add(new ReviewItem(reviewItemLabel, getPageData().getString(CAREGIVER_DATA_KEY), getKey(), -1));
-    	
-    	// relationship / specify relationship
-    	reviewItemLabel = resources.getString(R.string.ccm_general_patient_details_review_relationship);
-    	reviewItemValue = getPageData().getString(RELATIONSHIP_DATA_KEY + RadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
-    	// need to determine if 'Other' was selected as the relationship type
-    	if ((reviewItemValue != null) && 
-    			(reviewItemValue.equalsIgnoreCase(resources.getString(R.string.ccm_general_patient_details_radio_relationship_other)))) {
-    		// in this case we relationship type to the text entered on the 'Specify Relationship' textfield
-    		reviewItemValue = getPageData().getString(RELATIONSHIP_SPECIFIED_DATA_KEY);
-    	}
-    	reviewItems.add(new ReviewItem(reviewItemLabel, reviewItemValue, getKey(), -1)); 	
-    	
-        // physical address
-    	reviewItemLabel = resources.getString(R.string.ccm_general_patient_details_review_physical_address);
-    	reviewItems.add(new ReviewItem(reviewItemLabel, getPageData().getString(PHYSICAL_ADDRESS_DATA_KEY), getKey(), -1));
-        
-        // village/TA
-    	reviewItemLabel = resources.getString(R.string.ccm_general_patient_details_review_village);
-    	reviewItems.add(new ReviewItem(reviewItemLabel, getPageData().getString(VILLAGE_DATA_KEY), getKey(), -1));
+
     }
 
     @Override
@@ -124,18 +77,16 @@ public class AskCcmPage extends AbstractPage {
     }
 
 	/**
-	 * Getter Method: getGeneralPatientDetailsCcmFragment()
-	 * 
+	 * Getter Method: getAskCcmFragment()
 	 */    
-	public GeneralPatientDetailsCcmFragment getGeneralPatientDetailsCcmFragment() {
-		return generalPatientDetailsCcmFragment;
+	public AskCcmFragment getAskCcmFragment() {
+		return askCcmFragment;
 	}
 
 	/**
-	 * Setter Method: setGeneralPatientDetailsCcmFragment()
-	 * 
+	 * Setter Method: setAskCcmFragment()
 	 */		
-	public void setGeneralPatientDetailsCcmFragment(GeneralPatientDetailsCcmFragment generalPatientDetailsCcmFragment) {
-		this.generalPatientDetailsCcmFragment = generalPatientDetailsCcmFragment;
+	public void setAskCcmFragment(AskCcmFragment askCcmFragment) {
+		this.askCcmFragment = askCcmFragment;
 	}
 }

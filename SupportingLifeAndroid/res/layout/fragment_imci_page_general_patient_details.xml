@@ -150,7 +150,7 @@
                 android:layout_marginBottom="10dp"
                 android:gravity="top|left"
                 android:inputType="textMultiLine"
-                android:lines="5"
+                android:lines="3"
                 android:saveEnabled="false"
                 android:scrollHorizontally="false" />
         </LinearLayout>
