@@ -32,6 +32,8 @@ public class AskCcmPage extends AbstractPage {
     public static final String FEVER_DATA_KEY = "FEVER";
     public static final String FEVER_DURATION_DATA_KEY = "FEVER_DURATION";
     public static final String CONVULSIONS_DATA_KEY = "CONVULSIONS";
+    public static final String DRINK_OR_FEED_DIFFICULTY_DATA_KEY = "DRINK_OR_FEED_DIFFICULTY";
+    public static final String UNABLE_TO_DRINK_OR_FEED_DATA_KEY = "UNABLE_TO_DRINK_OR_FEED";
     
     
     private AskCcmFragment askCcmFragment;
@@ -112,8 +114,19 @@ public class AskCcmPage extends AbstractPage {
     	reviewItemLabel = resources.getString(R.string.ccm_ask_assessment_review_convulsions);
     	reviewItemValue = getPageData().getString(CONVULSIONS_DATA_KEY + RadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
     	reviewItemSymptomId = resources.getString(R.string.ccm_ask_assessment_convulsions_symptom_id);
-    	reviewItems.add(new ReviewItem(reviewItemLabel, reviewItemValue, reviewItemSymptomId, getKey(), -1));    	
+    	reviewItems.add(new ReviewItem(reviewItemLabel, reviewItemValue, reviewItemSymptomId, getKey(), -1));
     	
+    	// difficulty drinking or feeding
+    	reviewItemLabel = resources.getString(R.string.ccm_ask_assessment_review_drink_or_feed_difficulty);
+    	reviewItemValue = getPageData().getString(DRINK_OR_FEED_DIFFICULTY_DATA_KEY + RadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
+    	reviewItemSymptomId = resources.getString(R.string.ccm_ask_assessment_drink_or_feed_difficulty_symptom_id);
+    	reviewItems.add(new ReviewItem(reviewItemLabel, reviewItemValue, reviewItemSymptomId, getKey(), -1));
+    	
+    	// unable to drink of feed
+    	reviewItemLabel = resources.getString(R.string.ccm_ask_assessment_review_unable_to_drink_or_feed);
+    	reviewItemValue = getPageData().getString(UNABLE_TO_DRINK_OR_FEED_DATA_KEY + RadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
+    	reviewItemSymptomId = resources.getString(R.string.ccm_ask_assessment_unable_to_drink_or_feed_symptom_id);
+    	reviewItems.add(new ReviewItem(reviewItemLabel, reviewItemValue, reviewItemSymptomId, getKey(), -1));
     }
 
     @Override

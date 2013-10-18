@@ -404,6 +404,9 @@
 	<string name="ccm_ask_assessment_radio_fever_label">Fever (reported or now)?</string>
 	<string name="ccm_ask_assessment_fever_duration_label">Started when? (days)</string>
 	<string name="ccm_ask_assessment_radio_convulsions_label">Convulsions</string>
+	<string name="ccm_ask_assessment_radio_drink_or_feed_difficulty_label">Difficulty drinking or feeding?</string>
+	<string name="ccm_ask_assessment_radio_unable_to_drink_or_feed_label">Not able to drink or feed anything?</string>	
+	
 	
     <!-- Ask Assessment Review -->
     <string name="ccm_ask_assessment_review_problems">Problems</string>
@@ -415,6 +418,9 @@
 	<string name="ccm_ask_assessment_review_fever">Fever (Reported or Now)?</string>
     <string name="ccm_ask_assessment_review_fever_duration">Started When? (days)</string>
 	<string name="ccm_ask_assessment_review_convulsions">Convulsions</string>
+	<string name="ccm_ask_assessment_review_drink_or_feed_difficulty">Difficulty Drinking or Feeding?</string>
+	<string name="ccm_ask_assessment_review_unable_to_drink_or_feed">Not Able to Drink or Feed Anything?</string>		
+	
 	
 	<!-- HINTS -->
 	<string name="ccm_ask_assessment_problems_hint">Please enter child\'s problems</string>

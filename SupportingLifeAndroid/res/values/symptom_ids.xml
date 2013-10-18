@@ -157,5 +157,7 @@
 	<string name="ccm_ask_assessment_fever_symptom_id">fever</string>
 	<string name="ccm_ask_assessment_fever_duration_symptom_id">fever_duration</string>
 	<string name="ccm_ask_assessment_convulsions_symptom_id">convulsions</string>
-    
+	<string name="ccm_ask_assessment_drink_or_feed_difficulty_symptom_id">drink_or_feed_difficulty</string>
+	<string name="ccm_ask_assessment_unable_to_drink_or_feed_symptom_id">not_able_to_drink_or_feed</string>	
+	
 </resources>
