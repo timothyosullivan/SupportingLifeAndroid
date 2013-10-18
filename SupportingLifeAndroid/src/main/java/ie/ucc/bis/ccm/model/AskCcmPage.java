@@ -34,6 +34,8 @@ public class AskCcmPage extends AbstractPage {
     public static final String CONVULSIONS_DATA_KEY = "CONVULSIONS";
     public static final String DRINK_OR_FEED_DIFFICULTY_DATA_KEY = "DRINK_OR_FEED_DIFFICULTY";
     public static final String UNABLE_TO_DRINK_OR_FEED_DATA_KEY = "UNABLE_TO_DRINK_OR_FEED";
+    public static final String VOMITING_DATA_KEY = "VOMITING";
+    public static final String VOMITS_EVERYTHING_DATA_KEY = "VOMITS_EVERYTHING";
     
     
     private AskCcmFragment askCcmFragment;
@@ -127,6 +129,18 @@ public class AskCcmPage extends AbstractPage {
     	reviewItemValue = getPageData().getString(UNABLE_TO_DRINK_OR_FEED_DATA_KEY + RadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
     	reviewItemSymptomId = resources.getString(R.string.ccm_ask_assessment_unable_to_drink_or_feed_symptom_id);
     	reviewItems.add(new ReviewItem(reviewItemLabel, reviewItemValue, reviewItemSymptomId, getKey(), -1));
+    	
+    	// vomiting
+    	reviewItemLabel = resources.getString(R.string.ccm_ask_assessment_review_vomiting);
+    	reviewItemValue = getPageData().getString(VOMITING_DATA_KEY + RadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
+    	reviewItemSymptomId = resources.getString(R.string.ccm_ask_assessment_vomiting_symptom_id);
+    	reviewItems.add(new ReviewItem(reviewItemLabel, reviewItemValue, reviewItemSymptomId, getKey(), -1));
+    	
+    	// vomits everything
+    	reviewItemLabel = resources.getString(R.string.ccm_ask_assessment_review_vomits_everything);
+    	reviewItemValue = getPageData().getString(VOMITS_EVERYTHING_DATA_KEY + RadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
+    	reviewItemSymptomId = resources.getString(R.string.ccm_ask_assessment_vomits_everything_symptom_id);
+    	reviewItems.add(new ReviewItem(reviewItemLabel, reviewItemValue, reviewItemSymptomId, getKey(), -1));	
     }
 
     @Override

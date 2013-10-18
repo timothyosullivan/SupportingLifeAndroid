@@ -406,6 +406,8 @@
 	<string name="ccm_ask_assessment_radio_convulsions_label">Convulsions</string>
 	<string name="ccm_ask_assessment_radio_drink_or_feed_difficulty_label">Difficulty drinking or feeding?</string>
 	<string name="ccm_ask_assessment_radio_unable_to_drink_or_feed_label">Not able to drink or feed anything?</string>	
+	<string name="ccm_ask_assessment_radio_vomiting_label">Vomiting?</string>
+	<string name="ccm_ask_assessment_radio_vomits_everything_label">Vomits everything?</string>
 	
 	
     <!-- Ask Assessment Review -->
@@ -419,7 +421,9 @@
     <string name="ccm_ask_assessment_review_fever_duration">Started When? (days)</string>
 	<string name="ccm_ask_assessment_review_convulsions">Convulsions</string>
 	<string name="ccm_ask_assessment_review_drink_or_feed_difficulty">Difficulty Drinking or Feeding?</string>
-	<string name="ccm_ask_assessment_review_unable_to_drink_or_feed">Not Able to Drink or Feed Anything?</string>		
+	<string name="ccm_ask_assessment_review_unable_to_drink_or_feed">Not Able to Drink or Feed Anything?</string>
+	<string name="ccm_ask_assessment_review_vomiting">Vomiting?</string>
+	<string name="ccm_ask_assessment_review_vomits_everything">Vomits Everything?</string>		
 	
 	
 	<!-- HINTS -->

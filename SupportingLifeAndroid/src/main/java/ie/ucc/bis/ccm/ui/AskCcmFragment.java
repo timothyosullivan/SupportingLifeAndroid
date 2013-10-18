@@ -45,6 +45,8 @@ public class AskCcmFragment extends Fragment {
 	private RadioGroup convulsionsRadioGroup;
 	private RadioGroup drinkFeedDifficultyRadioGroup;
 	private RadioGroup unableDrinkFeedRadioGroup;
+	private RadioGroup vomitingRadioGroup;
+	private RadioGroup vomitsEverythingRadioGroup;
 	private EditText coughDurationEditText;
 	private EditText diarrhoeaDurationEditText;
 	private EditText feverDurationEditText;
@@ -53,14 +55,17 @@ public class AskCcmFragment extends Fragment {
 	private View diarrhoeaView;
 	private View feverView;
 	private View drinkFeedView;
+	private View vomitingView;
 	private DynamicView coughDurationDynamicView;
 	private DynamicView diarrhoeaDurationDynamicView;
 	private DynamicView feverDurationDynamicView;
 	private DynamicView drinkFeedDynamicView;
+	private DynamicView vomitingDynamicView;
 	private Boolean animatedCoughDurationViewInVisibleState;
 	private Boolean animatedDiarrhoeaDurationViewInVisibleState;
 	private Boolean animatedFeverDurationViewInVisibleState;
 	private Boolean animatedUnableDrinkFeedViewInVisibleState;
+	private Boolean animatedVomitsEverythingViewInVisibleState;
 
 	public static AskCcmFragment create(String pageKey) {
 		Bundle args = new Bundle();
@@ -72,6 +77,7 @@ public class AskCcmFragment extends Fragment {
 		fragment.setAnimatedDiarrhoeaDurationViewInVisibleState(false);
 		fragment.setAnimatedFeverDurationViewInVisibleState(false);
 		fragment.setAnimatedUnableDrinkFeedViewInVisibleState(false);
+		fragment.setAnimatedVomitsEverythingViewInVisibleState(false);
 		return fragment;
 	}
 
@@ -123,6 +129,14 @@ public class AskCcmFragment extends Fragment {
 		else {
 			savedInstanceState.putBoolean("animatedUnableDrinkFeedViewInVisibleState", false);
 		}
+		
+		// take record of visibility of 'Vomits Everything' view
+		if (getAnimatedTopLevelView().indexOfChild(getVomitingDynamicView().getWrappedView()) != -1) {
+			savedInstanceState.putBoolean("animatedVomitsEverythingViewInVisibleState", true);
+		}
+		else {
+			savedInstanceState.putBoolean("animatedVomitsEverythingViewInVisibleState", false);
+		}
 		super.onSaveInstanceState(savedInstanceState);
 	}
 
@@ -134,6 +148,7 @@ public class AskCcmFragment extends Fragment {
 			setAnimatedDiarrhoeaDurationViewInVisibleState(savedInstanceState.getBoolean("animatedDiarrhoeaDurationViewInVisibleState"));
 			setAnimatedFeverDurationViewInVisibleState(savedInstanceState.getBoolean("animatedFeverDurationViewInVisibleState"));
 			setAnimatedUnableDrinkFeedViewInVisibleState(savedInstanceState.getBoolean("animatedUnableDrinkFeedViewInVisibleState"));
+			setAnimatedVomitsEverythingViewInVisibleState(savedInstanceState.getBoolean("animatedVomitsEverythingViewInVisibleState"));
 		}
 
 		// restore visibility of 'Cough Duration' view
@@ -154,6 +169,11 @@ public class AskCcmFragment extends Fragment {
 		// restore visibility of 'Not Able to Drink or Feed' view 
 		if (!isAnimatedUnableDrinkFeedViewInVisibleState()) {
 			ViewGroupUtilities.removeDynamicViews(getAnimatedTopLevelView(), Arrays.asList(getDrinkFeedDynamicView()));
+		}
+		
+		// restore visibility of 'Vomits Everything' view
+		if (!isAnimatedVomitsEverythingViewInVisibleState()) {
+			ViewGroupUtilities.removeDynamicViews(getAnimatedTopLevelView(), Arrays.asList(getVomitingDynamicView()));
 		}
 		
 	}
@@ -192,7 +212,10 @@ public class AskCcmFragment extends Fragment {
 		
 		// difficulty drinking or feeding
 		configureDrinkFeedAnimateView(rootView);
-
+		
+		// vomiting
+		configureVomitingAnimateView(rootView);
+		
 		// add soft keyboard handler - essentially hiding soft
 		// keyboard when an EditText is not in focus
 		((SupportingLifeBaseActivity) getActivity()).addSoftKeyboardHandling(rootView);
@@ -309,6 +332,36 @@ public class AskCcmFragment extends Fragment {
 		setDrinkFeedDynamicView(new DynamicView(rootView.findViewById(R.id.ccm_ask_assessment_view_unable_to_drink_or_feed),
 				rootView.findViewById(R.id.ccm_ask_assessment_radio_unable_to_drink_or_feed)));
 	}
+	
+	
+	/**
+	 * configureVomitingAnimateView(View rootView)
+	 * 
+	 * Method responsible for configuring a the dynamic animation of 
+	 * 'vomits everything' radio group
+	 * relating to the 'vomiting' radio button click event.
+	 * 
+	 * @param rootView
+	 * 
+	 */
+	private void configureVomitingAnimateView(View rootView) {
+		// 'vomiting' view
+		setVomitingView((View) rootView.findViewById(R.id.ccm_ask_assessment_view_vomiting));
+
+		// 'vomiting' radio group
+		setVomitingRadioGroup((RadioGroup) rootView.findViewById(R.id.ccm_ask_assessment_radio_vomiting));
+		getVomitingRadioGroup().check(getAskCcmPage()
+				.getPageData().getInt(AskCcmPage.VOMITING_DATA_KEY));
+
+		// 'vomits everything' radio group
+		setVomitsEverythingRadioGroup((RadioGroup) rootView.findViewById(R.id.ccm_ask_assessment_radio_vomits_everything));
+		getVomitsEverythingRadioGroup().check(getAskCcmPage()
+				.getPageData().getInt(AskCcmPage.VOMITS_EVERYTHING_DATA_KEY));
+
+		// 'vomits everything' radio group is a dynamic view within the UI
+		setVomitingDynamicView(new DynamicView(rootView.findViewById(R.id.ccm_ask_assessment_view_vomits_everything),
+				rootView.findViewById(R.id.ccm_ask_assessment_radio_vomits_everything)));
+	}
 
 	@Override
 	public void onAttach(Activity activity) {
@@ -378,7 +431,20 @@ public class AskCcmFragment extends Fragment {
 		// add listener to 'not able to drink or feed anything' radio group
 		getUnableDrinkFeedRadioGroup().setOnCheckedChangeListener(
 				new RadioGroupListener(getAskCcmPage(),
-						AskCcmPage.UNABLE_TO_DRINK_OR_FEED_DATA_KEY));    
+						AskCcmPage.UNABLE_TO_DRINK_OR_FEED_DATA_KEY));
+
+		// add dynamic view listener to 'vomiting' radio group
+        getVomitingRadioGroup().setOnCheckedChangeListener(
+        		new RadioGroupCoordinatorListener(getAskCcmPage(),
+        				AskCcmPage.VOMITING_DATA_KEY, 
+        				Arrays.asList(getVomitingDynamicView()),
+        				getAnimatedTopLevelView(),
+        				getVomitingView()));
+        
+		// add listener to 'vomits everything' radio group
+		getVomitsEverythingRadioGroup().setOnCheckedChangeListener(
+				new RadioGroupListener(getAskCcmPage(),
+						AskCcmPage.VOMITS_EVERYTHING_DATA_KEY));    
 	}
 
 	/**
@@ -758,5 +824,75 @@ public class AskCcmFragment extends Fragment {
 	 */
 	public void setAnimatedUnableDrinkFeedViewInVisibleState(Boolean animatedUnableDrinkFeedViewInVisibleState) {
 		this.animatedUnableDrinkFeedViewInVisibleState = animatedUnableDrinkFeedViewInVisibleState;
+	}
+
+	/**
+	 * Getter Method: getVomitingRadioGroup()
+	 */
+	public RadioGroup getVomitingRadioGroup() {
+		return vomitingRadioGroup;
+	}
+
+	/**
+	 * Setter Method: setVomitingRadioGroup()
+	 */
+	public void setVomitingRadioGroup(RadioGroup vomitingRadioGroup) {
+		this.vomitingRadioGroup = vomitingRadioGroup;
+	}
+
+	/**
+	 * Getter Method: getVomitsEverythingRadioGroup()
+	 */
+	public RadioGroup getVomitsEverythingRadioGroup() {
+		return vomitsEverythingRadioGroup;
+	}
+
+	/**
+	 * Setter Method: setVomitsEverythingRadioGroup()
+	 */
+	public void setVomitsEverythingRadioGroup(RadioGroup vomitsEverythingRadioGroup) {
+		this.vomitsEverythingRadioGroup = vomitsEverythingRadioGroup;
+	}
+
+	/**
+	 * Getter Method: getVomitingView()
+	 */
+	public View getVomitingView() {
+		return vomitingView;
+	}
+
+	/**
+	 * Setter Method: setVomitingView()
+	 */
+	public void setVomitingView(View vomitingView) {
+		this.vomitingView = vomitingView;
+	}
+
+	/**
+	 * Getter Method: getVomitingDynamicView()
+	 */
+	public DynamicView getVomitingDynamicView() {
+		return vomitingDynamicView;
+	}
+
+	/**
+	 * Setter Method: setVomitingDynamicView()
+	 */
+	public void setVomitingDynamicView(DynamicView vomitingDynamicView) {
+		this.vomitingDynamicView = vomitingDynamicView;
+	}
+
+	/**
+	 * Getter Method: isAnimatedVomitsEverythingViewInVisibleState()
+	 */
+	public Boolean isAnimatedVomitsEverythingViewInVisibleState() {
+		return animatedVomitsEverythingViewInVisibleState;
+	}
+
+	/**
+	 * Setter Method: setAnimatedVomitsEverythingViewInVisibleState()
+	 */
+	public void setAnimatedVomitsEverythingViewInVisibleState(Boolean animatedVomitsEverythingViewInVisibleState) {
+		this.animatedVomitsEverythingViewInVisibleState = animatedVomitsEverythingViewInVisibleState;
 	}
 }

@@ -336,7 +336,70 @@
 		                    android:text="@string/assessment_wizard_radio_no" />
 		            </RadioGroup>
 				</LinearLayout>
-	            
+	
+            	<!-- ============================================================ -->
+            	<!-- VOMITING													  -->
+            	<!-- ============================================================ -->
+                <LinearLayout
+					android:id="@+id/ccm_ask_assessment_view_vomiting"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:orientation="vertical">
+		            <TextView
+		                style="@style/AssessmentFormLabel"
+		                android:layout_width="match_parent"
+		                android:layout_height="match_parent"
+		                android:layout_gravity="bottom"
+		                android:text="@string/ccm_ask_assessment_radio_vomiting_label" />
+		
+		            <RadioGroup
+		                android:id="@+id/ccm_ask_assessment_radio_vomiting"
+		                android:layout_width="match_parent"
+		                android:layout_height="wrap_content"
+		                android:orientation="horizontal" >
+		
+		                <RadioButton
+		                    android:id="@+id/ccm_ask_assessment_radio_vomiting_yes"
+		                    android:layout_weight="0.67"
+		                    android:text="@string/assessment_wizard_radio_yes" />
+		
+		                <RadioButton
+		                    android:id="@+id/ccm_ask_assessment_radio_vomiting_no"
+		                    android:layout_weight="0.33"
+		                    android:text="@string/assessment_wizard_radio_no" />
+		            </RadioGroup>
+            	</LinearLayout>
+            	
+				<!-- ============================================================ -->
+				<!-- VOMITS EVERYTHING											  -->
+				<!-- ============================================================ -->
+				<LinearLayout
+					android:id="@+id/ccm_ask_assessment_view_vomits_everything"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:paddingLeft="30dp"
+					android:orientation="vertical">
+					<TextView
+						style="@style/AssessmentFormLabel"
+						android:text="@string/ccm_ask_assessment_radio_vomits_everything_label" />
+			
+		            <RadioGroup
+		                android:id="@+id/ccm_ask_assessment_radio_vomits_everything"
+		                android:layout_width="match_parent"
+		                android:layout_height="wrap_content"
+		                android:orientation="horizontal" >
+		
+		                <RadioButton
+		                    android:id="@+id/ccm_ask_assessment_radio_vomits_everything_yes"
+		                    android:layout_weight="0.67"
+		                    android:text="@string/assessment_wizard_radio_yes" />
+		
+		                <RadioButton
+		                    android:id="@+id/ccm_ask_assessment_radio_vomits_everything_no"
+		                    android:layout_weight="0.33"
+		                    android:text="@string/assessment_wizard_radio_no" />
+		            </RadioGroup>
+				</LinearLayout>
 	            							
 			</LinearLayout> <!-- end of animated top-level view -->
         </LinearLayout>
