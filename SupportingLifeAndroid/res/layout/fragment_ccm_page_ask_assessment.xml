@@ -39,15 +39,16 @@
 				android:scrollHorizontally="false"
 				android:hint="@string/ccm_ask_assessment_problems_hint" />
 	            
-            <!-- ============================================================ -->
-            <!-- COUGH 													  -->
-            <!-- ============================================================ -->
 			<LinearLayout
 				android:id="@+id/ccm_ask_assessment_animated_top_level_view"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
 				android:animateLayoutChanges="true"
 				android:orientation="vertical">
+            	
+            	<!-- ============================================================ -->
+            	<!-- COUGH 													  -->
+            	<!-- ============================================================ -->
                 <LinearLayout
 					android:id="@+id/ccm_ask_assessment_view_cough"
 					android:layout_width="match_parent"
@@ -100,7 +101,62 @@
 			                android:inputType="number"
 			                android:hint="@string/ccm_ask_assessment_cough_duration_hint"/>
 				</LinearLayout>
-				
+
+            	<!-- ============================================================ -->
+            	<!-- DIARRHOEA 													  -->
+            	<!-- ============================================================ -->
+                <LinearLayout
+					android:id="@+id/ccm_ask_assessment_view_diarrhoea"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:orientation="vertical">
+		            <TextView
+		                style="@style/AssessmentFormLabel"
+		                android:layout_width="match_parent"
+		                android:layout_height="match_parent"
+		                android:layout_gravity="bottom"
+		                android:text="@string/ccm_ask_assessment_radio_diarrhoea_label" />
+		
+		            <RadioGroup
+		                android:id="@+id/ccm_ask_assessment_radio_diarrhoea"
+		                android:layout_width="match_parent"
+		                android:layout_height="wrap_content"
+		                android:orientation="horizontal" >
+		
+		                <RadioButton
+		                    android:id="@+id/ccm_ask_assessment_radio_diarrhoea_yes"
+		                    android:layout_weight="0.67"
+		                    android:text="@string/assessment_wizard_radio_yes" />
+		
+		                <RadioButton
+		                    android:id="@+id/ccm_ask_assessment_radio_diarrhoea_no"
+		                    android:layout_weight="0.33"
+		                    android:text="@string/assessment_wizard_radio_no" />
+		            </RadioGroup>
+            	</LinearLayout>
+            	
+				<!-- ============================================================ -->
+				<!-- FOR HOW LONG? (DIARRHOEA DURATION) -->
+				<!-- ============================================================ -->
+				<LinearLayout
+					android:id="@+id/ccm_ask_assessment_view_diarrhoea_duration"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:paddingLeft="30dp"
+					android:orientation="vertical">
+					<TextView
+						android:id="@+id/ccm_ask_assessment_diarrhoea_duration_label"
+						style="@style/AssessmentFormLabel"
+						android:text="@string/ccm_ask_assessment_diarrhoea_duration_label" />
+			
+			            <EditText
+			                android:id="@+id/ccm_ask_assessment_diarrhoea_duration"
+			                android:layout_width="match_parent"
+			                android:layout_height="wrap_content"
+			                android:layout_marginBottom="10dp"
+			                android:inputType="number"
+			                android:hint="@string/ccm_ask_assessment_diarrhoea_duration_hint"/>
+				</LinearLayout>				
 			
 					
 			</LinearLayout> <!-- end of animated top-level view -->

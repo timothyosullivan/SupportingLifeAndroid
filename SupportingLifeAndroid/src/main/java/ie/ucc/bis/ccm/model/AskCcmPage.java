@@ -26,6 +26,8 @@ public class AskCcmPage extends AbstractPage {
 	public static final String PROBLEMS_DATA_KEY = "PROBLEMS";
     public static final String COUGH_DATA_KEY = "COUGH";
     public static final String COUGH_DURATION_DATA_KEY = "COUGH_DURATION";
+    public static final String DIARRHOEA_DATA_KEY = "DIARRHOEA";
+    public static final String DIARRHOEA_DURATION_DATA_KEY = "DIARRHOEA_DURATION";
     
     private AskCcmFragment askCcmFragment;
 
@@ -71,9 +73,19 @@ public class AskCcmPage extends AbstractPage {
     	// cough duration
     	reviewItemLabel = resources.getString(R.string.ccm_ask_assessment_review_cough_duration);
     	reviewItemSymptomId = resources.getString(R.string.ccm_ask_assessment_cough_duration_symptom_id);
-    	reviewItems.add(new ReviewItem(reviewItemLabel, getPageData().getString(COUGH_DURATION_DATA_KEY), reviewItemSymptomId, getKey(), -1));    	
-    	
+    	reviewItems.add(new ReviewItem(reviewItemLabel, getPageData().getString(COUGH_DURATION_DATA_KEY), reviewItemSymptomId, getKey(), -1));
 
+    	// diarrhoea
+    	reviewItemLabel = resources.getString(R.string.ccm_ask_assessment_review_diarrhoea);
+    	reviewItemValue = getPageData().getString(DIARRHOEA_DATA_KEY + RadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
+    	reviewItemSymptomId = resources.getString(R.string.ccm_ask_assessment_diarrhoea_symptom_id);
+    	reviewItems.add(new ReviewItem(reviewItemLabel, reviewItemValue, reviewItemSymptomId, getKey(), -1));
+
+    	// diarrhoea duration
+    	reviewItemLabel = resources.getString(R.string.ccm_ask_assessment_review_diarrhoea_duration);
+    	reviewItemSymptomId = resources.getString(R.string.ccm_ask_assessment_diarrhoea_duration_symptom_id);
+    	reviewItems.add(new ReviewItem(reviewItemLabel, getPageData().getString(DIARRHOEA_DURATION_DATA_KEY), reviewItemSymptomId, getKey(), -1));
+	
     }
 
     @Override

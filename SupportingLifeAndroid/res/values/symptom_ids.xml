@@ -151,5 +151,7 @@
 	<string name="ccm_ask_assessment_problems_symptom_id">problems</string>
 	<string name="ccm_ask_assessment_cough_symptom_id">cough</string>
 	<string name="ccm_ask_assessment_cough_duration_symptom_id">cough_duration</string>
+	<string name="ccm_ask_assessment_diarrhoea_symptom_id">diarrhoea</string>
+	<string name="ccm_ask_assessment_diarrhoea_duration_symptom_id">diarrhoea_duration</string>
     
 </resources>
