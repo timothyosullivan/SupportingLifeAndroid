@@ -264,7 +264,6 @@ public class GeneralPatientDetailsCcmFragment extends Fragment {
 	 * 
 	 */
 	private void addRelationshipDynamicViewListener() {
-        int indexPosition = getAnimatedRelationshipSpecifiedView().indexOfChild(getRelationshipView()) + 1;
         
 		List<String> animateUpRadioButtonTextTriggers = new ArrayList<String>();
 		animateUpRadioButtonTextTriggers.add(getResources().getString(R.string.ccm_general_patient_details_radio_relationship_mother));
@@ -275,7 +274,7 @@ public class GeneralPatientDetailsCcmFragment extends Fragment {
         				GeneralPatientDetailsCcmPage.RELATIONSHIP_DATA_KEY, 
         				Arrays.asList(getRelationshipSpecifiedDynamicView()),
         				getAnimatedRelationshipSpecifiedView(),
-        				indexPosition,
+        				getRelationshipView(),
         				animateUpRadioButtonTextTriggers));
         
         // add listener to 'specify relationship'

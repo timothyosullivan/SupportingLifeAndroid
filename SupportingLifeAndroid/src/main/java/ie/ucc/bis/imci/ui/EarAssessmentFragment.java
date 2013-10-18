@@ -2,8 +2,7 @@ package ie.ucc.bis.imci.ui;
 
 import ie.ucc.bis.R;
 import ie.ucc.bis.activity.SupportingLifeBaseActivity;
-import ie.ucc.bis.assessment.model.listener.AssessmentWizardTextWatcher;
-import ie.ucc.bis.assessment.model.listener.RadioGroupCoordinatorListener;
+import ie.ucc.bis.assessment.model.listener.DynamicViewListenerUtilities;
 import ie.ucc.bis.assessment.model.listener.RadioGroupListener;
 import ie.ucc.bis.imci.model.DynamicView;
 import ie.ucc.bis.imci.model.EarAssessmentPage;
@@ -191,12 +190,7 @@ public class EarAssessmentFragment extends Fragment {
         
         // add dynamic view listener to ear discharge radio group
         addEarDischargeDynamicViewListener();  
-        
-        // add listener to ear discharge duration edit text
-        getEarDischargeDurationEditText().addTextChangedListener(
-        		new AssessmentWizardTextWatcher(getEarAssessmentPage(), 
-        				EarAssessmentPage.EAR_DISCHARGE_DURATION_DATA_KEY));
-        
+                
         // add listener to tender swelling radio group
         getTenderSwellingRadioGroup().setOnCheckedChangeListener(
         		new RadioGroupListener(getEarAssessmentPage(),
@@ -210,14 +204,14 @@ public class EarAssessmentFragment extends Fragment {
 	 * 
 	 */
 	private void addEarDischargeDynamicViewListener() {
-        int indexPosition = getAnimatedView().indexOfChild(getEarDischargeView()) + 1;
-        
-        getEarDischargeRadioGroup().setOnCheckedChangeListener(
-        		new RadioGroupCoordinatorListener(getEarAssessmentPage(),
-        				EarAssessmentPage.EAR_DISCHARGE_DATA_KEY, 
-        				Arrays.asList(getEarDischargeDurationDynamicView()),
-        				getAnimatedView(),
-        				indexPosition));
+		// add dynamic view listener to ear discharge radio group
+		DynamicViewListenerUtilities.addGenericDynamicViewListeners(getEarDischargeView(), 
+				getEarDischargeDurationDynamicView(),
+				getAnimatedView(),
+				getEarDischargeRadioGroup(), getEarDischargeDurationEditText(),
+				EarAssessmentPage.EAR_DISCHARGE_DATA_KEY,
+				EarAssessmentPage.EAR_DISCHARGE_DURATION_DATA_KEY,
+				getResources(), getEarAssessmentPage());
 	}    
     
 

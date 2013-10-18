@@ -153,5 +153,9 @@
 	<string name="ccm_ask_assessment_cough_duration_symptom_id">cough_duration</string>
 	<string name="ccm_ask_assessment_diarrhoea_symptom_id">diarrhoea</string>
 	<string name="ccm_ask_assessment_diarrhoea_duration_symptom_id">diarrhoea_duration</string>
+	<string name="ccm_ask_assessment_blood_in_stool_symptom_id">blood_in_stool</string>
+	<string name="ccm_ask_assessment_fever_symptom_id">fever</string>
+	<string name="ccm_ask_assessment_fever_duration_symptom_id">fever_duration</string>
+	<string name="ccm_ask_assessment_convulsions_symptom_id">convulsions</string>
     
 </resources>

@@ -28,6 +28,11 @@ public class AskCcmPage extends AbstractPage {
     public static final String COUGH_DURATION_DATA_KEY = "COUGH_DURATION";
     public static final String DIARRHOEA_DATA_KEY = "DIARRHOEA";
     public static final String DIARRHOEA_DURATION_DATA_KEY = "DIARRHOEA_DURATION";
+    public static final String BLOOD_IN_STOOL_DATA_KEY = "BLOOD_IN_STOOL";
+    public static final String FEVER_DATA_KEY = "FEVER";
+    public static final String FEVER_DURATION_DATA_KEY = "FEVER_DURATION";
+    public static final String CONVULSIONS_DATA_KEY = "CONVULSIONS";
+    
     
     private AskCcmFragment askCcmFragment;
 
@@ -86,6 +91,29 @@ public class AskCcmPage extends AbstractPage {
     	reviewItemSymptomId = resources.getString(R.string.ccm_ask_assessment_diarrhoea_duration_symptom_id);
     	reviewItems.add(new ReviewItem(reviewItemLabel, getPageData().getString(DIARRHOEA_DURATION_DATA_KEY), reviewItemSymptomId, getKey(), -1));
 	
+    	// blood in stool
+    	reviewItemLabel = resources.getString(R.string.ccm_ask_assessment_review_blood_in_stool);
+    	reviewItemValue = getPageData().getString(BLOOD_IN_STOOL_DATA_KEY + RadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
+    	reviewItemSymptomId = resources.getString(R.string.ccm_ask_assessment_blood_in_stool_symptom_id);
+    	reviewItems.add(new ReviewItem(reviewItemLabel, reviewItemValue, reviewItemSymptomId, getKey(), -1));
+    	
+    	// fever
+    	reviewItemLabel = resources.getString(R.string.ccm_ask_assessment_review_fever);
+    	reviewItemValue = getPageData().getString(FEVER_DATA_KEY + RadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
+    	reviewItemSymptomId = resources.getString(R.string.ccm_ask_assessment_fever_symptom_id);
+    	reviewItems.add(new ReviewItem(reviewItemLabel, reviewItemValue, reviewItemSymptomId, getKey(), -1));
+
+    	// fever duration
+    	reviewItemLabel = resources.getString(R.string.ccm_ask_assessment_review_fever_duration);
+    	reviewItemSymptomId = resources.getString(R.string.ccm_ask_assessment_fever_duration_symptom_id);
+    	reviewItems.add(new ReviewItem(reviewItemLabel, getPageData().getString(FEVER_DURATION_DATA_KEY), reviewItemSymptomId, getKey(), -1));
+    	
+    	// convulsions
+    	reviewItemLabel = resources.getString(R.string.ccm_ask_assessment_review_convulsions);
+    	reviewItemValue = getPageData().getString(CONVULSIONS_DATA_KEY + RadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
+    	reviewItemSymptomId = resources.getString(R.string.ccm_ask_assessment_convulsions_symptom_id);
+    	reviewItems.add(new ReviewItem(reviewItemLabel, reviewItemValue, reviewItemSymptomId, getKey(), -1));    	
+    	
     }
 
     @Override

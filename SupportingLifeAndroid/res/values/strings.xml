@@ -400,19 +400,27 @@
 	<string name="ccm_ask_assessment_cough_duration_label">For how long? (days)</string>
 	<string name="ccm_ask_assessment_radio_diarrhoea_label">Diarrhoea (loose stools)?</string>
 	<string name="ccm_ask_assessment_diarrhoea_duration_label">For how long? (days)</string>
-	
+	<string name="ccm_ask_assessment_radio_blood_in_stool_label">Blood in stool?</string>
+	<string name="ccm_ask_assessment_radio_fever_label">Fever (reported or now)?</string>
+	<string name="ccm_ask_assessment_fever_duration_label">Started when? (days)</string>
+	<string name="ccm_ask_assessment_radio_convulsions_label">Convulsions</string>
 	
     <!-- Ask Assessment Review -->
     <string name="ccm_ask_assessment_review_problems">Problems</string>
     <string name="ccm_ask_assessment_review_cough">Cough</string>
     <string name="ccm_ask_assessment_review_cough_duration">For How Long? (days)</string>
     <string name="ccm_ask_assessment_review_diarrhoea">Diarrhoea</string>
-    <string name="ccm_ask_assessment_review_diarrhoea_duration">For How Long? (days)</string>	
+    <string name="ccm_ask_assessment_review_diarrhoea_duration">For How Long? (days)</string>
+	<string name="ccm_ask_assessment_review_blood_in_stool">Blood in Stool?</string>
+	<string name="ccm_ask_assessment_review_fever">Fever (Reported or Now)?</string>
+    <string name="ccm_ask_assessment_review_fever_duration">Started When? (days)</string>
+	<string name="ccm_ask_assessment_review_convulsions">Convulsions</string>
 	
 	<!-- HINTS -->
 	<string name="ccm_ask_assessment_problems_hint">Please enter child\'s problems</string>
 	<string name="ccm_ask_assessment_cough_duration_hint">Enter value between 1 and 365</string>
 	<string name="ccm_ask_assessment_diarrhoea_duration_hint">Enter value between 1 and 365</string>
+	<string name="ccm_ask_assessment_fever_duration_hint">Enter value between 1 and 365</string>
 	
 	<!-- ============================================================ -->
     <!-- ASSESSMENT WIZARD BREAD-CRUMB UI -->

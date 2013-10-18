@@ -2,15 +2,14 @@ package ie.ucc.bis.imci.ui;
 
 import ie.ucc.bis.R;
 import ie.ucc.bis.activity.SupportingLifeBaseActivity;
-import ie.ucc.bis.assessment.model.AbstractPage;
 import ie.ucc.bis.assessment.model.AbstractModel;
-import ie.ucc.bis.assessment.model.listener.AssessmentWizardTextWatcher;
-import ie.ucc.bis.assessment.model.listener.RadioGroupCoordinatorListener;
+import ie.ucc.bis.assessment.model.AbstractPage;
+import ie.ucc.bis.assessment.model.listener.DynamicViewListenerUtilities;
 import ie.ucc.bis.assessment.model.listener.RadioGroupListener;
-import ie.ucc.bis.imci.model.ImciAssessmentModel;
 import ie.ucc.bis.imci.model.DiarrhoeaAssessmentPage;
 import ie.ucc.bis.imci.model.DynamicView;
 import ie.ucc.bis.imci.model.GeneralDangerSignsPage;
+import ie.ucc.bis.imci.model.ImciAssessmentModel;
 import ie.ucc.bis.ui.custom.InputFilterMinMax;
 import ie.ucc.bis.ui.custom.ToggleButtonGroupTableLayout;
 import ie.ucc.bis.ui.utilities.RadioGroupUtilities;
@@ -242,12 +241,7 @@ public class DiarrhoeaAssessmentFragment extends Fragment {
 
         // add dynamic view listener to diarrhoea radio group
         addDiarrhoeaDynamicViewListener();
-        
-        // for how long? (days) - diarrhoea duration
-        getDiarrhoeaDurationEditText().addTextChangedListener(
-        		new AssessmentWizardTextWatcher(getDiarrhoeaAssessmentPage(), 
-        				DiarrhoeaAssessmentPage.DIARRHOEA_DURATION_DATA_KEY));
-        
+                
         // blood in the stools
         getBloodStoolsRadioGroup().setOnCheckedChangeListener(
         		new RadioGroupListener(getDiarrhoeaAssessmentPage(),
@@ -291,14 +285,14 @@ public class DiarrhoeaAssessmentFragment extends Fragment {
 	 * 
 	 */
 	private void addDiarrhoeaDynamicViewListener() {
-        int indexPosition = getAnimatedView().indexOfChild(getDiarrhoeaView()) + 1;
-        
-        getDiarrhoeaRadioGroup().setOnCheckedChangeListener(
-        		new RadioGroupCoordinatorListener(getDiarrhoeaAssessmentPage(),
-        				DiarrhoeaAssessmentPage.DIARRHOEA_DATA_KEY, 
-        				Arrays.asList(getDiarrhoeaDurationDynamicView()),
-        				getAnimatedView(),
-        				indexPosition));
+		// add dynamic view listener to diarrhoea radio group
+		DynamicViewListenerUtilities.addGenericDynamicViewListeners(getDiarrhoeaView(), 
+				getDiarrhoeaDurationDynamicView(),
+				getAnimatedView(),
+				getDiarrhoeaRadioGroup(), getDiarrhoeaDurationEditText(),
+				DiarrhoeaAssessmentPage.DIARRHOEA_DATA_KEY,
+				DiarrhoeaAssessmentPage.DIARRHOEA_DURATION_DATA_KEY,
+				getResources(), getDiarrhoeaAssessmentPage());
 	}   
     
 	/**

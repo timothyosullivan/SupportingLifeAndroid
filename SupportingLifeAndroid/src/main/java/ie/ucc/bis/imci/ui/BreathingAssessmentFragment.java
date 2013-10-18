@@ -3,7 +3,7 @@ package ie.ucc.bis.imci.ui;
 import ie.ucc.bis.R;
 import ie.ucc.bis.activity.SupportingLifeBaseActivity;
 import ie.ucc.bis.assessment.model.listener.AssessmentWizardTextWatcher;
-import ie.ucc.bis.assessment.model.listener.RadioGroupCoordinatorListener;
+import ie.ucc.bis.assessment.model.listener.DynamicViewListenerUtilities;
 import ie.ucc.bis.assessment.model.listener.RadioGroupListener;
 import ie.ucc.bis.imci.model.BreathingAssessmentPage;
 import ie.ucc.bis.imci.model.DynamicView;
@@ -183,10 +183,6 @@ public class BreathingAssessmentFragment extends Fragment {
         // add dynamic view listener to cough difficult breathing radio group
         addCoughDifficultBreathingDynamicViewListener();  
         
-        getCoughDurationEditText().addTextChangedListener(
-        		new AssessmentWizardTextWatcher(getBreathingAssessmentPage(), 
-        				BreathingAssessmentPage.COUGH_DURATION_DATA_KEY));
-        
         getBreathsPerMinuteEditText().addTextChangedListener(
         		new AssessmentWizardTextWatcher(getBreathingAssessmentPage(), 
         				BreathingAssessmentPage.BREATHS_PER_MINUTE_DATA_KEY));
@@ -207,14 +203,15 @@ public class BreathingAssessmentFragment extends Fragment {
 	 * 
 	 */
 	private void addCoughDifficultBreathingDynamicViewListener() {
-        int indexPosition = getAnimatedView().indexOfChild(getCoughDifficultBreathingView()) + 1;
-        
-        getCoughDifficultBreathingRadioGroup().setOnCheckedChangeListener(
-        		new RadioGroupCoordinatorListener(getBreathingAssessmentPage(),
-        				BreathingAssessmentPage.COUGH_DIFFICULT_BREATHING_DATA_KEY, 
-        				Arrays.asList(getCoughDifficultBreathingDurationDynamicView()),
-        				getAnimatedView(),
-        				indexPosition));
+ 
+		// add dynamic view listener to cough/difficult radio group
+		DynamicViewListenerUtilities.addGenericDynamicViewListeners(getCoughDifficultBreathingView(), 
+				getCoughDifficultBreathingDurationDynamicView(),
+				getAnimatedView(),
+				getCoughDifficultBreathingRadioGroup(), getCoughDurationEditText(),
+				BreathingAssessmentPage.COUGH_DIFFICULT_BREATHING_DATA_KEY, 
+				BreathingAssessmentPage.COUGH_DURATION_DATA_KEY,
+				getResources(), getBreathingAssessmentPage());
 	}    
 
 	/**

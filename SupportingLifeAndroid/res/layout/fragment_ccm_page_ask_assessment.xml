@@ -156,9 +156,123 @@
 			                android:layout_marginBottom="10dp"
 			                android:inputType="number"
 			                android:hint="@string/ccm_ask_assessment_diarrhoea_duration_hint"/>
-				</LinearLayout>				
+				</LinearLayout>
+
+            	<!-- ============================================================ -->
+            	<!-- BLOOD IN STOOL												  -->
+            	<!-- ============================================================ -->
+				<LinearLayout
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:orientation="vertical">
+					<TextView
+					    style="@style/AssessmentFormLabel"
+		                android:layout_width="match_parent"
+		                android:layout_height="match_parent"
+		                android:layout_gravity="bottom"
+		                android:text="@string/ccm_ask_assessment_radio_blood_in_stool_label" />
 			
-					
+		            <RadioGroup
+		                android:id="@+id/ccm_ask_assessment_radio_blood_in_stool"
+		                android:layout_width="match_parent"
+		                android:layout_height="wrap_content"
+		                android:orientation="horizontal" >
+			
+		                <RadioButton
+		                    android:id="@+id/ccm_ask_assessment_radio_blood_in_stool_yes"
+		                    android:layout_weight="0.67"
+		                    android:text="@string/assessment_wizard_radio_yes" />
+			
+		                <RadioButton
+		                    android:id="@+id/ccm_ask_assessment_radio_blood_in_stool_no"
+		                    android:layout_weight="0.33"
+		                    android:text="@string/assessment_wizard_radio_no" />
+		            </RadioGroup>
+	            </LinearLayout>
+
+            	<!-- ============================================================ -->
+            	<!-- FEVER (REPORTED OR NOW)									  -->
+            	<!-- ============================================================ -->
+                <LinearLayout
+					android:id="@+id/ccm_ask_assessment_view_fever"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:orientation="vertical">
+		            <TextView
+		                style="@style/AssessmentFormLabel"
+		                android:layout_width="match_parent"
+		                android:layout_height="match_parent"
+		                android:layout_gravity="bottom"
+		                android:text="@string/ccm_ask_assessment_radio_fever_label" />
+		
+		            <RadioGroup
+		                android:id="@+id/ccm_ask_assessment_radio_fever"
+		                android:layout_width="match_parent"
+		                android:layout_height="wrap_content"
+		                android:orientation="horizontal" >
+		
+		                <RadioButton
+		                    android:id="@+id/ccm_ask_assessment_radio_fever_yes"
+		                    android:layout_weight="0.67"
+		                    android:text="@string/assessment_wizard_radio_yes" />
+		
+		                <RadioButton
+		                    android:id="@+id/ccm_ask_assessment_radio_fever_no"
+		                    android:layout_weight="0.33"
+		                    android:text="@string/assessment_wizard_radio_no" />
+		            </RadioGroup>
+            	</LinearLayout>
+            	
+				<!-- ============================================================ -->
+				<!-- STARTED WHEN? (FEVER DURATION) 							  -->
+				<!-- ============================================================ -->
+				<LinearLayout
+					android:id="@+id/ccm_ask_assessment_view_fever_duration"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:paddingLeft="30dp"
+					android:orientation="vertical">
+					<TextView
+						android:id="@+id/ccm_ask_assessment_fever_duration_label"
+						style="@style/AssessmentFormLabel"
+						android:text="@string/ccm_ask_assessment_fever_duration_label" />
+			
+			            <EditText
+			                android:id="@+id/ccm_ask_assessment_fever_duration"
+			                android:layout_width="match_parent"
+			                android:layout_height="wrap_content"
+			                android:layout_marginBottom="10dp"
+			                android:inputType="number"
+			                android:hint="@string/ccm_ask_assessment_fever_duration_hint"/>
+				</LinearLayout>
+				
+            	<!-- ============================================================ -->
+            	<!-- CONVULSIONS												  -->
+            	<!-- ============================================================ -->
+				<TextView
+				    style="@style/AssessmentFormLabel"
+	                android:layout_width="match_parent"
+	                android:layout_height="match_parent"
+	                android:layout_gravity="bottom"
+	                android:text="@string/ccm_ask_assessment_radio_convulsions_label" />
+		
+	            <RadioGroup
+	                android:id="@+id/ccm_ask_assessment_radio_convulsions"
+	                android:layout_width="match_parent"
+	                android:layout_height="wrap_content"
+	                android:orientation="horizontal" >
+		
+	                <RadioButton
+	                    android:id="@+id/ccm_ask_assessment_radio_convulsions_yes"
+	                    android:layout_weight="0.67"
+	                    android:text="@string/assessment_wizard_radio_yes" />
+		
+	                <RadioButton
+	                    android:id="@+id/ccm_ask_assessment_radio_convulsions_no"
+	                    android:layout_weight="0.33"
+	                    android:text="@string/assessment_wizard_radio_no" />
+	            </RadioGroup>
+								
 			</LinearLayout> <!-- end of animated top-level view -->
         </LinearLayout>
     </ScrollView>

@@ -4,9 +4,9 @@ import ie.ucc.bis.assessment.model.AbstractPage;
 import ie.ucc.bis.imci.model.DynamicView;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.RadioButton;
@@ -23,64 +23,55 @@ import android.widget.RadioGroup.OnCheckedChangeListener;
  *
  */
 public class RadioGroupCoordinatorListener implements OnCheckedChangeListener {
-	
+
 	public static final String RADIO_BUTTON_TEXT_DATA_KEY = "RadioButtonText";
 	public static final String DEFAULT_RADIO_BUTTON_ANIMATE_UP_TEXT = "No";
-	
+
 	private AbstractPage page;
 	private String dataKey;
 	private List<String> radioButtonAnimateUpText;
 	private List<DynamicView> dynamicViews;
 	private ViewGroup parentView;
-	private final int indexPosition;
+	private View animatedView;
 
-	public RadioGroupCoordinatorListener(AbstractPage page, String dataKey, DynamicView dynamicView, 
-			ViewGroup parentView, int indexPosition) {
-		setPage(page);
-		setDataKey(dataKey);
-		setDynamicViews(Arrays.asList(dynamicView));
-		setParentView(parentView);
-		this.indexPosition = indexPosition;
-		
-		List<String> animateUpRadioButtonTextTriggers = new ArrayList<String>();
-		animateUpRadioButtonTextTriggers.add(DEFAULT_RADIO_BUTTON_ANIMATE_UP_TEXT);
-		setRadioButtonAnimateUpText(animateUpRadioButtonTextTriggers);
-	}
-	
 	public RadioGroupCoordinatorListener(AbstractPage page, String dataKey, List<DynamicView> dynamicViews, 
-			ViewGroup parentView, int indexPosition) {
+			ViewGroup parentView, View animatedView) {
 		setPage(page);
 		setDataKey(dataKey);
 		setDynamicViews(dynamicViews);
 		setParentView(parentView);
-		this.indexPosition = indexPosition;
-		
+
 		List<String> animateUpRadioButtonTextTriggers = new ArrayList<String>();
 		animateUpRadioButtonTextTriggers.add(DEFAULT_RADIO_BUTTON_ANIMATE_UP_TEXT);
 		setRadioButtonAnimateUpText(animateUpRadioButtonTextTriggers);
+		
+		setAnimatedView(animatedView);
 	}
-	
+
 	public RadioGroupCoordinatorListener(AbstractPage page, String dataKey, List<DynamicView> dynamicViews, 
-			ViewGroup parentView, int indexPosition, List<String> animateUpTextTriggers) {
+			ViewGroup parentView, View animatedView, List<String> animateUpTextTriggers) {
 		setPage(page);
 		setDataKey(dataKey);
 		setDynamicViews(dynamicViews);
 		setParentView(parentView);
-		this.indexPosition = indexPosition;
+		setAnimatedView(animatedView);
 		setRadioButtonAnimateUpText(animateUpTextTriggers);
 	}
-	
+
 	public void onCheckedChanged(RadioGroup group, int checkedId) {
+
+		int indexPosition = getParentView().indexOfChild(getAnimatedView()) + 1;
+
 		RadioButton radioButton = (RadioButton) group.findViewById(checkedId);
 		// firstly add text label of radio button
 		// needed for displaying review UI screen
-    	getPage().getPageData().putString(dataKey + RADIO_BUTTON_TEXT_DATA_KEY, radioButton.getText().toString());
-    	
-    	// secondly add the id of the radio button
-    	// needed for onCreateView() in relevant Fragment to re-display
-    	// a view from page data
+		getPage().getPageData().putString(dataKey + RADIO_BUTTON_TEXT_DATA_KEY, radioButton.getText().toString());
+
+		// secondly add the id of the radio button
+		// needed for onCreateView() in relevant Fragment to re-display
+		// a view from page data
 		getPage().getPageData().putInt(dataKey, checkedId);
-		
+
 		// Thirdly, need to handle the View(s) that this RadioButton is controlling
 		if (radioButtonAnimateUpEvent(radioButton.getText().toString())) {
 			for (DynamicView dynamicView : getDynamicViews()) {
@@ -90,7 +81,7 @@ public class RadioGroupCoordinatorListener implements OnCheckedChangeListener {
 				else if (dynamicView.getControlledElement() instanceof EditText) {
 					((EditText) dynamicView.getControlledElement()).setText(null);
 				}
-			
+
 				int index = getParentView().indexOfChild(dynamicView.getWrappedView());
 				if (index != -1) {				
 					getParentView().removeViewAt(index);
@@ -99,12 +90,12 @@ public class RadioGroupCoordinatorListener implements OnCheckedChangeListener {
 		}	
 		else { // e.g. user has selected 'YES'
 			for (int counter = 0; counter < getDynamicViews().size(); counter++) {
-				getParentView().addView(getDynamicViews().get(counter).getWrappedView(), getIndexPosition() + counter);
+				getParentView().addView(getDynamicViews().get(counter).getWrappedView(), indexPosition + counter);
 			}
 		}
-	    getPage().notifyDataChanged();
+		getPage().notifyDataChanged();
 	}
-	
+
 	/**
 	 * Method responsible for determining whether an animate up event should occur 
 	 * on the dynamic view given the radio button selected
@@ -114,7 +105,7 @@ public class RadioGroupCoordinatorListener implements OnCheckedChangeListener {
 	 * @return - boolean (if this constitutes an animateUpEvent)
 	 */
 	private boolean radioButtonAnimateUpEvent(String radioButtonClickedText) {
-		
+
 		for (String animateUpText : getRadioButtonAnimateUpText()) {
 			if (animateUpText.equalsIgnoreCase(radioButtonClickedText)) {
 				return true;
@@ -157,7 +148,7 @@ public class RadioGroupCoordinatorListener implements OnCheckedChangeListener {
 	public List<String> getRadioButtonAnimateUpText() {
 		return radioButtonAnimateUpText;
 	}
-	
+
 	/**
 	 * Setter Method: setRadioButtonAnimateUpText()
 	 */
@@ -194,13 +185,17 @@ public class RadioGroupCoordinatorListener implements OnCheckedChangeListener {
 	}
 
 	/**
-	 * Getter Method: getIndexPosition()
-	 * 
-	 * Not: indexPosition is final
-	 * 
+	 * Getter Method: getAnimatedView()
 	 */
-	private int getIndexPosition() {
-		return indexPosition;
+	public View getAnimatedView() {
+		return animatedView;
 	}
-	
+
+	/**
+	 * Setter Method: setAnimatedView()
+	 */
+	public void setAnimatedView(View animatedView) {
+		this.animatedView = animatedView;
+	}
+
 }

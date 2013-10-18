@@ -394,14 +394,13 @@ public class FeverAssessmentFragment extends Fragment {
 	 * 
 	 */
 	private void addMouthUlcersDynamicViewListener() {
-        int indexPosition = getAnimatedView().indexOfChild(getMouthUlcersView()) + 1;
-        
+
         getMouthUlcersRadioGroup().setOnCheckedChangeListener(
         		new RadioGroupCoordinatorListener(getFeverAssessmentPage(),
         				FeverAssessmentPage.MOUTH_ULCERS_DATA_KEY, 
         				Arrays.asList(getDeepMouthUlcersDynamicView(), getExtensiveMouthUlcersDynamicView()),
         				getAnimatedView(),
-        				indexPosition));
+        				getMouthUlcersView()));
 	}
     
 
