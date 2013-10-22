@@ -394,7 +394,7 @@
     <!-- CCM ASSESSMENT WIZARD BREAD-CRUMB UI 						  -->
     <!-- STAGE 2: INITIAL ASK ASSESSMENT							  -->
     <!-- ============================================================ -->
-	<string name="ccm_ask_initial_assessment_title">Initial Ask Assessment</string>
+	<string name="ccm_ask_initial_assessment_title">Ask Assessment (1)</string>
 	<string name="ccm_ask_initial_assessment_problems_label">What are the child\'s problems:</string>
 	<string name="ccm_ask_initial_assessment_radio_cough_label">Cough:</string>
 	<string name="ccm_ask_initial_assessment_cough_duration_label">For how long? (days)</string>
@@ -430,7 +430,7 @@
     <!-- CCM ASSESSMENT WIZARD BREAD-CRUMB UI 						  -->
     <!-- STAGE 3: SECONDARY ASK ASSESSMENT							  -->
     <!-- ============================================================ -->
-	<string name="ccm_ask_secondary_assessment_title">Secondary Ask Assessment</string>
+	<string name="ccm_ask_secondary_assessment_title">Ask Assessment (2)</string>
 	<string name="ccm_ask_secondary_assessment_radio_vomiting_label">Vomiting?</string>
 	<string name="ccm_ask_secondary_assessment_radio_vomits_everything_label">Vomits everything?</string>
 	<string name="ccm_ask_secondary_assessment_radio_red_eyes_label">Red eyes?</string>
@@ -454,7 +454,30 @@
 	<string name="ccm_ask_secondary_assessment_red_eyes_duration_hint">Enter value between 1 and 365</string>
 	<string name="ccm_ask_secondary_assessment_seeing_difficulty_duration_hint">Enter value between 1 and 365</string>
 	<string name="ccm_ask_secondary_assessment_cannot_treat_problems_details_hint">Please enter problems</string>	
-			
+
+    <!-- ============================================================ -->
+    <!-- CCM ASSESSMENT WIZARD BREAD-CRUMB UI 						  -->
+    <!-- STAGE 4: LOOK ASSESSMENT									  -->
+    <!-- ============================================================ -->
+    <string name="ccm_look_assessment_title">Look Assessment</string>
+	<string name="ccm_look_assessment_radio_chest_indrawing_label">Chest indrawing?</string>
+	<string name="ccm_look_assessment_radio_breaths_per_minute_label">Breaths per minute</string>
+	<string name="ccm_look_assessment_radio_very_sleepy_or_unconscious_label">Very sleepy or unconscious?</string>
+	<string name="ccm_look_assessment_radio_palmar_pallor_label">Palmar pallor?</string>
+	<string name="ccm_look_assessment_radio_muac_tape_colour_label">Muac tape colour?</string>
+	<string name="ccm_look_assessment_radio_swelling_of_both_feet_label">Swelling of both feet?</string>
+
+	<!-- Look Assessment Review -->
+	<string name="ccm_look_assessment_review_chest_indrawing">Chest Indrawing?</string>
+	<string name="ccm_look_assessment_review_breaths_per_minute">Breaths per Minute</string>
+	<string name="ccm_look_assessment_review_very_sleepy_or_unconscious">Very Sleepy or Unconscious?</string>
+	<string name="ccm_look_assessment_review_palmar_pallor">Palmar Pallor?</string>
+	<string name="ccm_look_assessment_review_muac_tape_colour">Muac Tape Colour?</string>
+	<string name="ccm_look_assessment_review_swelling_of_both_feet">Swelling of Both Feet?</string>
+	
+	<!-- HINTS -->
+	<string name="ccm_look_assessment_breaths_per_minute_hint">Enter value between 1 and 100</string>
+				
 	<!-- ============================================================ -->
     <!-- ASSESSMENT WIZARD BREAD-CRUMB UI -->
     <!-- UNIVERSAL COMPONENTS -->

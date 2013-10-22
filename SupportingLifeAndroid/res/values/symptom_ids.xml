@@ -173,6 +173,20 @@
 	<string name="ccm_ask_secondary_assessment_seeing_difficulty_symptom_id">seeing_difficulty</string>
 	<string name="ccm_ask_secondary_assessment_seeing_difficulty_duration_symptom_id">seeing_difficulty_duration</string>
 	<string name="ccm_ask_secondary_assessment_cannot_treat_problems_symptom_id">cannot_treat_problems</string>
-	<string name="ccm_ask_secondary_assessment_cannot_treat_problems_details_symptom_id">cannot_treat_problems_details</string>	
+	<string name="ccm_ask_secondary_assessment_cannot_treat_problems_details_symptom_id">cannot_treat_problems_details</string>
+
+    <!-- ============================================================ -->
+    <!-- CCM ASSESSMENT BREAD-CRUMB UI 								  -->
+    <!-- STAGE 4: LOOK ASSESSMENT		 							  -->
+    <!-- ============================================================ -->
+    
+	<!-- Symptom Ids (NOT TO BE TRANSLATED!)-->
+	<string name="ccm_look_assessment_chest_indrawing_symptom_id">chest_indrawing</string>
+	<string name="ccm_look_assessment_breaths_per_minute_symptom_id">breaths_per_minute</string>
+	<string name="ccm_look_assessment_very_sleepy_or_unconscious_symptom_id">very_sleepy_or_unconscious</string>
+	<string name="ccm_look_assessment_palmar_pallor_symptom_id">palmar_pallor</string>
+	<string name="ccm_look_assessment_muac_tape_colour_symptom_id">muac_tape_colour</string>
+	<string name="ccm_look_assessment_swelling_of_both_feet_symptom_id">swelling_of_both_feet</string>
+	
 	
 </resources>

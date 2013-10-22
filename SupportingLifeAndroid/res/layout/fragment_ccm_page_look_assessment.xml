@@ -1,0 +1,173 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/SupportingLifePage"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <!-- ============================================================ -->
+    <!-- ASSESSMENT BREAD-CRUMB WIZARD UI 							  -->
+    <!-- CCM ASSESSMENT PAGE: LOOK ASSESSMENT				  		  -->
+    <!-- ============================================================ -->
+ 
+    <TextView style="@style/WizardPageTitle" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="218dp"
+            android:orientation="vertical" >
+            	
+            <!-- ============================================================ -->
+           	<!-- CHEST INDRAWING 											  -->
+           	<!-- ============================================================ -->
+            <TextView
+                style="@style/AssessmentFormLabel"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="bottom"
+                android:text="@string/ccm_look_assessment_radio_chest_indrawing_label" />
+		
+            <RadioGroup
+                android:id="@+id/ccm_look_assessment_radio_chest_indrawing"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+		
+                <RadioButton
+                    android:id="@+id/ccm_look_assessment_radio_chest_indrawing_yes"
+                    android:layout_weight="0.67"
+                    android:text="@string/assessment_wizard_radio_yes" />
+		
+                <RadioButton
+                    android:id="@+id/ccm_look_assessment_radio_chest_indrawing_no"
+                    android:layout_weight="0.33"
+                    android:text="@string/assessment_wizard_radio_no" />
+            </RadioGroup>
+            	
+			<!-- ============================================================ -->
+			<!-- BREATHS PER MINUTE 										  -->
+			<!-- ============================================================ -->
+			<TextView
+				android:id="@+id/ccm_look_assessment_breaths_per_minute_label"
+				style="@style/AssessmentFormLabel"
+				android:text="@string/ccm_look_assessment_radio_breaths_per_minute_label" />
+			
+            <EditText
+                android:id="@+id/ccm_look_assessment_breaths_per_minute"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:inputType="number"
+                android:hint="@string/ccm_look_assessment_breaths_per_minute_hint"/>
+
+            <!-- ============================================================ -->
+           	<!-- VERY SLEEPY OR UNCONSCIOUS 								  -->
+           	<!-- ============================================================ -->
+            <TextView
+                style="@style/AssessmentFormLabel"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="bottom"
+                android:text="@string/ccm_look_assessment_radio_very_sleepy_or_unconscious_label" />
+		
+            <RadioGroup
+                android:id="@+id/ccm_look_assessment_radio_very_sleepy_or_unconscious"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+		
+                <RadioButton
+                    android:id="@+id/ccm_look_assessment_radio_very_sleepy_or_unconscious_yes"
+                    android:layout_weight="0.67"
+                    android:text="@string/assessment_wizard_radio_yes" />
+		
+                <RadioButton
+                    android:id="@+id/ccm_look_assessment_radio_very_sleepy_or_unconscious_no"
+                    android:layout_weight="0.33"
+                    android:text="@string/assessment_wizard_radio_no" />
+            </RadioGroup>      
+
+            <!-- ============================================================ -->
+           	<!-- PALMAR PALLOR 											  	  -->
+           	<!-- ============================================================ -->
+            <TextView
+                style="@style/AssessmentFormLabel"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="bottom"
+                android:text="@string/ccm_look_assessment_radio_palmar_pallor_label" />
+		
+            <RadioGroup
+                android:id="@+id/ccm_look_assessment_radio_palmar_pallor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+		
+                <RadioButton
+                    android:id="@+id/ccm_look_assessment_radio_palmar_pallor_yes"
+                    android:layout_weight="0.67"
+                    android:text="@string/assessment_wizard_radio_yes" />
+		
+                <RadioButton
+                    android:id="@+id/ccm_look_assessment_radio_palmar_pallor_no"
+                    android:layout_weight="0.33"
+                    android:text="@string/assessment_wizard_radio_no" />
+            </RadioGroup>
+ 
+            <!-- ============================================================ -->
+           	<!-- MUAC TAPE COLOUR 										  	  -->
+           	<!-- ============================================================ -->
+            <TextView
+                style="@style/AssessmentFormLabel"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="bottom"
+                android:text="@string/ccm_look_assessment_radio_muac_tape_colour_label" />
+		
+            <RadioGroup
+                android:id="@+id/ccm_look_assessment_radio_muac_tape_colour"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+		
+                <RadioButton
+                    android:id="@+id/ccm_look_assessment_radio_muac_tape_colour_yes"
+                    android:layout_weight="0.67"
+                    android:text="@string/assessment_wizard_radio_yes" />
+		
+                <RadioButton
+                    android:id="@+id/ccm_look_assessment_radio_muac_tape_colour_no"
+                    android:layout_weight="0.33"
+                    android:text="@string/assessment_wizard_radio_no" />
+            </RadioGroup>
+
+            <!-- ============================================================ -->
+           	<!-- SWELLING OF BOTH FEET 									  	  -->
+           	<!-- ============================================================ -->
+            <TextView
+                style="@style/AssessmentFormLabel"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="bottom"
+                android:text="@string/ccm_look_assessment_radio_swelling_of_both_feet_label" />
+		
+            <RadioGroup
+                android:id="@+id/ccm_look_assessment_radio_swelling_of_both_feet"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+		
+                <RadioButton
+                    android:id="@+id/ccm_look_assessment_radio_swelling_of_both_feet_yes"
+                    android:layout_weight="0.67"
+                    android:text="@string/assessment_wizard_radio_yes" />
+		
+                <RadioButton
+                    android:id="@+id/ccm_look_assessment_radio_swelling_of_both_feet_no"
+                    android:layout_weight="0.33"
+                    android:text="@string/assessment_wizard_radio_no" />
+            </RadioGroup>     
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

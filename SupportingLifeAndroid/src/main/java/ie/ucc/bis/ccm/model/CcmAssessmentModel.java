@@ -14,7 +14,7 @@ public class CcmAssessmentModel extends AbstractModel {
 	public static final String CCM_GENERAL_PATIENT_DETAILS_PAGE_TITLE = "Patient Details";
 	public static final String CCM_INITIAL_ASK_ASSESSMENT_PAGE_TITLE = "Initial Ask Assessment";
 	public static final String CCM_SECONDARY_ASK_ASSESSMENT_PAGE_TITLE = "Secondary Ask Assessment";
-	
+	public static final String LOOK_ASSESSMENT_PAGE_TITLE = "Look Assessment";
 	
 	/**
 	 * Constructor
@@ -33,6 +33,7 @@ public class CcmAssessmentModel extends AbstractModel {
 		 * 1. General Patient Details CCM Page
 		 * 2. Initial Ask Assessment CCM Page
 		 * 3. Secondary Ask Assessment CCM Page
+		 * 4. Look Assessment CCM Page
 		 * 
 		 */
 
@@ -41,7 +42,9 @@ public class CcmAssessmentModel extends AbstractModel {
 				new InitialAskCcmPage(this,
 						CCM_INITIAL_ASK_ASSESSMENT_PAGE_TITLE).setRequired(true),
 				new SecondaryAskCcmPage(this,
-						CCM_SECONDARY_ASK_ASSESSMENT_PAGE_TITLE).setRequired(true));
+						CCM_SECONDARY_ASK_ASSESSMENT_PAGE_TITLE).setRequired(true),
+				new LookCcmPage(this,
+								LOOK_ASSESSMENT_PAGE_TITLE).setRequired(true));
 		
 	}
 }

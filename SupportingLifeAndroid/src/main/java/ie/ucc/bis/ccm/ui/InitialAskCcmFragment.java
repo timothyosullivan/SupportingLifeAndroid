@@ -25,7 +25,7 @@ import android.widget.TextView;
 
 /**
  * Responsible for UI fragment to display CCM 
- * 'Ask' assessment form
+ * Initial 'Ask' assessment form
  * 
  * @author timothyosullivan
  * 
