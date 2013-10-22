@@ -12,7 +12,8 @@ import android.content.Context;
 public class CcmAssessmentModel extends AbstractModel {
 
 	public static final String CCM_GENERAL_PATIENT_DETAILS_PAGE_TITLE = "Patient Details";
-	public static final String CCM_ASK_ASSESSMENT_PAGE_TITLE = "Ask Assessment";
+	public static final String CCM_INITIAL_ASK_ASSESSMENT_PAGE_TITLE = "Initial Ask Assessment";
+	public static final String CCM_SECONDARY_ASK_ASSESSMENT_PAGE_TITLE = "Secondary Ask Assessment";
 	
 	
 	/**
@@ -30,14 +31,17 @@ public class CcmAssessmentModel extends AbstractModel {
 		 * CCM Assessment Pages are as follows:
 		 * 
 		 * 1. General Patient Details CCM Page
-		 * 2. Ask Assessment CCM Page
+		 * 2. Initial Ask Assessment CCM Page
+		 * 3. Secondary Ask Assessment CCM Page
 		 * 
 		 */
 
 		return new PageList(new GeneralPatientDetailsCcmPage(this, 
 				CCM_GENERAL_PATIENT_DETAILS_PAGE_TITLE).setRequired(true),
-				new AskCcmPage(this,
-						CCM_ASK_ASSESSMENT_PAGE_TITLE).setRequired(true));
+				new InitialAskCcmPage(this,
+						CCM_INITIAL_ASK_ASSESSMENT_PAGE_TITLE).setRequired(true),
+				new SecondaryAskCcmPage(this,
+						CCM_SECONDARY_ASK_ASSESSMENT_PAGE_TITLE).setRequired(true));
 		
 	}
 }

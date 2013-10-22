@@ -1,0 +1,278 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/SupportingLifePage"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <!-- ============================================================ -->
+    <!-- ASSESSMENT BREAD-CRUMB WIZARD UI -->
+    <!-- CCM ASSESSMENT PAGE: SECONDARY ASK ASSESSMENT -->
+    <!-- ============================================================ -->
+
+    <TextView style="@style/WizardPageTitle" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <LinearLayout
+            android:id="@+id/ccm_ask_secondary_assessment_animated_top_level_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:animateLayoutChanges="true"
+            android:orientation="vertical" >
+
+            <!-- ============================================================ -->
+            <!-- VOMITING -->
+            <!-- ============================================================ -->
+
+            <LinearLayout
+                android:id="@+id/ccm_ask_secondary_assessment_view_vomiting"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+                <TextView
+                    style="@style/AssessmentFormLabel"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="bottom"
+                    android:text="@string/ccm_ask_secondary_assessment_radio_vomiting_label" />
+
+                <RadioGroup
+                    android:id="@+id/ccm_ask_secondary_assessment_radio_vomiting"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal" >
+
+                    <RadioButton
+                        android:id="@+id/ccm_ask_secondary_assessment_radio_vomiting_yes"
+                        android:layout_weight="0.67"
+                        android:text="@string/assessment_wizard_radio_yes" />
+
+                    <RadioButton
+                        android:id="@+id/ccm_ask_secondary_assessment_radio_vomiting_no"
+                        android:layout_weight="0.33"
+                        android:text="@string/assessment_wizard_radio_no" />
+                </RadioGroup>
+            </LinearLayout>
+
+            <!-- ============================================================ -->
+            <!-- VOMITS EVERYTHING -->
+            <!-- ============================================================ -->
+
+            <LinearLayout
+                android:id="@+id/ccm_ask_secondary_assessment_view_vomits_everything"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingLeft="30dp" >
+
+                <TextView
+                    style="@style/AssessmentFormLabel"
+                    android:text="@string/ccm_ask_secondary_assessment_radio_vomits_everything_label" />
+
+                <RadioGroup
+                    android:id="@+id/ccm_ask_secondary_assessment_radio_vomits_everything"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal" >
+
+                    <RadioButton
+                        android:id="@+id/ccm_ask_secondary_assessment_radio_vomits_everything_yes"
+                        android:layout_weight="0.67"
+                        android:text="@string/assessment_wizard_radio_yes" />
+
+                    <RadioButton
+                        android:id="@+id/ccm_ask_secondary_assessment_radio_vomits_everything_no"
+                        android:layout_weight="0.33"
+                        android:text="@string/assessment_wizard_radio_no" />
+                </RadioGroup>
+            </LinearLayout>
+
+            <!-- ============================================================ -->
+            <!-- RED EYES -->
+            <!-- ============================================================ -->
+
+            <LinearLayout
+                android:id="@+id/ccm_ask_secondary_assessment_view_red_eyes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+                <TextView
+                    style="@style/AssessmentFormLabel"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="bottom"
+                    android:text="@string/ccm_ask_secondary_assessment_radio_red_eyes_label" />
+
+                <RadioGroup
+                    android:id="@+id/ccm_ask_secondary_assessment_radio_red_eyes"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal" >
+
+                    <RadioButton
+                        android:id="@+id/ccm_ask_secondary_assessment_radio_red_eyes_yes"
+                        android:layout_weight="0.67"
+                        android:text="@string/assessment_wizard_radio_yes" />
+
+                    <RadioButton
+                        android:id="@+id/ccm_ask_secondary_assessment_radio_red_eyes_no"
+                        android:layout_weight="0.33"
+                        android:text="@string/assessment_wizard_radio_no" />
+                </RadioGroup>
+            </LinearLayout>
+
+            <!-- ============================================================ -->
+            <!-- FOR HOW LONG? (DAYS) - RED EYES -->
+            <!-- ============================================================ -->
+
+            <LinearLayout
+                android:id="@+id/ccm_ask_secondary_assessment_view_red_eyes_duration"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingLeft="30dp" >
+
+                <TextView
+                    android:id="@+id/ccm_ask_secondary_assessment_red_eyes_duration_label"
+                    style="@style/AssessmentFormLabel"
+                    android:text="@string/ccm_ask_secondary_assessment_red_eyes_duration_label" />
+
+                <EditText
+                    android:id="@+id/ccm_ask_secondary_assessment_red_eyes_duration"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:hint="@string/ccm_ask_secondary_assessment_red_eyes_duration_hint"
+                    android:inputType="number" />
+            </LinearLayout>
+
+            <!-- ============================================================ -->
+            <!-- DIFFICULTY IN SEEING -->
+            <!-- ============================================================ -->
+
+            <LinearLayout
+                android:id="@+id/ccm_ask_secondary_assessment_view_seeing_difficulty"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+                <TextView
+                    style="@style/AssessmentFormLabel"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="bottom"
+                    android:text="@string/ccm_ask_secondary_assessment_radio_seeing_difficulty_label" />
+
+                <RadioGroup
+                    android:id="@+id/ccm_ask_secondary_assessment_radio_seeing_difficulty"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal" >
+
+                    <RadioButton
+                        android:id="@+id/ccm_ask_secondary_assessment_radio_seeing_difficulty_yes"
+                        android:layout_weight="0.67"
+                        android:text="@string/assessment_wizard_radio_yes" />
+
+                    <RadioButton
+                        android:id="@+id/ccm_ask_secondary_assessment_radio_seeing_difficulty_no"
+                        android:layout_weight="0.33"
+                        android:text="@string/assessment_wizard_radio_no" />
+                </RadioGroup>
+            </LinearLayout>
+
+            <!-- ============================================================ -->
+            <!-- FOR HOW LONG? (DAYS) - DIFFICULTY IN SEEING -->
+            <!-- ============================================================ -->
+
+            <LinearLayout
+                android:id="@+id/ccm_ask_secondary_assessment_view_seeing_difficulty_duration"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingLeft="30dp" >
+
+                <TextView
+                    android:id="@+id/ccm_ask_secondary_assessment_seeing_difficulty_duration_label"
+                    style="@style/AssessmentFormLabel"
+                    android:text="@string/ccm_ask_secondary_assessment_seeing_difficulty_duration_label" />
+
+                <EditText
+                    android:id="@+id/ccm_ask_secondary_assessment_seeing_difficulty_duration"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:hint="@string/ccm_ask_secondary_assessment_seeing_difficulty_duration_hint"
+                    android:inputType="number" />
+            </LinearLayout>
+
+            <!-- ============================================================ -->
+            <!-- ANY OTHER PROBLEMS I CANNOT TREAT -->
+            <!-- ============================================================ -->
+
+            <LinearLayout
+                android:id="@+id/ccm_ask_secondary_assessment_view_cannot_treat_problems"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+                <TextView
+                    style="@style/AssessmentFormLabel"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="bottom"
+                    android:text="@string/ccm_ask_secondary_assessment_radio_cannot_treat_problems_label" />
+
+                <RadioGroup
+                    android:id="@+id/ccm_ask_secondary_assessment_radio_cannot_treat_problems"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal" >
+
+                    <RadioButton
+                        android:id="@+id/ccm_ask_secondary_assessment_radio_cannot_treat_problems_yes"
+                        android:layout_weight="0.67"
+                        android:text="@string/assessment_wizard_radio_yes" />
+
+                    <RadioButton
+                        android:id="@+id/ccm_ask_secondary_assessment_radio_cannot_treat_problems_no"
+                        android:layout_weight="0.33"
+                        android:text="@string/assessment_wizard_radio_no" />
+                </RadioGroup>
+            </LinearLayout>
+
+            <!-- ============================================================ -->
+            <!-- SPECIFY 'ANY OTHER PROBLEMS I CANNOT TREAT' -->
+            <!-- ============================================================ -->
+
+            <LinearLayout
+                android:id="@+id/ccm_ask_secondary_assessment_view_cannot_treat_problems_details"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingLeft="30dp" >
+
+                <TextView
+                    android:id="@+id/ccm_ask_secondary_assessment_cannot_treat_problems_details_label"
+                    style="@style/AssessmentFormLabel"
+                    android:text="@string/ccm_ask_secondary_assessment_cannot_treat_problems_details_label" />
+
+                <EditText
+                    android:id="@+id/ccm_ask_secondary_assessment_cannot_treat_problems_details"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:gravity="top|left"
+                    android:hint="@string/ccm_ask_secondary_assessment_cannot_treat_problems_details_hint"
+                    android:inputType="textMultiLine"
+                    android:lines="3"
+                    android:saveEnabled="false"
+                    android:scrollHorizontally="false" />
+            </LinearLayout>
+        </LinearLayout> <!-- end of animated top-level view -->
+    </ScrollView>
+
+</LinearLayout>

@@ -6,7 +6,7 @@ import ie.ucc.bis.assessment.model.listener.AssessmentWizardTextWatcher;
 import ie.ucc.bis.assessment.model.listener.DynamicViewListenerUtilities;
 import ie.ucc.bis.assessment.model.listener.RadioGroupCoordinatorListener;
 import ie.ucc.bis.assessment.model.listener.RadioGroupListener;
-import ie.ucc.bis.ccm.model.AskCcmPage;
+import ie.ucc.bis.ccm.model.InitialAskCcmPage;
 import ie.ucc.bis.imci.model.DynamicView;
 import ie.ucc.bis.imci.ui.PageFragmentCallbacks;
 import ie.ucc.bis.ui.utilities.ViewGroupUtilities;
@@ -30,11 +30,11 @@ import android.widget.TextView;
  * @author timothyosullivan
  * 
  */
-public class AskCcmFragment extends Fragment {
+public class InitialAskCcmFragment extends Fragment {
 
 	private static final String ARG_PAGE_KEY = "PAGE_KEY";
 
-	private AskCcmPage askCcmPage;    
+	private InitialAskCcmPage initialAskCcmPage;    
 	private PageFragmentCallbacks pageFragmentCallbacks;
 	private String pageKey;
 	private EditText problemsEditText;
@@ -45,8 +45,6 @@ public class AskCcmFragment extends Fragment {
 	private RadioGroup convulsionsRadioGroup;
 	private RadioGroup drinkFeedDifficultyRadioGroup;
 	private RadioGroup unableDrinkFeedRadioGroup;
-	private RadioGroup vomitingRadioGroup;
-	private RadioGroup vomitsEverythingRadioGroup;
 	private EditText coughDurationEditText;
 	private EditText diarrhoeaDurationEditText;
 	private EditText feverDurationEditText;
@@ -55,29 +53,25 @@ public class AskCcmFragment extends Fragment {
 	private View diarrhoeaView;
 	private View feverView;
 	private View drinkFeedView;
-	private View vomitingView;
 	private DynamicView coughDurationDynamicView;
 	private DynamicView diarrhoeaDurationDynamicView;
 	private DynamicView feverDurationDynamicView;
 	private DynamicView drinkFeedDynamicView;
-	private DynamicView vomitingDynamicView;
 	private Boolean animatedCoughDurationViewInVisibleState;
 	private Boolean animatedDiarrhoeaDurationViewInVisibleState;
 	private Boolean animatedFeverDurationViewInVisibleState;
 	private Boolean animatedUnableDrinkFeedViewInVisibleState;
-	private Boolean animatedVomitsEverythingViewInVisibleState;
-
-	public static AskCcmFragment create(String pageKey) {
+	
+	public static InitialAskCcmFragment create(String pageKey) {
 		Bundle args = new Bundle();
 		args.putString(ARG_PAGE_KEY, pageKey);
 
-		AskCcmFragment fragment = new AskCcmFragment();
+		InitialAskCcmFragment fragment = new InitialAskCcmFragment();
 		fragment.setArguments(args);
 		fragment.setAnimatedCoughDurationViewInVisibleState(false);
 		fragment.setAnimatedDiarrhoeaDurationViewInVisibleState(false);
 		fragment.setAnimatedFeverDurationViewInVisibleState(false);
 		fragment.setAnimatedUnableDrinkFeedViewInVisibleState(false);
-		fragment.setAnimatedVomitsEverythingViewInVisibleState(false);
 		return fragment;
 	}
 
@@ -85,7 +79,7 @@ public class AskCcmFragment extends Fragment {
 	 * Constructor
 	 *
 	 */
-	public AskCcmFragment() {}
+	public InitialAskCcmFragment() {}
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -93,7 +87,7 @@ public class AskCcmFragment extends Fragment {
 
 		Bundle args = getArguments();
 		setPageKey(args.getString(ARG_PAGE_KEY));
-		setAskCcmPage((AskCcmPage) getPageFragmentCallbacks().getPage(getPageKey()));
+		setInitialAskCcmPage((InitialAskCcmPage) getPageFragmentCallbacks().getPage(getPageKey()));
 	}
 
 	@Override
@@ -113,7 +107,7 @@ public class AskCcmFragment extends Fragment {
 		else {
 			savedInstanceState.putBoolean("animatedDiarrhoeaDurationViewInVisibleState", false);
 		}
-		
+
 		// take record of visibility of 'Fever Duration' view
 		if (getAnimatedTopLevelView().indexOfChild(getFeverDurationDynamicView().getWrappedView()) != -1) {
 			savedInstanceState.putBoolean("animatedFeverDurationViewInVisibleState", true);
@@ -121,21 +115,13 @@ public class AskCcmFragment extends Fragment {
 		else {
 			savedInstanceState.putBoolean("animatedFeverDurationViewInVisibleState", false);
 		}
-		
+
 		// take record of visibility of 'Not Able to Drink or Feed' view
 		if (getAnimatedTopLevelView().indexOfChild(getDrinkFeedDynamicView().getWrappedView()) != -1) {
 			savedInstanceState.putBoolean("animatedUnableDrinkFeedViewInVisibleState", true);
 		}
 		else {
 			savedInstanceState.putBoolean("animatedUnableDrinkFeedViewInVisibleState", false);
-		}
-		
-		// take record of visibility of 'Vomits Everything' view
-		if (getAnimatedTopLevelView().indexOfChild(getVomitingDynamicView().getWrappedView()) != -1) {
-			savedInstanceState.putBoolean("animatedVomitsEverythingViewInVisibleState", true);
-		}
-		else {
-			savedInstanceState.putBoolean("animatedVomitsEverythingViewInVisibleState", false);
 		}
 		super.onSaveInstanceState(savedInstanceState);
 	}
@@ -148,7 +134,6 @@ public class AskCcmFragment extends Fragment {
 			setAnimatedDiarrhoeaDurationViewInVisibleState(savedInstanceState.getBoolean("animatedDiarrhoeaDurationViewInVisibleState"));
 			setAnimatedFeverDurationViewInVisibleState(savedInstanceState.getBoolean("animatedFeverDurationViewInVisibleState"));
 			setAnimatedUnableDrinkFeedViewInVisibleState(savedInstanceState.getBoolean("animatedUnableDrinkFeedViewInVisibleState"));
-			setAnimatedVomitsEverythingViewInVisibleState(savedInstanceState.getBoolean("animatedVomitsEverythingViewInVisibleState"));
 		}
 
 		// restore visibility of 'Cough Duration' view
@@ -160,36 +145,30 @@ public class AskCcmFragment extends Fragment {
 		if (!isAnimatedDiarrhoeaDurationViewInVisibleState()) {
 			ViewGroupUtilities.removeDynamicViews(getAnimatedTopLevelView(), Arrays.asList(getDiarrhoeaDurationDynamicView()));
 		}
-		
+
 		// restore visibility of 'Fever Duration' view 
 		if (!isAnimatedFeverDurationViewInVisibleState()) {
 			ViewGroupUtilities.removeDynamicViews(getAnimatedTopLevelView(), Arrays.asList(getFeverDurationDynamicView()));
 		}
-		
+
 		// restore visibility of 'Not Able to Drink or Feed' view 
 		if (!isAnimatedUnableDrinkFeedViewInVisibleState()) {
 			ViewGroupUtilities.removeDynamicViews(getAnimatedTopLevelView(), Arrays.asList(getDrinkFeedDynamicView()));
 		}
-		
-		// restore visibility of 'Vomits Everything' view
-		if (!isAnimatedVomitsEverythingViewInVisibleState()) {
-			ViewGroupUtilities.removeDynamicViews(getAnimatedTopLevelView(), Arrays.asList(getVomitingDynamicView()));
-		}
-		
 	}
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-		View rootView = inflater.inflate(R.layout.fragment_ccm_page_ask_assessment, container, false);
-		((TextView) rootView.findViewById(android.R.id.title)).setText(getAskCcmPage().getTitle());
+		View rootView = inflater.inflate(R.layout.fragment_ccm_page_initial_ask_assessment, container, false);
+		((TextView) rootView.findViewById(android.R.id.title)).setText(getInitialAskCcmPage().getTitle());
 
 		// get a hold on the top level animated view
-		setAnimatedTopLevelView(((ViewGroup) rootView.findViewById(R.id.ccm_ask_assessment_animated_top_level_view)));
+		setAnimatedTopLevelView(((ViewGroup) rootView.findViewById(R.id.ccm_ask_initial_assessment_animated_top_level_view)));
 
 		// child's problems
-		setProblemsEditText(((EditText) rootView.findViewById(R.id.ccm_ask_assessment_problems)));
-		getProblemsEditText().setText(getAskCcmPage().getPageData().getString(AskCcmPage.PROBLEMS_DATA_KEY));
+		setProblemsEditText(((EditText) rootView.findViewById(R.id.ccm_ask_initial_assessment_problems)));
+		getProblemsEditText().setText(getInitialAskCcmPage().getPageData().getString(InitialAskCcmPage.PROBLEMS_DATA_KEY));
 
 		// cough
 		configureCoughDurationAnimatedView(rootView);
@@ -198,23 +177,20 @@ public class AskCcmFragment extends Fragment {
 		configureDiarrhoeaDurationAnimateView(rootView);
 
 		// blood in stool
-		setBloodInStoolRadioGroup((RadioGroup) rootView.findViewById(R.id.ccm_ask_assessment_radio_blood_in_stool));
-		getBloodInStoolRadioGroup().check(getAskCcmPage()
-				.getPageData().getInt(AskCcmPage.BLOOD_IN_STOOL_DATA_KEY));
+		setBloodInStoolRadioGroup((RadioGroup) rootView.findViewById(R.id.ccm_ask_initial_assessment_radio_blood_in_stool));
+		getBloodInStoolRadioGroup().check(getInitialAskCcmPage()
+				.getPageData().getInt(InitialAskCcmPage.BLOOD_IN_STOOL_DATA_KEY));
 
 		// fever
 		configureFeverDurationAnimateView(rootView);
-		
+
 		// convulsions
-		setConvulsionsRadioGroup((RadioGroup) rootView.findViewById(R.id.ccm_ask_assessment_radio_convulsions));
-		getConvulsionsRadioGroup().check(getAskCcmPage()
-				.getPageData().getInt(AskCcmPage.CONVULSIONS_DATA_KEY));
-		
+		setConvulsionsRadioGroup((RadioGroup) rootView.findViewById(R.id.ccm_ask_initial_assessment_radio_convulsions));
+		getConvulsionsRadioGroup().check(getInitialAskCcmPage()
+				.getPageData().getInt(InitialAskCcmPage.CONVULSIONS_DATA_KEY));
+
 		// difficulty drinking or feeding
 		configureDrinkFeedAnimateView(rootView);
-		
-		// vomiting
-		configureVomitingAnimateView(rootView);
 		
 		// add soft keyboard handler - essentially hiding soft
 		// keyboard when an EditText is not in focus
@@ -234,20 +210,20 @@ public class AskCcmFragment extends Fragment {
 	 */
 	private void configureCoughDurationAnimatedView(View rootView) {
 		// cough view
-		setCoughView((View) rootView.findViewById(R.id.ccm_ask_assessment_view_cough));
+		setCoughView((View) rootView.findViewById(R.id.ccm_ask_initial_assessment_view_cough));
 
 		// cough radio group
-		setCoughRadioGroup((RadioGroup) rootView.findViewById(R.id.ccm_ask_assessment_radio_cough));
-		getCoughRadioGroup().check(getAskCcmPage()
-				.getPageData().getInt(AskCcmPage.COUGH_DATA_KEY));
+		setCoughRadioGroup((RadioGroup) rootView.findViewById(R.id.ccm_ask_initial_assessment_radio_cough));
+		getCoughRadioGroup().check(getInitialAskCcmPage()
+				.getPageData().getInt(InitialAskCcmPage.COUGH_DATA_KEY));
 
 		// cough duration
-		setCoughDurationEditText((EditText) rootView.findViewById(R.id.ccm_ask_assessment_cough_duration));
-		getCoughDurationEditText().setText(getAskCcmPage().getPageData().getString(AskCcmPage.COUGH_DURATION_DATA_KEY));
+		setCoughDurationEditText((EditText) rootView.findViewById(R.id.ccm_ask_initial_assessment_cough_duration));
+		getCoughDurationEditText().setText(getInitialAskCcmPage().getPageData().getString(InitialAskCcmPage.COUGH_DURATION_DATA_KEY));
 
 		// 'cough duration' is a dynamic view within the UI
-		setCoughDurationDynamicView(new DynamicView(rootView.findViewById(R.id.ccm_ask_assessment_view_cough_duration),
-				rootView.findViewById(R.id.ccm_ask_assessment_cough_duration)));
+		setCoughDurationDynamicView(new DynamicView(rootView.findViewById(R.id.ccm_ask_initial_assessment_view_cough_duration),
+				rootView.findViewById(R.id.ccm_ask_initial_assessment_cough_duration)));
 	}
 
 	/**
@@ -261,20 +237,20 @@ public class AskCcmFragment extends Fragment {
 	 */
 	private void configureDiarrhoeaDurationAnimateView(View rootView) {
 		// diarrhoea view
-		setDiarrhoeaView((View) rootView.findViewById(R.id.ccm_ask_assessment_view_diarrhoea));
+		setDiarrhoeaView((View) rootView.findViewById(R.id.ccm_ask_initial_assessment_view_diarrhoea));
 
 		// diarrhoea radio group
-		setDiarrhoeaRadioGroup((RadioGroup) rootView.findViewById(R.id.ccm_ask_assessment_radio_diarrhoea));
-		getDiarrhoeaRadioGroup().check(getAskCcmPage()
-				.getPageData().getInt(AskCcmPage.DIARRHOEA_DATA_KEY));
+		setDiarrhoeaRadioGroup((RadioGroup) rootView.findViewById(R.id.ccm_ask_initial_assessment_radio_diarrhoea));
+		getDiarrhoeaRadioGroup().check(getInitialAskCcmPage()
+				.getPageData().getInt(InitialAskCcmPage.DIARRHOEA_DATA_KEY));
 
 		// diarrhoea duration
-		setDiarrhoeaDurationEditText((EditText) rootView.findViewById(R.id.ccm_ask_assessment_diarrhoea_duration));
-		getDiarrhoeaDurationEditText().setText(getAskCcmPage().getPageData().getString(AskCcmPage.DIARRHOEA_DURATION_DATA_KEY));
+		setDiarrhoeaDurationEditText((EditText) rootView.findViewById(R.id.ccm_ask_initial_assessment_diarrhoea_duration));
+		getDiarrhoeaDurationEditText().setText(getInitialAskCcmPage().getPageData().getString(InitialAskCcmPage.DIARRHOEA_DURATION_DATA_KEY));
 
 		// 'diarrhoea duration' is a dynamic view within the UI
-		setDiarrhoeaDurationDynamicView(new DynamicView(rootView.findViewById(R.id.ccm_ask_assessment_view_diarrhoea_duration),
-				rootView.findViewById(R.id.ccm_ask_assessment_diarrhoea_duration)));
+		setDiarrhoeaDurationDynamicView(new DynamicView(rootView.findViewById(R.id.ccm_ask_initial_assessment_view_diarrhoea_duration),
+				rootView.findViewById(R.id.ccm_ask_initial_assessment_diarrhoea_duration)));
 	}
 
 	/**
@@ -288,22 +264,22 @@ public class AskCcmFragment extends Fragment {
 	 */
 	private void configureFeverDurationAnimateView(View rootView) {
 		// fever view
-		setFeverView((View) rootView.findViewById(R.id.ccm_ask_assessment_view_fever));
+		setFeverView((View) rootView.findViewById(R.id.ccm_ask_initial_assessment_view_fever));
 
 		// fever radio group
-		setFeverRadioGroup((RadioGroup) rootView.findViewById(R.id.ccm_ask_assessment_radio_fever));
-		getFeverRadioGroup().check(getAskCcmPage()
-				.getPageData().getInt(AskCcmPage.FEVER_DATA_KEY));
+		setFeverRadioGroup((RadioGroup) rootView.findViewById(R.id.ccm_ask_initial_assessment_radio_fever));
+		getFeverRadioGroup().check(getInitialAskCcmPage()
+				.getPageData().getInt(InitialAskCcmPage.FEVER_DATA_KEY));
 
 		// fever duration
-		setFeverDurationEditText((EditText) rootView.findViewById(R.id.ccm_ask_assessment_fever_duration));
-		getFeverDurationEditText().setText(getAskCcmPage().getPageData().getString(AskCcmPage.FEVER_DURATION_DATA_KEY));
+		setFeverDurationEditText((EditText) rootView.findViewById(R.id.ccm_ask_initial_assessment_fever_duration));
+		getFeverDurationEditText().setText(getInitialAskCcmPage().getPageData().getString(InitialAskCcmPage.FEVER_DURATION_DATA_KEY));
 
 		// 'fever duration' is a dynamic view within the UI
-		setFeverDurationDynamicView(new DynamicView(rootView.findViewById(R.id.ccm_ask_assessment_view_fever_duration),
-				rootView.findViewById(R.id.ccm_ask_assessment_fever_duration)));
+		setFeverDurationDynamicView(new DynamicView(rootView.findViewById(R.id.ccm_ask_initial_assessment_view_fever_duration),
+				rootView.findViewById(R.id.ccm_ask_initial_assessment_fever_duration)));
 	}
-	
+
 	/**
 	 * configureDrinkFeedAnimateView(View rootView)
 	 * 
@@ -316,51 +292,21 @@ public class AskCcmFragment extends Fragment {
 	 */
 	private void configureDrinkFeedAnimateView(View rootView) {
 		// 'difficulty drinking or feeding' view
-		setDrinkFeedView((View) rootView.findViewById(R.id.ccm_ask_assessment_view_drink_or_feed));
+		setDrinkFeedView((View) rootView.findViewById(R.id.ccm_ask_initial_assessment_view_drink_or_feed));
 
 		// 'difficulty drinking or feeding' radio group
-		setDrinkFeedDifficultyRadioGroup((RadioGroup) rootView.findViewById(R.id.ccm_ask_assessment_radio_drink_or_feed_difficulty));
-		getDrinkFeedDifficultyRadioGroup().check(getAskCcmPage()
-				.getPageData().getInt(AskCcmPage.DRINK_OR_FEED_DIFFICULTY_DATA_KEY));
+		setDrinkFeedDifficultyRadioGroup((RadioGroup) rootView.findViewById(R.id.ccm_ask_initial_assessment_radio_drink_or_feed_difficulty));
+		getDrinkFeedDifficultyRadioGroup().check(getInitialAskCcmPage()
+				.getPageData().getInt(InitialAskCcmPage.DRINK_OR_FEED_DIFFICULTY_DATA_KEY));
 
 		// 'not able to drink or feed anything' radio group
-		setUnableDrinkFeedRadioGroup((RadioGroup) rootView.findViewById(R.id.ccm_ask_assessment_radio_unable_to_drink_or_feed));
-		getUnableDrinkFeedRadioGroup().check(getAskCcmPage()
-				.getPageData().getInt(AskCcmPage.UNABLE_TO_DRINK_OR_FEED_DATA_KEY));
+		setUnableDrinkFeedRadioGroup((RadioGroup) rootView.findViewById(R.id.ccm_ask_initial_assessment_radio_unable_to_drink_or_feed));
+		getUnableDrinkFeedRadioGroup().check(getInitialAskCcmPage()
+				.getPageData().getInt(InitialAskCcmPage.UNABLE_TO_DRINK_OR_FEED_DATA_KEY));
 
 		// 'not able to drink or feed anything' radio group is a dynamic view within the UI
-		setDrinkFeedDynamicView(new DynamicView(rootView.findViewById(R.id.ccm_ask_assessment_view_unable_to_drink_or_feed),
-				rootView.findViewById(R.id.ccm_ask_assessment_radio_unable_to_drink_or_feed)));
-	}
-	
-	
-	/**
-	 * configureVomitingAnimateView(View rootView)
-	 * 
-	 * Method responsible for configuring a the dynamic animation of 
-	 * 'vomits everything' radio group
-	 * relating to the 'vomiting' radio button click event.
-	 * 
-	 * @param rootView
-	 * 
-	 */
-	private void configureVomitingAnimateView(View rootView) {
-		// 'vomiting' view
-		setVomitingView((View) rootView.findViewById(R.id.ccm_ask_assessment_view_vomiting));
-
-		// 'vomiting' radio group
-		setVomitingRadioGroup((RadioGroup) rootView.findViewById(R.id.ccm_ask_assessment_radio_vomiting));
-		getVomitingRadioGroup().check(getAskCcmPage()
-				.getPageData().getInt(AskCcmPage.VOMITING_DATA_KEY));
-
-		// 'vomits everything' radio group
-		setVomitsEverythingRadioGroup((RadioGroup) rootView.findViewById(R.id.ccm_ask_assessment_radio_vomits_everything));
-		getVomitsEverythingRadioGroup().check(getAskCcmPage()
-				.getPageData().getInt(AskCcmPage.VOMITS_EVERYTHING_DATA_KEY));
-
-		// 'vomits everything' radio group is a dynamic view within the UI
-		setVomitingDynamicView(new DynamicView(rootView.findViewById(R.id.ccm_ask_assessment_view_vomits_everything),
-				rootView.findViewById(R.id.ccm_ask_assessment_radio_vomits_everything)));
+		setDrinkFeedDynamicView(new DynamicView(rootView.findViewById(R.id.ccm_ask_initial_assessment_view_unable_to_drink_or_feed),
+				rootView.findViewById(R.id.ccm_ask_initial_assessment_radio_unable_to_drink_or_feed)));
 	}
 
 	@Override
@@ -386,79 +332,66 @@ public class AskCcmFragment extends Fragment {
 
 		// child's problems
 		getProblemsEditText().addTextChangedListener(
-				new AssessmentWizardTextWatcher(getAskCcmPage(), 
-						AskCcmPage.PROBLEMS_DATA_KEY));
+				new AssessmentWizardTextWatcher(getInitialAskCcmPage(), 
+						InitialAskCcmPage.PROBLEMS_DATA_KEY));
 
 		// add dynamic view listener to cough radio group
 		DynamicViewListenerUtilities.addGenericDynamicViewListeners(getCoughView(), getCoughDurationDynamicView(),
 				getAnimatedTopLevelView(),
 				getCoughRadioGroup(), getCoughDurationEditText(),
-				AskCcmPage.COUGH_DATA_KEY, AskCcmPage.COUGH_DURATION_DATA_KEY, 
-				getResources(), getAskCcmPage());
+				InitialAskCcmPage.COUGH_DATA_KEY, InitialAskCcmPage.COUGH_DURATION_DATA_KEY, 
+				getResources(), getInitialAskCcmPage());
 
 		// add dynamic view listener to diarrhoea radio group
 		DynamicViewListenerUtilities.addGenericDynamicViewListeners(getDiarrhoeaView(), getDiarrhoeaDurationDynamicView(),
 				getAnimatedTopLevelView(),
 				getDiarrhoeaRadioGroup(), getDiarrhoeaDurationEditText(),
-				AskCcmPage.DIARRHOEA_DATA_KEY, AskCcmPage.DIARRHOEA_DURATION_DATA_KEY,
-				getResources(), getAskCcmPage());
+				InitialAskCcmPage.DIARRHOEA_DATA_KEY, InitialAskCcmPage.DIARRHOEA_DURATION_DATA_KEY,
+				getResources(), getInitialAskCcmPage());
 
 		// add listener to blood in stool radio group
 		getBloodInStoolRadioGroup().setOnCheckedChangeListener(
-				new RadioGroupListener(getAskCcmPage(),
-						AskCcmPage.BLOOD_IN_STOOL_DATA_KEY));		 
+				new RadioGroupListener(getInitialAskCcmPage(),
+						InitialAskCcmPage.BLOOD_IN_STOOL_DATA_KEY));		 
 
 		// add dynamic view listener to fever radio group
 		DynamicViewListenerUtilities.addGenericDynamicViewListeners(getFeverView(), getFeverDurationDynamicView(),
 				getAnimatedTopLevelView(),
 				getFeverRadioGroup(), getFeverDurationEditText(),
-				AskCcmPage.FEVER_DATA_KEY, AskCcmPage.FEVER_DURATION_DATA_KEY,
-				getResources(), getAskCcmPage());
-		
+				InitialAskCcmPage.FEVER_DATA_KEY, InitialAskCcmPage.FEVER_DURATION_DATA_KEY,
+				getResources(), getInitialAskCcmPage());
+
 		// add listener to convulsions radio group
 		getConvulsionsRadioGroup().setOnCheckedChangeListener(
-				new RadioGroupListener(getAskCcmPage(),
-						AskCcmPage.CONVULSIONS_DATA_KEY));
+				new RadioGroupListener(getInitialAskCcmPage(),
+						InitialAskCcmPage.CONVULSIONS_DATA_KEY));
 
 		// add dynamic view listener to 'difficulty drinking or feeding' radio group
-        getDrinkFeedDifficultyRadioGroup().setOnCheckedChangeListener(
-        		new RadioGroupCoordinatorListener(getAskCcmPage(),
-        				AskCcmPage.DRINK_OR_FEED_DIFFICULTY_DATA_KEY, 
-        				Arrays.asList(getDrinkFeedDynamicView()),
-        				getAnimatedTopLevelView(),
-        				getDrinkFeedView()));
-        
+		getDrinkFeedDifficultyRadioGroup().setOnCheckedChangeListener(
+				new RadioGroupCoordinatorListener(getInitialAskCcmPage(),
+						InitialAskCcmPage.DRINK_OR_FEED_DIFFICULTY_DATA_KEY, 
+						Arrays.asList(getDrinkFeedDynamicView()),
+						getAnimatedTopLevelView(),
+						getDrinkFeedView()));
+
 		// add listener to 'not able to drink or feed anything' radio group
 		getUnableDrinkFeedRadioGroup().setOnCheckedChangeListener(
-				new RadioGroupListener(getAskCcmPage(),
-						AskCcmPage.UNABLE_TO_DRINK_OR_FEED_DATA_KEY));
-
-		// add dynamic view listener to 'vomiting' radio group
-        getVomitingRadioGroup().setOnCheckedChangeListener(
-        		new RadioGroupCoordinatorListener(getAskCcmPage(),
-        				AskCcmPage.VOMITING_DATA_KEY, 
-        				Arrays.asList(getVomitingDynamicView()),
-        				getAnimatedTopLevelView(),
-        				getVomitingView()));
-        
-		// add listener to 'vomits everything' radio group
-		getVomitsEverythingRadioGroup().setOnCheckedChangeListener(
-				new RadioGroupListener(getAskCcmPage(),
-						AskCcmPage.VOMITS_EVERYTHING_DATA_KEY));    
+				new RadioGroupListener(getInitialAskCcmPage(),
+						InitialAskCcmPage.UNABLE_TO_DRINK_OR_FEED_DATA_KEY));
 	}
 
 	/**
-	 * Getter Method: getAskCcmPage()
+	 * Getter Method: getInitialAskCcmPage()
 	 */
-	public AskCcmPage getAskCcmPage() {
-		return askCcmPage;
+	public InitialAskCcmPage getInitialAskCcmPage() {
+		return initialAskCcmPage;
 	}
 
 	/**
-	 * Setter Method: setAskCcmPage()
+	 * Setter Method: setInitialAskCcmPage()
 	 */   	
-	public void setAskCcmPage(AskCcmPage askCcmPage) {
-		this.askCcmPage = askCcmPage;
+	public void setInitialAskCcmPage(InitialAskCcmPage initialAskCcmPage) {
+		this.initialAskCcmPage = initialAskCcmPage;
 	}
 
 	/**
@@ -558,7 +491,7 @@ public class AskCcmFragment extends Fragment {
 	public void setFeverRadioGroup(RadioGroup feverRadioGroup) {
 		this.feverRadioGroup = feverRadioGroup;
 	}
-	
+
 	/**
 	 * Getter Method: getConvulsionsRadioGroup()
 	 */
@@ -572,7 +505,7 @@ public class AskCcmFragment extends Fragment {
 	public void setConvulsionsRadioGroup(RadioGroup convulsionsRadioGroup) {
 		this.convulsionsRadioGroup = convulsionsRadioGroup;
 	}
-	
+
 	/**
 	 * Getter Method: getDrinkFeedDifficultyRadioGroup()
 	 */
@@ -600,7 +533,7 @@ public class AskCcmFragment extends Fragment {
 	public void setUnableDrinkFeedRadioGroup(RadioGroup unableDrinkFeedRadioGroup) {
 		this.unableDrinkFeedRadioGroup = unableDrinkFeedRadioGroup;
 	}
-	
+
 	/**
 	 * Getter Method: getCoughDurationEditText()
 	 */
@@ -684,7 +617,7 @@ public class AskCcmFragment extends Fragment {
 	public void setDiarrhoeaView(View diarrhoeaView) {
 		this.diarrhoeaView = diarrhoeaView;
 	}
-	
+
 	/**
 	 * Getter Method: getFeverView()
 	 */
@@ -740,7 +673,7 @@ public class AskCcmFragment extends Fragment {
 	public void setDiarrhoeaDurationDynamicView(DynamicView diarrhoeaDurationDynamicView) {
 		this.diarrhoeaDurationDynamicView = diarrhoeaDurationDynamicView;
 	}
-	
+
 	/**
 	 * Getter Method: getFeverDurationDynamicView()
 	 */
@@ -768,7 +701,6 @@ public class AskCcmFragment extends Fragment {
 	public void setDrinkFeedDynamicView(DynamicView drinkFeedDynamicView) {
 		this.drinkFeedDynamicView = drinkFeedDynamicView;
 	}
-
 	
 	/**
 	 * Getter Method: isAnimatedCoughDurationViewInVisibleState()
@@ -776,7 +708,7 @@ public class AskCcmFragment extends Fragment {
 	public Boolean isAnimatedCoughDurationViewInVisibleState() {
 		return animatedCoughDurationViewInVisibleState;
 	}
-	
+
 	/**
 	 * Setter Method: setAnimatedCoughDurationViewInVisibleState()
 	 */
@@ -824,75 +756,5 @@ public class AskCcmFragment extends Fragment {
 	 */
 	public void setAnimatedUnableDrinkFeedViewInVisibleState(Boolean animatedUnableDrinkFeedViewInVisibleState) {
 		this.animatedUnableDrinkFeedViewInVisibleState = animatedUnableDrinkFeedViewInVisibleState;
-	}
-
-	/**
-	 * Getter Method: getVomitingRadioGroup()
-	 */
-	public RadioGroup getVomitingRadioGroup() {
-		return vomitingRadioGroup;
-	}
-
-	/**
-	 * Setter Method: setVomitingRadioGroup()
-	 */
-	public void setVomitingRadioGroup(RadioGroup vomitingRadioGroup) {
-		this.vomitingRadioGroup = vomitingRadioGroup;
-	}
-
-	/**
-	 * Getter Method: getVomitsEverythingRadioGroup()
-	 */
-	public RadioGroup getVomitsEverythingRadioGroup() {
-		return vomitsEverythingRadioGroup;
-	}
-
-	/**
-	 * Setter Method: setVomitsEverythingRadioGroup()
-	 */
-	public void setVomitsEverythingRadioGroup(RadioGroup vomitsEverythingRadioGroup) {
-		this.vomitsEverythingRadioGroup = vomitsEverythingRadioGroup;
-	}
-
-	/**
-	 * Getter Method: getVomitingView()
-	 */
-	public View getVomitingView() {
-		return vomitingView;
-	}
-
-	/**
-	 * Setter Method: setVomitingView()
-	 */
-	public void setVomitingView(View vomitingView) {
-		this.vomitingView = vomitingView;
-	}
-
-	/**
-	 * Getter Method: getVomitingDynamicView()
-	 */
-	public DynamicView getVomitingDynamicView() {
-		return vomitingDynamicView;
-	}
-
-	/**
-	 * Setter Method: setVomitingDynamicView()
-	 */
-	public void setVomitingDynamicView(DynamicView vomitingDynamicView) {
-		this.vomitingDynamicView = vomitingDynamicView;
-	}
-
-	/**
-	 * Getter Method: isAnimatedVomitsEverythingViewInVisibleState()
-	 */
-	public Boolean isAnimatedVomitsEverythingViewInVisibleState() {
-		return animatedVomitsEverythingViewInVisibleState;
-	}
-
-	/**
-	 * Setter Method: setAnimatedVomitsEverythingViewInVisibleState()
-	 */
-	public void setAnimatedVomitsEverythingViewInVisibleState(Boolean animatedVomitsEverythingViewInVisibleState) {
-		this.animatedVomitsEverythingViewInVisibleState = animatedVomitsEverythingViewInVisibleState;
 	}
 }
