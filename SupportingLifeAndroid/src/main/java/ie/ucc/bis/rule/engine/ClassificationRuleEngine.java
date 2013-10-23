@@ -47,11 +47,12 @@ public class ClassificationRuleEngine {
 	private static final String LOG_TAG = "ie.ucc.bis.rule.engine.ClassificationRuleEngine";
 	
 	private static ArrayList<Classification> systemImciClassifications;
+	private static ArrayList<Classification> systemCcmClassifications;
 	
 
 	/**
 	 * 
-	 * Responsible for reading classification rules from xml into memory
+	 * Responsible for reading IMCI classification rules from xml into memory
 	 * 
 	 * @param supportingLifeBaseActivity 
 	 * 
@@ -60,6 +61,21 @@ public class ClassificationRuleEngine {
 		XmlResourceParser xmlParser = supportingLifeBaseActivity.getResources().getXml(R.xml.imci_classification_rules);
 		setSystemImciClassifications(new ArrayList<Classification>());
 		parseClassificationRules(supportingLifeBaseActivity, getSystemImciClassifications(), xmlParser);
+	}
+	
+	/**
+	 * 
+	 * Responsible for reading CCM classification rules from xml into memory
+	 * 
+	 * @param supportingLifeBaseActivity 
+	 * 
+	 */
+	public void readCcmClassificationRules(SupportingLifeBaseActivity supportingLifeBaseActivity) {
+		XmlResourceParser xmlParser = supportingLifeBaseActivity.getResources().getXml(R.xml.ccm_classification_rules);
+		setSystemCcmClassifications(new ArrayList<Classification>());
+		parseClassificationRules(supportingLifeBaseActivity, getSystemCcmClassifications(), xmlParser);
+		
+		LoggerUtils.i(LOG_TAG, captureClassificationDebugOutput(getSystemCcmClassifications()));
 	}
 	
 	/**
@@ -135,7 +151,7 @@ public class ClassificationRuleEngine {
 							symptomId = xmlParser.nextText();
 							int identifier = supportingLifeBaseActivity.getResources().getIdentifier(symptomId, "string", "ie.ucc.bis");
 
-							symptomName = supportingLifeBaseActivity.getResources().getString(identifier);							
+							symptomName = supportingLifeBaseActivity.getResources().getString(identifier);
 							Symptom symptom = new Symptom(symptomName, valueAttrib);								
 							symptomRule.getSymptoms().add(symptom);
 						}
@@ -437,5 +453,19 @@ public class ClassificationRuleEngine {
 	 */
 	public void setSystemImciClassifications(ArrayList<Classification> systemImciClassifications) {
 		ClassificationRuleEngine.systemImciClassifications = systemImciClassifications;
+	}
+	
+	/**
+	 * Getter Method: getSystemCcmClassifications()
+	 */	
+	public ArrayList<Classification> getSystemCcmClassifications() {
+		return ClassificationRuleEngine.systemCcmClassifications;
+	}
+
+	/**
+	 * Setter Method: setSystemCcmClassifications()
+	 */
+	public void setSystemCcmClassifications(ArrayList<Classification> systemCcmClassifications) {
+		ClassificationRuleEngine.systemCcmClassifications = systemCcmClassifications;
 	}
 }

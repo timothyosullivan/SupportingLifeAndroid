@@ -75,13 +75,13 @@
 		<Type>SICK</Type>
 		<Priority>3</Priority>
 		<SymptomRule rule="ANY_SYMPTOM">
-			<Symptom value="yes">ccm_ask_initial_assessment_diarrhoea_symptom_id</Symptom>									<!-- Diarrhoea : YES -->
+			<Symptom value="yes">ccm_ask_initial_assessment_diarrhoea_symptom_id</Symptom>							<!-- Diarrhoea : YES -->
 		</SymptomRule>
 		<SymptomRule rule="ANY_SYMPTOM">
-			<Symptom value="yes">ccm_ask_initial_assessment_diarrhoea_duration_less_than_fourteen_days_symptom_id</Symptom> <!-- Diarrhoea less than 14 Days : YES -->
+			<Symptom value="no">ccm_ask_initial_assessment_diarrhoea_duration_fourteen_days_symptom_id</Symptom> 	<!-- Diarrhoea less than 14 Days : YES -->
 		</SymptomRule>
 		<SymptomRule rule="ANY_SYMPTOM">
-			<Symptom value="no">ccm_ask_initial_assessment_blood_in_stool_symptom_id</Symptom> 								<!-- Blood in Stool : NO -->
+			<Symptom value="no">ccm_ask_initial_assessment_blood_in_stool_symptom_id</Symptom> 						<!-- Blood in Stool : NO -->
 		</SymptomRule>
 	</Classification>
 	
@@ -97,10 +97,10 @@
 		<Type>DANGER SIGN</Type>
 		<Priority>1</Priority>
 		<SymptomRule rule="ANY_SYMPTOM">
-			<Symptom value="yes">ccm_ask_initial_assessment_fever_symptom_id</Symptom>										<!-- Fever : YES -->
+			<Symptom value="yes">ccm_ask_initial_assessment_fever_symptom_id</Symptom>								<!-- Fever : YES -->
 		</SymptomRule>
 		<SymptomRule rule="ANY_SYMPTOM">
-			<Symptom value="yes">ccm_ask_initial_assessment_fever_duration_more_than_seven_days_symptom_id</Symptom>		<!-- Fever 7 Days ago or more : YES -->
+			<Symptom value="yes">ccm_ask_initial_assessment_fever_duration_seven_days_symptom_id</Symptom>			<!-- Fever 7 Days ago or more : YES -->
 		</SymptomRule>
 	</Classification>
 
@@ -116,10 +116,10 @@
 		<Type>SICK</Type>
 		<Priority>3</Priority>
 		<SymptomRule rule="ANY_SYMPTOM">
-			<Symptom value="yes">ccm_ask_initial_assessment_fever_symptom_id</Symptom>										<!-- Fever : YES -->
+			<Symptom value="yes">ccm_ask_initial_assessment_fever_symptom_id</Symptom>								<!-- Fever : YES -->
 		</SymptomRule>
 		<SymptomRule rule="ANY_SYMPTOM">
-			<Symptom value="no">ccm_ask_initial_assessment_fever_duration_more_than_seven_days_symptom_id</Symptom>			<!-- Fever less than 7 Days : YES -->
+			<Symptom value="no">ccm_ask_initial_assessment_fever_duration_seven_days_symptom_id</Symptom>			<!-- Fever less than 7 Days : YES -->
 		</SymptomRule>
 	</Classification>
 
@@ -133,7 +133,7 @@
 		<Type>DANGER SIGN</Type>
 		<Priority>1</Priority>
 		<SymptomRule rule="ANY_SYMPTOM">
-			<Symptom value="yes">ccm_ask_initial_assessment_convulsions_symptom_id</Symptom>								<!-- Convulsions : YES -->
+			<Symptom value="yes">ccm_ask_initial_assessment_convulsions_symptom_id</Symptom>						<!-- Convulsions : YES -->
 		</SymptomRule>
 	</Classification>
 
@@ -149,10 +149,10 @@
 		<Type>DANGER SIGN</Type>
 		<Priority>1</Priority>
 		<SymptomRule rule="ANY_SYMPTOM">
-			<Symptom value="yes">ccm_ask_initial_assessment_drink_or_feed_difficulty_symptom_id</Symptom>					<!-- Difficulty Drinking or Feeding : YES -->
+			<Symptom value="yes">ccm_ask_initial_assessment_drink_or_feed_difficulty_symptom_id</Symptom>			<!-- Difficulty Drinking or Feeding : YES -->
 		</SymptomRule>
 		<SymptomRule rule="ANY_SYMPTOM">
-			<Symptom value="yes">ccm_ask_initial_assessment_unable_to_drink_or_feed_symptom_id</Symptom>					<!-- Not Able to Drink or Feed Anything : YES -->
+			<Symptom value="yes">ccm_ask_initial_assessment_unable_to_drink_or_feed_symptom_id</Symptom>			<!-- Not Able to Drink or Feed Anything : YES -->
 		</SymptomRule>
 	</Classification>
 
@@ -168,10 +168,10 @@
 		<Type>DANGER SIGN</Type>
 		<Priority>1</Priority>
 		<SymptomRule rule="ANY_SYMPTOM">
-			<Symptom value="yes">ccm_ask_secondary_assessment_vomiting_symptom_id</Symptom>									<!-- Vomiting : YES -->
+			<Symptom value="yes">ccm_ask_secondary_assessment_vomiting_symptom_id</Symptom>							<!-- Vomiting : YES -->
 		</SymptomRule>
 		<SymptomRule rule="ANY_SYMPTOM">
-			<Symptom value="yes">ccm_ask_secondary_assessment_vomits_everything_symptom_id</Symptom>						<!-- Vomits Everything : YES -->
+			<Symptom value="yes">ccm_ask_secondary_assessment_vomits_everything_symptom_id</Symptom>				<!-- Vomits Everything : YES -->
 		</SymptomRule>
 	</Classification>
 
@@ -187,10 +187,10 @@
 		<Type>DANGER SIGN</Type>
 		<Priority>1</Priority>
 		<SymptomRule rule="ANY_SYMPTOM">
-			<Symptom value="yes">ccm_ask_secondary_assessment_red_eyes_symptom_id</Symptom>									<!-- Red Eyes : YES -->
+			<Symptom value="yes">ccm_ask_secondary_assessment_red_eyes_symptom_id</Symptom>							<!-- Red Eyes : YES -->
 		</SymptomRule>
 		<SymptomRule rule="ANY_SYMPTOM">
-			<Symptom value="yes">ccm_ask_initial_assessment_red_eyes_duration_more_than_four_days_symptom_id</Symptom>		<!-- Red Eyes for 4 Days or more : YES -->
+			<Symptom value="yes">ccm_ask_initial_assessment_red_eyes_duration_four_days_symptom_id</Symptom>		<!-- Red Eyes for 4 Days or more : YES -->
 		</SymptomRule>
 	</Classification>
 
@@ -206,10 +206,10 @@
 		<Type>DANGER SIGN</Type>
 		<Priority>1</Priority>
 		<SymptomRule rule="ANY_SYMPTOM">
-			<Symptom value="yes">ccm_ask_secondary_assessment_red_eyes_symptom_id</Symptom>									<!-- Red Eyes : YES -->
+			<Symptom value="yes">ccm_ask_secondary_assessment_red_eyes_symptom_id</Symptom>							<!-- Red Eyes : YES -->
 		</SymptomRule>
 		<SymptomRule rule="ANY_SYMPTOM">
-			<Symptom value="yes">ccm_ask_secondary_assessment_seeing_difficulty_symptom_id</Symptom>						<!-- Difficulty in Seeing : YES -->
+			<Symptom value="yes">ccm_ask_secondary_assessment_seeing_difficulty_symptom_id</Symptom>				<!-- Difficulty in Seeing : YES -->
 		</SymptomRule>
 	</Classification>
 
@@ -225,10 +225,10 @@
 		<Type>SICK</Type>
 		<Priority>3</Priority>
 		<SymptomRule rule="ANY_SYMPTOM">
-			<Symptom value="yes">ccm_ask_secondary_assessment_red_eyes_symptom_id</Symptom>									<!-- Red Eyes : YES -->
+			<Symptom value="yes">ccm_ask_secondary_assessment_red_eyes_symptom_id</Symptom>							<!-- Red Eyes : YES -->
 		</SymptomRule>
 		<SymptomRule rule="ANY_SYMPTOM">
-			<Symptom value="no">ccm_ask_initial_assessment_red_eyes_duration_more_than_four_days_symptom_id</Symptom>		<!-- Red Eyes for 3 Days or less : YES -->
+			<Symptom value="no">ccm_ask_initial_assessment_red_eyes_duration_four_days_symptom_id</Symptom>			<!-- Red Eyes for 3 Days or less : YES -->
 		</SymptomRule>
 	</Classification>
 

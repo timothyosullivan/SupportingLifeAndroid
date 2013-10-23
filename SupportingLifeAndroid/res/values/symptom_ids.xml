@@ -140,6 +140,7 @@
 	
 	<!-- Symptom Ids (NOT TO BE TRANSLATED!)-->
 	<string name="ccm_general_patient_details_date_of_birth_symptom_id">date_of_birth</string>
+	<string name="ccm_patient_aged_between_six_months_and_five_years_symptom_id">patient_aged_between_six_months_and_five_years</string>
 	<string name="ccm_general_patient_details_gender_symptom_id">gender</string>
 	
     <!-- ============================================================ -->
@@ -151,11 +152,14 @@
 	<string name="ccm_ask_initial_assessment_problems_symptom_id">problems</string>
 	<string name="ccm_ask_initial_assessment_cough_symptom_id">cough</string>
 	<string name="ccm_ask_initial_assessment_cough_duration_symptom_id">cough_duration</string>
+	<string name="ccm_ask_initial_assessment_cough_duration_twenty_one_days_symptom_id">cough_duration_twenty_one_days</string>
 	<string name="ccm_ask_initial_assessment_diarrhoea_symptom_id">diarrhoea</string>
 	<string name="ccm_ask_initial_assessment_diarrhoea_duration_symptom_id">diarrhoea_duration</string>
+	<string name="ccm_ask_initial_assessment_diarrhoea_duration_fourteen_days_symptom_id">diarrhoea_duration_fourteen_days</string>
 	<string name="ccm_ask_initial_assessment_blood_in_stool_symptom_id">blood_in_stool</string>
 	<string name="ccm_ask_initial_assessment_fever_symptom_id">fever</string>
 	<string name="ccm_ask_initial_assessment_fever_duration_symptom_id">fever_duration</string>
+	<string name="ccm_ask_initial_assessment_fever_duration_seven_days_symptom_id">fever_duration_seven_days</string>
 	<string name="ccm_ask_initial_assessment_convulsions_symptom_id">convulsions</string>
 	<string name="ccm_ask_initial_assessment_drink_or_feed_difficulty_symptom_id">drink_or_feed_difficulty</string>
 	<string name="ccm_ask_initial_assessment_unable_to_drink_or_feed_symptom_id">not_able_to_drink_or_feed</string>
@@ -170,6 +174,7 @@
 	<string name="ccm_ask_secondary_assessment_vomits_everything_symptom_id">vomits_everything</string>
 	<string name="ccm_ask_secondary_assessment_red_eyes_symptom_id">red_eyes</string>
 	<string name="ccm_ask_secondary_assessment_red_eyes_duration_symptom_id">red_eyes_duration</string>
+	<string name="ccm_ask_initial_assessment_red_eyes_duration_four_days_symptom_id">red_eyes_duration_four_days</string>
 	<string name="ccm_ask_secondary_assessment_seeing_difficulty_symptom_id">seeing_difficulty</string>
 	<string name="ccm_ask_secondary_assessment_seeing_difficulty_duration_symptom_id">seeing_difficulty_duration</string>
 	<string name="ccm_ask_secondary_assessment_cannot_treat_problems_symptom_id">cannot_treat_problems</string>
@@ -183,10 +188,11 @@
 	<!-- Symptom Ids (NOT TO BE TRANSLATED!)-->
 	<string name="ccm_look_assessment_chest_indrawing_symptom_id">chest_indrawing</string>
 	<string name="ccm_look_assessment_breaths_per_minute_symptom_id">breaths_per_minute</string>
+	<string name="ccm_look_assessment_fast_breathing_symptom_id">fast_breathing</string>
 	<string name="ccm_look_assessment_very_sleepy_or_unconscious_symptom_id">very_sleepy_or_unconscious</string>
 	<string name="ccm_look_assessment_palmar_pallor_symptom_id">palmar_pallor</string>
 	<string name="ccm_look_assessment_muac_tape_colour_symptom_id">muac_tape_colour</string>
 	<string name="ccm_look_assessment_swelling_of_both_feet_symptom_id">swelling_of_both_feet</string>
-	
-	
+
+
 </resources>

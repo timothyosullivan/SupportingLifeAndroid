@@ -81,16 +81,19 @@ public class SplashActivity extends SupportingLifeBaseActivity {
 				// configure the activity animation transition effect
 				overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
 	
-				// parse IMCI and CCM xml rules files into memory
+				// parse IMCI xml-based rules into memory
 				ClassificationRuleEngine classificationRuleEngine = new ClassificationRuleEngine();
 				TreatmentRuleEngine treatmentRuleEngine = new TreatmentRuleEngine();
 				classificationRuleEngine.readImciClassificationRules(activity);
 				treatmentRuleEngine.readImciTreatmentRules(activity);
 				
+				// parse CCM xml-based rules into memory
+				classificationRuleEngine.readCcmClassificationRules(activity);
+				
 				// call finish on SplashActivity to prevent user from using
 				// back button to navigate back to Splash screen
 				finish();
 			} // end of finally
-		}
-	}
-}
+		} // end of run() method
+	} // end of SplashScreenRunnable class
+} // end of class
