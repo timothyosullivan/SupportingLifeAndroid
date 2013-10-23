@@ -49,6 +49,18 @@ public class TreatmentRuleEngine {
 	private static ArrayList<TreatmentRule> systemTreatmentRules;
 	
 	/**
+	 * 
+	 * Responsible for reading treatment rules from xml into memory
+	 * 
+	 * @param supportingLifeBaseActivity 
+	 * 
+	 */
+	public void readTreatmentRules(SupportingLifeBaseActivity supportingLifeBaseActivity) {
+		setSystemTreatmentRules(new ArrayList<TreatmentRule>());
+		parseTreatmentRules(supportingLifeBaseActivity);
+	}
+	
+	/**
 	 * Responsible for determining patient treatments based on 
 	 * assessment
 	 * 
@@ -60,9 +72,6 @@ public class TreatmentRuleEngine {
 	 */
 	public void determineTreatments(SupportingLifeBaseActivity supportingLifeBaseActivity, List<ReviewItem> reviewItems, 
 			List<Classification> classifications, Patient patient) {
-
-		setSystemTreatmentRules(new ArrayList<TreatmentRule>());
-		parseTreatmentRules(supportingLifeBaseActivity);
 		addTreatmentCriteriaToReviewItems(supportingLifeBaseActivity, reviewItems, patient.getDiagnostics());
 		determinePatientTreatments(supportingLifeBaseActivity, reviewItems, patient);
 	}

@@ -48,6 +48,18 @@ public class ClassificationRuleEngine {
 	
 	private static ArrayList<Classification> systemClassifications;
 	
+
+	/**
+	 * 
+	 * Responsible for reading classification rules from xml into memory
+	 * 
+	 * @param supportingLifeBaseActivity 
+	 * 
+	 */
+	public void readClassificationRules(SupportingLifeBaseActivity supportingLifeBaseActivity) {
+		setSystemClassifications(new ArrayList<Classification>());
+		parseClassificationRules(supportingLifeBaseActivity);
+	}
 	
 	/**
 	 * 
@@ -60,9 +72,6 @@ public class ClassificationRuleEngine {
 	 * 
 	 */
 	public void determineClassifications(SupportingLifeBaseActivity supportingLifeBaseActivity, ArrayList<ReviewItem> reviewItems, Patient patient) {
-
-		setSystemClassifications(new ArrayList<Classification>());
-		parseClassificationRules(supportingLifeBaseActivity);
 		determinePatientClassifications(supportingLifeBaseActivity, reviewItems, patient);
 	}
 

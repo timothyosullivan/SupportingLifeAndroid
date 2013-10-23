@@ -1,6 +1,8 @@
 package ie.ucc.bis.activity;
 
 import ie.ucc.bis.R;
+import ie.ucc.bis.rule.engine.ClassificationRuleEngine;
+import ie.ucc.bis.rule.engine.TreatmentRuleEngine;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MotionEvent;
@@ -17,7 +19,7 @@ import android.view.MotionEvent;
  */
 public class SplashActivity extends SupportingLifeBaseActivity {
 
-	private static final long SPLASH_DELAY = 2000; // 2 seconds
+	private static final long SPLASH_DELAY = 1000; // 2 seconds
 	private Thread splashThread;
 
 	/**
@@ -33,27 +35,12 @@ public class SplashActivity extends SupportingLifeBaseActivity {
 		super.onCreate(savedInstanceState);		
 		setContentView(R.layout.activity_splash);
 
+
 		// thread for displaying the SplashScreen
-		splashThread = new Thread() {
-			@Override
-			public void run() {
-				try {
-					synchronized(this) {
-						wait(SPLASH_DELAY);
-					} // end of sync
-				} catch (InterruptedException interruptExp) {}
-				finally {
-					startActivity(new Intent(getApplicationContext(), HomeActivity.class));
-					// configure the activity animation transition effect
-					overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
-					// call finish on SplashActivity to prevent user from using
-					// back button to navigate back to Splash screen
-					finish();
-				} // end of finally
-			}};
+		splashThread = new Thread(new SplashScreenRunnable(this));
 		splashThread.start();
 	} // end of onCreate(..) method
-	
+
 	/**
 	 * onTouchEvent method
 	 * 
@@ -61,15 +48,48 @@ public class SplashActivity extends SupportingLifeBaseActivity {
 	 * 
 	 * @param event MotionEvent
 	 */
-    @Override
-    public boolean onTouchEvent(MotionEvent event) {
-        if (event.getAction() == MotionEvent.ACTION_DOWN) {
-            synchronized(splashThread){
-                    splashThread.notifyAll();
-            }
-        } // end of if
-        return true;
-    }
+	@Override
+	public boolean onTouchEvent(MotionEvent event) {
+		if (event.getAction() == MotionEvent.ACTION_DOWN) {
+			synchronized(splashThread){
+				splashThread.notifyAll();
+			}
+		} // end of if
+		return true;
+	}
 
+
+	private class SplashScreenRunnable implements Runnable {
+		private SupportingLifeBaseActivity activity;
+		
+		public SplashScreenRunnable(SupportingLifeBaseActivity activity) {
+			this.activity = activity;
+		}
+		
+		@Override
+		public void run() {
+			try {
+				synchronized(this) {
+					wait(SPLASH_DELAY);
+				} // end of sync
+			} catch (InterruptedException interruptExp) {}
+			finally {
+				startActivity(new Intent(getApplicationContext(), HomeActivity.class));
+				// configure the activity animation transition effect
+				overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+	
+				// parse IMCI and CCM xml rules files into memory
+				ClassificationRuleEngine classificationRuleEngine = new ClassificationRuleEngine();
+				TreatmentRuleEngine treatmentRuleEngine = new TreatmentRuleEngine();
+				classificationRuleEngine.readClassificationRules(activity);
+				treatmentRuleEngine.readTreatmentRules(activity);
+				
+				// call finish on SplashActivity to prevent user from using
+				// back button to navigate back to Splash screen
+				finish();
+			} // end of finally
+		}
+
+	}
 
 }
