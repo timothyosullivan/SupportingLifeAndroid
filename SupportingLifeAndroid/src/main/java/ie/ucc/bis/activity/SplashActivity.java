@@ -19,7 +19,7 @@ import android.view.MotionEvent;
  */
 public class SplashActivity extends SupportingLifeBaseActivity {
 
-	private static final long SPLASH_DELAY = 1000; // 2 seconds
+	private static final long SPLASH_DELAY = 1000; // 1 second
 	private Thread splashThread;
 
 	/**
@@ -34,7 +34,6 @@ public class SplashActivity extends SupportingLifeBaseActivity {
 	protected void onCreate(Bundle savedInstanceState) {		
 		super.onCreate(savedInstanceState);		
 		setContentView(R.layout.activity_splash);
-
 
 		// thread for displaying the SplashScreen
 		splashThread = new Thread(new SplashScreenRunnable(this));
@@ -58,7 +57,11 @@ public class SplashActivity extends SupportingLifeBaseActivity {
 		return true;
 	}
 
-
+	/**
+	 * Thread responsible for coordinating the display of the dashboard screen
+	 * and for parsing the rules engine (IMCI and CCM) xml files into memory.
+	 * 
+	 */
 	private class SplashScreenRunnable implements Runnable {
 		private SupportingLifeBaseActivity activity;
 		
@@ -81,15 +84,13 @@ public class SplashActivity extends SupportingLifeBaseActivity {
 				// parse IMCI and CCM xml rules files into memory
 				ClassificationRuleEngine classificationRuleEngine = new ClassificationRuleEngine();
 				TreatmentRuleEngine treatmentRuleEngine = new TreatmentRuleEngine();
-				classificationRuleEngine.readClassificationRules(activity);
-				treatmentRuleEngine.readTreatmentRules(activity);
+				classificationRuleEngine.readImciClassificationRules(activity);
+				treatmentRuleEngine.readImciTreatmentRules(activity);
 				
 				// call finish on SplashActivity to prevent user from using
 				// back button to navigate back to Splash screen
 				finish();
 			} // end of finally
 		}
-
 	}
-
 }

@@ -62,14 +62,14 @@ public class ImciAssessmentResultsActivity extends SupportingLifeBaseActivity {
 		Intent intent = getIntent();
         setReviewItems((ArrayList<ReviewItem>) intent.getSerializableExtra(ImciAssessmentActivity.ASSESSMENT_REVIEW_ITEMS));
         
-        // classify symptoms
+        // resolve imci classifications based on assessed symptoms
         setPatient(new Patient());
         ClassificationRuleEngine classificationRuleEngine = new ClassificationRuleEngine();
         classificationRuleEngine.determineClassifications(this, getReviewItems(), getPatient());
         
-        // identify treatments
+        // identify imci treatments
         TreatmentRuleEngine treatmentRuleEngine = new TreatmentRuleEngine();
-        treatmentRuleEngine.determineTreatments(this, reviewItems, classificationRuleEngine.getSystemClassifications(), getPatient());
+        treatmentRuleEngine.determineTreatments(this, reviewItems, classificationRuleEngine.getSystemImciClassifications(), getPatient());
  
         // create a new Action bar and set title to strings.xml
         final ActionBar bar = getActionBar();

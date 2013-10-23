@@ -46,7 +46,7 @@ public class ClassificationRuleEngine {
 	
 	private static final String LOG_TAG = "ie.ucc.bis.rule.engine.ClassificationRuleEngine";
 	
-	private static ArrayList<Classification> systemClassifications;
+	private static ArrayList<Classification> systemImciClassifications;
 	
 
 	/**
@@ -56,9 +56,10 @@ public class ClassificationRuleEngine {
 	 * @param supportingLifeBaseActivity 
 	 * 
 	 */
-	public void readClassificationRules(SupportingLifeBaseActivity supportingLifeBaseActivity) {
-		setSystemClassifications(new ArrayList<Classification>());
-		parseClassificationRules(supportingLifeBaseActivity);
+	public void readImciClassificationRules(SupportingLifeBaseActivity supportingLifeBaseActivity) {
+		XmlResourceParser xmlParser = supportingLifeBaseActivity.getResources().getXml(R.xml.imci_classification_rules);
+		setSystemImciClassifications(new ArrayList<Classification>());
+		parseClassificationRules(supportingLifeBaseActivity, getSystemImciClassifications(), xmlParser);
 	}
 	
 	/**
@@ -80,9 +81,11 @@ public class ClassificationRuleEngine {
 	 * Responsible for parsing xml-based classification rules
 	 * 
 	 * @param supportingLifeBaseActivity 
+	 * @param systemClassifications 
+	 * @param xmlParser 
 	 * 
 	 */
-	private void parseClassificationRules(SupportingLifeBaseActivity supportingLifeBaseActivity) {
+	private void parseClassificationRules(SupportingLifeBaseActivity supportingLifeBaseActivity, ArrayList<Classification> systemClassifications, XmlResourceParser xmlParser) {
 		try {
 			String elemName = null;
 			Classification classification = null;
@@ -94,7 +97,6 @@ public class ClassificationRuleEngine {
 			ClassificationRule classificationRule = null;
 			String classificationRuleAttrib = null;
 			String classificationDiagnosedName = null;
-			XmlResourceParser xmlParser = supportingLifeBaseActivity.getResources().getXml(R.xml.classification_rules);
 			
 			int eventType = xmlParser.next();
 			
@@ -161,7 +163,7 @@ public class ClassificationRuleEngine {
 						}
 						else if(CLASSIFICATION_ELEMENT.equalsIgnoreCase(xmlParser.getName())) {
 							// </Classification>
-							getSystemClassifications().add(classification);
+							systemClassifications.add(classification);
 						}
 						break;
 				} // end of switch				
@@ -174,7 +176,7 @@ public class ClassificationRuleEngine {
 			ex.printStackTrace();
 		}
 		// DEBUG OUTPUT
-//		LoggerUtils.i(LOG_TAG, captureClassificationsDebugOutput());
+//		LoggerUtils.i(LOG_TAG, captureClassificationDebugOutput(systemClassifications));
 //		LoggerUtils.i(LOG_TAG, "--------------------------------------");
 //		LoggerUtils.i(LOG_TAG, "--------------------------------------");
 		LoggerUtils.i(LOG_TAG, "--------------------------------------");
@@ -200,7 +202,7 @@ public class ClassificationRuleEngine {
 		// assessment
 		boolean classificationApplies = false;
 		Classification classificationMatch = new Classification();
-		for (Classification classification : getSystemClassifications()) {
+		for (Classification classification : getSystemImciClassifications()) {
 			if (classification.getClassificationRules().size() == 0) {	// only consider those classifications without classification rules associated
 				classificationApplies = patientHasClassificationSymptoms(classification, reviewItems, classificationMatch);
 				if (classificationApplies) {
@@ -387,7 +389,7 @@ public class ClassificationRuleEngine {
 	private List<Classification> retrieveSystemClassificationWithClassificationRule() {
 		List<Classification> classifications = new ArrayList<Classification>();
 		
-		for (Classification classification : getSystemClassifications()) {
+		for (Classification classification : getSystemImciClassifications()) {
 			if (classification.getClassificationRules().size() != 0) {
 				// there is a <ClassificationRule> associated with this Classification
 				classifications.add(classification);
@@ -419,21 +421,21 @@ public class ClassificationRuleEngine {
 	 * Provides debug output of all classifications held in memory
 	 * 
 	 */
-	public StringBuilder captureClassificationsDebugOutput() {
-		return captureClassificationDebugOutput(getSystemClassifications());
+	public StringBuilder captureImciClassificationsDebugOutput() {
+		return captureClassificationDebugOutput(getSystemImciClassifications());
 	}
 
 	/**
-	 * Getter Method: getSystemClassifications()
+	 * Getter Method: getSystemImciClassifications()
 	 */	
-	public ArrayList<Classification> getSystemClassifications() {
-		return ClassificationRuleEngine.systemClassifications;
+	public ArrayList<Classification> getSystemImciClassifications() {
+		return ClassificationRuleEngine.systemImciClassifications;
 	}
 
 	/**
-	 * Setter Method: setSystemClassifications()
+	 * Setter Method: setSystemImciClassifications()
 	 */
-	public void setSystemClassifications(ArrayList<Classification> systemClassifications) {
-		ClassificationRuleEngine.systemClassifications = systemClassifications;
+	public void setSystemImciClassifications(ArrayList<Classification> systemImciClassifications) {
+		ClassificationRuleEngine.systemImciClassifications = systemImciClassifications;
 	}
 }

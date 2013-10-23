@@ -55,7 +55,7 @@ public class TreatmentRuleEngine {
 	 * @param supportingLifeBaseActivity 
 	 * 
 	 */
-	public void readTreatmentRules(SupportingLifeBaseActivity supportingLifeBaseActivity) {
+	public void readImciTreatmentRules(SupportingLifeBaseActivity supportingLifeBaseActivity) {
 		setSystemTreatmentRules(new ArrayList<TreatmentRule>());
 		parseTreatmentRules(supportingLifeBaseActivity);
 	}
@@ -193,7 +193,7 @@ public class TreatmentRuleEngine {
 			Symptom symptomCriteria = null;
 			String ruleAttrib = null;
 			
-			XmlResourceParser xmlParser = supportingLifeBaseActivity.getResources().getXml(R.xml.treatment_rules);
+			XmlResourceParser xmlParser = supportingLifeBaseActivity.getResources().getXml(R.xml.imci_treatment_rules);
 			
 			int eventType = xmlParser.next();
 			
