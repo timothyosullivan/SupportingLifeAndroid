@@ -1,8 +1,7 @@
-package ie.ucc.bis.assessment.imci.model.review;
+package ie.ucc.bis.assessment.model.review;
 
 import ie.ucc.bis.activity.SupportingLifeBaseActivity;
 import ie.ucc.bis.assessment.model.listener.DateDialogSetListener;
-import ie.ucc.bis.assessment.model.review.ReviewItem;
 import ie.ucc.bis.rule.engine.enums.Response;
 import ie.ucc.bis.ui.utilities.DateUtilities;
 

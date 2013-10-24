@@ -2,12 +2,12 @@ package ie.ucc.bis.assessment.imci.model;
 
 import ie.ucc.bis.R;
 import ie.ucc.bis.assessment.imci.model.review.CoughDurationReviewItem;
-import ie.ucc.bis.assessment.imci.model.review.FastBreathingReviewItem;
 import ie.ucc.bis.assessment.imci.ui.BreathingAssessmentFragment;
 import ie.ucc.bis.assessment.model.AbstractPage;
 import ie.ucc.bis.assessment.model.AbstractModel;
 import ie.ucc.bis.assessment.model.ModelCallbacks;
 import ie.ucc.bis.assessment.model.listener.RadioGroupListener;
+import ie.ucc.bis.assessment.model.review.FastBreathingReviewItem;
 import ie.ucc.bis.assessment.model.review.ReviewItem;
 import ie.ucc.bis.ui.utilities.ReviewItemUtilities;
 

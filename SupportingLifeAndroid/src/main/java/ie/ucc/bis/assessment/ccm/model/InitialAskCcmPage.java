@@ -2,6 +2,8 @@ package ie.ucc.bis.assessment.ccm.model;
 
 import ie.ucc.bis.R;
 import ie.ucc.bis.assessment.ccm.model.review.CoughDurationCcmReviewItem;
+import ie.ucc.bis.assessment.ccm.model.review.DiarrhoeaDurationCcmReviewItem;
+import ie.ucc.bis.assessment.ccm.model.review.FeverDurationCcmReviewItem;
 import ie.ucc.bis.assessment.ccm.ui.InitialAskCcmFragment;
 import ie.ucc.bis.assessment.model.AbstractModel;
 import ie.ucc.bis.assessment.model.AbstractPage;
@@ -91,7 +93,7 @@ public class InitialAskCcmPage extends AbstractPage {
     	// diarrhoea duration
     	reviewItemLabel = resources.getString(R.string.ccm_ask_initial_assessment_review_diarrhoea_duration);
     	reviewItemSymptomId = resources.getString(R.string.ccm_ask_initial_assessment_diarrhoea_duration_fourteen_days_symptom_id);
-    	reviewItems.add(new ReviewItem(reviewItemLabel, getPageData().getString(DIARRHOEA_DURATION_DATA_KEY), reviewItemSymptomId, getKey(), -1));
+    	reviewItems.add(new DiarrhoeaDurationCcmReviewItem(reviewItemLabel, getPageData().getString(DIARRHOEA_DURATION_DATA_KEY), reviewItemSymptomId, getKey(), -1));
 	
     	// blood in stool
     	reviewItemLabel = resources.getString(R.string.ccm_ask_initial_assessment_review_blood_in_stool);
@@ -108,7 +110,7 @@ public class InitialAskCcmPage extends AbstractPage {
     	// fever duration
     	reviewItemLabel = resources.getString(R.string.ccm_ask_initial_assessment_review_fever_duration);
     	reviewItemSymptomId = resources.getString(R.string.ccm_ask_initial_assessment_fever_duration_seven_days_symptom_id);
-    	reviewItems.add(new ReviewItem(reviewItemLabel, getPageData().getString(FEVER_DURATION_DATA_KEY), reviewItemSymptomId, getKey(), -1));
+    	reviewItems.add(new FeverDurationCcmReviewItem(reviewItemLabel, getPageData().getString(FEVER_DURATION_DATA_KEY), reviewItemSymptomId, getKey(), -1));
     	
     	// convulsions
     	reviewItemLabel = resources.getString(R.string.ccm_ask_initial_assessment_review_convulsions);

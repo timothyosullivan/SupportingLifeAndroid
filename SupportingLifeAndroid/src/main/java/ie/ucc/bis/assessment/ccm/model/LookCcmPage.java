@@ -6,9 +6,12 @@ import ie.ucc.bis.assessment.model.AbstractModel;
 import ie.ucc.bis.assessment.model.AbstractPage;
 import ie.ucc.bis.assessment.model.ModelCallbacks;
 import ie.ucc.bis.assessment.model.listener.RadioGroupListener;
+import ie.ucc.bis.assessment.model.review.FastBreathingReviewItem;
 import ie.ucc.bis.assessment.model.review.ReviewItem;
+import ie.ucc.bis.ui.utilities.ReviewItemUtilities;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import android.content.res.Resources;
 import android.support.v4.app.Fragment;
@@ -68,8 +71,14 @@ public class LookCcmPage extends AbstractPage {
 
     	// breaths per minute
     	reviewItemLabel = resources.getString(R.string.ccm_look_assessment_review_breaths_per_minute);
-    	reviewItemSymptomId = resources.getString(R.string.ccm_look_assessment_breaths_per_minute_symptom_id);
-    	reviewItems.add(new ReviewItem(reviewItemLabel, getPageData().getString(BREATHS_PER_MINUTE_DATA_KEY), reviewItemSymptomId, getKey(), -1));
+    	reviewItemSymptomId = resources.getString(R.string.ccm_look_assessment_fast_breathing_symptom_id);
+    	// note: In assessing whether the 'fast breathing' symptom applies when interpreting the 'breaths per minute',
+    	//       the age of the child is a determining factor. Therefore the date of birth child needs to capture to
+    	//       facilitate the decision logic.
+    	String birthDateSymptomId = resources.getString(R.string.ccm_general_patient_details_date_of_birth_symptom_id);
+    	ReviewItem birthDateReviewItem = ReviewItemUtilities.findReviewItemBySymptomId(birthDateSymptomId, reviewItems);
+    	reviewItems.add(new FastBreathingReviewItem(reviewItemLabel, getPageData().getString(BREATHS_PER_MINUTE_DATA_KEY), 
+    			reviewItemSymptomId, getKey(), -1, Arrays.asList(birthDateReviewItem)));
 
     	// very sleepy or unconscious
     	reviewItemLabel = resources.getString(R.string.ccm_look_assessment_review_very_sleepy_or_unconscious);
