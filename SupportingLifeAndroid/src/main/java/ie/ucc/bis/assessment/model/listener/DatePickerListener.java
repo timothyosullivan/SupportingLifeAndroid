@@ -1,7 +1,7 @@
 package ie.ucc.bis.assessment.model.listener;
 
+import ie.ucc.bis.assessment.imci.ui.DatePickerDialogFragment;
 import ie.ucc.bis.assessment.model.AbstractPage;
-import ie.ucc.bis.imci.ui.DatePickerDialogFragment;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;

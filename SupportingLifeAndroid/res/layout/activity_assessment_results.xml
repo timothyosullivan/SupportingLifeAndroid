@@ -10,9 +10,11 @@
     <!-- ============================================================ -->
     <!-- TABBED FRAGMENTS DISPLAYING THE FOLLOWING: 				  -->
     <!--  															  -->
-    <!-- 1. Assessment Details Tab									  -->
-    <!-- 2. Classifications Tab										  -->
-	<!-- 3. Recommended Treatments Tab 								  -->
+    <!-- 1. Assessment Review Items Tab (IMCI & CCM)				  -->
+    <!-- 2. Classifications Tab	(IMCI & CCM)						  -->
+	<!-- 3. Recommended Treatments Tab (IMCI & CCM)					  -->
+	<!-- 4. Vaccine Tab (CCM)										  -->
+	<!-- 5. Follow-up Tab (CCM)										  -->
     <!-- ============================================================ --> 
 
 	<!-- ============================================================ -->

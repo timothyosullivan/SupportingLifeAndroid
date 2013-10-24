@@ -10,13 +10,13 @@ import android.view.View;
 import android.widget.Button;
 
 import ie.ucc.bis.R;
+import ie.ucc.bis.assessment.imci.ui.PageFragmentCallbacks;
+import ie.ucc.bis.assessment.imci.ui.ReviewFragmentCallbacks;
+import ie.ucc.bis.assessment.imci.ui.StepPagerStrip;
 import ie.ucc.bis.assessment.model.AbstractModel;
 import ie.ucc.bis.assessment.model.AbstractPage;
 import ie.ucc.bis.assessment.model.AssessmentPagerAdapter;
 import ie.ucc.bis.assessment.model.ModelCallbacks;
-import ie.ucc.bis.imci.ui.PageFragmentCallbacks;
-import ie.ucc.bis.imci.ui.ReviewFragmentCallbacks;
-import ie.ucc.bis.imci.ui.StepPagerStrip;
 
 /**
  * 

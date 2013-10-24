@@ -1,8 +1,8 @@
 package ie.ucc.bis.assessment.model.listener;
 
 import ie.ucc.bis.R;
+import ie.ucc.bis.assessment.imci.model.DynamicView;
 import ie.ucc.bis.assessment.model.AbstractPage;
-import ie.ucc.bis.imci.model.DynamicView;
 
 import java.util.ArrayList;
 import java.util.Arrays;

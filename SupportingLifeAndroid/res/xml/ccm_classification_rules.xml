@@ -105,14 +105,14 @@
 	</Classification>
 
 	<!-- ============================================================ -->
-	<!-- Classification: Fever (less than 7 Days)		  			  -->
+	<!-- Classification: Fever (less than 7 days)		  			  -->
 	<!-- Type: SICK		 											  -->
 	<!-- Symptoms: Fever						 					  -->
 	<!-- 		   AND			 									  -->
 	<!--  		   Fever Started 6 Days ago or less					  -->
 	<!-- ============================================================ -->
 	<Classification>
-		<Name>Fever (less than 7 Days)</Name>
+		<Name>Fever (less than 7 days)</Name>
 		<Type>SICK</Type>
 		<Priority>3</Priority>
 		<SymptomRule rule="ANY_SYMPTOM">

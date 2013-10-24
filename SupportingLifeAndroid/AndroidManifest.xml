@@ -58,7 +58,12 @@
         </activity>
         <activity
             android:name="ie.ucc.bis.activity.ImciAssessmentResultsActivity"
-            android:label="@string/activity_title_assessment_results"
+            android:label="@string/activity_title_imci_assessment_results"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name="ie.ucc.bis.activity.CcmAssessmentResultsActivity"
+            android:label="@string/activity_title_ccm_assessment_results"
             android:screenOrientation="portrait">
         </activity>
         <activity

@@ -4,7 +4,7 @@ package ie.ucc.bis.ui.utilities;
  * 
  * @author timothyosullivan
  */
-import ie.ucc.bis.imci.model.DynamicView;
+import ie.ucc.bis.assessment.imci.model.DynamicView;
 
 import java.util.List;
 

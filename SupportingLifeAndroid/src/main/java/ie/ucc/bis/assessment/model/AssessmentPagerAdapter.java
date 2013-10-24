@@ -1,7 +1,7 @@
 package ie.ucc.bis.assessment.model;
 
 import ie.ucc.bis.activity.AssessmentActivity;
-import ie.ucc.bis.imci.ui.ReviewFragment;
+import ie.ucc.bis.assessment.imci.ui.ReviewFragment;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;

@@ -1,6 +1,6 @@
 package ie.ucc.bis.assessment.model.listener;
 
-import ie.ucc.bis.imci.ui.DatePickerDialogFragment;
+import ie.ucc.bis.assessment.imci.ui.DatePickerDialogFragment;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;

@@ -1,10 +1,10 @@
 package ie.ucc.bis.activity;
 
 import ie.ucc.bis.R;
+import ie.ucc.bis.assessment.ccm.model.CcmAssessmentModel;
+import ie.ucc.bis.assessment.imci.ui.PageSelectedListener;
+import ie.ucc.bis.assessment.imci.ui.StepPagerStrip;
 import ie.ucc.bis.assessment.model.AssessmentPagerAdapter;
-import ie.ucc.bis.ccm.model.CcmAssessmentModel;
-import ie.ucc.bis.imci.ui.PageSelectedListener;
-import ie.ucc.bis.imci.ui.StepPagerStrip;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.os.Bundle;

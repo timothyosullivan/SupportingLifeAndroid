@@ -19,7 +19,8 @@
 	<string name="activity_title_submit_patient_record">Submission</string>
 	<string name="activity_title_record_imci_assessment">IMCI Assessment</string>
 	<string name="activity_title_record_ccm_assessment">CCM Assessment</string>
-	<string name="activity_title_assessment_results">e-IMCI Results</string>
+	<string name="activity_title_imci_assessment_results">IMCI Results</string>
+	<string name="activity_title_ccm_assessment_results">CCM Results</string>
 
     <!-- ============================================================ -->
     <!-- ACTION BAR -->
@@ -323,9 +324,8 @@
     <!-- ============================================================ -->
 	<string name="imci_assessment_results_review_tab_title">Assessment</string>
 	<string name="imci_assessment_results_classifications_tab_title">Classifications</string>
-	<string name="imci_classification_tab_arrow_image_content_assist">Classification Arrow Image</string>
-	<string name="imci_classification_severity_image_content_assist">Classification Severity Image</string>
 	<string name="imci_assessment_results_treatments_tab_title">Treatments</string>
+	<string name="imci_classification_severity_image_content_assist">IMCI Classification Severity Image</string>
 
     <!-- ============================================================ -->
     <!-- ============================================================ -->
@@ -392,9 +392,9 @@
 
     <!-- ============================================================ -->
     <!-- CCM ASSESSMENT WIZARD BREAD-CRUMB UI 						  -->
-    <!-- STAGE 2: INITIAL ASK ASSESSMENT							  -->
+    <!-- STAGE 2: LOOK AND ASK ASSESSMENT (1)							  -->
     <!-- ============================================================ -->
-	<string name="ccm_ask_initial_assessment_title">Ask Assessment (1)</string>
+	<string name="ccm_ask_initial_assessment_title">LOOK / ASK ASSESSMENT (1)</string>
 	<string name="ccm_ask_initial_assessment_problems_label">What are the child\'s problems:</string>
 	<string name="ccm_ask_initial_assessment_radio_cough_label">Cough:</string>
 	<string name="ccm_ask_initial_assessment_cough_duration_label">For how long? (days)</string>
@@ -428,9 +428,9 @@
 
     <!-- ============================================================ -->
     <!-- CCM ASSESSMENT WIZARD BREAD-CRUMB UI 						  -->
-    <!-- STAGE 3: SECONDARY ASK ASSESSMENT							  -->
+    <!-- STAGE 3: LOOK AND ASK ASSESSMENT (2)						  -->
     <!-- ============================================================ -->
-	<string name="ccm_ask_secondary_assessment_title">Ask Assessment (2)</string>
+	<string name="ccm_ask_secondary_assessment_title">LOOK / ASK ASSESSMENT (2)</string>
 	<string name="ccm_ask_secondary_assessment_radio_vomiting_label">Vomiting?</string>
 	<string name="ccm_ask_secondary_assessment_radio_vomits_everything_label">Vomits everything?</string>
 	<string name="ccm_ask_secondary_assessment_radio_red_eyes_label">Red eyes?</string>
@@ -477,6 +477,22 @@
 	
 	<!-- HINTS -->
 	<string name="ccm_look_assessment_breaths_per_minute_hint">Enter value between 1 and 100</string>
+	
+    <!-- ============================================================ -->
+    <!-- CCM ASSESSMENT RESULTS TABS 								  -->
+    <!-- 															  -->
+    <!-- 1. Assessment Details Tab									  -->
+    <!-- 2. Classifications Tab										  -->
+	<!-- 3. Recommended Treatments Tab 								  -->
+	<!-- 4. Vaccine Tab 											  -->
+	<!-- 5. Follow-up Tab											  -->
+    <!-- ============================================================ -->
+	<string name="ccm_assessment_results_review_tab_title">Assessment</string>
+	<string name="ccm_assessment_results_classifications_tab_title">Classifications</string>
+	<string name="ccm_assessment_results_treatments_tab_title">Treatments</string>
+	<string name="ccm_assessment_results_vaccine_tab_title">Vaccinations</string>
+	<string name="ccm_assessment_results_follow_up_tab_title">Follow-up</string>
+	<string name="ccm_classification_severity_image_content_assist">CCM Classification Severity Image</string>
 				
 	<!-- ============================================================ -->
     <!-- ASSESSMENT WIZARD BREAD-CRUMB UI -->

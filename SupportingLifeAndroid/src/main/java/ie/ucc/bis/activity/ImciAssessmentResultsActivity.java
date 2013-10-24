@@ -1,11 +1,11 @@
 package ie.ucc.bis.activity;
 
 import ie.ucc.bis.R;
+import ie.ucc.bis.assessment.imci.ui.ImciAssessmentClassificationsFragment;
+import ie.ucc.bis.assessment.imci.ui.ImciAssessmentTreatmentsFragment;
 import ie.ucc.bis.assessment.model.review.ReviewItem;
+import ie.ucc.bis.assessment.ui.AssessmentResultsReviewFragment;
 import ie.ucc.bis.domain.Patient;
-import ie.ucc.bis.imci.ui.AssessmentClassificationsFragment;
-import ie.ucc.bis.imci.ui.AssessmentResultsReviewFragment;
-import ie.ucc.bis.imci.ui.AssessmentTreatmentsFragment;
 import ie.ucc.bis.rule.engine.ClassificationRuleEngine;
 import ie.ucc.bis.rule.engine.TreatmentRuleEngine;
 
@@ -25,7 +25,7 @@ import android.widget.BaseAdapter;
 /**
  * Class: AssessmentResultsActivity
  * 
- * Responsible for displaying e-IMCI assessment results.
+ * Responsible for displaying IMCI assessment results.
  * 
  * The results shown comprise of the following:
  * 
@@ -84,11 +84,11 @@ public class ImciAssessmentResultsActivity extends SupportingLifeBaseActivity {
        
         // add classifications tab
         getTabsAdapter().addTab(bar.newTab().setText(R.string.imci_assessment_results_classifications_tab_title),
-        		AssessmentClassificationsFragment.class, null);
+        		ImciAssessmentClassificationsFragment.class, null);
         
         // add treatments tab
         getTabsAdapter().addTab(bar.newTab().setText(R.string.imci_assessment_results_treatments_tab_title),
-        		AssessmentTreatmentsFragment.class, null);
+        		ImciAssessmentTreatmentsFragment.class, null);
  
         // open on classifications tab by default
         getTabsAdapter().setDefaultTab();
@@ -107,7 +107,7 @@ public class ImciAssessmentResultsActivity extends SupportingLifeBaseActivity {
 	 */
 	public void displayTreatmentTab(int position, String classificationTitle) {
 		getTabsAdapter().displayTreatmentTab();
-		AssessmentTreatmentsFragment treatmentsFragment = (AssessmentTreatmentsFragment) 
+		ImciAssessmentTreatmentsFragment treatmentsFragment = (ImciAssessmentTreatmentsFragment) 
 				getSupportFragmentManager().getFragments().get(TabsAdapter.TREATMENT_TAB_INDEX);
 
 		if (treatmentsFragment != null) {
