@@ -1,10 +1,10 @@
-package ie.ucc.bis.assessment.imci.model;
+package ie.ucc.bis.assessment.ccm.model;
 
 import ie.ucc.bis.R;
-import ie.ucc.bis.assessment.imci.ui.ImciAssessmentClassificationsFragment;
+import ie.ucc.bis.assessment.ccm.ui.CcmAssessmentClassificationsFragment;
 import ie.ucc.bis.rule.engine.Classification;
 import ie.ucc.bis.rule.engine.Diagnostic;
-import ie.ucc.bis.rule.engine.enums.ClassificationType;
+import ie.ucc.bis.rule.engine.enums.CcmClassificationType;
 
 import java.util.List;
 
@@ -16,19 +16,20 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 /**
+ * Class: CcmClassificationAdapter
  * 
  * @author timothyosullivan
  */
 
-public class ClassificationAdapter extends BaseAdapter {
+public class CcmClassificationAdapter extends BaseAdapter {
 	private static final int SIMPLE_ITEM_TYPE = 1;
 	private List<Diagnostic> patientDiagnostics;
 	
-	private ImciAssessmentClassificationsFragment assessmentClassificationsFragment;
+	private CcmAssessmentClassificationsFragment ccmAssessmentClassificationsFragment;
 	
-    public ClassificationAdapter(ImciAssessmentClassificationsFragment assessmentClassificationsFragment, List<Diagnostic> patientDiagnostics) {
+    public CcmClassificationAdapter(CcmAssessmentClassificationsFragment ccmAssessmentClassificationsFragment, List<Diagnostic> patientDiagnostics) {
 		super();
-		setAssessmentClassificationsFragment(assessmentClassificationsFragment);
+		setCcmAssessmentClassificationsFragment(ccmAssessmentClassificationsFragment);
 		setPatientDiagnostics(patientDiagnostics);
 	}
 
@@ -66,7 +67,7 @@ public class ClassificationAdapter extends BaseAdapter {
         switch (itemType) {
         	case SIMPLE_ITEM_TYPE :
         		if (view == null) {
-        	        LayoutInflater inflater = LayoutInflater.from(getAssessmentClassificationsFragment().getActivity());
+        	        LayoutInflater inflater = LayoutInflater.from(getCcmAssessmentClassificationsFragment().getActivity());
         			view = inflater.inflate(R.layout.classification_list_item_review, container, false);
         		}
                 Classification classification = getPatientDiagnostics().get(position).getClassification();
@@ -90,10 +91,10 @@ public class ClassificationAdapter extends BaseAdapter {
      * @param severityImageView
      */
     private void colourCodeTreatment(Classification classification, ImageView severityImageView) {
-		if (classification.getType().equalsIgnoreCase(ClassificationType.SEVERE.name())) {
+		if (classification.getType().equalsIgnoreCase(CcmClassificationType.DANGER_SIGN.name())) {
 			severityImageView.setImageResource(R.drawable.ic_severe_notification);
 		}
-		else if (classification.getType().equalsIgnoreCase(ClassificationType.MODERATE.name())) {
+		else if (classification.getType().equalsIgnoreCase(CcmClassificationType.SICK.name())) {
 			severityImageView.setImageResource(R.drawable.ic_moderate_notification);
 		}
 		else {
@@ -101,32 +102,6 @@ public class ClassificationAdapter extends BaseAdapter {
 		}
 	}
     
-    /**
-     * Method: colourCodeClassificationBackground
-     * 
-     * Responsible for colour coding background of classification based on the 
-     * severity of the classification
-     * 
-     * @param classification
-     * @param classificationView
-     */
-/*
-    private void colourCodeClassificationBackground(Classification classification, View classificationView) {
-    	Drawable background = null;
-		if (classification.getType().equalsIgnoreCase(ClassificationType.SEVERE.name())) {
-			background = getAssessmentClassificationsFragment().getResources().getDrawable(R.drawable.red_classification_list_item);
-			classificationView.setBackground(background);
-		}
-		else if (classification.getType().equalsIgnoreCase(ClassificationType.MODERATE.name())) {
-			background = getAssessmentClassificationsFragment().getResources().getDrawable(R.drawable.yellow_classification_list_item);
-			classificationView.setBackground(background);
-		}
-		else {
-			background = getAssessmentClassificationsFragment().getResources().getDrawable(R.drawable.green_classification_list_item);
-			classificationView.setBackground(background);
-		}
-	}
-*/
 	public int getCount() {
 		// null pointer exception was being called here previously periodically as 
 		// AssessmentClassificationFragment was null when querying for number of classifications
@@ -135,17 +110,17 @@ public class ClassificationAdapter extends BaseAdapter {
     }
 
 	/**
-	 * Getter Method: getAssessmentClassificationsFragment()
+	 * Getter Method: getCcmAssessmentClassificationsFragment()
 	 */
-	private ImciAssessmentClassificationsFragment getAssessmentClassificationsFragment() {
-		return assessmentClassificationsFragment;
+	private CcmAssessmentClassificationsFragment getCcmAssessmentClassificationsFragment() {
+		return ccmAssessmentClassificationsFragment;
 	}
 
 	/**
-	 * Setter Method: setAssessmentClassificationsFragment()
+	 * Setter Method: setCcmAssessmentClassificationsFragment()
 	 */
-	private void setAssessmentClassificationsFragment(ImciAssessmentClassificationsFragment assessmentClassificationsFragment) {
-		this.assessmentClassificationsFragment = assessmentClassificationsFragment;
+	private void setCcmAssessmentClassificationsFragment(CcmAssessmentClassificationsFragment ccmAssessmentClassificationsFragment) {
+		this.ccmAssessmentClassificationsFragment = ccmAssessmentClassificationsFragment;
 	}
 
 	/**

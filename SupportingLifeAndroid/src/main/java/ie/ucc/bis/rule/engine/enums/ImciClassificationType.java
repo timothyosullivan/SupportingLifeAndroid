@@ -1,16 +1,17 @@
 package ie.ucc.bis.rule.engine.enums;
 
 /**
+ * Enum: ImciClassificationType
  * 
  * @author timothyosullivan
  */
 
-public enum ClassificationType {
+public enum ImciClassificationType {
 	SEVERE(1), MODERATE(2), LOW(3);
 	
 	private int priority;
  
-	private ClassificationType(int priority) {
+	private ImciClassificationType(int priority) {
 		this.priority = priority;
 	}
  

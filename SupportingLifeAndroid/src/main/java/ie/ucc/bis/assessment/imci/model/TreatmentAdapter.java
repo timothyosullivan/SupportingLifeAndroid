@@ -4,7 +4,7 @@ import ie.ucc.bis.R;
 import ie.ucc.bis.assessment.imci.ui.ImciAssessmentTreatmentsFragment;
 import ie.ucc.bis.rule.engine.Classification;
 import ie.ucc.bis.rule.engine.Diagnostic;
-import ie.ucc.bis.rule.engine.enums.ClassificationType;
+import ie.ucc.bis.rule.engine.enums.ImciClassificationType;
 
 import java.util.List;
 
@@ -177,10 +177,10 @@ public class TreatmentAdapter extends BaseAdapter {
      * @param severityImageView
      */
     private void colourCodeTreatment(Classification classification, ImageView severityImageView) {
-		if (classification.getType().equalsIgnoreCase(ClassificationType.SEVERE.name())) {
+		if (classification.getType().equalsIgnoreCase(ImciClassificationType.SEVERE.name())) {
 			severityImageView.setImageResource(R.drawable.ic_severe_notification);
 		}
-		else if (classification.getType().equalsIgnoreCase(ClassificationType.MODERATE.name())) {
+		else if (classification.getType().equalsIgnoreCase(ImciClassificationType.MODERATE.name())) {
 			severityImageView.setImageResource(R.drawable.ic_moderate_notification);
 		}
 		else {

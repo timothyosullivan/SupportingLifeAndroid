@@ -55,7 +55,8 @@ public class ImciAssessmentResultsActivity extends AssessmentResultsActivity {
         // resolve imci classifications based on assessed symptoms
         setPatient(new Patient());
         ClassificationRuleEngine classificationRuleEngine = new ClassificationRuleEngine();
-        classificationRuleEngine.determineClassifications(this, getReviewItems(), getPatient());
+        classificationRuleEngine.determineClassifications(this, getReviewItems(), getPatient(), 
+        		classificationRuleEngine.getSystemImciClassifications());
         
         // identify imci treatments
         TreatmentRuleEngine treatmentRuleEngine = new TreatmentRuleEngine();

@@ -1,6 +1,7 @@
 package ie.ucc.bis.activity;
 
 import ie.ucc.bis.R;
+import ie.ucc.bis.assessment.ccm.ui.CcmAssessmentClassificationsFragment;
 import ie.ucc.bis.assessment.model.review.ReviewItem;
 import ie.ucc.bis.assessment.ui.AssessmentResultsReviewFragment;
 import ie.ucc.bis.domain.Patient;
@@ -53,7 +54,7 @@ public class CcmAssessmentResultsActivity extends AssessmentResultsActivity {
         // resolve CCM classifications based on assessed symptoms
         setPatient(new Patient());
         ClassificationRuleEngine classificationRuleEngine = new ClassificationRuleEngine();
-        classificationRuleEngine.determineClassifications(this, getReviewItems(), getPatient());
+        classificationRuleEngine.determineClassifications(this, getReviewItems(), getPatient(), classificationRuleEngine.getSystemCcmClassifications());
         
         // identify CCM treatments
  //       TreatmentRuleEngine treatmentRuleEngine = new TreatmentRuleEngine();
@@ -71,15 +72,15 @@ public class CcmAssessmentResultsActivity extends AssessmentResultsActivity {
         		AssessmentResultsReviewFragment.class, null);
        
         // add classifications tab
- //       getTabsAdapter().addTab(bar.newTab().setText(R.string.ccm_assessment_results_classifications_tab_title),
- //       		CcmAssessmentClassificationsFragment.class, null);
+        getTabsAdapter().addTab(bar.newTab().setText(R.string.ccm_assessment_results_classifications_tab_title),
+        		CcmAssessmentClassificationsFragment.class, null);
         
         // add treatments tab
  //       getTabsAdapter().addTab(bar.newTab().setText(R.string.ccm_assessment_results_treatments_tab_title),
  //      		ImciAssessmentTreatmentsFragment.class, null);
  
         // open on classifications tab by default
- //       getTabsAdapter().setDefaultTab();
+        getTabsAdapter().setDefaultTab();
 
        if (savedInstanceState != null) {
             bar.setSelectedNavigationItem(savedInstanceState.getInt("tab", 0));

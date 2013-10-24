@@ -86,10 +86,12 @@ public class ClassificationRuleEngine {
 	 * @param supportingLifeBaseActivity 
 	 * @param reviewItems 
 	 * @param patient 
+	 * @param systemClassifications 
 	 * 
 	 */
-	public void determineClassifications(SupportingLifeBaseActivity supportingLifeBaseActivity, ArrayList<ReviewItem> reviewItems, Patient patient) {
-		determinePatientClassifications(supportingLifeBaseActivity, reviewItems, patient);
+	public void determineClassifications(SupportingLifeBaseActivity supportingLifeBaseActivity, ArrayList<ReviewItem> reviewItems, 
+			Patient patient, ArrayList<Classification> systemClassifications) {
+		determinePatientClassifications(supportingLifeBaseActivity, reviewItems, patient, systemClassifications);
 	}
 
 	/**
@@ -205,9 +207,11 @@ public class ClassificationRuleEngine {
 	 * @param supportingLifeBaseActivity
 	 * @param reviewItems
 	 * @param patient 
+	 * @param systemClassifications 
 	 * 
 	 */
-	private void determinePatientClassifications(SupportingLifeBaseActivity supportingLifeBaseActivity, ArrayList<ReviewItem> reviewItems, Patient patient) {
+	private void determinePatientClassifications(SupportingLifeBaseActivity supportingLifeBaseActivity, ArrayList<ReviewItem> reviewItems,
+			Patient patient, ArrayList<Classification> systemClassifications) {
 		// 1. iterate over all review items and perform first rudimentary check in assessing
 		//    if the symptom criteria applies
 		for (ReviewItem reviewItem : reviewItems) {
@@ -218,7 +222,7 @@ public class ClassificationRuleEngine {
 		// assessment
 		boolean classificationApplies = false;
 		Classification classificationMatch = new Classification();
-		for (Classification classification : getSystemImciClassifications()) {
+		for (Classification classification : systemClassifications) {
 			if (classification.getClassificationRules().size() == 0) {	// only consider those classifications without classification rules associated
 				classificationApplies = patientHasClassificationSymptoms(classification, reviewItems, classificationMatch);
 				if (classificationApplies) {
@@ -233,7 +237,7 @@ public class ClassificationRuleEngine {
 		//	  e.g. <ClassificationRule rule="ANY_CLASSIFICATION">
 		// 				<ClassificationDiagnosed value="true">Severe Dehydration</ClassificationDiagnosed>
 		classificationMatch = new Classification();
-		for (Classification classification : retrieveSystemClassificationWithClassificationRule()) {
+		for (Classification classification : retrieveSystemClassificationWithClassificationRule(systemClassifications)) {
 			checkClassificationRuleAgainstPatientRecord(patient, classification, reviewItems);
 		}
 		
@@ -399,13 +403,15 @@ public class ClassificationRuleEngine {
 	 *  </SymptomRule>		
 	 * </Classification>
 	 * 
+	 * @param systemClassifications 
+	 * 
 	 * @return List<Classification>
 	 * 
 	 */
-	private List<Classification> retrieveSystemClassificationWithClassificationRule() {
+	private List<Classification> retrieveSystemClassificationWithClassificationRule(ArrayList<Classification> systemClassifications) {
 		List<Classification> classifications = new ArrayList<Classification>();
 		
-		for (Classification classification : getSystemImciClassifications()) {
+		for (Classification classification : systemClassifications) {
 			if (classification.getClassificationRules().size() != 0) {
 				// there is a <ClassificationRule> associated with this Classification
 				classifications.add(classification);

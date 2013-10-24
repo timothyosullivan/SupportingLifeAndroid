@@ -15,15 +15,10 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 
 /**
- * Class: ImciAssessmentResultsActivity
+ * Class: AssessmentResultsActivity
  * 
- * Responsible for displaying IMCI assessment results.
- * 
- * The results shown comprise of the following:
- * 
- * 1. Assessment Review Items Tab
- * 2. Assessment Classifications Tab
- * 3. Assessment Recommended Treatments Tab
+ * Base class responsible for displaying assessment results
+ * (i.e. IMCI and CCM)
  * 
  * @author TOSullivan
  *

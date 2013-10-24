@@ -11,14 +11,15 @@
 <ClassificationRules>
 	<!-- ============================================================ -->
 	<!-- Classification: Cough for 21 Days or more 	  				  -->
-	<!-- Type: DANGER SIGN 											  -->
+	<!-- Type: DANGER_SIGN 											  -->
 	<!-- Symptoms: Cough						 					  -->
 	<!-- 				AND 										  -->
 	<!--  		   Cough Started 21 Days ago or more				  -->
 	<!-- ============================================================ -->
 	<Classification>
+	    <Category>cough_for_21_days_or_more</Category>
 		<Name>Cough for 21 Days or more</Name>
-		<Type>DANGER SIGN</Type>
+		<Type>DANGER_SIGN</Type>
 		<Priority>1</Priority>
 		<SymptomRule rule="ANY_SYMPTOM">
 			<Symptom value="yes">ccm_ask_initial_assessment_cough_symptom_id</Symptom>								<!-- Cough : YES -->
@@ -30,14 +31,15 @@
 
 	<!-- ============================================================ -->
 	<!-- Classification: Diarrhoea for 14 Days or more  			  -->
-	<!-- Type: DANGER SIGN 											  -->
+	<!-- Type: DANGER_SIGN 											  -->
 	<!-- Symptoms: Diarrhoea					 					  -->
 	<!-- 				AND 										  -->
 	<!--  		   Diarrhoea Started 14 Days ago or more			  -->
 	<!-- ============================================================ -->
 	<Classification>
+	    <Category>diarrhoea_for_14_days_or_more</Category>
 		<Name>Diarrhoea for 14 Days or more</Name>
-		<Type>DANGER SIGN</Type>
+		<Type>DANGER_SIGN</Type>
 		<Priority>1</Priority>
 		<SymptomRule rule="ANY_SYMPTOM">
 			<Symptom value="yes">ccm_ask_initial_assessment_diarrhoea_symptom_id</Symptom>							<!-- Diarrhoea : YES -->
@@ -49,12 +51,13 @@
 	
 	<!-- ============================================================ -->
 	<!-- Classification: Blood in Stool					  			  -->
-	<!-- Type: DANGER SIGN 											  -->
+	<!-- Type: DANGER_SIGN 											  -->
 	<!-- Symptoms: Blood in Stool				 					  -->
 	<!-- ============================================================ -->
 	<Classification>
+	    <Category>blood_in_stool</Category>
 		<Name>Blood in Stool</Name>
-		<Type>DANGER SIGN</Type>
+		<Type>DANGER_SIGN</Type>
 		<Priority>1</Priority>
 		<SymptomRule rule="ANY_SYMPTOM">
 			<Symptom value="yes">ccm_ask_initial_assessment_blood_in_stool_symptom_id</Symptom>						<!-- Blood in Stool : YES -->
@@ -71,6 +74,7 @@
 	<!--  		   No Blood in Stool								  				-->
 	<!-- ========================================================================== -->
 	<Classification>
+	    <Category>diarrhoea_less_than_14_days_and_no_blood_in_stool</Category>
 		<Name>Diarrhoea (less than 14 days AND no blood in stool)</Name>
 		<Type>SICK</Type>
 		<Priority>3</Priority>
@@ -87,14 +91,15 @@
 	
 	<!-- ============================================================ -->
 	<!-- Classification: Fever for last 7 Days			  			  -->
-	<!-- Type: DANGER SIGN 											  -->
+	<!-- Type: DANGER_SIGN 											  -->
 	<!-- Symptoms: Fever						 					  -->
 	<!-- 		   AND			 									  -->
 	<!--  		   Fever Started 7 Days ago or more					  -->
 	<!-- ============================================================ -->
 	<Classification>
+	    <Category>fever_for_last_7_days</Category>
 		<Name>Fever for last 7 Days</Name>
-		<Type>DANGER SIGN</Type>
+		<Type>DANGER_SIGN</Type>
 		<Priority>1</Priority>
 		<SymptomRule rule="ANY_SYMPTOM">
 			<Symptom value="yes">ccm_ask_initial_assessment_fever_symptom_id</Symptom>								<!-- Fever : YES -->
@@ -112,6 +117,7 @@
 	<!--  		   Fever Started 6 Days ago or less					  -->
 	<!-- ============================================================ -->
 	<Classification>
+	    <Category>fever_less_than_7_days</Category>
 		<Name>Fever (less than 7 days)</Name>
 		<Type>SICK</Type>
 		<Priority>3</Priority>
@@ -125,12 +131,13 @@
 
 	<!-- ============================================================ -->
 	<!-- Classification: Convulsions					  			  -->
-	<!-- Type: DANGER SIGN 											  -->
+	<!-- Type: DANGER_SIGN 											  -->
 	<!-- Symptoms: Convulsions					 					  -->
 	<!-- ============================================================ -->
 	<Classification>
+	    <Category>convulsions</Category>
 		<Name>Convulsions</Name>
-		<Type>DANGER SIGN</Type>
+		<Type>DANGER_SIGN</Type>
 		<Priority>1</Priority>
 		<SymptomRule rule="ANY_SYMPTOM">
 			<Symptom value="yes">ccm_ask_initial_assessment_convulsions_symptom_id</Symptom>						<!-- Convulsions : YES -->
@@ -139,14 +146,15 @@
 
 	<!-- ============================================================ -->
 	<!-- Classification: Not Able to Drink or Feed Anything			  -->
-	<!-- Type: DANGER SIGN 											  -->
+	<!-- Type: DANGER_SIGN 											  -->
 	<!-- Symptoms: Difficulty Drinking or Feeding 					  -->
 	<!-- 		   AND			 									  -->
 	<!--  		   Not Able to Drink or Feed Anything				  -->
 	<!-- ============================================================ -->
 	<Classification>
+	    <Category>not_able_to_drink_or_feed_anything</Category>
 		<Name>Not Able to Drink or Feed Anything</Name>
-		<Type>DANGER SIGN</Type>
+		<Type>DANGER_SIGN</Type>
 		<Priority>1</Priority>
 		<SymptomRule rule="ANY_SYMPTOM">
 			<Symptom value="yes">ccm_ask_initial_assessment_drink_or_feed_difficulty_symptom_id</Symptom>			<!-- Difficulty Drinking or Feeding : YES -->
@@ -158,14 +166,15 @@
 
 	<!-- ============================================================ -->
 	<!-- Classification: Vomits Everything							  -->
-	<!-- Type: DANGER SIGN 											  -->
+	<!-- Type: DANGER_SIGN 											  -->
 	<!-- Symptoms: Vomiting						 					  -->
 	<!-- 		   AND			 									  -->
 	<!--  		   Vomits Everything								  -->
 	<!-- ============================================================ -->
 	<Classification>
+	    <Category>vomits_everything</Category>
 		<Name>Vomits Everything</Name>
-		<Type>DANGER SIGN</Type>
+		<Type>DANGER_SIGN</Type>
 		<Priority>1</Priority>
 		<SymptomRule rule="ANY_SYMPTOM">
 			<Symptom value="yes">ccm_ask_secondary_assessment_vomiting_symptom_id</Symptom>							<!-- Vomiting : YES -->
@@ -177,14 +186,15 @@
 
 	<!-- ============================================================ -->
 	<!-- Classification: Red Eye for 4 Days or more					  -->
-	<!-- Type: DANGER SIGN 											  -->
+	<!-- Type: DANGER_SIGN 											  -->
 	<!-- Symptoms: Red Eyes						 					  -->
 	<!-- 		   AND			 									  -->
 	<!--  		   Red Eyes Started 4 Days ago or more				  -->
 	<!-- ============================================================ -->
 	<Classification>
+	    <Category>red_eye_for_4_days_or_more</Category>
 		<Name>Red Eye for 4 Days or more</Name>
-		<Type>DANGER SIGN</Type>
+		<Type>DANGER_SIGN</Type>
 		<Priority>1</Priority>
 		<SymptomRule rule="ANY_SYMPTOM">
 			<Symptom value="yes">ccm_ask_secondary_assessment_red_eyes_symptom_id</Symptom>							<!-- Red Eyes : YES -->
@@ -196,14 +206,15 @@
 
 	<!-- ============================================================ -->
 	<!-- Classification: Red Eye with Visual Problems				  -->
-	<!-- Type: DANGER SIGN 											  -->
+	<!-- Type: DANGER_SIGN 											  -->
 	<!-- Symptoms: Red Eyes						 					  -->
 	<!-- 		   AND			 									  -->
 	<!--  		   Difficulty in Seeing								  -->
 	<!-- ============================================================ -->
 	<Classification>
+	    <Category>red_eye_with_visual_problems</Category>
 		<Name>Red Eye with Visual Problems</Name>
-		<Type>DANGER SIGN</Type>
+		<Type>DANGER_SIGN</Type>
 		<Priority>1</Priority>
 		<SymptomRule rule="ANY_SYMPTOM">
 			<Symptom value="yes">ccm_ask_secondary_assessment_red_eyes_symptom_id</Symptom>							<!-- Red Eyes : YES -->
@@ -221,6 +232,7 @@
 	<!--  		   Red Eyes Started 3 Days ago or less				  -->
 	<!-- ============================================================ -->
 	<Classification>
+	    <Category>red_eye_less_than_4_days</Category>
 		<Name>Red Eye (less than 4 days)</Name>
 		<Type>SICK</Type>
 		<Priority>3</Priority>
@@ -239,6 +251,7 @@
 	<!-- 		   (e.g. problem in breast feeding, injury)			  -->
 	<!-- ============================================================ -->
 	<Classification>
+	    <Category>other_problem</Category>
 		<Name>Other Problem</Name>
 		<Type>REFER</Type>
 		<Priority>2</Priority>
@@ -249,12 +262,13 @@
 
 	<!-- ============================================================ -->
 	<!-- Classification: Chest Indrawing				  			  -->
-	<!-- Type: DANGER SIGN 											  -->
+	<!-- Type: DANGER_SIGN 											  -->
 	<!-- Symptoms: Chest Indrawing				 					  -->
 	<!-- ============================================================ -->
 	<Classification>
+	    <Category>chest_indrawing</Category>
 		<Name>Chest Indrawing</Name>
-		<Type>DANGER SIGN</Type>
+		<Type>DANGER_SIGN</Type>
 		<Priority>1</Priority>
 		<SymptomRule rule="ANY_SYMPTOM">
 			<Symptom value="yes">ccm_look_assessment_chest_indrawing_symptom_id</Symptom>						<!-- Chest Indrawing : YES -->
@@ -270,6 +284,7 @@
 	<!-- 			2. Age 12 months up to 5 years: 40bpm or more)	  -->
 	<!-- ============================================================ -->
 	<Classification>
+	    <Category>fast_breathing</Category>
 		<Name>Fast Breathing</Name>
 		<Type>SICK</Type>
 		<Priority>3</Priority>
@@ -280,12 +295,13 @@
 
 	<!-- ============================================================ -->
 	<!-- Classification: Very Sleepy or Unconscious		  			  -->
-	<!-- Type: DANGER SIGN											  -->
+	<!-- Type: DANGER_SIGN											  -->
 	<!-- Symptoms: Very Sleepy or Unconscious	 					  -->
 	<!-- ============================================================ -->
 	<Classification>
+	    <Category>very_sleepy_or_unconscious</Category>
 		<Name>Very Sleepy or Unconscious</Name>
-		<Type>DANGER SIGN</Type>
+		<Type>DANGER_SIGN</Type>
 		<Priority>1</Priority>
 		<SymptomRule rule="ANY_SYMPTOM">
 			<Symptom value="yes">ccm_look_assessment_very_sleepy_or_unconscious_symptom_id</Symptom>			<!-- Very Sleepy or Unconscious : YES -->
@@ -294,12 +310,13 @@
 	
 	<!-- ============================================================ -->
 	<!-- Classification: Palmar Pallor					  			  -->
-	<!-- Type: DANGER SIGN											  -->
+	<!-- Type: DANGER_SIGN											  -->
 	<!-- Symptoms: Palmar Pallor				 					  -->
 	<!-- ============================================================ -->
 	<Classification>
+	    <Category>palmar_pallor</Category>
 		<Name>Palmar Pallor</Name>
-		<Type>DANGER SIGN</Type>
+		<Type>DANGER_SIGN</Type>
 		<Priority>1</Priority>
 		<SymptomRule rule="ANY_SYMPTOM">
 			<Symptom value="yes">ccm_look_assessment_palmar_pallor_symptom_id</Symptom>							<!-- Palmar Pallor : YES -->
@@ -308,14 +325,15 @@
 
 	<!-- ============================================================ -->
 	<!-- Classification: Red on MUAC Tape				  			  -->
-	<!-- Type: DANGER SIGN											  -->
+	<!-- Type: DANGER_SIGN											  -->
 	<!-- Symptoms: Child Aged between 6 months and 5 years			  -->
 	<!-- 		   AND			 									  -->
 	<!--  		   Red Colour on MUAC Tape							  -->
 	<!-- ============================================================ -->
 	<Classification>
+	    <Category>red_on_muac_tape</Category>
 		<Name>Red on MUAC Tape</Name>
-		<Type>DANGER SIGN</Type>
+		<Type>DANGER_SIGN</Type>
 		<Priority>1</Priority>
 		<SymptomRule rule="ANY_SYMPTOM">
 			<Symptom value="yes">ccm_patient_aged_between_six_months_and_five_years_symptom_id</Symptom>		<!-- Child Aged between 6 months and 5 years : YES -->
@@ -327,12 +345,13 @@
 	
 	<!-- ============================================================ -->
 	<!-- Classification: Swelling of Both Feet			  			  -->
-	<!-- Type: DANGER SIGN											  -->
+	<!-- Type: DANGER_SIGN											  -->
 	<!-- Symptoms: Swelling of Both Feet		 					  -->
 	<!-- ============================================================ -->
 	<Classification>
+	    <Category>swelling_of_both_feet</Category>
 		<Name>Swelling of Both Feet</Name>
-		<Type>DANGER SIGN</Type>
+		<Type>DANGER_SIGN</Type>
 		<Priority>1</Priority>
 		<SymptomRule rule="ANY_SYMPTOM">
 			<Symptom value="yes">ccm_look_assessment_swelling_of_both_feet_symptom_id</Symptom>					<!-- Swelling of Both Feet : YES -->

@@ -1,9 +1,9 @@
-package ie.ucc.bis.assessment.imci.ui;
+package ie.ucc.bis.assessment.ccm.ui;
 
 import ie.ucc.bis.R;
 import ie.ucc.bis.activity.AssessmentResultsActivity;
 import ie.ucc.bis.activity.ImciAssessmentResultsActivity;
-import ie.ucc.bis.assessment.imci.model.ImciClassificationAdapter;
+import ie.ucc.bis.assessment.ccm.model.CcmClassificationAdapter;
 import ie.ucc.bis.domain.Patient;
 import ie.ucc.bis.rule.engine.Diagnostic;
 
@@ -19,17 +19,17 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 /**
- * Class: ImciAssessmentClassificationsFragment
+ * Class: CcmAssessmentClassificationsFragment
  * 
- * Responsible for displaying the IMCI Assessment 
+ * Responsible for displaying the CCM Assessment 
  * Classifications of a patient
  * 
  * @author TOSullivan
  *
  */
-public class ImciAssessmentClassificationsFragment extends ListFragment {
+public class CcmAssessmentClassificationsFragment extends ListFragment {
     
-    private ImciClassificationAdapter classificationAdapter;
+    private CcmClassificationAdapter ccmClassificationAdapter;
     private Patient patient;
 	
     @Override
@@ -43,8 +43,8 @@ public class ImciAssessmentClassificationsFragment extends ListFragment {
       
         // obtain a reference to the patient being dealt with...
         setPatient(((AssessmentResultsActivity) getActivity()).getPatient());          
-        setClassificationAdapter(new ImciClassificationAdapter(this, new ArrayList<Diagnostic>(getPatient().getDiagnostics())));
-        setListAdapter(getClassificationAdapter());
+        setCcmClassificationAdapter(new CcmClassificationAdapter(this, new ArrayList<Diagnostic>(getPatient().getDiagnostics())));
+        setListAdapter(getCcmClassificationAdapter());
     }
     
     @Override
@@ -68,17 +68,17 @@ public class ImciAssessmentClassificationsFragment extends ListFragment {
     }
     
 	/**
-	 * Getter Method: getClassificationAdapter()
+	 * Getter Method: getCcmClassificationAdapter()
 	 */	
-	private ImciClassificationAdapter getClassificationAdapter() {
-		return classificationAdapter;
+	private CcmClassificationAdapter getCcmClassificationAdapter() {
+		return ccmClassificationAdapter;
 	}
 
 	/**
-	 * Setter Method: setClassificationAdapter()
+	 * Setter Method: setCcmClassificationAdapter()
 	 */
-	private void setClassificationAdapter(ImciClassificationAdapter classificationAdapter) {
-		this.classificationAdapter = classificationAdapter;
+	private void setCcmClassificationAdapter(CcmClassificationAdapter ccmClassificationAdapter) {
+		this.ccmClassificationAdapter = ccmClassificationAdapter;
 	}
 
 	/**

@@ -4,7 +4,7 @@ import ie.ucc.bis.R;
 import ie.ucc.bis.activity.SupportingLifeBaseActivity;
 import ie.ucc.bis.assessment.model.review.ReviewItem;
 import ie.ucc.bis.domain.Patient;
-import ie.ucc.bis.rule.engine.enums.ClassificationType;
+import ie.ucc.bis.rule.engine.enums.ImciClassificationType;
 import ie.ucc.bis.rule.engine.enums.CriteriaRule;
 import ie.ucc.bis.rule.engine.enums.Response;
 import ie.ucc.bis.ui.utilities.LoggerUtils;
@@ -113,7 +113,7 @@ public class TreatmentRuleEngine {
 		boolean hasSevereClassification = false;
 		
 		for (Diagnostic diagnostic : patientDiagnostics) {
-			if (diagnostic.getClassification().getType().equalsIgnoreCase(ClassificationType.SEVERE.name())) {
+			if (diagnostic.getClassification().getType().equalsIgnoreCase(ImciClassificationType.SEVERE.name())) {
 				hasSevereClassification = true;
 				break;
 			}
@@ -152,7 +152,7 @@ public class TreatmentRuleEngine {
 		// assess whether 'severe dehydration' is the only severe classification
 		boolean onlySevereDehydration = true;
 		for (Diagnostic diagnostic : patientDiagnostics) {
-			if (diagnostic.getClassification().getType().equalsIgnoreCase(ClassificationType.SEVERE.name()) 
+			if (diagnostic.getClassification().getType().equalsIgnoreCase(ImciClassificationType.SEVERE.name()) 
 					&& !diagnostic.getClassification().getName().equalsIgnoreCase(SEVERE_DEHYDRATION_CLASSIFICATION)) {
 				onlySevereDehydration = false;
 				break;
