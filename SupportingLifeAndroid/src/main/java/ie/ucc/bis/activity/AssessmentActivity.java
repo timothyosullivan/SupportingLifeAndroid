@@ -165,9 +165,18 @@ public class AssessmentActivity extends SupportingLifeBaseActivity implements
      */
     protected final class AssessmentDialogListener implements DialogInterface.OnClickListener {
     	
+    	private SupportingLifeBaseActivity resultsActivity;
+
+    	/**
+    	 * Constructor
+    	 */
+    	public AssessmentDialogListener(SupportingLifeBaseActivity resultsActivity) {
+    		this.resultsActivity = resultsActivity;
+    	}
+    	
 		public void onClick(DialogInterface dialog, int which) {
 			
-			Intent intent = new Intent(getApplicationContext(), ImciAssessmentResultsActivity.class);
+			Intent intent = new Intent(getApplicationContext(), resultsActivity.getClass());
 			intent.putExtra(ASSESSMENT_REVIEW_ITEMS, getAssessmentModel().gatherAssessmentReviewItems());
 			startActivity(intent);
 			

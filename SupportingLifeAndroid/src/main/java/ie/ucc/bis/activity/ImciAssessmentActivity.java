@@ -114,9 +114,10 @@ public class ImciAssessmentActivity extends AssessmentActivity {
 		        DialogFragment dg = new DialogFragment() {
 		            @Override
 		            public Dialog onCreateDialog(Bundle savedInstanceState) {
+		            	ImciAssessmentResultsActivity imciAssessmentResultsActivity = new ImciAssessmentResultsActivity();
 		                return new AlertDialog.Builder(getActivity())
 		                        .setMessage(R.string.submit_confirm_message)
-		                        .setPositiveButton(R.string.submit_confirm_button, new AssessmentDialogListener())
+		                        .setPositiveButton(R.string.submit_confirm_button, new AssessmentDialogListener(imciAssessmentResultsActivity))
 		                        .setNegativeButton(android.R.string.cancel, null)
 		                        .create();
 		            }

@@ -9,17 +9,12 @@ import ie.ucc.bis.rule.engine.ClassificationRuleEngine;
 import java.util.ArrayList;
 
 import android.app.ActionBar;
-import android.app.ActionBar.Tab;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 
 /**
- * Class: AssessmentResultsActivity
+ * Class: CcmAssessmentResultsActivity
  * 
  * Responsible for displaying CCM assessment results.
  * 
@@ -34,13 +29,8 @@ import android.support.v4.view.ViewPager;
  * @author TOSullivan
  *
  */
-public class CcmAssessmentResultsActivity extends SupportingLifeBaseActivity {
+public class CcmAssessmentResultsActivity extends AssessmentResultsActivity {
 	
-	private ViewPager ViewPager;
-	private TabsAdapter TabsAdapter;
-	private ArrayList<ReviewItem> reviewItems;
-	private Patient patient;
-
 	/* 
 	 * Method: onCreate() 
 	 * 
@@ -89,7 +79,7 @@ public class CcmAssessmentResultsActivity extends SupportingLifeBaseActivity {
  //      		ImciAssessmentTreatmentsFragment.class, null);
  
         // open on classifications tab by default
-        getTabsAdapter().setDefaultTab();
+ //       getTabsAdapter().setDefaultTab();
 
        if (savedInstanceState != null) {
             bar.setSelectedNavigationItem(savedInstanceState.getInt("tab", 0));
@@ -115,237 +105,5 @@ public class CcmAssessmentResultsActivity extends SupportingLifeBaseActivity {
 		}
 	}
 */
-
-	@Override
-	protected void onSaveInstanceState(Bundle outState) {
-		super.onSaveInstanceState(outState);
-		outState.putInt("tab", getActionBar().getSelectedNavigationIndex()); 
-	}
-		
-	/**
-	 * Static Class: TabsAdapter
-	 * 
-	 * Responsible for creating tabs and configuring behaviour
-	 * 
-	 * @author TOSullivan
-	 */
-	public static class TabsAdapter extends FragmentPagerAdapter implements ActionBar.TabListener, ViewPager.OnPageChangeListener {
-		
-		private final int CLASSIFICATION_TAB_INDEX = 1;
-		private final int TREATMENT_TAB_INDEX = 2;
-				
-		private final Context context;
-		private final ActionBar actionBar;
-		private final ViewPager viewPager;
-		private final ArrayList<TabInfo> tabs = new ArrayList<TabInfo>();
-	 
-		static final class TabInfo {
-			private final Class<?> clss;
-			private final Bundle args;
-			
-			TabInfo(Class<?> _class, Bundle _args) {
-				clss = _class;
-				args = _args;
-			} // end of constructor
-		} // end of TabInfo static class
-		
-		/**
-		 * Constructor
-		 * 
-		 * @param activity
-		 * @param pager
-		 * 
-		 */
-		public TabsAdapter(FragmentActivity activity, ViewPager pager) {
-			super(activity.getSupportFragmentManager());
-			this.context= activity;
-			this.actionBar = ((FragmentActivity) getContext()).getActionBar();
-			this.viewPager = pager;
-			getViewPager().setAdapter(this);
-			getViewPager().setOnPageChangeListener(this);
-		 }
-		
-		
-		/**
-		 * Set the classifications tab to be the default tab
-		 */
-		public void setDefaultTab() {
-			getActionBar().selectTab(getActionBar().getTabAt(CLASSIFICATION_TAB_INDEX));	
-		}
-		
-		/**
-		 * Display the treatments tab
-		 * 
-		 */
-		public void displayTreatmentTab() {
-			getActionBar().selectTab(getActionBar().getTabAt(TREATMENT_TAB_INDEX));
-		}
-
-		/**
-		 * Responsible for adding the tabs and their associated
-		 * fragments
-		 * 
-		 * @param tab
-		 * @param fragmentClass
-		 * @param args
-		 */
-		public void addTab(ActionBar.Tab tab, Class<?> fragmentClass, Bundle args) {
-			TabInfo info = new TabInfo(fragmentClass, args);
-			tab.setTag(info);
-			tab.setTabListener(this);
-			getTabs().add(info);
-			getActionBar().addTab(tab);
-			notifyDataSetChanged();
-		}
-		 
-		@Override
-		public void onPageScrollStateChanged(int state) {
-		   // TODO Auto-generated method stub
-		}
-		 
-		@Override
-		public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-			// TODO Auto-generated method stub
-		}
-		 
-		/* 
-		 * Invoked when a new page becomes selected.
-		 * 
-		 * (non-Javadoc)
-		 * @see android.support.v4.view.ViewPager.OnPageChangeListener#onPageSelected(int)
-		 */
-		@Override
-		public void onPageSelected(int position) {
-			// TODO Auto-generated method stub
-			getActionBar().setSelectedNavigationItem(position);
-		}
-		 
-		@Override
-		public void onTabReselected(Tab tab, android.app.FragmentTransaction ft) {
-			// TODO Auto-generated method stub
-		}
-		 
-		@Override
-		public void onTabSelected(Tab tab, android.app.FragmentTransaction ft) {
-			Object tag = tab.getTag();
-			for (int count=0; count<getTabs().size(); count++) {
-				if (getTabs().get(count) == tag) {
-					getViewPager().setCurrentItem(count);
-				}
-			}
-		}
-		 
-		@Override
-		public void onTabUnselected(Tab tab, android.app.FragmentTransaction ft) {
-			// TODO Auto-generated method stub
-		}	
-		
-		/* 
-		 * Return the Fragment associated with a specified position
-		 * 
-		 * (non-Javadoc)
-		 * @see android.support.v4.app.FragmentPagerAdapter#getItem(int)
-		 */
-		@Override
-		public Fragment getItem(int position) {
-			TabInfo info = getTabs().get(position);
-			return Fragment.instantiate(getContext(), info.clss.getName(), info.args);
-		}
-		 
-		/*
-		 * Return the number of views available 
-		 * 
-		 * (non-Javadoc)
-		 * @see android.support.v4.view.PagerAdapter#getCount()
-		 */
-		@Override
-		public int getCount() {
-			return getTabs().size();
-		}
-	
-		/**
-		 * Getter Method: getContext()
-		 */
-		public Context getContext() {
-			return context;
-		}
-		  
-		/**
-		 * Getter Method: getActionBar()
-		 */
-		public ActionBar getActionBar() {
-			return actionBar;
-		}
-	
-		/**
-		 * Getter Method: getViewPager()
-		 */
-		public ViewPager getViewPager() {
-			return viewPager;
-		}
-	
-		/**
-		 * Getter Method: getTabs()
-		 */
-		public ArrayList<TabInfo> getTabs() {
-			return tabs;
-		}
-	} // end of static TabsAdapter class
-	 
-	/**
-	 * Getter Method: getViewPager()
-	 */	
-	public ViewPager getViewPager() {
-		return ViewPager;
-	}
-
-	/**
-	 * Setter Method: setViewPager()
-	 */  
-	public void setViewPager(ViewPager viewPager) {
-		ViewPager = viewPager;
-	}
-
-	/**
-	 * Getter Method: getTabsAdapter()
-	 */	
-	public TabsAdapter getTabsAdapter() {
-		return TabsAdapter;
-	}
-
-	/**
-	 * Setter Method: setTabsAdapter()
-	 */
-	public void setTabsAdapter(TabsAdapter tabsAdapter) {
-		TabsAdapter = tabsAdapter;
-	}
-	
-	/**
-	 * Getter Method: getReviewItems()
-	 */	
-	public ArrayList<ReviewItem> getReviewItems() {
-		return reviewItems;
-	}
-
-	/**
-	 * Setter Method: setReviewItems()
-	 */
-	private void setReviewItems(ArrayList<ReviewItem> reviewItems) {
-		this.reviewItems = reviewItems;
-	}
-
-	/**
-	 * Getter Method: getPatient()
-	 */	
-	public Patient getPatient() {
-		return patient;
-	}
-
-	/**
-	 * Setter Method: setPatient()
-	 */
-	private void setPatient(Patient patient) {
-		this.patient = patient;
-	}
 }
 

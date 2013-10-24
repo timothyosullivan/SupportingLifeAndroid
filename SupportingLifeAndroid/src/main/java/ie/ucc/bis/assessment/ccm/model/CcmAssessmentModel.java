@@ -12,8 +12,8 @@ import android.content.Context;
 public class CcmAssessmentModel extends AbstractModel {
 
 	public static final String CCM_GENERAL_PATIENT_DETAILS_PAGE_TITLE = "Patient Details";
-	public static final String CCM_INITIAL_ASK_ASSESSMENT_PAGE_TITLE = "Ask Assessment (1)";
-	public static final String CCM_SECONDARY_ASK_ASSESSMENT_PAGE_TITLE = "Ask Assessment (2)";
+	public static final String CCM_INITIAL_ASK_ASSESSMENT_PAGE_TITLE = "Look/Ask Assessment (1)";
+	public static final String CCM_SECONDARY_ASK_ASSESSMENT_PAGE_TITLE = "Look/Ask Assessment (2)";
 	public static final String LOOK_ASSESSMENT_PAGE_TITLE = "Look Assessment";
 	
 	/**
