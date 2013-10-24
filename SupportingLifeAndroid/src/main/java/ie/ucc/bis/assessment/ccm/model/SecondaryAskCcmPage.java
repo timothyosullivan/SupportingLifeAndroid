@@ -83,7 +83,7 @@ public class SecondaryAskCcmPage extends AbstractPage {
 
     	// red eyes duration
     	reviewItemLabel = resources.getString(R.string.ccm_ask_secondary_assessment_review_red_eyes_duration);
-    	reviewItemSymptomId = resources.getString(R.string.ccm_ask_secondary_assessment_red_eyes_duration_symptom_id);
+    	reviewItemSymptomId = resources.getString(R.string.ccm_ask_initial_assessment_red_eyes_duration_four_days_symptom_id);
     	reviewItems.add(new ReviewItem(reviewItemLabel, getPageData().getString(RED_EYES_DURATION_DATA_KEY), reviewItemSymptomId, getKey(), -1));
     	
     	// seeing difficulty / 'difficulty in seeing'

@@ -1,6 +1,7 @@
 package ie.ucc.bis.assessment.ccm.model;
 
 import ie.ucc.bis.R;
+import ie.ucc.bis.assessment.ccm.model.review.CoughDurationCcmReviewItem;
 import ie.ucc.bis.assessment.ccm.ui.InitialAskCcmFragment;
 import ie.ucc.bis.assessment.model.AbstractModel;
 import ie.ucc.bis.assessment.model.AbstractPage;
@@ -78,9 +79,9 @@ public class InitialAskCcmPage extends AbstractPage {
 
     	// cough duration
     	reviewItemLabel = resources.getString(R.string.ccm_ask_initial_assessment_review_cough_duration);
-    	reviewItemSymptomId = resources.getString(R.string.ccm_ask_initial_assessment_cough_duration_symptom_id);
-    	reviewItems.add(new ReviewItem(reviewItemLabel, getPageData().getString(COUGH_DURATION_DATA_KEY), reviewItemSymptomId, getKey(), -1));
-
+    	reviewItemSymptomId = resources.getString(R.string.ccm_ask_initial_assessment_cough_duration_twenty_one_days_symptom_id);
+    	reviewItems.add(new CoughDurationCcmReviewItem(reviewItemLabel, getPageData().getString(COUGH_DURATION_DATA_KEY), reviewItemSymptomId, getKey(), -1));
+    	
     	// diarrhoea
     	reviewItemLabel = resources.getString(R.string.ccm_ask_initial_assessment_review_diarrhoea);
     	reviewItemValue = getPageData().getString(DIARRHOEA_DATA_KEY + RadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
@@ -89,7 +90,7 @@ public class InitialAskCcmPage extends AbstractPage {
 
     	// diarrhoea duration
     	reviewItemLabel = resources.getString(R.string.ccm_ask_initial_assessment_review_diarrhoea_duration);
-    	reviewItemSymptomId = resources.getString(R.string.ccm_ask_initial_assessment_diarrhoea_duration_symptom_id);
+    	reviewItemSymptomId = resources.getString(R.string.ccm_ask_initial_assessment_diarrhoea_duration_fourteen_days_symptom_id);
     	reviewItems.add(new ReviewItem(reviewItemLabel, getPageData().getString(DIARRHOEA_DURATION_DATA_KEY), reviewItemSymptomId, getKey(), -1));
 	
     	// blood in stool
@@ -106,7 +107,7 @@ public class InitialAskCcmPage extends AbstractPage {
 
     	// fever duration
     	reviewItemLabel = resources.getString(R.string.ccm_ask_initial_assessment_review_fever_duration);
-    	reviewItemSymptomId = resources.getString(R.string.ccm_ask_initial_assessment_fever_duration_symptom_id);
+    	reviewItemSymptomId = resources.getString(R.string.ccm_ask_initial_assessment_fever_duration_seven_days_symptom_id);
     	reviewItems.add(new ReviewItem(reviewItemLabel, getPageData().getString(FEVER_DURATION_DATA_KEY), reviewItemSymptomId, getKey(), -1));
     	
     	// convulsions

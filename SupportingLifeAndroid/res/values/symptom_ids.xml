@@ -151,14 +151,11 @@
 	<!-- Symptom Ids (NOT TO BE TRANSLATED!)-->
 	<string name="ccm_ask_initial_assessment_problems_symptom_id">problems</string>
 	<string name="ccm_ask_initial_assessment_cough_symptom_id">cough</string>
-	<string name="ccm_ask_initial_assessment_cough_duration_symptom_id">cough_duration</string>
 	<string name="ccm_ask_initial_assessment_cough_duration_twenty_one_days_symptom_id">cough_duration_twenty_one_days</string>
 	<string name="ccm_ask_initial_assessment_diarrhoea_symptom_id">diarrhoea</string>
-	<string name="ccm_ask_initial_assessment_diarrhoea_duration_symptom_id">diarrhoea_duration</string>
 	<string name="ccm_ask_initial_assessment_diarrhoea_duration_fourteen_days_symptom_id">diarrhoea_duration_fourteen_days</string>
 	<string name="ccm_ask_initial_assessment_blood_in_stool_symptom_id">blood_in_stool</string>
 	<string name="ccm_ask_initial_assessment_fever_symptom_id">fever</string>
-	<string name="ccm_ask_initial_assessment_fever_duration_symptom_id">fever_duration</string>
 	<string name="ccm_ask_initial_assessment_fever_duration_seven_days_symptom_id">fever_duration_seven_days</string>
 	<string name="ccm_ask_initial_assessment_convulsions_symptom_id">convulsions</string>
 	<string name="ccm_ask_initial_assessment_drink_or_feed_difficulty_symptom_id">drink_or_feed_difficulty</string>
@@ -173,7 +170,6 @@
 	<string name="ccm_ask_secondary_assessment_vomiting_symptom_id">vomiting</string>
 	<string name="ccm_ask_secondary_assessment_vomits_everything_symptom_id">vomits_everything</string>
 	<string name="ccm_ask_secondary_assessment_red_eyes_symptom_id">red_eyes</string>
-	<string name="ccm_ask_secondary_assessment_red_eyes_duration_symptom_id">red_eyes_duration</string>
 	<string name="ccm_ask_initial_assessment_red_eyes_duration_four_days_symptom_id">red_eyes_duration_four_days</string>
 	<string name="ccm_ask_secondary_assessment_seeing_difficulty_symptom_id">seeing_difficulty</string>
 	<string name="ccm_ask_secondary_assessment_seeing_difficulty_duration_symptom_id">seeing_difficulty_duration</string>
