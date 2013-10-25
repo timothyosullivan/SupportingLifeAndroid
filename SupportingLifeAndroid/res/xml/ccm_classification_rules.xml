@@ -292,6 +292,57 @@
 			<Symptom value="yes">ccm_look_assessment_fast_breathing_symptom_id</Symptom>						<!-- Fast Breathing : YES -->
 		</SymptomRule>
 	</Classification>
+	
+	<!-- ============================================================ -->
+	<!-- Classification: Fast Breathing	and Danger Sign				  -->
+	<!-- Type: DANGER_SIGN											  -->
+	<!-- Classification: Any Danger Sign Classification				  -->
+	<!-- 				 (categorised as follows:					  -->
+	<!-- 				  'Cough for 21 Days or more' OR			  -->
+	<!-- 				  'Diarrhoea for 14 Days or more' OR		  -->
+	<!-- 				  'Blood in Stool' OR		  				  -->
+	<!-- 				  'Fever for last 7 Days' OR		  		  -->
+	<!-- 				  'Convulsions' OR		  		  			  -->
+	<!-- 				  'Not Able to Drink or Feed Anything' OR	  -->
+	<!-- 				  'Vomits Everything' OR		  			  -->
+	<!-- 				  'Red Eye for 4 Days or more' OR		 	  -->
+	<!-- 				  'Red Eye with Visual Problems' OR		 	  -->
+	<!-- 				  'Chest Indrawing' OR		  	  			  -->
+	<!-- 				  'Very Sleepy or Unconscious' OR			  -->
+	<!-- 				  'Palmar Pallor' OR			  			  -->
+	<!-- 				  'Red on MUAC Tape' OR		  		  		  -->
+	<!-- 				  'Swelling of Both Feet') 		  			  -->
+	<!-- 				 AND										  -->
+	<!-- Symptoms: Fast Breathing				 					  -->
+	<!-- 		   (categorised as follows:							  -->
+	<!-- 			1. Age 2 months up to 12 months: 50bpm or more	  -->
+	<!-- 			2. Age 12 months up to 5 years: 40bpm or more)	  -->
+	<!-- ============================================================ -->
+	<Classification>
+	    <Category>fast_breathing</Category>
+		<Name>Fast Breathing and Danger Sign</Name>
+		<Type>DANGER_SIGN</Type>
+		<Priority>1</Priority>
+		<ClassificationRule rule="ANY_CLASSIFICATION">
+			<ClassificationDiagnosed value="true">Cough for 21 Days or more</ClassificationDiagnosed>			<!-- Cough for 21 Days or more (Classification) : TRUE -->
+			<ClassificationDiagnosed value="true">Diarrhoea for 14 Days or more</ClassificationDiagnosed>		<!-- Diarrhoea for 14 Days or more (Classification) : TRUE -->
+			<ClassificationDiagnosed value="true">Blood in Stool</ClassificationDiagnosed>						<!-- Blood in Stool (Classification) : TRUE -->
+			<ClassificationDiagnosed value="true">Fever for last 7 Days</ClassificationDiagnosed>				<!-- Fever for last 7 Days (Classification) : TRUE -->
+			<ClassificationDiagnosed value="true">Convulsions</ClassificationDiagnosed>							<!-- Convulsions (Classification) : TRUE -->
+			<ClassificationDiagnosed value="true">Not Able to Drink or Feed Anything</ClassificationDiagnosed>	<!-- Not Able to Drink or Feed Anything (Classification) : TRUE -->
+			<ClassificationDiagnosed value="true">Vomits Everything</ClassificationDiagnosed>					<!-- Vomits Everything (Classification) : TRUE -->
+			<ClassificationDiagnosed value="true">Red Eye for 4 Days or more</ClassificationDiagnosed>			<!-- Red Eye for 4 Days or more (Classification) : TRUE -->
+			<ClassificationDiagnosed value="true">Red Eye with Visual Problems</ClassificationDiagnosed>		<!-- Red Eye with Visual Problems (Classification) : TRUE -->
+			<ClassificationDiagnosed value="true">Chest Indrawing</ClassificationDiagnosed>						<!-- Chest Indrawing (Classification) : TRUE -->
+			<ClassificationDiagnosed value="true">Very Sleepy or Unconscious</ClassificationDiagnosed>			<!-- Very Sleepy or Unconscious (Classification) : TRUE -->
+			<ClassificationDiagnosed value="true">Palmar Pallor</ClassificationDiagnosed>						<!-- Palmar Pallor (Classification) : TRUE -->
+			<ClassificationDiagnosed value="true">Red on MUAC Tape</ClassificationDiagnosed>					<!-- Red on MUAC Tape (Classification) : TRUE -->
+			<ClassificationDiagnosed value="true">Swelling of Both Feet</ClassificationDiagnosed>				<!-- Swelling of Both Feet (Classification) : TRUE -->
+		</ClassificationRule>
+		<SymptomRule rule="ANY_SYMPTOM">
+			<Symptom value="yes">ccm_look_assessment_fast_breathing_symptom_id</Symptom>						<!-- Fast Breathing : YES -->
+		</SymptomRule>
+	</Classification>
 
 	<!-- ============================================================ -->
 	<!-- Classification: Very Sleepy or Unconscious		  			  -->
