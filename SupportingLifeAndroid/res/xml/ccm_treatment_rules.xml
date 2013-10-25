@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ============================================================ -->
+<!-- CCM TREATMENT RULES 									  	  -->
+<!-- ============================================================ -->
+
+<!-- Note: The <SymptomCriteria> element string must match a 	  -->
+<!-- 	   element in the 'symptom_ids.xml' file.				  -->
+
+<!-- Note: The <Classification> element string must match a 	  -->
+<!-- 	   element in the 'ccm_classification_rules.xml' file.	  -->
+
+<TreatmentRules>
+	<!-- ============================================================ -->
+	<!-- ANY DANGER SIGN				 							  -->
+	<!-- ============================================================ -->
+	<!-- ============================================================ -->
+	<!-- Classification: ANY DANGER SIGN						 	  -->
+	<!-- 															  -->
+	<!-- Treatments: REFER URGENTLY to health facility				  -->
+	<!-- 				AND 										  -->
+	<!-- 			 Explain why child needs to go to health facility -->
+	<!-- 				AND 										  -->
+	<!-- 			 Advise to give fluids and continue feeding		  -->
+	<!--			 (condition: 'Not able to drink or feed anything' -->
+	<!-- 						 symptom must NOT be selected in	  -->
+	<!-- 						 ASK and LOOK assessment) 			  -->
+	<!-- ============================================================ -->
+	<TreatmentRule>
+		<ClassificationType>DANGER_SIGN</ClassificationType>
+		<Treatment>
+			<Recommendation>REFER URGENTLY to health facility</Recommendation>
+		</Treatment>
+		<Treatment>
+			<Recommendation>Explain why child needs to go to health facility</Recommendation>
+		</Treatment>
+		<Treatment>
+			<CriteriaList rule="none">																							<!-- Not able to drink or feed anything != Yes -->
+				<SymptomCriteria value="yes">ccm_ask_initial_assessment_unable_to_drink_or_feed_symptom_id</SymptomCriteria>	
+			</CriteriaList>
+			<Recommendation>Advise to give fluids and continue feeding</Recommendation>
+		</Treatment>
+	</TreatmentRule>
+    
+	<!-- ============================================================ -->
+	<!-- DANGER SIGN				 								  -->
+	<!-- ============================================================ -->
+	<!-- ============================================================ -->
+	<!-- Classification: Diarrhoea								 	  -->
+	<!-- 															  -->
+	<!-- Treatments: Begin giving ORS solution immediately 			  -->
+	<!--			 (condition: 'Not able to drink or feed anything' -->
+	<!-- 						 symptom must NOT be selected in	  -->
+	<!-- 						 ASK and LOOK assessment 			  -->
+	<!-- ============================================================ -->
+
+
+	<!-- ============================================================ -->
+	<!-- ANY DANGER SIGN				 							  -->
+	<!-- ============================================================ -->
+	<!-- ============================================================ -->
+	<!-- Classification: ANY DANGER SIGN						 	  -->
+	<!-- 															  -->
+	<!-- Treatments: Advise to keep child warm, if 'child is NOT 	  -->
+	<!-- 			 hot with fever'					  			  -->
+	<!-- 				AND 										  -->
+	<!-- 			 Write a referral note							  -->
+	<!--				AND											  -->
+	<!-- 			 Arrange transportation and help solve other 	  -->
+	<!-- 			 difficulties in referral			  			  -->
+	<!-- ============================================================ -->
+	<TreatmentRule>
+		<ClassificationType>DANGER_SIGN</ClassificationType>
+		<Treatment>
+			<Recommendation>Advise to keep child warm, if 'child is NOT hot with fever'</Recommendation>
+		</Treatment>
+		<Treatment>
+			<Recommendation>Write a referral note</Recommendation>
+		</Treatment>
+		<Treatment>
+			<Recommendation>Arrange transportation and help solve other difficulties in referral</Recommendation>
+		</Treatment>
+	</TreatmentRule>
+
+</TreatmentRules>

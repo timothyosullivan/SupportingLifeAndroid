@@ -2,10 +2,12 @@ package ie.ucc.bis.activity;
 
 import ie.ucc.bis.R;
 import ie.ucc.bis.assessment.ccm.ui.CcmAssessmentClassificationsFragment;
+import ie.ucc.bis.assessment.ccm.ui.CcmAssessmentTreatmentsFragment;
 import ie.ucc.bis.assessment.model.review.ReviewItem;
 import ie.ucc.bis.assessment.ui.AssessmentResultsReviewFragment;
 import ie.ucc.bis.domain.Patient;
 import ie.ucc.bis.rule.engine.ClassificationRuleEngine;
+import ie.ucc.bis.rule.engine.TreatmentRuleEngine;
 
 import java.util.ArrayList;
 
@@ -54,11 +56,11 @@ public class CcmAssessmentResultsActivity extends AssessmentResultsActivity {
         // resolve CCM classifications based on assessed symptoms
         setPatient(new Patient());
         ClassificationRuleEngine classificationRuleEngine = new ClassificationRuleEngine();
-        classificationRuleEngine.determineClassifications(this, getReviewItems(), getPatient(), classificationRuleEngine.getSystemCcmClassifications());
+        classificationRuleEngine.determinePatientClassifications(this, getReviewItems(), getPatient(), classificationRuleEngine.getSystemCcmClassifications());
         
         // identify CCM treatments
- //       TreatmentRuleEngine treatmentRuleEngine = new TreatmentRuleEngine();
- //       treatmentRuleEngine.determineTreatments(this, reviewItems, classificationRuleEngine.getSystemImciClassifications(), getPatient());
+        TreatmentRuleEngine treatmentRuleEngine = new TreatmentRuleEngine();
+        treatmentRuleEngine.determineCcmTreatments(this, getReviewItems(), getPatient());
  
         // create a new Action bar and set title to strings.xml
         final ActionBar bar = getActionBar();
@@ -76,8 +78,8 @@ public class CcmAssessmentResultsActivity extends AssessmentResultsActivity {
         		CcmAssessmentClassificationsFragment.class, null);
         
         // add treatments tab
- //       getTabsAdapter().addTab(bar.newTab().setText(R.string.ccm_assessment_results_treatments_tab_title),
- //      		ImciAssessmentTreatmentsFragment.class, null);
+        getTabsAdapter().addTab(bar.newTab().setText(R.string.ccm_assessment_results_treatments_tab_title),
+        		CcmAssessmentTreatmentsFragment.class, null);
  
         // open on classifications tab by default
         getTabsAdapter().setDefaultTab();
@@ -96,7 +98,7 @@ public class CcmAssessmentResultsActivity extends AssessmentResultsActivity {
 	 */
 /*	public void displayTreatmentTab(int position, String classificationTitle) {
 		getTabsAdapter().displayTreatmentTab();
-		ImciAssessmentTreatmentsFragment treatmentsFragment = (ImciAssessmentTreatmentsFragment) 
+		CcmAssessmentTreatmentsFragment treatmentsFragment = (CcmAssessmentTreatmentsFragment) 
 				getSupportFragmentManager().getFragments().get(TabsAdapter.TREATMENT_TAB_INDEX);
 
 		if (treatmentsFragment != null) {

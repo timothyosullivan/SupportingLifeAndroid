@@ -89,6 +89,7 @@ public class SplashActivity extends SupportingLifeBaseActivity {
 				
 				// parse CCM xml-based rules into memory
 				classificationRuleEngine.readCcmClassificationRules(activity);
+				treatmentRuleEngine.readCcmTreatmentRules(activity);
 				
 				// call finish on SplashActivity to prevent user from using
 				// back button to navigate back to Splash screen

@@ -1,8 +1,8 @@
-package ie.ucc.bis.assessment.imci.ui;
+package ie.ucc.bis.assessment.ccm.ui;
 
 import ie.ucc.bis.R;
-import ie.ucc.bis.activity.ImciAssessmentResultsActivity;
-import ie.ucc.bis.assessment.imci.model.ImciTreatmentAdapter;
+import ie.ucc.bis.activity.AssessmentResultsActivity;
+import ie.ucc.bis.assessment.ccm.model.CcmTreatmentAdapter;
 import ie.ucc.bis.domain.Patient;
 import ie.ucc.bis.rule.engine.Diagnostic;
 
@@ -24,9 +24,9 @@ import android.widget.ListView;
  * @author TOSullivan
  *
  */
-public class ImciAssessmentTreatmentsFragment extends ListFragment {
+public class CcmAssessmentTreatmentsFragment extends ListFragment {
     
-    private ImciTreatmentAdapter treatmentAdapter;
+    private CcmTreatmentAdapter ccmTreatmentAdapter;
     private Patient patient;
     private String classificationTitleSelected;
 	
@@ -40,9 +40,9 @@ public class ImciAssessmentTreatmentsFragment extends ListFragment {
         super.onActivityCreated(savedInstanceState);
       
         // obtain a reference to the patient being dealt with...
-        setPatient(((ImciAssessmentResultsActivity) getActivity()).getPatient());          
-        setTreatmentAdapter(new ImciTreatmentAdapter(this, new ArrayList<Diagnostic>(getPatient().getDiagnostics())));
-        setListAdapter(getTreatmentAdapter());
+        setPatient(((AssessmentResultsActivity) getActivity()).getPatient());          
+        setCcmTreatmentAdapter(new CcmTreatmentAdapter(this, new ArrayList<Diagnostic>(getPatient().getDiagnostics())));
+        setListAdapter(getCcmTreatmentAdapter());
     }
     
     @Override
@@ -86,17 +86,17 @@ public class ImciAssessmentTreatmentsFragment extends ListFragment {
 	}
 
 	/**
-	 * Getter Method: getTreatmentAdapter()
+	 * Getter Method: getCcmTreatmentAdapter()
 	 */
-	public ImciTreatmentAdapter getTreatmentAdapter() {
-		return treatmentAdapter;
+	public CcmTreatmentAdapter getCcmTreatmentAdapter() {
+		return ccmTreatmentAdapter;
 	}
 	
 	/**
-	 * Setter Method: setTreatmentAdapter()
+	 * Setter Method: setCcmTreatmentAdapter()
 	 */
-	public void setTreatmentAdapter(ImciTreatmentAdapter treatmentAdapter) {
-		this.treatmentAdapter = treatmentAdapter;
+	public void setCcmTreatmentAdapter(CcmTreatmentAdapter ccmTreatmentAdapter) {
+		this.ccmTreatmentAdapter = ccmTreatmentAdapter;
 	}
 
 	/**

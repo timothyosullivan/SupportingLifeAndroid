@@ -55,12 +55,12 @@ public class ImciAssessmentResultsActivity extends AssessmentResultsActivity {
         // resolve imci classifications based on assessed symptoms
         setPatient(new Patient());
         ClassificationRuleEngine classificationRuleEngine = new ClassificationRuleEngine();
-        classificationRuleEngine.determineClassifications(this, getReviewItems(), getPatient(), 
+        classificationRuleEngine.determinePatientClassifications(this, getReviewItems(), getPatient(), 
         		classificationRuleEngine.getSystemImciClassifications());
         
         // identify imci treatments
         TreatmentRuleEngine treatmentRuleEngine = new TreatmentRuleEngine();
-        treatmentRuleEngine.determineTreatments(this, getReviewItems(), classificationRuleEngine.getSystemImciClassifications(), getPatient());
+        treatmentRuleEngine.determineImciTreatments(this, getReviewItems(), classificationRuleEngine.getSystemImciClassifications(), getPatient());
  
         // create a new Action bar and set title to strings.xml
         final ActionBar bar = getActionBar();

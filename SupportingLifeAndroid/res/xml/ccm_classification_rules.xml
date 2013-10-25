@@ -19,6 +19,7 @@
 	<Classification>
 	    <Category>cough_for_21_days_or_more</Category>
 		<Name>Cough for 21 Days or more</Name>
+		<CcmTreatmentDisplayName>Cough</CcmTreatmentDisplayName>
 		<Type>DANGER_SIGN</Type>
 		<Priority>1</Priority>
 		<SymptomRule rule="ANY_SYMPTOM">
@@ -39,6 +40,7 @@
 	<Classification>
 	    <Category>diarrhoea_for_14_days_or_more</Category>
 		<Name>Diarrhoea for 14 Days or more</Name>
+		<CcmTreatmentDisplayName>Diarrhoea</CcmTreatmentDisplayName>
 		<Type>DANGER_SIGN</Type>
 		<Priority>1</Priority>
 		<SymptomRule rule="ANY_SYMPTOM">
@@ -76,6 +78,7 @@
 	<Classification>
 	    <Category>diarrhoea_less_than_14_days_and_no_blood_in_stool</Category>
 		<Name>Diarrhoea (less than 14 days AND no blood in stool)</Name>
+		<CcmTreatmentDisplayName>Diarrhoea</CcmTreatmentDisplayName>
 		<Type>SICK</Type>
 		<Priority>3</Priority>
 		<SymptomRule rule="ANY_SYMPTOM">
@@ -99,6 +102,7 @@
 	<Classification>
 	    <Category>fever_for_last_7_days</Category>
 		<Name>Fever for last 7 Days</Name>
+		<CcmTreatmentDisplayName>Fever</CcmTreatmentDisplayName>
 		<Type>DANGER_SIGN</Type>
 		<Priority>1</Priority>
 		<SymptomRule rule="ANY_SYMPTOM">
@@ -119,6 +123,7 @@
 	<Classification>
 	    <Category>fever_less_than_7_days</Category>
 		<Name>Fever (less than 7 days)</Name>
+		<CcmTreatmentDisplayName>Fever</CcmTreatmentDisplayName>
 		<Type>SICK</Type>
 		<Priority>3</Priority>
 		<SymptomRule rule="ANY_SYMPTOM">
@@ -194,6 +199,7 @@
 	<Classification>
 	    <Category>red_eye_for_4_days_or_more</Category>
 		<Name>Red Eye for 4 Days or more</Name>
+		<CcmTreatmentDisplayName>Red Eye</CcmTreatmentDisplayName>
 		<Type>DANGER_SIGN</Type>
 		<Priority>1</Priority>
 		<SymptomRule rule="ANY_SYMPTOM">
@@ -214,6 +220,7 @@
 	<Classification>
 	    <Category>red_eye_with_visual_problems</Category>
 		<Name>Red Eye with Visual Problems</Name>
+		<CcmTreatmentDisplayName>Red Eye</CcmTreatmentDisplayName>
 		<Type>DANGER_SIGN</Type>
 		<Priority>1</Priority>
 		<SymptomRule rule="ANY_SYMPTOM">
@@ -234,6 +241,7 @@
 	<Classification>
 	    <Category>red_eye_less_than_4_days</Category>
 		<Name>Red Eye (less than 4 days)</Name>
+		<CcmTreatmentDisplayName>Red Eye</CcmTreatmentDisplayName>
 		<Type>SICK</Type>
 		<Priority>3</Priority>
 		<SymptomRule rule="ANY_SYMPTOM">
@@ -268,6 +276,7 @@
 	<Classification>
 	    <Category>chest_indrawing</Category>
 		<Name>Chest Indrawing</Name>
+		<CcmTreatmentDisplayName>Chest Indrawing</CcmTreatmentDisplayName>
 		<Type>DANGER_SIGN</Type>
 		<Priority>1</Priority>
 		<SymptomRule rule="ANY_SYMPTOM">
@@ -321,6 +330,7 @@
 	<Classification>
 	    <Category>fast_breathing</Category>
 		<Name>Fast Breathing and Danger Sign</Name>
+		<CcmTreatmentDisplayName>Fast Breathing and Danger Sign</CcmTreatmentDisplayName>
 		<Type>DANGER_SIGN</Type>
 		<Priority>1</Priority>
 		<ClassificationRule rule="ANY_CLASSIFICATION">

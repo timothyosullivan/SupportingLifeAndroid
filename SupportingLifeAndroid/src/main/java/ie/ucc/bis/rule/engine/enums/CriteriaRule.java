@@ -6,10 +6,11 @@ package ie.ucc.bis.rule.engine.enums;
  * 
  * <CriteriaList rule="all">
  * <CriteriaList rule="any">
+ * <CriteriaList rule="none">
  * 
  * @author tosullivan
  *
  */
 public enum CriteriaRule {
-	ALL, ANY;
+	ALL, ANY, NONE;
 }

@@ -1,7 +1,7 @@
-package ie.ucc.bis.assessment.imci.model;
+package ie.ucc.bis.assessment.ccm.model;
 
 import ie.ucc.bis.R;
-import ie.ucc.bis.assessment.imci.ui.ImciAssessmentTreatmentsFragment;
+import ie.ucc.bis.assessment.ccm.ui.CcmAssessmentTreatmentsFragment;
 import ie.ucc.bis.rule.engine.Classification;
 import ie.ucc.bis.rule.engine.Diagnostic;
 import ie.ucc.bis.rule.engine.enums.ImciClassificationType;
@@ -20,11 +20,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 /**
+ * Class: CcmTreatmentAdapter
  * 
  * @author timothyosullivan
  */
 
-public class TreatmentAdapter extends BaseAdapter {
+public class CcmTreatmentAdapter extends BaseAdapter {
 	private static final int SIMPLE_ITEM_TYPE = 1;
 	private static final String BULLET_SYMBOL = "&#8226";
 	private static final int TITLE_FLASH_COUNT = 3;
@@ -32,11 +33,11 @@ public class TreatmentAdapter extends BaseAdapter {
 	
 	private List<Diagnostic> patientDiagnostics;
 	
-	private ImciAssessmentTreatmentsFragment assessmentTreatmentsFragment;
+	private CcmAssessmentTreatmentsFragment ccmAssessmentTreatmentsFragment;
 	
-    public TreatmentAdapter(ImciAssessmentTreatmentsFragment assessmentTreatmentsFragment, List<Diagnostic> patientDiagnostics) {
+    public CcmTreatmentAdapter(CcmAssessmentTreatmentsFragment ccmAssessmentTreatmentsFragment, List<Diagnostic> patientDiagnostics) {
 		super();
-		setAssessmentTreatmentsFragment(assessmentTreatmentsFragment);
+		setCcmAssessmentTreatmentsFragment(ccmAssessmentTreatmentsFragment);
 		setPatientDiagnostics(patientDiagnostics);
 	}
 
@@ -79,7 +80,7 @@ public class TreatmentAdapter extends BaseAdapter {
         switch (itemType) {
         	case SIMPLE_ITEM_TYPE :
         		if (view == null) {
-        	        LayoutInflater inflater = LayoutInflater.from(getAssessmentTreatmentsFragment().getActivity());
+        	        LayoutInflater inflater = LayoutInflater.from(getCcmAssessmentTreatmentsFragment().getActivity());
         			view = inflater.inflate(R.layout.treatment_list_item_review, container, false);
         		}
         		String classificationTitle = getPatientDiagnostics().get(position).getClassification().getName();
@@ -92,7 +93,7 @@ public class TreatmentAdapter extends BaseAdapter {
     			colourCodeTreatment(getPatientDiagnostics().get(position).getClassification(), severityImageView);
                 
                 // animate the title of the treatment if the user has selected the treatment from the classifications tab
-                if (classificationTitle.equalsIgnoreCase(getAssessmentTreatmentsFragment().getClassificationTitleSelected())) {
+                if (classificationTitle.equalsIgnoreCase(getCcmAssessmentTreatmentsFragment().getClassificationTitleSelected())) {
         	    	animateTreatmentTitle(classificationTitleText);
         	    	animateSeverityImage(severityImageView);
                 }
@@ -109,7 +110,7 @@ public class TreatmentAdapter extends BaseAdapter {
 	 * @param classificationTitleText
 	 */
 	private void animateTreatmentTitle(final TextView classificationTitleText) {
-		classificationTitleText.setTextColor(getAssessmentTreatmentsFragment().getResources().getColor(R.color.Black));
+		classificationTitleText.setTextColor(getCcmAssessmentTreatmentsFragment().getResources().getColor(R.color.Black));
 		
 		Animation anim = new AlphaAnimation(0.0f, 1.0f);
 		anim.setDuration(TITLE_FLASH_BLINK_DURATION); //You can manage the time of the blink with this parameter
@@ -120,7 +121,7 @@ public class TreatmentAdapter extends BaseAdapter {
 	        @Override
 	        public void onAnimationEnd(Animation animation) {
 	        	// revert text colour back to its original green
-	        	classificationTitleText.setTextColor(getAssessmentTreatmentsFragment().getResources().getColor(R.color.DarkGreen));   
+	        	classificationTitleText.setTextColor(getCcmAssessmentTreatmentsFragment().getResources().getColor(R.color.DarkGreen));   
 	        }
 
 			@Override
@@ -131,7 +132,7 @@ public class TreatmentAdapter extends BaseAdapter {
 		});
 		
 		classificationTitleText.startAnimation(anim);
-		getAssessmentTreatmentsFragment().setClassificationTitleSelected(null);
+		getCcmAssessmentTreatmentsFragment().setClassificationTitleSelected(null);
 	}
 	
 	/**
@@ -209,16 +210,16 @@ public class TreatmentAdapter extends BaseAdapter {
 		this.patientDiagnostics = patientDiagnostics;
 	}
 	/**
-	 * Getter Method: getAssessmentTreatmentsFragment()
+	 * Getter Method: getCcmAssessmentTreatmentsFragment()
 	 */
-	public ImciAssessmentTreatmentsFragment getAssessmentTreatmentsFragment() {
-		return assessmentTreatmentsFragment;
+	public CcmAssessmentTreatmentsFragment getCcmAssessmentTreatmentsFragment() {
+		return ccmAssessmentTreatmentsFragment;
 	}
 
 	/**
-	 * Setter Method: setAssessmentTreatmentsFragment()
+	 * Setter Method: setCcmAssessmentTreatmentsFragment()
 	 */
-	public void setAssessmentTreatmentsFragment(ImciAssessmentTreatmentsFragment assessmentTreatmentsFragment) {
-		this.assessmentTreatmentsFragment = assessmentTreatmentsFragment;
+	public void setCcmAssessmentTreatmentsFragment(CcmAssessmentTreatmentsFragment ccmAssessmentTreatmentsFragment) {
+		this.ccmAssessmentTreatmentsFragment = ccmAssessmentTreatmentsFragment;
 	}
 }

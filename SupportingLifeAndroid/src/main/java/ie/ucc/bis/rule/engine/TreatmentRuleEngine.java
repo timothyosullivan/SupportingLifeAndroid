@@ -22,7 +22,7 @@ import android.content.res.XmlResourceParser;
 /**
  * Class: TreatmentRuleEngine
  * 
- * Responsible for parsing treatment xml rules and
+ * Responsible for parsing treatment IMCI and CCM XML-based rules and
  * determining appropriate treatments for patient.
  * 
  * @author TOSullivan
@@ -46,22 +46,33 @@ public class TreatmentRuleEngine {
 	
 	private static final String LOG_TAG = "ie.ucc.bis.rule.engine.TreatmentRuleEngine";
 	
-	private static ArrayList<TreatmentRule> systemTreatmentRules;
+	private static ArrayList<TreatmentRule> systemImciTreatmentRules;
+	private static ArrayList<TreatmentRule> systemCcmTreatmentRules;
 	
 	/**
-	 * 
-	 * Responsible for reading treatment rules from xml into memory
+	 * Responsible for reading IMCI treatment rules from XML into memory
 	 * 
 	 * @param supportingLifeBaseActivity 
-	 * 
 	 */
 	public void readImciTreatmentRules(SupportingLifeBaseActivity supportingLifeBaseActivity) {
-		setSystemTreatmentRules(new ArrayList<TreatmentRule>());
-		parseTreatmentRules(supportingLifeBaseActivity);
+		XmlResourceParser xmlParser = supportingLifeBaseActivity.getResources().getXml(R.xml.imci_treatment_rules);
+		setSystemImciTreatmentRules(new ArrayList<TreatmentRule>());
+		parseTreatmentRules(supportingLifeBaseActivity, getSystemImciTreatmentRules(), xmlParser);
 	}
 	
 	/**
-	 * Responsible for determining patient treatments based on 
+	 * Responsible for reading CCM treatment rules from XML into memory
+	 * 
+	 * @param supportingLifeBaseActivity 
+	 */
+	public void readCcmTreatmentRules(SupportingLifeBaseActivity supportingLifeBaseActivity) {
+		XmlResourceParser xmlParser = supportingLifeBaseActivity.getResources().getXml(R.xml.ccm_treatment_rules);
+		setSystemCcmTreatmentRules(new ArrayList<TreatmentRule>());
+		parseTreatmentRules(supportingLifeBaseActivity, getSystemCcmTreatmentRules(), xmlParser);
+	}
+	
+	/**
+	 * Responsible for determining IMCI patient treatments based on 
 	 * assessment
 	 * 
 	 * @param supportingLifeBaseActivity 
@@ -70,12 +81,26 @@ public class TreatmentRuleEngine {
 	 * @param patient 
 	 * 
 	 */
-	public void determineTreatments(SupportingLifeBaseActivity supportingLifeBaseActivity, List<ReviewItem> reviewItems, 
+	public void determineImciTreatments(SupportingLifeBaseActivity supportingLifeBaseActivity, List<ReviewItem> reviewItems, 
 			List<Classification> classifications, Patient patient) {
 		addTreatmentCriteriaToReviewItems(supportingLifeBaseActivity, reviewItems, patient.getDiagnostics());
-		determinePatientTreatments(supportingLifeBaseActivity, reviewItems, patient);
+		determinePatientTreatments(supportingLifeBaseActivity, reviewItems, patient, getSystemImciTreatmentRules());
 	}
 
+	/**
+	 * Responsible for determining CCM patient treatments based on 
+	 * assessment
+	 * 
+	 * @param supportingLifeBaseActivity 
+	 * @param reviewItems
+	 * @param classifications
+	 * @param patient 
+	 * 
+	 */
+	public void determineCcmTreatments(SupportingLifeBaseActivity supportingLifeBaseActivity, List<ReviewItem> reviewItems, Patient patient) {
+		determinePatientTreatments(supportingLifeBaseActivity, reviewItems, patient, getSystemCcmTreatmentRules());
+	}
+	
 	/**
 	 * Responsible for adding treatment criteria items to the review item list
 	 * 
@@ -178,9 +203,11 @@ public class TreatmentRuleEngine {
 	 * Responsible for parsing xml-based treatment rules
 	 * 
 	 * @param supportingLifeBaseActivity 
+	 * @param xmlParser 
+	 * @param arrayList 
 	 * 
 	 */
-	private void parseTreatmentRules(SupportingLifeBaseActivity supportingLifeBaseActivity) {
+	private void parseTreatmentRules(SupportingLifeBaseActivity supportingLifeBaseActivity, ArrayList<TreatmentRule> systemTreatments, XmlResourceParser xmlParser) {
 		try {
 			String elemName = null;
 			TreatmentRule treatmentRule = null;
@@ -192,9 +219,7 @@ public class TreatmentRuleEngine {
 			String treatmentName = null;
 			Symptom symptomCriteria = null;
 			String ruleAttrib = null;
-			
-			XmlResourceParser xmlParser = supportingLifeBaseActivity.getResources().getXml(R.xml.imci_treatment_rules);
-			
+						
 			int eventType = xmlParser.next();
 			
 			while (eventType != XmlPullParser.END_DOCUMENT) {
@@ -254,7 +279,7 @@ public class TreatmentRuleEngine {
 						}
 						else if(TREATMENT_RULE.equalsIgnoreCase(xmlParser.getName())) {
 							// </TreatmentRule>
-							getSystemTreatmentRules().add(treatmentRule);
+							systemTreatments.add(treatmentRule);
 						}
 						break;
 				} // end of switch				
@@ -267,7 +292,7 @@ public class TreatmentRuleEngine {
 			ex.printStackTrace();
 		}
 		// DEBUG OUTPUT
-		LoggerUtils.i(LOG_TAG, captureTreatmentRulesDebugOutput(getSystemTreatmentRules()));
+		LoggerUtils.i(LOG_TAG, captureTreatmentRulesDebugOutput(systemTreatments));
 		LoggerUtils.i(LOG_TAG, "--------------------------------------");
 		LoggerUtils.i(LOG_TAG, "--------------------------------------");
 		LoggerUtils.i(LOG_TAG, "--------------------------------------");
@@ -280,15 +305,16 @@ public class TreatmentRuleEngine {
 	 * @param supportingLifeBaseActivity
 	 * @param reviewItems
 	 * @param patient 
+	 * @param systemTreatments 
 	 * 
 	 */
 	private void determinePatientTreatments(SupportingLifeBaseActivity supportingLifeBaseActivity, 
-			List<ReviewItem> reviewItems, Patient patient) {
+			List<ReviewItem> reviewItems, Patient patient, ArrayList<TreatmentRule> systemTreatments) {
 		
 		// 1. iterate over all patient classifications and assign 
 		//	  appropriate treatment(s)
 		for (Diagnostic diagnostic : patient.getDiagnostics()) {
-			for (TreatmentRule treatmentRule : getSystemTreatmentRules()) {
+			for (TreatmentRule treatmentRule : systemTreatments) {
 				if (diagnostic.getClassification().getName().equalsIgnoreCase(treatmentRule.getClassification())) {				
 					// classification match found so determine if all associated 
 					// treatments apply
@@ -306,6 +332,10 @@ public class TreatmentRuleEngine {
 								else if (CriteriaRule.ANY.name().equalsIgnoreCase(treatmentCriterion.getRule())) {
 									// only need a single symptom in order for the treatment to apply
 									symptomCriteriaPasses = checkSymptomCriteria(symptomCriterion, reviewItems, patient, 1);
+								}
+								else if (CriteriaRule.NONE.name().equalsIgnoreCase(treatmentCriterion.getRule())) {
+									// none of the symptom criteria should apply in order for the treatment to apply
+									symptomCriteriaPasses = checkSymptomCriteria(symptomCriterion, reviewItems, patient, 0);
 								}
 							}
 							else {
@@ -380,6 +410,13 @@ public class TreatmentRuleEngine {
 				} // end of if (reviewItem.getSymptomValue() ....
 			} // end of for (ReviewItem reviewItem ...
 		} // end of for (Symptom symptomCriteria ...
+		
+		// This check is required when we're dealing with the 'NONE' Criteria Rule case
+		// i.e. none of the symptoms should have applied in order for the 'NONE' criteria
+		//		rule to have been deemed successful
+		if (symptomCriteriaCounter == criteriaRequired) {
+			symptomCriteriaPasses = true;
+		}
 		return symptomCriteriaPasses;
 	}
 	
@@ -462,16 +499,30 @@ public class TreatmentRuleEngine {
 	
 
 	/**
-	 * Getter Method: getSystemTreatmentRules()
+	 * Getter Method: getSystemImciTreatmentRules()
 	 */	
-	public static ArrayList<TreatmentRule> getSystemTreatmentRules() {
-		return systemTreatmentRules;
+	public static ArrayList<TreatmentRule> getSystemImciTreatmentRules() {
+		return systemImciTreatmentRules;
 	}
 
 	/**
-	 * Setter Method: setSystemTreatmentRules()
+	 * Setter Method: setSystemImciTreatmentRules()
 	 */
-	public static void setSystemTreatmentRules(ArrayList<TreatmentRule> systemTreatmentRules) {
-		TreatmentRuleEngine.systemTreatmentRules = systemTreatmentRules;
+	public static void setSystemImciTreatmentRules(ArrayList<TreatmentRule> systemImciTreatmentRules) {
+		TreatmentRuleEngine.systemImciTreatmentRules = systemImciTreatmentRules;
+	}
+
+	/**
+	 * Getter Method: getSystemCcmTreatmentRules()
+	 */	
+	public static ArrayList<TreatmentRule> getSystemCcmTreatmentRules() {
+		return systemCcmTreatmentRules;
+	}
+
+	/**
+	 * Setter Method: setSystemCcmTreatmentRules()
+	 */
+	public static void setSystemCcmTreatmentRules(ArrayList<TreatmentRule> systemCcmTreatmentRules) {
+		TreatmentRuleEngine.systemCcmTreatmentRules = systemCcmTreatmentRules;
 	}
 }

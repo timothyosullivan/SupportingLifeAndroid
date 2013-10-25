@@ -56,6 +56,7 @@ public class Classification implements Serializable {
 	private String name;
 	private String type;
 	private int priority;
+	private String ccmTreatmentDisplayName;
 	private List<SymptomRule> symptomRules;
 	private List<ClassificationRule> classificationRules;
  
@@ -158,6 +159,20 @@ public class Classification implements Serializable {
 	 */
 	public void setPriority(int priority) {
 		this.priority = priority;
+	}
+
+	/**
+	 * Getter Method: getCcmTreatmentDisplayName()
+	 */
+	public String getCcmTreatmentDisplayName() {
+		return ccmTreatmentDisplayName;
+	}
+
+	/**
+	 * Setter Method: setCcmTreatmentDisplayName()
+	 */
+	public void setCcmTreatmentDisplayName(String ccmTreatmentDisplayName) {
+		this.ccmTreatmentDisplayName = ccmTreatmentDisplayName;
 	}
 
 	/**

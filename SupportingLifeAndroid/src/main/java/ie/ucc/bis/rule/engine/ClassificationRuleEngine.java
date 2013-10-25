@@ -19,7 +19,6 @@ import org.xmlpull.v1.XmlPullParserException;
 
 import android.content.res.XmlResourceParser;
 
-
 /**
  * Class: TrainingTutorialParser
  * 
@@ -34,6 +33,7 @@ public class ClassificationRuleEngine {
 
 	private static final String CLASSIFICATION_ELEMENT = "Classification";
 	private static final String CLASSIFICATION_CATEGORY = "Category";
+	private static final String CCM_TREATMENT_DISPLAY_NAME = "CcmTreatmentDisplayName";
 	private static final String CLASSIFICATION_NAME = "Name";
 	private static final String CLASSIFICATION_TYPE = "Type";
 	private static final String CLASSIFICATION_PRIORITY = "Priority";
@@ -80,22 +80,6 @@ public class ClassificationRuleEngine {
 	
 	/**
 	 * 
-	 * Responsible for determining patient classifications based on 
-	 * assessment
-	 * 
-	 * @param supportingLifeBaseActivity 
-	 * @param reviewItems 
-	 * @param patient 
-	 * @param systemClassifications 
-	 * 
-	 */
-	public void determineClassifications(SupportingLifeBaseActivity supportingLifeBaseActivity, ArrayList<ReviewItem> reviewItems, 
-			Patient patient, ArrayList<Classification> systemClassifications) {
-		determinePatientClassifications(supportingLifeBaseActivity, reviewItems, patient, systemClassifications);
-	}
-
-	/**
-	 * 
 	 * Responsible for parsing xml-based classification rules
 	 * 
 	 * @param supportingLifeBaseActivity 
@@ -133,6 +117,10 @@ public class ClassificationRuleEngine {
 						else if (CLASSIFICATION_NAME.equalsIgnoreCase(elemName)) {
 							// <Name>
 							classification.setName(xmlParser.nextText());
+						}
+						else if (CCM_TREATMENT_DISPLAY_NAME.equalsIgnoreCase(elemName)) {
+							// <CcmTreatmentDisplayName>
+							classification.setCcmTreatmentDisplayName(xmlParser.nextText());
 						}
 						else if (CLASSIFICATION_TYPE.equalsIgnoreCase(elemName)) {
 							// <Type>
@@ -210,7 +198,7 @@ public class ClassificationRuleEngine {
 	 * @param systemClassifications 
 	 * 
 	 */
-	private void determinePatientClassifications(SupportingLifeBaseActivity supportingLifeBaseActivity, ArrayList<ReviewItem> reviewItems,
+	public void determinePatientClassifications(SupportingLifeBaseActivity supportingLifeBaseActivity, ArrayList<ReviewItem> reviewItems,
 			Patient patient, ArrayList<Classification> systemClassifications) {
 		// 1. iterate over all review items and perform first rudimentary check in assessing
 		//    if the symptom criteria applies
