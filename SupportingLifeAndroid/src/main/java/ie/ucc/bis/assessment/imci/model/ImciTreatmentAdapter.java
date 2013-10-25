@@ -20,6 +20,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 /**
+ * Class: ImciTreatmentAdapter
  * 
  * @author timothyosullivan
  */
@@ -83,12 +84,12 @@ public class ImciTreatmentAdapter extends BaseAdapter {
         			view = inflater.inflate(R.layout.treatment_list_item_review, container, false);
         		}
         		String classificationTitle = getPatientDiagnostics().get(position).getClassification().getName();
-        		TextView classificationTitleText = (TextView) view.findViewById(R.id.imci_treatment_list_item_title);
+        		TextView classificationTitleText = (TextView) view.findViewById(R.id.treatment_list_item_title);
         		classificationTitleText.setText(classificationTitle);
                 List<String> treatments = getPatientDiagnostics().get(position).getTreatmentRecommendations();
-                addBulletedListToTextView(treatments, ((TextView) view.findViewById(R.id.imci_treatment_list_item_desc)));
+                addBulletedListToTextView(treatments, ((TextView) view.findViewById(R.id.treatment_list_item_desc)));
                 
-    			ImageView severityImageView = (ImageView) view.findViewById(R.id.imci_treatment_list_item_classification_severity);
+    			ImageView severityImageView = (ImageView) view.findViewById(R.id.treatment_list_item_classification_severity);
     			colourCodeTreatment(getPatientDiagnostics().get(position).getClassification(), severityImageView);
                 
                 // animate the title of the treatment if the user has selected the treatment from the classifications tab

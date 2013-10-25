@@ -26,6 +26,7 @@
 	<!-- 						 ASK and LOOK assessment) 			  -->
 	<!-- ============================================================ -->
 	<TreatmentRule>
+	    <Classification>DANGER SIGN</Classification>
 		<ClassificationType>DANGER_SIGN</ClassificationType>
 		<Treatment>
 			<Recommendation>REFER URGENTLY to health facility</Recommendation>
@@ -69,6 +70,7 @@
 	<!-- 			 difficulties in referral			  			  -->
 	<!-- ============================================================ -->
 	<TreatmentRule>
+	    <Classification>DANGER SIGN</Classification>
 		<ClassificationType>DANGER_SIGN</ClassificationType>
 		<Treatment>
 			<Recommendation>Advise to keep child warm, if 'child is NOT hot with fever'</Recommendation>

@@ -27,5 +27,5 @@
         android:scaleType="fitCenter" 
         android:paddingLeft="10dp" 
         android:paddingRight="10dp" 
-        android:contentDescription="@string/imci_classification_severity_image_content_assist"/>
+        android:contentDescription="@string/classification_severity_image_content_assist"/>
 </LinearLayout>

@@ -90,6 +90,7 @@ public class ClassificationUtils {
 	 */
 	public static void copyClassificationHeadlineDetails(Classification classification, Classification classificationMatch) {
 		classificationMatch.setName(classification.getName());
+		classificationMatch.setCcmTreatmentDisplayName(classification.getCcmTreatmentDisplayName());
 		classificationMatch.setType(classification.getType());
 		classificationMatch.setCategory(classification.getCategory());
 		classificationMatch.setPriority(classification.getPriority());

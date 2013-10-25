@@ -325,7 +325,6 @@
 	<string name="imci_assessment_results_review_tab_title">Assessment</string>
 	<string name="imci_assessment_results_classifications_tab_title">Classifications</string>
 	<string name="imci_assessment_results_treatments_tab_title">Treatments</string>
-	<string name="imci_classification_severity_image_content_assist">IMCI Classification Severity Image</string>
 
     <!-- ============================================================ -->
     <!-- ============================================================ -->
@@ -498,6 +497,7 @@
     <!-- ASSESSMENT WIZARD BREAD-CRUMB UI -->
     <!-- UNIVERSAL COMPONENTS -->
     <!-- ============================================================ -->
+    <string name="classification_severity_image_content_assist">Classification Severity Image</string>
 	<string name="assessment_wizard_review_title">Review</string>
 	<string name="assessment_wizard_radio_yes">Yes</string>
 	<string name="assessment_wizard_radio_no">No</string>

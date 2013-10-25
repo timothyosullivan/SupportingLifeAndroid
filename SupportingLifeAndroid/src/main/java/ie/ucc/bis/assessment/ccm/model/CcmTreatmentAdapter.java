@@ -4,7 +4,7 @@ import ie.ucc.bis.R;
 import ie.ucc.bis.assessment.ccm.ui.CcmAssessmentTreatmentsFragment;
 import ie.ucc.bis.rule.engine.Classification;
 import ie.ucc.bis.rule.engine.Diagnostic;
-import ie.ucc.bis.rule.engine.enums.ImciClassificationType;
+import ie.ucc.bis.rule.engine.enums.CcmClassificationType;
 
 import java.util.List;
 
@@ -83,17 +83,19 @@ public class CcmTreatmentAdapter extends BaseAdapter {
         	        LayoutInflater inflater = LayoutInflater.from(getCcmAssessmentTreatmentsFragment().getActivity());
         			view = inflater.inflate(R.layout.treatment_list_item_review, container, false);
         		}
-        		String classificationTitle = getPatientDiagnostics().get(position).getClassification().getName();
-        		TextView classificationTitleText = (TextView) view.findViewById(R.id.imci_treatment_list_item_title);
+        		String classificationTitle = getPatientDiagnostics().get(position).getClassification().getCcmTreatmentDisplayName();
+        		
+        		TextView classificationTitleText = (TextView) view.findViewById(R.id.treatment_list_item_title);
         		classificationTitleText.setText(classificationTitle);
                 List<String> treatments = getPatientDiagnostics().get(position).getTreatmentRecommendations();
-                addBulletedListToTextView(treatments, ((TextView) view.findViewById(R.id.imci_treatment_list_item_desc)));
+                addBulletedListToTextView(treatments, ((TextView) view.findViewById(R.id.treatment_list_item_desc)));
                 
-    			ImageView severityImageView = (ImageView) view.findViewById(R.id.imci_treatment_list_item_classification_severity);
+    			ImageView severityImageView = (ImageView) view.findViewById(R.id.treatment_list_item_classification_severity);
     			colourCodeTreatment(getPatientDiagnostics().get(position).getClassification(), severityImageView);
                 
                 // animate the title of the treatment if the user has selected the treatment from the classifications tab
-                if (classificationTitle.equalsIgnoreCase(getCcmAssessmentTreatmentsFragment().getClassificationTitleSelected())) {
+                if ((classificationTitle != null) &&
+                	(classificationTitle.equalsIgnoreCase(getCcmAssessmentTreatmentsFragment().getClassificationTitleSelected()))) {
         	    	animateTreatmentTitle(classificationTitleText);
         	    	animateSeverityImage(severityImageView);
                 }
@@ -178,14 +180,11 @@ public class CcmTreatmentAdapter extends BaseAdapter {
      * @param severityImageView
      */
     private void colourCodeTreatment(Classification classification, ImageView severityImageView) {
-		if (classification.getType().equalsIgnoreCase(ImciClassificationType.SEVERE.name())) {
+		if (classification.getType().equalsIgnoreCase(CcmClassificationType.DANGER_SIGN.name())) {
 			severityImageView.setImageResource(R.drawable.ic_severe_notification);
 		}
-		else if (classification.getType().equalsIgnoreCase(ImciClassificationType.MODERATE.name())) {
+		else if (classification.getType().equalsIgnoreCase(CcmClassificationType.SICK.name())) {
 			severityImageView.setImageResource(R.drawable.ic_moderate_notification);
-		}
-		else {
-			severityImageView.setImageResource(R.drawable.ic_low_notification);
 		}
 	}
 

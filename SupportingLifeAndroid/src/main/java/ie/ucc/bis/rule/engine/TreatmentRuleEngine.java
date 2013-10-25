@@ -32,7 +32,6 @@ import android.content.res.XmlResourceParser;
 public class TreatmentRuleEngine {
 
 	private static final String TREATMENT_RULE = "TreatmentRule";
-	private static final String CLASSIFICATION_CATEGORY = "Category";
 	private static final String CLASSIFICATION_NAME = "Classification";
 	private static final String TREATMENT = "Treatment";
 	private static final String CRITERIA_LIST = "CriteriaList";
@@ -43,12 +42,15 @@ public class TreatmentRuleEngine {
 	private static final String VALUE_ATTRIB = "value";
 
 	private static final String SEVERE_DEHYDRATION_CLASSIFICATION = "Severe Dehydration";
-	
+
 	private static final String LOG_TAG = "ie.ucc.bis.rule.engine.TreatmentRuleEngine";
-	
+
 	private static ArrayList<TreatmentRule> systemImciTreatmentRules;
 	private static ArrayList<TreatmentRule> systemCcmTreatmentRules;
-	
+
+	private boolean ccmRelatedTreatments;
+	private boolean imciRelatedTreatments;
+
 	/**
 	 * Responsible for reading IMCI treatment rules from XML into memory
 	 * 
@@ -57,9 +59,11 @@ public class TreatmentRuleEngine {
 	public void readImciTreatmentRules(SupportingLifeBaseActivity supportingLifeBaseActivity) {
 		XmlResourceParser xmlParser = supportingLifeBaseActivity.getResources().getXml(R.xml.imci_treatment_rules);
 		setSystemImciTreatmentRules(new ArrayList<TreatmentRule>());
+		setImciRelatedTreatments(true);
+		setCcmRelatedTreatments(false);
 		parseTreatmentRules(supportingLifeBaseActivity, getSystemImciTreatmentRules(), xmlParser);
 	}
-	
+
 	/**
 	 * Responsible for reading CCM treatment rules from XML into memory
 	 * 
@@ -68,9 +72,11 @@ public class TreatmentRuleEngine {
 	public void readCcmTreatmentRules(SupportingLifeBaseActivity supportingLifeBaseActivity) {
 		XmlResourceParser xmlParser = supportingLifeBaseActivity.getResources().getXml(R.xml.ccm_treatment_rules);
 		setSystemCcmTreatmentRules(new ArrayList<TreatmentRule>());
+		setImciRelatedTreatments(false);
+		setCcmRelatedTreatments(true);
 		parseTreatmentRules(supportingLifeBaseActivity, getSystemCcmTreatmentRules(), xmlParser);
 	}
-	
+
 	/**
 	 * Responsible for determining IMCI patient treatments based on 
 	 * assessment
@@ -83,7 +89,7 @@ public class TreatmentRuleEngine {
 	 */
 	public void determineImciTreatments(SupportingLifeBaseActivity supportingLifeBaseActivity, List<ReviewItem> reviewItems, 
 			List<Classification> classifications, Patient patient) {
-		addTreatmentCriteriaToReviewItems(supportingLifeBaseActivity, reviewItems, patient.getDiagnostics());
+		addImciTreatmentCriteriaToReviewItems(supportingLifeBaseActivity, reviewItems, patient.getDiagnostics());
 		determinePatientTreatments(supportingLifeBaseActivity, reviewItems, patient, getSystemImciTreatmentRules());
 	}
 
@@ -100,28 +106,29 @@ public class TreatmentRuleEngine {
 	public void determineCcmTreatments(SupportingLifeBaseActivity supportingLifeBaseActivity, List<ReviewItem> reviewItems, Patient patient) {
 		determinePatientTreatments(supportingLifeBaseActivity, reviewItems, patient, getSystemCcmTreatmentRules());
 	}
-	
+
 	/**
-	 * Responsible for adding treatment criteria items to the review item list
+	 * Responsible for adding IMCI-related treatment criteria items to the review item list
+	 * (IMCI-only)
 	 * 
 	 * @param supportingLifeBaseActivity
 	 * @param reviewItems
 	 * @param patientDiagnostics
 	 * 
 	 */
-	private void addTreatmentCriteriaToReviewItems(SupportingLifeBaseActivity supportingLifeBaseActivity,
+	private void addImciTreatmentCriteriaToReviewItems(SupportingLifeBaseActivity supportingLifeBaseActivity,
 			List<ReviewItem> reviewItems, List<Diagnostic> patientDiagnostics) {
-		
+
 		// assess whether patient has at least one severe classification
-		severeClassificationTreatmentCriteriaCheck(supportingLifeBaseActivity, reviewItems, patientDiagnostics);
-		
+		severeImciClassificationTreatmentCriteriaCheck(supportingLifeBaseActivity, reviewItems, patientDiagnostics);
+
 		// assess whether 'severe dehydration' is the only severe classification
 		severeDehydrationTreatmentCriteriaCheck(supportingLifeBaseActivity, reviewItems, patientDiagnostics);
 	}
 
 	/**
 	 * Responsible for determining whether patient has one severe classification
-	 * with respect to the patient assessment i.e.
+	 * with respect to the patient assessment (IMCI-only) i.e.
 	 * 
 	 * 	<CriteriaList rule="all">
 	 * 		<TreatmentCriteria value="yes">treatment_criteria_severe_classification_present</TreatmentCriteria>
@@ -132,18 +139,18 @@ public class TreatmentRuleEngine {
 	 * @param patientDiagnostics
 	 * 
 	 */
-	private void severeClassificationTreatmentCriteriaCheck(SupportingLifeBaseActivity supportingLifeBaseActivity,
+	private void severeImciClassificationTreatmentCriteriaCheck(SupportingLifeBaseActivity supportingLifeBaseActivity,
 			List<ReviewItem> reviewItems, List<Diagnostic> patientDiagnostics) {
 
 		boolean hasSevereClassification = false;
-		
+
 		for (Diagnostic diagnostic : patientDiagnostics) {
 			if (diagnostic.getClassification().getType().equalsIgnoreCase(ImciClassificationType.SEVERE.name())) {
 				hasSevereClassification = true;
 				break;
 			}
 		}
-		
+
 		String symptomId = supportingLifeBaseActivity.getResources().getString(R.string.imci_treatment_criteria_severe_classification_present);
 		ReviewItem severeClassificationPresentReviewItem = new ReviewItem(null, null, symptomId, null, -1);
 		if (hasSevereClassification) {
@@ -153,7 +160,7 @@ public class TreatmentRuleEngine {
 			severeClassificationPresentReviewItem.setSymptomValue(Response.NO.name());
 		}
 		severeClassificationPresentReviewItem.setVisible(false);
-		
+
 		// add review item to list
 		reviewItems.add(severeClassificationPresentReviewItem);		
 	}
@@ -173,7 +180,7 @@ public class TreatmentRuleEngine {
 	 */
 	private void severeDehydrationTreatmentCriteriaCheck(SupportingLifeBaseActivity supportingLifeBaseActivity,
 			List<ReviewItem> reviewItems, List<Diagnostic> patientDiagnostics) {
-		
+
 		// assess whether 'severe dehydration' is the only severe classification
 		boolean onlySevereDehydration = true;
 		for (Diagnostic diagnostic : patientDiagnostics) {
@@ -183,7 +190,7 @@ public class TreatmentRuleEngine {
 				break;
 			}
 		}
-		
+
 		String symptomId = supportingLifeBaseActivity.getResources().getString(R.string.imci_treatment_criteria_severe_dehydration_is_only_severe_classification);
 		ReviewItem severeDehydrationReviewItem = new ReviewItem(null, null, symptomId, null, -1);
 		if (onlySevereDehydration) {
@@ -193,7 +200,7 @@ public class TreatmentRuleEngine {
 			severeDehydrationReviewItem.setSymptomValue(Response.NO.name());
 		}
 		severeDehydrationReviewItem.setVisible(false);
-		
+
 		// add review item to list
 		reviewItems.add(severeDehydrationReviewItem);
 	}
@@ -219,69 +226,65 @@ public class TreatmentRuleEngine {
 			String treatmentName = null;
 			Symptom symptomCriteria = null;
 			String ruleAttrib = null;
-						
+
 			int eventType = xmlParser.next();
-			
+
 			while (eventType != XmlPullParser.END_DOCUMENT) {
 				switch (eventType) {
-					case XmlPullParser.START_TAG:
-						elemName = xmlParser.getName();
-						if (TREATMENT_RULE.equalsIgnoreCase(elemName)) {
-							// <TreatmentRule>
-							treatmentRule = new TreatmentRule();
-						}
-						else if (CLASSIFICATION_CATEGORY.equalsIgnoreCase(elemName)) {
-							// <Category>
-							treatmentRule.setCategory(xmlParser.nextText());
-						}					
-						else if (CLASSIFICATION_NAME.equalsIgnoreCase(elemName)) {
-							// <Classification>
-							treatmentRule.setClassification(xmlParser.nextText());
-						}
-						else if (TREATMENT.equalsIgnoreCase(elemName)) {
-							// <Treatment>
-							treatment = new Treatment();
-						}
-						else if (CRITERIA_LIST.equalsIgnoreCase(elemName)) {
-							// <CriteriaList>
-							ruleAttrib = xmlParser.getAttributeValue(null, RULE_ATTRIB);
-							treatmentCriterion = new TreatmentCriterion(ruleAttrib);
-							treatment.getTreatmentCriterion().add(treatmentCriterion);
-						}
-						else if (SYMPTOM_CRITERIA.equalsIgnoreCase(elemName)) {
-							// <SymptomCriteria>
-							ruleAttrib = xmlParser.getAttributeValue(null, VALUE_ATTRIB);
-							
-							symptomId = xmlParser.nextText();
-							int identifier = supportingLifeBaseActivity.getResources().getIdentifier(symptomId, "string", "ie.ucc.bis");
-							symptomName = supportingLifeBaseActivity.getResources().getString(identifier);			
-							
-							symptomCriteria = new Symptom(symptomName, ruleAttrib);
-							treatment.getTreatmentCriterion().get(treatment.getTreatmentCriterion().size() - 1).getSymptomCriteria().add(symptomCriteria);
-						}
-						else if (TREATMENT_CRITERIA.equalsIgnoreCase(elemName)) {
-							// <TreatmentCriteria>
-							ruleAttrib = xmlParser.getAttributeValue(null, VALUE_ATTRIB);
-							
-							treatmentName = xmlParser.nextText();
-							treatmentCriteria = new TreatmentCriteria(treatmentName, ruleAttrib);
-							treatment.getTreatmentCriterion().get(treatment.getTreatmentCriterion().size() - 1).getTreatmentCriteria().add(treatmentCriteria);
-						}
-						else if (RECOMMENDATION.equalsIgnoreCase(elemName)) {
-							// <Recommendation>
-							treatment.setRecommendation(xmlParser.nextText());
-						}
-						break;
-					case XmlPullParser.END_TAG:
-						if (TREATMENT.equalsIgnoreCase(xmlParser.getName())) {
-							// </Treatment>
-							treatmentRule.getTreatments().add(treatment);
-						}
-						else if(TREATMENT_RULE.equalsIgnoreCase(xmlParser.getName())) {
-							// </TreatmentRule>
-							systemTreatments.add(treatmentRule);
-						}
-						break;
+				case XmlPullParser.START_TAG:
+					elemName = xmlParser.getName();
+					if (TREATMENT_RULE.equalsIgnoreCase(elemName)) {
+						// <TreatmentRule>
+						treatmentRule = new TreatmentRule();
+					}
+					else if (CLASSIFICATION_NAME.equalsIgnoreCase(elemName)) {
+						// <Classification>
+						treatmentRule.setClassification(xmlParser.nextText());
+					}
+					else if (TREATMENT.equalsIgnoreCase(elemName)) {
+						// <Treatment>
+						treatment = new Treatment();
+					}
+					else if (CRITERIA_LIST.equalsIgnoreCase(elemName)) {
+						// <CriteriaList>
+						ruleAttrib = xmlParser.getAttributeValue(null, RULE_ATTRIB);
+						treatmentCriterion = new TreatmentCriterion(ruleAttrib);
+						treatment.getTreatmentCriterion().add(treatmentCriterion);
+					}
+					else if (SYMPTOM_CRITERIA.equalsIgnoreCase(elemName)) {
+						// <SymptomCriteria>
+						ruleAttrib = xmlParser.getAttributeValue(null, VALUE_ATTRIB);
+
+						symptomId = xmlParser.nextText();
+						int identifier = supportingLifeBaseActivity.getResources().getIdentifier(symptomId, "string", "ie.ucc.bis");
+						symptomName = supportingLifeBaseActivity.getResources().getString(identifier);			
+
+						symptomCriteria = new Symptom(symptomName, ruleAttrib);
+						treatment.getTreatmentCriterion().get(treatment.getTreatmentCriterion().size() - 1).getSymptomCriteria().add(symptomCriteria);
+					}
+					else if (TREATMENT_CRITERIA.equalsIgnoreCase(elemName)) {
+						// <TreatmentCriteria>
+						ruleAttrib = xmlParser.getAttributeValue(null, VALUE_ATTRIB);
+
+						treatmentName = xmlParser.nextText();
+						treatmentCriteria = new TreatmentCriteria(treatmentName, ruleAttrib);
+						treatment.getTreatmentCriterion().get(treatment.getTreatmentCriterion().size() - 1).getTreatmentCriteria().add(treatmentCriteria);
+					}
+					else if (RECOMMENDATION.equalsIgnoreCase(elemName)) {
+						// <Recommendation>
+						treatment.setRecommendation(xmlParser.nextText());
+					}
+					break;
+				case XmlPullParser.END_TAG:
+					if (TREATMENT.equalsIgnoreCase(xmlParser.getName())) {
+						// </Treatment>
+						treatmentRule.getTreatments().add(treatment);
+					}
+					else if(TREATMENT_RULE.equalsIgnoreCase(xmlParser.getName())) {
+						// </TreatmentRule>
+						systemTreatments.add(treatmentRule);
+					}
+					break;
 				} // end of switch				
 				eventType = xmlParser.next();
 			} // end of while			
@@ -297,7 +300,7 @@ public class TreatmentRuleEngine {
 		LoggerUtils.i(LOG_TAG, "--------------------------------------");
 		LoggerUtils.i(LOG_TAG, "--------------------------------------");
 	}
-	
+
 	/**
 	 * 
 	 * Responsible for determining patient treatments
@@ -310,7 +313,7 @@ public class TreatmentRuleEngine {
 	 */
 	private void determinePatientTreatments(SupportingLifeBaseActivity supportingLifeBaseActivity, 
 			List<ReviewItem> reviewItems, Patient patient, ArrayList<TreatmentRule> systemTreatments) {
-		
+
 		// 1. iterate over all patient classifications and assign 
 		//	  appropriate treatment(s)
 		for (Diagnostic diagnostic : patient.getDiagnostics()) {
@@ -321,7 +324,7 @@ public class TreatmentRuleEngine {
 					for (Treatment treatment : treatmentRule.getTreatments()) {
 						boolean symptomCriteriaPasses = true;
 						boolean treatmentCriteriaPasses = true;
-						
+
 						// check symptom criteria
 						for (TreatmentCriterion treatmentCriterion : treatment.getTreatmentCriterion()) {
 							List<Symptom> symptomCriterion = treatmentCriterion.getSymptomCriteria();
@@ -346,7 +349,7 @@ public class TreatmentRuleEngine {
 								break;
 							}
 						} // end of for (Treatment treatment ...
-						
+
 						// check treatment criteria
 						for (TreatmentCriterion treatmentCriterion : treatment.getTreatmentCriterion()) {
 							List<TreatmentCriteria> treatmentCriteria = treatmentCriterion.getTreatmentCriteria();
@@ -363,7 +366,7 @@ public class TreatmentRuleEngine {
 								break;
 							}
 						}
-						
+
 						if (symptomCriteriaPasses && treatmentCriteriaPasses) {
 							// add the recommended treatment to patient classification
 							diagnostic.getTreatmentRecommendations().add(treatment.getRecommendation());
@@ -372,7 +375,7 @@ public class TreatmentRuleEngine {
 				}
 			} // end of for (TreatmentRule treatmentRule ...
 		} // end of for (Diagnostic diagnostic ...
-		
+
 		// DEBUG OUTPUT
 		LoggerUtils.i(LOG_TAG, captureTreatmentsDebugOutput(patient.getDiagnostics()));
 	}
@@ -391,26 +394,26 @@ public class TreatmentRuleEngine {
 	private boolean checkSymptomCriteria(List<Symptom> symptomCriterion, List<ReviewItem> reviewItems, Patient patient, int criteriaRequired) {
 		int symptomCriteriaCounter = 0;
 		boolean symptomCriteriaPasses = false;
-		
+
 		SYMPTOM_CRITERIA_CHECK:
-		for (Symptom symptomCriteria : symptomCriterion) {
-			for (ReviewItem reviewItem : reviewItems) {
-				if (reviewItem.getSymptomValue() != null){
-					// symptom id match?
-					if (symptomCriteria.getIdentifier().equalsIgnoreCase(reviewItem.getSymptomId())) {
-						// symptom value match?
-						if (symptomCriteria.getValue().equalsIgnoreCase(reviewItem.getSymptomValue())) {
-							symptomCriteriaCounter++;
-							if (symptomCriteriaCounter == criteriaRequired) {
-								symptomCriteriaPasses = true;
-								break SYMPTOM_CRITERIA_CHECK;
-							}
-						} // end of if (symptom.getValue().equalsIgnoreCase(... 
-					} // end of if (symptom.getIdentifier().equalsIgnoreCase...
-				} // end of if (reviewItem.getSymptomValue() ....
-			} // end of for (ReviewItem reviewItem ...
-		} // end of for (Symptom symptomCriteria ...
-		
+			for (Symptom symptomCriteria : symptomCriterion) {
+				for (ReviewItem reviewItem : reviewItems) {
+					if (reviewItem.getSymptomValue() != null){
+						// symptom id match?
+						if (symptomCriteria.getIdentifier().equalsIgnoreCase(reviewItem.getSymptomId())) {
+							// symptom value match?
+							if (symptomCriteria.getValue().equalsIgnoreCase(reviewItem.getSymptomValue())) {
+								symptomCriteriaCounter++;
+								if (symptomCriteriaCounter == criteriaRequired) {
+									symptomCriteriaPasses = true;
+									break SYMPTOM_CRITERIA_CHECK;
+								}
+							} // end of if (symptom.getValue().equalsIgnoreCase(... 
+						} // end of if (symptom.getIdentifier().equalsIgnoreCase...
+					} // end of if (reviewItem.getSymptomValue() ....
+				} // end of for (ReviewItem reviewItem ...
+			} // end of for (Symptom symptomCriteria ...
+
 		// This check is required when we're dealing with the 'NONE' Criteria Rule case
 		// i.e. none of the symptoms should have applied in order for the 'NONE' criteria
 		//		rule to have been deemed successful
@@ -419,7 +422,7 @@ public class TreatmentRuleEngine {
 		}
 		return symptomCriteriaPasses;
 	}
-	
+
 	/**
 	 * Determine whether the treatment criteria related to a recommended treatment is met
 	 * according to the patient's details
@@ -434,25 +437,25 @@ public class TreatmentRuleEngine {
 	private boolean checkTreatmentCriteria(List<TreatmentCriteria> treatmentCriterion, List<ReviewItem> reviewItems, Patient patient, int treatmentCriteriaRequired) {
 		int treatmentCriteriaCounter = 0;
 		boolean treatmentCriteriaPasses = false;
-		
+
 		TREATMENT_CRITERIA_CHECK:
-		for (TreatmentCriteria treatmentCriteria : treatmentCriterion) {
-			for (ReviewItem reviewItem : reviewItems) {
-				if (reviewItem.getSymptomValue() != null){
-					// symptom id match?
-					if (treatmentCriteria.getIdentifier().equalsIgnoreCase(reviewItem.getSymptomId())) {
-						// symptom value match?
-						if (treatmentCriteria.getValue().equalsIgnoreCase(reviewItem.getSymptomValue())) {
-							treatmentCriteriaCounter++;
-							if (treatmentCriteriaCounter == treatmentCriteriaRequired) {
-								treatmentCriteriaPasses = true;
-								break TREATMENT_CRITERIA_CHECK;
-							}
-						} // end of if (treatmentCriteria.getValue().equalsIgnoreCase(... 
-					} // end of if (treatmentCriteria.getIdentifier().equalsIgnoreCase...
-				} // end of if (reviewItem.getSymptomValue() ....
-			} // end of for (ReviewItem reviewItem ...
-		} // end of for (TreatmentCriteria symptomCriteria ...
+			for (TreatmentCriteria treatmentCriteria : treatmentCriterion) {
+				for (ReviewItem reviewItem : reviewItems) {
+					if (reviewItem.getSymptomValue() != null){
+						// symptom id match?
+						if (treatmentCriteria.getIdentifier().equalsIgnoreCase(reviewItem.getSymptomId())) {
+							// symptom value match?
+							if (treatmentCriteria.getValue().equalsIgnoreCase(reviewItem.getSymptomValue())) {
+								treatmentCriteriaCounter++;
+								if (treatmentCriteriaCounter == treatmentCriteriaRequired) {
+									treatmentCriteriaPasses = true;
+									break TREATMENT_CRITERIA_CHECK;
+								}
+							} // end of if (treatmentCriteria.getValue().equalsIgnoreCase(... 
+						} // end of if (treatmentCriteria.getIdentifier().equalsIgnoreCase...
+					} // end of if (reviewItem.getSymptomValue() ....
+				} // end of for (ReviewItem reviewItem ...
+			} // end of for (TreatmentCriteria symptomCriteria ...
 		return treatmentCriteriaPasses;
 	}
 
@@ -467,17 +470,17 @@ public class TreatmentRuleEngine {
 	 */
 	private StringBuilder captureTreatmentsDebugOutput(List<Diagnostic> diagnostics) {
 		StringBuilder debugOutput = new StringBuilder();
-		
+
 		for (Diagnostic diagnostic : diagnostics) {
 			debugOutput.append(diagnostic.getClassification().getName() + "\n");
 			for (String recommendedTreatment : diagnostic.getTreatmentRecommendations()) {
 				debugOutput.append(recommendedTreatment + "\n");
 			}
 		}
-		
+
 		return debugOutput;
 	}
-	
+
 	/**
 	 * 
 	 * Provides debug output of all treatments rules passed to
@@ -489,14 +492,14 @@ public class TreatmentRuleEngine {
 	 */
 	private StringBuilder captureTreatmentRulesDebugOutput(List<TreatmentRule> treatmentRules) {
 		StringBuilder debugOutput = new StringBuilder();
-		
+
 		for (TreatmentRule treatmentRule : treatmentRules){
 			debugOutput.append(treatmentRule.debugOutput());
 		}
-		
+
 		return debugOutput;
 	}	
-	
+
 
 	/**
 	 * Getter Method: getSystemImciTreatmentRules()
@@ -524,5 +527,33 @@ public class TreatmentRuleEngine {
 	 */
 	public static void setSystemCcmTreatmentRules(ArrayList<TreatmentRule> systemCcmTreatmentRules) {
 		TreatmentRuleEngine.systemCcmTreatmentRules = systemCcmTreatmentRules;
+	}
+
+	/**
+	 * Getter Method: isCcmRelatedTreatments()
+	 */	
+	public boolean isCcmRelatedTreatments() {
+		return ccmRelatedTreatments;
+	}
+
+	/**
+	 * Setter Method: setCcmRelatedTreatments()
+	 */
+	public void setCcmRelatedTreatments(boolean ccmRelatedTreatments) {
+		this.ccmRelatedTreatments = ccmRelatedTreatments;
+	}
+
+	/**
+	 * Getter Method: isImciRelatedTreatments()
+	 */	
+	public boolean isImciRelatedTreatments() {
+		return imciRelatedTreatments;
+	}
+
+	/**
+	 * Setter Method: setImciRelatedTreatments()
+	 */
+	public void setImciRelatedTreatments(boolean imciRelatedTreatments) {
+		this.imciRelatedTreatments = imciRelatedTreatments;
 	}
 }

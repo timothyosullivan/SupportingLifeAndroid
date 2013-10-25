@@ -15,6 +15,7 @@ import android.app.ActionBar;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
+import android.widget.BaseAdapter;
 
 /**
  * Class: CcmAssessmentResultsActivity
@@ -96,17 +97,16 @@ public class CcmAssessmentResultsActivity extends AssessmentResultsActivity {
 	 * 
 	 * @param classificationName 
 	 */
-/*	public void displayTreatmentTab(int position, String classificationTitle) {
+	public void displayTreatmentTab(int position, String classificationTitle) {
 		getTabsAdapter().displayTreatmentTab();
 		CcmAssessmentTreatmentsFragment treatmentsFragment = (CcmAssessmentTreatmentsFragment) 
 				getSupportFragmentManager().getFragments().get(TabsAdapter.TREATMENT_TAB_INDEX);
 
 		if (treatmentsFragment != null) {
-			// refresh adpater data set - gets view redrawn
-			((BaseAdapter) treatmentsFragment.getTreatmentAdapter()).notifyDataSetChanged();
+			// refresh adapter data set - gets view redrawn
+			((BaseAdapter) treatmentsFragment.getCcmTreatmentAdapter()).notifyDataSetChanged();
 			treatmentsFragment.scrollToRelatedElement(position, classificationTitle);
 		}
 	}
-*/
 }
 

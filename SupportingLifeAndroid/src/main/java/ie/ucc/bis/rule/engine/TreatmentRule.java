@@ -13,7 +13,7 @@ import java.util.List;
  * treatment_rules.xml e.g.
  * 
  * <TreatmentRule>
- * 		<Category>dehydration</Category>
+ * 		<Type>SEVERE</Type>
  * 		<Classification>Severe Dehydration</Classification>
  * 		<Treatment>
  * 			<CriteriaList rule="all">
@@ -47,12 +47,6 @@ public class TreatmentRule implements Serializable {
 	 */
 	private static final long serialVersionUID = 2969585100135738023L;
 
-	
-	public static final String SEVERE_CLASSIFICATION_TYPE = "SEVERE";
-	public static final String MODERATE_CLASSIFICATION_TYPE = "MODERATE";
-	public static final String LOW_CLASSIFICATION_TYPE = "LOW";
-
-	private String category;
 	private String classification;
 	private List<Treatment> treatments;
  
@@ -64,20 +58,6 @@ public class TreatmentRule implements Serializable {
 		setTreatments(new ArrayList<Treatment>());
 	}
 		
-	/**
-	 * Getter Method: getCategory()
-	 */
-	public String getCategory() {
-		return category;
-	}
-
-	/**
-	 * Setter Method: setCategory()
-	 */
-	public void setCategory(String category) {
-		this.category = category;
-	}
-
 	/**
 	 * Getter Method: getClassification()
 	 */
