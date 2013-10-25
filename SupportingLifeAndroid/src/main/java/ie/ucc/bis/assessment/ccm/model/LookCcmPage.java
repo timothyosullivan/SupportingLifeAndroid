@@ -1,6 +1,7 @@
 package ie.ucc.bis.assessment.ccm.model;
 
 import ie.ucc.bis.R;
+import ie.ucc.bis.assessment.ccm.model.review.RedMuacTapeCcmReviewItem;
 import ie.ucc.bis.assessment.ccm.ui.LookCcmFragment;
 import ie.ucc.bis.assessment.model.AbstractModel;
 import ie.ucc.bis.assessment.model.AbstractPage;
@@ -91,12 +92,16 @@ public class LookCcmPage extends AbstractPage {
     	reviewItemValue = getPageData().getString(PALMAR_PALLOR_DATA_KEY + RadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
     	reviewItemSymptomId = resources.getString(R.string.ccm_look_assessment_palmar_pallor_symptom_id);
     	reviewItems.add(new ReviewItem(reviewItemLabel, reviewItemValue, reviewItemSymptomId, getKey(), -1));
-
-    	// muac tape colour
+   	
+    	// red muac tape colour - assists in determining if 'Red on MUAC Tape' classification applies
     	reviewItemLabel = resources.getString(R.string.ccm_look_assessment_review_muac_tape_colour);
     	reviewItemValue = getPageData().getString(MUAC_TAPE_COLOUR_DATA_KEY + RadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
-    	reviewItemSymptomId = resources.getString(R.string.ccm_look_assessment_muac_tape_colour_symptom_id);
-    	reviewItems.add(new ReviewItem(reviewItemLabel, reviewItemValue, reviewItemSymptomId, getKey(), -1));
+    	reviewItemSymptomId = resources.getString(R.string.ccm_look_assessment_red_muac_tape_colour_symptom_id);
+    	// note: In assessing whether the 'Red on MUAC Tape' symptom applies when interpreting the 'MUAC Tape Colour',
+    	//       the age of the child is a determining factor. Therefore the date of birth child needs to capture to
+    	//       facilitate the decision logic.    	
+    	reviewItems.add(new RedMuacTapeCcmReviewItem(reviewItemLabel, reviewItemValue, 
+    			reviewItemSymptomId, getKey(), -1, Arrays.asList(birthDateReviewItem)));
     	
     	// swelling of both feet
     	reviewItemLabel = resources.getString(R.string.ccm_look_assessment_review_swelling_of_both_feet);

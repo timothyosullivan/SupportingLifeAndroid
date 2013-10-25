@@ -186,7 +186,7 @@
 	<string name="ccm_look_assessment_fast_breathing_symptom_id">fast_breathing</string>
 	<string name="ccm_look_assessment_very_sleepy_or_unconscious_symptom_id">very_sleepy_or_unconscious</string>
 	<string name="ccm_look_assessment_palmar_pallor_symptom_id">palmar_pallor</string>
-	<string name="ccm_look_assessment_muac_tape_colour_symptom_id">muac_tape_colour</string>
+	<string name="ccm_look_assessment_red_muac_tape_colour_symptom_id">red_muac_tape_colour</string>
 	<string name="ccm_look_assessment_swelling_of_both_feet_symptom_id">swelling_of_both_feet</string>
 
 

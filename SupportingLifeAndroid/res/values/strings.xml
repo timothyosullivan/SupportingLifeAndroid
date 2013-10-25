@@ -394,7 +394,7 @@
     <!-- CCM ASSESSMENT WIZARD BREAD-CRUMB UI 						  -->
     <!-- STAGE 2: LOOK AND ASK ASSESSMENT (1)							  -->
     <!-- ============================================================ -->
-	<string name="ccm_ask_initial_assessment_title">Look/Ask Assessment (1)</string>
+	<string name="ccm_ask_initial_assessment_title">Look and Ask Assessment (1)</string>
 	<string name="ccm_ask_initial_assessment_problems_label">What are the child\'s problems:</string>
 	<string name="ccm_ask_initial_assessment_radio_cough_label">Cough:</string>
 	<string name="ccm_ask_initial_assessment_cough_duration_label">For how long? (days)</string>
@@ -430,7 +430,7 @@
     <!-- CCM ASSESSMENT WIZARD BREAD-CRUMB UI 						  -->
     <!-- STAGE 3: LOOK AND ASK ASSESSMENT (2)						  -->
     <!-- ============================================================ -->
-	<string name="ccm_ask_secondary_assessment_title">Look/Ask Assessment (2)</string>
+	<string name="ccm_ask_secondary_assessment_title">Look and Ask Assessment (2)</string>
 	<string name="ccm_ask_secondary_assessment_radio_vomiting_label">Vomiting?</string>
 	<string name="ccm_ask_secondary_assessment_radio_vomits_everything_label">Vomits everything?</string>
 	<string name="ccm_ask_secondary_assessment_radio_red_eyes_label">Red eyes?</string>

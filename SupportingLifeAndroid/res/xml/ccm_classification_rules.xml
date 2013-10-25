@@ -326,9 +326,9 @@
 	<!-- ============================================================ -->
 	<!-- Classification: Red on MUAC Tape				  			  -->
 	<!-- Type: DANGER_SIGN											  -->
-	<!-- Symptoms: Child Aged between 6 months and 5 years			  -->
-	<!-- 		   AND			 									  -->
-	<!--  		   Red Colour on MUAC Tape							  -->
+	<!-- Symptoms: 	Red Colour on MUAC Tape							  -->
+	<!--  		   	(note: Child must also be aged between			  -->
+	<!-- 		    	   6 months and 5 years.	  				  -->
 	<!-- ============================================================ -->
 	<Classification>
 	    <Category>red_on_muac_tape</Category>
@@ -336,10 +336,7 @@
 		<Type>DANGER_SIGN</Type>
 		<Priority>1</Priority>
 		<SymptomRule rule="ANY_SYMPTOM">
-			<Symptom value="yes">ccm_patient_aged_between_six_months_and_five_years_symptom_id</Symptom>		<!-- Child Aged between 6 months and 5 years : YES -->
-		</SymptomRule>
-		<SymptomRule rule="ANY_SYMPTOM">
-			<Symptom value="red">ccm_look_assessment_muac_tape_colour_symptom_id</Symptom>						<!-- Colour on MUAC Tape : RED -->
+			<Symptom value="yes">ccm_look_assessment_red_muac_tape_colour_symptom_id</Symptom>						<!-- Colour on MUAC Tape : RED -->
 		</SymptomRule>
 	</Classification>
 	
