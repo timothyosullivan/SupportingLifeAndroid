@@ -2,11 +2,15 @@ package ie.ucc.bis.assessment.ccm.model;
 
 import ie.ucc.bis.R;
 import ie.ucc.bis.assessment.ccm.ui.CcmAssessmentTreatmentsFragment;
+import ie.ucc.bis.rule.engine.CcmTreatmentDiagnosticComparator;
 import ie.ucc.bis.rule.engine.Classification;
 import ie.ucc.bis.rule.engine.Diagnostic;
 import ie.ucc.bis.rule.engine.enums.CcmClassificationType;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.Locale;
 
 import android.text.Html;
 import android.view.LayoutInflater;
@@ -26,7 +30,10 @@ import android.widget.TextView;
  */
 
 public class CcmTreatmentAdapter extends BaseAdapter {
-	private static final int SIMPLE_ITEM_TYPE = 1;
+	private static final int HEADER_ITEM_TYPE = 0;
+	private static final int FOOTER_ITEM_TYPE = 1;
+	private static final int SIMPLE_ITEM_TYPE = 2;
+	private static final int MAX_TYPE_COUNT = 3;
 	private static final String BULLET_SYMBOL = "&#8226";
 	private static final int TITLE_FLASH_COUNT = 3;
 	private static final long TITLE_FLASH_BLINK_DURATION = 300;
@@ -38,7 +45,15 @@ public class CcmTreatmentAdapter extends BaseAdapter {
     public CcmTreatmentAdapter(CcmAssessmentTreatmentsFragment ccmAssessmentTreatmentsFragment, List<Diagnostic> patientDiagnostics) {
 		super();
 		setCcmAssessmentTreatmentsFragment(ccmAssessmentTreatmentsFragment);
-		setPatientDiagnostics(patientDiagnostics);
+		setPatientDiagnostics(new ArrayList<Diagnostic>());
+
+		for (Diagnostic diagnostic : patientDiagnostics) {
+			if (diagnostic.getTreatmentRecommendations().size() != 0 || diagnostic.isTreatmentHeader() || diagnostic.isTreatmentFooter()) {
+				getPatientDiagnostics().add(diagnostic);
+			}
+		}
+		
+		Collections.sort(getPatientDiagnostics(), new CcmTreatmentDiagnosticComparator());
 	}
 
 	@Override
@@ -48,12 +63,23 @@ public class CcmTreatmentAdapter extends BaseAdapter {
 
     @Override
     public int getItemViewType(int position) {
-   		return SIMPLE_ITEM_TYPE;
+    	// need to ascertain if we are dealing with a header
+    	// or just a list item
+    	Diagnostic diagnostic = getPatientDiagnostics().get(position);
+    	if (diagnostic.isTreatmentHeader()) {
+    		return HEADER_ITEM_TYPE;
+    	}
+    	else if (diagnostic.isTreatmentFooter()) {
+    		return FOOTER_ITEM_TYPE;
+    	}
+    	else {
+    		return SIMPLE_ITEM_TYPE;
+    	}
     }
 
     @Override
     public int getViewTypeCount() {
-    	return 1;
+        return MAX_TYPE_COUNT;
     }
 
     @Override
@@ -71,35 +97,59 @@ public class CcmTreatmentAdapter extends BaseAdapter {
     }
 
     public long getItemId(int position) {
-        return getPatientDiagnostics().get(position).getClassification().hashCode();
+        return getPatientDiagnostics().get(position).hashCode();
     }
 
     public View getView(int position, View view, ViewGroup container) {
         int itemType = getItemViewType(position);
                
         switch (itemType) {
-        	case SIMPLE_ITEM_TYPE :
+        	case HEADER_ITEM_TYPE : 
         		if (view == null) {
         	        LayoutInflater inflater = LayoutInflater.from(getCcmAssessmentTreatmentsFragment().getActivity());
-        			view = inflater.inflate(R.layout.treatment_list_item_review, container, false);
+        			view = inflater.inflate(R.layout.ccm_treatment_list_item_header, container, false);
         		}
-        		String classificationTitle = getPatientDiagnostics().get(position).getClassification().getCcmTreatmentDisplayName();
-        		
-        		TextView classificationTitleText = (TextView) view.findViewById(R.id.treatment_list_item_title);
-        		classificationTitleText.setText(classificationTitle);
-                List<String> treatments = getPatientDiagnostics().get(position).getTreatmentRecommendations();
-                addBulletedListToTextView(treatments, ((TextView) view.findViewById(R.id.treatment_list_item_desc)));
-                
-    			ImageView severityImageView = (ImageView) view.findViewById(R.id.treatment_list_item_classification_severity);
+    			// configure severity icon to display
+        		ImageView severityImageView = (ImageView) view.findViewById(R.id.treatment_list_item_classification_severity);
     			colourCodeTreatment(getPatientDiagnostics().get(position).getClassification(), severityImageView);
+    			
+    			// add recommended header treatments 
+    			List<String> headerTreatments = getPatientDiagnostics().get(position).getTreatmentRecommendations();
+                addBulletedListToTextView(headerTreatments, ((TextView) view.findViewById(R.id.treatment_list_item_desc)));
                 
-                // animate the title of the treatment if the user has selected the treatment from the classifications tab
-                if ((classificationTitle != null) &&
-                	(classificationTitle.equalsIgnoreCase(getCcmAssessmentTreatmentsFragment().getClassificationTitleSelected()))) {
-        	    	animateTreatmentTitle(classificationTitleText);
+                // animate the header if the user has selected a non-specific treatment from the classifications tab
+                if (position == getCcmAssessmentTreatmentsFragment().getClassificationPositionSelected()) {
         	    	animateSeverityImage(severityImageView);
                 }
     			break;
+    			
+        	case SIMPLE_ITEM_TYPE :
+        		if (view == null) {
+        	        LayoutInflater inflater = LayoutInflater.from(getCcmAssessmentTreatmentsFragment().getActivity());
+        			view = inflater.inflate(R.layout.ccm_treatment_list_item, container, false);
+        		}
+        		String classificationTitle = getPatientDiagnostics().get(position).getClassification().getCcmTreatmentDisplayName();   		
+        		TextView classificationTitleText = (TextView) view.findViewById(R.id.treatment_list_item_title);
+        		classificationTitleText.setText(classificationTitle.toUpperCase(Locale.UK));
+        		
+                List<String> treatments = getPatientDiagnostics().get(position).getTreatmentRecommendations();
+                addBulletedListToTextView(treatments, ((TextView) view.findViewById(R.id.treatment_list_item_desc)));
+                
+                // animate the title of the treatment if the user has selected the treatment from the classifications tab
+                if (position == getCcmAssessmentTreatmentsFragment().getClassificationPositionSelected()) {
+        	    	animateTreatmentTitle(classificationTitleText);
+                }
+    			break;
+
+        	case FOOTER_ITEM_TYPE :
+        		if (view == null) {
+        	        LayoutInflater inflater = LayoutInflater.from(getCcmAssessmentTreatmentsFragment().getActivity());
+        			view = inflater.inflate(R.layout.ccm_treatment_list_item_footer, container, false);
+        		}
+                List<String> footerTreatments = getPatientDiagnostics().get(position).getTreatmentRecommendations();
+                addBulletedListToTextView(footerTreatments, ((TextView) view.findViewById(R.id.treatment_list_item_desc)));
+
+    			break;  			
         } // end of switch
         return view;
     }
@@ -134,7 +184,7 @@ public class CcmTreatmentAdapter extends BaseAdapter {
 		});
 		
 		classificationTitleText.startAnimation(anim);
-		getCcmAssessmentTreatmentsFragment().setClassificationTitleSelected(null);
+		getCcmAssessmentTreatmentsFragment().setClassificationPositionSelected(-1);
 	}
 	
 	/**
@@ -152,6 +202,7 @@ public class CcmTreatmentAdapter extends BaseAdapter {
 		anim.setRepeatCount(TITLE_FLASH_COUNT);
 		
 		severityImageView.startAnimation(anim);
+		getCcmAssessmentTreatmentsFragment().setClassificationPositionSelected(-1);
 	}
 
 	/**

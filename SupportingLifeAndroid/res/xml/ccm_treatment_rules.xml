@@ -27,7 +27,7 @@
 	<!-- ============================================================ -->
 	<TreatmentRule>
 		<Classification>DANGER_SIGN</Classification>
-		<ClassificationType>DANGER_SIGN</ClassificationType>
+		<TreatmentHeader>true</TreatmentHeader>
 		<Treatment>
 			<Recommendation>REFER URGENTLY to health facility</Recommendation>
 		</Treatment>
@@ -46,14 +46,22 @@
 	<!-- DANGER SIGN				 								  -->
 	<!-- ============================================================ -->
 	<!-- ============================================================ -->
-	<!-- Classification: Diarrhoea								 	  -->
+	<!-- Classification: Diarrhoea for 14 Days or more			 	  -->
 	<!-- 															  -->
 	<!-- Treatments: Begin giving ORS solution immediately 			  -->
 	<!--			 (condition: 'Not able to drink or feed anything' -->
 	<!-- 						 symptom must NOT be selected in	  -->
 	<!-- 						 ASK and LOOK assessment 			  -->
 	<!-- ============================================================ -->
-
+	<TreatmentRule>
+		<Classification>Diarrhoea for 14 Days or more</Classification>
+		<Treatment>
+			<CriteriaList rule="none">																							<!-- Not able to drink or feed anything != Yes -->
+				<SymptomCriteria value="yes">ccm_ask_initial_assessment_unable_to_drink_or_feed_symptom_id</SymptomCriteria>
+			</CriteriaList>
+			<Recommendation>Begin giving ORS solution immediately</Recommendation>
+		</Treatment>
+	</TreatmentRule>
 
 	<!-- ============================================================ -->
 	<!-- ANY DANGER SIGN				 							  -->
@@ -71,7 +79,7 @@
 	<!-- ============================================================ -->
 	<TreatmentRule>
 		<Classification>DANGER_SIGN</Classification>
-		<ClassificationType>DANGER_SIGN</ClassificationType>
+		<TreatmentFooter>true</TreatmentFooter>
 		<Treatment>
 			<Recommendation>Advise to keep child warm, if 'child is NOT hot with fever'</Recommendation>
 		</Treatment>

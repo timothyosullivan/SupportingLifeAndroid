@@ -34,6 +34,8 @@ public class TreatmentRuleEngine {
 
 	private static final String TREATMENT_RULE = "TreatmentRule";
 	private static final String CLASSIFICATION_NAME = "Classification";
+	private static final String TREATMENT_HEADER = "TreatmentHeader";
+	private static final String TREATMENT_FOOTER = "TreatmentFooter";
 	private static final String TREATMENT = "Treatment";
 	private static final String CRITERIA_LIST = "CriteriaList";
 	private static final String TREATMENT_CRITERIA = "TreatmentCriteria";
@@ -242,6 +244,14 @@ public class TreatmentRuleEngine {
 						// <Classification>
 						treatmentRule.setClassification(xmlParser.nextText());
 					}
+					else if (TREATMENT_HEADER.equalsIgnoreCase(elemName)) {
+						// <TreatmentHeader>
+						treatmentRule.setTreatmentHeader(Boolean.parseBoolean(xmlParser.nextText()));
+					}
+					else if (TREATMENT_FOOTER.equalsIgnoreCase(elemName)) {
+						// <TreatmentFooter>
+						treatmentRule.setTreatmentFooter(Boolean.parseBoolean(xmlParser.nextText()));
+					}					
 					else if (TREATMENT.equalsIgnoreCase(elemName)) {
 						// <Treatment>
 						treatment = new Treatment();
@@ -368,6 +378,8 @@ public class TreatmentRuleEngine {
 		
 		boolean dangerSignClassificationExists = false;
 		boolean sickSignClassificationExists = false;
+		String classificationName = null;
+		String classificationType = null;
 		
 		// check if a danger sign classification exists for this patient
 		for (Diagnostic diagnostic : patient.getDiagnostics()) {
@@ -389,45 +401,48 @@ public class TreatmentRuleEngine {
 		if (dangerSignClassificationExists) {
 			// fetch all 'standard' treatments to be applied when a classification(s) of type 'Danger Sign'
 			// is present in the patient's diagnostic assessment
-			Classification classification = new Classification(CcmClassificationType.DANGER_SIGN.name(), 
-														CcmClassificationType.DANGER_SIGN.name());
-			Diagnostic patientDiagnostic = new Diagnostic(classification);
-				
-			addTreatmentsWithMatchingName(reviewItems, patient, systemTreatments, patientDiagnostic);
-			patient.getDiagnostics().add(patientDiagnostic);
+			classificationName = CcmClassificationType.DANGER_SIGN.name();
+			classificationType = CcmClassificationType.DANGER_SIGN.name();
+			addTreatmentsWithMatchingName(reviewItems, patient, systemTreatments, classificationName, classificationType);
 		}
 		else if (sickSignClassificationExists) {
 			// fetch all 'standard' treatments to be applied when a classification(s) of type 'Sick'
 			// is present in the patient's diagnostic assessment
-			Classification classification = new Classification(CcmClassificationType.SICK.name(), 
-													CcmClassificationType.SICK.name());
-			Diagnostic patientDiagnostic = new Diagnostic(classification);
-
-			addTreatmentsWithMatchingName(reviewItems, patient, systemTreatments, patientDiagnostic);
-			patient.getDiagnostics().add(patientDiagnostic);
+			classificationName = CcmClassificationType.SICK.name();
+			classificationType = CcmClassificationType.SICK.name();
+			addTreatmentsWithMatchingName(reviewItems, patient, systemTreatments, classificationName, classificationType);
 		}
 	}
 
 	/**
 	 * Utility method for adding all treatments to a patient diagnostic 
-	 * record that have the same classification name as the parameter name
+	 * record that have the same classification name as the classification name
 	 * passed to the method
 	 * 
 	 * @param reviewItems
 	 * @param patient
 	 * @param systemTreatments
-	 * @param patientDiagnostic
+	 * @param classificationName
+	 * @param classificationType
 	 * 
 	 */
-	private void addTreatmentsWithMatchingName(List<ReviewItem> reviewItems, Patient patient, ArrayList<TreatmentRule> systemTreatments, Diagnostic patientDiagnostic) {
+	private void addTreatmentsWithMatchingName(List<ReviewItem> reviewItems, Patient patient, ArrayList<TreatmentRule> systemTreatments, String classificationName, String classificationType) {
 		
 		for (TreatmentRule treatmentRule : systemTreatments) {
-			if (patientDiagnostic.getClassification().getName().equalsIgnoreCase(treatmentRule.getClassification())) {				
+			if (classificationName.equalsIgnoreCase(treatmentRule.getClassification())) {
+				Diagnostic patientDiagnostic = new Diagnostic(new Classification(classificationName, classificationType));
+				
+				// configure treatment recommendation with associated
+				// header or footer flag, if applicable
+				patientDiagnostic.setTreatmentHeader(treatmentRule.isTreatmentHeader());
+				patientDiagnostic.setTreatmentFooter(treatmentRule.isTreatmentFooter());
+				
 				// classification match found so determine if all associated 
 				// treatments apply
 				for (Treatment treatment : treatmentRule.getTreatments()) {
 					determineTreatmentRecommendations(reviewItems, patient, patientDiagnostic, treatment);					
-				} // end of for (Treatment treatment  ....
+				} // end of for (Treatment treatment  ....			
+				patient.getDiagnostics().add(patientDiagnostic);
 			}
 		} // end of for (TreatmentRule treatmentRule ...
 		
@@ -589,7 +604,7 @@ public class TreatmentRuleEngine {
 		StringBuilder debugOutput = new StringBuilder();
 
 		for (Diagnostic diagnostic : diagnostics) {
-			debugOutput.append(diagnostic.getClassification().getName() + "\n");
+			debugOutput.append(diagnostic.getClassification().getName() != null ? diagnostic.getClassification().getName() : "" + "\n");
 			for (String recommendedTreatment : diagnostic.getTreatmentRecommendations()) {
 				debugOutput.append(recommendedTreatment + "\n");
 			}

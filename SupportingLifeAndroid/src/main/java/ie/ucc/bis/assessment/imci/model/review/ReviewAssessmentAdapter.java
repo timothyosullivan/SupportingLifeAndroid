@@ -17,6 +17,7 @@ import android.widget.Filterable;
 import android.widget.TextView;
 
 /**
+ * Class: ReviewAssessmentAdapter
  * 
  * @author timothyosullivan
  */

@@ -22,12 +22,16 @@ public class Diagnostic implements Serializable {
 	private static final long serialVersionUID = -3354248616709394162L;
 	
 	private Classification classification;
+	private boolean treatmentHeader;
+	private boolean treatmentFooter;
 	private List<String> treatmentRecommendations;
 	
 	/**
 	 * Constructor
 	 */
 	public Diagnostic() {
+		setTreatmentHeader(false);
+		setTreatmentFooter(false);
 		setTreatmentRecommendations(new ArrayList<String>());
 	}
 
@@ -83,6 +87,34 @@ public class Diagnostic implements Serializable {
 	 */
 	public void setClassification(Classification classification) {
 		this.classification = classification;
+	}
+	
+	/**
+	 * Getter Method: isTreatmentHeader()
+	 */
+	public boolean isTreatmentHeader() {
+		return treatmentHeader;
+	}
+
+	/**
+	 * Setter Method: setTreatmentHeader()
+	 */
+	public void setTreatmentHeader(boolean treatmentHeader) {
+		this.treatmentHeader = treatmentHeader;
+	}
+
+	/**
+	 * Getter Method: isTreatmentFooter()
+	 */
+	public boolean isTreatmentFooter() {
+		return treatmentFooter;
+	}
+
+	/**
+	 * Setter Method: setTreatmentFooter()
+	 */
+	public void setTreatmentFooter(boolean treatmentFooter) {
+		this.treatmentFooter = treatmentFooter;
 	}
 
 	/**

@@ -47,19 +47,19 @@ import java.util.List;
 
 public class Classification implements Serializable {
 
-    /**
+	/**
 	 * Generated Serial ID
 	 */
 	private static final long serialVersionUID = 2250655542678899484L;
-	
+
 	private String category;
 	private String name;
 	private String type;
-	private int priority;
 	private String ccmTreatmentDisplayName;
+	private int priority;
 	private List<SymptomRule> symptomRules;
 	private List<ClassificationRule> classificationRules;
- 
+
 	/**
 	 * Constructor
 	 */
@@ -67,7 +67,7 @@ public class Classification implements Serializable {
 		setSymptomRules(new ArrayList<SymptomRule>());
 		setClassificationRules(new ArrayList<ClassificationRule>());
 	}
-	
+
 	/**
 	 * Constructor
 	 */
@@ -76,7 +76,7 @@ public class Classification implements Serializable {
 		setName(name);
 		setType(type);
 	}
-		
+
 	/* (non-Javadoc)
 	 * @see java.lang.Object#hashCode()
 	 */
@@ -84,7 +84,10 @@ public class Classification implements Serializable {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		result = prime * result + 
+				((name == null) ? 0 : name.hashCode()) + 
+				((type == null) ? 0 : type.hashCode()) +
+				((ccmTreatmentDisplayName == null) ? 0 : ccmTreatmentDisplayName.hashCode());
 		return result;
 	}
 
@@ -169,19 +172,6 @@ public class Classification implements Serializable {
 		this.priority = priority;
 	}
 
-	/**
-	 * Getter Method: getCcmTreatmentDisplayName()
-	 */
-	public String getCcmTreatmentDisplayName() {
-		return ccmTreatmentDisplayName;
-	}
-
-	/**
-	 * Setter Method: setCcmTreatmentDisplayName()
-	 */
-	public void setCcmTreatmentDisplayName(String ccmTreatmentDisplayName) {
-		this.ccmTreatmentDisplayName = ccmTreatmentDisplayName;
-	}
 
 	/**
 	 * Getter Method: getSymptomRules()
@@ -212,6 +202,20 @@ public class Classification implements Serializable {
 	}
 
 	/**
+	 * Getter Method: getCcmTreatmentDisplayName()
+	 */
+	public String getCcmTreatmentDisplayName() {
+		return ccmTreatmentDisplayName;
+	}
+
+	/**
+	 * Setter Method: setCcmTreatmentDisplayName()
+	 */
+	public void setCcmTreatmentDisplayName(String ccmTreatmentDisplayName) {
+		this.ccmTreatmentDisplayName = ccmTreatmentDisplayName;
+	}
+
+	/**
 	 * 
 	 * Provides debug output of classification rule
 	 * 
@@ -223,7 +227,7 @@ public class Classification implements Serializable {
 		debugOutput.append("Category: " + getCategory() + "\n");
 		debugOutput.append("Name: " + getName() + "\n");
 		debugOutput.append("Type: " + getType() + "\n");
-		
+
 		if (getSymptomRules().size() != 0) {
 			for (SymptomRule symptomRule : getSymptomRules()) {
 				debugOutput.append(symptomRule.debugOutput());
@@ -234,7 +238,7 @@ public class Classification implements Serializable {
 				debugOutput.append(classificationRule.debugOutput());
 			}		
 		}
-		
+
 		return debugOutput.toString();
 	}
 

@@ -48,11 +48,12 @@ public class TreatmentRule implements Serializable {
 	private static final long serialVersionUID = 2969585100135738023L;
 
 	private String classification;
+	private boolean treatmentHeader;
+	private boolean treatmentFooter;
 	private List<Treatment> treatments;
  
 	/**
 	 * Constructor
-	 * 
 	 */
 	public TreatmentRule() {
 		setTreatments(new ArrayList<Treatment>());
@@ -71,6 +72,34 @@ public class TreatmentRule implements Serializable {
 	public void setClassification(String classification) {
 		this.classification = classification;
 	}
+	
+	/**
+	 * Getter Method: isTreatmentHeader()
+	 */
+	public boolean isTreatmentHeader() {
+		return treatmentHeader;
+	}
+
+	/**
+	 * Setter Method: setTreatmentHeader()
+	 */
+	public void setTreatmentHeader(boolean treatmentHeader) {
+		this.treatmentHeader = treatmentHeader;
+	}
+
+	/**
+	 * Getter Method: isTreatmentFooter()
+	 */
+	public boolean isTreatmentFooter() {
+		return treatmentFooter;
+	}
+
+	/**
+	 * Setter Method: setTreatmentFooter()
+	 */
+	public void setTreatmentFooter(boolean treatmentFooter) {
+		this.treatmentFooter = treatmentFooter;
+	}
 
 	/**
 	 * Getter Method: getTreatments()
@@ -87,9 +116,7 @@ public class TreatmentRule implements Serializable {
 	}
 
 	/**
-	 * 
 	 * Provides debug output of a treatment rule
-	 * 
 	 */
 	public String debugOutput() {
 		StringBuilder debugOutput = new StringBuilder();
@@ -104,5 +131,4 @@ public class TreatmentRule implements Serializable {
 		}		
 		return debugOutput.toString();
 	}
-
 }

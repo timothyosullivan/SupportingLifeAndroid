@@ -6,6 +6,7 @@ import ie.ucc.bis.rule.engine.Classification;
 import ie.ucc.bis.rule.engine.Diagnostic;
 import ie.ucc.bis.rule.engine.enums.CcmClassificationType;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import android.view.LayoutInflater;
@@ -30,7 +31,16 @@ public class CcmClassificationAdapter extends BaseAdapter {
     public CcmClassificationAdapter(CcmAssessmentClassificationsFragment ccmAssessmentClassificationsFragment, List<Diagnostic> patientDiagnostics) {
 		super();
 		setCcmAssessmentClassificationsFragment(ccmAssessmentClassificationsFragment);
-		setPatientDiagnostics(patientDiagnostics);
+		
+    	// ignore diagnostic which have a treatmentHeader/treatmentFooter associated
+    	// - These are just placeholders for giving general treatment quidance to a 
+    	// 	 patient who has either a 'DANGER SIGN' or 'SICK' classification
+		setPatientDiagnostics(new ArrayList<Diagnostic>());
+		for (Diagnostic diagnostic : patientDiagnostics) {
+			if (diagnostic.isTreatmentHeader() != true && diagnostic.isTreatmentFooter() != true) {
+				getPatientDiagnostics().add(diagnostic);
+			}
+		}
 	}
 
 	@Override
@@ -61,7 +71,7 @@ public class CcmClassificationAdapter extends BaseAdapter {
         return getPatientDiagnostics().get(position).getClassification().hashCode();
     }
 
-    public View getView(int position, View view, ViewGroup container) {
+    public View getView(int position, View view, ViewGroup container) {    	
         int itemType = getItemViewType(position);
                
         switch (itemType) {

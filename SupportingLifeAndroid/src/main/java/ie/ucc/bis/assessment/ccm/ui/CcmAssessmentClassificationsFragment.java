@@ -2,7 +2,7 @@ package ie.ucc.bis.assessment.ccm.ui;
 
 import ie.ucc.bis.R;
 import ie.ucc.bis.activity.AssessmentResultsActivity;
-import ie.ucc.bis.activity.ImciAssessmentResultsActivity;
+import ie.ucc.bis.activity.CcmAssessmentResultsActivity;
 import ie.ucc.bis.assessment.ccm.model.CcmClassificationAdapter;
 import ie.ucc.bis.domain.Patient;
 import ie.ucc.bis.rule.engine.Diagnostic;
@@ -63,7 +63,7 @@ public class CcmAssessmentClassificationsFragment extends ListFragment {
         if (activity != null) {   
             // open the treatments tab and scroll to the relevant treatment
         	String classificationTitle = ((TextView) v.findViewById(R.id.classification_list_item_label)).getText().toString();
-			((ImciAssessmentResultsActivity) getActivity()).displayTreatmentTab(position, classificationTitle);
+			((CcmAssessmentResultsActivity) getActivity()).displayTreatmentTab(classificationTitle);
         }
     }
     
