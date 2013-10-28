@@ -4,6 +4,7 @@ import ie.ucc.bis.R;
 import ie.ucc.bis.activity.SupportingLifeBaseActivity;
 import ie.ucc.bis.assessment.model.review.ReviewItem;
 import ie.ucc.bis.domain.Patient;
+import ie.ucc.bis.rule.engine.enums.CcmClassificationType;
 import ie.ucc.bis.rule.engine.enums.ImciClassificationType;
 import ie.ucc.bis.rule.engine.enums.CriteriaRule;
 import ie.ucc.bis.rule.engine.enums.Response;
@@ -59,8 +60,6 @@ public class TreatmentRuleEngine {
 	public void readImciTreatmentRules(SupportingLifeBaseActivity supportingLifeBaseActivity) {
 		XmlResourceParser xmlParser = supportingLifeBaseActivity.getResources().getXml(R.xml.imci_treatment_rules);
 		setSystemImciTreatmentRules(new ArrayList<TreatmentRule>());
-		setImciRelatedTreatments(true);
-		setCcmRelatedTreatments(false);
 		parseTreatmentRules(supportingLifeBaseActivity, getSystemImciTreatmentRules(), xmlParser);
 	}
 
@@ -72,8 +71,6 @@ public class TreatmentRuleEngine {
 	public void readCcmTreatmentRules(SupportingLifeBaseActivity supportingLifeBaseActivity) {
 		XmlResourceParser xmlParser = supportingLifeBaseActivity.getResources().getXml(R.xml.ccm_treatment_rules);
 		setSystemCcmTreatmentRules(new ArrayList<TreatmentRule>());
-		setImciRelatedTreatments(false);
-		setCcmRelatedTreatments(true);
 		parseTreatmentRules(supportingLifeBaseActivity, getSystemCcmTreatmentRules(), xmlParser);
 	}
 
@@ -89,6 +86,8 @@ public class TreatmentRuleEngine {
 	 */
 	public void determineImciTreatments(SupportingLifeBaseActivity supportingLifeBaseActivity, List<ReviewItem> reviewItems, 
 			List<Classification> classifications, Patient patient) {
+		setImciRelatedTreatments(true);
+		setCcmRelatedTreatments(false);
 		addImciTreatmentCriteriaToReviewItems(supportingLifeBaseActivity, reviewItems, patient.getDiagnostics());
 		determinePatientTreatments(supportingLifeBaseActivity, reviewItems, patient, getSystemImciTreatmentRules());
 	}
@@ -104,6 +103,8 @@ public class TreatmentRuleEngine {
 	 * 
 	 */
 	public void determineCcmTreatments(SupportingLifeBaseActivity supportingLifeBaseActivity, List<ReviewItem> reviewItems, Patient patient) {
+		setImciRelatedTreatments(false);
+		setCcmRelatedTreatments(true);
 		determinePatientTreatments(supportingLifeBaseActivity, reviewItems, patient, getSystemCcmTreatmentRules());
 	}
 
@@ -302,7 +303,6 @@ public class TreatmentRuleEngine {
 	}
 
 	/**
-	 * 
 	 * Responsible for determining patient treatments
 	 * 
 	 * @param supportingLifeBaseActivity
@@ -313,71 +313,188 @@ public class TreatmentRuleEngine {
 	 */
 	private void determinePatientTreatments(SupportingLifeBaseActivity supportingLifeBaseActivity, 
 			List<ReviewItem> reviewItems, Patient patient, ArrayList<TreatmentRule> systemTreatments) {
-
-		// 1. iterate over all patient classifications and assign 
-		//	  appropriate treatment(s)
+		
+		// iterate over all patient classifications and assign 
+		// appropriate treatment(s)
 		for (Diagnostic diagnostic : patient.getDiagnostics()) {
 			for (TreatmentRule treatmentRule : systemTreatments) {
 				if (diagnostic.getClassification().getName().equalsIgnoreCase(treatmentRule.getClassification())) {				
 					// classification match found so determine if all associated 
 					// treatments apply
 					for (Treatment treatment : treatmentRule.getTreatments()) {
-						boolean symptomCriteriaPasses = true;
-						boolean treatmentCriteriaPasses = true;
-
-						// check symptom criteria
-						for (TreatmentCriterion treatmentCriterion : treatment.getTreatmentCriterion()) {
-							List<Symptom> symptomCriterion = treatmentCriterion.getSymptomCriteria();
-							if (symptomCriterion.size() != 0) {
-								if (CriteriaRule.ALL.name().equalsIgnoreCase(treatmentCriterion.getRule())) {
-									symptomCriteriaPasses = checkSymptomCriteria(symptomCriterion, reviewItems, patient, symptomCriterion.size());
-								}
-								else if (CriteriaRule.ANY.name().equalsIgnoreCase(treatmentCriterion.getRule())) {
-									// only need a single symptom in order for the treatment to apply
-									symptomCriteriaPasses = checkSymptomCriteria(symptomCriterion, reviewItems, patient, 1);
-								}
-								else if (CriteriaRule.NONE.name().equalsIgnoreCase(treatmentCriterion.getRule())) {
-									// none of the symptom criteria should apply in order for the treatment to apply
-									symptomCriteriaPasses = checkSymptomCriteria(symptomCriterion, reviewItems, patient, 0);
-								}
-							}
-							else {
-								symptomCriteriaPasses = true;
-							}
-							if (!symptomCriteriaPasses) {
-								// exit loop if any <CriteriaList> does not pass successfully
-								break;
-							}
-						} // end of for (Treatment treatment ...
-
-						// check treatment criteria
-						for (TreatmentCriterion treatmentCriterion : treatment.getTreatmentCriterion()) {
-							List<TreatmentCriteria> treatmentCriteria = treatmentCriterion.getTreatmentCriteria();
-							if (symptomCriteriaPasses && (treatmentCriteria.size() != 0)) {
-								if (CriteriaRule.ALL.name().equalsIgnoreCase(treatmentCriterion.getRule())) {
-									treatmentCriteriaPasses = checkTreatmentCriteria(treatmentCriteria, reviewItems, patient, treatmentCriteria.size());
-								}
-							}
-							else {
-								treatmentCriteriaPasses = true;
-							}
-							if (!treatmentCriteriaPasses) {
-								// exit loop if any <CriteriaList> does not pass successfully
-								break;
-							}
-						}
-
-						if (symptomCriteriaPasses && treatmentCriteriaPasses) {
-							// add the recommended treatment to patient classification
-							diagnostic.getTreatmentRecommendations().add(treatment.getRecommendation());
-						}						
+						determineTreatmentRecommendations(reviewItems, patient, diagnostic, treatment);					
 					} // end of for (Treatment treatment  ....
 				}
 			} // end of for (TreatmentRule treatmentRule ...
 		} // end of for (Diagnostic diagnostic ...
 
+		// if dealing with a CCM patient, we need to determine if 'Classification Type' treatment
+		// recommendations apply
+		if (isCcmRelatedTreatments()) {
+			checkCcmClassificationTypeTreatments(reviewItems, patient, systemTreatments);
+		}
+		
 		// DEBUG OUTPUT
 		LoggerUtils.i(LOG_TAG, captureTreatmentsDebugOutput(patient.getDiagnostics()));
+	}
+
+	/**
+	 * Responsible for determining if CCM-related Classification Type treatments apply
+	 * to this patient e.g.
+	 * 
+	 * <TreatmentRule>
+	 * 	<Classification>DANGER SIGN</Classification>
+	 *  <ClassificationType>DANGER_SIGN</ClassificationType>
+	 *  <Treatment>
+	 *  	<Recommendation>REFER URGENTLY to health facility</Recommendation>
+	 *  </Treatment>
+	 *  <Treatment>
+	 *  	<Recommendation>Explain why child needs to go to health facility</Recommendation>
+	 *  </Treatment>
+	 *  <Treatment>
+	 *  	<CriteriaList rule="none">			<!-- Not able to drink or feed anything != Yes -->
+	 *  		<SymptomCriteria value="yes">ccm_ask_initial_assessment_unable_to_drink_or_feed_symptom_id</SymptomCriteria>	
+	 *  	</CriteriaList>
+	 *  	<Recommendation>Advise to give fluids and continue feeding</Recommendation>
+	 *  </Treatment>
+	 *  </TreatmentRule>
+	 * 
+	 * @param reviewItems
+	 * @param patient
+	 * @param systemTreatments
+	 */
+	private void checkCcmClassificationTypeTreatments(List<ReviewItem> reviewItems, Patient patient,
+			ArrayList<TreatmentRule> systemTreatments) {
+		
+		boolean dangerSignClassificationExists = false;
+		boolean sickSignClassificationExists = false;
+		
+		// check if a danger sign classification exists for this patient
+		for (Diagnostic diagnostic : patient.getDiagnostics()) {
+			if (diagnostic.getClassification().getType().equalsIgnoreCase(CcmClassificationType.DANGER_SIGN.name())) {
+				dangerSignClassificationExists = true;
+			}
+		}
+		
+		// if no danger sign classification found, then check for
+		// sick sign classification
+		if (!dangerSignClassificationExists) {
+			for (Diagnostic diagnostic : patient.getDiagnostics()) {
+				if (diagnostic.getClassification().getType().equalsIgnoreCase(CcmClassificationType.SICK.name())) {
+					sickSignClassificationExists = true;
+				}
+			}
+		}
+		
+		if (dangerSignClassificationExists) {
+			// fetch all 'standard' treatments to be applied when a classification(s) of type 'Danger Sign'
+			// is present in the patient's diagnostic assessment
+			Classification classification = new Classification(CcmClassificationType.DANGER_SIGN.name(), 
+														CcmClassificationType.DANGER_SIGN.name());
+			Diagnostic patientDiagnostic = new Diagnostic(classification);
+				
+			addTreatmentsWithMatchingName(reviewItems, patient, systemTreatments, patientDiagnostic);
+			patient.getDiagnostics().add(patientDiagnostic);
+		}
+		else if (sickSignClassificationExists) {
+			// fetch all 'standard' treatments to be applied when a classification(s) of type 'Sick'
+			// is present in the patient's diagnostic assessment
+			Classification classification = new Classification(CcmClassificationType.SICK.name(), 
+													CcmClassificationType.SICK.name());
+			Diagnostic patientDiagnostic = new Diagnostic(classification);
+
+			addTreatmentsWithMatchingName(reviewItems, patient, systemTreatments, patientDiagnostic);
+			patient.getDiagnostics().add(patientDiagnostic);
+		}
+	}
+
+	/**
+	 * Utility method for adding all treatments to a patient diagnostic 
+	 * record that have the same classification name as the parameter name
+	 * passed to the method
+	 * 
+	 * @param reviewItems
+	 * @param patient
+	 * @param systemTreatments
+	 * @param patientDiagnostic
+	 * 
+	 */
+	private void addTreatmentsWithMatchingName(List<ReviewItem> reviewItems, Patient patient, ArrayList<TreatmentRule> systemTreatments, Diagnostic patientDiagnostic) {
+		
+		for (TreatmentRule treatmentRule : systemTreatments) {
+			if (patientDiagnostic.getClassification().getName().equalsIgnoreCase(treatmentRule.getClassification())) {				
+				// classification match found so determine if all associated 
+				// treatments apply
+				for (Treatment treatment : treatmentRule.getTreatments()) {
+					determineTreatmentRecommendations(reviewItems, patient, patientDiagnostic, treatment);					
+				} // end of for (Treatment treatment  ....
+			}
+		} // end of for (TreatmentRule treatmentRule ...
+		
+	}
+
+	/**
+	 * Responsible for determining the treatment recommendations related to
+	 * a single treatment
+	 * 
+	 * @param supportingLifeBaseActivity
+	 * @param reviewItems
+	 * @param patient 
+	 * @param systemTreatments 
+	 * 
+	 */
+	private void determineTreatmentRecommendations(List<ReviewItem> reviewItems, Patient patient,
+			Diagnostic diagnostic, Treatment treatment) {
+		
+		boolean symptomCriteriaPasses = true;
+		boolean treatmentCriteriaPasses = true;
+
+		// check symptom criteria
+		for (TreatmentCriterion treatmentCriterion : treatment.getTreatmentCriterion()) {
+			List<Symptom> symptomCriterion = treatmentCriterion.getSymptomCriteria();
+			if (symptomCriterion.size() != 0) {
+				if (CriteriaRule.ALL.name().equalsIgnoreCase(treatmentCriterion.getRule())) {
+					symptomCriteriaPasses = checkSymptomCriteria(symptomCriterion, reviewItems, patient, symptomCriterion.size());
+				}
+				else if (CriteriaRule.ANY.name().equalsIgnoreCase(treatmentCriterion.getRule())) {
+					// only need a single symptom in order for the treatment to apply
+					symptomCriteriaPasses = checkSymptomCriteria(symptomCriterion, reviewItems, patient, 1);
+				}
+				else if (CriteriaRule.NONE.name().equalsIgnoreCase(treatmentCriterion.getRule())) {
+					// none of the symptom criteria should apply in order for the treatment to apply
+					symptomCriteriaPasses = checkSymptomCriteria(symptomCriterion, reviewItems, patient, 0);
+				}
+			}
+			else {
+				symptomCriteriaPasses = true;
+			}
+			if (!symptomCriteriaPasses) {
+				// exit loop if any <CriteriaList> does not pass successfully
+				break;
+			}
+		} // end of for (Treatment treatment ...
+
+		// check treatment criteria
+		for (TreatmentCriterion treatmentCriterion : treatment.getTreatmentCriterion()) {
+			List<TreatmentCriteria> treatmentCriteria = treatmentCriterion.getTreatmentCriteria();
+			if (symptomCriteriaPasses && (treatmentCriteria.size() != 0)) {
+				if (CriteriaRule.ALL.name().equalsIgnoreCase(treatmentCriterion.getRule())) {
+					treatmentCriteriaPasses = checkTreatmentCriteria(treatmentCriteria, reviewItems, patient, treatmentCriteria.size());
+				}
+			}
+			else {
+				treatmentCriteriaPasses = true;
+			}
+			if (!treatmentCriteriaPasses) {
+				// exit loop if any <CriteriaList> does not pass successfully
+				break;
+			}
+		}
+
+		if (symptomCriteriaPasses && treatmentCriteriaPasses) {
+			// add the recommended treatment to patient classification
+			diagnostic.getTreatmentRecommendations().add(treatment.getRecommendation());
+		}
 	}
 
 	/**

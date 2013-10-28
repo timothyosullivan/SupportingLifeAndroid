@@ -26,7 +26,7 @@
 	<!-- 						 ASK and LOOK assessment) 			  -->
 	<!-- ============================================================ -->
 	<TreatmentRule>
-	    <Classification>DANGER SIGN</Classification>
+		<Classification>DANGER_SIGN</Classification>
 		<ClassificationType>DANGER_SIGN</ClassificationType>
 		<Treatment>
 			<Recommendation>REFER URGENTLY to health facility</Recommendation>
@@ -36,7 +36,7 @@
 		</Treatment>
 		<Treatment>
 			<CriteriaList rule="none">																							<!-- Not able to drink or feed anything != Yes -->
-				<SymptomCriteria value="yes">ccm_ask_initial_assessment_unable_to_drink_or_feed_symptom_id</SymptomCriteria>	
+				<SymptomCriteria value="yes">ccm_ask_initial_assessment_unable_to_drink_or_feed_symptom_id</SymptomCriteria>
 			</CriteriaList>
 			<Recommendation>Advise to give fluids and continue feeding</Recommendation>
 		</Treatment>
@@ -70,7 +70,7 @@
 	<!-- 			 difficulties in referral			  			  -->
 	<!-- ============================================================ -->
 	<TreatmentRule>
-	    <Classification>DANGER SIGN</Classification>
+		<Classification>DANGER_SIGN</Classification>
 		<ClassificationType>DANGER_SIGN</ClassificationType>
 		<Treatment>
 			<Recommendation>Advise to keep child warm, if 'child is NOT hot with fever'</Recommendation>

@@ -62,11 +62,19 @@ public class Classification implements Serializable {
  
 	/**
 	 * Constructor
-	 * 
 	 */
 	public Classification() {
 		setSymptomRules(new ArrayList<SymptomRule>());
 		setClassificationRules(new ArrayList<ClassificationRule>());
+	}
+	
+	/**
+	 * Constructor
+	 */
+	public Classification(String name, String type) {
+		this();
+		setName(name);
+		setType(type);
 	}
 		
 	/* (non-Javadoc)
