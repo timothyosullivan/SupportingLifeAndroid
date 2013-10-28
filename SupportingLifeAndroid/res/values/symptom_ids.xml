@@ -140,7 +140,6 @@
 	
 	<!-- Symptom Ids (NOT TO BE TRANSLATED!)-->
 	<string name="ccm_general_patient_details_date_of_birth_symptom_id">date_of_birth</string>
-	<string name="ccm_patient_aged_between_six_months_and_five_years_symptom_id">patient_aged_between_six_months_and_five_years</string>
 	<string name="ccm_general_patient_details_gender_symptom_id">gender</string>
 	
     <!-- ============================================================ -->
@@ -157,6 +156,7 @@
 	<string name="ccm_ask_initial_assessment_blood_in_stool_symptom_id">blood_in_stool</string>
 	<string name="ccm_ask_initial_assessment_fever_symptom_id">fever</string>
 	<string name="ccm_ask_initial_assessment_fever_duration_seven_days_symptom_id">fever_duration_seven_days</string>
+	<string name="ccm_ask_initial_assessment_fever_dosage_age_symptom_id">fever_dosage_age</string>
 	<string name="ccm_ask_initial_assessment_convulsions_symptom_id">convulsions</string>
 	<string name="ccm_ask_initial_assessment_drink_or_feed_difficulty_symptom_id">drink_or_feed_difficulty</string>
 	<string name="ccm_ask_initial_assessment_unable_to_drink_or_feed_symptom_id">not_able_to_drink_or_feed</string>

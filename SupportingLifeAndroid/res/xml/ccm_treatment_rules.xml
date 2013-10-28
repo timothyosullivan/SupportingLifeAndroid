@@ -51,15 +51,44 @@
 	<!-- Treatments: Begin giving ORS solution immediately 			  -->
 	<!--			 (condition: 'Not able to drink or feed anything' -->
 	<!-- 						 symptom must NOT be selected in	  -->
-	<!-- 						 ASK and LOOK assessment 			  -->
+	<!-- 						 ASK and LOOK assessment) 			  -->
 	<!-- ============================================================ -->
 	<TreatmentRule>
 		<Classification>Diarrhoea for 14 Days or more</Classification>
 		<Treatment>
-			<CriteriaList rule="none">																							<!-- Not able to drink or feed anything != Yes -->
+			<CriteriaList rule="none">															<!-- Not able to drink or feed anything != Yes -->
 				<SymptomCriteria value="yes">ccm_ask_initial_assessment_unable_to_drink_or_feed_symptom_id</SymptomCriteria>
 			</CriteriaList>
 			<Recommendation>Begin giving ORS solution immediately</Recommendation>
+		</Treatment>
+	</TreatmentRule>
+	
+	<!-- ============================================================ -->
+	<!-- DANGER SIGN				 								  -->
+	<!-- ============================================================ -->
+	<!-- ============================================================ -->
+	<!-- Classification: Fever for last 7 Days					 	  -->
+	<!-- 															  -->
+	<!-- Treatments: Give first dose of LA				 			  -->
+	<!--			 (condition: 'Not able to drink or feed anything' -->
+	<!-- 						 symptom must NOT be selected in	  -->
+	<!-- 						 ASK and LOOK assessment) 			  -->
+	<!-- 						 									  -->
+	<!-- 			 Note: Dose for LA:								  -->
+	<!-- 				   Age up 5 months: Not recommended			  -->
+	<!-- 				   Age 5 months up to 3 years: 1 tablet		  -->
+	<!-- 				   Age 3 years up to 5 years: 2 tablets       -->
+	<!-- ============================================================ -->
+	<TreatmentRule>
+		<Classification>Fever for last 7 Days</Classification>
+		<Treatment>
+			<CriteriaList rule="none">															<!-- Not able to drink or feed anything != Yes -->
+				<SymptomCriteria value="yes">ccm_ask_initial_assessment_unable_to_drink_or_feed_symptom_id</SymptomCriteria>
+			</CriteriaList>
+			<CriteriaList rule="all">															<!-- Age 5 months up to 3 years == Yes -->
+				<SymptomCriteria value="BETWEEN_5_MONTHS_AND_3_YEARS">ccm_ask_initial_assessment_fever_dosage_age_symptom_id</SymptomCriteria>
+			</CriteriaList>
+			<Recommendation>Give first dose of LA: 1 tablet</Recommendation>
 		</Treatment>
 	</TreatmentRule>
 

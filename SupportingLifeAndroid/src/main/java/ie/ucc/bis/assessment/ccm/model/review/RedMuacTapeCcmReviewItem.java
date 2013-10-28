@@ -30,7 +30,7 @@ public class RedMuacTapeCcmReviewItem extends ReviewItem implements Serializable
 	 */
 	private static final long serialVersionUID = -3501970374373692467L;
 
-	private static final int TWELVE_MONTHS = 12;
+	private static final int SIX_MONTHS = 6;
 	private static final int FIVE_YEARS_IN_MONTHS = 60;
 
 	/**
@@ -74,7 +74,7 @@ public class RedMuacTapeCcmReviewItem extends ReviewItem implements Serializable
 					 * 					AND
 					 * 			Red Colour on MUAC Tape
 					 */
-					if ((monthsDifference >= TWELVE_MONTHS) && (monthsDifference < FIVE_YEARS_IN_MONTHS) && (getDisplayValue().equalsIgnoreCase(Response.YES.name()))) {
+					if ((monthsDifference >= SIX_MONTHS) && (monthsDifference < FIVE_YEARS_IN_MONTHS) && (getDisplayValue().equalsIgnoreCase(Response.YES.name()))) {
 						setSymptomValue(Response.YES.name());
 					}
 					else {
