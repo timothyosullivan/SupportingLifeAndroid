@@ -463,7 +463,12 @@
 	<string name="ccm_look_assessment_radio_breaths_per_minute_label">Breaths per minute</string>
 	<string name="ccm_look_assessment_radio_very_sleepy_or_unconscious_label">Very sleepy or unconscious?</string>
 	<string name="ccm_look_assessment_radio_palmar_pallor_label">Palmar Pallor?</string>
+	
 	<string name="ccm_look_assessment_radio_muac_tape_colour_label">Muac tape colour?</string>
+	<string name="ccm_look_assessment_radio_muac_tape_colour_green">Green</string>
+	<string name="ccm_look_assessment_radio_muac_tape_colour_yellow">Yellow</string>
+	<string name="ccm_look_assessment_radio_muac_tape_colour_red">Red</string>
+	
 	<string name="ccm_look_assessment_radio_swelling_of_both_feet_label">Swelling of both feet?</string>
 
 	<!-- Look Assessment Review -->

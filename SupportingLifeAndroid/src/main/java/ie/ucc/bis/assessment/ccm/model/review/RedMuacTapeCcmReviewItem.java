@@ -1,5 +1,6 @@
 package ie.ucc.bis.assessment.ccm.model.review;
 
+import ie.ucc.bis.R;
 import ie.ucc.bis.activity.SupportingLifeBaseActivity;
 import ie.ucc.bis.assessment.model.listener.DateDialogSetListener;
 import ie.ucc.bis.assessment.model.review.ReviewItem;
@@ -13,6 +14,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
+import android.content.res.Resources;
 import android.text.TextUtils;
 
 /**
@@ -60,6 +62,7 @@ public class RedMuacTapeCcmReviewItem extends ReviewItem implements Serializable
 	 */
 	public void assessSymptom(SupportingLifeBaseActivity supportingLifeBaseActivity) {
 		if (!TextUtils.isEmpty(getDisplayValue())) {
+			Resources resources = supportingLifeBaseActivity.getResources();
 			ReviewItem birthDateReviewItem = getDependees().get(0);
 
 			if (birthDateReviewItem.getDisplayValue() != null) {	
@@ -74,7 +77,8 @@ public class RedMuacTapeCcmReviewItem extends ReviewItem implements Serializable
 					 * 					AND
 					 * 			Red Colour on MUAC Tape
 					 */
-					if ((monthsDifference >= SIX_MONTHS) && (monthsDifference < FIVE_YEARS_IN_MONTHS) && (getDisplayValue().equalsIgnoreCase(Response.YES.name()))) {
+					if ((monthsDifference >= SIX_MONTHS) && (monthsDifference < FIVE_YEARS_IN_MONTHS)
+							&& (getDisplayValue().equals(resources.getString(R.string.ccm_look_assessment_radio_muac_tape_colour_red)))) {
 						setSymptomValue(Response.YES.name());
 					}
 					else {
