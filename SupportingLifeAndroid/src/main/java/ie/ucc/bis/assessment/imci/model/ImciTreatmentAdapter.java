@@ -27,7 +27,7 @@ import android.widget.TextView;
 
 public class ImciTreatmentAdapter extends BaseAdapter {
 	private static final int SIMPLE_ITEM_TYPE = 1;
-	private static final String BULLET_SYMBOL = "&#8226";
+	private static final String DARK_GREEN_RIGHT_ANGLE_QUOTE_SYMBOL = "<font color='#006400'><strong>&#187</strong></font>";
 	private static final int TITLE_FLASH_COUNT = 3;
 	private static final long TITLE_FLASH_BLINK_DURATION = 300;
 	
@@ -163,8 +163,8 @@ public class ImciTreatmentAdapter extends BaseAdapter {
     private void addBulletedListToTextView(List<String> treatments, TextView textView) {
     	textView.setText("");
     	for(String treatment : treatments) {
-    	    textView.append(Html.fromHtml(BULLET_SYMBOL + treatment)
-                    + System.getProperty("line.separator"));
+    		textView.append(Html.fromHtml(DARK_GREEN_RIGHT_ANGLE_QUOTE_SYMBOL));
+    	    textView.append(treatment + System.getProperty("line.separator"));
     	}
 	}
 
