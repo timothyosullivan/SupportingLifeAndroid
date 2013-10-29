@@ -4,7 +4,7 @@ import ie.ucc.bis.R;
 import ie.ucc.bis.assessment.ccm.model.review.CoughDurationCcmReviewItem;
 import ie.ucc.bis.assessment.ccm.model.review.DiarrhoeaDurationCcmReviewItem;
 import ie.ucc.bis.assessment.ccm.model.review.FeverDurationCcmReviewItem;
-import ie.ucc.bis.assessment.ccm.model.review.PatientAgeForFeverDoseReviewItem;
+import ie.ucc.bis.assessment.ccm.model.review.FeverDosageReviewItem;
 import ie.ucc.bis.assessment.ccm.ui.InitialAskCcmFragment;
 import ie.ucc.bis.assessment.model.AbstractModel;
 import ie.ucc.bis.assessment.model.AbstractPage;
@@ -115,13 +115,13 @@ public class InitialAskCcmPage extends AbstractPage {
     	reviewItemSymptomId = resources.getString(R.string.ccm_ask_initial_assessment_fever_duration_seven_days_symptom_id);
     	reviewItems.add(new FeverDurationCcmReviewItem(reviewItemLabel, getPageData().getString(FEVER_DURATION_DATA_KEY), reviewItemSymptomId, getKey(), -1));
     	
-    	// patient age for fever assessment
+    	// fever dosage
     	reviewItemSymptomId = resources.getString(R.string.ccm_ask_initial_assessment_fever_dosage_age_symptom_id);
     	// note: In assessing the dosage for fever assessment,
     	//       the date of birth child needs to be captured to facilitate the decision logic.
     	String birthDateSymptomId = resources.getString(R.string.ccm_general_patient_details_date_of_birth_symptom_id);
     	ReviewItem birthDateReviewItem = ReviewItemUtilities.findReviewItemBySymptomId(birthDateSymptomId, reviewItems);
-    	reviewItems.add(new PatientAgeForFeverDoseReviewItem(null, null, 
+    	reviewItems.add(new FeverDosageReviewItem(null, null, 
     			reviewItemSymptomId, getKey(), -1, Arrays.asList(birthDateReviewItem)));
     	
     	// convulsions

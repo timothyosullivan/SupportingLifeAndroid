@@ -25,7 +25,7 @@ import java.util.List;
  * 
  * @author timothyosullivan
  */
-public class PatientAgeForFeverDoseReviewItem extends ReviewItem implements Serializable {
+public class FeverDosageReviewItem extends ReviewItem implements Serializable {
 
 	/**
 	 *  Generated Serial ID
@@ -49,7 +49,7 @@ public class PatientAgeForFeverDoseReviewItem extends ReviewItem implements Seri
      * @param pageKey
      * @param weight
      */
-    public PatientAgeForFeverDoseReviewItem(String title, String displayValue, String symptomId, String pageKey, int weight, List<ReviewItem> dependeeReviewItems) {
+    public FeverDosageReviewItem(String title, String displayValue, String symptomId, String pageKey, int weight, List<ReviewItem> dependeeReviewItems) {
     	super(title, displayValue, symptomId, pageKey, weight, false);
     	setDependees(dependeeReviewItems);
     }

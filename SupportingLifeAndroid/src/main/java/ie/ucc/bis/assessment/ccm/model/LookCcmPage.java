@@ -1,6 +1,7 @@
 package ie.ucc.bis.assessment.ccm.model;
 
 import ie.ucc.bis.R;
+import ie.ucc.bis.assessment.ccm.model.review.ChestIndrawingDosageReviewItem;
 import ie.ucc.bis.assessment.ccm.model.review.RedMuacTapeCcmReviewItem;
 import ie.ucc.bis.assessment.ccm.ui.LookCcmFragment;
 import ie.ucc.bis.assessment.model.AbstractModel;
@@ -69,6 +70,15 @@ public class LookCcmPage extends AbstractPage {
     	reviewItemValue = getPageData().getString(CHEST_INDRAWING_DATA_KEY + RadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
     	reviewItemSymptomId = resources.getString(R.string.ccm_look_assessment_chest_indrawing_symptom_id);
     	reviewItems.add(new ReviewItem(reviewItemLabel, reviewItemValue, reviewItemSymptomId, getKey(), -1));
+    	
+    	// chest indrawing dosage
+    	reviewItemSymptomId = resources.getString(R.string.ccm_look_assessment_chest_indrawing_dosage_age_symptom_id);
+    	// note: In assessing the dosage for 'chest indrawing' assessment,
+    	//       the date of birth child needs to be captured to facilitate the decision logic.
+    	String birthDateSymptomId = resources.getString(R.string.ccm_general_patient_details_date_of_birth_symptom_id);
+    	ReviewItem birthDateReviewItem = ReviewItemUtilities.findReviewItemBySymptomId(birthDateSymptomId, reviewItems);
+    	reviewItems.add(new ChestIndrawingDosageReviewItem(null, null, 
+    			reviewItemSymptomId, getKey(), -1, Arrays.asList(birthDateReviewItem)));
 
     	// breaths per minute
     	reviewItemLabel = resources.getString(R.string.ccm_look_assessment_review_breaths_per_minute);
@@ -76,8 +86,6 @@ public class LookCcmPage extends AbstractPage {
     	// note: In assessing whether the 'fast breathing' symptom applies when interpreting the 'breaths per minute',
     	//       the age of the child is a determining factor. Therefore the date of birth child needs to capture to
     	//       facilitate the decision logic.
-    	String birthDateSymptomId = resources.getString(R.string.ccm_general_patient_details_date_of_birth_symptom_id);
-    	ReviewItem birthDateReviewItem = ReviewItemUtilities.findReviewItemBySymptomId(birthDateSymptomId, reviewItems);
     	reviewItems.add(new FastBreathingReviewItem(reviewItemLabel, getPageData().getString(BREATHS_PER_MINUTE_DATA_KEY), 
     			reviewItemSymptomId, getKey(), -1, Arrays.asList(birthDateReviewItem)));
 

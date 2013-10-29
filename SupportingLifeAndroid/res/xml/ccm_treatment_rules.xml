@@ -159,8 +159,40 @@
 				<SymptomCriteria value="BETWEEN_2_MONTHS_AND_12_MONTHS">ccm_look_assessment_chest_indrawing_dosage_age_symptom_id</SymptomCriteria>
 			</CriteriaList>
 			<Recommendation>Give first dose of oral antibiotic
-			    \n (Cotrimoxazole adult tablet - 80/400)
-			    \n Age 2 months up 12 months: 1/2 tablet</Recommendation>
+				\n (Cotrimoxazole adult tablet - 80/400)
+				\n Age 2 months up 12 months: 1/2 tablet</Recommendation>
+		</Treatment>
+		<Treatment>
+			<CriteriaList rule="none">											<!-- Not able to drink or feed anything != Yes -->
+				<SymptomCriteria value="yes">ccm_ask_initial_assessment_unable_to_drink_or_feed_symptom_id</SymptomCriteria>
+			</CriteriaList>
+			<CriteriaList rule="all">															<!-- Age 12 months up to 5 years == Yes -->
+				<SymptomCriteria value="BETWEEN_12_MONTHS_AND_5_YEARS">ccm_look_assessment_chest_indrawing_dosage_age_symptom_id</SymptomCriteria>
+			</CriteriaList>
+			<Recommendation>Give first dose of oral antibiotic
+				\n (Cotrimoxazole adult tablet - 80/400)
+				\n Age 12 months up to 5 years: 1 tablet</Recommendation>
+		</Treatment>
+	</TreatmentRule>
+	
+	<!-- ============================================================ -->
+	<!-- DANGER SIGN				 								  -->
+	<!-- ============================================================ -->
+	<!-- ============================================================ -->
+	<!-- Classification: Red Eye for 4 Days or more				 	  -->
+	<!-- 															  -->
+	<!-- Treatments: Apply antibiotic eye ointment		 			  -->
+	<!--			 (condition: 'Not able to drink or feed anything' -->
+	<!-- 						 symptom must NOT be selected in	  -->
+	<!-- 						 ASK and LOOK assessment) 			  -->
+	<!-- ============================================================ -->
+	<TreatmentRule>
+		<Classification>Red Eye for 4 Days or more</Classification>
+		<Treatment>
+			<CriteriaList rule="none">															<!-- Not able to drink or feed anything != Yes -->
+				<SymptomCriteria value="yes">ccm_ask_initial_assessment_unable_to_drink_or_feed_symptom_id</SymptomCriteria>
+			</CriteriaList>
+			<Recommendation>Apply antibiotic eye ointment</Recommendation>
 		</Treatment>
 	</TreatmentRule>
 
@@ -214,13 +246,14 @@
 		</Treatment>
 		<Treatment>
 			<Recommendation>Advise on when to return. Go to nearest health facility or, if not possible, return immediately if child:
-			    \n 1) Cannot drink
-			    \n 2) Becomes Sicker 
-			    \n 3) Has blood in stool</Recommendation>
+				\n 1) Cannot drink
+				\n 2) Becomes Sicker
+				\n 3) Has blood in stool
+			</Recommendation>
 		</Treatment>
 		<Treatment>
 			<Recommendation>Follow up child in 3 days</Recommendation>
 		</Treatment>
 	</TreatmentRule>
-	
+
 </TreatmentRules>

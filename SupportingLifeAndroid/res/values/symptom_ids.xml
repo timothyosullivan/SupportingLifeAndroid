@@ -183,6 +183,7 @@
     
 	<!-- Symptom Ids (NOT TO BE TRANSLATED!)-->
 	<string name="ccm_look_assessment_chest_indrawing_symptom_id">chest_indrawing</string>
+	<string name="ccm_look_assessment_chest_indrawing_dosage_age_symptom_id">chest_indrawing_dosage_age</string>
 	<string name="ccm_look_assessment_fast_breathing_symptom_id">fast_breathing</string>
 	<string name="ccm_look_assessment_very_sleepy_or_unconscious_symptom_id">very_sleepy_or_unconscious</string>
 	<string name="ccm_look_assessment_palmar_pallor_symptom_id">palmar_pallor</string>
