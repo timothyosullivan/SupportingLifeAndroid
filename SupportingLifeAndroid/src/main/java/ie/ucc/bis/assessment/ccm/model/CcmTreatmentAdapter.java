@@ -29,6 +29,8 @@ import android.widget.TextView;
  */
 
 public class CcmTreatmentAdapter extends BaseAdapter {
+	
+	private static final String LINE_BREAK_ESCAPE_CHARACTER = "\\n";
 	private static final int HEADER_ITEM_TYPE = 0;
 	private static final int FOOTER_ITEM_TYPE = 1;
 	private static final int SIMPLE_ITEM_TYPE = 2;
@@ -209,8 +211,17 @@ public class CcmTreatmentAdapter extends BaseAdapter {
     private void addBulletedListToTextView(List<String> treatments, TextView textView) {
     	textView.setText("");
     	for(String treatment : treatments) {
-    	    textView.append(Html.fromHtml(BULLET_SYMBOL + treatment)
-                    + System.getProperty("line.separator"));
+    		String[] lineBreakSeparatedTreatment = treatment.split(LINE_BREAK_ESCAPE_CHARACTER);
+    		textView.append(Html.fromHtml(BULLET_SYMBOL));
+    		for (String treatmentSegment : lineBreakSeparatedTreatment) {
+    			// remove line break escape character
+    			treatmentSegment = treatmentSegment.replace("\\n", "");
+    			// remove whitespace at start and end of string
+    			treatmentSegment = treatmentSegment.trim();
+    			textView.append(treatmentSegment + System.getProperty("line.separator"));
+    		}
+//    	    textView.append(Html.fromHtml(BULLET_SYMBOL + treatment.split("\n"))
+//                    + System.getProperty("line.separator"));
     	}
 	}
 

@@ -43,6 +43,29 @@
 	</TreatmentRule>
     
 	<!-- ============================================================ -->
+	<!-- ANY SICK SIGN				 								  -->
+	<!-- ============================================================ -->
+	<!-- ============================================================ -->
+	<!-- Classification: ANY SICK SIGN							 	  -->
+	<!-- 															  -->
+	<!-- Treatments: TREAT at home and ADVISE on home care			  -->
+	<!-- 				AND 										  -->
+	<!-- 			 Explain why child needs to go to health facility -->
+	<!-- 				AND 										  -->
+	<!-- 			 Advise to give fluids and continue feeding		  -->
+	<!--			 (condition: 'Not able to drink or feed anything' -->
+	<!-- 						 symptom must NOT be selected in	  -->
+	<!-- 						 ASK and LOOK assessment) 			  -->
+	<!-- ============================================================ -->
+	<TreatmentRule>
+		<Classification>SICK</Classification>
+		<TreatmentHeader>true</TreatmentHeader>
+		<Treatment>
+			<Recommendation>TREAT at home and ADVISE on home care</Recommendation>
+		</Treatment>
+	</TreatmentRule>
+	
+	<!-- ============================================================ -->
 	<!-- DANGER SIGN				 								  -->
 	<!-- ============================================================ -->
 	<!-- ============================================================ -->
@@ -120,4 +143,32 @@
 		</Treatment>
 	</TreatmentRule>
 
+	<!-- ============================================================ -->
+	<!-- ANY SICK SIGN					 							  -->
+	<!-- ============================================================ -->
+	<!-- ============================================================ -->
+	<!-- Classification: ANY SICK SIGN							 	  -->
+	<!-- 															  -->
+	<!-- Treatments: Advise caregiver to give more fluids and 		  -->
+	<!-- 			 continue feeding					  			  -->
+	<!-- 				AND 										  -->
+	<!-- 			 Advise on when to return. Go to nearest health	  -->
+	<!--			 facility or, if not possible, return immediately -->
+	<!-- 			 if child 1) Cannot drink 2) Becomes Sicker		  -->
+	<!-- 			 3) Has blood in stool							  -->
+	<!-- ============================================================ -->
+	<TreatmentRule>
+		<Classification>SICK</Classification>
+		<TreatmentFooter>true</TreatmentFooter>
+		<Treatment>
+			<Recommendation>Advise caregiver to give more fluids and continue feeding</Recommendation>
+		</Treatment>
+		<Treatment>
+			<Recommendation>Advise on when to return. Go to nearest health facility or, if not possible, return immediately if child:
+			    \n 1) Cannot drink
+			    \n 2) Becomes Sicker 
+			    \n 3) Has blood in stool</Recommendation>
+		</Treatment>
+	</TreatmentRule>
+	
 </TreatmentRules>
