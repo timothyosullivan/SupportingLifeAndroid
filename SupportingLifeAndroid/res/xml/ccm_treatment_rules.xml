@@ -41,29 +41,6 @@
 			<Recommendation>Advise to give fluids and continue feeding</Recommendation>
 		</Treatment>
 	</TreatmentRule>
-    
-	<!-- ============================================================ -->
-	<!-- ANY SICK SIGN				 								  -->
-	<!-- ============================================================ -->
-	<!-- ============================================================ -->
-	<!-- Classification: ANY SICK SIGN							 	  -->
-	<!-- 															  -->
-	<!-- Treatments: TREAT at home and ADVISE on home care			  -->
-	<!-- 				AND 										  -->
-	<!-- 			 Explain why child needs to go to health facility -->
-	<!-- 				AND 										  -->
-	<!-- 			 Advise to give fluids and continue feeding		  -->
-	<!--			 (condition: 'Not able to drink or feed anything' -->
-	<!-- 						 symptom must NOT be selected in	  -->
-	<!-- 						 ASK and LOOK assessment) 			  -->
-	<!-- ============================================================ -->
-	<TreatmentRule>
-		<Classification>SICK</Classification>
-		<TreatmentHeader>true</TreatmentHeader>
-		<Treatment>
-			<Recommendation>TREAT at home and ADVISE on home care</Recommendation>
-		</Treatment>
-	</TreatmentRule>
 	
 	<!-- ============================================================ -->
 	<!-- DANGER SIGN				 								  -->
@@ -146,7 +123,7 @@
 	<!-- 						 ASK and LOOK assessment) 			  -->
 	<!-- 						 									  -->
 	<!-- 			 Note: Dose for oral antibiotic:				  -->
-	<!-- 				   Age 2 months up 12 months: 1/2 tablet	  -->
+	<!-- 				   Age 2 months up to 12 months: 1/2 tablet	  -->
 	<!-- 				   Age 12 months up to 5 years: 1 tablet	  -->
 	<!-- ============================================================ -->
 	<TreatmentRule>
@@ -160,7 +137,7 @@
 			</CriteriaList>
 			<Recommendation>Give first dose of oral antibiotic
 				\n (Cotrimoxazole adult tablet - 80/400)
-				\n Age 2 months up 12 months: 1/2 tablet</Recommendation>
+				\n Age 2 months up to 12 months: 1/2 tablet</Recommendation>
 		</Treatment>
 		<Treatment>
 			<CriteriaList rule="none">											<!-- Not able to drink or feed anything != Yes -->
@@ -221,6 +198,86 @@
 		</Treatment>
 		<Treatment>
 			<Recommendation>Arrange transportation and help solve other difficulties in referral</Recommendation>
+		</Treatment>
+	</TreatmentRule>
+	
+	<!-- ============================================================ -->
+	<!-- ANY SICK SIGN				 								  -->
+	<!-- ============================================================ -->
+	<!-- ============================================================ -->
+	<!-- Classification: ANY SICK SIGN							 	  -->
+	<!-- 															  -->
+	<!-- Treatments: TREAT at home and ADVISE on home care			  -->
+	<!-- 				AND 										  -->
+	<!-- 			 Explain why child needs to go to health facility -->
+	<!-- 				AND 										  -->
+	<!-- 			 Advise to give fluids and continue feeding		  -->
+	<!--			 (condition: 'Not able to drink or feed anything' -->
+	<!-- 						 symptom must NOT be selected in	  -->
+	<!-- 						 ASK and LOOK assessment) 			  -->
+	<!-- ============================================================ -->
+	<TreatmentRule>
+		<Classification>SICK</Classification>
+		<TreatmentHeader>true</TreatmentHeader>
+		<Treatment>
+			<Recommendation>TREAT at home and ADVISE on home care</Recommendation>
+		</Treatment>
+	</TreatmentRule>
+	
+	<!-- ============================================================ -->
+	<!-- SICK SIGN					 								  -->
+	<!-- ============================================================ -->
+	<!-- ============================================================ -->
+	<!-- Classification: Diarrhoea (less than 14 days AND no blood    -->
+	<!--					 in stool)							 	  -->
+	<!-- 															  -->
+	<!-- Treatments: Give ORS. 										  -->
+	<!--			 Help caregiver give child ORS solution in front  -->
+	<!-- 			 of you until child is no longer thirsty.		  -->
+	<!-- 				AND 										  -->
+	<!-- 			 Give caregiver 2 ORS packets to take home.		  -->
+	<!-- 			 Advise to give as much as child wants,			  -->
+	<!-- 			 but at least 1/2 cup ORS solution after each	  -->
+	<!-- 			 loose stool.									  -->
+	<!-- 			    AND											  -->
+	<!-- 			 Give zinc supplement. 							  -->
+	<!-- 			 Give one dose daily for 10 days. 				  -->
+	<!-- 			 Help caregiver to give first dose now			  -->
+	<!-- 															  -->
+	<!-- 															  -->
+	<!-- 			 Note: Dose for zinc supplement:				  -->
+	<!-- 				   Age 2 months up to 6 months: 1/2 tablet	  -->
+	<!-- 				   (total: 5 tabs)							  -->
+	<!-- 				   Age 6 months up to 5 years: 1 tablet	  	  -->
+	<!-- 				   (total: 10 tabs)							  -->
+	<!-- ============================================================ -->
+	<TreatmentRule>
+		<Classification>Diarrhoea (less than 14 days AND no blood in stool)</Classification>
+		<Treatment>
+			<Recommendation>Give ORS.
+				\n Help caregiver give child ORS solution in front of you until child is no longer thirsty.</Recommendation>
+		</Treatment>
+		<Treatment>
+			<Recommendation>Give caregiver 2 ORS packets to take home.
+				\n Advise to give as much as child wants, but at least 1/2 cup ORS solution after each loose stool.</Recommendation>
+		</Treatment>
+		<Treatment>
+			<CriteriaList rule="all">															<!-- Age 2 months up to 6 months == Yes -->
+				<SymptomCriteria value="BETWEEN_2_MONTHS_AND_6_MONTHS">ccm_ask_initial_assessment_diarrhoea_zinc_dosage_symptom_id</SymptomCriteria>
+			</CriteriaList>
+			<Recommendation>Give zinc supplement.
+				\n Give one dose daily for 10 days.
+				\n Help caregiver to give first dose now
+				\n Age 2 months up to 6 months: 1/2 tablet (total 5 tabs)</Recommendation>
+		</Treatment>
+		<Treatment>
+			<CriteriaList rule="all">															<!-- Age 6 months up to 5 years == Yes -->
+				<SymptomCriteria value="BETWEEN_6_MONTHS_AND_5_YEARS">ccm_ask_initial_assessment_diarrhoea_zinc_dosage_symptom_id</SymptomCriteria>
+			</CriteriaList>
+			<Recommendation>Give zinc supplement.
+				\n Give one dose daily for 10 days.
+				\n Help caregiver to give first dose now
+				\n Age 6 months up to 5 years: 1 tablet (total 10 tabs)</Recommendation>
 		</Treatment>
 	</TreatmentRule>
 

@@ -153,6 +153,7 @@
 	<string name="ccm_ask_initial_assessment_cough_duration_twenty_one_days_symptom_id">cough_duration_twenty_one_days</string>
 	<string name="ccm_ask_initial_assessment_diarrhoea_symptom_id">diarrhoea</string>
 	<string name="ccm_ask_initial_assessment_diarrhoea_duration_fourteen_days_symptom_id">diarrhoea_duration_fourteen_days</string>
+	<string name="ccm_ask_initial_assessment_diarrhoea_zinc_dosage_symptom_id">diarrhoea_zinc_dosage</string>
 	<string name="ccm_ask_initial_assessment_blood_in_stool_symptom_id">blood_in_stool</string>
 	<string name="ccm_ask_initial_assessment_fever_symptom_id">fever</string>
 	<string name="ccm_ask_initial_assessment_fever_duration_seven_days_symptom_id">fever_duration_seven_days</string>

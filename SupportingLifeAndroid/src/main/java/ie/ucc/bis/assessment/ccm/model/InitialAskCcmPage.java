@@ -3,8 +3,9 @@ package ie.ucc.bis.assessment.ccm.model;
 import ie.ucc.bis.R;
 import ie.ucc.bis.assessment.ccm.model.review.CoughDurationCcmReviewItem;
 import ie.ucc.bis.assessment.ccm.model.review.DiarrhoeaDurationCcmReviewItem;
-import ie.ucc.bis.assessment.ccm.model.review.FeverDurationCcmReviewItem;
+import ie.ucc.bis.assessment.ccm.model.review.DiarrhoeaZincDosageReviewItem;
 import ie.ucc.bis.assessment.ccm.model.review.FeverDosageReviewItem;
+import ie.ucc.bis.assessment.ccm.model.review.FeverDurationCcmReviewItem;
 import ie.ucc.bis.assessment.ccm.ui.InitialAskCcmFragment;
 import ie.ucc.bis.assessment.model.AbstractModel;
 import ie.ucc.bis.assessment.model.AbstractPage;
@@ -97,6 +98,15 @@ public class InitialAskCcmPage extends AbstractPage {
     	reviewItemLabel = resources.getString(R.string.ccm_ask_initial_assessment_review_diarrhoea_duration);
     	reviewItemSymptomId = resources.getString(R.string.ccm_ask_initial_assessment_diarrhoea_duration_fourteen_days_symptom_id);
     	reviewItems.add(new DiarrhoeaDurationCcmReviewItem(reviewItemLabel, getPageData().getString(DIARRHOEA_DURATION_DATA_KEY), reviewItemSymptomId, getKey(), -1));
+    	
+    	// diarrhoea zinc dosage
+    	reviewItemSymptomId = resources.getString(R.string.ccm_ask_initial_assessment_diarrhoea_zinc_dosage_symptom_id);
+    	// note: In assessing the dosage for 'diarrhoea zinc dosage' assessment,
+    	//       the date of birth child needs to be captured to facilitate the decision logic.
+    	String birthDateSymptomId = resources.getString(R.string.ccm_general_patient_details_date_of_birth_symptom_id);
+    	ReviewItem birthDateReviewItem = ReviewItemUtilities.findReviewItemBySymptomId(birthDateSymptomId, reviewItems);
+    	reviewItems.add(new DiarrhoeaZincDosageReviewItem(null, null, 
+    			reviewItemSymptomId, getKey(), -1, Arrays.asList(birthDateReviewItem)));
 	
     	// blood in stool
     	reviewItemLabel = resources.getString(R.string.ccm_ask_initial_assessment_review_blood_in_stool);
@@ -119,8 +129,6 @@ public class InitialAskCcmPage extends AbstractPage {
     	reviewItemSymptomId = resources.getString(R.string.ccm_ask_initial_assessment_fever_dosage_age_symptom_id);
     	// note: In assessing the dosage for fever assessment,
     	//       the date of birth child needs to be captured to facilitate the decision logic.
-    	String birthDateSymptomId = resources.getString(R.string.ccm_general_patient_details_date_of_birth_symptom_id);
-    	ReviewItem birthDateReviewItem = ReviewItemUtilities.findReviewItemBySymptomId(birthDateSymptomId, reviewItems);
     	reviewItems.add(new FeverDosageReviewItem(null, null, 
     			reviewItemSymptomId, getKey(), -1, Arrays.asList(birthDateReviewItem)));
     	
