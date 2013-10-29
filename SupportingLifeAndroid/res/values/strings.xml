@@ -341,8 +341,8 @@
 	<string name="ccm_general_patient_details_title">Patient Details</string>
 	<string name="ccm_general_patient_details_today_date_label">Today\'s Date:</string>
 	<string name="ccm_general_patient_details_hsa_identifier_label">Health Surveillance Assistant (HSA):</string>
-	<string name="ccm_general_patient_details_first_name_label">First Name:</string>
-	<string name="ccm_general_patient_details_surname_label">Surname:</string>
+	<string name="ccm_general_patient_details_first_name_label">Child\'s First Name:</string>
+	<string name="ccm_general_patient_details_surname_label">Child\'s Surname:</string>
 	<string name="ccm_general_patient_details_date_of_birth_label">Date of Birth:</string>
 
     <!-- Gender -->
@@ -391,9 +391,9 @@
 
     <!-- ============================================================ -->
     <!-- CCM ASSESSMENT WIZARD BREAD-CRUMB UI 						  -->
-    <!-- STAGE 2: LOOK AND ASK ASSESSMENT (1)							  -->
+    <!-- STAGE 2: ASK and LOOK ASSESSMENT (1)						  -->
     <!-- ============================================================ -->
-	<string name="ccm_ask_initial_assessment_title">Look and Ask Assessment (1)</string>
+	<string name="ccm_ask_initial_assessment_title">Ask and Look Assessment (1)</string>
 	<string name="ccm_ask_initial_assessment_problems_label">What are the child\'s problems:</string>
 	<string name="ccm_ask_initial_assessment_radio_cough_label">Cough:</string>
 	<string name="ccm_ask_initial_assessment_cough_duration_label">For how long? (days)</string>
@@ -427,9 +427,9 @@
 
     <!-- ============================================================ -->
     <!-- CCM ASSESSMENT WIZARD BREAD-CRUMB UI 						  -->
-    <!-- STAGE 3: LOOK AND ASK ASSESSMENT (2)						  -->
+    <!-- STAGE 3: ASK and LOOK ASSESSMENT (2)						  -->
     <!-- ============================================================ -->
-	<string name="ccm_ask_secondary_assessment_title">Look and Ask Assessment (2)</string>
+	<string name="ccm_ask_secondary_assessment_title">Ask and Look Assessment (2)</string>
 	<string name="ccm_ask_secondary_assessment_radio_vomiting_label">Vomiting?</string>
 	<string name="ccm_ask_secondary_assessment_radio_vomits_everything_label">Vomits everything?</string>
 	<string name="ccm_ask_secondary_assessment_radio_red_eyes_label">Red eyes?</string>
@@ -462,7 +462,7 @@
 	<string name="ccm_look_assessment_radio_chest_indrawing_label">Chest indrawing?</string>
 	<string name="ccm_look_assessment_radio_breaths_per_minute_label">Breaths per minute</string>
 	<string name="ccm_look_assessment_radio_very_sleepy_or_unconscious_label">Very sleepy or unconscious?</string>
-	<string name="ccm_look_assessment_radio_palmar_pallor_label">Palmar pallor?</string>
+	<string name="ccm_look_assessment_radio_palmar_pallor_label">Palmar Pallor?</string>
 	<string name="ccm_look_assessment_radio_muac_tape_colour_label">Muac tape colour?</string>
 	<string name="ccm_look_assessment_radio_swelling_of_both_feet_label">Swelling of both feet?</string>
 
@@ -492,7 +492,8 @@
 	<string name="ccm_assessment_results_vaccine_tab_title">Vaccinations</string>
 	<string name="ccm_assessment_results_follow_up_tab_title">Follow-up</string>
 	<string name="ccm_classification_severity_image_content_assist">CCM Classification Severity Image</string>
-				
+	<string name="ccm_assessment_results_treatments_heading">CCM Recommended Treatments</string>
+	
 	<!-- ============================================================ -->
     <!-- ASSESSMENT WIZARD BREAD-CRUMB UI -->
     <!-- UNIVERSAL COMPONENTS -->
@@ -508,8 +509,7 @@
 	<string name="submit_confirm_message">Perform Medical Assessment</string>
 	<string name="submit_confirm_button">Submit Patient Record</string>
   
-
-          
+     
     <!-- ============================================================ -->
     <!-- TRAINING SCREEN -->
     <!-- ============================================================ -->

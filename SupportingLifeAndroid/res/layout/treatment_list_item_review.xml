@@ -26,7 +26,7 @@
 	        android:layout_width="57dp" 
 	        android:layout_height="50dp" 
 	        android:scaleType="fitCenter" 
-	        android:paddingLeft="10dp" 
+	        android:paddingLeft="5dp" 
 	        android:paddingRight="5dp" 
 	        android:contentDescription="@string/classification_severity_image_content_assist"/>
 	</LinearLayout>

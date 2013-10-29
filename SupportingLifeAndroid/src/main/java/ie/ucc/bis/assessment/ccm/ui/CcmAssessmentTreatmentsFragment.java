@@ -28,7 +28,6 @@ public class CcmAssessmentTreatmentsFragment extends ListFragment {
     
     private CcmTreatmentAdapter ccmTreatmentAdapter;
     private Patient patient;
-    private int classificationPositionSelected = -1;
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -55,18 +54,6 @@ public class CcmAssessmentTreatmentsFragment extends ListFragment {
     	  return myFragmentView;
     }
 
-	/**
-	 * Scroll to the relevant position in the list
-	 * and highlight temporarily
-	 * 
-	 * @param position 
-	 */
-    public void scrollToRelatedElement(int position) {
-    	setClassificationPositionSelected(position);
-    	// scroll to relevant element
-    	getListView().setSelection(position);    	
-    }
-    
     @Override
     public void onListItemClick(ListView l, View v, int position, long id) {}
     
@@ -96,19 +83,5 @@ public class CcmAssessmentTreatmentsFragment extends ListFragment {
 	 */
 	public void setCcmTreatmentAdapter(CcmTreatmentAdapter ccmTreatmentAdapter) {
 		this.ccmTreatmentAdapter = ccmTreatmentAdapter;
-	}
-
-	/**
-	 * Getter Method: getClassificationPositionSelected()
-	 */
-	public int getClassificationPositionSelected() {
-		return classificationPositionSelected;
-	}
-
-	/**
-	 * Setter Method: setClassificationPositionSelected()
-	 */
-	public void setClassificationPositionSelected(int classificationPositionSelected) {
-		this.classificationPositionSelected = classificationPositionSelected;
 	}
 }

@@ -7,11 +7,9 @@ import ie.ucc.bis.assessment.model.review.ReviewItem;
 import ie.ucc.bis.assessment.ui.AssessmentResultsReviewFragment;
 import ie.ucc.bis.domain.Patient;
 import ie.ucc.bis.rule.engine.ClassificationRuleEngine;
-import ie.ucc.bis.rule.engine.Diagnostic;
 import ie.ucc.bis.rule.engine.TreatmentRuleEngine;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import android.app.ActionBar;
 import android.content.Intent;
@@ -99,26 +97,13 @@ public class CcmAssessmentResultsActivity extends AssessmentResultsActivity {
 	 * @param classificationName 
 	 */
 	public void displayTreatmentTab(String classificationTitle) {
-		int position = 0;
 		getTabsAdapter().displayTreatmentTab();
 		CcmAssessmentTreatmentsFragment treatmentsFragment = (CcmAssessmentTreatmentsFragment) 
 				getSupportFragmentManager().getFragments().get(TabsAdapter.TREATMENT_TAB_INDEX);
 
 		if (treatmentsFragment != null) {
-	    	// check if classification title is listed individually within
-	    	// treatments
-			List<Diagnostic> diagnostics = treatmentsFragment.getCcmTreatmentAdapter().getPatientDiagnostics();
-	    	for (int counter = 0; counter < diagnostics.size(); counter++) {
-	    		Diagnostic diagnostic = diagnostics.get(counter);
-	    		if (diagnostic.getClassification().getName() != null
-	    				&& diagnostic.getClassification().getName().equalsIgnoreCase(classificationTitle)) {
-	    			position = counter;
-	    		}
-	    	}
 			// refresh adapter data set - gets view redrawn
 			((BaseAdapter) treatmentsFragment.getCcmTreatmentAdapter()).notifyDataSetChanged();
-			
-			treatmentsFragment.scrollToRelatedElement(position);
 		}
 	}
 }
