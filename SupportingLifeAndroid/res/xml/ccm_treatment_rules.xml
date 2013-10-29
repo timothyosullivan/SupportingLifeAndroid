@@ -108,10 +108,59 @@
 			<CriteriaList rule="none">															<!-- Not able to drink or feed anything != Yes -->
 				<SymptomCriteria value="yes">ccm_ask_initial_assessment_unable_to_drink_or_feed_symptom_id</SymptomCriteria>
 			</CriteriaList>
+			<CriteriaList rule="all">															<!-- Age up to 5 months == Yes -->
+				<SymptomCriteria value="UP_TO_5_MONTHS">ccm_ask_initial_assessment_fever_dosage_age_symptom_id</SymptomCriteria>
+			</CriteriaList>
+			<Recommendation>Dose for LA: Not recommended</Recommendation>
+		</Treatment>
+		<Treatment>
+			<CriteriaList rule="none">															<!-- Not able to drink or feed anything != Yes -->
+				<SymptomCriteria value="yes">ccm_ask_initial_assessment_unable_to_drink_or_feed_symptom_id</SymptomCriteria>
+			</CriteriaList>
 			<CriteriaList rule="all">															<!-- Age 5 months up to 3 years == Yes -->
 				<SymptomCriteria value="BETWEEN_5_MONTHS_AND_3_YEARS">ccm_ask_initial_assessment_fever_dosage_age_symptom_id</SymptomCriteria>
 			</CriteriaList>
 			<Recommendation>Give first dose of LA: 1 tablet</Recommendation>
+		</Treatment>
+		<Treatment>
+			<CriteriaList rule="none">															<!-- Not able to drink or feed anything != Yes -->
+				<SymptomCriteria value="yes">ccm_ask_initial_assessment_unable_to_drink_or_feed_symptom_id</SymptomCriteria>
+			</CriteriaList>
+			<CriteriaList rule="all">															<!-- Age 3 years up to 5 years == Yes -->
+				<SymptomCriteria value="BETWEEN_3_YEARS_AND_5_YEARS">ccm_ask_initial_assessment_fever_dosage_age_symptom_id</SymptomCriteria>
+			</CriteriaList>
+			<Recommendation>Give first dose of LA: 2 tablets</Recommendation>
+		</Treatment>
+	</TreatmentRule>
+	
+	<!-- ============================================================ -->
+	<!-- DANGER SIGN				 								  -->
+	<!-- ============================================================ -->
+	<!-- ============================================================ -->
+	<!-- Classification: Chest Indrawing						 	  -->
+	<!-- 															  -->
+	<!-- Treatments: Give first dose of oral antibiotic 			  -->
+	<!-- 			 (Cotrimoxazole adult tablet - 80/400)			  -->
+	<!--			 (condition: 'Not able to drink or feed anything' -->
+	<!-- 						 symptom must NOT be selected in	  -->
+	<!-- 						 ASK and LOOK assessment) 			  -->
+	<!-- 						 									  -->
+	<!-- 			 Note: Dose for oral antibiotic:				  -->
+	<!-- 				   Age 2 months up 12 months: 1/2 tablet	  -->
+	<!-- 				   Age 12 months up to 5 years: 1 tablet	  -->
+	<!-- ============================================================ -->
+	<TreatmentRule>
+		<Classification>Chest Indrawing</Classification>
+		<Treatment>
+			<CriteriaList rule="none">											<!-- Not able to drink or feed anything != Yes -->
+				<SymptomCriteria value="yes">ccm_ask_initial_assessment_unable_to_drink_or_feed_symptom_id</SymptomCriteria>
+			</CriteriaList>
+			<CriteriaList rule="all">															<!-- Age 2 months up to 12 months == Yes -->
+				<SymptomCriteria value="BETWEEN_2_MONTHS_AND_12_MONTHS">ccm_look_assessment_chest_indrawing_dosage_age_symptom_id</SymptomCriteria>
+			</CriteriaList>
+			<Recommendation>Give first dose of oral antibiotic
+			    \n (Cotrimoxazole adult tablet - 80/400)
+			    \n Age 2 months up 12 months: 1/2 tablet</Recommendation>
 		</Treatment>
 	</TreatmentRule>
 
@@ -168,6 +217,9 @@
 			    \n 1) Cannot drink
 			    \n 2) Becomes Sicker 
 			    \n 3) Has blood in stool</Recommendation>
+		</Treatment>
+		<Treatment>
+			<Recommendation>Follow up child in 3 days</Recommendation>
 		</Treatment>
 	</TreatmentRule>
 	

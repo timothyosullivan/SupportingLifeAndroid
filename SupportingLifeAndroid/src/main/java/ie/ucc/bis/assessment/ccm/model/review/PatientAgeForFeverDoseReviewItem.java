@@ -87,13 +87,13 @@ public class PatientAgeForFeverDoseReviewItem extends ReviewItem implements Seri
 				/* Rule:
 				 * Age 5 months up to 3 years: 1 tablet
 				 */
-				else if ((monthsDifference > FIVE_MONTHS) && (monthsDifference < THREE_YEARS_IN_MONTHS)) {
+				else if ((monthsDifference > FIVE_MONTHS) && (monthsDifference <= THREE_YEARS_IN_MONTHS)) {
 					setSymptomValue(BETWEEN_5_MONTHS_AND_3_YEARS);
 				}
 				/* Rule:
 				 * Age 3 years up to 5 years: 2 tablets
 				 */
-				else if ((monthsDifference > THREE_YEARS_IN_MONTHS) && (monthsDifference < FIVE_YEARS_IN_MONTHS)) {
+				else if ((monthsDifference > THREE_YEARS_IN_MONTHS) && (monthsDifference <= FIVE_YEARS_IN_MONTHS)) {
 					setSymptomValue(BETWEEN_3_YEARS_AND_5_YEARS);
 				}
 	    	} catch (ParseException e) {
