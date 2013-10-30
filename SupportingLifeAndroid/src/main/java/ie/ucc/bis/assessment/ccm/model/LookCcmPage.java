@@ -1,7 +1,8 @@
 package ie.ucc.bis.assessment.ccm.model;
 
 import ie.ucc.bis.R;
-import ie.ucc.bis.assessment.ccm.model.review.ChestIndrawingDosageReviewItem;
+import ie.ucc.bis.assessment.ccm.model.review.ChestIndrawingDosageCcmReviewItem;
+import ie.ucc.bis.assessment.ccm.model.review.FastBreathingDosageCcmReviewItem;
 import ie.ucc.bis.assessment.ccm.model.review.RedMuacTapeCcmReviewItem;
 import ie.ucc.bis.assessment.ccm.ui.LookCcmFragment;
 import ie.ucc.bis.assessment.model.AbstractModel;
@@ -77,7 +78,7 @@ public class LookCcmPage extends AbstractPage {
     	//       the date of birth child needs to be captured to facilitate the decision logic.
     	String birthDateSymptomId = resources.getString(R.string.ccm_general_patient_details_date_of_birth_symptom_id);
     	ReviewItem birthDateReviewItem = ReviewItemUtilities.findReviewItemBySymptomId(birthDateSymptomId, reviewItems);
-    	reviewItems.add(new ChestIndrawingDosageReviewItem(null, null, 
+    	reviewItems.add(new ChestIndrawingDosageCcmReviewItem(null, null, 
     			reviewItemSymptomId, getKey(), -1, Arrays.asList(birthDateReviewItem)));
 
     	// breaths per minute
@@ -87,6 +88,13 @@ public class LookCcmPage extends AbstractPage {
     	//       the age of the child is a determining factor. Therefore the date of birth child needs to capture to
     	//       facilitate the decision logic.
     	reviewItems.add(new FastBreathingReviewItem(reviewItemLabel, getPageData().getString(BREATHS_PER_MINUTE_DATA_KEY), 
+    			reviewItemSymptomId, getKey(), -1, Arrays.asList(birthDateReviewItem)));
+  
+    	// fast breathing dosage
+    	reviewItemSymptomId = resources.getString(R.string.ccm_look_assessment_fast_breathing_dosage_symptom_id);
+    	// note: In assessing the oral antibiotic dosage for fast breathing,
+    	//       the date of birth child needs to be captured to facilitate the decision logic.
+    	reviewItems.add(new FastBreathingDosageCcmReviewItem(null, null, 
     			reviewItemSymptomId, getKey(), -1, Arrays.asList(birthDateReviewItem)));
 
     	// very sleepy or unconscious

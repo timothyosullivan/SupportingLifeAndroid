@@ -15,24 +15,21 @@ import java.util.List;
 /**
  * 
  * Responsible for determining if, based on the user input,
- * whether the chest indrawing dose to prescribe to a patient based on
- * their age.
+ * whether the oral antibiotic dose, related to fast breathing, to 
+ * prescribe to a patient based on their age.
  * 
- * RULE -  Give first dose of oral antibiotic
- * 		   (Cotrimoxazole adult tablet - 80/400)
- * Note: Dose for oral antibiotic:
- * 		 	Age 2 months up 12 months: 1/2 tablet
- * 		 	Age 12 months up to 5 years: 1 tablet
+ * RULE - Dose for oral antibiotic:
+ * 			Age 2 months up to 12 months: 1/2 tablet (total: 5 tabs)
+ * 			Age 12 months up to 5 years: 1 tablet (total: 10 tabs)
  * 
  * @author timothyosullivan
  */
-public class ChestIndrawingDosageReviewItem extends ReviewItem implements Serializable {
+public class FastBreathingDosageCcmReviewItem extends ReviewItem implements Serializable {
 
 	/**
 	 *  Generated Serial ID
 	 */
-	 private static final long serialVersionUID = 2624038411291060717L;
-
+	private static final long serialVersionUID = 6570008403462451834L;
 
 	private static final String BETWEEN_2_MONTHS_AND_12_MONTHS = "BETWEEN_2_MONTHS_AND_12_MONTHS";
 	private static final String BETWEEN_12_MONTHS_AND_5_YEARS = "BETWEEN_12_MONTHS_AND_5_YEARS";
@@ -50,7 +47,7 @@ public class ChestIndrawingDosageReviewItem extends ReviewItem implements Serial
      * @param pageKey
      * @param weight
      */
-    public ChestIndrawingDosageReviewItem(String title, String displayValue, String symptomId, String pageKey, int weight, List<ReviewItem> dependeeReviewItems) {
+    public FastBreathingDosageCcmReviewItem(String title, String displayValue, String symptomId, String pageKey, int weight, List<ReviewItem> dependeeReviewItems) {
     	super(title, displayValue, symptomId, pageKey, weight, false);
     	setDependees(dependeeReviewItems);
     }
@@ -59,16 +56,15 @@ public class ChestIndrawingDosageReviewItem extends ReviewItem implements Serial
      * Method: assessSymptom()
      * 
      * Responsible for determining if, based on the user input,
-     * whether the chest indrawing dose to prescribe to a patient based on
-     * their age.
+     * whether the oral antibiotic dose, related to fast breathing, to 
+     * prescribe to a patient based on their age.
      * 
-     * RULE -  Give first dose of oral antibiotic
-     * 		   (Cotrimoxazole adult tablet - 80/400)
-     * Note: Dose for oral antibiotic:
-     * 		 	Age 2 months up 12 months: 1/2 tablet
-     * 		 	Age 12 months up to 5 years: 1 tablet
+     * RULE - Dose for oral antibiotic:
+     * 			Age 2 months up to 12 months: 1/2 tablet (total: 5 tabs)
+     * 			Age 12 months up to 5 years: 1 tablet (total: 10 tabs)
+     *  
+     * @param supportingLifeBaseActivity 
      * 
-     * @param supportingLifeBaseActivity
      */
     public void assessSymptom(SupportingLifeBaseActivity supportingLifeBaseActivity) {
     	ReviewItem birthDateReviewItem = getDependees().get(0);
@@ -80,13 +76,13 @@ public class ChestIndrawingDosageReviewItem extends ReviewItem implements Serial
 				int monthsDifference = DateUtilities.getDiffMonths(birthDate, cal.getTime());
 
 				/* Rule:
-				 * Age 2 months up 12 months: 1/2 tablet
+				 * Age 2 months up to 12 months: 1/2 tablet (total: 5 tabs)
 				 */
-				if ((monthsDifference > TWO_MONTHS) && (monthsDifference <= TWELVE_MONTHS)) {
+				if ((monthsDifference >= TWO_MONTHS) && (monthsDifference <= TWELVE_MONTHS)) {
 					setSymptomValue(BETWEEN_2_MONTHS_AND_12_MONTHS);
 				}
 				/* Rule:
-				 * Age 12 months up to 5 years: 1 tablet
+				 * Age 12 months up to 5 years: 1 tablet (total: 10 tabs)
 				 */
 				else if ((monthsDifference > TWELVE_MONTHS) && (monthsDifference <= FIVE_YEARS_IN_MONTHS)) {
 					setSymptomValue(BETWEEN_12_MONTHS_AND_5_YEARS);

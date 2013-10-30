@@ -15,28 +15,27 @@ import java.util.List;
 /**
  * 
  * Responsible for determining if, based on the user input,
- * whether the fever paracetamol dose to prescribe to a patient based on
+ * whether the diarrhoea zinc dose to prescribe to a patient based on
  * their age.
  * 
- * RULE - Dose for Paracetamol:
- * 			Age 2 months up to 3 years: 1/4 tablet (total 3 tabs)
- * 			Age 3 years up to 5 years: 1/2 tablet (total 6 tabs)
+ * RULE - Dose for zinc supplement:
+ * 			Age 2 months up to 6 months: 1/2 tablet
+ *			Age 12 months up to 5 years: 1 tablet
  * 
  * @author timothyosullivan
  */
-public class FeverParacetamolDosageReviewItem extends ReviewItem implements Serializable {
+public class DiarrhoeaZincDosageCcmReviewItem extends ReviewItem implements Serializable {
 
 	/**
 	 *  Generated Serial ID
 	 */
-	private static final long serialVersionUID = 7445126108871125634L;
+	private static final long serialVersionUID = 8457780004226103954L;
 
-
-	private static final String BETWEEN_2_MONTHS_AND_3_YEARS = "BETWEEN_2_MONTHS_AND_3_YEARS";
-	private static final String BETWEEN_3_YEARS_AND_5_YEARS = "BETWEEN_3_YEARS_AND_5_YEARS";
+	private static final String BETWEEN_2_MONTHS_AND_6_MONTHS = "BETWEEN_2_MONTHS_AND_6_MONTHS";
+	private static final String BETWEEN_6_MONTHS_AND_5_YEARS = "BETWEEN_6_MONTHS_AND_5_YEARS";
 		
 	private static final int TWO_MONTHS = 2;
-	private static final int THREE_YEARS_IN_MONTHS = 36;
+	private static final int SIX_MONTHS = 6;
 	private static final int FIVE_YEARS_IN_MONTHS = 60;
 
     /**
@@ -48,7 +47,7 @@ public class FeverParacetamolDosageReviewItem extends ReviewItem implements Seri
      * @param pageKey
      * @param weight
      */
-    public FeverParacetamolDosageReviewItem(String title, String displayValue, String symptomId, String pageKey, int weight, List<ReviewItem> dependeeReviewItems) {
+    public DiarrhoeaZincDosageCcmReviewItem(String title, String displayValue, String symptomId, String pageKey, int weight, List<ReviewItem> dependeeReviewItems) {
     	super(title, displayValue, symptomId, pageKey, weight, false);
     	setDependees(dependeeReviewItems);
     }
@@ -57,15 +56,14 @@ public class FeverParacetamolDosageReviewItem extends ReviewItem implements Seri
      * Method: assessSymptom()
      * 
      * Responsible for determining if, based on the user input,
-     * whether the fever paracetamol dose to prescribe to a patient based on
+     * whether the diarrhoea zinc dose to prescribe to a patient based on
      * their age.
      * 
-     * RULE - Dose for Paracetamol:
-     * 			Age 2 months up to 3 years: 1/4 tablet (total 3 tabs)
-     * 			Age 3 years up to 5 years: 1/2 tablet (total 6 tabs)
-     *  
-     * @param supportingLifeBaseActivity 
+     * RULE - Dose for zinc supplement:
+     * 			Age 2 months up to 6 months: 1/2 tablet
+     *			Age 12 months up to 5 years: 1 tablet
      * 
+     * @param supportingLifeBaseActivity 
      */
     public void assessSymptom(SupportingLifeBaseActivity supportingLifeBaseActivity) {
     	ReviewItem birthDateReviewItem = getDependees().get(0);
@@ -77,16 +75,16 @@ public class FeverParacetamolDosageReviewItem extends ReviewItem implements Seri
 				int monthsDifference = DateUtilities.getDiffMonths(birthDate, cal.getTime());
 
 				/* Rule:
-				 * Age 2 months up to 3 years: 1/4 tablet (total 3 tabs)
+				 * Age 2 months up to 6 months: 1/2 tablet
 				 */
-				if ((monthsDifference >= TWO_MONTHS) && (monthsDifference <= THREE_YEARS_IN_MONTHS)) {
-					setSymptomValue(BETWEEN_2_MONTHS_AND_3_YEARS);
+				if ((monthsDifference >= TWO_MONTHS) && (monthsDifference <= SIX_MONTHS)) {
+					setSymptomValue(BETWEEN_2_MONTHS_AND_6_MONTHS);
 				}
 				/* Rule:
-				 * Age 3 years up to 5 years: 1/2 tablet (total 6 tabs)
+				 * Age 12 months up to 5 years: 1 tablet
 				 */
-				else if ((monthsDifference > THREE_YEARS_IN_MONTHS) && (monthsDifference <= FIVE_YEARS_IN_MONTHS)) {
-					setSymptomValue(BETWEEN_3_YEARS_AND_5_YEARS);
+				else if ((monthsDifference > SIX_MONTHS) && (monthsDifference <= FIVE_YEARS_IN_MONTHS)) {
+					setSymptomValue(BETWEEN_6_MONTHS_AND_5_YEARS);
 				}
 	    	} catch (ParseException e) {
 	    		e.printStackTrace();

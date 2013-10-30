@@ -3,10 +3,10 @@ package ie.ucc.bis.assessment.ccm.model;
 import ie.ucc.bis.R;
 import ie.ucc.bis.assessment.ccm.model.review.CoughDurationCcmReviewItem;
 import ie.ucc.bis.assessment.ccm.model.review.DiarrhoeaDurationCcmReviewItem;
-import ie.ucc.bis.assessment.ccm.model.review.DiarrhoeaZincDosageReviewItem;
+import ie.ucc.bis.assessment.ccm.model.review.DiarrhoeaZincDosageCcmReviewItem;
 import ie.ucc.bis.assessment.ccm.model.review.FeverDurationCcmReviewItem;
-import ie.ucc.bis.assessment.ccm.model.review.FeverLaDosageReviewItem;
-import ie.ucc.bis.assessment.ccm.model.review.FeverParacetamolDosageReviewItem;
+import ie.ucc.bis.assessment.ccm.model.review.FeverLaDosageCcmReviewItem;
+import ie.ucc.bis.assessment.ccm.model.review.FeverParacetamolDosageCcmReviewItem;
 import ie.ucc.bis.assessment.ccm.ui.InitialAskCcmFragment;
 import ie.ucc.bis.assessment.model.AbstractModel;
 import ie.ucc.bis.assessment.model.AbstractPage;
@@ -106,7 +106,7 @@ public class InitialAskCcmPage extends AbstractPage {
     	//       the date of birth child needs to be captured to facilitate the decision logic.
     	String birthDateSymptomId = resources.getString(R.string.ccm_general_patient_details_date_of_birth_symptom_id);
     	ReviewItem birthDateReviewItem = ReviewItemUtilities.findReviewItemBySymptomId(birthDateSymptomId, reviewItems);
-    	reviewItems.add(new DiarrhoeaZincDosageReviewItem(null, null, 
+    	reviewItems.add(new DiarrhoeaZincDosageCcmReviewItem(null, null, 
     			reviewItemSymptomId, getKey(), -1, Arrays.asList(birthDateReviewItem)));
 	
     	// blood in stool
@@ -130,14 +130,14 @@ public class InitialAskCcmPage extends AbstractPage {
     	reviewItemSymptomId = resources.getString(R.string.ccm_ask_initial_assessment_fever_la_dosage_age_symptom_id);
     	// note: In assessing the LA dosage for fever assessment,
     	//       the date of birth child needs to be captured to facilitate the decision logic.
-    	reviewItems.add(new FeverLaDosageReviewItem(null, null, 
+    	reviewItems.add(new FeverLaDosageCcmReviewItem(null, null, 
     			reviewItemSymptomId, getKey(), -1, Arrays.asList(birthDateReviewItem)));
     	
     	// fever paracetamol dosage
     	reviewItemSymptomId = resources.getString(R.string.ccm_ask_initial_assessment_fever_paracetamol_dosage_age_symptom_id);
     	// note: In assessing the paracetamol dosage for fever assessment,
     	//       the date of birth child needs to be captured to facilitate the decision logic.
-    	reviewItems.add(new FeverParacetamolDosageReviewItem(null, null, 
+    	reviewItems.add(new FeverParacetamolDosageCcmReviewItem(null, null, 
     			reviewItemSymptomId, getKey(), -1, Arrays.asList(birthDateReviewItem)));
     	
     	// convulsions

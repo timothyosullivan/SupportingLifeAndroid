@@ -91,7 +91,7 @@ public class FastBreathingReviewItem extends ReviewItem implements Serializable 
 					 * [2 months < Child Age < 12 months] 
 					 * 		--> 50 breaths per minute or more == Fast Breathing
 					 */
-					if ((monthsDifference > TWO_MONTHS) && (monthsDifference < TWELVE_MONTHS) && (Integer.getInteger(getDisplayValue()).intValue() > FIFTY_BREATHS_PER_MINUTE)) {
+					if ((monthsDifference > TWO_MONTHS) && (monthsDifference < TWELVE_MONTHS) && (Integer.parseInt(getDisplayValue()) > FIFTY_BREATHS_PER_MINUTE)) {
 						setSymptomValue(Response.YES.name());
 					}
 					/* Rule:
