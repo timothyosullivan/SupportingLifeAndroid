@@ -86,7 +86,7 @@
 				<SymptomCriteria value="yes">ccm_ask_initial_assessment_unable_to_drink_or_feed_symptom_id</SymptomCriteria>
 			</CriteriaList>
 			<CriteriaList rule="all">															<!-- Age up to 5 months == Yes -->
-				<SymptomCriteria value="UP_TO_5_MONTHS">ccm_ask_initial_assessment_fever_dosage_age_symptom_id</SymptomCriteria>
+				<SymptomCriteria value="UP_TO_5_MONTHS">ccm_ask_initial_assessment_fever_la_dosage_age_symptom_id</SymptomCriteria>
 			</CriteriaList>
 			<Recommendation>Dose for LA: Not recommended</Recommendation>
 		</Treatment>
@@ -95,7 +95,7 @@
 				<SymptomCriteria value="yes">ccm_ask_initial_assessment_unable_to_drink_or_feed_symptom_id</SymptomCriteria>
 			</CriteriaList>
 			<CriteriaList rule="all">															<!-- Age 5 months up to 3 years == Yes -->
-				<SymptomCriteria value="BETWEEN_5_MONTHS_AND_3_YEARS">ccm_ask_initial_assessment_fever_dosage_age_symptom_id</SymptomCriteria>
+				<SymptomCriteria value="BETWEEN_5_MONTHS_AND_3_YEARS">ccm_ask_initial_assessment_fever_la_dosage_age_symptom_id</SymptomCriteria>
 			</CriteriaList>
 			<Recommendation>Give first dose of LA: 1 tablet</Recommendation>
 		</Treatment>
@@ -104,7 +104,7 @@
 				<SymptomCriteria value="yes">ccm_ask_initial_assessment_unable_to_drink_or_feed_symptom_id</SymptomCriteria>
 			</CriteriaList>
 			<CriteriaList rule="all">															<!-- Age 3 years up to 5 years == Yes -->
-				<SymptomCriteria value="BETWEEN_3_YEARS_AND_5_YEARS">ccm_ask_initial_assessment_fever_dosage_age_symptom_id</SymptomCriteria>
+				<SymptomCriteria value="BETWEEN_3_YEARS_AND_5_YEARS">ccm_ask_initial_assessment_fever_la_dosage_age_symptom_id</SymptomCriteria>
 			</CriteriaList>
 			<Recommendation>Give first dose of LA: 2 tablets</Recommendation>
 		</Treatment>
@@ -278,6 +278,77 @@
 				\n Give one dose daily for 10 days.
 				\n Help caregiver to give first dose now
 				\n Age 6 months up to 5 years: 1 tablet (total 10 tabs)</Recommendation>
+		</Treatment>
+	</TreatmentRule>
+	
+	<!-- ============================================================ -->
+	<!-- SICK SIGN				 									  -->
+	<!-- ============================================================ -->
+	<!-- ============================================================ -->
+	<!-- Classification: Fever (less than 7 days)				 	  -->
+	<!-- 															  -->
+	<!-- Treatments: Give LA.				 			   			  -->
+	<!-- 			 Help caregiver give first dose now and 2nd dose  -->
+	<!-- 			 after 8 hours.Then give dose twice daily for 2   -->
+	<!-- 			 more days.	  									  -->
+	<!-- 			   AND											  -->
+	<!-- 		 	 Advise caregiver on use of a ITN				  -->
+	<!-- 			   AND											  -->
+	<!-- 			 Give Paracetamol. Give 4 times a day for 3 days  -->
+	<!-- 						 									  -->
+	<!-- 			 Note: Dose for LA:								  -->
+	<!-- 				   Age up 5 months: Not recommended			  -->
+	<!-- 				   Age 5 months up to 3 years: 1 tablet		  -->
+	<!-- 				   (total 6 tabs)							  -->
+	<!-- 				   Age 3 years up to 5 years: 2 tablets       -->
+	<!-- 				   (total 12 tabs)							  -->
+	<!-- 															  -->
+	<!-- 			 Note: Dose for Paracetamol:					  -->
+	<!-- 				   Age 2 months up to 3 years: 1/4 tablet	  -->
+	<!-- 				   (total 3 tabs)							  -->
+	<!-- 				   Age 3 years up to 5 years: 1/2 tablet     -->
+	<!-- 				   (total 6 tabs)							  -->
+	<!-- ============================================================ -->
+	<TreatmentRule>
+		<Classification>Fever (less than 7 days)</Classification>
+		<Treatment>
+			<CriteriaList rule="all">															<!-- Age up to 5 months == Yes -->
+				<SymptomCriteria value="UP_TO_5_MONTHS">ccm_ask_initial_assessment_fever_la_dosage_age_symptom_id</SymptomCriteria>
+			</CriteriaList>
+			<Recommendation>Dose for LA: Not recommended</Recommendation>
+		</Treatment>
+		<Treatment>
+			<CriteriaList rule="all">															<!-- Age 5 months up to 3 years == Yes -->
+				<SymptomCriteria value="BETWEEN_5_MONTHS_AND_3_YEARS">ccm_ask_initial_assessment_fever_la_dosage_age_symptom_id</SymptomCriteria>
+			</CriteriaList>
+			<Recommendation>Give LA.
+				\n Help caregiver give first dose now and 2nd dose after 8 hours.Then give dose twice daily for 2 more days.
+				\n Age 5 months up to 3 years: 1 tablet (total 6 tabs)</Recommendation>
+		</Treatment>
+		<Treatment>
+			<CriteriaList rule="all">															<!-- Age 3 years up to 5 years == Yes -->
+				<SymptomCriteria value="BETWEEN_3_YEARS_AND_5_YEARS">ccm_ask_initial_assessment_fever_la_dosage_age_symptom_id</SymptomCriteria>
+			</CriteriaList>
+			<Recommendation>Give LA.
+				\n Help caregiver give first dose now and 2nd dose after 8 hours.Then give dose twice daily for 2 more days.
+				\n Age 3 years up to 5 years: 2 tablet (total 12 tabs)</Recommendation>
+		</Treatment>
+		<Treatment>
+			<Recommendation>Advise caregiver on use of a ITN</Recommendation>
+		</Treatment>
+		<Treatment>
+			<CriteriaList rule="all">															<!-- Age 2 months up to 3 years == Yes -->
+				<SymptomCriteria value="BETWEEN_2_MONTHS_AND_3_YEARS">ccm_ask_initial_assessment_fever_paracetamol_dosage_age_symptom_id</SymptomCriteria>
+			</CriteriaList>
+			<Recommendation>Give Paracetamol. Give 4 times a day for 3 days,
+				\n Age 2 months up to 3 years: 1/4 tablet (total 3 tabs)</Recommendation>
+		</Treatment>
+		<Treatment>
+			<CriteriaList rule="all">															<!-- Age 3 years up to 5 years == Yes -->
+				<SymptomCriteria value="BETWEEN_3_YEARS_AND_5_YEARS">ccm_ask_initial_assessment_fever_paracetamol_dosage_age_symptom_id</SymptomCriteria>
+			</CriteriaList>
+			<Recommendation>Give Paracetamol. Give 4 times a day for 3 days,
+				\n Age 3 years up to 5 years: 1/2 tablet (total 6 tabs)</Recommendation>
 		</Treatment>
 	</TreatmentRule>
 

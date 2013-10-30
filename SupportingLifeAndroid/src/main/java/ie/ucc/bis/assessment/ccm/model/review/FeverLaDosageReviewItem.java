@@ -15,7 +15,7 @@ import java.util.List;
 /**
  * 
  * Responsible for determining if, based on the user input,
- * whether the fever dose to prescribe to a patient based on
+ * whether the fever LA dose to prescribe to a patient based on
  * their age.
  * 
  * RULE - Dose for LA:
@@ -25,7 +25,7 @@ import java.util.List;
  * 
  * @author timothyosullivan
  */
-public class FeverDosageReviewItem extends ReviewItem implements Serializable {
+public class FeverLaDosageReviewItem extends ReviewItem implements Serializable {
 
 	/**
 	 *  Generated Serial ID
@@ -49,7 +49,7 @@ public class FeverDosageReviewItem extends ReviewItem implements Serializable {
      * @param pageKey
      * @param weight
      */
-    public FeverDosageReviewItem(String title, String displayValue, String symptomId, String pageKey, int weight, List<ReviewItem> dependeeReviewItems) {
+    public FeverLaDosageReviewItem(String title, String displayValue, String symptomId, String pageKey, int weight, List<ReviewItem> dependeeReviewItems) {
     	super(title, displayValue, symptomId, pageKey, weight, false);
     	setDependees(dependeeReviewItems);
     }
