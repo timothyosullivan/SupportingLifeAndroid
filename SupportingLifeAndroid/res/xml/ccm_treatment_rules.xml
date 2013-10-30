@@ -52,10 +52,17 @@
 	<!--			 (condition: 'Not able to drink or feed anything' -->
 	<!-- 						 symptom must NOT be selected in	  -->
 	<!-- 						 ASK and LOOK assessment) 			  -->
+	<!-- 															  -->
+	<!-- 			 Note: Condition of showing any of the above 	  -->
+	<!-- 				   treatments is that NO refer sign is		  -->
+	<!-- 				   present									  -->
 	<!-- ============================================================ -->
 	<TreatmentRule>
 		<Classification>Diarrhoea for 14 Days or more</Classification>
 		<Treatment>
+			<CriteriaList rule="all">														<!-- Refer sign must not be present -->
+				<TreatmentCriteria value="no">ccm_treatment_criteria_refer_sign_classification_present</TreatmentCriteria>
+			</CriteriaList>
 			<CriteriaList rule="none">															<!-- Not able to drink or feed anything != Yes -->
 				<SymptomCriteria value="yes">ccm_ask_initial_assessment_unable_to_drink_or_feed_symptom_id</SymptomCriteria>
 			</CriteriaList>
@@ -78,10 +85,17 @@
 	<!-- 				   Age up 5 months: Not recommended			  -->
 	<!-- 				   Age 5 months up to 3 years: 1 tablet		  -->
 	<!-- 				   Age 3 years up to 5 years: 2 tablets       -->
+	<!-- 															  -->
+	<!-- 			 Note: Condition of showing any of the above 	  -->
+	<!-- 				   treatments is that NO refer sign is		  -->
+	<!-- 				   present									  -->
 	<!-- ============================================================ -->
 	<TreatmentRule>
 		<Classification>Fever for last 7 Days</Classification>
 		<Treatment>
+			<CriteriaList rule="all">														<!-- Refer sign must not be present -->
+				<TreatmentCriteria value="no">ccm_treatment_criteria_refer_sign_classification_present</TreatmentCriteria>
+			</CriteriaList>
 			<CriteriaList rule="none">															<!-- Not able to drink or feed anything != Yes -->
 				<SymptomCriteria value="yes">ccm_ask_initial_assessment_unable_to_drink_or_feed_symptom_id</SymptomCriteria>
 			</CriteriaList>
@@ -91,6 +105,9 @@
 			<Recommendation>Dose for LA: Not recommended</Recommendation>
 		</Treatment>
 		<Treatment>
+			<CriteriaList rule="all">														<!-- Refer sign must not be present -->
+				<TreatmentCriteria value="no">ccm_treatment_criteria_refer_sign_classification_present</TreatmentCriteria>
+			</CriteriaList>
 			<CriteriaList rule="none">															<!-- Not able to drink or feed anything != Yes -->
 				<SymptomCriteria value="yes">ccm_ask_initial_assessment_unable_to_drink_or_feed_symptom_id</SymptomCriteria>
 			</CriteriaList>
@@ -100,6 +117,9 @@
 			<Recommendation>Give first dose of LA: 1 tablet</Recommendation>
 		</Treatment>
 		<Treatment>
+			<CriteriaList rule="all">														<!-- Refer sign must not be present -->
+				<TreatmentCriteria value="no">ccm_treatment_criteria_refer_sign_classification_present</TreatmentCriteria>
+			</CriteriaList>
 			<CriteriaList rule="none">															<!-- Not able to drink or feed anything != Yes -->
 				<SymptomCriteria value="yes">ccm_ask_initial_assessment_unable_to_drink_or_feed_symptom_id</SymptomCriteria>
 			</CriteriaList>
@@ -125,10 +145,17 @@
 	<!-- 			 Note: Dose for oral antibiotic:				  -->
 	<!-- 				   Age 2 months up to 12 months: 1/2 tablet	  -->
 	<!-- 				   Age 12 months up to 5 years: 1 tablet	  -->
+	<!-- 															  -->
+	<!-- 			 Note: Condition of showing any of the above 	  -->
+	<!-- 				   treatments is that NO refer sign is		  -->
+	<!-- 				   present									  -->
 	<!-- ============================================================ -->
 	<TreatmentRule>
 		<Classification>Chest Indrawing</Classification>
 		<Treatment>
+			<CriteriaList rule="all">														<!-- Refer sign must not be present -->
+				<TreatmentCriteria value="no">ccm_treatment_criteria_refer_sign_classification_present</TreatmentCriteria>
+			</CriteriaList>
 			<CriteriaList rule="none">											<!-- Not able to drink or feed anything != Yes -->
 				<SymptomCriteria value="yes">ccm_ask_initial_assessment_unable_to_drink_or_feed_symptom_id</SymptomCriteria>
 			</CriteriaList>
@@ -140,6 +167,9 @@
 				\n Age 2 months up to 12 months: 1/2 tablet</Recommendation>
 		</Treatment>
 		<Treatment>
+			<CriteriaList rule="all">														<!-- Refer sign must not be present -->
+				<TreatmentCriteria value="no">ccm_treatment_criteria_refer_sign_classification_present</TreatmentCriteria>
+			</CriteriaList>
 			<CriteriaList rule="none">											<!-- Not able to drink or feed anything != Yes -->
 				<SymptomCriteria value="yes">ccm_ask_initial_assessment_unable_to_drink_or_feed_symptom_id</SymptomCriteria>
 			</CriteriaList>
@@ -167,10 +197,17 @@
 	<!-- 			 Note: Dose for oral antibiotic:				  -->
 	<!-- 				   Age 2 months up to 12 months: 1/2 tablet	  -->
 	<!-- 				   Age 12 months up to 5 years: 1 tablet	  -->
+	<!-- 															  -->
+	<!-- 			 Note: Condition of showing any of the above 	  -->
+	<!-- 				   treatments is that NO refer sign is		  -->
+	<!-- 				   present									  -->
 	<!-- ============================================================ -->
 	<TreatmentRule>
 		<Classification>Fast Breathing and Danger Sign</Classification>
 		<Treatment>
+			<CriteriaList rule="all">														<!-- Refer sign must not be present -->
+				<TreatmentCriteria value="no">ccm_treatment_criteria_refer_sign_classification_present</TreatmentCriteria>
+			</CriteriaList>
 			<CriteriaList rule="none">															<!-- Not able to drink or feed anything != Yes -->
 				<SymptomCriteria value="yes">ccm_ask_initial_assessment_unable_to_drink_or_feed_symptom_id</SymptomCriteria>
 			</CriteriaList>
@@ -181,6 +218,9 @@
 				\n Age 2 months up to 12 months: 1/2 tablet</Recommendation>
 		</Treatment>
 		<Treatment>
+			<CriteriaList rule="all">														<!-- Refer sign must not be present -->
+				<TreatmentCriteria value="no">ccm_treatment_criteria_refer_sign_classification_present</TreatmentCriteria>
+			</CriteriaList>
 			<CriteriaList rule="none">															<!-- Not able to drink or feed anything != Yes -->
 				<SymptomCriteria value="yes">ccm_ask_initial_assessment_unable_to_drink_or_feed_symptom_id</SymptomCriteria>
 			</CriteriaList>
@@ -202,10 +242,17 @@
 	<!--			 (condition: 'Not able to drink or feed anything' -->
 	<!-- 						 symptom must NOT be selected in	  -->
 	<!-- 						 ASK and LOOK assessment) 			  -->
+	<!-- 															  -->
+	<!-- 			 Note: Condition of showing any of the above 	  -->
+	<!-- 				   treatments is that NO refer sign is		  -->
+	<!-- 				   present									  -->
 	<!-- ============================================================ -->
 	<TreatmentRule>
 		<Classification>Red Eye for 4 Days or more</Classification>
 		<Treatment>
+			<CriteriaList rule="all">														<!-- Refer sign must not be present -->
+				<TreatmentCriteria value="no">ccm_treatment_criteria_refer_sign_classification_present</TreatmentCriteria>
+			</CriteriaList>
 			<CriteriaList rule="none">															<!-- Not able to drink or feed anything != Yes -->
 				<SymptomCriteria value="yes">ccm_ask_initial_assessment_unable_to_drink_or_feed_symptom_id</SymptomCriteria>
 			</CriteriaList>
@@ -263,9 +310,6 @@
 	<!-- 				AND 										  -->
 	<!-- 			 Do not give antibiotic or antimalarial			  -->
 	<!-- 															  -->
-	<!-- 			 Note: Condition of showing any of the above 	  -->
-	<!-- 				   treatments is that NO danger sign is		  -->
-	<!-- 				   present									  -->
 	<!-- ============================================================ -->
 	<TreatmentRule>
 		<Classification>REFER</Classification>
@@ -278,9 +322,9 @@
 		</Treatment>
 		<Treatment>
 			<CriteriaList rule="all">				<!-- Diarrhoea (less than 14 days AND no blood in stool) == Yes -->
-				<Symptom value="yes">ccm_ask_initial_assessment_diarrhoea_symptom_id</Symptom>							<!-- Diarrhoea : YES -->
-				<Symptom value="no">ccm_ask_initial_assessment_diarrhoea_duration_fourteen_days_symptom_id</Symptom> 	<!-- Diarrhoea less than 14 Days : YES -->
-				<Symptom value="no">ccm_ask_initial_assessment_blood_in_stool_symptom_id</Symptom> 						<!-- Blood in Stool : NO -->
+				<SymptomCriteria value="yes">ccm_ask_initial_assessment_diarrhoea_symptom_id</SymptomCriteria>							<!-- Diarrhoea : YES -->
+				<SymptomCriteria value="no">ccm_ask_initial_assessment_diarrhoea_duration_fourteen_days_symptom_id</SymptomCriteria> 	<!-- Diarrhoea less than 14 Days : YES -->
+				<SymptomCriteria value="no">ccm_ask_initial_assessment_blood_in_stool_symptom_id</SymptomCriteria> 						<!-- Blood in Stool : NO -->
 			</CriteriaList>
 			<Recommendation>Give ORS</Recommendation>
 		</Treatment>
@@ -338,6 +382,10 @@
 	<!-- 				   (total: 5 tabs)							  -->
 	<!-- 				   Age 6 months up to 5 years: 1 tablet	  	  -->
 	<!-- 				   (total: 10 tabs)							  -->
+	<!-- 															  -->
+	<!-- 			 Note: Condition of showing any of the above 	  -->
+	<!-- 				   treatments is that NO refer sign is		  -->
+	<!-- 				   present									  -->
 	<!-- ============================================================ -->
 	<TreatmentRule>
 		<Classification>Diarrhoea (less than 14 days AND no blood in stool)</Classification>
@@ -406,8 +454,12 @@
 	<!-- 			 Note: Dose for Paracetamol:					  -->
 	<!-- 				   Age 2 months up to 3 years: 1/4 tablet	  -->
 	<!-- 				   (total 3 tabs)							  -->
-	<!-- 				   Age 3 years up to 5 years: 1/2 tablet     -->
+	<!-- 				   Age 3 years up to 5 years: 1/2 tablet      -->
 	<!-- 				   (total 6 tabs)							  -->
+	<!-- 															  -->
+	<!-- 			 Note: Condition of showing any of the above 	  -->
+	<!-- 				   treatments is that NO refer sign is		  -->
+	<!-- 				   present									  -->
 	<!-- ============================================================ -->
 	<TreatmentRule>
 		<Classification>Fever (less than 7 days)</Classification>
@@ -487,6 +539,10 @@
 	<!-- 				   (total: 5 tabs)							  -->
 	<!-- 				   Age 12 months up to 5 years: 1 tablet	  -->
 	<!-- 				   (total: 10 tabs)							  -->
+	<!-- 															  -->
+	<!-- 			 Note: Condition of showing any of the above 	  -->
+	<!-- 				   treatments is that NO refer sign is		  -->
+	<!-- 				   present									  -->
 	<!-- ============================================================ -->
 	<TreatmentRule>
 		<Classification>Fast Breathing</Classification>
@@ -526,6 +582,10 @@
 	<!--			 Squeeze the size of a grain of rice on each of   -->
 	<!-- 			 the inner lower eyelids, three times a day for   -->
 	<!-- 			 3 days.										  -->
+	<!-- 															  -->
+	<!-- 			 Note: Condition of showing any of the above 	  -->
+	<!-- 				   treatments is that NO refer sign is		  -->
+	<!-- 				   present									  -->
 	<!-- ============================================================ -->
 	<TreatmentRule>
 		<Classification>Red Eye (less than 4 days)</Classification>

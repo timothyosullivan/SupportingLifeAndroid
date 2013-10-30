@@ -480,34 +480,35 @@ public class TreatmentRuleEngine {
 		String classificationName = null;
 		String classificationType = null;
 		
-		// check if a danger sign classification exists for this patient
-		dangerSignClassificationExists = checkClassificationTypeExistence(patient, CcmClassificationType.DANGER_SIGN.name());
+		// check if a refer sign classification exists for this patient
+		referSignClassificationExists = checkClassificationTypeExistence(patient, CcmClassificationType.REFER.name());
 	
-		// if no danger sign classification found, then check for
-		// refer sign classification
-		if (!dangerSignClassificationExists) {
-			referSignClassificationExists = checkClassificationTypeExistence(patient, CcmClassificationType.REFER.name());
+		// if no refer sign classification found, then check for
+		// danger sign classification
+		if (!referSignClassificationExists) {
+			dangerSignClassificationExists = checkClassificationTypeExistence(patient, CcmClassificationType.DANGER_SIGN.name());
 		}
 		
-		// if no danger sign or refer sign classification found, then check for
+		// if no refer sign or danger sign classification found, then check for
 		// sick sign classification
-		if ((!dangerSignClassificationExists) && (!referSignClassificationExists)) {
+		if ((!referSignClassificationExists) && (!dangerSignClassificationExists)) {
 			sickSignClassificationExists = checkClassificationTypeExistence(patient, CcmClassificationType.SICK.name());
 		}
 		
-		if (dangerSignClassificationExists) {
-			// fetch all 'standard' treatments to be applied when a classification(s) of type 'Danger Sign'
-			// is present in the patient's diagnostic assessment
-			classificationName = CcmClassificationType.DANGER_SIGN.name();
-			classificationType = CcmClassificationType.DANGER_SIGN.name();
-			addTreatmentsWithMatchingName(reviewItems, patient, systemTreatments, classificationName, classificationType);
-		}
-		else if (referSignClassificationExists) {
+
+		if (referSignClassificationExists) {
 				// fetch all 'standard' treatments to be applied when a classification(s) of type 'Refer'
 				// is present in the patient's diagnostic assessment
 				classificationName = CcmClassificationType.REFER.name();
 				classificationType = CcmClassificationType.REFER.name();
 				addTreatmentsWithMatchingName(reviewItems, patient, systemTreatments, classificationName, classificationType);
+		}
+		else if (dangerSignClassificationExists) {
+			// fetch all 'standard' treatments to be applied when a classification(s) of type 'Danger Sign'
+			// is present in the patient's diagnostic assessment
+			classificationName = CcmClassificationType.DANGER_SIGN.name();
+			classificationType = CcmClassificationType.DANGER_SIGN.name();
+			addTreatmentsWithMatchingName(reviewItems, patient, systemTreatments, classificationName, classificationType);
 		}
 		else if (sickSignClassificationExists) {
 			// fetch all 'standard' treatments to be applied when a classification(s) of type 'Sick'
