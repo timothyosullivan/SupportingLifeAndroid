@@ -347,8 +347,27 @@
 			<CriteriaList rule="all">															<!-- Age 3 years up to 5 years == Yes -->
 				<SymptomCriteria value="BETWEEN_3_YEARS_AND_5_YEARS">ccm_ask_initial_assessment_fever_paracetamol_dosage_age_symptom_id</SymptomCriteria>
 			</CriteriaList>
-			<Recommendation>Give Paracetamol. Give 4 times a day for 3 days,
+			<Recommendation>Give Paracetamol. Give 4 times a day for 3 days.
 				\n Age 3 years up to 5 years: 1/2 tablet (total 6 tabs)</Recommendation>
+		</Treatment>
+	</TreatmentRule>
+	
+	<!-- ============================================================ -->
+	<!-- SICK SIGN				 								  -->
+	<!-- ============================================================ -->
+	<!-- ============================================================ -->
+	<!-- Classification: Red Eye (less than 4 days)				 	  -->
+	<!-- 															  -->
+	<!-- Treatments: Apply antibiotic eye ointment.		 			  -->
+	<!--			 Squeeze the size of a grain of rice on each of   -->
+	<!-- 			 the inner lower eyelids, three times a day for   -->
+	<!-- 			 3 days.										  -->
+	<!-- ============================================================ -->
+	<TreatmentRule>
+		<Classification>Red Eye (less than 4 days)</Classification>
+		<Treatment>
+			<Recommendation>Apply antibiotic eye ointment.
+				\n Squeeze the size of a grain of rice on each of the inner lower eyelids, three times a day for 3 days.</Recommendation>
 		</Treatment>
 	</TreatmentRule>
 
