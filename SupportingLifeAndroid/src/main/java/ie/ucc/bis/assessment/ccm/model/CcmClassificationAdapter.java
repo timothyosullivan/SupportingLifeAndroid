@@ -104,11 +104,11 @@ public class CcmClassificationAdapter extends BaseAdapter {
 		if (classification.getType().equalsIgnoreCase(CcmClassificationType.DANGER_SIGN.name())) {
 			severityImageView.setImageResource(R.drawable.ic_severe_notification);
 		}
+		else if (classification.getType().equalsIgnoreCase(CcmClassificationType.REFER.name())) {
+			severityImageView.setImageResource(R.drawable.ic_refer_notification);
+		}		
 		else if (classification.getType().equalsIgnoreCase(CcmClassificationType.SICK.name())) {
 			severityImageView.setImageResource(R.drawable.ic_moderate_notification);
-		}
-		else {
-			severityImageView.setImageResource(R.drawable.ic_low_notification);
 		}
 	}
     

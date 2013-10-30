@@ -107,6 +107,7 @@ public class TreatmentRuleEngine {
 	public void determineCcmTreatments(SupportingLifeBaseActivity supportingLifeBaseActivity, List<ReviewItem> reviewItems, Patient patient) {
 		setImciRelatedTreatments(false);
 		setCcmRelatedTreatments(true);
+		addCcmTreatmentCriteriaToReviewItems(supportingLifeBaseActivity, reviewItems, patient.getDiagnostics());
 		determinePatientTreatments(supportingLifeBaseActivity, reviewItems, patient, getSystemCcmTreatmentRules());
 	}
 
@@ -127,6 +128,25 @@ public class TreatmentRuleEngine {
 
 		// assess whether 'severe dehydration' is the only severe classification
 		severeDehydrationTreatmentCriteriaCheck(supportingLifeBaseActivity, reviewItems, patientDiagnostics);
+	}
+	
+	/**
+	 * Responsible for adding CCM-related treatment criteria items to the review item list
+	 * (CCM-only)
+	 * 
+	 * @param supportingLifeBaseActivity
+	 * @param reviewItems
+	 * @param patientDiagnostics
+	 * 
+	 */
+	private void addCcmTreatmentCriteriaToReviewItems(SupportingLifeBaseActivity supportingLifeBaseActivity,
+			List<ReviewItem> reviewItems, List<Diagnostic> patientDiagnostics) {
+
+		// assess whether patient has at least one 'danger sign' classification
+		dangerSignCcmClassificationTreatmentCriteriaCheck(supportingLifeBaseActivity, reviewItems, patientDiagnostics);
+		
+		// assess whether patient has at least one 'refer sign' classification
+		referSignCcmClassificationTreatmentCriteriaCheck(supportingLifeBaseActivity, reviewItems, patientDiagnostics);
 	}
 
 	/**
@@ -207,7 +227,85 @@ public class TreatmentRuleEngine {
 		// add review item to list
 		reviewItems.add(severeDehydrationReviewItem);
 	}
+	
+	/**
+	 * Responsible for determining whether patient has one danger sign classification
+	 * with respect to the patient assessment (CCM-only) i.e.
+	 * 
+	 * 	<CriteriaList rule="all">															<!-- Danger sign present -->
+	 * 		<TreatmentCriteria value="yes">ccm_treatment_criteria_danger_sign_classification_present</TreatmentCriteria>
+	 * 	</CriteriaList>
+	 * 
+	 * @param supportingLifeBaseActivity
+	 * @param reviewItems
+	 * @param patientDiagnostics
+	 * 
+	 */
+	private void dangerSignCcmClassificationTreatmentCriteriaCheck(SupportingLifeBaseActivity supportingLifeBaseActivity,
+			List<ReviewItem> reviewItems, List<Diagnostic> patientDiagnostics) {
 
+		boolean hasDangerSignClassification = false;
+
+		for (Diagnostic diagnostic : patientDiagnostics) {
+			if (diagnostic.getClassification().getType().equalsIgnoreCase(CcmClassificationType.DANGER_SIGN.name())) {
+				hasDangerSignClassification = true;
+				break;
+			}
+		}
+
+		String symptomId = supportingLifeBaseActivity.getResources().getString(R.string.ccm_treatment_criteria_danger_sign_classification_present);
+		ReviewItem dangerSignClassificationPresentReviewItem = new ReviewItem(null, null, symptomId, null, -1);
+		if (hasDangerSignClassification) {
+			dangerSignClassificationPresentReviewItem.setSymptomValue(Response.YES.name());
+		}
+		else {
+			dangerSignClassificationPresentReviewItem.setSymptomValue(Response.NO.name());
+		}
+		dangerSignClassificationPresentReviewItem.setVisible(false);
+
+		// add review item to list
+		reviewItems.add(dangerSignClassificationPresentReviewItem);		
+	}
+
+	/**
+	 * Responsible for determining whether patient has one refer sign classification
+	 * with respect to the patient assessment (CCM-only) i.e.
+	 * 
+	 * 	<CriteriaList rule="all">															<!-- Refer sign present -->
+	 * 		<TreatmentCriteria value="yes">ccm_treatment_criteria_refer_sign_classification_present</TreatmentCriteria>
+	 * 	</CriteriaList>
+	 * 
+	 * @param supportingLifeBaseActivity
+	 * @param reviewItems
+	 * @param patientDiagnostics
+	 * 
+	 */
+	private void referSignCcmClassificationTreatmentCriteriaCheck(SupportingLifeBaseActivity supportingLifeBaseActivity,
+			List<ReviewItem> reviewItems, List<Diagnostic> patientDiagnostics) {
+
+		boolean hasReferSignClassification = false;
+
+		for (Diagnostic diagnostic : patientDiagnostics) {
+			if (diagnostic.getClassification().getType().equalsIgnoreCase(CcmClassificationType.REFER.name())) {
+				hasReferSignClassification = true;
+				break;
+			}
+		}
+
+		String symptomId = supportingLifeBaseActivity.getResources().getString(R.string.ccm_treatment_criteria_refer_sign_classification_present);
+		ReviewItem referSignClassificationPresentReviewItem = new ReviewItem(null, null, symptomId, null, -1);
+		if (hasReferSignClassification) {
+			referSignClassificationPresentReviewItem.setSymptomValue(Response.YES.name());
+		}
+		else {
+			referSignClassificationPresentReviewItem.setSymptomValue(Response.NO.name());
+		}
+		referSignClassificationPresentReviewItem.setVisible(false);
+
+		// add review item to list
+		reviewItems.add(referSignClassificationPresentReviewItem);		
+	}
+	
 	/**
 	 * 
 	 * Responsible for parsing xml-based treatment rules
@@ -378,24 +476,23 @@ public class TreatmentRuleEngine {
 		
 		boolean dangerSignClassificationExists = false;
 		boolean sickSignClassificationExists = false;
+		boolean referSignClassificationExists = false;
 		String classificationName = null;
 		String classificationType = null;
 		
 		// check if a danger sign classification exists for this patient
-		for (Diagnostic diagnostic : patient.getDiagnostics()) {
-			if (diagnostic.getClassification().getType().equalsIgnoreCase(CcmClassificationType.DANGER_SIGN.name())) {
-				dangerSignClassificationExists = true;
-			}
+		dangerSignClassificationExists = checkClassificationTypeExistence(patient, CcmClassificationType.DANGER_SIGN.name());
+	
+		// if no danger sign classification found, then check for
+		// refer sign classification
+		if (!dangerSignClassificationExists) {
+			referSignClassificationExists = checkClassificationTypeExistence(patient, CcmClassificationType.REFER.name());
 		}
 		
-		// if no danger sign classification found, then check for
+		// if no danger sign or refer sign classification found, then check for
 		// sick sign classification
-		if (!dangerSignClassificationExists) {
-			for (Diagnostic diagnostic : patient.getDiagnostics()) {
-				if (diagnostic.getClassification().getType().equalsIgnoreCase(CcmClassificationType.SICK.name())) {
-					sickSignClassificationExists = true;
-				}
-			}
+		if ((!dangerSignClassificationExists) && (!referSignClassificationExists)) {
+			sickSignClassificationExists = checkClassificationTypeExistence(patient, CcmClassificationType.SICK.name());
 		}
 		
 		if (dangerSignClassificationExists) {
@@ -405,6 +502,13 @@ public class TreatmentRuleEngine {
 			classificationType = CcmClassificationType.DANGER_SIGN.name();
 			addTreatmentsWithMatchingName(reviewItems, patient, systemTreatments, classificationName, classificationType);
 		}
+		else if (referSignClassificationExists) {
+				// fetch all 'standard' treatments to be applied when a classification(s) of type 'Refer'
+				// is present in the patient's diagnostic assessment
+				classificationName = CcmClassificationType.REFER.name();
+				classificationType = CcmClassificationType.REFER.name();
+				addTreatmentsWithMatchingName(reviewItems, patient, systemTreatments, classificationName, classificationType);
+		}
 		else if (sickSignClassificationExists) {
 			// fetch all 'standard' treatments to be applied when a classification(s) of type 'Sick'
 			// is present in the patient's diagnostic assessment
@@ -412,6 +516,25 @@ public class TreatmentRuleEngine {
 			classificationType = CcmClassificationType.SICK.name();
 			addTreatmentsWithMatchingName(reviewItems, patient, systemTreatments, classificationName, classificationType);
 		}
+	}
+
+	/**
+	 * Utility method for to check for the existence of a Classification
+	 * Type within the calculated Patient Classifications
+	 * 
+	 * @param patient
+	 * @param classificationType
+	 * 
+	 */
+	private boolean checkClassificationTypeExistence(Patient patient, String classificationType) {
+		boolean classificationTypeExists = false;
+		
+		for (Diagnostic diagnostic : patient.getDiagnostics()) {
+			if (diagnostic.getClassification().getType().equalsIgnoreCase(classificationType)) {
+				classificationTypeExists = true;
+			}
+		}
+		return classificationTypeExists;
 	}
 
 	/**

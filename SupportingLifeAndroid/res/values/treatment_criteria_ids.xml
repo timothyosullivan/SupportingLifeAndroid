@@ -2,12 +2,15 @@
 <resources>
 
 <!-- ============================================================ -->
-<!-- These Treatment Criteria Ids are used in the IMCI			  -->
+<!-- These Treatment Criteria Ids are used in the IMCI and CCM	  -->
 <!-- assessment decision-making process							  -->
 <!-- ============================================================ -->
 	
-	<!-- Treatment Criteria Ids (NOT TO BE TRANSLATED!)-->
+	<!-- IMCI Treatment Criteria Ids (NOT TO BE TRANSLATED!)-->
 	<string name="imci_treatment_criteria_severe_dehydration_is_only_severe_classification">imci_treatment_criteria_severe_dehydration_is_only_severe_classification</string>
 	<string name="imci_treatment_criteria_severe_classification_present">imci_treatment_criteria_severe_classification_present</string>
 
+	<!-- CCM Treatment Criteria Ids (NOT TO BE TRANSLATED!)-->
+	<string name="ccm_treatment_criteria_danger_sign_classification_present">ccm_treatment_criteria_danger_sign_classification_present</string>
+	<string name="ccm_treatment_criteria_refer_sign_classification_present">ccm_treatment_criteria_refer_sign_classification_present</string>
 </resources>
