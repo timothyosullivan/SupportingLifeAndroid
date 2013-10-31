@@ -597,14 +597,14 @@
 	<!-- ============================================================ -->
 	<!-- Classification: Severe Malnutrition or Severe Anaemia	 	  -->
 	<!-- 													  		  -->
-	<!-- Treatments: Refer Urgently to Hospital						  -->
+	<!-- Treatments: Refer URGENTLY to Hospital						  -->
 	<!--				AND											  -->
 	<!--			 Give Vitamin A									  -->
 	<!-- ============================================================ -->
 	<TreatmentRule>
 		<Classification>Severe Malnutrition or Severe Anaemia</Classification>
 		<Treatment>
-			<Recommendation>Refer Urgently to Hospital</Recommendation>
+			<Recommendation>Refer URGENTLY to Hospital</Recommendation>
 		</Treatment>
 		<Treatment>
 			<Recommendation>Give Vitamin A</Recommendation>
