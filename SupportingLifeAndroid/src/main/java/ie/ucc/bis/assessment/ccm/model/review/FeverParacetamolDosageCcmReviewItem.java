@@ -51,6 +51,8 @@ public class FeverParacetamolDosageCcmReviewItem extends ReviewItem implements S
     public FeverParacetamolDosageCcmReviewItem(String title, String displayValue, String symptomId, String pageKey, int weight, List<ReviewItem> dependeeReviewItems) {
     	super(title, displayValue, symptomId, pageKey, weight, false);
     	setDependees(dependeeReviewItems);
+    	// turn off visibility of this review item
+    	setVisible(false);
     }
  
     /**
