@@ -530,9 +530,13 @@
     <!-- ============================================================ -->
     <!-- ABOUT SCREEN -->
     <!-- ============================================================ -->
-	<string name="about_intro">Supporting LIFE project</string>
+	<string name="about_version_label">Version:</string>
+	<string name="about_version_value">1.0.0 (beta release)</string>
+	<string name="about_developer_label">Developer:</string>
+	<string name="about_developer_value">Dr Timothy O\'Sullivan</string>
+	<string name="about_project_label">Project Details:</string>
+	<string name="about_project_value">http://www.supportinglife.eu/</string>
 	<string name="supporting_life_tree_image">Supporting Life Tree Image</string>
-	<string name="spinning_wheel_image">Supporting Life Image Animation</string>
 
     <!-- ============================================================ -->
     <!-- SPLASH SCREEN -->
