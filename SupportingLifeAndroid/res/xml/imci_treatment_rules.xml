@@ -309,7 +309,7 @@
 	<!-- Treatments:  Treat with oral antimalarial					  -->
 	<!--			  (condition: if no cough with fast breathing)	  -->
 	<!--			  AND											  -->
-	<!--			  Treat with Contrimoxazole	for five days		  -->
+	<!--			  Treat with Cotrimoxazole	for five days		  -->
 	<!--			  (condition: if cough with fast breathing)	  	  -->
 	<!--			  AND											  -->
 	<!--			  Give one dose of paracetamol in clinic for	  -->
@@ -339,7 +339,7 @@
 				<SymptomCriteria value="yes">imci_breathing_assessment_cough_difficult_breathing_symptom_id</SymptomCriteria>	<!-- Cough Present -->
 				<SymptomCriteria value="yes">imci_breathing_assessment_fast_breathing_symptom_id</SymptomCriteria>				<!-- Fast Breathing -->
 			</CriteriaList>
-			<Recommendation>Treat with Contrimoxazole for five days</Recommendation>
+			<Recommendation>Treat with Cotrimoxazole for five days</Recommendation>
 		</Treatment>
 		<Treatment>
 			<CriteriaList rule="all">
