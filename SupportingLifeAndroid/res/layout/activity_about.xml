@@ -95,11 +95,7 @@
  
         <TextView
             android:id="@+id/about_project_value"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:autoLink="web" 
-            android:linksClickable="true"
-            android:textSize="12sp"
+			style="@style/AboutWebLink"
             android:text="@string/about_project_value"/>
 	</LinearLayout>
  

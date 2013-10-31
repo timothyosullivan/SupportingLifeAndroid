@@ -239,4 +239,16 @@
 		<item name="android:textSize">12sp</item>
 		<item name="android:enabled">false</item>
 	</style>
+	
+    <!-- ============================================================ -->
+    <!-- ABOUT SCREEN WEB LINK STYLE -->
+    <!-- ============================================================ -->
+	<style name="AboutWebLink">
+		<item name="android:layout_width">wrap_content</item>
+		<item name="android:layout_height">wrap_content</item>
+		<item name="android:layout_marginBottom">3dp</item>
+		<item name="android:autoLink">web</item>
+		<item name="android:textSize">12sp</item>
+		<item name="android:linksClickable">true</item>
+	</style>
 </resources>
