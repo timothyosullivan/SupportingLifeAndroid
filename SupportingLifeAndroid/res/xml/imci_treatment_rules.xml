@@ -650,9 +650,15 @@
 				<SymptomCriteria value="some">imci_malnutrition_assessment_palmar_pallor_symptom_id</SymptomCriteria>
 				<SymptomCriteria value="severe">imci_malnutrition_assessment_palmar_pallor_symptom_id</SymptomCriteria>
 			</CriteriaList>
-			<Recommendation>Give Iron</Recommendation>
 			<Recommendation>Follow-up visit: 14 days</Recommendation>
 		</Treatment>
+		<Treatment>
+			<CriteriaList rule="any">
+				<SymptomCriteria value="some">imci_malnutrition_assessment_palmar_pallor_symptom_id</SymptomCriteria>
+				<SymptomCriteria value="severe">imci_malnutrition_assessment_palmar_pallor_symptom_id</SymptomCriteria>
+			</CriteriaList>	
+			<Recommendation>Give Iron</Recommendation>
+		</Treatment>					
 		<Treatment>
 			<CriteriaList rule="all">
 				<SymptomCriteria value="no">imci_malnutrition_assessment_palmar_pallor_symptom_id</SymptomCriteria>

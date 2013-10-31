@@ -13,6 +13,8 @@ import android.view.View;
 
 public class HomeActivity extends SupportingLifeBaseActivity {
 
+	private static final String FEATURE_UNIMPLEMENTED = "Feature not yet implemented";
+	
 	/**
 	 * OnCreate method is called when the activity is first created.
 	 * 
@@ -52,6 +54,12 @@ public class HomeActivity extends SupportingLifeBaseActivity {
 			case R.id.dashboard_training_button :
 				startActivity(new Intent(getApplicationContext(), TrainingActivity.class));
 				break;
+			case R.id.dashboard_search_button :
+				toast(FEATURE_UNIMPLEMENTED);
+				break;
+			case R.id.dashboard_user_profile_button :
+				toast(FEATURE_UNIMPLEMENTED);
+				break;				
 			default : 
 				break;
 		} // end of switch
