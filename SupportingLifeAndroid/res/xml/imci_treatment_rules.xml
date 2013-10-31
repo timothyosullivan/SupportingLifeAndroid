@@ -38,7 +38,7 @@
 	<!-- 															  -->
 	<!-- Treatments: Oral Antibiotic for 5 days 					  -->
 	<!-- 				AND 										  -->
-	<!--  			 Sooth the throat and relieve the cough with	  -->
+	<!--  			 Soothe the throat and relieve the cough with	  -->
 	<!--			 a safe remedy									  -->
 	<!--				AND											  -->
 	<!-- 			 Follow-up visit: 2 days 						  -->
@@ -51,7 +51,7 @@
 			<Recommendation>Oral Antibiotic for 5 days</Recommendation>
 		</Treatment>
 		<Treatment>
-			<Recommendation>Sooth the throat and relieve the cough with a safe remedy</Recommendation>
+			<Recommendation>Soothe the throat and relieve the cough with a safe remedy</Recommendation>
 		</Treatment>
 		<Treatment>
 			<Recommendation>Follow-up visit: 2 days</Recommendation>
@@ -70,7 +70,7 @@
 	<!-- Treatments: Refer for Assessment		 					  -->
 	<!--			 (condition: if coughing more than 30 days)		  -->
 	<!-- 				AND 										  -->
-	<!--  			 Sooth the throat and relieve the cough with	  -->
+	<!--  			 Soothe the throat and relieve the cough with	  -->
 	<!--			 a safe remedy									  -->
 	<!--				AND											  -->
 	<!-- 			 Follow-up visit: 5 days 						  -->
@@ -86,7 +86,7 @@
 			<Recommendation>Refer for Assessment</Recommendation>
 		</Treatment>
 		<Treatment>
-			<Recommendation>Sooth the throat and relieve the cough with a safe remedy</Recommendation>
+			<Recommendation>Soothe the throat and relieve the cough with a safe remedy</Recommendation>
 		</Treatment>
 		<Treatment>
 			<Recommendation>Follow-up visit: 5 days</Recommendation>
