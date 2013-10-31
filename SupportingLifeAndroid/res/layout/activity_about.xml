@@ -10,12 +10,11 @@
     <!-- ============================================================ -->
     <!-- ABOUT LOGO -->
     <!-- ============================================================ -->
-
+ 
     <ImageView
         android:id="@+id/supporting_life_tree_image"
         android:layout_width="match_parent"
         android:layout_height="260dp"
-        android:layout_marginBottom="10dp"
         android:layout_marginTop="30dp"
         android:contentDescription="@string/supporting_life_tree_image"
         android:src="@drawable/im_about" />
@@ -23,24 +22,39 @@
     <!-- ============================================================ -->
     <!-- VERSION -->
     <!-- ============================================================ -->
-
-    <LinearLayout
-        android:id="@+id/about_version"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            android:id="@+id/about_version_label"
+    <LinearLayout android:id="@+id/about_version" 
+        android:layout_width="wrap_content" 
+        android:layout_height="wrap_content" 
+        android:layout_gravity="center_horizontal" 
+        android:orientation="vertical">
+        
+        <TextView android:id="@+id/about_version_label"
             style="@style/AboutLabel"
             android:text="@string/about_version_label"/>
-
-        <TextView
-            android:id="@+id/about_version_value"
-            style="@style/AboutText"
+        
+        <TextView android:id="@+id/about_version_value" 
+            style="@style/AboutText" 
             android:text="@string/about_version_value"/>
     </LinearLayout>
-
+    
+    <!-- ============================================================ -->
+    <!-- RELEASE DATE -->
+    <!-- ============================================================ -->
+    <LinearLayout android:id="@+id/about_release_date" 
+        android:layout_width="wrap_content" 
+        android:layout_height="wrap_content" 
+        android:layout_gravity="center_horizontal" 
+        android:orientation="vertical">
+        
+        <TextView android:id="@+id/about_release_date_label"
+            style="@style/AboutLabel"
+            android:text="@string/about_release_date_label"/>
+        
+        <TextView android:id="@+id/about_release_date_value" 
+            style="@style/AboutText" 
+            android:text="@string/about_release_date_value"/>
+    </LinearLayout>
+ 
     <!-- ============================================================ -->
     <!-- ABOUT DEVELOPER -->
     <!-- ============================================================ -->
@@ -49,7 +63,8 @@
         android:id="@+id/about_developer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:layout_gravity="center_horizontal" 
+        android:orientation="vertical">
 
         <TextView
             android:id="@+id/about_developer_label"
@@ -66,24 +81,29 @@
     <!-- ABOUT PROJECT -->
     <!-- ============================================================ -->
 
-    <LinearLayout
+	<LinearLayout
         android:id="@+id/about_project"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
+        android:layout_gravity="center_horizontal" 
+        android:orientation="vertical">
+ 
         <TextView
             android:id="@+id/about_project_label"
             style="@style/AboutLabel"
             android:text="@string/about_project_label"/>
-
+ 
         <TextView
             android:id="@+id/about_project_value"
-            style="@style/AboutText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:autoLink="web" 
+            android:linksClickable="true"
+            android:textSize="12sp"
             android:text="@string/about_project_value"/>
-    </LinearLayout>
-
-
+	</LinearLayout>
+ 
+ 
     <!-- ============================================================ -->
     <!-- SPINNING WHEEL IMAGE HANDLER -->
     <!-- ============================================================ -->

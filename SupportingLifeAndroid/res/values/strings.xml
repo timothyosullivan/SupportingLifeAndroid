@@ -349,7 +349,7 @@
 	<string name="ccm_general_patient_details_radio_gender_label">Gender:</string>
 	<string name="ccm_general_patient_details_radio_gender_boy">Boy</string>
 	<string name="ccm_general_patient_details_radio_gender_girl">Girl</string>
-		
+
 	<string name="ccm_general_patient_details_caregiver_label">Caregiver:</string>
 	
 	<!-- Relationship -->
@@ -361,26 +361,26 @@
 	<!-- Specify Relationship -->
 	<string name="ccm_general_patient_details_relationship_specified_label">Specify Relationship:</string>
 	
-	<!-- Physical Address & Village -->	
+	<!-- Physical Address & Village -->
 	<string name="ccm_general_patient_details_physical_address_label">Physical Address:</string>
 	<string name="ccm_general_patient_details_village_label">Village/TA:</string>
 	
     <!-- Patient Details Review -->
-    <string name="ccm_general_patient_details_review_today_date">Today\'s Date</string>
-    <string name="ccm_general_patient_details_review_hsa_identifier">HSA</string>
+	<string name="ccm_general_patient_details_review_today_date">Today\'s Date</string>
+	<string name="ccm_general_patient_details_review_hsa_identifier">HSA</string>
 	<string name="ccm_general_patient_details_review_first_name">First Name</string>
 	<string name="ccm_general_patient_details_review_surname">Surname</string>
 	<string name="ccm_general_patient_details_review_date_of_birth">Date of Birth</string>
 	<string name="ccm_general_patient_details_review_gender">Gender</string>
 	<string name="ccm_general_patient_details_review_relationship">Relationship</string>
-	
-	
+
+
 	<string name="ccm_general_patient_details_review_caregiver">Caregiver</string>
 	<string name="ccm_general_patient_details_review_physical_address">Physical Address</string>
 	<string name="ccm_general_patient_details_review_village">Village/TA</string>
 
     <!-- HINTS -->
-    <string name="ccm_general_patient_details_hsa_identifier_hint">Please enter HSA identifier</string>
+	<string name="ccm_general_patient_details_hsa_identifier_hint">Please enter HSA identifier</string>
 	<string name="ccm_general_patient_details_first_name_hint">Please enter child\'s first name</string>
 	<string name="ccm_general_patient_details_surname_hint">Please enter child\'s surname</string>
 	<string name="ccm_general_patient_details_caregiver_hint">Please enter caregiver\'s name</string>
@@ -407,14 +407,14 @@
 	<string name="ccm_ask_initial_assessment_radio_unable_to_drink_or_feed_label">Not able to drink or feed anything?</string>	
 		
     <!-- Initial Ask Assessment Review -->
-    <string name="ccm_ask_initial_assessment_review_problems">Problems</string>
-    <string name="ccm_ask_initial_assessment_review_cough">Cough</string>
-    <string name="ccm_ask_initial_assessment_review_cough_duration">For How Long? (days)</string>
-    <string name="ccm_ask_initial_assessment_review_diarrhoea">Diarrhoea</string>
-    <string name="ccm_ask_initial_assessment_review_diarrhoea_duration">For How Long? (days)</string>
+	<string name="ccm_ask_initial_assessment_review_problems">Problems</string>
+	<string name="ccm_ask_initial_assessment_review_cough">Cough</string>
+	<string name="ccm_ask_initial_assessment_review_cough_duration">For How Long? (days)</string>
+	<string name="ccm_ask_initial_assessment_review_diarrhoea">Diarrhoea</string>
+	<string name="ccm_ask_initial_assessment_review_diarrhoea_duration">For How Long? (days)</string>
 	<string name="ccm_ask_initial_assessment_review_blood_in_stool">Blood in Stool?</string>
 	<string name="ccm_ask_initial_assessment_review_fever">Fever (Reported or Now)?</string>
-    <string name="ccm_ask_initial_assessment_review_fever_duration">Started When? (days)</string>
+	<string name="ccm_ask_initial_assessment_review_fever_duration">Started When? (days)</string>
 	<string name="ccm_ask_initial_assessment_review_convulsions">Convulsions</string>
 	<string name="ccm_ask_initial_assessment_review_drink_or_feed_difficulty">Difficulty Drinking or Feeding?</string>
 	<string name="ccm_ask_initial_assessment_review_unable_to_drink_or_feed">Not Able to Drink or Feed Anything?</string>
@@ -433,9 +433,9 @@
 	<string name="ccm_ask_secondary_assessment_radio_vomiting_label">Vomiting?</string>
 	<string name="ccm_ask_secondary_assessment_radio_vomits_everything_label">Vomits everything?</string>
 	<string name="ccm_ask_secondary_assessment_radio_red_eyes_label">Red eyes?</string>
-	<string name="ccm_ask_secondary_assessment_red_eyes_duration_label">For how long? (days)</string>	
+	<string name="ccm_ask_secondary_assessment_red_eyes_duration_label">For how long? (days)</string>
 	<string name="ccm_ask_secondary_assessment_radio_seeing_difficulty_label">Difficulty in seeing?</string>
-	<string name="ccm_ask_secondary_assessment_seeing_difficulty_duration_label">For how long? (days)</string>	
+	<string name="ccm_ask_secondary_assessment_seeing_difficulty_duration_label">For how long? (days)</string>
 	<string name="ccm_ask_secondary_assessment_radio_cannot_treat_problems_label">Any other problems I cannot treat?</string>
 	<string name="ccm_ask_secondary_assessment_cannot_treat_problems_details_label">Specify other problems:</string>
 
@@ -445,7 +445,7 @@
 	<string name="ccm_ask_secondary_assessment_review_red_eyes">Red Eyes?</string>
 	<string name="ccm_ask_secondary_assessment_review_red_eyes_duration">For How Long? (days)</string>
 	<string name="ccm_ask_secondary_assessment_review_seeing_difficulty">Difficulty in Seeing?</string>
-	<string name="ccm_ask_secondary_assessment_review_seeing_difficulty_duration">For How Long? (days)</string>	
+	<string name="ccm_ask_secondary_assessment_review_seeing_difficulty_duration">For How Long? (days)</string>
 	<string name="ccm_ask_secondary_assessment_review_cannot_treat_problems">Any Other Problems I cannot Treat?</string>
 	<string name="ccm_ask_secondary_assessment_review_cannot_treat_problems_details">Specify Other Problems</string>		
 
@@ -458,17 +458,17 @@
     <!-- CCM ASSESSMENT WIZARD BREAD-CRUMB UI 						  -->
     <!-- STAGE 4: LOOK ASSESSMENT									  -->
     <!-- ============================================================ -->
-    <string name="ccm_look_assessment_title">Look Assessment</string>
+	<string name="ccm_look_assessment_title">Look Assessment</string>
 	<string name="ccm_look_assessment_radio_chest_indrawing_label">Chest indrawing?</string>
 	<string name="ccm_look_assessment_radio_breaths_per_minute_label">Breaths per minute</string>
 	<string name="ccm_look_assessment_radio_very_sleepy_or_unconscious_label">Very sleepy or unconscious?</string>
 	<string name="ccm_look_assessment_radio_palmar_pallor_label">Palmar Pallor?</string>
-	
+
 	<string name="ccm_look_assessment_radio_muac_tape_colour_label">Muac tape colour?</string>
 	<string name="ccm_look_assessment_radio_muac_tape_colour_green">Green</string>
 	<string name="ccm_look_assessment_radio_muac_tape_colour_yellow">Yellow</string>
 	<string name="ccm_look_assessment_radio_muac_tape_colour_red">Red</string>
-	
+
 	<string name="ccm_look_assessment_radio_swelling_of_both_feet_label">Swelling of both feet?</string>
 
 	<!-- Look Assessment Review -->
@@ -503,7 +503,7 @@
     <!-- ASSESSMENT WIZARD BREAD-CRUMB UI -->
     <!-- UNIVERSAL COMPONENTS -->
     <!-- ============================================================ -->
-    <string name="classification_severity_image_content_assist">Classification Severity Image</string>
+	<string name="classification_severity_image_content_assist">Classification Severity Image</string>
 	<string name="assessment_wizard_review_title">Review</string>
 	<string name="assessment_wizard_radio_yes">Yes</string>
 	<string name="assessment_wizard_radio_no">No</string>
@@ -520,30 +520,30 @@
     <!-- ============================================================ -->
 	<string name="video_training_image">Video Training Image</string>
 	<string name="training_line_separator_description">Training Screen Line Separator</string>
-	<string name="training_tutorial_title">Title:</string>	
+	<string name="training_tutorial_title">Title:</string>
 	<string name="training_tutorial_type">Tutorial Type:</string>
 	<string name="training_tutorial_availability">Availability:</string>
 	<string name="training_tutorial_description">Description:</string>
 	<string name="training_tutorial_created_date">Created Date:</string>
 	<string name="training_tutorial_created_by">Created By:</string>
-
+ 
     <!-- ============================================================ -->
     <!-- ABOUT SCREEN -->
     <!-- ============================================================ -->
-	<string name="about_version_label">Version:</string>
+	<string name="about_version_label">Version</string>
 	<string name="about_version_value">1.0.0 (beta release)</string>
-	<string name="about_developer_label">Developer:</string>
+	<string name="about_release_date_label">Release Date</string>
+	<string name="about_release_date_value">November 2013</string>
+	<string name="about_developer_label">Developer</string>
 	<string name="about_developer_value">Dr Timothy O\'Sullivan</string>
-	<string name="about_project_label">Project Details:</string>
-	<string name="about_project_value">http://www.supportinglife.eu/</string>
+	<string name="about_project_label">Project Details</string>
+	<string name="about_project_value">http://www.supportinglife.eu</string>
 	<string name="supporting_life_tree_image">Supporting Life Tree Image</string>
-
+ 
     <!-- ============================================================ -->
     <!-- SPLASH SCREEN -->
     <!-- ============================================================ -->
 	<string name="splash_screen_image">Supporting LIFE Splash Screen</string>
-    
-    
     
     <!-- START: Register Patient Details Screen -->
 	<string name="first_name_label">First Name:</string>

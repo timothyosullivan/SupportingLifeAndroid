@@ -30,11 +30,11 @@ public class AboutActivity extends SupportingLifeBaseActivity {
 
 		setContentView(R.layout.activity_about);		
 		setTitleFromActivityLabel(R.id.action_bar_title_text);
-
+		
 		// configure animation of Supporting LIFE images
 		/* configureAndRunImageAnimator(); */
 	}
-
+	
 	/**
 	 * Method: configureAndRunImageAnimator
 	 * 
