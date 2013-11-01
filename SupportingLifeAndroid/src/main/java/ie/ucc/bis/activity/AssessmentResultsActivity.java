@@ -2,6 +2,8 @@ package ie.ucc.bis.activity;
 
 import ie.ucc.bis.assessment.model.review.ReviewItem;
 import ie.ucc.bis.domain.Patient;
+import ie.ucc.bis.rule.engine.ClassificationRuleEngine;
+import ie.ucc.bis.rule.engine.TreatmentRuleEngine;
 
 import java.util.ArrayList;
 
@@ -29,6 +31,8 @@ public class AssessmentResultsActivity extends SupportingLifeBaseActivity {
 	private TabsAdapter TabsAdapter;
 	private ArrayList<ReviewItem> reviewItems;
 	private Patient patient;
+	private ClassificationRuleEngine classificationRuleEngine;
+	private TreatmentRuleEngine treatmentRuleEngine;
 
 	/* 
 	 * Method: onCreate() 
@@ -272,6 +276,34 @@ public class AssessmentResultsActivity extends SupportingLifeBaseActivity {
 	 */
 	protected void setPatient(Patient patient) {
 		this.patient = patient;
+	}
+
+	/**
+	 * Getter Method: getClassificationRuleEngine()
+	 */	
+	public ClassificationRuleEngine getClassificationRuleEngine() {
+		return classificationRuleEngine;
+	}
+
+	/**
+	 * Setter Method: setClassificationRuleEngine()
+	 */
+	public void setClassificationRuleEngine(ClassificationRuleEngine classificationRuleEngine) {
+		this.classificationRuleEngine = classificationRuleEngine;
+	}
+
+	/**
+	 * Getter Method: getTreatmentRuleEngine()
+	 */	
+	public TreatmentRuleEngine getTreatmentRuleEngine() {
+		return treatmentRuleEngine;
+	}
+
+	/**
+	 * Setter Method: setTreatmentRuleEngine()
+	 */
+	public void setTreatmentRuleEngine(TreatmentRuleEngine treatmentRuleEngine) {
+		this.treatmentRuleEngine = treatmentRuleEngine;
 	}
 }
 

@@ -46,8 +46,8 @@ public class ClassificationRuleEngine {
 	
 	private static final String LOG_TAG = "ie.ucc.bis.rule.engine.ClassificationRuleEngine";
 	
-	private static ArrayList<Classification> systemImciClassifications;
-	private static ArrayList<Classification> systemCcmClassifications;
+	private ArrayList<Classification> systemImciClassifications;
+	private ArrayList<Classification> systemCcmClassifications;
 	
 
 	/**
@@ -439,27 +439,27 @@ public class ClassificationRuleEngine {
 	 * Getter Method: getSystemImciClassifications()
 	 */	
 	public ArrayList<Classification> getSystemImciClassifications() {
-		return ClassificationRuleEngine.systemImciClassifications;
+		return systemImciClassifications;
 	}
 
 	/**
 	 * Setter Method: setSystemImciClassifications()
 	 */
 	public void setSystemImciClassifications(ArrayList<Classification> systemImciClassifications) {
-		ClassificationRuleEngine.systemImciClassifications = systemImciClassifications;
+		this.systemImciClassifications = systemImciClassifications;
 	}
 	
 	/**
 	 * Getter Method: getSystemCcmClassifications()
 	 */	
 	public ArrayList<Classification> getSystemCcmClassifications() {
-		return ClassificationRuleEngine.systemCcmClassifications;
+		return systemCcmClassifications;
 	}
 
 	/**
 	 * Setter Method: setSystemCcmClassifications()
 	 */
 	public void setSystemCcmClassifications(ArrayList<Classification> systemCcmClassifications) {
-		ClassificationRuleEngine.systemCcmClassifications = systemCcmClassifications;
+		this.systemCcmClassifications = systemCcmClassifications;
 	}
 }

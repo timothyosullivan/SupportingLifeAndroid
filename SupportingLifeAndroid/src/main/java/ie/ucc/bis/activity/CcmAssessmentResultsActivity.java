@@ -54,22 +54,17 @@ public class CcmAssessmentResultsActivity extends AssessmentResultsActivity {
 		Intent intent = getIntent();
         setReviewItems((ArrayList<ReviewItem>) intent.getSerializableExtra(CcmAssessmentActivity.ASSESSMENT_REVIEW_ITEMS));
         
-        // resolve CCM classifications based on assessed symptoms
         setPatient(new Patient());
-        ClassificationRuleEngine classificationRuleEngine = new ClassificationRuleEngine();
         
-        // handle situations whereby SystemCcmClassifications have been cleared from memory and are null
-        if (classificationRuleEngine.getSystemCcmClassifications() != null) {
-        	classificationRuleEngine.determinePatientClassifications(this, getReviewItems(), getPatient(), classificationRuleEngine.getSystemCcmClassifications());
-        }
-        else {
-        	classificationRuleEngine.readCcmClassificationRules((SupportingLifeBaseActivity) this);
-        	classificationRuleEngine.determinePatientClassifications(this, getReviewItems(), getPatient(), classificationRuleEngine.getSystemCcmClassifications());
-        }
+        // resolve CCM classifications based on assessed symptoms        
+        setClassificationRuleEngine(new ClassificationRuleEngine());
+        getClassificationRuleEngine().readCcmClassificationRules((SupportingLifeBaseActivity) this);
+        getClassificationRuleEngine().determinePatientClassifications(this, getReviewItems(), getPatient(), getClassificationRuleEngine().getSystemCcmClassifications());
         
         // identify CCM treatments
-        TreatmentRuleEngine treatmentRuleEngine = new TreatmentRuleEngine();
-        treatmentRuleEngine.determineCcmTreatments(this, getReviewItems(), getPatient());
+        setTreatmentRuleEngine(new TreatmentRuleEngine());
+        getTreatmentRuleEngine().readCcmTreatmentRules((SupportingLifeBaseActivity) this);
+        getTreatmentRuleEngine().determineCcmTreatments(this, getReviewItems(), getPatient());
  
         // create a new Action bar and set title to strings.xml
         final ActionBar bar = getActionBar();

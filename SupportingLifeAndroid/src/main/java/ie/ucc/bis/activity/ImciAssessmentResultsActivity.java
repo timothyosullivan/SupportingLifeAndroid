@@ -54,21 +54,16 @@ public class ImciAssessmentResultsActivity extends AssessmentResultsActivity {
         
         // resolve imci classifications based on assessed symptoms
         setPatient(new Patient());
-        ClassificationRuleEngine classificationRuleEngine = new ClassificationRuleEngine();
         
-        // handle situations whereby SystemImciClassifications have been cleared from memory and are null
-        if (classificationRuleEngine.getSystemImciClassifications() != null) {
-        	classificationRuleEngine.determinePatientClassifications(this, getReviewItems(), getPatient(), classificationRuleEngine.getSystemImciClassifications());
-        }
-        else {
-        	classificationRuleEngine.readCcmClassificationRules((SupportingLifeBaseActivity) this);
-        	classificationRuleEngine.determinePatientClassifications(this, getReviewItems(), getPatient(), classificationRuleEngine.getSystemImciClassifications());
-        }        
+        // resolve IMCI classifications based on assessed symptoms        
+        setClassificationRuleEngine(new ClassificationRuleEngine());
+        getClassificationRuleEngine().readImciClassificationRules((SupportingLifeBaseActivity) this);
+        getClassificationRuleEngine().determinePatientClassifications(this, getReviewItems(), getPatient(), getClassificationRuleEngine().getSystemImciClassifications());
         
-        
-        // identify imci treatments
-        TreatmentRuleEngine treatmentRuleEngine = new TreatmentRuleEngine();
-        treatmentRuleEngine.determineImciTreatments(this, getReviewItems(), classificationRuleEngine.getSystemImciClassifications(), getPatient());
+        // identify CCM treatments
+        setTreatmentRuleEngine(new TreatmentRuleEngine());
+        getTreatmentRuleEngine().readImciTreatmentRules((SupportingLifeBaseActivity) this);
+        getTreatmentRuleEngine().determineImciTreatments(this, getReviewItems(), getPatient());
  
         // create a new Action bar and set title to strings.xml
         final ActionBar bar = getActionBar();

@@ -86,8 +86,7 @@ public class TreatmentRuleEngine {
 	 * @param patient 
 	 * 
 	 */
-	public void determineImciTreatments(SupportingLifeBaseActivity supportingLifeBaseActivity, List<ReviewItem> reviewItems, 
-			List<Classification> classifications, Patient patient) {
+	public void determineImciTreatments(SupportingLifeBaseActivity supportingLifeBaseActivity, List<ReviewItem> reviewItems, Patient patient) {
 		setImciRelatedTreatments(true);
 		setCcmRelatedTreatments(false);
 		addImciTreatmentCriteriaToReviewItems(supportingLifeBaseActivity, reviewItems, patient.getDiagnostics());
