@@ -55,8 +55,16 @@ public class ImciAssessmentResultsActivity extends AssessmentResultsActivity {
         // resolve imci classifications based on assessed symptoms
         setPatient(new Patient());
         ClassificationRuleEngine classificationRuleEngine = new ClassificationRuleEngine();
-        classificationRuleEngine.determinePatientClassifications(this, getReviewItems(), getPatient(), 
-        		classificationRuleEngine.getSystemImciClassifications());
+        
+        // handle situations whereby SystemImciClassifications have been cleared from memory and are null
+        if (classificationRuleEngine.getSystemImciClassifications() != null) {
+        	classificationRuleEngine.determinePatientClassifications(this, getReviewItems(), getPatient(), classificationRuleEngine.getSystemImciClassifications());
+        }
+        else {
+        	classificationRuleEngine.readCcmClassificationRules((SupportingLifeBaseActivity) this);
+        	classificationRuleEngine.determinePatientClassifications(this, getReviewItems(), getPatient(), classificationRuleEngine.getSystemImciClassifications());
+        }        
+        
         
         // identify imci treatments
         TreatmentRuleEngine treatmentRuleEngine = new TreatmentRuleEngine();

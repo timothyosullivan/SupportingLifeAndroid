@@ -57,7 +57,15 @@ public class CcmAssessmentResultsActivity extends AssessmentResultsActivity {
         // resolve CCM classifications based on assessed symptoms
         setPatient(new Patient());
         ClassificationRuleEngine classificationRuleEngine = new ClassificationRuleEngine();
-        classificationRuleEngine.determinePatientClassifications(this, getReviewItems(), getPatient(), classificationRuleEngine.getSystemCcmClassifications());
+        
+        // handle situations whereby SystemCcmClassifications have been cleared from memory and are null
+        if (classificationRuleEngine.getSystemCcmClassifications() != null) {
+        	classificationRuleEngine.determinePatientClassifications(this, getReviewItems(), getPatient(), classificationRuleEngine.getSystemCcmClassifications());
+        }
+        else {
+        	classificationRuleEngine.readCcmClassificationRules((SupportingLifeBaseActivity) this);
+        	classificationRuleEngine.determinePatientClassifications(this, getReviewItems(), getPatient(), classificationRuleEngine.getSystemCcmClassifications());
+        }
         
         // identify CCM treatments
         TreatmentRuleEngine treatmentRuleEngine = new TreatmentRuleEngine();
