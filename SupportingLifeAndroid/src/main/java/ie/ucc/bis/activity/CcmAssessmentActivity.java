@@ -82,7 +82,7 @@ public class CcmAssessmentActivity extends AssessmentActivity {
         });
 
         // configure click listener on Next Button       
-        getNextButton().setOnClickListener(new NextButtonListener());
+        getNextButton().setOnClickListener(new CcmAssessmentActivity.NextButtonListener());
 
         getPrevButton().setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
