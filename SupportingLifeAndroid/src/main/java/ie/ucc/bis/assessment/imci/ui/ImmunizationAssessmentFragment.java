@@ -51,12 +51,13 @@ public class ImmunizationAssessmentFragment extends Fragment {
 
         Bundle args = getArguments();
         setPageKey(args.getString(ARG_PAGE_KEY));
-        setImmunizationAssessmentPage((ImmunizationAssessmentPage) getPageFragmentCallbacks().getPage(getPageKey()));
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
+    	setImmunizationAssessmentPage((ImmunizationAssessmentPage) getPageFragmentCallbacks().getPage(getPageKey()));
+    	
         View rootView = inflater.inflate(R.layout.fragment_imci_page_immunization_assessment, container, false);
         ((TextView) rootView.findViewById(android.R.id.title)).setText(getImmunizationAssessmentPage().getTitle());
                 

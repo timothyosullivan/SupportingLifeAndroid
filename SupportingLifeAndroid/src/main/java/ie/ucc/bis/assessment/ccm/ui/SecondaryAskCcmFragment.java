@@ -83,7 +83,6 @@ public class SecondaryAskCcmFragment extends Fragment {
 
 		Bundle args = getArguments();
 		setPageKey(args.getString(ARG_PAGE_KEY));
-		setSecondaryAskCcmPage((SecondaryAskCcmPage) getPageFragmentCallbacks().getPage(getPageKey()));
 	}
 
 	@Override
@@ -164,6 +163,8 @@ public class SecondaryAskCcmFragment extends Fragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
+		setSecondaryAskCcmPage((SecondaryAskCcmPage) getPageFragmentCallbacks().getPage(getPageKey()));
+		
 		View rootView = inflater.inflate(R.layout.fragment_ccm_page_secondary_ask_assessment, container, false);
 		((TextView) rootView.findViewById(android.R.id.title)).setText(getSecondaryAskCcmPage().getTitle());
 

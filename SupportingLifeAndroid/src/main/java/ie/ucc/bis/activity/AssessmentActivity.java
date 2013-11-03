@@ -142,6 +142,14 @@ public class AssessmentActivity extends SupportingLifeBaseActivity implements
         outState.putBundle("model", getAssessmentModel().save());
     }
     
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+    	super.onRestoreInstanceState(savedInstanceState);
+        if (savedInstanceState != null) {
+        	getAssessmentModel().load(savedInstanceState.getBundle("model"));
+        }  	
+    }
+    
 	/**
 	 * Method: getWizardModel
 	 * 

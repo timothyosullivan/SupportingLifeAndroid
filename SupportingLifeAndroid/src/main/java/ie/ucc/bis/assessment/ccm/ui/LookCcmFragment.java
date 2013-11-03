@@ -58,13 +58,14 @@ public class LookCcmFragment extends Fragment {
 
 		Bundle args = getArguments();
 		setPageKey(args.getString(ARG_PAGE_KEY));
-		setLookCcmPage((LookCcmPage) getPageFragmentCallbacks().getPage(getPageKey()));
 	}
 
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
+		setLookCcmPage((LookCcmPage) getPageFragmentCallbacks().getPage(getPageKey()));
+		
 		View rootView = inflater.inflate(R.layout.fragment_ccm_page_look_assessment, container, false);
 		((TextView) rootView.findViewById(android.R.id.title)).setText(getLookCcmPage().getTitle());
 

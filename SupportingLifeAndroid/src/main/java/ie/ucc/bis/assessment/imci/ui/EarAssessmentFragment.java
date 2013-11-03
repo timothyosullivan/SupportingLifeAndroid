@@ -98,12 +98,13 @@ public class EarAssessmentFragment extends Fragment {
 
         Bundle args = getArguments();
         setPageKey(args.getString(ARG_PAGE_KEY));
-        setEarAssessmentPage((EarAssessmentPage) getPageFragmentCallbacks().getPage(getPageKey()));
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
+    	setEarAssessmentPage((EarAssessmentPage) getPageFragmentCallbacks().getPage(getPageKey()));
+    	
         View rootView = inflater.inflate(R.layout.fragment_imci_page_ear_assessment, container, false);
         ((TextView) rootView.findViewById(android.R.id.title)).setText(getEarAssessmentPage().getTitle());
                 

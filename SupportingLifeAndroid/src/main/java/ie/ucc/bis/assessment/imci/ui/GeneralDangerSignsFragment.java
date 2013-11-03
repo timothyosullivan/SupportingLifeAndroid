@@ -54,12 +54,13 @@ public class GeneralDangerSignsFragment extends Fragment {
 
         Bundle args = getArguments();
         setPageKey(args.getString(ARG_PAGE_KEY));
-        setGeneralDangerSignsPage((GeneralDangerSignsPage) getPageFragmentCallbacks().getPage(getPageKey()));
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
+    	setGeneralDangerSignsPage((GeneralDangerSignsPage) getPageFragmentCallbacks().getPage(getPageKey()));
+    	
         View rootView = inflater.inflate(R.layout.fragment_imci_page_general_danger_signs, container, false);
         ((TextView) rootView.findViewById(android.R.id.title)).setText(getGeneralDangerSignsPage().getTitle());
 
