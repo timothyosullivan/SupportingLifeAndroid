@@ -75,7 +75,7 @@ public class LookCcmFragment extends Fragment {
 
 		// breaths per minute
 		setBreathsPerMinuteEditText(((EditText) rootView.findViewById(R.id.ccm_look_assessment_breaths_per_minute)));
-		getBreathsPerMinuteEditText().setText(getLookCcmPage().getPageData().getString(LookCcmPage.CHEST_INDRAWING_DATA_KEY));
+		getBreathsPerMinuteEditText().setText(getLookCcmPage().getPageData().getString(LookCcmPage.BREATHS_PER_MINUTE_DATA_KEY));
 
 		// very sleepy or unconscious
 		setVerySleepyOrUnconsciousRadioGroup((RadioGroup) rootView.findViewById(R.id.ccm_look_assessment_radio_very_sleepy_or_unconscious));
