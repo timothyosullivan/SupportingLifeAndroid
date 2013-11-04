@@ -142,11 +142,9 @@ public class ReviewAssessmentAdapter extends BaseAdapter implements Filterable {
 					FilterResults filterResults = new FilterResults();
 					ArrayList<ReviewItem> reviewItems = new ArrayList<ReviewItem>();
 					
-					if (getReviewListFragment().getCurrentReviewItems() != null) {
-						for (ReviewItem reviewItem : getReviewListFragment().getCurrentReviewItems()) {
-							if (reviewItem.isVisible()) {
-								reviewItems.add(reviewItem);
-							}
+					for (ReviewItem reviewItem : getReviewListFragment().getCurrentReviewItems()) {
+						if (reviewItem.isVisible()) {
+							reviewItems.add(reviewItem);
 						}
 					}
 					

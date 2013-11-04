@@ -2,8 +2,8 @@ package ie.ucc.bis.assessment.imci.ui;
 
 import ie.ucc.bis.R;
 import ie.ucc.bis.assessment.imci.model.review.ReviewAssessmentAdapter;
-import ie.ucc.bis.assessment.model.AbstractPage;
 import ie.ucc.bis.assessment.model.AbstractModel;
+import ie.ucc.bis.assessment.model.AbstractPage;
 import ie.ucc.bis.assessment.model.ModelCallbacks;
 import android.app.Activity;
 import android.os.Bundle;
@@ -24,7 +24,6 @@ public class ReviewFragment extends ReviewListFragment implements ModelCallbacks
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setReviewAssessmentAdapter(new ReviewAssessmentAdapter(this));
     }
 
     @Override
@@ -38,7 +37,7 @@ public class ReviewFragment extends ReviewListFragment implements ModelCallbacks
         titleView.setTextColor(getResources().getColor(R.color.DarkGreen));
 
         ListView listView = (ListView) rootView.findViewById(android.R.id.list);
-        setListAdapter(getReviewAssessmentAdapter());
+        
         listView.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
         return rootView;
     }
@@ -62,6 +61,11 @@ public class ReviewFragment extends ReviewListFragment implements ModelCallbacks
     	
     	setWizardModel(getReviewFragmentCallbacks().getWizardModel());
     	getWizardModel().registerListener(this);
+    	
+    	setCurrentReviewItems(getWizardModel().gatherAssessmentReviewItems());
+    	setReviewAssessmentAdapter(new ReviewAssessmentAdapter(this));
+    	setListAdapter(getReviewAssessmentAdapter());
+    	
     	onPageTreeChanged();
     }
     
