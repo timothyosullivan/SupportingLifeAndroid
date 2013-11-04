@@ -80,7 +80,7 @@ public class ReviewFragment extends ReviewListFragment implements ModelCallbacks
     public void onPageDataChanged(AbstractPage changedPage) {
        setCurrentReviewItems(getWizardModel().gatherAssessmentReviewItems());
 
-        if (getReviewAssessmentAdapter() != null) {
+        if (getReviewAssessmentAdapter() != null && getCurrentReviewItems() != null) {
         	getReviewAssessmentAdapter().getFilter().filter(null);// apply filter to remove review items which we indicated should be invisible
     		
         	getReviewAssessmentAdapter().notifyDataSetChanged();
