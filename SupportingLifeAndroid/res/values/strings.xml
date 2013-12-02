@@ -513,6 +513,8 @@
 	<string name="assessment_wizard_review_button">Review</string>
 	<string name="submit_confirm_message">Perform Medical Assessment</string>
 	<string name="submit_confirm_button">Submit Patient Record</string>
+	<string name="exit_assessment_confirm_message">Exit Patient Assessment</string>
+	<string name="exit_assessment_confirm_button">Exit</string>
   
      
     <!-- ============================================================ -->

@@ -15,6 +15,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.view.View;
 
 /**
  * Class: AssessmentResultsActivity
@@ -221,7 +222,39 @@ public class AssessmentResultsActivity extends SupportingLifeBaseActivity {
 			return tabs;
 		}
 	} // end of static TabsAdapter class
-	 
+
+	/**
+	 * Click Handler: Handle the click on the home button
+	 * 
+	 * @param view View
+	 * @return void
+	 */
+    @Override
+    public void onClickHome(View view) {
+    	// if user is performing an IMCI or CCM assessment then 
+    	// display a confirmation dialog to confirm that the user wishes 
+    	// to exit the patient assessment
+    	exitAssessmentDialogHandler();
+    }
+    
+	/**
+	 * Click Handler: Handle the back button click event such that if user 
+	 * is performing an IMCI or CCM assessment then a confirmation dialog 
+	 * will be displayed to confirm that the user wishes to exit the 
+	 * patient assessment
+	 * 
+	 * @param view View
+	 * @return void
+	 */
+    @Override
+    public void onBackPressed() {
+    	// Handle the back button click event such that if user 
+    	// is performing an IMCI or CCM assessment then a confirmation dialog 
+    	// will be displayed to confirm that the user wishes to exit the 
+    	// patient assessment
+    	exitAssessmentDialogHandler();
+    }
+	
 	/**
 	 * Getter Method: getViewPager()
 	 */	

@@ -1,11 +1,15 @@
 package ie.ucc.bis.activity;
 
 import ie.ucc.bis.R;
+import ie.ucc.bis.assessment.model.listener.AssessmentExitDialogListener;
 import android.app.ActionBar;
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.DialogFragment;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.view.MotionEvent;
@@ -32,6 +36,8 @@ import android.widget.Toast;
  *
  */
 public abstract class SupportingLifeBaseActivity extends FragmentActivity {
+	
+	public static final String EXIT_ASSESSMENT_DIALOG_TAG = "Exit Assessment";
 	
 	/**
 	 * OnCreate method is called when the activity is first created.
@@ -286,5 +292,30 @@ public abstract class SupportingLifeBaseActivity extends FragmentActivity {
 		// otherwise our custom 'home icon' will be pushed out to the right
 		View homeIcon = findViewById(android.R.id.home);
 		((View) homeIcon.getParent()).setVisibility(View.GONE);
+	}
+
+	/**
+	 * Home Button or Back Button Click Handler
+	 * 
+	 * Handle the home button or back button click event such that if user 
+	 * is performing an IMCI or CCM assessment (or are in related Assessment 
+	 * Results activity) then a confirmation dialog  will be displayed to 
+	 * confirm that the user wishes to exit the patient assessment
+	 * 
+	 * @param view View
+	 * @return void
+	 */
+	protected void exitAssessmentDialogHandler() {
+		DialogFragment dg = new DialogFragment() {
+    		@Override
+    		public Dialog onCreateDialog(Bundle savedInstanceState) {    			
+    			return new AlertDialog.Builder(getActivity())
+    			.setMessage(R.string.exit_assessment_confirm_message)
+    			.setPositiveButton(R.string.exit_assessment_confirm_button, new AssessmentExitDialogListener(SupportingLifeBaseActivity.this))
+    			.setNegativeButton(android.R.string.cancel, null)
+    			.create();
+    		}
+    	};
+    	dg.show(getSupportFragmentManager(), EXIT_ASSESSMENT_DIALOG_TAG);
 	}
 }

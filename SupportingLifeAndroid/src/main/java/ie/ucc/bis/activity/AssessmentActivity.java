@@ -1,14 +1,5 @@
 package ie.ucc.bis.activity;
 
-import java.util.List;
-
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.os.Bundle;
-import android.support.v4.view.ViewPager;
-import android.view.View;
-import android.widget.Button;
-
 import ie.ucc.bis.R;
 import ie.ucc.bis.assessment.imci.ui.PageFragmentCallbacks;
 import ie.ucc.bis.assessment.imci.ui.ReviewFragmentCallbacks;
@@ -17,6 +8,15 @@ import ie.ucc.bis.assessment.model.AbstractModel;
 import ie.ucc.bis.assessment.model.AbstractPage;
 import ie.ucc.bis.assessment.model.AssessmentPagerAdapter;
 import ie.ucc.bis.assessment.model.ModelCallbacks;
+
+import java.util.List;
+
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.v4.view.ViewPager;
+import android.view.View;
+import android.widget.Button;
 
 /**
  * 
@@ -160,7 +160,38 @@ public class AssessmentActivity extends SupportingLifeBaseActivity implements
     public AbstractModel getWizardModel() {
     	return getAssessmentModel();
     }
-
+    
+	/**
+	 * Click Handler: Handle the click on the home button
+	 * 
+	 * @param view View
+	 * @return void
+	 */
+    @Override
+    public void onClickHome(View view) {
+    	// if user is performing an IMCI or CCM assessment then 
+    	// display a confirmation dialog to confirm that the user wishes 
+    	// to exit the patient assessment
+    	exitAssessmentDialogHandler();
+    }
+    
+	/**
+	 * Click Handler: Handle the back button click event such that if user 
+	 * is performing an IMCI or CCM assessment then a confirmation dialog 
+	 * will be displayed to confirm that the user wishes to exit the 
+	 * patient assessment
+	 * 
+	 * @param view View
+	 * @return void
+	 */
+    @Override
+    public void onBackPressed() {
+    	// Handle the back button click event such that if user 
+    	// is performing an IMCI or CCM assessment then a confirmation dialog 
+    	// will be displayed to confirm that the user wishes to exit the 
+    	// patient assessment
+    	exitAssessmentDialogHandler();
+    }
     
     /**
      * Inner Class: AssessmentDialogListener
