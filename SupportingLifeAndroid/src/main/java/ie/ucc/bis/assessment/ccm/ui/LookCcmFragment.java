@@ -6,6 +6,7 @@ import ie.ucc.bis.assessment.ccm.model.LookCcmPage;
 import ie.ucc.bis.assessment.imci.ui.PageFragmentCallbacks;
 import ie.ucc.bis.assessment.model.listener.AssessmentWizardTextWatcher;
 import ie.ucc.bis.assessment.model.listener.RadioGroupListener;
+import ie.ucc.bis.ui.custom.ToggleButtonGroupTableLayout;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -33,7 +34,7 @@ public class LookCcmFragment extends Fragment {
 	private RadioGroup chestIndrawingRadioGroup;
 	private RadioGroup verySleepyOrUnconsciousRadioGroup;
 	private RadioGroup palmarPallorRadioGroup;
-	private RadioGroup muacTapeColourRadioGroup;
+	private ToggleButtonGroupTableLayout muacTapeCustomRadioGroup;
 	private RadioGroup swellingOfBothFeetRadioGroup;
 	private EditText breathsPerMinuteEditText;
 	
@@ -86,8 +87,8 @@ public class LookCcmFragment extends Fragment {
 		getPalmarPallorRadioGroup().check(getLookCcmPage().getPageData().getInt(LookCcmPage.PALMAR_PALLOR_DATA_KEY));
 		
 		// muac tape colour
-		setMuacTapeColourRadioGroup((RadioGroup) rootView.findViewById(R.id.ccm_look_assessment_radio_muac_tape_colour));
-		getMuacTapeColourRadioGroup().check(getLookCcmPage().getPageData().getInt(LookCcmPage.MUAC_TAPE_COLOUR_DATA_KEY));
+        setMuacTapeCustomRadioGroup((ToggleButtonGroupTableLayout) rootView.findViewById(R.id.ccm_look_assessment_radio_muac_tape_colour));
+        getMuacTapeCustomRadioGroup().check(getLookCcmPage().getPageData().getInt(LookCcmPage.MUAC_TAPE_COLOUR_DATA_KEY));
 		
 		// swelling of both feet
 		setSwellingOfBothFeetRadioGroup((RadioGroup) rootView.findViewById(R.id.ccm_look_assessment_radio_swelling_of_both_feet));
@@ -141,11 +142,10 @@ public class LookCcmFragment extends Fragment {
 				new RadioGroupListener(getLookCcmPage(),
 						LookCcmPage.PALMAR_PALLOR_DATA_KEY));
 		
-		// add listener to 'muac tape colour' radio group
-		getMuacTapeColourRadioGroup().setOnCheckedChangeListener(
-				new RadioGroupListener(getLookCcmPage(),
-						LookCcmPage.MUAC_TAPE_COLOUR_DATA_KEY));
-		
+        // add listener to custom muac tape radio group
+		getMuacTapeCustomRadioGroup().setPage(getLookCcmPage());
+		getMuacTapeCustomRadioGroup().setDataKey(LookCcmPage.MUAC_TAPE_COLOUR_DATA_KEY);
+				
 		// add listener to 'swelling of both feet' radio group
 		getSwellingOfBothFeetRadioGroup().setOnCheckedChangeListener(
 				new RadioGroupListener(getLookCcmPage(),
@@ -237,17 +237,17 @@ public class LookCcmFragment extends Fragment {
 	}
 
 	/**
-	 * Getter Method: getMuacTapeColourRadioGroup()
+	 * Getter Method: getMuacTapeCustomRadioGroup()
 	 */	
-	public RadioGroup getMuacTapeColourRadioGroup() {
-		return muacTapeColourRadioGroup;
+	public ToggleButtonGroupTableLayout getMuacTapeCustomRadioGroup() {
+		return muacTapeCustomRadioGroup;
 	}
 
 	/**
-	 * Setter Method: setMuacTapeColourRadioGroup()
+	 * Setter Method: setMuacTapeCustomRadioGroup()
 	 */	
-	public void setMuacTapeColourRadioGroup(RadioGroup muacTapeColourRadioGroup) {
-		this.muacTapeColourRadioGroup = muacTapeColourRadioGroup;
+	public void setMuacTapeCustomRadioGroup(ToggleButtonGroupTableLayout muacTapeCustomRadioGroup) {
+		this.muacTapeCustomRadioGroup = muacTapeCustomRadioGroup;
 	}
 
 	/**

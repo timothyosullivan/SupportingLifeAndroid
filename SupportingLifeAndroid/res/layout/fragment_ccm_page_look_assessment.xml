@@ -124,28 +124,42 @@
                 android:layout_height="match_parent"
                 android:layout_gravity="bottom"
                 android:text="@string/ccm_look_assessment_radio_muac_tape_colour_label" />
-		
-            <RadioGroup
+            
+            <ie.ucc.bis.ui.custom.ToggleButtonGroupTableLayout
                 android:id="@+id/ccm_look_assessment_radio_muac_tape_colour"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal" >
-		
-                <RadioButton
-                    android:id="@+id/ccm_look_assessment_radio_muac_tape_colour_green"
-                    android:layout_weight="0.33"
-                    android:text="@string/ccm_look_assessment_radio_muac_tape_colour_green" />
-		
-                <RadioButton
-                    android:id="@+id/ccm_look_assessment_radio_muac_tape_colour_yellow"
-                    android:layout_weight="0.33"
-                    android:text="@string/ccm_look_assessment_radio_muac_tape_colour_yellow" />
-                
-                <RadioButton
-                    android:id="@+id/ccm_look_assessment_radio_muac_tape_colour_red"
-                    android:layout_weight="0.33"
-                    android:text="@string/ccm_look_assessment_radio_muac_tape_colour_red" />
-            </RadioGroup>
+                android:layout_height="match_parent" >
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" >
+
+                    <RadioButton
+                        android:id="@+id/ccm_look_assessment_radio_no_muac_tape"
+                        android:layout_weight="0.5"
+                        android:text="@string/ccm_look_assessment_radio_no_muac_tape" />
+
+                    <RadioButton
+                        android:id="@+id/ccm_look_assessment_radio_muac_tape_colour_green"
+                        android:layout_weight="0.5"
+                        android:text="@string/ccm_look_assessment_radio_muac_tape_colour_green" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" >
+
+                    <RadioButton
+                        android:id="@+id/ccm_look_assessment_radio_muac_tape_colour_yellow"
+                        android:layout_weight="0.5"
+                        android:text="@string/ccm_look_assessment_radio_muac_tape_colour_yellow" />
+
+                    <RadioButton
+                        android:id="@+id/ccm_look_assessment_radio_muac_tape_colour_red"
+                        android:layout_weight="0.5"
+                        android:text="@string/ccm_look_assessment_radio_muac_tape_colour_red" />
+                </TableRow>
+            </ie.ucc.bis.ui.custom.ToggleButtonGroupTableLayout>
 
             <!-- ============================================================ -->
            	<!-- SWELLING OF BOTH FEET 									  	  -->
