@@ -10,6 +10,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -42,6 +44,23 @@ public class ReviewFragment extends ReviewListFragment implements ModelCallbacks
         return rootView;
     }
 
+	@Override
+	public void onViewCreated(View view, Bundle savedInstanceState) {
+		super.onViewCreated(view, savedInstanceState);
+		
+		// add long click listener to the list so that we can determine when
+		// to invoke a review item edit and so we will navigate back to relevant
+		// assessment fragment more gracefully - ref. JIRA SL-101
+		getListView().setOnItemLongClickListener(new OnItemLongClickListener() {
+			@Override
+			public boolean onItemLongClick(AdapterView<?> parent, View view,
+					int position, long id) {
+				getReviewFragmentCallbacks().onEditScreenAfterReview(getReviewAssessmentAdapter().getFilteredReviewItems().get(position).getPageKey());
+				return true;
+			}
+		});
+	}
+    
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
@@ -91,10 +110,6 @@ public class ReviewFragment extends ReviewListFragment implements ModelCallbacks
         }
     }  
     
-    @Override
-    public void onListItemClick(ListView l, View v, int position, long id) {
-        getReviewFragmentCallbacks().onEditScreenAfterReview(getReviewAssessmentAdapter().getFilteredReviewItems().get(position).getPageKey());
-    }
 
 	/**
 	 * Getter Method: getReviewFragmentCallbacks()
