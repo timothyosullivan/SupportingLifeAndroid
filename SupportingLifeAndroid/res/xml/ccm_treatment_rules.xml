@@ -390,25 +390,22 @@
 	<TreatmentRule>
 		<Classification>Diarrhoea (less than 14 days AND no blood in stool)</Classification>
 		<Treatment>
-			<CriteriaList rule="all">														<!-- Refer Sign and Danger Sign must not be present -->
+			<CriteriaList rule="all">														<!-- Refer Sign must not be present -->
 				<TreatmentCriteria value="no">ccm_treatment_criteria_refer_sign_classification_present</TreatmentCriteria>
-				<TreatmentCriteria value="no">ccm_treatment_criteria_danger_sign_classification_present</TreatmentCriteria>
 			</CriteriaList>
 			<Recommendation>Give ORS.
 				\n Help caregiver give child ORS solution in front of you until child is no longer thirsty.</Recommendation>
 		</Treatment>
 		<Treatment>
-			<CriteriaList rule="all">														<!-- Refer Sign and Danger Sign must not be present -->
+			<CriteriaList rule="all">														<!-- Refer Sign must not be present -->
 				<TreatmentCriteria value="no">ccm_treatment_criteria_refer_sign_classification_present</TreatmentCriteria>
-				<TreatmentCriteria value="no">ccm_treatment_criteria_danger_sign_classification_present</TreatmentCriteria>
 			</CriteriaList>
 			<Recommendation>Give caregiver 2 ORS packets to take home.
 				\n Advise to give as much as child wants, but at least 1/2 cup ORS solution after each loose stool.</Recommendation>
 		</Treatment>
 		<Treatment>
-			<CriteriaList rule="all">														<!-- Refer Sign and Danger Sign must not be present -->
+			<CriteriaList rule="all">														<!-- Refer Sign must not be present -->
 				<TreatmentCriteria value="no">ccm_treatment_criteria_refer_sign_classification_present</TreatmentCriteria>
-				<TreatmentCriteria value="no">ccm_treatment_criteria_danger_sign_classification_present</TreatmentCriteria>
 			</CriteriaList>
 			<CriteriaList rule="all">															<!-- Age 2 months up to 6 months == Yes -->
 				<SymptomCriteria value="BETWEEN_2_MONTHS_AND_6_MONTHS">ccm_ask_initial_assessment_diarrhoea_zinc_dosage_symptom_id</SymptomCriteria>
@@ -419,9 +416,8 @@
 				\n Age 2 months up to 6 months: 1/2 tablet (total 5 tabs)</Recommendation>
 		</Treatment>
 		<Treatment>
-			<CriteriaList rule="all">														<!-- Refer Sign and Danger Sign must not be present -->
+			<CriteriaList rule="all">														<!-- Refer Sign must not be present -->
 				<TreatmentCriteria value="no">ccm_treatment_criteria_refer_sign_classification_present</TreatmentCriteria>
-				<TreatmentCriteria value="no">ccm_treatment_criteria_danger_sign_classification_present</TreatmentCriteria>
 			</CriteriaList>
 			<CriteriaList rule="all">															<!-- Age 6 months up to 5 years == Yes -->
 				<SymptomCriteria value="BETWEEN_6_MONTHS_AND_5_YEARS">ccm_ask_initial_assessment_diarrhoea_zinc_dosage_symptom_id</SymptomCriteria>
@@ -468,9 +464,8 @@
 	<TreatmentRule>
 		<Classification>Fever (less than 7 days)</Classification>
 		<Treatment>
-			<CriteriaList rule="all">														<!-- Refer Sign and Danger Sign must not be present -->
+			<CriteriaList rule="all">														<!-- Refer Sign must not be present -->
 				<TreatmentCriteria value="no">ccm_treatment_criteria_refer_sign_classification_present</TreatmentCriteria>
-				<TreatmentCriteria value="no">ccm_treatment_criteria_danger_sign_classification_present</TreatmentCriteria>
 			</CriteriaList>
 			<CriteriaList rule="all">															<!-- Age up to 5 months == Yes -->
 				<SymptomCriteria value="UP_TO_5_MONTHS">ccm_ask_initial_assessment_fever_la_dosage_age_symptom_id</SymptomCriteria>
@@ -478,9 +473,8 @@
 			<Recommendation>Dose for LA: Not recommended</Recommendation>
 		</Treatment>
 		<Treatment>
-			<CriteriaList rule="all">														<!-- Refer Sign and Danger Sign must not be present -->
+			<CriteriaList rule="all">														<!-- Refer Sign must not be present -->
 				<TreatmentCriteria value="no">ccm_treatment_criteria_refer_sign_classification_present</TreatmentCriteria>
-				<TreatmentCriteria value="no">ccm_treatment_criteria_danger_sign_classification_present</TreatmentCriteria>
 			</CriteriaList>
 			<CriteriaList rule="all">															<!-- Age 5 months up to 3 years == Yes -->
 				<SymptomCriteria value="BETWEEN_5_MONTHS_AND_3_YEARS">ccm_ask_initial_assessment_fever_la_dosage_age_symptom_id</SymptomCriteria>
@@ -490,9 +484,8 @@
 				\n Age 5 months up to 3 years: 1 tablet (total 6 tabs)</Recommendation>
 		</Treatment>
 		<Treatment>
-			<CriteriaList rule="all">														<!-- Refer Sign and Danger Sign must not be present -->
+			<CriteriaList rule="all">														<!-- Refer Sign must not be present -->
 				<TreatmentCriteria value="no">ccm_treatment_criteria_refer_sign_classification_present</TreatmentCriteria>
-				<TreatmentCriteria value="no">ccm_treatment_criteria_danger_sign_classification_present</TreatmentCriteria>
 			</CriteriaList>
 			<CriteriaList rule="all">															<!-- Age 3 years up to 5 years == Yes -->
 				<SymptomCriteria value="BETWEEN_3_YEARS_AND_5_YEARS">ccm_ask_initial_assessment_fever_la_dosage_age_symptom_id</SymptomCriteria>
@@ -502,16 +495,14 @@
 				\n Age 3 years up to 5 years: 2 tablet (total 12 tabs)</Recommendation>
 		</Treatment>
 		<Treatment>
-			<CriteriaList rule="all">														<!-- Refer Sign and Danger Sign must not be present -->
+			<CriteriaList rule="all">														<!-- Refer Sign must not be present -->
 				<TreatmentCriteria value="no">ccm_treatment_criteria_refer_sign_classification_present</TreatmentCriteria>
-				<TreatmentCriteria value="no">ccm_treatment_criteria_danger_sign_classification_present</TreatmentCriteria>
 			</CriteriaList>
 			<Recommendation>Advise caregiver on use of a ITN</Recommendation>
 		</Treatment>
 		<Treatment>
-			<CriteriaList rule="all">														<!-- Refer Sign and Danger Sign must not be present -->
+			<CriteriaList rule="all">														<!-- Refer Sign must not be present -->
 				<TreatmentCriteria value="no">ccm_treatment_criteria_refer_sign_classification_present</TreatmentCriteria>
-				<TreatmentCriteria value="no">ccm_treatment_criteria_danger_sign_classification_present</TreatmentCriteria>
 			</CriteriaList>
 			<CriteriaList rule="all">															<!-- Age 2 months up to 3 years == Yes -->
 				<SymptomCriteria value="BETWEEN_2_MONTHS_AND_3_YEARS">ccm_ask_initial_assessment_fever_paracetamol_dosage_age_symptom_id</SymptomCriteria>
@@ -520,9 +511,8 @@
 				\n Age 2 months up to 3 years: 1/4 tablet (total 3 tabs)</Recommendation>
 		</Treatment>
 		<Treatment>
-			<CriteriaList rule="all">														<!-- Refer Sign and Danger Sign must not be present -->
+			<CriteriaList rule="all">														<!-- Refer Sign must not be present -->
 				<TreatmentCriteria value="no">ccm_treatment_criteria_refer_sign_classification_present</TreatmentCriteria>
-				<TreatmentCriteria value="no">ccm_treatment_criteria_danger_sign_classification_present</TreatmentCriteria>
 			</CriteriaList>
 			<CriteriaList rule="all">															<!-- Age 3 years up to 5 years == Yes -->
 				<SymptomCriteria value="BETWEEN_3_YEARS_AND_5_YEARS">ccm_ask_initial_assessment_fever_paracetamol_dosage_age_symptom_id</SymptomCriteria>
@@ -557,9 +547,8 @@
 	<TreatmentRule>
 		<Classification>Fast Breathing</Classification>
 		<Treatment>
-			<CriteriaList rule="all">														<!-- Refer Sign and Danger Sign must not be present -->
+			<CriteriaList rule="all">														<!-- Refer Sign must not be present -->
 				<TreatmentCriteria value="no">ccm_treatment_criteria_refer_sign_classification_present</TreatmentCriteria>
-				<TreatmentCriteria value="no">ccm_treatment_criteria_danger_sign_classification_present</TreatmentCriteria>
 			</CriteriaList>
 			<CriteriaList rule="all">															<!-- Age 2 months up to 12 months == Yes -->
 				<SymptomCriteria value="BETWEEN_2_MONTHS_AND_12_MONTHS">ccm_look_assessment_fast_breathing_dosage_symptom_id</SymptomCriteria>
@@ -570,9 +559,8 @@
 				\n Age 2 months up to 12 months: 1/2 tablet (total 5 tabs)</Recommendation>
 		</Treatment>
 		<Treatment>
-			<CriteriaList rule="all">														<!-- Refer Sign and Danger Sign must not be present -->
+			<CriteriaList rule="all">														<!-- Refer Sign must not be present -->
 				<TreatmentCriteria value="no">ccm_treatment_criteria_refer_sign_classification_present</TreatmentCriteria>
-				<TreatmentCriteria value="no">ccm_treatment_criteria_danger_sign_classification_present</TreatmentCriteria>
 			</CriteriaList>
 			<CriteriaList rule="all">															<!-- Age 12 months up to 5 years == Yes -->
 				<SymptomCriteria value="BETWEEN_12_MONTHS_AND_5_YEARS">ccm_look_assessment_fast_breathing_dosage_symptom_id</SymptomCriteria>
@@ -602,9 +590,8 @@
 	<TreatmentRule>
 		<Classification>Red Eye (less than 4 days)</Classification>
 		<Treatment>
-			<CriteriaList rule="all">														<!-- Refer Sign and Danger Sign must not be present -->
+			<CriteriaList rule="all">														<!-- Refer Sign must not be present -->
 				<TreatmentCriteria value="no">ccm_treatment_criteria_refer_sign_classification_present</TreatmentCriteria>
-				<TreatmentCriteria value="no">ccm_treatment_criteria_danger_sign_classification_present</TreatmentCriteria>
 			</CriteriaList>
 			<Recommendation>Apply antibiotic eye ointment.
 				\n Squeeze the size of a grain of rice on each of the inner lower eyelids, three times a day for 3 days.</Recommendation>
