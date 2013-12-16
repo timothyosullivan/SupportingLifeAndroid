@@ -5,104 +5,87 @@
 
 <Tutorials>
 	<!-- ============================================================ -->
-	<!-- TUTORIAL					 								  -->
+	<!-- TUTORIAL (1)				 								  -->
 	<!-- ============================================================ -->
 	<!-- ============================================================ -->
-	<!-- Title: Checking Danger Signs (IMCI)				  		  -->
-	<!-- ============================================================ -->
-	<Tutorial>
-		<Title>Checking Danger Signs (IMCI)</Title>
-		<Type>Video</Type>
-		<Availability>Offline</Availability>
-		<CreatedDate>October 2013</CreatedDate>
-		<CreatedBy>Supporting Life Consortium</CreatedBy>
-		<Description>Video provides a step-by-step guide to checking the danger signs of a patient aged between 2 months and 5 years.</Description>
-		<TitleImageName>@drawable/im_training_danger_signs_tutorial_button</TitleImageName>
-		<VideoName></VideoName>
-	</Tutorial>
-	
-	<!-- ============================================================ -->
-	<!-- TUTORIAL					 								  -->
-	<!-- ============================================================ -->
-	<!-- ============================================================ -->
-	<!-- Title: Performing a Breathing Assessment (IMCI)	 		  -->
+	<!-- Title: Chest Indrawing (IMCI)	 		  					  -->
 	<!-- ============================================================ -->
 	<Tutorial>
-		<Title>Performing a Breathing Assessment (IMCI)</Title>
-		<Type>Video</Type>
-		<Availability>Offline</Availability>
-		<CreatedDate>October 2013</CreatedDate>
-		<CreatedBy>Supporting Life Consortium</CreatedBy>
-		<Description>Video provides a step-by-step guide to performing an IMCI-based breathing assessment.</Description>
-		<TitleImageName>@drawable/im_training_general_tutorial_button</TitleImageName>
-		<VideoName></VideoName>
-	</Tutorial>
-	
-	<!-- ============================================================ -->
-	<!-- TUTORIAL					 								  -->
-	<!-- ============================================================ -->
-	<!-- ============================================================ -->
-	<!-- Title: Performing a Diarrhoea Assessment (IMCI)	  		  -->
-	<!-- ============================================================ -->
-	<Tutorial>
-		<Title>Performing a Diarrhoea Assessment (IMCI)</Title>
-		<Type>Video</Type>
-		<Availability>Offline</Availability>
-		<CreatedDate>November 2013</CreatedDate>
-		<CreatedBy>Supporting Life Consortium</CreatedBy>
-		<Description>Video provides a step-by-step guide to performing an IMCI-based diarrhoea assessment.</Description>
-		<TitleImageName>@drawable/im_training_general_tutorial_button</TitleImageName>
-		<VideoName></VideoName>
-	</Tutorial>
-	
-	<!-- ============================================================ -->
-	<!-- TUTORIAL					 								  -->
-	<!-- ============================================================ -->
-	<!-- ============================================================ -->
-	<!-- Title: Performing a Fever Assessment (IMCI)		  		  -->
-	<!-- ============================================================ -->
-	<Tutorial>
-		<Title>Performing a Fever Assessment (IMCI)</Title>
+		<Title>Chest Indrawing (IMCI)</Title>
 		<Type>Video</Type>
 		<Availability>Offline</Availability>
 		<CreatedDate>January 2014</CreatedDate>
-		<CreatedBy>Supporting Life Consortium</CreatedBy>
-		<Description>Video provides a step-by-step guide to performing an IMCI-based fever assessment.</Description>
+		<CreatedBy>TBD</CreatedBy>
+		<Description>This video shows a child with chest indrawing. The  video shows how chest indrawing occurs when the effort required to breathe in is much greater than normal.</Description>
 		<TitleImageName>@drawable/im_training_general_tutorial_button</TitleImageName>
-		<VideoName></VideoName>
+		<VideoName>chest_indrawing_imci</VideoName>
 	</Tutorial>
 	
 	<!-- ============================================================ -->
-	<!-- TUTORIAL					 								  -->
+	<!-- TUTORIAL (2)				 								  -->
 	<!-- ============================================================ -->
 	<!-- ============================================================ -->
-	<!-- Title: Performing an Ear Assessment (IMCI)			  		  -->
+	<!-- Title: Lethargic or Unconscious (IMCI)	  		              -->
 	<!-- ============================================================ -->
 	<Tutorial>
-		<Title>Performing an Ear Assessment (IMCI)</Title>
+		<Title>Lethargic or Unconscious (IMCI)</Title>
 		<Type>Video</Type>
 		<Availability>Offline</Availability>
-		<CreatedDate>March 2014</CreatedDate>
-		<CreatedBy>Supporting Life Consortium</CreatedBy>
-		<Description>Video provides a step-by-step guide to performing an IMCI-based ear assessment.</Description>
+		<CreatedDate>January 2014</CreatedDate>
+		<CreatedBy>TBD</CreatedBy>
+		<Description>This video shows a lethargic or unconscious child. The  video shows how the child is drowsy when they should be awake. The video shows how the child does not look at the mother, or at your face when you talk.</Description>
 		<TitleImageName>@drawable/im_training_general_tutorial_button</TitleImageName>
-		<VideoName></VideoName>
+		<VideoName>lethargic_or_unconscious_imci</VideoName>
 	</Tutorial>
 	
 	<!-- ============================================================ -->
-	<!-- TUTORIAL					 								  -->
+	<!-- TUTORIAL (3)				 								  -->
 	<!-- ============================================================ -->
 	<!-- ============================================================ -->
-	<!-- Title: Performing a Malnutrition Assessment (IMCI)  		  -->
+	<!-- Title: Stridor (IMCI)		  		  						  -->
 	<!-- ============================================================ -->
 	<Tutorial>
-		<Title>Performing a Malnutrition Assessment (IMCI)</Title>
+		<Title>Stridor (IMCI)</Title>
 		<Type>Video</Type>
 		<Availability>Offline</Availability>
-		<CreatedDate>March 2014</CreatedDate>
-		<CreatedBy>Supporting Life Consortium</CreatedBy>
-		<Description>Video provides a step-by-step guide to performing an IMCI-based malnutrition assessment.</Description>
+		<CreatedDate>January 2014</CreatedDate>
+		<CreatedBy>TBD</CreatedBy>
+		<Description>This video shows a child with Stridor. The  video illustrates how a child's breathing is noisy when breathing in.</Description>
 		<TitleImageName>@drawable/im_training_general_tutorial_button</TitleImageName>
-		<VideoName></VideoName>
+		<VideoName>stridor_imci</VideoName>
+	</Tutorial>
+	
+	<!-- ============================================================ -->
+	<!-- TUTORIAL (4)				 								  -->
+	<!-- ============================================================ -->
+	<!-- ============================================================ -->
+	<!-- Title: Skin Pinch (IMCI)			  		  				  -->
+	<!-- ============================================================ -->
+	<Tutorial>
+		<Title>Skin Pinch (IMCI)</Title>
+		<Type>Video</Type>
+		<Availability>Offline</Availability>
+		<CreatedDate>January 2014</CreatedDate>
+		<CreatedBy>TBD</CreatedBy>
+		<Description>This videos shows how to perform a skin pinch. It shows a normal, immediate return to normal and a slow return.</Description>
+		<TitleImageName>@drawable/im_training_general_tutorial_button</TitleImageName>
+		<VideoName>skin_pinch_imci</VideoName>
+	</Tutorial>
+	
+	<!-- ============================================================ -->
+	<!-- TUTORIAL (5)				 								  -->
+	<!-- ============================================================ -->
+	<!-- ============================================================ -->
+	<!-- Title: Stiff Neck (IMCI)  		  							  -->
+	<!-- ============================================================ -->
+	<Tutorial>
+		<Title>Stiff Neck (IMCI)</Title>
+		<Type>Video</Type>
+		<Availability>Offline</Availability>
+		<CreatedDate>January 2014</CreatedDate>
+		<CreatedBy>TBD</CreatedBy>
+		<Description>This video shows how to examine a child for a stiff neck.</Description>
+		<TitleImageName>@drawable/im_training_general_tutorial_button</TitleImageName>
+		<VideoName>stiff_neck_imci</VideoName>
 	</Tutorial>
 </Tutorials>

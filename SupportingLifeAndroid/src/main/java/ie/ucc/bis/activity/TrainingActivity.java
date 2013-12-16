@@ -13,9 +13,9 @@ import android.support.v4.view.ViewPager;
 
 public class TrainingActivity extends SupportingLifeBaseActivity {
 	
-	public final static int PAGES = 6;
+//	public final static int PAGES = 6;
 	public final static int LOOPS = 1000; 
-	public final static int FIRST_PAGE = PAGES * LOOPS / 2;
+//	public final static int FIRST_PAGE = PAGES * LOOPS / 2;
 	public final static float BIG_SCALE = 1.0f;
 	public final static float SMALL_SCALE = 0.7f;
 	public final static float DIFF_SCALE = BIG_SCALE - SMALL_SCALE;
@@ -26,7 +26,8 @@ public class TrainingActivity extends SupportingLifeBaseActivity {
 	private ViewPager trainingViewPager;
     private TrainingPagerAdapter trainingPagerAdapter;
     private TrainingTutorialParser trainingTutorialParser;
-	    
+    private int initialPageLocation;
+
 	/**
 	 * onCreate method
 	 * 
@@ -46,6 +47,9 @@ public class TrainingActivity extends SupportingLifeBaseActivity {
 		setTrainingTutorialParser(new TrainingTutorialParser());
 		getTrainingTutorialParser().parseTrainingTutorials(this);
 		
+		// determine the initial page to be shown
+		setInitialPageLocation(getTrainingTutorialParser().getTutorials().size() * LOOPS / 2);
+		
 		// configure PagerAdapter for Training Screen
 		setTrainingPagerAdapter(new TrainingPagerAdapter(this, getSupportFragmentManager(), getTrainingTutorialParser().getTutorials()));
 		
@@ -56,7 +60,7 @@ public class TrainingActivity extends SupportingLifeBaseActivity {
         
         // Set current item to the middle page so we can fling to both
         // directions left and right
-        getTrainingViewPager().setCurrentItem(FIRST_PAGE);
+        getTrainingViewPager().setCurrentItem(getInitialPageLocation());
         
         // Necessary or the pager will only have one extra page to show
         // make this at least however many pages you can see
@@ -111,5 +115,19 @@ public class TrainingActivity extends SupportingLifeBaseActivity {
 	 */
 	public void setTrainingTutorialParser(TrainingTutorialParser trainingTutorialParser) {
 		this.trainingTutorialParser = trainingTutorialParser;
+	}
+
+	/**
+	 * Getter Method: getInitialPageLocation()
+	 */
+	public int getInitialPageLocation() {
+		return initialPageLocation;
+	}
+
+	/**
+	 * Setter Method: setInitialPageLocation()
+	 */
+	private void setInitialPageLocation(int initialPageLocation) {
+		this.initialPageLocation = initialPageLocation;
 	}
 }

@@ -25,7 +25,7 @@ import android.widget.TextView;
 public class TrainingFragment extends Fragment {
 	
 	private static final String POSITION = "POSITION";
-	private static final String TUTORIAL = "TUTORIAL";
+	public static final String TUTORIAL = "TUTORIAL";
 	private static final String SCALE = "SCALE";
 	private static final String CENTER_PAGE = "CENTER_PAGE";
 	
@@ -149,7 +149,12 @@ public class TrainingFragment extends Fragment {
 		imageView.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				startActivity(new Intent(getActivity().getApplicationContext(), VideoViewerActivity.class));		
+				Intent trainingIntent = new Intent(getActivity().getApplicationContext(), VideoViewerActivity.class);
+				Bundle bundle = new Bundle();
+				// take note of the video tutorial selected
+				bundle.putString(TrainingFragment.TUTORIAL, getTutorial().getVideoName());
+				trainingIntent.putExtras(bundle);
+				startActivity(trainingIntent);		
 			}
 		});
 	}

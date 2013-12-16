@@ -148,6 +148,9 @@
 					android:layout_height="match_parent"
 					android:text="@string/training_tutorial_description" />
 				
+				<!-- android:background="#00000000" changes background of EditText to transparent.
+					 This removed the grey prompt line which was visible underneath this EditText. -->
+					 
 	            <EditText
 	                android:id="@+id/training_tutorial_description"
 	                style="@style/TrainingText"
@@ -157,6 +160,7 @@
 	                android:gravity="top|left"
 	                android:inputType="textMultiLine"
 	                android:lines="5"
+	                android:background="#00000000"
 	                android:focusable="false"
 					android:enabled="false" />
 			</LinearLayout>	    

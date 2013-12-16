@@ -1,6 +1,7 @@
 package ie.ucc.bis.activity;
 
 import ie.ucc.bis.R;
+import ie.ucc.bis.training.ui.TrainingFragment;
 import android.net.Uri;
 import android.os.Bundle;
 import android.widget.MediaController;
@@ -29,6 +30,10 @@ public class VideoViewerActivity  extends SupportingLifeBaseActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		
+		// get the video filename of the video tutorial selected
+		Bundle bundle = getIntent().getExtras();
+		String videoFilename = bundle.getString(TrainingFragment.TUTORIAL);
 
 		setContentView(R.layout.activity_video_viewer);	
 		setTitleFromActivityLabel(R.id.action_bar_title_text);
@@ -40,7 +45,8 @@ public class VideoViewerActivity  extends SupportingLifeBaseActivity {
 		mediaController.setAnchorView(videoView);
 
 		// Get the URL from String VideoURL
-		Uri videoURL = Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.android_sample_content);
+		int videoResourceId = getResources().getIdentifier(videoFilename, "raw", "ie.ucc.bis");
+		Uri videoURL = Uri.parse("android.resource://" + getPackageName() + "/" + videoResourceId);
 		videoView.setMediaController(mediaController);
 		videoView.setVideoURI(videoURL);
 		

@@ -48,7 +48,7 @@ public class TrainingPagerAdapter extends FragmentStatePagerAdapter implements V
 		boolean centerPage;
 		
 		// make the first pager bigger than others
-		if (position == TrainingActivity.FIRST_PAGE) {
+		if (position == getTrainingActivity().getInitialPageLocation()) {
         	scale = TrainingActivity.BIG_SCALE;
         	centerPage = true;
         }
@@ -57,7 +57,7 @@ public class TrainingPagerAdapter extends FragmentStatePagerAdapter implements V
         	centerPage = false;
         }
         
-        position = position % TrainingActivity.PAGES;
+        position = position % getTutorials().size();
 		return TrainingFragment.create(getTrainingActivity(), position, getTutorials().get(position), scale, centerPage);
 	}
 

@@ -67,14 +67,22 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/about_developer_label"
+            android:id="@+id/about_first_developer_label"
             style="@style/AboutLabel"
-            android:text="@string/about_developer_label"/>
+            android:layout_gravity="center_horizontal" 
+            android:text="@string/about_developer_label" />
 
         <TextView
-            android:id="@+id/about_developer_value"
+            android:id="@+id/about_first_developer_value"
             style="@style/AboutText"
-            android:text="@string/about_developer_value"/>
+            android:layout_gravity="center_horizontal" 
+            android:text="@string/about_first_developer_value"/>
+
+        <TextView
+            android:id="@+id/about_second_developer_value"
+            style="@style/AboutText"
+            android:layout_gravity="center_horizontal" 
+            android:text="@string/about_second_developer_value"/>
     </LinearLayout>
 
     <!-- ============================================================ -->
