@@ -62,7 +62,7 @@ public class SubmitPatientRecordActivity extends SupportingLifeBaseActivity {
 
 	private class NetworkCommunicationAsyncTask extends AsyncTask<Patient, Void, Patient> {
 
-		private static final String AMAZON_WEB_SERVICE_URL = "http://ec2-54-226-94-252.compute-1.amazonaws.com/SupportingLife/patients/add";
+		private static final String AMAZON_WEB_SERVICE_URL = "http://supportinglife.elasticbeanstalk.com/patients/add";
 		
 		@Override
 		protected Patient doInBackground(Patient... params) {
