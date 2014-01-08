@@ -6,7 +6,6 @@ import ie.ucc.bis.supportinglife.assessment.model.review.ReviewItem;
 import ie.ucc.bis.supportinglife.domain.Patient;
 import ie.ucc.bis.supportinglife.rule.engine.enums.SymptomRuleCriteria;
 import ie.ucc.bis.supportinglife.ui.utilities.ClassificationUtils;
-import ie.ucc.bis.supportinglife.ui.utilities.LoggerUtils;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -44,7 +43,7 @@ public class ClassificationRuleEngine {
 	private static final String CLASSIFICATION_RULE = "ClassificationRule";
 	private static final String CLASSIFICATION_DIAGNOSED = "ClassificationDiagnosed";
 	
-	private static final String LOG_TAG = "ie.ucc.bis.rule.engine.ClassificationRuleEngine";
+//	private static final String LOG_TAG = "ie.ucc.bis.rule.engine.ClassificationRuleEngine";
 	
 	private ArrayList<Classification> systemImciClassifications;
 	private ArrayList<Classification> systemCcmClassifications;
@@ -75,7 +74,10 @@ public class ClassificationRuleEngine {
 		setSystemCcmClassifications(new ArrayList<Classification>());
 		parseClassificationRules(supportingLifeBaseActivity, getSystemCcmClassifications(), xmlParser);
 		
-		LoggerUtils.i(LOG_TAG, captureClassificationDebugOutput(getSystemCcmClassifications()));
+		/**********************************
+		 * Debug Assistance: Capture System CCM Classifications in Log Output
+		 **********************************/
+		// LoggerUtils.i(LOG_TAG, captureClassificationDebugOutput(getSystemCcmClassifications()));
 	}
 	
 	/**
@@ -185,7 +187,7 @@ public class ClassificationRuleEngine {
 //		LoggerUtils.i(LOG_TAG, captureClassificationDebugOutput(systemClassifications));
 //		LoggerUtils.i(LOG_TAG, "--------------------------------------");
 //		LoggerUtils.i(LOG_TAG, "--------------------------------------");
-		LoggerUtils.i(LOG_TAG, "--------------------------------------");
+//		LoggerUtils.i(LOG_TAG, "--------------------------------------");
 	}
 	
 	/**
@@ -416,7 +418,7 @@ public class ClassificationRuleEngine {
 	 * @param classifications
 	 * 
 	 */
-	private StringBuilder captureClassificationDebugOutput(List<Classification> classifications) {
+	public StringBuilder captureClassificationDebugOutput(List<Classification> classifications) {
 		StringBuilder debugOutput = new StringBuilder();
 		
 		for (Classification classification : classifications){

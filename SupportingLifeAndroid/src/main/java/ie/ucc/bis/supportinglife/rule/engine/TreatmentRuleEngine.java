@@ -8,7 +8,6 @@ import ie.ucc.bis.supportinglife.rule.engine.enums.CcmClassificationType;
 import ie.ucc.bis.supportinglife.rule.engine.enums.CriteriaRule;
 import ie.ucc.bis.supportinglife.rule.engine.enums.ImciClassificationType;
 import ie.ucc.bis.supportinglife.rule.engine.enums.Response;
-import ie.ucc.bis.supportinglife.ui.utilities.LoggerUtils;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -46,7 +45,7 @@ public class TreatmentRuleEngine {
 
 	private static final String SEVERE_DEHYDRATION_CLASSIFICATION = "Severe Dehydration";
 
-	private static final String LOG_TAG = "ie.ucc.bis.rule.engine.TreatmentRuleEngine";
+//	private static final String LOG_TAG = "ie.ucc.bis.rule.engine.TreatmentRuleEngine";
 
 	private static ArrayList<TreatmentRule> systemImciTreatmentRules;
 	private static ArrayList<TreatmentRule> systemCcmTreatmentRules;
@@ -402,11 +401,13 @@ public class TreatmentRuleEngine {
 		catch (IOException ex) {
 			ex.printStackTrace();
 		}
-		// DEBUG OUTPUT
-		LoggerUtils.i(LOG_TAG, captureTreatmentRulesDebugOutput(systemTreatments));
-		LoggerUtils.i(LOG_TAG, "--------------------------------------");
-		LoggerUtils.i(LOG_TAG, "--------------------------------------");
-		LoggerUtils.i(LOG_TAG, "--------------------------------------");
+		/**********************************
+		 * Debug Assistance: Capture System Treatment Rules in Log Output
+		 **********************************/
+//		LoggerUtils.i(LOG_TAG, captureTreatmentRulesDebugOutput(systemTreatments));
+//		LoggerUtils.i(LOG_TAG, "--------------------------------------");
+//		LoggerUtils.i(LOG_TAG, "--------------------------------------");
+//		LoggerUtils.i(LOG_TAG, "--------------------------------------");
 	}
 
 	/**
@@ -441,8 +442,10 @@ public class TreatmentRuleEngine {
 			checkCcmClassificationTypeTreatments(reviewItems, patient, systemTreatments);
 		}
 		
-		// DEBUG OUTPUT
-		LoggerUtils.i(LOG_TAG, captureTreatmentsDebugOutput(patient.getDiagnostics()));
+		/**********************************
+		 * Debug Assistance: Capture Patient Treatments in Log Output
+		 **********************************/
+		// LoggerUtils.i(LOG_TAG, captureTreatmentsDebugOutput(patient.getDiagnostics()));
 	}
 
 	/**
@@ -723,7 +726,7 @@ public class TreatmentRuleEngine {
 	 * @return StringBuilder
 	 * 
 	 */
-	private StringBuilder captureTreatmentsDebugOutput(List<Diagnostic> diagnostics) {
+	protected StringBuilder captureTreatmentsDebugOutput(List<Diagnostic> diagnostics) {
 		StringBuilder debugOutput = new StringBuilder();
 
 		for (Diagnostic diagnostic : diagnostics) {
@@ -745,7 +748,7 @@ public class TreatmentRuleEngine {
 	 * @return StringBuilder
 	 * 
 	 */
-	private StringBuilder captureTreatmentRulesDebugOutput(List<TreatmentRule> treatmentRules) {
+	protected StringBuilder captureTreatmentRulesDebugOutput(List<TreatmentRule> treatmentRules) {
 		StringBuilder debugOutput = new StringBuilder();
 
 		for (TreatmentRule treatmentRule : treatmentRules){
