@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="ie.ucc.bis"
+    package="ie.ucc.bis.supportinglife"
     android:versionCode="1"
     android:versionName="1.0-SNAPSHOT" >
-
+  
     <uses-sdk
         android:minSdkVersion="11"
         android:targetSdkVersion="18" />
@@ -18,7 +18,7 @@
         android:label="@string/app_name"
         android:theme="@style/Theme.Transparent" >
         <activity
-            android:name="ie.ucc.bis.activity.SplashActivity"
+            android:name="ie.ucc.bis.supportinglife.activity.SplashActivity"
             android:theme="@style/Theme.Splash"
             android:label="@string/app_name"
             android:screenOrientation="portrait" >
@@ -29,7 +29,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="ie.ucc.bis.activity.HomeActivity"
+            android:name="ie.ucc.bis.supportinglife.activity.HomeActivity"
             android:launchMode="singleTop"
             android:label="@string/app_name"
             android:screenOrientation="portrait" >
@@ -40,57 +40,57 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="ie.ucc.bis.activity.RecordPatientDetailsActivity"
+            android:name="ie.ucc.bis.supportinglife.activity.RecordPatientDetailsActivity"
             android:label="@string/activity_title_record_patient_details"
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name="ie.ucc.bis.activity.ImciAssessmentActivity"
+            android:name="ie.ucc.bis.supportinglife.activity.ImciAssessmentActivity"
             android:label="@string/activity_title_record_imci_assessment"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan|stateHidden" >
         </activity>
         <activity
-            android:name="ie.ucc.bis.activity.CcmAssessmentActivity"
+            android:name="ie.ucc.bis.supportinglife.activity.CcmAssessmentActivity"
             android:label="@string/activity_title_record_ccm_assessment"
             android:screenOrientation="portrait" 
             android:windowSoftInputMode="adjustPan|stateHidden" >
         </activity>
         <activity
-            android:name="ie.ucc.bis.activity.ImciAssessmentResultsActivity"
+            android:name="ie.ucc.bis.supportinglife.activity.ImciAssessmentResultsActivity"
             android:label="@string/activity_title_imci_assessment_results"
             android:screenOrientation="portrait">
         </activity>
         <activity
-            android:name="ie.ucc.bis.activity.CcmAssessmentResultsActivity"
+            android:name="ie.ucc.bis.supportinglife.activity.CcmAssessmentResultsActivity"
             android:label="@string/activity_title_ccm_assessment_results"
             android:screenOrientation="portrait">
         </activity>
         <activity
-            android:name="ie.ucc.bis.activity.SubmitPatientRecordActivity"
+            android:name="ie.ucc.bis.supportinglife.activity.SubmitPatientRecordActivity"
             android:label="@string/activity_title_submit_patient_record"
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name="ie.ucc.bis.activity.AboutActivity"
+            android:name="ie.ucc.bis.supportinglife.activity.AboutActivity"
             android:label="@string/activity_title_about"
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name="ie.ucc.bis.activity.TrainingActivity"
+            android:name="ie.ucc.bis.supportinglife.activity.TrainingActivity"
             android:label="@string/activity_title_training"
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name="ie.ucc.bis.activity.HelpActivity"
+            android:name="ie.ucc.bis.supportinglife.activity.HelpActivity"
             android:label="@string/activity_title_help"
             android:screenOrientation="portrait" >
-        </activity>
+        </activity> 
         <activity
-            android:name="ie.ucc.bis.activity.VideoViewerActivity"
+            android:name="ie.ucc.bis.supportinglife.activity.VideoViewerActivity"
             android:label="@string/activity_title_video_viewer"
             android:screenOrientation="landscape" >
         </activity>
     </application>
-
+ 
 </manifest>

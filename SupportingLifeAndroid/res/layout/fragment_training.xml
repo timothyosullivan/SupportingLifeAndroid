@@ -11,7 +11,7 @@
     <!-- ============================================================ -->
     <!-- SCALED IMAGE OF TRAINING TUTORIAL -->
     <!-- ============================================================ -->
-	<ie.ucc.bis.training.ui.TrainingCustomLayout
+	<ie.ucc.bis.supportinglife.training.ui.TrainingCustomLayout
 	    android:id="@+id/training_custom_layout"  
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
@@ -27,7 +27,7 @@
 			android:layout_height="150dp"
 			android:layout_marginTop="20dp"
 			android:contentDescription="@string/video_training_image"/>
-	</ie.ucc.bis.training.ui.TrainingCustomLayout>
+	</ie.ucc.bis.supportinglife.training.ui.TrainingCustomLayout>
 	
 	<!-- ============================================================ -->
 	<!-- TRAINING DESCRIPTION -->

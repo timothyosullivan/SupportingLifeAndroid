@@ -125,7 +125,7 @@
                 android:layout_gravity="bottom"
                 android:text="@string/ccm_look_assessment_radio_muac_tape_colour_label" />
             
-            <ie.ucc.bis.ui.custom.ToggleButtonGroupTableLayout
+            <ie.ucc.bis.supportinglife.ui.custom.ToggleButtonGroupTableLayout
                 android:id="@+id/ccm_look_assessment_radio_muac_tape_colour"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" >
@@ -159,8 +159,8 @@
                         android:layout_weight="0.5"
                         android:text="@string/ccm_look_assessment_radio_muac_tape_colour_red" />
                 </TableRow>
-            </ie.ucc.bis.ui.custom.ToggleButtonGroupTableLayout>
-
+            </ie.ucc.bis.supportinglife.ui.custom.ToggleButtonGroupTableLayout>
+ 
             <!-- ============================================================ -->
            	<!-- SWELLING OF BOTH FEET 									  	  -->
            	<!-- ============================================================ -->

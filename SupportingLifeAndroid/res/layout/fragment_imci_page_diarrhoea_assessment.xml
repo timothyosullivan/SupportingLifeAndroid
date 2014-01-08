@@ -253,7 +253,7 @@
 			    android:layout_gravity="bottom"
 			    android:text="@string/imci_diarrhoea_assessment_radio_child_fluid" />
 			
-			<ie.ucc.bis.ui.custom.ToggleButtonGroupTableLayout
+			<ie.ucc.bis.supportinglife.ui.custom.ToggleButtonGroupTableLayout
                 android:id="@+id/imci_diarrhoea_assessment_radio_child_fluid"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" >
@@ -280,7 +280,7 @@
                         android:id="@+id/imci_diarrhoea_assessment_radio_child_fluid_drinking_eagerly"
                         android:text="@string/imci_diarrhoea_assessment_radio_child_fluid_drinking_eagerly" />
                 </TableRow>
-            </ie.ucc.bis.ui.custom.ToggleButtonGroupTableLayout>
+            </ie.ucc.bis.supportinglife.ui.custom.ToggleButtonGroupTableLayout>
 				    
 			<!-- ============================================================ -->
 			<!-- SKIN PINCH RADIO BUTTON GROUP -->
@@ -293,7 +293,7 @@
 			    android:layout_gravity="bottom"
 			    android:text="@string/imci_diarrhoea_assessment_radio_skin_pinch" />
 						
-			<ie.ucc.bis.ui.custom.ToggleButtonGroupTableLayout
+			<ie.ucc.bis.supportinglife.ui.custom.ToggleButtonGroupTableLayout
                 android:id="@+id/imci_diarrhoea_assessment_radio_skin_pinch"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" >
@@ -320,8 +320,8 @@
                         android:id="@+id/imci_diarrhoea_assessment_radio_skin_pinch_immediate"
                         android:text="@string/imci_diarrhoea_assessment_radio_skin_pinch_immediate" />
                 </TableRow>
-            </ie.ucc.bis.ui.custom.ToggleButtonGroupTableLayout>
+            </ie.ucc.bis.supportinglife.ui.custom.ToggleButtonGroupTableLayout>
         </LinearLayout>
 	</LinearLayout> <!-- end of diarrhoea assessment view -->
     </ScrollView>
-</LinearLayout>
+</LinearLayout> 

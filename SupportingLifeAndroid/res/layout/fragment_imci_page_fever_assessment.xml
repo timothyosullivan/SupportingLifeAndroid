@@ -34,7 +34,7 @@
 						android:layout_height="match_parent"
 						android:layout_gravity="bottom"
 						android:text="@string/imci_fever_assessment_radio_fever"/>
-					<ie.ucc.bis.ui.custom.ToggleButtonGroupTableLayout
+					<ie.ucc.bis.supportinglife.ui.custom.ToggleButtonGroupTableLayout
 						android:id="@+id/imci_fever_assessment_radio_fever"
 						android:layout_width="match_parent"
 						android:layout_height="match_parent">
@@ -58,7 +58,7 @@
 								android:id="@+id/imci_fever_assessment_radio_fever_temperature"
 								android:text="@string/imci_fever_assessment_radio_fever_temperature"/>						
 						</TableRow>
-					</ie.ucc.bis.ui.custom.ToggleButtonGroupTableLayout>
+					</ie.ucc.bis.supportinglife.ui.custom.ToggleButtonGroupTableLayout>
 				</LinearLayout>
 
 	            <!-- ============================================================ -->
