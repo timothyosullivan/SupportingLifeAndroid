@@ -19,6 +19,7 @@
 	<Classification>
 	    <Category>cough_for_21_days_or_more</Category>
 		<Name>Cough for 21 Days or more</Name>
+		<Identifier>CCM_COUGH_FOR_21_DAYS_OR_MORE_CLASSIFICATION</Identifier>
 		<CcmTreatmentDisplayName>Cough</CcmTreatmentDisplayName>
 		<Type>DANGER_SIGN</Type>
 		<Priority>1</Priority>
@@ -40,6 +41,7 @@
 	<Classification>
 	    <Category>diarrhoea_for_14_days_or_more</Category>
 		<Name>Diarrhoea for 14 Days or more</Name>
+		<Identifier>CCM_DIARRHOEA_FOR_14_DAYS_OR_MORE_CLASSIFICATION</Identifier>
 		<CcmTreatmentDisplayName>Diarrhoea</CcmTreatmentDisplayName>
 		<Type>DANGER_SIGN</Type>
 		<Priority>1</Priority>
@@ -59,6 +61,7 @@
 	<Classification>
 	    <Category>blood_in_stool</Category>
 		<Name>Blood in Stool</Name>
+		<Identifier>CCM_BLOOD_IN_STOOL_CLASSIFICATION</Identifier>
 		<Type>DANGER_SIGN</Type>
 		<Priority>1</Priority>
 		<SymptomRule rule="ANY_SYMPTOM">
@@ -78,6 +81,7 @@
 	<Classification>
 	    <Category>diarrhoea_less_than_14_days_and_no_blood_in_stool</Category>
 		<Name>Diarrhoea (less than 14 days AND no blood in stool)</Name>
+		<Identifier>CCM_DIARRHOEA_LESS_THAN_14_DAYS_AND_NO_BLOOD_IN_STOOL_CLASSIFICATION</Identifier>
 		<CcmTreatmentDisplayName>Diarrhoea</CcmTreatmentDisplayName>
 		<Type>SICK</Type>
 		<Priority>3</Priority>
@@ -102,6 +106,7 @@
 	<Classification>
 	    <Category>fever_for_last_7_days</Category>
 		<Name>Fever for last 7 Days</Name>
+		<Identifier>CCM_FEVER_FOR_LAST_7_DAYS_CLASSIFICATION</Identifier>
 		<CcmTreatmentDisplayName>Fever</CcmTreatmentDisplayName>
 		<Type>DANGER_SIGN</Type>
 		<Priority>1</Priority>
@@ -123,6 +128,7 @@
 	<Classification>
 	    <Category>fever_less_than_7_days</Category>
 		<Name>Fever (less than 7 days)</Name>
+		<Identifier>CCM_FEVER_FOR_LESS_THAN_7_DAYS_CLASSIFICATION</Identifier>
 		<CcmTreatmentDisplayName>Fever</CcmTreatmentDisplayName>
 		<Type>SICK</Type>
 		<Priority>3</Priority>
@@ -142,6 +148,7 @@
 	<Classification>
 	    <Category>convulsions</Category>
 		<Name>Convulsions</Name>
+		<Identifier>CCM_CONVULSIONS_CLASSIFICATION</Identifier>
 		<Type>DANGER_SIGN</Type>
 		<Priority>1</Priority>
 		<SymptomRule rule="ANY_SYMPTOM">
@@ -159,6 +166,7 @@
 	<Classification>
 	    <Category>not_able_to_drink_or_feed_anything</Category>
 		<Name>Not Able to Drink or Feed Anything</Name>
+		<Identifier>CCM_NOT_ABLE_TO_DRINK_OR_FEED_ANYTHING_CLASSIFICATION</Identifier>
 		<Type>DANGER_SIGN</Type>
 		<Priority>1</Priority>
 		<SymptomRule rule="ANY_SYMPTOM">
@@ -179,6 +187,7 @@
 	<Classification>
 	    <Category>vomits_everything</Category>
 		<Name>Vomits Everything</Name>
+		<Identifier>CCM_VOMITS_EVERYTHING_CLASSIFICATION</Identifier>
 		<Type>DANGER_SIGN</Type>
 		<Priority>1</Priority>
 		<SymptomRule rule="ANY_SYMPTOM">
@@ -199,6 +208,7 @@
 	<Classification>
 	    <Category>red_eye_for_4_days_or_more</Category>
 		<Name>Red Eye for 4 Days or more</Name>
+		<Identifier>CCM_RED_EYE_FOR_4_DAYS_OR_MORE_CLASSIFICATION</Identifier>
 		<CcmTreatmentDisplayName>Red Eye</CcmTreatmentDisplayName>
 		<Type>DANGER_SIGN</Type>
 		<Priority>1</Priority>
@@ -220,6 +230,7 @@
 	<Classification>
 	    <Category>red_eye_with_visual_problems</Category>
 		<Name>Red Eye with Visual Problems</Name>
+		<Identifier>CCM_RED_EYE_WITH_VISUAL_PROBLEMS_CLASSIFICATION</Identifier>
 		<CcmTreatmentDisplayName>Red Eye</CcmTreatmentDisplayName>
 		<Type>DANGER_SIGN</Type>
 		<Priority>1</Priority>
@@ -241,6 +252,7 @@
 	<Classification>
 	    <Category>red_eye_less_than_4_days</Category>
 		<Name>Red Eye (less than 4 days)</Name>
+		<Identifier>CCM_RED_EYE_LESS_THAN_4_DAYS_CLASSIFICATION</Identifier>
 		<CcmTreatmentDisplayName>Red Eye</CcmTreatmentDisplayName>
 		<Type>SICK</Type>
 		<Priority>3</Priority>
@@ -261,6 +273,7 @@
 	<Classification>
 	    <Category>other_problem</Category>
 		<Name>Other Problem</Name>
+		<Identifier>CCM_OTHER_PROBLEM_CLASSIFICATION</Identifier>
 		<Type>REFER</Type>
 		<Priority>2</Priority>
 		<SymptomRule rule="ANY_SYMPTOM">
@@ -276,6 +289,7 @@
 	<Classification>
 	    <Category>chest_indrawing</Category>
 		<Name>Chest Indrawing</Name>
+		<Identifier>CCM_CHEST_INDRAWING_CLASSIFICATION</Identifier>
 		<CcmTreatmentDisplayName>Chest Indrawing</CcmTreatmentDisplayName>
 		<Type>DANGER_SIGN</Type>
 		<Priority>1</Priority>
@@ -295,6 +309,7 @@
 	<Classification>
 	    <Category>fast_breathing</Category>
 		<Name>Fast Breathing</Name>
+		<Identifier>CCM_FAST_BREATHING_CLASSIFICATION</Identifier>
 		<Type>SICK</Type>
 		<Priority>3</Priority>
 		<SymptomRule rule="ANY_SYMPTOM">
@@ -330,6 +345,7 @@
 	<Classification>
 	    <Category>fast_breathing</Category>
 		<Name>Fast Breathing and Danger Sign</Name>
+		<Identifier>CCM_FAST_BREATHING_AND_DANGER_SIGN_CLASSIFICATION</Identifier>
 		<CcmTreatmentDisplayName>Fast Breathing and Danger Sign</CcmTreatmentDisplayName>
 		<Type>DANGER_SIGN</Type>
 		<Priority>1</Priority>
@@ -362,6 +378,7 @@
 	<Classification>
 	    <Category>very_sleepy_or_unconscious</Category>
 		<Name>Very Sleepy or Unconscious</Name>
+		<Identifier>CCM_VERY_SLEEPY_OR_UNCONSCIOUS_CLASSIFICATION</Identifier>
 		<Type>DANGER_SIGN</Type>
 		<Priority>1</Priority>
 		<SymptomRule rule="ANY_SYMPTOM">
@@ -377,6 +394,7 @@
 	<Classification>
 	    <Category>palmar_pallor</Category>
 		<Name>Palmar Pallor</Name>
+		<Identifier>CCM_PALMAR_PALLOR_CLASSIFICATION</Identifier>
 		<Type>DANGER_SIGN</Type>
 		<Priority>1</Priority>
 		<SymptomRule rule="ANY_SYMPTOM">
@@ -394,6 +412,7 @@
 	<Classification>
 	    <Category>red_on_muac_tape</Category>
 		<Name>Red on MUAC Tape</Name>
+		<Identifier>CCM_RED_ON_MUAC_TAPE_CLASSIFICATION</Identifier>
 		<Type>DANGER_SIGN</Type>
 		<Priority>1</Priority>
 		<SymptomRule rule="ANY_SYMPTOM">
@@ -409,6 +428,7 @@
 	<Classification>
 	    <Category>swelling_of_both_feet</Category>
 		<Name>Swelling of Both Feet</Name>
+		<Identifier>CCM_SWELLING_OF_BOTH_FEET_CLASSIFICATION</Identifier>
 		<Type>DANGER_SIGN</Type>
 		<Priority>1</Priority>
 		<SymptomRule rule="ANY_SYMPTOM">

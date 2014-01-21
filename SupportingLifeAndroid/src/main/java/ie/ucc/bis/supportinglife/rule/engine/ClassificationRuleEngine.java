@@ -32,6 +32,7 @@ public class ClassificationRuleEngine {
 
 	private static final String CLASSIFICATION_ELEMENT = "Classification";
 	private static final String CLASSIFICATION_CATEGORY = "Category";
+	private static final String CLASSIFICATION_IDENTIFIER = "Identifier";
 	private static final String CCM_TREATMENT_DISPLAY_NAME = "CcmTreatmentDisplayName";
 	private static final String CLASSIFICATION_NAME = "Name";
 	private static final String CLASSIFICATION_TYPE = "Type";
@@ -119,6 +120,10 @@ public class ClassificationRuleEngine {
 						else if (CLASSIFICATION_NAME.equalsIgnoreCase(elemName)) {
 							// <Name>
 							classification.setName(xmlParser.nextText());
+						}
+						else if (CLASSIFICATION_IDENTIFIER.equalsIgnoreCase(elemName)) {
+							// <Identifier>
+							classification.setIdentifier(xmlParser.nextText());
 						}
 						else if (CCM_TREATMENT_DISPLAY_NAME.equalsIgnoreCase(elemName)) {
 							// <CcmTreatmentDisplayName>

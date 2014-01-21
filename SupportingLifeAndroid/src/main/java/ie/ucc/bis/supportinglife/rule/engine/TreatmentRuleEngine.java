@@ -36,6 +36,7 @@ public class TreatmentRuleEngine {
 	private static final String TREATMENT_HEADER = "TreatmentHeader";
 	private static final String TREATMENT_FOOTER = "TreatmentFooter";
 	private static final String TREATMENT = "Treatment";
+	private static final String TREATMENT_IDENTIFIER = "Identifier";
 	private static final String CRITERIA_LIST = "CriteriaList";
 	private static final String TREATMENT_CRITERIA = "TreatmentCriteria";
 	private static final String SYMPTOM_CRITERIA = "SymptomCriteria";
@@ -352,6 +353,10 @@ public class TreatmentRuleEngine {
 						// <Treatment>
 						treatment = new Treatment();
 					}
+					else if (TREATMENT_IDENTIFIER.equalsIgnoreCase(elemName)) {
+						// <Identifier>
+						treatment.setIdentifier(elemName);
+					}					
 					else if (CRITERIA_LIST.equalsIgnoreCase(elemName)) {
 						// <CriteriaList>
 						ruleAttrib = xmlParser.getAttributeValue(null, RULE_ATTRIB);
@@ -634,7 +639,7 @@ public class TreatmentRuleEngine {
 
 		if (symptomCriteriaPasses && treatmentCriteriaPasses) {
 			// add the recommended treatment to patient classification
-			diagnostic.getTreatmentRecommendations().add(treatment.getRecommendation());
+			diagnostic.getTreatmentRecommendations().add(new TreatmentRecommendation(treatment.getIdentifier(), treatment.getRecommendation()));
 		}
 	}
 
@@ -731,8 +736,9 @@ public class TreatmentRuleEngine {
 
 		for (Diagnostic diagnostic : diagnostics) {
 			debugOutput.append(diagnostic.getClassification().getName() != null ? diagnostic.getClassification().getName() : "" + "\n");
-			for (String recommendedTreatment : diagnostic.getTreatmentRecommendations()) {
-				debugOutput.append(recommendedTreatment + "\n");
+			for (TreatmentRecommendation recommendedTreatment : diagnostic.getTreatmentRecommendations()) {
+				debugOutput.append(recommendedTreatment.getTreatmentIdentifier() + "\n");
+				debugOutput.append(recommendedTreatment.getTreatmentDescription() + "\n");
 			}
 		}
 

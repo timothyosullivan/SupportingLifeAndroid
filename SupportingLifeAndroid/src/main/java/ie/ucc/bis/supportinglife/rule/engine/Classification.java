@@ -13,20 +13,19 @@ import java.util.List;
  * classification_rules.xml e.g.
  * 
  * 	<Classification>
- *		<Category>cough_difficult_breathing</Category>
- *		<Name>Severe Pneumonia or Very Severe Disease</Name>
- *		<Type>SEVERE</Type>
- *		<SymptomRule rule="ANY">
- *			<Symptom>chest_indrawing</Symptom>
- *			<Symptom>stridor</Symptom>
- *			<!-- Any general danger sign -->
- *			<Symptom>not_able_to_drink_or_breastfeed</Symptom>
- *			<Symptom>vomits_everything</Symptom>
- *			<Symptom>history_of_convulsions</Symptom>
- *			<Symptom>lethargic_or_unconscious</Symptom>
- *			<Symptom>convulsing_now</Symptom>
- *		</SymptomRule>
- *	</Classification>
+ * 		<Category>red_eye_for_4_days_or_more</Category>
+ * 		<Name>Red Eye for 4 Days or more</Name>
+ * 		<Identifier>CCM_RED_EYE_FOR_4_DAYS_OR_MORE_CLASSIFICATION</Identifier>
+ * 		<CcmTreatmentDisplayName>Red Eye</CcmTreatmentDisplayName>
+ * 		<Type>DANGER_SIGN</Type>
+ * 		<Priority>1</Priority>
+ * 		<SymptomRule rule="ANY_SYMPTOM">
+ * 			<Symptom value="yes">ccm_ask_secondary_assessment_red_eyes_symptom_id</Symptom>							<!-- Red Eyes : YES -->
+ * 		</SymptomRule>
+ * 		<SymptomRule rule="ANY_SYMPTOM">
+ * 			<Symptom value="yes">ccm_ask_initial_assessment_red_eyes_duration_four_days_symptom_id</Symptom>		<!-- Red Eyes for 4 Days or more : YES -->
+ * 		</SymptomRule>
+ * </Classification>
  * 
  * OR
  * 
@@ -54,6 +53,7 @@ public class Classification implements Serializable {
 
 	private String category;
 	private String name;
+	private String identifier;
 	private String type;
 	private String ccmTreatmentDisplayName;
 	private int priority;
@@ -142,6 +142,20 @@ public class Classification implements Serializable {
 	 */
 	public void setName(String name) {
 		this.name = name;
+	}
+	
+	/**
+	 * Getter Method: getIdentifier()
+	 */
+	public String getIdentifier() {
+		return identifier;
+	}
+
+	/**
+	 * Setter Method: setIdentifier()
+	 */
+	public void setIdentifier(String identifier) {
+		this.identifier = identifier;
 	}
 
 	/**

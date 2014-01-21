@@ -5,6 +5,7 @@ import ie.ucc.bis.supportinglife.assessment.ccm.ui.CcmAssessmentTreatmentsFragme
 import ie.ucc.bis.supportinglife.rule.engine.CcmTreatmentDiagnosticComparator;
 import ie.ucc.bis.supportinglife.rule.engine.Classification;
 import ie.ucc.bis.supportinglife.rule.engine.Diagnostic;
+import ie.ucc.bis.supportinglife.rule.engine.TreatmentRecommendation;
 import ie.ucc.bis.supportinglife.rule.engine.enums.CcmClassificationType;
 
 import java.util.ArrayList;
@@ -116,8 +117,12 @@ public class CcmTreatmentAdapter extends BaseAdapter {
     			
     			TextView treatmentsTitle = (TextView) view.findViewById(R.id.treatment_title);
     			
-    			// add recommended header treatments 
-    			List<String> headerTreatments = getPatientDiagnostics().get(position).getTreatmentRecommendations();
+    			// add recommended header treatments
+    			List<String> headerTreatments = new ArrayList<String>();
+    			for (TreatmentRecommendation treatmentRecommendation : getPatientDiagnostics().get(position).getTreatmentRecommendations()) {
+    				headerTreatments.add(treatmentRecommendation.getTreatmentDescription());
+    			}
+    			
                 addBulletedListToTextView(headerTreatments, ((TextView) view.findViewById(R.id.treatment_list_item_desc)));
                 
                 // animate the header
@@ -134,7 +139,12 @@ public class CcmTreatmentAdapter extends BaseAdapter {
         		TextView classificationTitleText = (TextView) view.findViewById(R.id.treatment_list_item_title);
         		classificationTitleText.setText(classificationTitle);
         		
-                List<String> treatments = getPatientDiagnostics().get(position).getTreatmentRecommendations();
+    			// add recommended treatments
+    			List<String> treatments = new ArrayList<String>();
+    			for (TreatmentRecommendation treatmentRecommendation : getPatientDiagnostics().get(position).getTreatmentRecommendations()) {
+    				treatments.add(treatmentRecommendation.getTreatmentDescription());
+    			}
+        		
                 addBulletedListToTextView(treatments, ((TextView) view.findViewById(R.id.treatment_list_item_desc)));            
     			break;
 
@@ -143,7 +153,13 @@ public class CcmTreatmentAdapter extends BaseAdapter {
         	        LayoutInflater inflater = LayoutInflater.from(getCcmAssessmentTreatmentsFragment().getActivity());
         			view = inflater.inflate(R.layout.ccm_treatment_list_item_footer, container, false);
         		}
-                List<String> footerTreatments = getPatientDiagnostics().get(position).getTreatmentRecommendations();
+        		
+    			// add recommended footer treatments
+    			List<String> footerTreatments = new ArrayList<String>();
+    			for (TreatmentRecommendation treatmentRecommendation : getPatientDiagnostics().get(position).getTreatmentRecommendations()) {
+    				footerTreatments.add(treatmentRecommendation.getTreatmentDescription());
+    			}
+ 
                 addBulletedListToTextView(footerTreatments, ((TextView) view.findViewById(R.id.treatment_list_item_desc)));
 
     			break;  			

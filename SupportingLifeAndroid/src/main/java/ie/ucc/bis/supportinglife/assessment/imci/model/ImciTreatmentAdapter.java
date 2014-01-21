@@ -4,8 +4,10 @@ import ie.ucc.bis.supportinglife.R;
 import ie.ucc.bis.supportinglife.assessment.imci.ui.ImciAssessmentTreatmentsFragment;
 import ie.ucc.bis.supportinglife.rule.engine.Classification;
 import ie.ucc.bis.supportinglife.rule.engine.Diagnostic;
+import ie.ucc.bis.supportinglife.rule.engine.TreatmentRecommendation;
 import ie.ucc.bis.supportinglife.rule.engine.enums.ImciClassificationType;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import android.text.Html;
@@ -86,7 +88,13 @@ public class ImciTreatmentAdapter extends BaseAdapter {
         		String classificationTitle = getPatientDiagnostics().get(position).getClassification().getName();
         		TextView classificationTitleText = (TextView) view.findViewById(R.id.treatment_list_item_title);
         		classificationTitleText.setText(classificationTitle);
-                List<String> treatments = getPatientDiagnostics().get(position).getTreatmentRecommendations();
+        		
+    			// add recommended treatments
+    			List<String> treatments = new ArrayList<String>();
+    			for (TreatmentRecommendation treatmentRecommendation : getPatientDiagnostics().get(position).getTreatmentRecommendations()) {
+    				treatments.add(treatmentRecommendation.getTreatmentDescription());
+    			}               
+                
                 addBulletedListToTextView(treatments, ((TextView) view.findViewById(R.id.treatment_list_item_desc)));
                 
     			ImageView severityImageView = (ImageView) view.findViewById(R.id.treatment_list_item_classification_severity);

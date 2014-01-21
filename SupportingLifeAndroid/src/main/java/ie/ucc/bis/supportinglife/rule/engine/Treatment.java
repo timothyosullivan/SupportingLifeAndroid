@@ -34,6 +34,7 @@ public class Treatment implements Serializable {
 	 */
 	private static final long serialVersionUID = 2969585100135738023L;
 
+	private String identifier;
 	private List<TreatmentCriterion> treatmentCriterion;
 	private String recommendation;
 
@@ -45,8 +46,21 @@ public class Treatment implements Serializable {
 	public Treatment() {
 		setTreatmentCriterion(new ArrayList<TreatmentCriterion>());
 	}
-		
 
+	/**
+	 * Getter Method: getIdentifier()
+	 */
+	public String getIdentifier() {
+		return identifier;
+	}
+
+	/**
+	 * Setter Method: setIdentifier()
+	 */
+	public void setIdentifier(String identifier) {
+		this.identifier = identifier;
+	}
+	
 	/**
 	 * Getter Method: getTreatmentCriterion()
 	 */

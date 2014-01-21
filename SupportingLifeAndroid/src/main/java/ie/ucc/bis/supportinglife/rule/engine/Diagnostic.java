@@ -24,7 +24,7 @@ public class Diagnostic implements Serializable {
 	private Classification classification;
 	private boolean treatmentHeader;
 	private boolean treatmentFooter;
-	private List<String> treatmentRecommendations;
+	private List<TreatmentRecommendation> treatmentRecommendations;
 	
 	/**
 	 * Constructor
@@ -32,7 +32,7 @@ public class Diagnostic implements Serializable {
 	public Diagnostic() {
 		setTreatmentHeader(false);
 		setTreatmentFooter(false);
-		setTreatmentRecommendations(new ArrayList<String>());
+		setTreatmentRecommendations(new ArrayList<TreatmentRecommendation>());
 	}
 
 	/**
@@ -120,14 +120,14 @@ public class Diagnostic implements Serializable {
 	/**
 	 * Getter Method: getTreatmentRecommendations()
 	 */
-	public List<String> getTreatmentRecommendations() {
+	public List<TreatmentRecommendation> getTreatmentRecommendations() {
 		return treatmentRecommendations;
 	}
 
 	/**
 	 * Setter Method: setTreatmentRecommendations()
 	 */
-	public void setTreatmentRecommendations(List<String> treatmentRecommendations) {
+	public void setTreatmentRecommendations(List<TreatmentRecommendation> treatmentRecommendations) {
 		this.treatmentRecommendations = treatmentRecommendations;
 	}
 }
