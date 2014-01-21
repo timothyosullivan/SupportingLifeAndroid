@@ -661,6 +661,7 @@
 			</Recommendation>
 		</Treatment>
 		<Treatment>
+		    <Identifier>CCM_SICK_SIGN_FOLLOW_UP_THREE_DAYS_TREATMENT</Identifier>
 			<Recommendation>Follow up child in 3 days</Recommendation>
 		</Treatment>
 	</TreatmentRule>
