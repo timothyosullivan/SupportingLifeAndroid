@@ -232,6 +232,7 @@
 	<style name="AboutText">
 		<item name="android:layout_width">wrap_content</item>
 		<item name="android:layout_height">wrap_content</item>
+		<item name="android:layout_gravity">center_horizontal</item>
 		<item name="android:layout_marginBottom">3dp</item>
 		<item name="android:textColor">@color/Black</item>
 		<item name="android:paddingLeft">2dp</item>
