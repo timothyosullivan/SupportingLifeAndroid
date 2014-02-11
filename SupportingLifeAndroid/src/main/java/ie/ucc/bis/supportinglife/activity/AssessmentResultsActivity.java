@@ -254,7 +254,7 @@ public class AssessmentResultsActivity extends SupportingLifeBaseActivity {
     	// patient assessment
     	exitAssessmentDialogHandler();
     }
-	
+    	
 	/**
 	 * Getter Method: getViewPager()
 	 */	

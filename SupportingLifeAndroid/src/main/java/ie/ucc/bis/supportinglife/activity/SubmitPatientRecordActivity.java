@@ -98,7 +98,7 @@ public class SubmitPatientRecordActivity extends SupportingLifeBaseActivity {
 			TextView txt = (TextView) findViewById(R.id.network_comm_result);
 			if (patient != null) {
 			txt.setText("Patient Id: " + patient.getPatientId() + "\n");
-			txt.append("Patient Name: " + patient.getFirstName() + " " + patient.getSurname());
+			txt.append("Patient Name: " + patient.getChildFirstName() + " " + patient.getChildSurname());
 			}
 			else {
 				txt.setText("COMMUNICATION ERROR!");

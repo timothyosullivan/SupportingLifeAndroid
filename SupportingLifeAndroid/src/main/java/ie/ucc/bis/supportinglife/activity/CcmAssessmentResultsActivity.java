@@ -5,9 +5,9 @@ import ie.ucc.bis.supportinglife.assessment.ccm.ui.CcmAssessmentClassificationsF
 import ie.ucc.bis.supportinglife.assessment.ccm.ui.CcmAssessmentTreatmentsFragment;
 import ie.ucc.bis.supportinglife.assessment.model.review.ReviewItem;
 import ie.ucc.bis.supportinglife.assessment.ui.AssessmentResultsReviewFragment;
-import ie.ucc.bis.supportinglife.domain.Patient;
 import ie.ucc.bis.supportinglife.rule.engine.ClassificationRuleEngine;
 import ie.ucc.bis.supportinglife.rule.engine.TreatmentRuleEngine;
+import ie.ucc.bis.supportinglife.ui.utilities.PatientHandlerUtils;
 
 import java.util.ArrayList;
 
@@ -54,7 +54,7 @@ public class CcmAssessmentResultsActivity extends AssessmentResultsActivity {
 		Intent intent = getIntent();
         setReviewItems((ArrayList<ReviewItem>) intent.getSerializableExtra(CcmAssessmentActivity.ASSESSMENT_REVIEW_ITEMS));
         
-        setPatient(new Patient());
+        setPatient(PatientHandlerUtils.populateCcmPatientDetails(getReviewItems()));
         
         // resolve CCM classifications based on assessed symptoms        
         setClassificationRuleEngine(new ClassificationRuleEngine());

@@ -1,10 +1,10 @@
 package ie.ucc.bis.supportinglife.domain;
 
 import ie.ucc.bis.supportinglife.rule.engine.Diagnostic;
-import ie.ucc.bis.supportinglife.rule.engine.Symptom;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -19,108 +19,350 @@ public class Patient implements Serializable {
 	 */
 	private static final long serialVersionUID = 7692081022011255176L;
 	
+	private Long patientId;
+	private String nationalId;
+	private String nationalHealthId;
+	private String childFirstName;
+	private String childSurname;
+	private Date birthDate;
+	private String gender;
+	private String caregiverName;
+	private String relationship;
+	private String otherRelationship;
+	private String physicalAddress;
+	private String villageTa;
+	private Date visitDate;	
 	
-	private long patientId;
-	private String firstName;
-	private String surname;
-	private List<Symptom> symptoms;
+	// Look Symptoms
+	private boolean chestIndrawing;
+	private Integer breathsPerMinute;
+	private boolean sleepyUnconscious;	
+	private boolean palmarPallor;	
+	private String muacTapeColour;	
+	private boolean swellingBothFeet;	
+	
+	// Ask Look Symptoms
+	private String problem;
+	private boolean cough;	
+	private Integer coughDuration;
+	private boolean diarrhoea;	
+	private Integer diarrhoeaDuration;
+	private boolean bloodInStool;
+	private boolean fever;
+	private Integer feverDuration;
+	private boolean convulsions;
+	private boolean difficultyDrinkingOrFeeding;
+	private boolean unableToDrinkOrFeed;
+	private boolean vomiting;
+	private boolean vomitsEverything;
+	private boolean redEye;
+	private Integer redEyeDuration;
+	private boolean difficultySeeing;
+	private Integer difficultySeeingDuration;
+	
+	// Classification and Treatment Diagnostics
 	private List<Diagnostic> diagnostics;
 	
 	public Patient() {
-		setSymptoms(new ArrayList<Symptom>());
 		setDiagnostics(new ArrayList<Diagnostic>());
 	}
 
-	/**
-	 * Constructor
-	 * 
-	 * @param firstName
-	 * @param surname
-	 */
-	public Patient(String firstName, String surname) {
-		this();
-		this.setFirstName(firstName);
-		this.setSurname(surname);
-	}	
-	
-	/**
-	 * Constructor
-	 * 
-	 * @param patientId
-	 * @param firstName
-	 * @param surname
-	 */
-	public Patient(long patientId, String firstName, String surname) {
-		this(firstName, surname);
-		this.setPatientId(patientId);
-	}
-
-	/**
-	 * Getter Method: getPatientId()
-	 */
 	public long getPatientId() {
 		return patientId;
 	}
 
-	/**
-	 * Setter Method: setPatientId()
-	 */
 	public void setPatientId(long patientId) {
 		this.patientId = patientId;
 	}
 	
-	/**
-	 * Getter Method: getFirstName()
-	 */
-	public String getFirstName() {
-		return firstName;
+	public String getNationalId() {
+		return nationalId;
 	}
 
-	/**
-	 * Setter Method: setFirstName()
-	 */
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
+	public void setNationalId(String nationalId) {
+		this.nationalId = nationalId;
 	}
 
-	/**
-	 * Getter Method: getSurname()
-	 */
-	public String getSurname() {
-		return surname;
+	public String getNationalHealthId() {
+		return nationalHealthId;
 	}
 
-	/**
-	 * Setter Method: setSurname()
-	 */
-	public void setSurname(String surname) {
-		this.surname = surname;
+	public void setNationalHealthId(String nationalHealthId) {
+		this.nationalHealthId = nationalHealthId;
 	}
 
-	/**
-	 * Getter Method: getSymptoms()
-	 */
-	public List<Symptom> getSymptoms() {
-		return symptoms;
+	public String getChildFirstName() {
+		return childFirstName;
 	}
 
-	/**
-	 * Setter Method: setSymptoms()
-	 */
-	public void setSymptoms(List<Symptom> symptoms) {
-		this.symptoms = symptoms;
+	public void setChildFirstName(String childFirstName) {
+		this.childFirstName = childFirstName;
 	}
 
-	/**
-	 * Getter Method: getDiagnostics()
-	 */
+	public String getChildSurname() {
+		return childSurname;
+	}
+
+	public void setChildSurname(String childSurname) {
+		this.childSurname = childSurname;
+	}
+
+	public Date getBirthDate() {
+		return birthDate;
+	}
+
+	public void setBirthDate(Date birthDate) {
+		this.birthDate = birthDate;
+	}
+
+	public String getGender() {
+		return gender;
+	}
+
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+
+	public String getCaregiverName() {
+		return caregiverName;
+	}
+
+	public void setCaregiverName(String caregiverName) {
+		this.caregiverName = caregiverName;
+	}
+
+	public String getRelationship() {
+		return relationship;
+	}
+
+	public void setRelationship(String relationship) {
+		this.relationship = relationship;
+	}
+
+	public String getOtherRelationship() {
+		return otherRelationship;
+	}
+
+	public void setOtherRelationship(String otherRelationship) {
+		this.otherRelationship = otherRelationship;
+	}
+
+	public String getPhysicalAddress() {
+		return physicalAddress;
+	}
+
+	public void setPhysicalAddress(String physicalAddress) {
+		this.physicalAddress = physicalAddress;
+	}
+
+	public String getVillageTa() {
+		return villageTa;
+	}
+
+	public void setVillageTa(String villageTa) {
+		this.villageTa = villageTa;
+	}
+
+	public Date getVisitDate() {
+		return visitDate;
+	}
+
+	public void setVisitDate(Date visitDate) {
+		this.visitDate = visitDate;
+	}
+
+	public boolean isChestIndrawing() {
+		return chestIndrawing;
+	}
+
+	public void setChestIndrawing(boolean chestIndrawing) {
+		this.chestIndrawing = chestIndrawing;
+	}
+
+	public Integer getBreathsPerMinute() {
+		return breathsPerMinute;
+	}
+
+	public void setBreathsPerMinute(Integer breathsPerMinute) {
+		this.breathsPerMinute = breathsPerMinute;
+	}
+
+	public boolean isSleepyUnconscious() {
+		return sleepyUnconscious;
+	}
+
+	public void setSleepyUnconscious(boolean sleepyUnconscious) {
+		this.sleepyUnconscious = sleepyUnconscious;
+	}
+
+	public boolean isPalmarPallor() {
+		return palmarPallor;
+	}
+
+	public void setPalmarPallor(boolean palmarPallor) {
+		this.palmarPallor = palmarPallor;
+	}
+
+	public String getMuacTapeColour() {
+		return muacTapeColour;
+	}
+
+	public void setMuacTapeColour(String muacTapeColour) {
+		this.muacTapeColour = muacTapeColour;
+	}
+
+	public boolean isSwellingBothFeet() {
+		return swellingBothFeet;
+	}
+
+	public void setSwellingBothFeet(boolean swellingBothFeet) {
+		this.swellingBothFeet = swellingBothFeet;
+	}
+
+	public String getProblem() {
+		return problem;
+	}
+
+	public void setProblem(String problem) {
+		this.problem = problem;
+	}
+
+	public boolean isCough() {
+		return cough;
+	}
+
+	public void setCough(boolean cough) {
+		this.cough = cough;
+	}
+
+	public Integer getCoughDuration() {
+		return coughDuration;
+	}
+
+	public void setCoughDuration(Integer coughDuration) {
+		this.coughDuration = coughDuration;
+	}
+
+	public boolean isDiarrhoea() {
+		return diarrhoea;
+	}
+
+	public void setDiarrhoea(boolean diarrhoea) {
+		this.diarrhoea = diarrhoea;
+	}
+
+	public Integer getDiarrhoeaDuration() {
+		return diarrhoeaDuration;
+	}
+
+	public void setDiarrhoeaDuration(Integer diarrhoeaDuration) {
+		this.diarrhoeaDuration = diarrhoeaDuration;
+	}
+
+	public boolean isBloodInStool() {
+		return bloodInStool;
+	}
+
+	public void setBloodInStool(boolean bloodInStool) {
+		this.bloodInStool = bloodInStool;
+	}
+
+	public boolean isFever() {
+		return fever;
+	}
+
+	public void setFever(boolean fever) {
+		this.fever = fever;
+	}
+
+	public Integer getFeverDuration() {
+		return feverDuration;
+	}
+
+	public void setFeverDuration(Integer feverDuration) {
+		this.feverDuration = feverDuration;
+	}
+
+	public boolean isConvulsions() {
+		return convulsions;
+	}
+
+	public void setConvulsions(boolean convulsions) {
+		this.convulsions = convulsions;
+	}
+
+	public boolean isDifficultyDrinkingOrFeeding() {
+		return difficultyDrinkingOrFeeding;
+	}
+
+	public void setDifficultyDrinkingOrFeeding(boolean difficultyDrinkingOrFeeding) {
+		this.difficultyDrinkingOrFeeding = difficultyDrinkingOrFeeding;
+	}
+
+	public boolean isUnableToDrinkOrFeed() {
+		return unableToDrinkOrFeed;
+	}
+
+	public void setUnableToDrinkOrFeed(boolean unableToDrinkOrFeed) {
+		this.unableToDrinkOrFeed = unableToDrinkOrFeed;
+	}
+
+	public boolean isVomiting() {
+		return vomiting;
+	}
+
+	public void setVomiting(boolean vomiting) {
+		this.vomiting = vomiting;
+	}
+
+	public boolean isVomitsEverything() {
+		return vomitsEverything;
+	}
+
+	public void setVomitsEverything(boolean vomitsEverything) {
+		this.vomitsEverything = vomitsEverything;
+	}
+
+	public boolean isRedEye() {
+		return redEye;
+	}
+
+	public void setRedEye(boolean redEye) {
+		this.redEye = redEye;
+	}
+
+	public Integer getRedEyeDuration() {
+		return redEyeDuration;
+	}
+
+	public void setRedEyeDuration(Integer redEyeDuration) {
+		this.redEyeDuration = redEyeDuration;
+	}
+
+	public boolean isDifficultySeeing() {
+		return difficultySeeing;
+	}
+
+	public void setDifficultySeeing(boolean difficultySeeing) {
+		this.difficultySeeing = difficultySeeing;
+	}
+
+	public Integer getDifficultySeeingDuration() {
+		return difficultySeeingDuration;
+	}
+
+	public void setDifficultySeeingDuration(Integer difficultySeeingDuration) {
+		this.difficultySeeingDuration = difficultySeeingDuration;
+	}
+
+	public void setPatientId(Long patientId) {
+		this.patientId = patientId;
+	}
+
 	public List<Diagnostic> getDiagnostics() {
 		return diagnostics;
 	}
 
-	/**
-	 * Setter Method: setDiagnostics()
-	 */
 	public void setDiagnostics(List<Diagnostic> diagnostics) {
 		this.diagnostics = diagnostics;
 	}	

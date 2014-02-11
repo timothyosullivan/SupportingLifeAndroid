@@ -53,7 +53,9 @@ public class RecordPatientDetailsActivity extends SupportingLifeBaseActivity {
     	editText = (EditText) findViewById(R.id.surname_text);
     	String surname = editText.getText().toString();
     	
-    	Patient patient = new Patient(firstName, surname);
+    	Patient patient = new Patient();
+    	patient.setChildFirstName(firstName);
+    	patient.setChildSurname(surname);
     	intent.putExtra(EXTRA_MESSAGE, patient);
     	startActivity(intent);    	
     }   
