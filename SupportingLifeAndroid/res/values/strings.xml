@@ -537,14 +537,16 @@
 	<string name="about_version_value">2.0.0 (beta release)</string>
 	<string name="about_release_date_label">Release Date</string>
 	<string name="about_release_date_value">March 2014</string>
-	<string name="about_developer_label">Developer</string>
+	<string name="about_developer_label">Lead Developer</string>
 	<string name="about_first_developer_value">Dr Timothy O\'Sullivan</string>
-	<string name="about_business_analyst_label">Business Analyst</string>
+	<string name="about_business_analyst_label">Business Analyst / Development</string>
 	<string name="about_business_analyst_value">James Flynn</string>
 	<string name="about_ui_analyst_label">UI Analyst</string>
 	<string name="about_ui_analyst_value">Dr Yvonne O\'Connor</string>
 	<string name="about_project_label">Project Details</string>
 	<string name="about_project_value">http://www.supportinglife.eu</string>
+	<string name="about_technical_project_label">Technical Project Details</string>
+	<string name="about_technical_project_value">http://supportinglife.elasticbeanstalk.com/</string>
 	<string name="supporting_life_tree_image">Supporting Life Tree Image</string>
  
     <!-- ============================================================ -->

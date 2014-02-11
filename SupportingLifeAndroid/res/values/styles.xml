@@ -201,11 +201,11 @@
 	<style name="TrainingText">
 		<item name="android:layout_width">match_parent</item>
 		<item name="android:layout_height">wrap_content</item>
-		<item name="android:layout_marginBottom">3dp</item>
+		<item name="android:layout_marginBottom">2dp</item>
 		<item name="android:textColor">@color/Gray</item>
 		<item name="android:textStyle">bold</item>
 		<item name="android:paddingLeft">2dp</item>
-		<item name="android:paddingTop">10dp</item>
+		<item name="android:paddingTop">5dp</item>
 		<item name="android:textSize">18sp</item>
 		<item name="android:enabled">false</item>
 	</style>
@@ -217,11 +217,11 @@
 		<item name="android:layout_width">wrap_content</item>
 		<item name="android:layout_height">wrap_content</item>
 		<item name="android:layout_gravity">center_horizontal</item>
-		<item name="android:layout_marginBottom">3dp</item>
+		<item name="android:layout_marginBottom">4dp</item>
 		<item name="android:textColor">@color/DarkGreen</item>
 		<item name="android:paddingLeft">4dp</item>
 		<item name="android:paddingRight">6dp</item>
-		<item name="android:paddingTop">10dp</item>
+		<item name="android:paddingTop">5dp</item>
 		<item name="android:textSize">12sp</item>
 		<item name="android:enabled">false</item>
 	</style>
@@ -233,10 +233,10 @@
 		<item name="android:layout_width">wrap_content</item>
 		<item name="android:layout_height">wrap_content</item>
 		<item name="android:layout_gravity">center_horizontal</item>
-		<item name="android:layout_marginBottom">3dp</item>
+		<item name="android:layout_marginBottom">2dp</item>
 		<item name="android:textColor">@color/Black</item>
 		<item name="android:paddingLeft">2dp</item>
-		<item name="android:paddingTop">3dp</item>
+		<item name="android:paddingTop">2dp</item>
 		<item name="android:textSize">12sp</item>
 		<item name="android:enabled">false</item>
 	</style>
@@ -247,7 +247,8 @@
 	<style name="AboutWebLink">
 		<item name="android:layout_width">wrap_content</item>
 		<item name="android:layout_height">wrap_content</item>
-		<item name="android:layout_marginBottom">3dp</item>
+		<item name="android:layout_gravity">center_horizontal</item>
+		<item name="android:layout_marginBottom">4dp</item>
 		<item name="android:autoLink">web</item>
 		<item name="android:textSize">12sp</item>
 		<item name="android:linksClickable">true</item>

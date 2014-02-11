@@ -143,14 +143,36 @@
             android:id="@+id/about_project_label"
             style="@style/AboutLabel"
             android:text="@string/about_project_label"/>
- 
+          
         <TextView
             android:id="@+id/about_project_value"
 			style="@style/AboutWebLink"
             android:text="@string/about_project_value"/>
 	</LinearLayout>
  
+	<!-- ============================================================ -->
+    <!-- ABOUT TECHNICAL PROJECT -->
+    <!-- ============================================================ -->
+
+	<LinearLayout
+        android:id="@+id/about_technical_project"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal" 
+        android:orientation="vertical">
  
+        <TextView
+            android:id="@+id/about_technical_project_label"
+            style="@style/AboutLabel"
+            android:text="@string/about_technical_project_label"/>
+          
+        <TextView
+            android:id="@+id/about_technical_project_value"
+			style="@style/AboutWebLink"
+            android:text="@string/about_technical_project_value"/>
+	</LinearLayout>
+
+	
     <!-- ============================================================ -->
     <!-- SPINNING WHEEL IMAGE HANDLER -->
     <!-- ============================================================ -->
