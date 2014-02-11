@@ -5,10 +5,12 @@ import ie.ucc.bis.supportinglife.assessment.ccm.ui.CcmAssessmentClassificationsF
 import ie.ucc.bis.supportinglife.assessment.ccm.ui.CcmAssessmentTreatmentsFragment;
 import ie.ucc.bis.supportinglife.assessment.model.review.ReviewItem;
 import ie.ucc.bis.supportinglife.assessment.ui.AssessmentResultsReviewFragment;
+import ie.ucc.bis.supportinglife.helper.PatientHandlerUtils;
 import ie.ucc.bis.supportinglife.rule.engine.ClassificationRuleEngine;
 import ie.ucc.bis.supportinglife.rule.engine.TreatmentRuleEngine;
-import ie.ucc.bis.supportinglife.ui.utilities.PatientHandlerUtils;
+import ie.ucc.bis.supportinglife.ui.utilities.LoggerUtils;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 
 import android.app.ActionBar;
@@ -36,6 +38,9 @@ import android.widget.BaseAdapter;
  */
 public class CcmAssessmentResultsActivity extends AssessmentResultsActivity {
 	
+	private final String LOG_TAG = "ie.ucc.bis.supportinglife.activity.CcmAssessmentResultsActivity";
+
+	
 	/* 
 	 * Method: onCreate() 
 	 * 
@@ -57,7 +62,12 @@ public class CcmAssessmentResultsActivity extends AssessmentResultsActivity {
         
         
         Resources resources = getApplicationContext().getResources();
-        setPatient(PatientHandlerUtils.populateCcmPatientDetails(resources, getReviewItems()));
+        try {
+			setPatient((new PatientHandlerUtils()).populateCcmPatientDetails(resources, getReviewItems()));
+		} catch (ParseException e) {
+			LoggerUtils.i(LOG_TAG, "Parse Exception thrown whilst constructing patient instance");
+			e.printStackTrace();
+		}
         
         // resolve CCM classifications based on assessed symptoms        
         setClassificationRuleEngine(new ClassificationRuleEngine());
