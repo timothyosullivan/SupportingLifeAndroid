@@ -13,6 +13,7 @@ import java.util.ArrayList;
 
 import android.app.ActionBar;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.widget.BaseAdapter;
@@ -54,7 +55,9 @@ public class CcmAssessmentResultsActivity extends AssessmentResultsActivity {
 		Intent intent = getIntent();
         setReviewItems((ArrayList<ReviewItem>) intent.getSerializableExtra(CcmAssessmentActivity.ASSESSMENT_REVIEW_ITEMS));
         
-        setPatient(PatientHandlerUtils.populateCcmPatientDetails(getReviewItems()));
+        
+        Resources resources = getApplicationContext().getResources();
+        setPatient(PatientHandlerUtils.populateCcmPatientDetails(resources, getReviewItems()));
         
         // resolve CCM classifications based on assessed symptoms        
         setClassificationRuleEngine(new ClassificationRuleEngine());
