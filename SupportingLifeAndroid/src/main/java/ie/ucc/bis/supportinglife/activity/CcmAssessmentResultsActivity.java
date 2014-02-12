@@ -5,17 +5,13 @@ import ie.ucc.bis.supportinglife.assessment.ccm.ui.CcmAssessmentClassificationsF
 import ie.ucc.bis.supportinglife.assessment.ccm.ui.CcmAssessmentTreatmentsFragment;
 import ie.ucc.bis.supportinglife.assessment.model.review.ReviewItem;
 import ie.ucc.bis.supportinglife.assessment.ui.AssessmentResultsReviewFragment;
-import ie.ucc.bis.supportinglife.helper.PatientHandlerUtils;
 import ie.ucc.bis.supportinglife.rule.engine.ClassificationRuleEngine;
 import ie.ucc.bis.supportinglife.rule.engine.TreatmentRuleEngine;
-import ie.ucc.bis.supportinglife.ui.utilities.LoggerUtils;
 
-import java.text.ParseException;
 import java.util.ArrayList;
 
 import android.app.ActionBar;
 import android.content.Intent;
-import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.widget.BaseAdapter;
@@ -37,8 +33,6 @@ import android.widget.BaseAdapter;
  *
  */
 public class CcmAssessmentResultsActivity extends AssessmentResultsActivity {
-	
-	private final String LOG_TAG = "ie.ucc.bis.supportinglife.activity.CcmAssessmentResultsActivity";
 
 	
 	/* 
@@ -60,15 +54,6 @@ public class CcmAssessmentResultsActivity extends AssessmentResultsActivity {
 		Intent intent = getIntent();
         setReviewItems((ArrayList<ReviewItem>) intent.getSerializableExtra(CcmAssessmentActivity.ASSESSMENT_REVIEW_ITEMS));
         
-        
-        Resources resources = getApplicationContext().getResources();
-        try {
-			setPatient((new PatientHandlerUtils()).populateCcmPatientDetails(resources, getReviewItems()));
-		} catch (ParseException e) {
-			LoggerUtils.i(LOG_TAG, "Parse Exception thrown whilst constructing patient instance");
-			e.printStackTrace();
-		}
-        
         // resolve CCM classifications based on assessed symptoms        
         setClassificationRuleEngine(new ClassificationRuleEngine());
         getClassificationRuleEngine().readCcmClassificationRules((SupportingLifeBaseActivity) this);
@@ -79,6 +64,9 @@ public class CcmAssessmentResultsActivity extends AssessmentResultsActivity {
         getTreatmentRuleEngine().readCcmTreatmentRules((SupportingLifeBaseActivity) this);
         getTreatmentRuleEngine().determineCcmTreatments(this, getReviewItems(), getPatient());
  
+        // record the patient visit in the DB
+        recordPatientVisit();
+        
         // create a new Action bar and set title to strings.xml
         final ActionBar bar = getActionBar();
         bar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
@@ -105,7 +93,7 @@ public class CcmAssessmentResultsActivity extends AssessmentResultsActivity {
             bar.setSelectedNavigationItem(savedInstanceState.getInt("tab", 0));
         }
 	}
-	
+
 	/**
 	 * Display the treatments tab and scroll to the
 	 * relevant classification if applicable, otherwise flash header 

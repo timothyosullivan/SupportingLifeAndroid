@@ -2,14 +2,18 @@ package ie.ucc.bis.supportinglife.activity;
 
 import ie.ucc.bis.supportinglife.assessment.model.review.ReviewItem;
 import ie.ucc.bis.supportinglife.domain.Patient;
+import ie.ucc.bis.supportinglife.helper.PatientHandlerUtils;
 import ie.ucc.bis.supportinglife.rule.engine.ClassificationRuleEngine;
 import ie.ucc.bis.supportinglife.rule.engine.TreatmentRuleEngine;
+import ie.ucc.bis.supportinglife.ui.utilities.LoggerUtils;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 
 import android.app.ActionBar;
 import android.app.ActionBar.Tab;
 import android.content.Context;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -27,6 +31,8 @@ import android.view.View;
  *
  */
 public class AssessmentResultsActivity extends SupportingLifeBaseActivity {
+	
+	private final String LOG_TAG = "ie.ucc.bis.supportinglife.activity.CcmAssessmentResultsActivity";
 	
 	private ViewPager ViewPager;
 	private TabsAdapter TabsAdapter;
@@ -223,6 +229,25 @@ public class AssessmentResultsActivity extends SupportingLifeBaseActivity {
 		}
 	} // end of static TabsAdapter class
 
+	/**
+	 * Responsible for recording the patient visit in the SQLite DB
+	 * 
+	 */	
+	protected void recordPatientVisit() {
+		Resources resources = getApplicationContext().getResources();
+        try {
+        	// firstly constuct the patient instance
+			setPatient((new PatientHandlerUtils()).populateCcmPatientDetails(resources, getReviewItems()));
+			
+			// secondly add this patient record to the DB
+			
+		} catch (ParseException e) {
+			LoggerUtils.i(LOG_TAG, "Parse Exception thrown whilst constructing patient instance");
+			e.printStackTrace();
+		}
+	}
+	
+	
 	/**
 	 * Click Handler: Handle the click on the home button
 	 * 
