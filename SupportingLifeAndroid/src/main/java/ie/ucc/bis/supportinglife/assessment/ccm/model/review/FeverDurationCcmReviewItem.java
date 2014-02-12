@@ -33,9 +33,10 @@ public class FeverDurationCcmReviewItem extends ReviewItem implements Serializab
      * @param symptomId
      * @param pageKey
      * @param weight
+     * @param identifier
      */
-    public FeverDurationCcmReviewItem(String title, String displayValue, String symptomId, String pageKey, int weight) {
-    	super(title, displayValue, symptomId, pageKey, weight, false);
+    public FeverDurationCcmReviewItem(String title, String displayValue, String symptomId, String pageKey, int weight, String identifier) {
+    	super(title, displayValue, symptomId, pageKey, weight, identifier);
     }
  
     /**

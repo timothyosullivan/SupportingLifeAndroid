@@ -33,9 +33,10 @@ public class RedEyesDurationCcmReviewItem extends ReviewItem implements Serializ
      * @param symptomId
      * @param pageKey
      * @param weight
+     * @param identifier
      */
-    public RedEyesDurationCcmReviewItem(String title, String displayValue, String symptomId, String pageKey, int weight) {
-    	super(title, displayValue, symptomId, pageKey, weight, false);
+    public RedEyesDurationCcmReviewItem(String title, String displayValue, String symptomId, String pageKey, int weight, String identifier) {
+    	super(title, displayValue, symptomId, pageKey, weight, identifier);
     }
  
     /**

@@ -33,9 +33,11 @@ public class EarDischargeDurationReviewItem extends ReviewItem implements Serial
      * @param symptomId
      * @param pageKey
      * @param weight
+     * @param identifier
+     * 
      */
-    public EarDischargeDurationReviewItem(String title, String displayValue, String symptomId, String pageKey, int weight) {
-    	super(title, displayValue, symptomId, pageKey, weight, false);
+    public EarDischargeDurationReviewItem(String title, String displayValue, String symptomId, String pageKey, int weight, String identifier) {
+    	super(title, displayValue, symptomId, pageKey, weight, identifier);
     }
  
     /**

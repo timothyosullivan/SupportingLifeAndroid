@@ -174,7 +174,7 @@ public class TreatmentRuleEngine {
 		}
 
 		String symptomId = supportingLifeBaseActivity.getResources().getString(R.string.imci_treatment_criteria_severe_classification_present);
-		ReviewItem severeClassificationPresentReviewItem = new ReviewItem(null, null, symptomId, null, -1);
+		ReviewItem severeClassificationPresentReviewItem = new ReviewItem(null, null, symptomId, null, -1, null);
 		if (hasSevereClassification) {
 			severeClassificationPresentReviewItem.setSymptomValue(Response.YES.name());
 		}
@@ -214,7 +214,7 @@ public class TreatmentRuleEngine {
 		}
 
 		String symptomId = supportingLifeBaseActivity.getResources().getString(R.string.imci_treatment_criteria_severe_dehydration_is_only_severe_classification);
-		ReviewItem severeDehydrationReviewItem = new ReviewItem(null, null, symptomId, null, -1);
+		ReviewItem severeDehydrationReviewItem = new ReviewItem(null, null, symptomId, null, -1, null);
 		if (onlySevereDehydration) {
 			severeDehydrationReviewItem.setSymptomValue(Response.YES.name());
 		}
@@ -253,7 +253,7 @@ public class TreatmentRuleEngine {
 		}
 
 		String symptomId = supportingLifeBaseActivity.getResources().getString(R.string.ccm_treatment_criteria_danger_sign_classification_present);
-		ReviewItem dangerSignClassificationPresentReviewItem = new ReviewItem(null, null, symptomId, null, -1);
+		ReviewItem dangerSignClassificationPresentReviewItem = new ReviewItem(null, null, symptomId, null, -1, null);
 		if (hasDangerSignClassification) {
 			dangerSignClassificationPresentReviewItem.setSymptomValue(Response.YES.name());
 		}
@@ -292,7 +292,7 @@ public class TreatmentRuleEngine {
 		}
 
 		String symptomId = supportingLifeBaseActivity.getResources().getString(R.string.ccm_treatment_criteria_refer_sign_classification_present);
-		ReviewItem referSignClassificationPresentReviewItem = new ReviewItem(null, null, symptomId, null, -1);
+		ReviewItem referSignClassificationPresentReviewItem = new ReviewItem(null, null, symptomId, null, -1, null);
 		if (hasReferSignClassification) {
 			referSignClassificationPresentReviewItem.setSymptomValue(Response.YES.name());
 		}

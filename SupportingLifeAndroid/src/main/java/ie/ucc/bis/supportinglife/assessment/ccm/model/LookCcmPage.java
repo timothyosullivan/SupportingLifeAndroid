@@ -58,6 +58,7 @@ public class LookCcmPage extends AbstractPage {
     @Override
     public void getReviewItems(ArrayList<ReviewItem> reviewItems) {
     	Resources resources = ((AbstractModel) getModelCallbacks()).getApplicationContext().getResources();
+    	String reviewItemIdentifier = null;
     	String reviewItemLabel = null;
     	String reviewItemValue = null;
     	String reviewItemSymptomId = null;
@@ -67,10 +68,11 @@ public class LookCcmPage extends AbstractPage {
     	reviewItems.add(new ReviewItem(reviewItemLabel, getKey()));	
       	    	    	    	    	
     	// chest indrawing
+    	reviewItemIdentifier = resources.getString(R.string.ccm_look_assessment_chest_indrawing_id);
     	reviewItemLabel = resources.getString(R.string.ccm_look_assessment_review_chest_indrawing);
     	reviewItemValue = getPageData().getString(CHEST_INDRAWING_DATA_KEY + RadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
     	reviewItemSymptomId = resources.getString(R.string.ccm_look_assessment_chest_indrawing_symptom_id);
-    	reviewItems.add(new ReviewItem(reviewItemLabel, reviewItemValue, reviewItemSymptomId, getKey(), -1));
+    	reviewItems.add(new ReviewItem(reviewItemLabel, reviewItemValue, reviewItemSymptomId, getKey(), -1, reviewItemIdentifier));
     	
     	// chest indrawing dosage
     	reviewItemSymptomId = resources.getString(R.string.ccm_look_assessment_chest_indrawing_dosage_age_symptom_id);
@@ -82,13 +84,14 @@ public class LookCcmPage extends AbstractPage {
     			reviewItemSymptomId, getKey(), -1, Arrays.asList(birthDateReviewItem)));
 
     	// breaths per minute
+    	reviewItemIdentifier = resources.getString(R.string.ccm_look_assessment_breaths_per_minute_id);
     	reviewItemLabel = resources.getString(R.string.ccm_look_assessment_review_breaths_per_minute);
     	reviewItemSymptomId = resources.getString(R.string.ccm_look_assessment_fast_breathing_symptom_id);
     	// note: In assessing whether the 'fast breathing' symptom applies when interpreting the 'breaths per minute',
     	//       the age of the child is a determining factor. Therefore the date of birth child needs to capture to
     	//       facilitate the decision logic.
     	reviewItems.add(new FastBreathingReviewItem(reviewItemLabel, getPageData().getString(BREATHS_PER_MINUTE_DATA_KEY), 
-    			reviewItemSymptomId, getKey(), -1, Arrays.asList(birthDateReviewItem)));
+    			reviewItemSymptomId, getKey(), -1, Arrays.asList(birthDateReviewItem), reviewItemIdentifier));
   
     	// fast breathing dosage
     	reviewItemSymptomId = resources.getString(R.string.ccm_look_assessment_fast_breathing_dosage_symptom_id);
@@ -98,18 +101,21 @@ public class LookCcmPage extends AbstractPage {
     			reviewItemSymptomId, getKey(), -1, Arrays.asList(birthDateReviewItem)));
 
     	// very sleepy or unconscious
+    	reviewItemIdentifier = resources.getString(R.string.ccm_look_assessment_very_sleepy_or_unconscious_id);
     	reviewItemLabel = resources.getString(R.string.ccm_look_assessment_review_very_sleepy_or_unconscious);
     	reviewItemValue = getPageData().getString(VERY_SLEEPY_OR_UNCONSCIOUS_DATA_KEY + RadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
     	reviewItemSymptomId = resources.getString(R.string.ccm_look_assessment_very_sleepy_or_unconscious_symptom_id);
-    	reviewItems.add(new ReviewItem(reviewItemLabel, reviewItemValue, reviewItemSymptomId, getKey(), -1));
+    	reviewItems.add(new ReviewItem(reviewItemLabel, reviewItemValue, reviewItemSymptomId, getKey(), -1, reviewItemIdentifier));
 
     	// palmar pallor
+    	reviewItemIdentifier = resources.getString(R.string.ccm_look_assessment_palmar_pallor_id);
     	reviewItemLabel = resources.getString(R.string.ccm_look_assessment_review_palmar_pallor);
     	reviewItemValue = getPageData().getString(PALMAR_PALLOR_DATA_KEY + RadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
     	reviewItemSymptomId = resources.getString(R.string.ccm_look_assessment_palmar_pallor_symptom_id);
-    	reviewItems.add(new ReviewItem(reviewItemLabel, reviewItemValue, reviewItemSymptomId, getKey(), -1));
+    	reviewItems.add(new ReviewItem(reviewItemLabel, reviewItemValue, reviewItemSymptomId, getKey(), -1, reviewItemIdentifier));
    	
     	// red muac tape colour - assists in determining if 'Red on MUAC Tape' classification applies
+    	reviewItemIdentifier = resources.getString(R.string.ccm_look_assessment_muac_tape_colour_id);
     	reviewItemLabel = resources.getString(R.string.ccm_look_assessment_review_muac_tape_colour);
     	reviewItemValue = getPageData().getString(MUAC_TAPE_COLOUR_DATA_KEY + RadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
     	reviewItemSymptomId = resources.getString(R.string.ccm_look_assessment_red_muac_tape_colour_symptom_id);
@@ -117,13 +123,14 @@ public class LookCcmPage extends AbstractPage {
     	//       the age of the child is a determining factor. Therefore the date of birth child needs to capture to
     	//       facilitate the decision logic.    	
     	reviewItems.add(new RedMuacTapeCcmReviewItem(reviewItemLabel, reviewItemValue, 
-    			reviewItemSymptomId, getKey(), -1, Arrays.asList(birthDateReviewItem)));
+    			reviewItemSymptomId, getKey(), -1, Arrays.asList(birthDateReviewItem), reviewItemIdentifier));
     	
     	// swelling of both feet
+    	reviewItemIdentifier = resources.getString(R.string.ccm_look_assessment_swelling_of_both_feet_id);
     	reviewItemLabel = resources.getString(R.string.ccm_look_assessment_review_swelling_of_both_feet);
     	reviewItemValue = getPageData().getString(SWELLING_OF_BOTH_FEET_DATA_KEY + RadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
     	reviewItemSymptomId = resources.getString(R.string.ccm_look_assessment_swelling_of_both_feet_symptom_id);
-    	reviewItems.add(new ReviewItem(reviewItemLabel, reviewItemValue, reviewItemSymptomId, getKey(), -1));
+    	reviewItems.add(new ReviewItem(reviewItemLabel, reviewItemValue, reviewItemSymptomId, getKey(), -1, reviewItemIdentifier));
     }
 
     @Override

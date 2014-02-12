@@ -40,11 +40,14 @@ public class PatientHandlerUtils {
 		// subsequent population of patient instance
 		Map<String, String> reviewItemMap = new HashMap<String, String>();
 		for (ReviewItem reviewItem : reviewItems) {
-			reviewItemMap.put(reviewItem.getTitle(), reviewItem.getDisplayValue());
+			if (reviewItem.getIdentifier() != null) { 
+				reviewItemMap.put(reviewItem.getIdentifier(), reviewItem.getDisplayValue());
+			}
 		}
 
 		retrieveGeneralPatientDetails(patient, resources, reviewItemMap);
 		retrieveLookSymptoms(patient, resources, reviewItemMap);
+		retrieveAskLookSymptoms(patient, resources, reviewItemMap);
 
 		return patient;
 	}
@@ -65,34 +68,34 @@ public class PatientHandlerUtils {
 		// TODO NationalId and NationalHealthId
 		
 		// hsa user id
-		patient.setHsaUserId(reviewItemMap.get(resources.getString(R.string.ccm_general_patient_details_review_hsa_identifier)));
+		patient.setHsaUserId(reviewItemMap.get(resources.getString(R.string.ccm_general_patient_details_hsa_user_id)));
 
 		// child first name
-		patient.setChildFirstName(reviewItemMap.get(resources.getString(R.string.ccm_general_patient_details_review_first_name)));
+		patient.setChildFirstName(reviewItemMap.get(resources.getString(R.string.ccm_general_patient_details_child_first_name_id)));
 
 		// child surname
-		patient.setChildSurname(reviewItemMap.get(resources.getString(R.string.ccm_general_patient_details_review_surname)));
+		patient.setChildSurname(reviewItemMap.get(resources.getString(R.string.ccm_general_patient_details_child_surname_id)));
 
 		// birthdate
-		patient.setBirthDate(assessDatePatientSymptom(reviewItemMap.get(resources.getString(R.string.ccm_general_patient_details_review_date_of_birth))));
+		patient.setBirthDate(assessDatePatientSymptom(reviewItemMap.get(resources.getString(R.string.ccm_general_patient_details_date_of_birth_id))));
 
 		// gender
-		patient.setGender(reviewItemMap.get(resources.getString(R.string.ccm_general_patient_details_review_gender)));
+		patient.setGender(reviewItemMap.get(resources.getString(R.string.ccm_general_patient_details_gender_id)));
 
 		// caregiver name
-		patient.setCaregiverName(reviewItemMap.get(resources.getString(R.string.ccm_general_patient_details_review_caregiver)));
+		patient.setCaregiverName(reviewItemMap.get(resources.getString(R.string.ccm_general_patient_details_caregiver_name_id)));
 
 		// relationship
-		patient.setRelationship(reviewItemMap.get(resources.getString(R.string.ccm_general_patient_details_review_relationship)));
+		patient.setRelationship(reviewItemMap.get(resources.getString(R.string.ccm_general_patient_details_relationship_id)));
 
 		// physical address
-		patient.setPhysicalAddress(reviewItemMap.get(resources.getString(R.string.ccm_general_patient_details_review_physical_address)));
+		patient.setPhysicalAddress(reviewItemMap.get(resources.getString(R.string.ccm_general_patient_details_physical_address_id)));
 
 		// village TA
-		patient.setVillageTa(reviewItemMap.get(resources.getString(R.string.ccm_general_patient_details_review_village)));
+		patient.setVillageTa(reviewItemMap.get(resources.getString(R.string.ccm_general_patient_details_village_ta_id)));
 
 		// visit date
-		patient.setVisitDate(assessDatePatientSymptom(reviewItemMap.get(resources.getString(R.string.ccm_general_patient_details_review_today_date))));
+		patient.setVisitDate(assessDatePatientSymptom(reviewItemMap.get(resources.getString(R.string.ccm_general_patient_details_visit_date_id))));
 	}
 
 	/**
@@ -109,22 +112,93 @@ public class PatientHandlerUtils {
 	private void retrieveLookSymptoms(Patient patient, Resources resources, Map<String, String> reviewItemMap) throws ParseException {
 
 		// chest indrawing
-		patient.setChestIndrawing(assessBooleanPatientSymptom(reviewItemMap.get(resources.getString(R.string.ccm_look_assessment_review_chest_indrawing))));
+		patient.setChestIndrawing(assessBooleanPatientSymptom(reviewItemMap.get(resources.getString(R.string.ccm_look_assessment_chest_indrawing_id))));
 
 		// breaths per minute
-		patient.setBreathsPerMinute(assessIntegerPatientSymptom(reviewItemMap.get(resources.getString(R.string.ccm_look_assessment_review_breaths_per_minute))));
+		patient.setBreathsPerMinute(assessIntegerPatientSymptom(reviewItemMap.get(resources.getString(R.string.ccm_look_assessment_breaths_per_minute_id))));
 
 		// sleepy unconscious
-		patient.setSleepyUnconscious(assessBooleanPatientSymptom(reviewItemMap.get(resources.getString(R.string.ccm_look_assessment_review_very_sleepy_or_unconscious))));
+		patient.setSleepyUnconscious(assessBooleanPatientSymptom(reviewItemMap.get(resources.getString(R.string.ccm_look_assessment_very_sleepy_or_unconscious_id))));
 
 		// palmar pallor
-		patient.setPalmarPallor(assessBooleanPatientSymptom(reviewItemMap.get(resources.getString(R.string.ccm_look_assessment_review_palmar_pallor))));
+		patient.setPalmarPallor(assessBooleanPatientSymptom(reviewItemMap.get(resources.getString(R.string.ccm_look_assessment_palmar_pallor_id))));
 
 		// muac tape colour
-		patient.setMuacTapeColour(reviewItemMap.get(resources.getString(R.string.ccm_look_assessment_review_muac_tape_colour)));
+		patient.setMuacTapeColour(reviewItemMap.get(resources.getString(R.string.ccm_look_assessment_muac_tape_colour_id)));
 
 		// swelling of both feet
-		patient.setSwellingBothFeet(assessBooleanPatientSymptom(reviewItemMap.get(resources.getString(R.string.ccm_look_assessment_review_swelling_of_both_feet))));
+		patient.setSwellingBothFeet(assessBooleanPatientSymptom(reviewItemMap.get(resources.getString(R.string.ccm_look_assessment_swelling_of_both_feet_id))));
+	}
+	
+	/**
+	 * Method to populate a patient instance with the following:
+	 * 
+	 * - Ask & Look Symptoms (user entered)
+	 * 
+	 * @param patient
+	 * @param resources
+	 * @param reviewItems
+	 * 
+	 * @throws ParseException 
+	 */
+	private void retrieveAskLookSymptoms(Patient patient, Resources resources, Map<String, String> reviewItemMap) throws ParseException {
+
+		// problem
+		patient.setProblem(reviewItemMap.get(resources.getString(R.string.ccm_ask_initial_assessment_problems_id)));
+		
+		// cough
+		patient.setCough(assessBooleanPatientSymptom(reviewItemMap.get(resources.getString(R.string.ccm_ask_initial_assessment_cough_id))));
+
+		// cough duration
+		patient.setCoughDuration(assessIntegerPatientSymptom(reviewItemMap.get(resources.getString(R.string.ccm_ask_initial_assessment_cough_duration_id))));
+
+		// diarrhoea
+		patient.setDiarrhoea(assessBooleanPatientSymptom(reviewItemMap.get(resources.getString(R.string.ccm_ask_initial_assessment_diarrhoea_id))));
+
+		// diarrhoea duration
+		patient.setDiarrhoeaDuration(assessIntegerPatientSymptom(reviewItemMap.get(resources.getString(R.string.ccm_ask_initial_assessment_diarrhoea_duration_id))));
+
+		// blood in stool
+		patient.setBloodInStool(assessBooleanPatientSymptom(reviewItemMap.get(resources.getString(R.string.ccm_ask_initial_assessment_blood_in_stool_id))));
+
+		// fever
+		patient.setFever(assessBooleanPatientSymptom(reviewItemMap.get(resources.getString(R.string.ccm_ask_initial_assessment_fever_id))));
+
+		// fever duration
+		patient.setFeverDuration(assessIntegerPatientSymptom(reviewItemMap.get(resources.getString(R.string.ccm_ask_initial_assessment_fever_duration_id))));
+
+		// convulsions
+		patient.setConvulsions(assessBooleanPatientSymptom(reviewItemMap.get(resources.getString(R.string.ccm_ask_initial_assessment_convulsions_id))));
+
+		// difficulity drinking or feeding
+		patient.setDifficultyDrinkingOrFeeding(assessBooleanPatientSymptom(reviewItemMap.get(resources.getString(R.string.ccm_ask_initial_assessment_drink_or_feed_difficulty_id))));
+
+		// unable to drink or feed
+		patient.setUnableToDrinkOrFeed(assessBooleanPatientSymptom(reviewItemMap.get(resources.getString(R.string.ccm_ask_initial_assessment_unable_to_drink_or_feed_id))));
+
+		// vomiting
+		patient.setVomiting(assessBooleanPatientSymptom(reviewItemMap.get(resources.getString(R.string.ccm_ask_secondary_assessment_vomiting_id))));
+
+		// vomits everything
+		patient.setVomitsEverything(assessBooleanPatientSymptom(reviewItemMap.get(resources.getString(R.string.ccm_ask_secondary_assessment_vomits_everything_id))));
+
+		// red eye
+		patient.setRedEye(assessBooleanPatientSymptom(reviewItemMap.get(resources.getString(R.string.ccm_ask_secondary_assessment_red_eye_id))));
+
+		// red eye duration
+		patient.setRedEyeDuration(assessIntegerPatientSymptom(reviewItemMap.get(resources.getString(R.string.ccm_ask_secondary_assessment_red_eye_duration_id))));
+		
+		// difficulty seeing
+		patient.setDifficultySeeing(assessBooleanPatientSymptom(reviewItemMap.get(resources.getString(R.string.ccm_ask_secondary_assessment_seeing_difficulty_id))));
+
+		// difficulty seeing duration
+		patient.setDifficultySeeingDuration(assessIntegerPatientSymptom(reviewItemMap.get(resources.getString(R.string.ccm_ask_secondary_assessment_seeing_difficulty_duration_id))));
+		
+		// cannot treat problems
+		patient.setCannotTreatProblem(assessBooleanPatientSymptom(reviewItemMap.get(resources.getString(R.string.ccm_ask_secondary_assessment_cannot_treat_problems_id))));
+
+		// 'cannot treat problems' details
+		patient.setCannotTreatProblemDetails(reviewItemMap.get(resources.getString(R.string.ccm_ask_secondary_assessment_cannot_treat_problems_details_id)));
 	}
 
 	/**
@@ -173,12 +247,11 @@ public class PatientHandlerUtils {
 	 */
 
 	private Integer assessIntegerPatientSymptom(String integerValue) {
-		if (integerValue != null) {
-			return Integer.valueOf(integerValue);
+		Integer patientSymptom = null;
+		if (integerValue != null && !("".equalsIgnoreCase(integerValue))) {
+			patientSymptom = Integer.valueOf(integerValue);
 		}
-		else {
-			return null;
-		}
+		return patientSymptom;
 	}
 	
 }

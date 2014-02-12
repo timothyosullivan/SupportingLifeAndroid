@@ -33,7 +33,7 @@ public class DiarrhoeaDurationIndicatorReviewItem extends ReviewItem implements 
      * @param weight
      */
     public DiarrhoeaDurationIndicatorReviewItem(String title, String displayValue, String symptomId, String pageKey, int weight) {
-    	super(title, displayValue, symptomId, pageKey, weight, false);
+    	super(title, displayValue, symptomId, pageKey, weight, null);
     }
  
     /**

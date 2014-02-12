@@ -33,9 +33,10 @@ public class CoughDurationReviewItem extends ReviewItem implements Serializable 
      * @param symptomId
      * @param pageKey
      * @param weight
+     * @param identifier
      */
-    public CoughDurationReviewItem(String title, String displayValue, String symptomId, String pageKey, int weight) {
-    	super(title, displayValue, symptomId, pageKey, weight, false);
+    public CoughDurationReviewItem(String title, String displayValue, String symptomId, String pageKey, int weight, String identifier) {
+    	super(title, displayValue, symptomId, pageKey, weight, identifier);
     }
  
     /**

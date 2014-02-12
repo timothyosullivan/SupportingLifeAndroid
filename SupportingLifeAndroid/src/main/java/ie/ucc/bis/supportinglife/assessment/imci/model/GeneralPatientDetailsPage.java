@@ -54,6 +54,7 @@ public class GeneralPatientDetailsPage extends AbstractPage {
     @Override
     public void getReviewItems(ArrayList<ReviewItem> reviewItems) {
     	Resources resources = ((AbstractModel) getModelCallbacks()).getApplicationContext().getResources();
+    	String reviewItemIdentifier = null;
     	String reviewItemLabel = null;
     	String reviewItemValue = null;
     	String reviewItemSymptomId = null;
@@ -63,17 +64,20 @@ public class GeneralPatientDetailsPage extends AbstractPage {
     	reviewItems.add(new ReviewItem(reviewItemLabel, getKey()));	
     	
     	// first name
+    	reviewItemIdentifier = resources.getString(R.string.imci_general_patient_details_first_name_id);
     	reviewItemLabel = resources.getString(R.string.imci_general_patient_details_review_first_name);
-    	reviewItems.add(new ReviewItem(reviewItemLabel, getPageData().getString(FIRST_NAME_DATA_KEY), getKey(), -1));
+    	reviewItems.add(new ReviewItem(reviewItemLabel, getPageData().getString(FIRST_NAME_DATA_KEY), getKey(), -1, reviewItemIdentifier));
     	
     	// surname
+    	reviewItemIdentifier = resources.getString(R.string.imci_general_patient_details_surname_id);
     	reviewItemLabel = resources.getString(R.string.imci_general_patient_details_review_surname);
-    	reviewItems.add(new ReviewItem(reviewItemLabel, getPageData().getString(SURNAME_DATA_KEY), getKey(), -1));
+    	reviewItems.add(new ReviewItem(reviewItemLabel, getPageData().getString(SURNAME_DATA_KEY), getKey(), -1, reviewItemIdentifier));
     	
     	// date of birth
+    	reviewItemIdentifier = resources.getString(R.string.imci_general_patient_details_date_of_birth_id);
     	reviewItemLabel = resources.getString(R.string.imci_general_patient_details_review_date_of_birth);
     	reviewItemSymptomId = resources.getString(R.string.imci_general_patient_details_date_of_birth_symptom_id);
-    	reviewItems.add(new ReviewItem(reviewItemLabel, getPageData().getString(DATE_OF_BIRTH_DATA_KEY), reviewItemSymptomId, getKey(), -1));
+    	reviewItems.add(new ReviewItem(reviewItemLabel, getPageData().getString(DATE_OF_BIRTH_DATA_KEY), reviewItemSymptomId, getKey(), -1, reviewItemIdentifier));
     	
     	// review item to indicate whether patient is two years or older
     	reviewItemSymptomId = resources.getString(R.string.imci_general_patient_details_patient_two_years_or_older_symptom_id);
@@ -83,24 +87,28 @@ public class GeneralPatientDetailsPage extends AbstractPage {
     	reviewItems.add(ageIndicatorReviewItem);
     	
     	// weight
+    	reviewItemIdentifier = resources.getString(R.string.imci_general_patient_details_weight_id);
     	reviewItemLabel = resources.getString(R.string.imci_general_patient_details_review_weight);
     	reviewItemSymptomId = resources.getString(R.string.imci_general_patient_details_weight_symptom_id);
-    	reviewItems.add(new ReviewItem(reviewItemLabel, getPageData().getString(WEIGHT_DATA_KEY), reviewItemSymptomId, getKey(), -1));	
+    	reviewItems.add(new ReviewItem(reviewItemLabel, getPageData().getString(WEIGHT_DATA_KEY), reviewItemSymptomId, getKey(), -1, reviewItemIdentifier));	
     	
     	// temperature
+    	reviewItemIdentifier = resources.getString(R.string.imci_general_patient_details_temperature_id);
     	reviewItemLabel = resources.getString(R.string.imci_general_patient_details_review_temperature);
     	reviewItemSymptomId = resources.getString(R.string.imci_general_patient_details_temperature_symptom_id);
-    	reviewItems.add(new ReviewItem(reviewItemLabel, getPageData().getString(TEMPERATURE_DATA_KEY), reviewItemSymptomId, getKey(), -1));
+    	reviewItems.add(new ReviewItem(reviewItemLabel, getPageData().getString(TEMPERATURE_DATA_KEY), reviewItemSymptomId, getKey(), -1, reviewItemIdentifier));
     	
     	// gender
+    	reviewItemIdentifier = resources.getString(R.string.imci_general_patient_details_gender_id);
     	reviewItemLabel = resources.getString(R.string.imci_general_patient_details_review_gender);
     	reviewItemSymptomId = resources.getString(R.string.imci_general_patient_details_gender_symptom_id);
     	reviewItemValue = getPageData().getString(GENDER_DATA_KEY + RadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
-    	reviewItems.add(new ReviewItem(reviewItemLabel, reviewItemValue, reviewItemSymptomId, getKey(), -1));
+    	reviewItems.add(new ReviewItem(reviewItemLabel, reviewItemValue, reviewItemSymptomId, getKey(), -1, reviewItemIdentifier));
     	
     	// problems
+    	reviewItemIdentifier = resources.getString(R.string.imci_general_patient_details_problems_id);
     	reviewItemLabel = resources.getString(R.string.imci_general_patient_details_review_problems);
-    	reviewItems.add(new ReviewItem(reviewItemLabel, getPageData().getString(PROBLEMS_DATA_KEY), getKey(), -1));	    
+    	reviewItems.add(new ReviewItem(reviewItemLabel, getPageData().getString(PROBLEMS_DATA_KEY), getKey(), -1, reviewItemIdentifier));	    
     	
     }
 

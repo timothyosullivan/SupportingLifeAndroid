@@ -33,9 +33,10 @@ public class DiarrhoeaDurationCcmReviewItem extends ReviewItem implements Serial
      * @param symptomId
      * @param pageKey
      * @param weight
+     * @param identifier
      */
-    public DiarrhoeaDurationCcmReviewItem(String title, String displayValue, String symptomId, String pageKey, int weight) {
-    	super(title, displayValue, symptomId, pageKey, weight, false);
+    public DiarrhoeaDurationCcmReviewItem(String title, String displayValue, String symptomId, String pageKey, int weight, String identifier) {
+    	super(title, displayValue, symptomId, pageKey, weight, identifier);
     }
  
     /**

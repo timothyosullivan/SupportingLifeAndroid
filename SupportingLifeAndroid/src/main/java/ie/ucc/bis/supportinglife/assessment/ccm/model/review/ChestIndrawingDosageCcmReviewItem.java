@@ -51,7 +51,7 @@ public class ChestIndrawingDosageCcmReviewItem extends ReviewItem implements Ser
      * @param weight
      */
     public ChestIndrawingDosageCcmReviewItem(String title, String displayValue, String symptomId, String pageKey, int weight, List<ReviewItem> dependeeReviewItems) {
-    	super(title, displayValue, symptomId, pageKey, weight, false);
+    	super(title, displayValue, symptomId, pageKey, weight, null);
     	setDependees(dependeeReviewItems);
     	// turn off visibility of this review item
     	setVisible(false);

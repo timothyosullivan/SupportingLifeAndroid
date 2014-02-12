@@ -48,7 +48,7 @@ public class DiarrhoeaZincDosageCcmReviewItem extends ReviewItem implements Seri
      * @param weight
      */
     public DiarrhoeaZincDosageCcmReviewItem(String title, String displayValue, String symptomId, String pageKey, int weight, List<ReviewItem> dependeeReviewItems) {
-    	super(title, displayValue, symptomId, pageKey, weight, false);
+    	super(title, displayValue, symptomId, pageKey, weight, null);
     	setDependees(dependeeReviewItems);
     	// turn off visibility of this review item
     	setVisible(false);

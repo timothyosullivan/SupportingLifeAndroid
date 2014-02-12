@@ -38,7 +38,7 @@ public class AgeIndicatorReviewItem extends ReviewItem implements Serializable {
      * @param weight
      */
     public AgeIndicatorReviewItem(String title, String displayValue, String symptomId, String pageKey, int weight) {
-    	super(title, displayValue, symptomId, pageKey, weight, false);
+    	super(title, displayValue, symptomId, pageKey, weight, null);
     }
  
     /**

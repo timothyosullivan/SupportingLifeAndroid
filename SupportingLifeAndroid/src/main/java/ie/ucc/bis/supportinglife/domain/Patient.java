@@ -28,7 +28,6 @@ public class Patient implements Serializable {
 	private String gender;
 	private String caregiverName;
 	private String relationship;
-	private String otherRelationship;
 	private String physicalAddress;
 	private String villageTa;
 	private Date visitDate;	
@@ -59,6 +58,8 @@ public class Patient implements Serializable {
 	private Integer redEyeDuration;
 	private boolean difficultySeeing;
 	private Integer difficultySeeingDuration;
+	private boolean cannotTreatProblem;
+	private String cannotTreatProblemDetails;
 	
 	// Classification and Treatment Diagnostics
 	private List<Diagnostic> diagnostics;
@@ -137,14 +138,6 @@ public class Patient implements Serializable {
 
 	public void setRelationship(String relationship) {
 		this.relationship = relationship;
-	}
-
-	public String getOtherRelationship() {
-		return otherRelationship;
-	}
-
-	public void setOtherRelationship(String otherRelationship) {
-		this.otherRelationship = otherRelationship;
 	}
 
 	public String getPhysicalAddress() {
@@ -353,6 +346,22 @@ public class Patient implements Serializable {
 
 	public void setDifficultySeeingDuration(Integer difficultySeeingDuration) {
 		this.difficultySeeingDuration = difficultySeeingDuration;
+	}
+
+	public boolean isCannotTreatProblem() {
+		return cannotTreatProblem;
+	}
+
+	public void setCannotTreatProblem(boolean cannotTreatProblem) {
+		this.cannotTreatProblem = cannotTreatProblem;
+	}
+
+	public String getCannotTreatProblemDetails() {
+		return cannotTreatProblemDetails;
+	}
+
+	public void setCannotTreatProblemDetails(String cannotTreatProblemDetails) {
+		this.cannotTreatProblemDetails = cannotTreatProblemDetails;
 	}
 
 	public List<Diagnostic> getDiagnostics() {

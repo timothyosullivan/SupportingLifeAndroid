@@ -52,6 +52,7 @@ public class ImmunizationAssessmentPage extends AbstractPage {
     public void getReviewItems(ArrayList<ReviewItem> reviewItems) {
     	Context appContext = ((AbstractModel) getModelCallbacks()).getApplicationContext();
     	Resources resources = appContext.getResources();
+    	String reviewItemIdentifier = null;
     	String reviewItemLabel = null;
     	String reviewItemValue = null;
     	
@@ -60,14 +61,16 @@ public class ImmunizationAssessmentPage extends AbstractPage {
     	reviewItems.add(new ReviewItem(reviewItemLabel, getKey()));
     	
     	// BCG vaccine
+    	reviewItemIdentifier = resources.getString(R.string.imci_immunization_assessment_vaccine_bcg_id);
     	reviewItemLabel = resources.getString(R.string.imci_immunization_assessment_review_vaccine_bcg);
     	reviewItemValue = getPageData().getString(BCG_VACCINE_DATA_KEY + RadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
-    	reviewItems.add(new ReviewItem(reviewItemLabel, reviewItemValue, null, getKey(), -1));
+    	reviewItems.add(new ReviewItem(reviewItemLabel, reviewItemValue, null, getKey(), -1, reviewItemIdentifier));
     	
     	// Measles vaccine
+    	reviewItemIdentifier = resources.getString(R.string.imci_immunization_assessment_vaccine_measles_id);
     	reviewItemLabel = resources.getString(R.string.imci_immunization_assessment_review_vaccine_measles);
     	reviewItemValue = getPageData().getString(MEASLES_VACCINE_DATA_KEY + RadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
-    	reviewItems.add(new ReviewItem(reviewItemLabel, reviewItemValue, null, getKey(), -1));	
+    	reviewItems.add(new ReviewItem(reviewItemLabel, reviewItemValue, null, getKey(), -1, reviewItemIdentifier));	
     }
 
 	/**

@@ -54,6 +54,7 @@ public class GeneralDangerSignsPage extends AbstractPage {
     public void getReviewItems(ArrayList<ReviewItem> reviewItems) {
     	Context appContext = ((AbstractModel) getModelCallbacks()).getApplicationContext();
     	Resources resources = appContext.getResources();
+    	String reviewItemIdentifier = null;
     	String reviewItemLabel = null;
     	String reviewItemValue = null;
     	String reviewItemSymptomId = null;
@@ -63,34 +64,39 @@ public class GeneralDangerSignsPage extends AbstractPage {
     	reviewItems.add(new ReviewItem(reviewItemLabel, getKey()));
     	
     	// not able to drink or breastfeed
+    	reviewItemIdentifier = resources.getString(R.string.imci_general_danger_signs_drink_breastfeed_id);
     	reviewItemLabel = resources.getString(R.string.imci_general_danger_signs_review_drink_breastfeed);
     	reviewItemValue = getPageData().getString(DRINK_BREASTFEED_DATA_KEY + RadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
     	reviewItemSymptomId = resources.getString(R.string.imci_general_danger_signs_drink_breastfeed_symptom_id);
-    	reviewItems.add(new ReviewItem(reviewItemLabel, reviewItemValue, reviewItemSymptomId, getKey(), -1));    	
+    	reviewItems.add(new ReviewItem(reviewItemLabel, reviewItemValue, reviewItemSymptomId, getKey(), -1, reviewItemIdentifier));    	
     	
     	// vomits everythings
+    	reviewItemIdentifier = resources.getString(R.string.imci_general_danger_signs_vomits_everything_id);
     	reviewItemLabel = resources.getString(R.string.imci_general_danger_signs_review_vomits);
     	reviewItemValue = getPageData().getString(VOMITS_EVERYTHING_DATA_KEY + RadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
     	reviewItemSymptomId = resources.getString(R.string.imci_general_danger_signs_vomits_everything_symptom_id);
-    	reviewItems.add(new ReviewItem(reviewItemLabel, reviewItemValue, reviewItemSymptomId, getKey(), -1));
+    	reviewItems.add(new ReviewItem(reviewItemLabel, reviewItemValue, reviewItemSymptomId, getKey(), -1, reviewItemIdentifier));
     	
     	// history of convulsions
+    	reviewItemIdentifier = resources.getString(R.string.imci_general_danger_signs_convulsions_id);
     	reviewItemLabel = resources.getString(R.string.imci_general_danger_signs_review_convulsions);
     	reviewItemValue = getPageData().getString(HISTORY_OF_CONVULSIONS_DATA_KEY + RadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
      	reviewItemSymptomId = resources.getString(R.string.imci_general_danger_signs_convulsions_symptom_id);
-    	reviewItems.add(new ReviewItem(reviewItemLabel, reviewItemValue, reviewItemSymptomId, getKey(), -1));
+    	reviewItems.add(new ReviewItem(reviewItemLabel, reviewItemValue, reviewItemSymptomId, getKey(), -1, reviewItemIdentifier));
     	
     	// lethargic or unconscious
+    	reviewItemIdentifier = resources.getString(R.string.imci_general_danger_signs_lethargic_or_unconscious_id);
     	reviewItemLabel = resources.getString(R.string.imci_general_danger_signs_review_lethargic_or_unconscious);
     	reviewItemValue = getPageData().getString(LETHARGIC_OR_UNCONSCIOUS_DATA_KEY + RadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
      	reviewItemSymptomId = resources.getString(R.string.imci_general_danger_signs_lethargic_or_unconscious_symptom_id);
-    	reviewItems.add(new ReviewItem(reviewItemLabel, reviewItemValue, reviewItemSymptomId, getKey(), -1));
+    	reviewItems.add(new ReviewItem(reviewItemLabel, reviewItemValue, reviewItemSymptomId, getKey(), -1, reviewItemIdentifier));
     	
     	// convulsing now
+    	reviewItemIdentifier = resources.getString(R.string.imci_general_danger_signs_convulsing_now_id);
     	reviewItemLabel = resources.getString(R.string.imci_general_danger_signs_review_convulsing_now);
     	reviewItemValue = getPageData().getString(CONVULSING_NOW_DATA_KEY + RadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
      	reviewItemSymptomId = resources.getString(R.string.imci_general_danger_signs_convulsing_now_symptom_id);
-    	reviewItems.add(new ReviewItem(reviewItemLabel, reviewItemValue, reviewItemSymptomId, getKey(), -1));
+    	reviewItems.add(new ReviewItem(reviewItemLabel, reviewItemValue, reviewItemSymptomId, getKey(), -1, reviewItemIdentifier));
     }
 
 	/**

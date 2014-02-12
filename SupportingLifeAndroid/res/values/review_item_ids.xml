@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+<!-- ============================================================ -->
+<!-- These Review Item Ids are used to match up each review item  -->
+<!-- uniquely with the associated value when preparing for a DB	  -->
+<!-- save operation												  -->
+<!--  															  -->
+<!-- ============================================================ -->
+
+    <!-- ============================================================ -->
+    <!-- ============================================================ -->
+    <!-- ============================================================ -->
+    <!-- IMCI ASSESSMENT											  -->
+    <!-- ============================================================ -->
+	<!-- ============================================================ -->
+    <!-- ============================================================ -->
+
+    <!-- ============================================================ -->
+    <!-- IMCI ASSESSMENT WIZARD BREAD-CRUMB UI -->
+    <!-- STAGE 1: GENERAL PATIENT DETAILS -->
+    <!-- ============================================================ -->
+
+	<!-- Review Item Identifiers (NOT TO BE TRANSLATED!)-->
+	<string name="imci_general_patient_details_first_name_id">imci_general_patient_details_first_name_id</string>
+	<string name="imci_general_patient_details_surname_id">imci_general_patient_details_surname_id</string>
+	<string name="imci_general_patient_details_date_of_birth_id">imci_general_patient_details_date_of_birth_id</string>
+	<string name="imci_general_patient_details_weight_id">imci_general_patient_details_weight_id</string>
+	<string name="imci_general_patient_details_temperature_id">imci_general_patient_details_temperature_id</string>
+	<string name="imci_general_patient_details_gender_id">imci_general_patient_details_gender_id</string>
+	<string name="imci_general_patient_details_problems_id">imci_general_patient_details_problems_id</string>
+
+    <!-- ============================================================ -->
+    <!-- IMCI ASSESSMENT WIZARD BREAD-CRUMB UI -->
+    <!-- STAGE 2: GENERAL DANGER SIGNS -->
+    <!-- ============================================================ -->
+
+	<!-- Review Item Identifiers (NOT TO BE TRANSLATED!)-->
+	<string name="imci_general_danger_signs_drink_breastfeed_id">imci_general_danger_signs_drink_breastfeed_id</string>
+	<string name="imci_general_danger_signs_vomits_everything_id">imci_general_danger_signs_vomits_everything_id</string>
+	<string name="imci_general_danger_signs_convulsions_id">imci_general_danger_signs_convulsions_id</string>
+	<string name="imci_general_danger_signs_lethargic_or_unconscious_id">imci_general_danger_signs_lethargic_or_unconscious_id</string>
+	<string name="imci_general_danger_signs_convulsing_now_id">imci_general_danger_signs_convulsing_now_id</string>
+	
+    <!-- ============================================================ -->
+    <!-- IMCI ASSESSMENT WIZARD BREAD-CRUMB UI -->
+    <!-- STAGE 3: Cough / Breathing Assessment -->
+    <!-- ============================================================ -->
+	
+	<!-- Review Item Identifiers (NOT TO BE TRANSLATED!)-->
+	<string name="imci_breathing_assessment_cough_difficult_breathing_id">imci_breathing_assessment_cough_difficult_breathing_id</string>
+	<string name="imci_breathing_assessment_cough_duration_id">imci_breathing_assessment_cough_duration_id</string>
+	<string name="imci_breathing_assessment_breaths_per_minute_id">imci_breathing_assessment_breaths_per_minute_id</string>
+	<string name="imci_breathing_assessment_chest_indrawing_id">imci_breathing_assessment_chest_indrawing_id</string>
+	<string name="imci_breathing_assessment_stridor_id">imci_breathing_assessment_stridor_id</string>
+
+    <!-- ============================================================ -->
+    <!-- IMCI ASSESSMENT WIZARD BREAD-CRUMB UI -->
+    <!-- STAGE 4: Diarrhoea Assessment -->
+    <!-- ============================================================ -->
+	
+	<!-- Review Item Identifiers (NOT TO BE TRANSLATED!)-->
+	<string name="imci_diarrhoea_assessment_diarrhoea_id">imci_diarrhoea_assessment_diarrhoea_id</string>
+	<string name="imci_diarrhoea_assessment_diarrhoea_duration_id">imci_diarrhoea_assessment_diarrhoea_duration_id</string>
+	<string name="imci_diarrhoea_assessment_blood_stools_id">imci_diarrhoea_assessment_blood_stools_id</string>
+	<string name="imci_diarrhoea_assessment_sunken_eyes_id">imci_diarrhoea_assessment_sunken_eyes_id</string>
+	<string name="imci_diarrhoea_assessment_lethargic_or_unconscious_id">imci_diarrhoea_assessment_lethargic_or_unconscious_id</string>
+	<string name="imci_diarrhoea_assessment_restless_irritable_id">imci_diarrhoea_assessment_restless_irritable_id</string>
+	<string name="imci_diarrhoea_assessment_cholera_in_area_id">imci_diarrhoea_assessment_cholera_in_area_id</string>
+	<string name="imci_diarrhoea_assessment_child_fluid_id">imci_diarrhoea_assessment_child_fluid_id</string>
+	<string name="imci_diarrhoea_assessment_skin_pinch_id">imci_diarrhoea_assessment_skin_pinch_id</string>
+	
+	
+    <!-- ============================================================ -->
+    <!-- IMCI ASSESSMENT WIZARD BREAD-CRUMB UI -->
+    <!-- STAGE 5: Fever Assessment -->
+    <!-- ============================================================ -->
+
+	<!-- Review Item Identifiers (NOT TO BE TRANSLATED!)-->
+	<string name="imci_fever_assessment_fever_id">imci_fever_assessment_fever_id</string>
+	<string name="imci_fever_assessment_malaria_risk_id">imci_fever_assessment_malaria_risk_id</string>
+	<string name="imci_fever_assessment_duration_id">imci_fever_assessment_duration_id</string>
+	<string name="imci_fever_assessment_fever_present_every_day_id">imci_fever_assessment_fever_present_every_day_id</string>
+	<string name="imci_fever_assessment_measles_id">imci_fever_assessment_measles_id</string>
+	<string name="imci_fever_assessment_stiff_neck_id">imci_fever_assessment_stiff_neck_id</string>
+	<string name="imci_fever_assessment_runny_nose_id">imci_fever_assessment_runny_nose_id</string>
+	<string name="imci_fever_assessment_generalised_rash_id">imci_fever_assessment_generalised_rash_id</string>
+	<string name="imci_fever_assessment_cough_id">imci_fever_assessment_cough_id</string>
+	<string name="imci_fever_assessment_red_eyes_id">imci_fever_assessment_red_eyes_id</string>
+	<string name="imci_fever_assessment_mouth_ulcers_id">imci_fever_assessment_mouth_ulcers_id</string>
+	<string name="imci_fever_assessment_deep_mouth_ulcers_id">imci_fever_assessment_deep_mouth_ulcers_id</string>
+	<string name="imci_fever_assessment_extensive_mouth_ulcers_id">imci_fever_assessment_extensive_mouth_ulcers_id</string>
+	<string name="imci_fever_assessment_pus_draining_id">imci_fever_assessment_pus_draining_id</string>
+	<string name="imci_fever_assessment_cornea_clouding_id">imci_fever_assessment_cornea_clouding_id</string>
+	<string name="imci_fever_assessment_bulging_fontanel_id">imci_fever_assessment_bulging_fontanel_id</string>
+
+    <!-- ============================================================ -->
+    <!-- IMCI ASSESSMENT WIZARD BREAD-CRUMB UI -->
+    <!-- STAGE 6: Ear Assessment -->
+    <!-- ============================================================ -->
+
+	<!-- Review Item Identifiers (NOT TO BE TRANSLATED!)-->
+	<string name="imci_ear_assessment_ear_problem_id">imci_ear_assessment_ear_problem_id</string>
+	<string name="imci_ear_assessment_ear_pain_id">imci_ear_assessment_ear_pain_id</string>
+	<string name="imci_ear_assessment_ear_discharge_id">imci_ear_assessment_ear_discharge_id</string>
+	<string name="imci_ear_assessment_ear_discharge_duration_id">imci_ear_assessment_ear_discharge_duration_id</string>
+	<string name="imci_ear_assessment_tender_swelling_id">imci_ear_assessment_tender_swelling_id</string>
+	
+    <!-- ============================================================ -->
+    <!-- IMCI ASSESSMENT WIZARD BREAD-CRUMB UI -->
+    <!-- STAGE 7: Malnutrition and Anaemia Assessment -->
+    <!-- ============================================================ -->
+	
+	<!-- Review Item Identifiers (NOT TO BE TRANSLATED!)-->
+	<string name="imci_malnutrition_assessment_oedema_id">imci_malnutrition_assessment_oedema_id</string>
+	<string name="imci_malnutrition_assessment_weight_for_age_id">imci_malnutrition_assessment_weight_for_age_id</string>
+	<string name="imci_malnutrition_assessment_visible_severe_wasting_id">imci_malnutrition_assessment_visible_severe_wasting_id</string>
+	<string name="imci_malnutrition_assessment_palmar_pallor_id">imci_malnutrition_assessment_palmar_pallor_id</string>
+	<string name="imci_malnutrition_assessment_mebendazole_dose_id">imci_malnutrition_assessment_mebendazole_dose_id</string>
+
+    <!-- ============================================================ -->
+    <!-- IMCI ASSESSMENT WIZARD BREAD-CRUMB UI -->
+    <!-- STAGE 8: Immunization Assessment -->
+    <!-- ============================================================ -->
+	
+	<!-- Review Item Identifiers (NOT TO BE TRANSLATED!)-->
+	<string name="imci_immunization_assessment_vaccine_bcg_id">imci_immunization_assessment_review_vaccine_measles</string>
+	<string name="imci_immunization_assessment_vaccine_measles_id">imci_immunization_assessment_vaccine_measles_id</string>
+
+    <!-- ============================================================ -->
+    <!-- ============================================================ -->
+    <!-- ============================================================ -->
+    <!-- CCM ASSESSMENT												  -->
+    <!-- ============================================================ -->
+	<!-- ============================================================ -->
+    <!-- ============================================================ -->    
+    
+    <!-- ============================================================ -->
+    <!-- CCM ASSESSMENT BREAD-CRUMB UI 								  -->
+    <!-- STAGE 1: GENERAL PATIENT DETAILS 							  -->
+    <!-- ============================================================ -->
+	
+	<!-- Review Item Identifiers (NOT TO BE TRANSLATED!)-->
+	<string name="ccm_general_patient_details_national_id">ccm_general_patient_details_national_id</string>
+	<string name="ccm_general_patient_details_national_health_id">ccm_general_patient_details_national_health_id</string>
+	<string name="ccm_general_patient_details_hsa_user_id">ccm_general_patient_details_hsa_user_id</string>
+	<string name="ccm_general_patient_details_child_first_name_id">ccm_general_patient_details_child_first_name_id</string>
+	<string name="ccm_general_patient_details_child_surname_id">ccm_general_patient_details_child_surname_id</string>
+	<string name="ccm_general_patient_details_date_of_birth_id">ccm_general_patient_details_date_of_birth_id</string>
+	<string name="ccm_general_patient_details_gender_id">ccm_general_patient_details_gender_id</string>
+	<string name="ccm_general_patient_details_caregiver_name_id">ccm_general_patient_details_caregiver_name_id</string>
+	<string name="ccm_general_patient_details_relationship_id">ccm_general_patient_details_relationship_id</string>
+	<string name="ccm_general_patient_details_physical_address_id">ccm_general_patient_details_physical_address_id</string>
+	<string name="ccm_general_patient_details_village_ta_id">ccm_general_patient_details_village_ta_id</string>
+	<string name="ccm_general_patient_details_visit_date_id">ccm_general_patient_details_visit_date_id</string>
+	
+    <!-- ============================================================ -->
+    <!-- CCM ASSESSMENT BREAD-CRUMB UI 								  -->
+    <!-- STAGE 2: INITIAL ASK ASSESSMENT 							  -->
+    <!-- ============================================================ -->
+    
+	<!-- Review Item Identifiers (NOT TO BE TRANSLATED!)-->
+	<string name="ccm_ask_initial_assessment_problems_id">ccm_ask_initial_assessment_problems_id</string>
+	<string name="ccm_ask_initial_assessment_cough_id">ccm_ask_initial_assessment_cough_id</string>
+	<string name="ccm_ask_initial_assessment_cough_duration_id">ccm_ask_initial_assessment_cough_duration_id</string>
+	<string name="ccm_ask_initial_assessment_diarrhoea_id">ccm_ask_initial_assessment_diarrhoea_id</string>
+	<string name="ccm_ask_initial_assessment_diarrhoea_duration_id">ccm_ask_initial_assessment_diarrhoea_duration_id</string>
+	<string name="ccm_ask_initial_assessment_blood_in_stool_id">ccm_ask_initial_assessment_blood_in_stool_id</string>
+	<string name="ccm_ask_initial_assessment_fever_id">ccm_ask_initial_assessment_fever_id</string>
+	<string name="ccm_ask_initial_assessment_fever_duration_id">ccm_ask_initial_assessment_fever_duration_id</string>
+	<string name="ccm_ask_initial_assessment_convulsions_id">ccm_ask_initial_assessment_convulsions_id</string>
+	<string name="ccm_ask_initial_assessment_drink_or_feed_difficulty_id">ccm_ask_initial_assessment_drink_or_feed_difficulty_id</string>
+	<string name="ccm_ask_initial_assessment_unable_to_drink_or_feed_id">ccm_ask_initial_assessment_unable_to_drink_or_feed_id</string>
+	
+    <!-- ============================================================ -->
+    <!-- CCM ASSESSMENT BREAD-CRUMB UI 								  -->
+    <!-- STAGE 3: SECONDARY ASK ASSESSMENT 							  -->
+    <!-- ============================================================ -->
+    
+	<!-- Review Item Identifiers (NOT TO BE TRANSLATED!)-->
+	<string name="ccm_ask_secondary_assessment_vomiting_id">ccm_ask_secondary_assessment_vomiting_id</string>
+	<string name="ccm_ask_secondary_assessment_vomits_everything_id">ccm_ask_secondary_assessment_vomits_everything_id</string>
+	<string name="ccm_ask_secondary_assessment_red_eye_id">ccm_ask_secondary_assessment_red_eyes_id</string>
+	<string name="ccm_ask_secondary_assessment_red_eye_duration_id">ccm_ask_secondary_assessment_red_eyes_duration_id</string>
+	<string name="ccm_ask_secondary_assessment_seeing_difficulty_id">ccm_ask_secondary_assessment_seeing_difficulty_id</string>
+	<string name="ccm_ask_secondary_assessment_seeing_difficulty_duration_id">ccm_ask_secondary_assessment_seeing_difficulty_duration_id</string>
+	<string name="ccm_ask_secondary_assessment_cannot_treat_problems_id">ccm_ask_secondary_assessment_cannot_treat_problems_id</string>
+	<string name="ccm_ask_secondary_assessment_cannot_treat_problems_details_id">ccm_ask_secondary_assessment_cannot_treat_problems_details_id</string>
+
+    <!-- ============================================================ -->
+    <!-- CCM ASSESSMENT BREAD-CRUMB UI 								  -->
+    <!-- STAGE 4: LOOK ASSESSMENT		 							  -->
+    <!-- ============================================================ -->
+    
+	<!-- Review Item Identifiers (NOT TO BE TRANSLATED!)-->
+	<string name="ccm_look_assessment_chest_indrawing_id">ccm_look_assessment_chest_indrawing_id</string>
+	<string name="ccm_look_assessment_breaths_per_minute_id">ccm_look_assessment_breaths_per_minute_id</string>
+	<string name="ccm_look_assessment_very_sleepy_or_unconscious_id">ccm_look_assessment_very_sleepy_or_unconscious_id</string>
+	<string name="ccm_look_assessment_palmar_pallor_id">ccm_look_assessment_palmar_pallor_id</string>
+	<string name="ccm_look_assessment_muac_tape_colour_id">ccm_look_assessment_muac_tape_colour_id</string>
+	<string name="ccm_look_assessment_swelling_of_both_feet_id">ccm_look_assessment_swelling_of_both_feet_id</string>
+
+</resources>

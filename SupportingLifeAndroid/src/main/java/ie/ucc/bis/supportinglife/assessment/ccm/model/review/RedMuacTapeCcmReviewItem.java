@@ -43,9 +43,10 @@ public class RedMuacTapeCcmReviewItem extends ReviewItem implements Serializable
 	 * @param symptomId
 	 * @param pageKey
 	 * @param weight
+	 * @param identifier
 	 */
-	public RedMuacTapeCcmReviewItem(String title, String displayValue, String symptomId, String pageKey, int weight, List<ReviewItem> dependeeReviewItems) {
-		super(title, displayValue, symptomId, pageKey, weight, false);
+	public RedMuacTapeCcmReviewItem(String title, String displayValue, String symptomId, String pageKey, int weight, List<ReviewItem> dependeeReviewItems, String identifier) {
+		super(title, displayValue, symptomId, pageKey, weight, identifier);
 		setDependees(dependeeReviewItems);
 	}
 

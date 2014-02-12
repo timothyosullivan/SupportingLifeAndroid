@@ -39,9 +39,10 @@ public class MalariaReviewItem extends ReviewItem implements Serializable {
      * @param symptomId
      * @param pageKey
      * @param weight
+     * @param identifier
      */
-    public MalariaReviewItem(String title, String displayValue, String symptomId, String pageKey, int weight) {
-    	super(title, displayValue, symptomId, pageKey, weight, false);
+    public MalariaReviewItem(String title, String displayValue, String symptomId, String pageKey, int weight, String identifier) {
+    	super(title, displayValue, symptomId, pageKey, weight, identifier);
     }
  
     /**

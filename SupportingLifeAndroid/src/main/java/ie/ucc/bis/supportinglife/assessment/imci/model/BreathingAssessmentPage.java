@@ -57,6 +57,7 @@ public class BreathingAssessmentPage extends AbstractPage {
     @Override
     public void getReviewItems(ArrayList<ReviewItem> reviewItems) {
     	Resources resources = ((AbstractModel) getModelCallbacks()).getApplicationContext().getResources();
+    	String reviewItemIdentifier = null;
     	String reviewItemLabel = null;
     	String reviewItemValue = null;
     	String reviewItemSymptomId = null;
@@ -66,17 +67,20 @@ public class BreathingAssessmentPage extends AbstractPage {
     	reviewItems.add(new ReviewItem(reviewItemLabel, getKey()));	
     	
     	// does the child have cough or difficult breathing?
+    	reviewItemIdentifier = resources.getString(R.string.imci_breathing_assessment_cough_difficult_breathing_id);
     	reviewItemLabel = resources.getString(R.string.imci_breathing_assessment_review_cough_difficult_breathing);
     	reviewItemValue = getPageData().getString(COUGH_DIFFICULT_BREATHING_DATA_KEY + RadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
     	reviewItemSymptomId = resources.getString(R.string.imci_breathing_assessment_cough_difficult_breathing_symptom_id);
-    	reviewItems.add(new ReviewItem(reviewItemLabel, reviewItemValue, reviewItemSymptomId, getKey(), -1));
+    	reviewItems.add(new ReviewItem(reviewItemLabel, reviewItemValue, reviewItemSymptomId, getKey(), -1, reviewItemIdentifier));
 
     	// for how long? (days) - cough duration
+    	reviewItemIdentifier = resources.getString(R.string.imci_breathing_assessment_cough_duration_id);
     	reviewItemLabel = resources.getString(R.string.imci_breathing_assessment_review_cough_duration);
     	reviewItemSymptomId = resources.getString(R.string.imci_breathing_assessment_cough_duration_symptom_id);
-    	reviewItems.add(new CoughDurationReviewItem(reviewItemLabel, getPageData().getString(COUGH_DURATION_DATA_KEY), reviewItemSymptomId, getKey(), -1));
+    	reviewItems.add(new CoughDurationReviewItem(reviewItemLabel, getPageData().getString(COUGH_DURATION_DATA_KEY), reviewItemSymptomId, getKey(), -1, reviewItemIdentifier));
  
     	// breaths per minute
+    	reviewItemIdentifier = resources.getString(R.string.imci_breathing_assessment_breaths_per_minute_id);
     	reviewItemLabel = resources.getString(R.string.imci_breathing_assessment_review_breaths_per_minute);
     	reviewItemSymptomId = resources.getString(R.string.imci_breathing_assessment_fast_breathing_symptom_id);
     	// note: In assessing whether the 'fast breathing' symptom applies when interpreting the 'breaths per minute',
@@ -85,19 +89,21 @@ public class BreathingAssessmentPage extends AbstractPage {
     	String birthDateSymptomId = resources.getString(R.string.imci_general_patient_details_date_of_birth_symptom_id);
     	ReviewItem birthDateReviewItem = ReviewItemUtilities.findReviewItemBySymptomId(birthDateSymptomId, reviewItems);
     	reviewItems.add(new FastBreathingReviewItem(reviewItemLabel, getPageData().getString(BREATHS_PER_MINUTE_DATA_KEY), 
-    			reviewItemSymptomId, getKey(), -1, Arrays.asList(birthDateReviewItem)));
+    			reviewItemSymptomId, getKey(), -1, Arrays.asList(birthDateReviewItem), reviewItemIdentifier));
     	
     	// chest indrawing
+    	reviewItemIdentifier = resources.getString(R.string.imci_breathing_assessment_chest_indrawing_id);
     	reviewItemLabel = resources.getString(R.string.imci_breathing_assessment_review_chest_indrawing);
     	reviewItemValue = getPageData().getString(CHEST_INDRAWING_DATA_KEY + RadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
     	reviewItemSymptomId = resources.getString(R.string.imci_breathing_assessment_chest_indrawing_symptom_id);
-    	reviewItems.add(new ReviewItem(reviewItemLabel, reviewItemValue, reviewItemSymptomId, getKey(), -1));
+    	reviewItems.add(new ReviewItem(reviewItemLabel, reviewItemValue, reviewItemSymptomId, getKey(), -1, reviewItemIdentifier));
 
     	// stridor
+    	reviewItemIdentifier = resources.getString(R.string.imci_breathing_assessment_stridor_id);
     	reviewItemLabel = resources.getString(R.string.imci_breathing_assessment_review_stridor);
     	reviewItemValue = getPageData().getString(STRIDOR_DATA_KEY + RadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
     	reviewItemSymptomId = resources.getString(R.string.imci_breathing_assessment_stridor_symptom_id);
-    	reviewItems.add(new ReviewItem(reviewItemLabel, reviewItemValue, reviewItemSymptomId, getKey(), -1));   
+    	reviewItems.add(new ReviewItem(reviewItemLabel, reviewItemValue, reviewItemSymptomId, getKey(), -1, reviewItemIdentifier));   
     }
 
 

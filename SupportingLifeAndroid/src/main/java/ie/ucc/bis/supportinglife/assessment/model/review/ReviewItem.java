@@ -21,6 +21,7 @@ public class ReviewItem implements Serializable {
 	public static final int DEFAULT_WEIGHT = -1;
 	
     private int weight;
+    private String identifier;
     private String title;
     private String displayValue;
     private String symptomId;
@@ -38,9 +39,9 @@ public class ReviewItem implements Serializable {
      * @param pageKey
      */
     public ReviewItem(String title, String pageKey) {
-        this(title, null, null, pageKey, DEFAULT_WEIGHT, true);
+        this(title, null, null, pageKey, DEFAULT_WEIGHT, null, true);
     }
-    
+  
     /**
      * Constructor for non-header, non-symptom review items
      * 
@@ -48,9 +49,11 @@ public class ReviewItem implements Serializable {
      * @param displayValue
      * @param pageKey
      * @param weight
+     * @param identifier (i.e. unique identifier for review item)
+     * 
      */
-    public ReviewItem(String title, String displayValue, String pageKey, int weight) {
-    	this(title, displayValue, null, pageKey, weight, false);
+    public ReviewItem(String title, String displayValue, String pageKey, int weight, String identifier) {
+    	this(title, displayValue, null, pageKey, weight, identifier, false);
     }
 
     /**
@@ -61,9 +64,11 @@ public class ReviewItem implements Serializable {
      * @param symptomId
      * @param pageKey
      * @param weight
+     * @param identifier (i.e. unique identifier for review item)
+     * 
      */
-    public ReviewItem(String title, String displayValue, String symptomId, String pageKey, int weight) {
-    	this(title, displayValue, symptomId, pageKey, weight, false);
+    public ReviewItem(String title, String displayValue, String symptomId, String pageKey, int weight, String identifier) {
+    	this(title, displayValue, symptomId, pageKey, weight, identifier, false);
     }
         
     /**
@@ -74,9 +79,10 @@ public class ReviewItem implements Serializable {
      * @param symptomId
      * @param pageKey
      * @param weight
+     * @param identifier (i.e. unique identifier for review item)
      * @param headerItem
      */
-    protected ReviewItem(String title, String displayValue, String symptomId, String pageKey, int weight, boolean headerItem) {
+    protected ReviewItem(String title, String displayValue, String symptomId, String pageKey, int weight, String identifier, boolean headerItem) {
         setTitle(title);
         setDisplayValue(displayValue);
         setSymptomId(symptomId);
@@ -84,6 +90,7 @@ public class ReviewItem implements Serializable {
         setWeight(weight);
         setHeaderItem(headerItem);
         setSymptomValue(null);
+        setIdentifier(identifier);
         setVisible(true);
     }
     
@@ -103,128 +110,82 @@ public class ReviewItem implements Serializable {
     	}
     }
     
-	/**
-	 * Getter Method: getDisplayValue()
-	 */
     public String getDisplayValue() {
         return this.displayValue;
     }
 
-	/**
-	 * Setter Method: setDisplayValue()
-	 */
     public void setDisplayValue(String displayValue) {
         this.displayValue = displayValue;
     }
 
-	/**
-	 * Getter Method: getPageKey()
-	 */
     public String getPageKey() {
         return this.pageKey;
     }
 
-	/**
-	 * Setter Method: setPageKey()
-	 */
     public void setPageKey(String pageKey) {
         this.pageKey = pageKey;
     }
 
-	/**
-	 * Getter Method: getTitle()
-	 */
     public String getTitle() {
         return this.title;
     }
 
-	/**
-	 * Setter Method: setTitle()
-	 */
     public void setTitle(String title) {
         this.title = title;
     }
 
-	/**
-	 * Getter Method: getWeight()
-	 */
     public int getWeight() {
         return this.weight;
     }
 
-	/**
-	 * Setter Method: setWeight()
-	 */
     public void setWeight(int weight) {
         this.weight = weight;
     }
 
-	/**
-	 * Getter Method: isHeaderItem()
-	 */
+	public String getIdentifier() {
+		return identifier;
+	}
+
+	public void setIdentifier(String identifier) {
+		this.identifier = identifier;
+	}
+
 	public boolean isHeaderItem() {
 		return headerItem;
 	}
 
-	/**
-	 * Setter Method: setHeaderItem()
-	 */
 	public void setHeaderItem(boolean headerItem) {
 		this.headerItem = headerItem;
 	}
 
-	/**
-	 * Getter Method: getSymptomId()
-	 */
 	public String getSymptomId() {
 		return symptomId;
 	}
 
-	/**
-	 * Setter Method: setSymptomId()
-	 */
 	public void setSymptomId(String symptomId) {
 		this.symptomId = symptomId;
 	}
 
-	/**
-	 * Getter Method: getDependees()
-	 */
 	public List<ReviewItem> getDependees() {
 		return dependees;
 	}
 
-	/**
-	 * Setter Method: setDependees()
-	 */
 	public void setDependees(List<ReviewItem> dependees) {
 		this.dependees = dependees;
 	}
 
-	/**
-	 * Getter Method: getSymptomValue()
-	 */
 	public String getSymptomValue() {
 		return symptomValue;
 	}
 
-	/**
-	 * Setter Method: setSymptomValue()
-	 */
 	public void setSymptomValue(String symptomValue) {
 		this.symptomValue = symptomValue;
 	}
 
-	/**
-	 * Getter Method: isVisible()
-	 */
 	public boolean isVisible() {
 		return visible;
 	}
-	
-	/**
-	 * Setter Method: setVisible()
-	 */
+
 	public void setVisible(boolean visible) {
 		this.visible = visible;
 	}
