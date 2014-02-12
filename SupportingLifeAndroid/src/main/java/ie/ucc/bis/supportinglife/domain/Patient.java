@@ -19,7 +19,7 @@ public class Patient implements Serializable {
 	 */
 	private static final long serialVersionUID = 7692081022011255176L;
 	
-	// general details
+	private String hsaUserId;
 	private String nationalId;
 	private String nationalHealthId;
 	private String childFirstName;
@@ -28,6 +28,7 @@ public class Patient implements Serializable {
 	private String gender;
 	private String caregiverName;
 	private String relationship;
+	private String otherRelationship;
 	private String physicalAddress;
 	private String villageTa;
 	private Date visitDate;	
@@ -66,6 +67,14 @@ public class Patient implements Serializable {
 		setDiagnostics(new ArrayList<Diagnostic>());
 	}
 	
+	public String getHsaUserId() {
+		return hsaUserId;
+	}
+
+	public void setHsaUserId(String hsaUserId) {
+		this.hsaUserId = hsaUserId;
+	}
+
 	public String getNationalId() {
 		return nationalId;
 	}
@@ -128,6 +137,14 @@ public class Patient implements Serializable {
 
 	public void setRelationship(String relationship) {
 		this.relationship = relationship;
+	}
+
+	public String getOtherRelationship() {
+		return otherRelationship;
+	}
+
+	public void setOtherRelationship(String otherRelationship) {
+		this.otherRelationship = otherRelationship;
 	}
 
 	public String getPhysicalAddress() {
@@ -337,7 +354,6 @@ public class Patient implements Serializable {
 	public void setDifficultySeeingDuration(Integer difficultySeeingDuration) {
 		this.difficultySeeingDuration = difficultySeeingDuration;
 	}
-
 
 	public List<Diagnostic> getDiagnostics() {
 		return diagnostics;

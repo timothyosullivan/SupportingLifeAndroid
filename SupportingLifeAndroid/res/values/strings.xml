@@ -82,7 +82,7 @@
 	<string name="imci_general_patient_details_weight_hint">Enter value between 0 and 100</string>
 	<string name="imci_general_patient_details_temperature_hint">Enter value between 0 and 50</string>	
 	
-
+	
     <!-- ============================================================ -->
     <!-- IMCI ASSESSMENT WIZARD BREAD-CRUMB UI -->
     <!-- STAGE 2: GENERAL DANGER SIGNS -->
@@ -387,8 +387,7 @@
 	<string name="ccm_general_patient_details_relationship_specified_hint">Please enter relationship type</string>
 	<string name="ccm_general_patient_details_physical_address_hint">Please enter child\'s physical address</string>
 	<string name="ccm_general_patient_details_village_hint">Please enter child\'s village</string>
-	
-
+		
     <!-- ============================================================ -->
     <!-- CCM ASSESSMENT WIZARD BREAD-CRUMB UI 						  -->
     <!-- STAGE 2: ASK and LOOK ASSESSMENT (1)						  -->

@@ -122,6 +122,7 @@ public class GeneralPatientDetailsCcmFragment extends Fragment {
         setHsaEditText(((EditText) rootView.findViewById(R.id.ccm_general_patient_details_hsa_identifier)));
         getHsaEditText().setText(getGeneralPatientDetailsCcmPage().getPageData().getString(GeneralPatientDetailsCcmPage.HEALTH_SURVEILLANCE_ASSISTANT_DATA_KEY));
         
+        
         // child's first name
         setFirstNameEditText(((EditText) rootView.findViewById(R.id.ccm_general_patient_details_first_name)));
         getFirstNameEditText().setText(getGeneralPatientDetailsCcmPage().getPageData().getString(GeneralPatientDetailsCcmPage.FIRST_NAME_DATA_KEY));
@@ -216,6 +217,9 @@ public class GeneralPatientDetailsCcmFragment extends Fragment {
         getHsaEditText().addTextChangedListener(
         		new AssessmentWizardTextWatcher(getGeneralPatientDetailsCcmPage(), 
         				GeneralPatientDetailsCcmPage.HEALTH_SURVEILLANCE_ASSISTANT_DATA_KEY));
+        
+        // TODO - To be removed once HSA User Login is supported
+        getHsaEditText().setText("hsauser1");
         
         // child's first name
         getFirstNameEditText().addTextChangedListener(
