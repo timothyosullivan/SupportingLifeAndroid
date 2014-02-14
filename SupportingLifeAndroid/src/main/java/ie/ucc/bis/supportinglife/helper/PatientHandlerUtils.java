@@ -226,7 +226,7 @@ public class PatientHandlerUtils {
 	 * @return Date
 	 * @throws ParseException 
 	 */
-	private Date assessDatePatientSymptom(String dateValue) throws ParseException {
+	public Date assessDatePatientSymptom(String dateValue) throws ParseException {
 		if (dateValue != null) {
 			Date dateInstance = new SimpleDateFormat(DateDialogSetListener.DATE_TIME_CUSTOM_FORMAT, DateDialogSetListener.LOCALE)
 										.parse(dateValue);

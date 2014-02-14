@@ -5,13 +5,21 @@ import ie.ucc.bis.supportinglife.assessment.ccm.ui.CcmAssessmentClassificationsF
 import ie.ucc.bis.supportinglife.assessment.ccm.ui.CcmAssessmentTreatmentsFragment;
 import ie.ucc.bis.supportinglife.assessment.model.review.ReviewItem;
 import ie.ucc.bis.supportinglife.assessment.ui.AssessmentResultsReviewFragment;
+import ie.ucc.bis.supportinglife.domain.Patient;
 import ie.ucc.bis.supportinglife.rule.engine.ClassificationRuleEngine;
 import ie.ucc.bis.supportinglife.rule.engine.TreatmentRuleEngine;
 
 import java.util.ArrayList;
 
+import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
+import org.springframework.http.converter.json.MappingJacksonHttpMessageConverter;
+import org.springframework.web.client.ResourceAccessException;
+import org.springframework.web.client.RestClientException;
+import org.springframework.web.client.RestTemplate;
+
 import android.app.ActionBar;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.widget.BaseAdapter;
@@ -35,6 +43,8 @@ import android.widget.BaseAdapter;
 public class CcmAssessmentResultsActivity extends AssessmentResultsActivity {
 
 	
+	private NetworkCommunicationAsyncTask task;
+	
 	/* 
 	 * Method: onCreate() 
 	 * 
@@ -54,6 +64,11 @@ public class CcmAssessmentResultsActivity extends AssessmentResultsActivity {
 		Intent intent = getIntent();
         setReviewItems((ArrayList<ReviewItem>) intent.getSerializableExtra(CcmAssessmentActivity.ASSESSMENT_REVIEW_ITEMS));
         
+        // capture the patient assessment data
+        // entered by the user and construct
+        // the patient instance
+        contructPatientInstance();
+        
         // resolve CCM classifications based on assessed symptoms        
         setClassificationRuleEngine(new ClassificationRuleEngine());
         getClassificationRuleEngine().readCcmClassificationRules((SupportingLifeBaseActivity) this);
@@ -66,6 +81,13 @@ public class CcmAssessmentResultsActivity extends AssessmentResultsActivity {
  
         // record the patient visit in the DB
         recordPatientVisit();
+        
+        // transmit the patient visit
+        // START
+        	// instigate network communication to transmit patient record
+			task = new NetworkCommunicationAsyncTask();
+			task.execute(getPatient());
+        // END
         
         // create a new Action bar and set title to strings.xml
         final ActionBar bar = getActionBar();
@@ -110,5 +132,60 @@ public class CcmAssessmentResultsActivity extends AssessmentResultsActivity {
 			((BaseAdapter) treatmentsFragment.getCcmTreatmentAdapter()).notifyDataSetChanged();
 		}
 	}
+	
+	private class NetworkCommunicationAsyncTask extends AsyncTask<Patient, Void, Patient> {
+
+		private static final String AMAZON_WEB_SERVICE_URL = "http://supportinglife.elasticbeanstalk.com/patients/add";
+		
+		@Override
+		protected Patient doInBackground(Patient... params) {
+
+			RestTemplate restTemplate = new RestTemplate(new HttpComponentsClientHttpRequestFactory());
+			
+			Patient submittedPatient;
+			
+			Patient patient = (Patient) params[0];
+			try {
+				// The default timeout was resulting in the call to the 'restTemplate.postForObject(..)' method
+				// call sometimes returning a null object and sometimes returning a correctly populated object.
+				// Doubling the read timeout led to more reliability in obtaining a correctly populated object.
+				// default timeout is 60 * 1000
+				((HttpComponentsClientHttpRequestFactory)restTemplate.getRequestFactory()).setConnectTimeout(120 * 1000);
+				((HttpComponentsClientHttpRequestFactory)restTemplate.getRequestFactory()).setReadTimeout(120 * 1000);
+				restTemplate.getMessageConverters().add(new MappingJacksonHttpMessageConverter());
+				
+				submittedPatient = restTemplate.postForObject(AMAZON_WEB_SERVICE_URL, patient.getChildFirstName(), Patient.class);
+				return submittedPatient;
+			} catch (ResourceAccessException ex) {
+				System.out.println("OFF");
+				// TODO need to add logging capability to catch stack trace
+				ex.printStackTrace();
+			} catch (RestClientException ex) {
+				System.out.println("Error");
+				// TODO need to add logging capability to catch stack trace
+				ex.printStackTrace();
+			}
+			return null;
+		}
+
+		@Override
+		protected void onPostExecute(Patient patient) {
+			if (patient != null) {
+				System.out.println("TEST PATIENT DETAILS");
+			}
+			else {
+				System.out.println("COMMUNICATION ERROR!");
+			}
+		}
+
+		@Override
+		protected void onPreExecute() {
+		}
+
+		@Override
+		protected void onProgressUpdate(Void... values) {
+		}
+	}
+	
 }
 

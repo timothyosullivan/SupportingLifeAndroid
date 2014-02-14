@@ -1,6 +1,7 @@
 package ie.ucc.bis.supportinglife.activity;
 
 import ie.ucc.bis.supportinglife.assessment.model.review.ReviewItem;
+import ie.ucc.bis.supportinglife.dao.PatientDao;
 import ie.ucc.bis.supportinglife.domain.Patient;
 import ie.ucc.bis.supportinglife.helper.PatientHandlerUtils;
 import ie.ucc.bis.supportinglife.rule.engine.ClassificationRuleEngine;
@@ -9,6 +10,7 @@ import ie.ucc.bis.supportinglife.ui.utilities.LoggerUtils;
 
 import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.List;
 
 import android.app.ActionBar;
 import android.app.ActionBar.Tab;
@@ -40,6 +42,8 @@ public class AssessmentResultsActivity extends SupportingLifeBaseActivity {
 	private Patient patient;
 	private ClassificationRuleEngine classificationRuleEngine;
 	private TreatmentRuleEngine treatmentRuleEngine;
+	
+	private PatientDao patientDao;
 
 	/* 
 	 * Method: onCreate() 
@@ -50,6 +54,8 @@ public class AssessmentResultsActivity extends SupportingLifeBaseActivity {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setPatientDao(new PatientDao(this));
+        getPatientDao().open();
 	}
 	
 
@@ -230,21 +236,34 @@ public class AssessmentResultsActivity extends SupportingLifeBaseActivity {
 	} // end of static TabsAdapter class
 
 	/**
-	 * Responsible for recording the patient visit in the SQLite DB
-	 * 
+	 * Responsible for capturing the patient assessment data
+	 * entered by the user and constructing the patient instance
 	 */	
-	protected void recordPatientVisit() {
+	protected void contructPatientInstance() {
 		Resources resources = getApplicationContext().getResources();
+	
+    	// constuct the patient instance
         try {
-        	// firstly constuct the patient instance
-			setPatient((new PatientHandlerUtils()).populateCcmPatientDetails(resources, getReviewItems()));
-			
-			// secondly add this patient record to the DB
-			
+        	setPatient((new PatientHandlerUtils()).populateCcmPatientDetails(resources, getReviewItems()));	
 		} catch (ParseException e) {
 			LoggerUtils.i(LOG_TAG, "Parse Exception thrown whilst constructing patient instance");
 			e.printStackTrace();
 		}
+	}
+	
+	/**
+	 * Responsible for recording the patient visit in the SQLite DB
+	 * 
+	 */	
+	protected void recordPatientVisit() {
+
+		// add the patient record to the DB
+		getPatientDao().createPatient(getPatient());
+
+		// check patient has been added correctly
+		List<Patient> patientsRetrieved = getPatientDao().getAllPatients();
+
+		System.out.println("test");
 	}
 	
 	
@@ -279,89 +298,75 @@ public class AssessmentResultsActivity extends SupportingLifeBaseActivity {
     	// patient assessment
     	exitAssessmentDialogHandler();
     }
-    	
-	/**
-	 * Getter Method: getViewPager()
-	 */	
+
+    
+    @Override
+    protected void onResume() {
+    	getPatientDao().open();
+    	super.onResume();
+    }
+
+    @Override
+    protected void onPause() {
+    	getPatientDao().close();
+    	super.onPause();
+    }
+    
+    
 	public ViewPager getViewPager() {
 		return ViewPager;
 	}
 
-	/**
-	 * Setter Method: setViewPager()
-	 */  
 	public void setViewPager(ViewPager viewPager) {
 		ViewPager = viewPager;
 	}
 
-	/**
-	 * Getter Method: getTabsAdapter()
-	 */	
 	public TabsAdapter getTabsAdapter() {
 		return TabsAdapter;
 	}
 
-	/**
-	 * Setter Method: setTabsAdapter()
-	 */
 	public void setTabsAdapter(TabsAdapter tabsAdapter) {
 		TabsAdapter = tabsAdapter;
 	}
-	
-	/**
-	 * Getter Method: getReviewItems()
-	 */	
+
 	public ArrayList<ReviewItem> getReviewItems() {
 		return reviewItems;
 	}
 
-	/**
-	 * Setter Method: setReviewItems()
-	 */
 	protected void setReviewItems(ArrayList<ReviewItem> reviewItems) {
 		this.reviewItems = reviewItems;
 	}
 
-	/**
-	 * Getter Method: getPatient()
-	 */	
 	public Patient getPatient() {
 		return patient;
 	}
 
-	/**
-	 * Setter Method: setPatient()
-	 */
 	protected void setPatient(Patient patient) {
 		this.patient = patient;
 	}
 
-	/**
-	 * Getter Method: getClassificationRuleEngine()
-	 */	
 	public ClassificationRuleEngine getClassificationRuleEngine() {
 		return classificationRuleEngine;
 	}
 
-	/**
-	 * Setter Method: setClassificationRuleEngine()
-	 */
 	public void setClassificationRuleEngine(ClassificationRuleEngine classificationRuleEngine) {
 		this.classificationRuleEngine = classificationRuleEngine;
 	}
 
-	/**
-	 * Getter Method: getTreatmentRuleEngine()
-	 */	
 	public TreatmentRuleEngine getTreatmentRuleEngine() {
 		return treatmentRuleEngine;
 	}
 
-	/**
-	 * Setter Method: setTreatmentRuleEngine()
-	 */
 	public void setTreatmentRuleEngine(TreatmentRuleEngine treatmentRuleEngine) {
 		this.treatmentRuleEngine = treatmentRuleEngine;
+	}
+
+	protected PatientDao getPatientDao() {
+		return patientDao;
+	}
+
+	protected void setPatientDao(PatientDao patientDao) {
+		this.patientDao = patientDao;
 	}
 }
 
