@@ -5,7 +5,7 @@ import ie.ucc.bis.supportinglife.assessment.imci.ui.ImciAssessmentClassification
 import ie.ucc.bis.supportinglife.assessment.imci.ui.ImciAssessmentTreatmentsFragment;
 import ie.ucc.bis.supportinglife.assessment.model.review.ReviewItem;
 import ie.ucc.bis.supportinglife.assessment.ui.AssessmentResultsReviewFragment;
-import ie.ucc.bis.supportinglife.domain.Patient;
+import ie.ucc.bis.supportinglife.domain.PatientAssessment;
 import ie.ucc.bis.supportinglife.rule.engine.ClassificationRuleEngine;
 import ie.ucc.bis.supportinglife.rule.engine.TreatmentRuleEngine;
 
@@ -53,7 +53,7 @@ public class ImciAssessmentResultsActivity extends AssessmentResultsActivity {
         setReviewItems((ArrayList<ReviewItem>) intent.getSerializableExtra(ImciAssessmentActivity.ASSESSMENT_REVIEW_ITEMS));
         
         // resolve imci classifications based on assessed symptoms
-        setPatient(new Patient());
+        setPatient(new PatientAssessment());
         
         // resolve IMCI classifications based on assessed symptoms        
         setClassificationRuleEngine(new ClassificationRuleEngine());

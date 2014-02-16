@@ -3,7 +3,7 @@ package ie.ucc.bis.supportinglife.rule.engine;
 import ie.ucc.bis.supportinglife.R;
 import ie.ucc.bis.supportinglife.activity.SupportingLifeBaseActivity;
 import ie.ucc.bis.supportinglife.assessment.model.review.ReviewItem;
-import ie.ucc.bis.supportinglife.domain.Patient;
+import ie.ucc.bis.supportinglife.domain.PatientAssessment;
 import ie.ucc.bis.supportinglife.rule.engine.enums.CcmClassificationType;
 import ie.ucc.bis.supportinglife.rule.engine.enums.CriteriaRule;
 import ie.ucc.bis.supportinglife.rule.engine.enums.ImciClassificationType;
@@ -86,7 +86,7 @@ public class TreatmentRuleEngine {
 	 * @param patient 
 	 * 
 	 */
-	public void determineImciTreatments(SupportingLifeBaseActivity supportingLifeBaseActivity, List<ReviewItem> reviewItems, Patient patient) {
+	public void determineImciTreatments(SupportingLifeBaseActivity supportingLifeBaseActivity, List<ReviewItem> reviewItems, PatientAssessment patient) {
 		setImciRelatedTreatments(true);
 		setCcmRelatedTreatments(false);
 		addImciTreatmentCriteriaToReviewItems(supportingLifeBaseActivity, reviewItems, patient.getDiagnostics());
@@ -103,7 +103,7 @@ public class TreatmentRuleEngine {
 	 * @param patient 
 	 * 
 	 */
-	public void determineCcmTreatments(SupportingLifeBaseActivity supportingLifeBaseActivity, List<ReviewItem> reviewItems, Patient patient) {
+	public void determineCcmTreatments(SupportingLifeBaseActivity supportingLifeBaseActivity, List<ReviewItem> reviewItems, PatientAssessment patient) {
 		setImciRelatedTreatments(false);
 		setCcmRelatedTreatments(true);
 		addCcmTreatmentCriteriaToReviewItems(supportingLifeBaseActivity, reviewItems, patient.getDiagnostics());
@@ -425,7 +425,7 @@ public class TreatmentRuleEngine {
 	 * 
 	 */
 	private void determinePatientTreatments(SupportingLifeBaseActivity supportingLifeBaseActivity, 
-			List<ReviewItem> reviewItems, Patient patient, ArrayList<TreatmentRule> systemTreatments) {
+			List<ReviewItem> reviewItems, PatientAssessment patient, ArrayList<TreatmentRule> systemTreatments) {
 		
 		// iterate over all patient classifications and assign 
 		// appropriate treatment(s)
@@ -478,7 +478,7 @@ public class TreatmentRuleEngine {
 	 * @param patient
 	 * @param systemTreatments
 	 */
-	private void checkCcmClassificationTypeTreatments(List<ReviewItem> reviewItems, Patient patient,
+	private void checkCcmClassificationTypeTreatments(List<ReviewItem> reviewItems, PatientAssessment patient,
 			ArrayList<TreatmentRule> systemTreatments) {
 		
 		boolean dangerSignClassificationExists = false;
@@ -534,7 +534,7 @@ public class TreatmentRuleEngine {
 	 * @param classificationType
 	 * 
 	 */
-	private boolean checkClassificationTypeExistence(Patient patient, String classificationType) {
+	private boolean checkClassificationTypeExistence(PatientAssessment patient, String classificationType) {
 		boolean classificationTypeExists = false;
 		
 		for (Diagnostic diagnostic : patient.getDiagnostics()) {
@@ -557,7 +557,7 @@ public class TreatmentRuleEngine {
 	 * @param classificationType
 	 * 
 	 */
-	private void addTreatmentsWithMatchingName(List<ReviewItem> reviewItems, Patient patient, ArrayList<TreatmentRule> systemTreatments, String classificationName, String classificationType) {
+	private void addTreatmentsWithMatchingName(List<ReviewItem> reviewItems, PatientAssessment patient, ArrayList<TreatmentRule> systemTreatments, String classificationName, String classificationType) {
 		
 		for (TreatmentRule treatmentRule : systemTreatments) {
 			if (classificationName.equalsIgnoreCase(treatmentRule.getClassification())) {
@@ -589,7 +589,7 @@ public class TreatmentRuleEngine {
 	 * @param systemTreatments 
 	 * 
 	 */
-	private void determineTreatmentRecommendations(List<ReviewItem> reviewItems, Patient patient,
+	private void determineTreatmentRecommendations(List<ReviewItem> reviewItems, PatientAssessment patient,
 			Diagnostic diagnostic, Treatment treatment) {
 		
 		boolean symptomCriteriaPasses = true;
@@ -654,7 +654,7 @@ public class TreatmentRuleEngine {
 	 * 
 	 * @return boolean
 	 */
-	private boolean checkSymptomCriteria(List<Symptom> symptomCriterion, List<ReviewItem> reviewItems, Patient patient, int criteriaRequired) {
+	private boolean checkSymptomCriteria(List<Symptom> symptomCriterion, List<ReviewItem> reviewItems, PatientAssessment patient, int criteriaRequired) {
 		int symptomCriteriaCounter = 0;
 		boolean symptomCriteriaPasses = false;
 
@@ -697,7 +697,7 @@ public class TreatmentRuleEngine {
 	 * 
 	 * @return boolean
 	 */
-	private boolean checkTreatmentCriteria(List<TreatmentCriteria> treatmentCriterion, List<ReviewItem> reviewItems, Patient patient, int treatmentCriteriaRequired) {
+	private boolean checkTreatmentCriteria(List<TreatmentCriteria> treatmentCriterion, List<ReviewItem> reviewItems, PatientAssessment patient, int treatmentCriteriaRequired) {
 		int treatmentCriteriaCounter = 0;
 		boolean treatmentCriteriaPasses = false;
 

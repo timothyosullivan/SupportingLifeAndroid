@@ -5,8 +5,11 @@ import ie.ucc.bis.supportinglife.assessment.ccm.ui.CcmAssessmentClassificationsF
 import ie.ucc.bis.supportinglife.assessment.ccm.ui.CcmAssessmentTreatmentsFragment;
 import ie.ucc.bis.supportinglife.assessment.model.review.ReviewItem;
 import ie.ucc.bis.supportinglife.assessment.ui.AssessmentResultsReviewFragment;
-import ie.ucc.bis.supportinglife.domain.Patient;
+import ie.ucc.bis.supportinglife.communication.PatientAssessmentComms;
+import ie.ucc.bis.supportinglife.domain.PatientAssessment;
 import ie.ucc.bis.supportinglife.rule.engine.ClassificationRuleEngine;
+import ie.ucc.bis.supportinglife.rule.engine.Diagnostic;
+import ie.ucc.bis.supportinglife.rule.engine.TreatmentRecommendation;
 import ie.ucc.bis.supportinglife.rule.engine.TreatmentRuleEngine;
 
 import java.util.ArrayList;
@@ -133,18 +136,48 @@ public class CcmAssessmentResultsActivity extends AssessmentResultsActivity {
 		}
 	}
 	
-	private class NetworkCommunicationAsyncTask extends AsyncTask<Patient, Void, Patient> {
+	private class NetworkCommunicationAsyncTask extends AsyncTask<PatientAssessment, Void, Long> {
 
-		private static final String AMAZON_WEB_SERVICE_URL = "http://supportinglife.elasticbeanstalk.com/patients/add";
+		private static final String AMAZON_WEB_SERVICE_URL = "http://supportinglife.elasticbeanstalk.com/patientvisits/add";
 		
 		@Override
-		protected Patient doInBackground(Patient... params) {
+		protected Long doInBackground(PatientAssessment... params) {
 
 			RestTemplate restTemplate = new RestTemplate(new HttpComponentsClientHttpRequestFactory());
 			
-			Patient submittedPatient;
+			PatientAssessment patient = (PatientAssessment) params[0];
 			
-			Patient patient = (Patient) params[0];
+			//********** TEMP START
+			PatientAssessmentComms patientTransmit = new PatientAssessmentComms(patient.getHsaUserId(), patient.getNationalId(), patient.getNationalHealthId(), 
+					patient.getChildFirstName(), patient.getChildSurname(), patient.getBirthDate(),
+					patient.getGender(), patient.getCaregiverName(), patient.getRelationship(), patient.getPhysicalAddress(),
+					patient.getVillageTa(), patient.getVisitDate(), patient.isChestIndrawing(), patient.getBreathsPerMinute(),
+					patient.isSleepyUnconscious(), patient.isPalmarPallor(), patient.getMuacTapeColour(), 
+					patient.isSwellingBothFeet(), patient.getProblem(), patient.isCough(), patient.getCoughDuration(),
+					patient.isDiarrhoea(), patient.getDiarrhoeaDuration(), patient.isBloodInStool(), patient.isFever(),
+					patient.getFeverDuration(), patient.isConvulsions(), patient.isDifficultyDrinkingOrFeeding(),
+					patient.isUnableToDrinkOrFeed(), patient.isVomiting(), patient.isVomitsEverything(),
+					patient.isRedEye(), patient.getRedEyeDuration(), patient.isDifficultySeeing(),
+					patient.getDifficultySeeingDuration(), patient.isCannotTreatProblem(), 
+					patient.getCannotTreatProblemDetails());
+			
+			for (Diagnostic diagnostic : patient.getDiagnostics()) {
+				// extract classifications
+				if (diagnostic.getClassification().getCategory() != null) {
+					patientTransmit.getClassifications().put(diagnostic.getClassification().getCategory(), diagnostic.getClassification().getName());
+				}
+				
+				// extract treatments
+				for (TreatmentRecommendation treatmentRecommendation : diagnostic.getTreatmentRecommendations()) {
+					patientTransmit.getTreatments().put(treatmentRecommendation.getTreatmentIdentifier(), treatmentRecommendation.getTreatmentDescription());
+				}
+				
+			}
+			
+			
+			//********** TEMP END
+			
+			
 			try {
 				// The default timeout was resulting in the call to the 'restTemplate.postForObject(..)' method
 				// call sometimes returning a null object and sometimes returning a correctly populated object.
@@ -154,8 +187,8 @@ public class CcmAssessmentResultsActivity extends AssessmentResultsActivity {
 				((HttpComponentsClientHttpRequestFactory)restTemplate.getRequestFactory()).setReadTimeout(120 * 1000);
 				restTemplate.getMessageConverters().add(new MappingJacksonHttpMessageConverter());
 				
-				submittedPatient = restTemplate.postForObject(AMAZON_WEB_SERVICE_URL, patient.getChildFirstName(), Patient.class);
-				return submittedPatient;
+				Long patientId = restTemplate.postForObject(AMAZON_WEB_SERVICE_URL, patientTransmit, Long.class);
+				return patientId;
 			} catch (ResourceAccessException ex) {
 				System.out.println("OFF");
 				// TODO need to add logging capability to catch stack trace
@@ -169,9 +202,10 @@ public class CcmAssessmentResultsActivity extends AssessmentResultsActivity {
 		}
 
 		@Override
-		protected void onPostExecute(Patient patient) {
-			if (patient != null) {
+		protected void onPostExecute(Long slPatientId) {
+			if (slPatientId != null) {
 				System.out.println("TEST PATIENT DETAILS");
+				System.out.println(slPatientId.longValue());
 			}
 			else {
 				System.out.println("COMMUNICATION ERROR!");

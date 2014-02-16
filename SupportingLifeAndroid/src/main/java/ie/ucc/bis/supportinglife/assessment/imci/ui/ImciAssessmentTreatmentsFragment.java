@@ -3,7 +3,7 @@ package ie.ucc.bis.supportinglife.assessment.imci.ui;
 import ie.ucc.bis.supportinglife.R;
 import ie.ucc.bis.supportinglife.activity.ImciAssessmentResultsActivity;
 import ie.ucc.bis.supportinglife.assessment.imci.model.ImciTreatmentAdapter;
-import ie.ucc.bis.supportinglife.domain.Patient;
+import ie.ucc.bis.supportinglife.domain.PatientAssessment;
 import ie.ucc.bis.supportinglife.rule.engine.Diagnostic;
 
 import java.util.ArrayList;
@@ -27,7 +27,7 @@ import android.widget.ListView;
 public class ImciAssessmentTreatmentsFragment extends ListFragment {
     
     private ImciTreatmentAdapter treatmentAdapter;
-    private Patient patient;
+    private PatientAssessment patient;
     private String classificationTitleSelected;
 	
     @Override
@@ -74,14 +74,14 @@ public class ImciAssessmentTreatmentsFragment extends ListFragment {
 	/**
 	 * Getter Method: getPatient()
 	 */
-	public Patient getPatient() {
+	public PatientAssessment getPatient() {
 		return patient;
 	}
 
 	/**
 	 * Setter Method: setPatient()
 	 */
-	private void setPatient(Patient patient) {
+	private void setPatient(PatientAssessment patient) {
 		this.patient = patient;
 	}
 

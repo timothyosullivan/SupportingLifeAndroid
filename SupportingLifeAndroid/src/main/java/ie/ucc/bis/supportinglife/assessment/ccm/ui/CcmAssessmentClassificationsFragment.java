@@ -4,7 +4,7 @@ import ie.ucc.bis.supportinglife.R;
 import ie.ucc.bis.supportinglife.activity.AssessmentResultsActivity;
 import ie.ucc.bis.supportinglife.activity.CcmAssessmentResultsActivity;
 import ie.ucc.bis.supportinglife.assessment.ccm.model.CcmClassificationAdapter;
-import ie.ucc.bis.supportinglife.domain.Patient;
+import ie.ucc.bis.supportinglife.domain.PatientAssessment;
 import ie.ucc.bis.supportinglife.rule.engine.Diagnostic;
 
 import java.util.ArrayList;
@@ -30,7 +30,7 @@ import android.widget.TextView;
 public class CcmAssessmentClassificationsFragment extends ListFragment {
     
     private CcmClassificationAdapter ccmClassificationAdapter;
-    private Patient patient;
+    private PatientAssessment patient;
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -84,14 +84,14 @@ public class CcmAssessmentClassificationsFragment extends ListFragment {
 	/**
 	 * Getter Method: getPatient()
 	 */
-	public Patient getPatient() {
+	public PatientAssessment getPatient() {
 		return patient;
 	}
 
 	/**
 	 * Setter Method: setPatient()
 	 */
-	private void setPatient(Patient patient) {
+	private void setPatient(PatientAssessment patient) {
 		this.patient = patient;
 	}
 }

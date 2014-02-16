@@ -1,11 +1,8 @@
 package ie.ucc.bis.supportinglife.domain;
 
-import ie.ucc.bis.supportinglife.helper.DateHandlerUtils;
-import ie.ucc.bis.supportinglife.helper.PatientHandlerUtils;
 import ie.ucc.bis.supportinglife.rule.engine.Diagnostic;
 
 import java.io.Serializable;
-import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -15,7 +12,7 @@ import java.util.List;
  * @author timothyosullivan
  */
 
-public class Patient implements Serializable {
+public class PatientAssessment implements Serializable {
 	
 	/**
 	 * Generated Serial ID
@@ -69,11 +66,11 @@ public class Patient implements Serializable {
 	// Classification and Treatment Diagnostics
 	private List<Diagnostic> diagnostics;
 	
-	public Patient() {
+	public PatientAssessment() {
 		setDiagnostics(new ArrayList<Diagnostic>());
 	}
 	
-	public Patient(Integer id, String hsaUserId, String nationalId, String nationalHealthId, 
+	public PatientAssessment(Integer id, String hsaUserId, String nationalId, String nationalHealthId, 
 					String childFirstName, String childSurname, String birthDate,
 					String gender, String caregiverName, String relationship, String physicalAddress,
 					String villageTa, String visitDate, String chestIndrawing, Integer breathsPerMinute,

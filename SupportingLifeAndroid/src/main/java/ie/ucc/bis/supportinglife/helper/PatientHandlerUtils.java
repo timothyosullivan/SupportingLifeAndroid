@@ -3,7 +3,7 @@ package ie.ucc.bis.supportinglife.helper;
 import ie.ucc.bis.supportinglife.R;
 import ie.ucc.bis.supportinglife.assessment.model.listener.DateDialogSetListener;
 import ie.ucc.bis.supportinglife.assessment.model.review.ReviewItem;
-import ie.ucc.bis.supportinglife.domain.Patient;
+import ie.ucc.bis.supportinglife.domain.PatientAssessment;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -33,8 +33,8 @@ public class PatientHandlerUtils {
 	 * @return Patient
 	 * @throws ParseException 
 	 */
-	public Patient populateCcmPatientDetails(Resources resources, List<ReviewItem> reviewItems) throws ParseException {
-		Patient patient = new Patient();
+	public PatientAssessment populateCcmPatientDetails(Resources resources, List<ReviewItem> reviewItems) throws ParseException {
+		PatientAssessment patient = new PatientAssessment();
 
 		// firstly create hash map of review items for quick look-up and
 		// subsequent population of patient instance
@@ -63,7 +63,7 @@ public class PatientHandlerUtils {
 	 * 
 	 * @throws ParseException 
 	 */
-	private void retrieveGeneralPatientDetails(Patient patient, Resources resources, Map<String, String> reviewItemMap) throws ParseException {
+	private void retrieveGeneralPatientDetails(PatientAssessment patient, Resources resources, Map<String, String> reviewItemMap) throws ParseException {
 
 		// TODO NationalId and NationalHealthId
 		
@@ -109,7 +109,7 @@ public class PatientHandlerUtils {
 	 * 
 	 * @throws ParseException 
 	 */
-	private void retrieveLookSymptoms(Patient patient, Resources resources, Map<String, String> reviewItemMap) throws ParseException {
+	private void retrieveLookSymptoms(PatientAssessment patient, Resources resources, Map<String, String> reviewItemMap) throws ParseException {
 
 		// chest indrawing
 		patient.setChestIndrawing(assessBooleanPatientSymptom(reviewItemMap.get(resources.getString(R.string.ccm_look_assessment_chest_indrawing_id))));
@@ -141,7 +141,7 @@ public class PatientHandlerUtils {
 	 * 
 	 * @throws ParseException 
 	 */
-	private void retrieveAskLookSymptoms(Patient patient, Resources resources, Map<String, String> reviewItemMap) throws ParseException {
+	private void retrieveAskLookSymptoms(PatientAssessment patient, Resources resources, Map<String, String> reviewItemMap) throws ParseException {
 
 		// problem
 		patient.setProblem(reviewItemMap.get(resources.getString(R.string.ccm_ask_initial_assessment_problems_id)));

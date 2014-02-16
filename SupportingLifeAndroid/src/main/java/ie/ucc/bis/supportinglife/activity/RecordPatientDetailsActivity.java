@@ -1,7 +1,7 @@
 package ie.ucc.bis.supportinglife.activity;
 
 import ie.ucc.bis.supportinglife.R;
-import ie.ucc.bis.supportinglife.domain.Patient;
+import ie.ucc.bis.supportinglife.communication.PatientAssessmentComms;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -53,10 +53,10 @@ public class RecordPatientDetailsActivity extends SupportingLifeBaseActivity {
     	editText = (EditText) findViewById(R.id.surname_text);
     	String surname = editText.getText().toString();
     	
-    	Patient patient = new Patient();
-    	patient.setChildFirstName(firstName);
-    	patient.setChildSurname(surname);
-    	intent.putExtra(EXTRA_MESSAGE, patient);
+    	PatientAssessmentComms patientAssessment = new PatientAssessmentComms();
+    	patientAssessment.setChildFirstName(firstName);
+    	patientAssessment.setChildSurname(surname);
+    	intent.putExtra(EXTRA_MESSAGE, patientAssessment);
     	startActivity(intent);    	
     }   
 }

@@ -3,7 +3,7 @@ package ie.ucc.bis.supportinglife.rule.engine;
 import ie.ucc.bis.supportinglife.R;
 import ie.ucc.bis.supportinglife.activity.SupportingLifeBaseActivity;
 import ie.ucc.bis.supportinglife.assessment.model.review.ReviewItem;
-import ie.ucc.bis.supportinglife.domain.Patient;
+import ie.ucc.bis.supportinglife.domain.PatientAssessment;
 import ie.ucc.bis.supportinglife.rule.engine.enums.SymptomRuleCriteria;
 import ie.ucc.bis.supportinglife.ui.utilities.ClassificationUtils;
 
@@ -206,7 +206,7 @@ public class ClassificationRuleEngine {
 	 * 
 	 */
 	public void determinePatientClassifications(SupportingLifeBaseActivity supportingLifeBaseActivity, ArrayList<ReviewItem> reviewItems,
-			Patient patient, ArrayList<Classification> systemClassifications) {
+			PatientAssessment patient, ArrayList<Classification> systemClassifications) {
 		// 1. iterate over all review items and perform first rudimentary check in assessing
 		//    if the symptom criteria applies
 		for (ReviewItem reviewItem : reviewItems) {
@@ -289,7 +289,7 @@ public class ClassificationRuleEngine {
 	 * 
 	 * 
 	 */
-	private void checkClassificationRuleAgainstPatientRecord(Patient patient, Classification classification, ArrayList<ReviewItem> reviewItems) {
+	private void checkClassificationRuleAgainstPatientRecord(PatientAssessment patient, Classification classification, ArrayList<ReviewItem> reviewItems) {
 		Classification classificationMatch = new Classification();;
 		for(ClassificationRule classificationRule : classification.getClassificationRules()) {
 			for (ClassificationDiagnosed classificationDiagnosed : classificationRule.getClassificationsDiagnosed()) {

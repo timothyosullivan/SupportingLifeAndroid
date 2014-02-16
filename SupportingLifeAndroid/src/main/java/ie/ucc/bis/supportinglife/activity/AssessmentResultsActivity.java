@@ -1,8 +1,7 @@
 package ie.ucc.bis.supportinglife.activity;
 
 import ie.ucc.bis.supportinglife.assessment.model.review.ReviewItem;
-import ie.ucc.bis.supportinglife.dao.PatientDao;
-import ie.ucc.bis.supportinglife.domain.Patient;
+import ie.ucc.bis.supportinglife.domain.PatientAssessment;
 import ie.ucc.bis.supportinglife.helper.PatientHandlerUtils;
 import ie.ucc.bis.supportinglife.rule.engine.ClassificationRuleEngine;
 import ie.ucc.bis.supportinglife.rule.engine.TreatmentRuleEngine;
@@ -10,7 +9,6 @@ import ie.ucc.bis.supportinglife.ui.utilities.LoggerUtils;
 
 import java.text.ParseException;
 import java.util.ArrayList;
-import java.util.List;
 
 import android.app.ActionBar;
 import android.app.ActionBar.Tab;
@@ -22,6 +20,7 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.View;
+//import ie.ucc.bis.supportinglife.dao.PatientDao;
 
 /**
  * Class: AssessmentResultsActivity
@@ -39,11 +38,11 @@ public class AssessmentResultsActivity extends SupportingLifeBaseActivity {
 	private ViewPager ViewPager;
 	private TabsAdapter TabsAdapter;
 	private ArrayList<ReviewItem> reviewItems;
-	private Patient patient;
+	private PatientAssessment patient;
 	private ClassificationRuleEngine classificationRuleEngine;
 	private TreatmentRuleEngine treatmentRuleEngine;
 	
-	private PatientDao patientDao;
+//	private PatientDao patientDao;
 
 	/* 
 	 * Method: onCreate() 
@@ -54,8 +53,8 @@ public class AssessmentResultsActivity extends SupportingLifeBaseActivity {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setPatientDao(new PatientDao(this));
-        getPatientDao().open();
+  //      setPatientDao(new PatientDao(this));
+  //      getPatientDao().open();
 	}
 	
 
@@ -258,10 +257,10 @@ public class AssessmentResultsActivity extends SupportingLifeBaseActivity {
 	protected void recordPatientVisit() {
 
 		// add the patient record to the DB
-		getPatientDao().createPatient(getPatient());
+//		getPatientDao().createPatient(getPatient());
 
 		// check patient has been added correctly
-		List<Patient> patientsRetrieved = getPatientDao().getAllPatients();
+//		List<Patient> patientsRetrieved = getPatientDao().getAllPatients();
 
 		System.out.println("test");
 	}
@@ -302,13 +301,13 @@ public class AssessmentResultsActivity extends SupportingLifeBaseActivity {
     
     @Override
     protected void onResume() {
-    	getPatientDao().open();
+   // 	getPatientDao().open();
     	super.onResume();
     }
 
     @Override
     protected void onPause() {
-    	getPatientDao().close();
+    //	getPatientDao().close();
     	super.onPause();
     }
     
@@ -337,11 +336,11 @@ public class AssessmentResultsActivity extends SupportingLifeBaseActivity {
 		this.reviewItems = reviewItems;
 	}
 
-	public Patient getPatient() {
+	public PatientAssessment getPatient() {
 		return patient;
 	}
 
-	protected void setPatient(Patient patient) {
+	protected void setPatient(PatientAssessment patient) {
 		this.patient = patient;
 	}
 
@@ -360,7 +359,7 @@ public class AssessmentResultsActivity extends SupportingLifeBaseActivity {
 	public void setTreatmentRuleEngine(TreatmentRuleEngine treatmentRuleEngine) {
 		this.treatmentRuleEngine = treatmentRuleEngine;
 	}
-
+/*
 	protected PatientDao getPatientDao() {
 		return patientDao;
 	}
@@ -368,5 +367,6 @@ public class AssessmentResultsActivity extends SupportingLifeBaseActivity {
 	protected void setPatientDao(PatientDao patientDao) {
 		this.patientDao = patientDao;
 	}
+	*/
 }
 

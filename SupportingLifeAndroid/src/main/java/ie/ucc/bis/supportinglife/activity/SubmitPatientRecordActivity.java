@@ -1,7 +1,7 @@
 package ie.ucc.bis.supportinglife.activity;
 
 import ie.ucc.bis.supportinglife.R;
-import ie.ucc.bis.supportinglife.domain.Patient;
+import ie.ucc.bis.supportinglife.domain.PatientAssessment;
 
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.http.converter.json.MappingJacksonHttpMessageConverter;
@@ -22,7 +22,7 @@ import android.widget.TextView;
 public class SubmitPatientRecordActivity extends SupportingLifeBaseActivity {
 	
 	private NetworkCommunicationAsyncTask task;
-	private Patient submittedPatient;
+	private PatientAssessment submittedPatient;
 
 	/**
 	 * OnCreate method is called when the activity is first created.
@@ -44,7 +44,7 @@ public class SubmitPatientRecordActivity extends SupportingLifeBaseActivity {
 
 		// extract the patient record sent by the main activity
 		Intent intent = getIntent();
-		Patient patient= (Patient) intent.getSerializableExtra(RecordPatientDetailsActivity.EXTRA_MESSAGE);
+		PatientAssessment patient= (PatientAssessment) intent.getSerializableExtra(RecordPatientDetailsActivity.EXTRA_MESSAGE);
 
 		// instigate network communication to retrieve patient record
 		task = new NetworkCommunicationAsyncTask();
@@ -60,16 +60,16 @@ public class SubmitPatientRecordActivity extends SupportingLifeBaseActivity {
 	}
 	
 
-	private class NetworkCommunicationAsyncTask extends AsyncTask<Patient, Void, Patient> {
+	private class NetworkCommunicationAsyncTask extends AsyncTask<PatientAssessment, Void, PatientAssessment> {
 
 		private static final String AMAZON_WEB_SERVICE_URL = "http://supportinglife.elasticbeanstalk.com/patients/add";
 		
 		@Override
-		protected Patient doInBackground(Patient... params) {
+		protected PatientAssessment doInBackground(PatientAssessment... params) {
 
 			RestTemplate restTemplate = new RestTemplate(new HttpComponentsClientHttpRequestFactory());
 			
-			Patient patient = (Patient) params[0];
+			PatientAssessment patient = (PatientAssessment) params[0];
 			try {
 				// The default timeout was resulting in the call to the 'restTemplate.postForObject(..)' method
 				// call sometimes returning a null object and sometimes returning a correctly populated object.
@@ -79,7 +79,7 @@ public class SubmitPatientRecordActivity extends SupportingLifeBaseActivity {
 				((HttpComponentsClientHttpRequestFactory)restTemplate.getRequestFactory()).setReadTimeout(120 * 1000);
 				restTemplate.getMessageConverters().add(new MappingJacksonHttpMessageConverter());
 				
-				submittedPatient = restTemplate.postForObject(AMAZON_WEB_SERVICE_URL, patient, Patient.class);
+				submittedPatient = restTemplate.postForObject(AMAZON_WEB_SERVICE_URL, patient, PatientAssessment.class);
 				return submittedPatient;
 			} catch (ResourceAccessException ex) {
 				System.out.println("OFF");
@@ -94,7 +94,7 @@ public class SubmitPatientRecordActivity extends SupportingLifeBaseActivity {
 		}
 
 		@Override
-		protected void onPostExecute(Patient patient) {
+		protected void onPostExecute(PatientAssessment patient) {
 			TextView txt = (TextView) findViewById(R.id.network_comm_result);
 			if (patient != null) {
 			txt.setText("Patient Id: " + patient.getNationalHealthId() + "\n");
