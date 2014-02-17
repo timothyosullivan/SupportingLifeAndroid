@@ -18,6 +18,7 @@ public class PatientAssessmentComms implements Serializable {
 	 */
 	private static final long serialVersionUID = -3143569878394681227L;
 	
+	// General Patient Details
 	private String hsaUserId;
 	private String nationalId;
 	private String nationalHealthId;
@@ -82,6 +83,7 @@ public class PatientAssessmentComms implements Serializable {
 					Integer difficultySeeingDuration, Boolean cannotTreatProblem, 
 					String cannotTreatProblemDetails) {
 		
+		// General Patient Details
 		setHsaUserId(hsaUserId);
 		setNationalId(nationalId);
 		setNationalHealthId(nationalHealthId);
@@ -94,11 +96,19 @@ public class PatientAssessmentComms implements Serializable {
 		setPhysicalAddress(physicalAddress);
 		setVillageTa(villageTa);
 		setVisitDate(visitDate);
+		
+		// Look Symptoms
 		setChestIndrawing(chestIndrawing);
 		setBreathsPerMinute(breathsPerMinute);
 		setSleepyUnconscious(sleepyUnconscious);
 		setPalmarPallor(palmarPallor);
 		setMuacTapeColour(muacTapeColour);
+		setSwellingBothFeet(swellingBothFeet);
+		
+		// Ask Look Symptoms
+		setProblem(problem);
+		setCough(cough);
+		setCoughDuration(coughDuration);
 		setDiarrhoea(diarrhoea);
 		setDiarrhoeaDuration(diarrhoeaDuration);
 		setBloodInStool(bloodInStool);

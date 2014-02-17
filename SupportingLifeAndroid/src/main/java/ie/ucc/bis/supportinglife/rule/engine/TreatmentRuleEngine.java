@@ -355,7 +355,7 @@ public class TreatmentRuleEngine {
 					}
 					else if (TREATMENT_IDENTIFIER.equalsIgnoreCase(elemName)) {
 						// <Identifier>
-						treatment.setIdentifier(elemName);
+						treatment.setIdentifier(xmlParser.nextText());
 					}					
 					else if (CRITERIA_LIST.equalsIgnoreCase(elemName)) {
 						// <CriteriaList>

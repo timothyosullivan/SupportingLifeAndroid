@@ -7,6 +7,7 @@ import ie.ucc.bis.supportinglife.assessment.model.review.ReviewItem;
 import ie.ucc.bis.supportinglife.assessment.ui.AssessmentResultsReviewFragment;
 import ie.ucc.bis.supportinglife.communication.PatientAssessmentComms;
 import ie.ucc.bis.supportinglife.domain.PatientAssessment;
+import ie.ucc.bis.supportinglife.helper.PatientHandlerUtils;
 import ie.ucc.bis.supportinglife.rule.engine.ClassificationRuleEngine;
 import ie.ucc.bis.supportinglife.rule.engine.Diagnostic;
 import ie.ucc.bis.supportinglife.rule.engine.TreatmentRecommendation;
@@ -145,37 +146,11 @@ public class CcmAssessmentResultsActivity extends AssessmentResultsActivity {
 
 			RestTemplate restTemplate = new RestTemplate(new HttpComponentsClientHttpRequestFactory());
 			
-			PatientAssessment patient = (PatientAssessment) params[0];
+			PatientAssessment patientAssessment = (PatientAssessment) params[0];
 			
-			//********** TEMP START
-			PatientAssessmentComms patientTransmit = new PatientAssessmentComms(patient.getHsaUserId(), patient.getNationalId(), patient.getNationalHealthId(), 
-					patient.getChildFirstName(), patient.getChildSurname(), patient.getBirthDate(),
-					patient.getGender(), patient.getCaregiverName(), patient.getRelationship(), patient.getPhysicalAddress(),
-					patient.getVillageTa(), patient.getVisitDate(), patient.isChestIndrawing(), patient.getBreathsPerMinute(),
-					patient.isSleepyUnconscious(), patient.isPalmarPallor(), patient.getMuacTapeColour(), 
-					patient.isSwellingBothFeet(), patient.getProblem(), patient.isCough(), patient.getCoughDuration(),
-					patient.isDiarrhoea(), patient.getDiarrhoeaDuration(), patient.isBloodInStool(), patient.isFever(),
-					patient.getFeverDuration(), patient.isConvulsions(), patient.isDifficultyDrinkingOrFeeding(),
-					patient.isUnableToDrinkOrFeed(), patient.isVomiting(), patient.isVomitsEverything(),
-					patient.isRedEye(), patient.getRedEyeDuration(), patient.isDifficultySeeing(),
-					patient.getDifficultySeeingDuration(), patient.isCannotTreatProblem(), 
-					patient.getCannotTreatProblemDetails());
-			
-			for (Diagnostic diagnostic : patient.getDiagnostics()) {
-				// extract classifications
-				if (diagnostic.getClassification().getCategory() != null) {
-					patientTransmit.getClassifications().put(diagnostic.getClassification().getCategory(), diagnostic.getClassification().getName());
-				}
-				
-				// extract treatments
-				for (TreatmentRecommendation treatmentRecommendation : diagnostic.getTreatmentRecommendations()) {
-					patientTransmit.getTreatments().put(treatmentRecommendation.getTreatmentIdentifier(), treatmentRecommendation.getTreatmentDescription());
-				}
-				
-			}
-			
-			
-			//********** TEMP END
+			// construct the 'PatientAssessmentComms' instance in preparation
+			// from transmission across the network from the device to the web server
+			PatientAssessmentComms patientTransmit = createPatientAssessmentCommsInstance(patientAssessment);
 			
 			
 			try {
@@ -199,6 +174,46 @@ public class CcmAssessmentResultsActivity extends AssessmentResultsActivity {
 				ex.printStackTrace();
 			}
 			return null;
+		}
+
+		/**
+		 * Responsible for constructing the 'PatientAssessmentComms' instance in preparation
+		 * from transmission across the network from the device to the web server
+		 * 
+		 * @param patientAssessment
+		 * 
+		 * @return PatientAssessmentComms
+		 */
+		private PatientAssessmentComms createPatientAssessmentCommsInstance(PatientAssessment patientAssessment) {
+			
+			PatientAssessmentComms patientTransmit = new PatientAssessmentComms(patientAssessment.getHsaUserId(), patientAssessment.getNationalId(), 
+					patientAssessment.getNationalHealthId(), patientAssessment.getChildFirstName(), patientAssessment.getChildSurname(), 
+					patientAssessment.getBirthDate(), patientAssessment.getGender(), patientAssessment.getCaregiverName(), 
+					patientAssessment.getRelationship(), patientAssessment.getPhysicalAddress(), patientAssessment.getVillageTa(), 
+					patientAssessment.getVisitDate(), patientAssessment.isChestIndrawing(), patientAssessment.getBreathsPerMinute(),
+					patientAssessment.isSleepyUnconscious(), patientAssessment.isPalmarPallor(), patientAssessment.getMuacTapeColour(), 
+					patientAssessment.isSwellingBothFeet(), patientAssessment.getProblem(), patientAssessment.isCough(), patientAssessment.getCoughDuration(),
+					patientAssessment.isDiarrhoea(), patientAssessment.getDiarrhoeaDuration(), patientAssessment.isBloodInStool(), patientAssessment.isFever(),
+					patientAssessment.getFeverDuration(), patientAssessment.isConvulsions(), patientAssessment.isDifficultyDrinkingOrFeeding(),
+					patientAssessment.isUnableToDrinkOrFeed(), patientAssessment.isVomiting(), patientAssessment.isVomitsEverything(),
+					patientAssessment.isRedEye(), patientAssessment.getRedEyeDuration(), patientAssessment.isDifficultySeeing(),
+					patientAssessment.getDifficultySeeingDuration(), patientAssessment.isCannotTreatProblem(), 
+					patientAssessment.getCannotTreatProblemDetails());
+			
+			for (Diagnostic diagnostic : patientAssessment.getDiagnostics()) {
+				// extract classifications
+				if (diagnostic.getClassification().getIdentifier() != null) {
+					patientTransmit.getClassifications().put(diagnostic.getClassification().getIdentifier(), diagnostic.getClassification().getName());
+				}
+				
+				// extract treatments
+				for (TreatmentRecommendation treatmentRecommendation : diagnostic.getTreatmentRecommendations()) {
+					patientTransmit.getTreatments().put(treatmentRecommendation.getTreatmentIdentifier(), 
+							PatientHandlerUtils.removeEscapeCharacters(treatmentRecommendation.getTreatmentDescription()));
+				}
+				
+			}
+			return patientTransmit;
 		}
 
 		@Override

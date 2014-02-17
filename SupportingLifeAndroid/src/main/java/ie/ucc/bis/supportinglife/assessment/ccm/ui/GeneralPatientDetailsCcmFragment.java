@@ -43,6 +43,8 @@ public class GeneralPatientDetailsCcmFragment extends Fragment {
     private String pageKey;
     private TextView todayDateTextView;
     private EditText hsaEditText;
+    private EditText nationalIdEditText;
+    private EditText nationalHealthIdEditText;
     private EditText firstNameEditText;
     private EditText surnameEditText;
     private EditText dateBirthEditText;
@@ -122,6 +124,13 @@ public class GeneralPatientDetailsCcmFragment extends Fragment {
         setHsaEditText(((EditText) rootView.findViewById(R.id.ccm_general_patient_details_hsa_identifier)));
         getHsaEditText().setText(getGeneralPatientDetailsCcmPage().getPageData().getString(GeneralPatientDetailsCcmPage.HEALTH_SURVEILLANCE_ASSISTANT_DATA_KEY));
         
+        // National Id
+        setNationalIdEditText(((EditText) rootView.findViewById(R.id.ccm_general_patient_details_national_id)));
+        getNationalIdEditText().setText(getGeneralPatientDetailsCcmPage().getPageData().getString(GeneralPatientDetailsCcmPage.NATIONAL_ID_DATA_KEY));       
+  
+        // National Health Id
+        setNationalHealthIdEditText(((EditText) rootView.findViewById(R.id.ccm_general_patient_details_national_health_id)));
+        getNationalHealthIdEditText().setText(getGeneralPatientDetailsCcmPage().getPageData().getString(GeneralPatientDetailsCcmPage.NATIONAL_HEALTH_ID_DATA_KEY));
         
         // child's first name
         setFirstNameEditText(((EditText) rootView.findViewById(R.id.ccm_general_patient_details_first_name)));
@@ -220,6 +229,16 @@ public class GeneralPatientDetailsCcmFragment extends Fragment {
         
         // TODO - To be removed once HSA User Login is supported
         getHsaEditText().setText("hsauser1");
+    
+        // national id
+        getNationalIdEditText().addTextChangedListener(
+        		new AssessmentWizardTextWatcher(getGeneralPatientDetailsCcmPage(), 
+        				GeneralPatientDetailsCcmPage.NATIONAL_ID_DATA_KEY));  
+        
+        // national health id
+        getNationalHealthIdEditText().addTextChangedListener(
+        		new AssessmentWizardTextWatcher(getGeneralPatientDetailsCcmPage(), 
+        				GeneralPatientDetailsCcmPage.NATIONAL_HEALTH_ID_DATA_KEY));  
         
         // child's first name
         getFirstNameEditText().addTextChangedListener(
@@ -342,6 +361,22 @@ public class GeneralPatientDetailsCcmFragment extends Fragment {
 	 */	
 	public void setTodayDateTextView(TextView todayDateTextView) {
 		this.todayDateTextView = todayDateTextView;
+	}
+
+	public EditText getNationalIdEditText() {
+		return nationalIdEditText;
+	}
+
+	public void setNationalIdEditText(EditText nationalIdEditText) {
+		this.nationalIdEditText = nationalIdEditText;
+	}
+
+	public EditText getNationalHealthIdEditText() {
+		return nationalHealthIdEditText;
+	}
+
+	public void setNationalHealthIdEditText(EditText nationalHealthIdEditText) {
+		this.nationalHealthIdEditText = nationalHealthIdEditText;
 	}
 
 	/**

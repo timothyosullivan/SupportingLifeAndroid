@@ -10,6 +10,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 import android.content.res.Resources;
@@ -17,6 +18,7 @@ import android.content.res.Resources;
 public class PatientHandlerUtils {
 
 	private static final String POSITIVE_ANSWER = "Yes";
+	private static final Locale LOCALE = Locale.UK;
 	
 	/**
 	 * Handler method to populate a patient instance with the following information:
@@ -64,38 +66,59 @@ public class PatientHandlerUtils {
 	 * @throws ParseException 
 	 */
 	private void retrieveGeneralPatientDetails(PatientAssessment patient, Resources resources, Map<String, String> reviewItemMap) throws ParseException {
-
-		// TODO NationalId and NationalHealthId
 		
 		// hsa user id
-		patient.setHsaUserId(reviewItemMap.get(resources.getString(R.string.ccm_general_patient_details_hsa_user_id)));
+		patient.setHsaUserId(upperCaseConversion(reviewItemMap.get(resources.getString(R.string.ccm_general_patient_details_hsa_user_id))));
+		
+		// national id
+		patient.setNationalId(upperCaseConversion(reviewItemMap.get(resources.getString(R.string.ccm_general_patient_details_national_id))));
 
+		// national health id
+		patient.setNationalHealthId(upperCaseConversion(reviewItemMap.get(resources.getString(R.string.ccm_general_patient_details_national_health_id))));
+		
 		// child first name
-		patient.setChildFirstName(reviewItemMap.get(resources.getString(R.string.ccm_general_patient_details_child_first_name_id)));
+		patient.setChildFirstName(upperCaseConversion(reviewItemMap.get(resources.getString(R.string.ccm_general_patient_details_child_first_name_id))));
 
 		// child surname
-		patient.setChildSurname(reviewItemMap.get(resources.getString(R.string.ccm_general_patient_details_child_surname_id)));
+		patient.setChildSurname(upperCaseConversion(reviewItemMap.get(resources.getString(R.string.ccm_general_patient_details_child_surname_id))));
 
 		// birthdate
 		patient.setBirthDate(assessDatePatientSymptom(reviewItemMap.get(resources.getString(R.string.ccm_general_patient_details_date_of_birth_id))));
 
 		// gender
-		patient.setGender(reviewItemMap.get(resources.getString(R.string.ccm_general_patient_details_gender_id)));
+		patient.setGender(upperCaseConversion(reviewItemMap.get(resources.getString(R.string.ccm_general_patient_details_gender_id))));
 
 		// caregiver name
-		patient.setCaregiverName(reviewItemMap.get(resources.getString(R.string.ccm_general_patient_details_caregiver_name_id)));
+		patient.setCaregiverName(upperCaseConversion(reviewItemMap.get(resources.getString(R.string.ccm_general_patient_details_caregiver_name_id))));
 
 		// relationship
-		patient.setRelationship(reviewItemMap.get(resources.getString(R.string.ccm_general_patient_details_relationship_id)));
+		patient.setRelationship(upperCaseConversion(reviewItemMap.get(resources.getString(R.string.ccm_general_patient_details_relationship_id))));
 
 		// physical address
-		patient.setPhysicalAddress(reviewItemMap.get(resources.getString(R.string.ccm_general_patient_details_physical_address_id)));
+		patient.setPhysicalAddress(upperCaseConversion(reviewItemMap.get(resources.getString(R.string.ccm_general_patient_details_physical_address_id))));
 
 		// village TA
-		patient.setVillageTa(reviewItemMap.get(resources.getString(R.string.ccm_general_patient_details_village_ta_id)));
+		patient.setVillageTa(upperCaseConversion(reviewItemMap.get(resources.getString(R.string.ccm_general_patient_details_village_ta_id))));
 
 		// visit date
 		patient.setVisitDate(assessDatePatientSymptom(reviewItemMap.get(resources.getString(R.string.ccm_general_patient_details_visit_date_id))));
+	}
+
+	
+	/**
+	 * Utility method to check for null and convert string to upper case
+	 * 
+	 * @param value to be converted to upper case
+	 * 
+	 * @return upper case representation of parameter value
+	 */
+	private String upperCaseConversion(String value) {
+		if (value != null) {
+			return value.toUpperCase(LOCALE);
+		}
+		else {
+		return null;
+		}
 	}
 
 	/**
@@ -124,7 +147,7 @@ public class PatientHandlerUtils {
 		patient.setPalmarPallor(assessBooleanPatientSymptom(reviewItemMap.get(resources.getString(R.string.ccm_look_assessment_palmar_pallor_id))));
 
 		// muac tape colour
-		patient.setMuacTapeColour(reviewItemMap.get(resources.getString(R.string.ccm_look_assessment_muac_tape_colour_id)));
+		patient.setMuacTapeColour(upperCaseConversion(reviewItemMap.get(resources.getString(R.string.ccm_look_assessment_muac_tape_colour_id))));
 
 		// swelling of both feet
 		patient.setSwellingBothFeet(assessBooleanPatientSymptom(reviewItemMap.get(resources.getString(R.string.ccm_look_assessment_swelling_of_both_feet_id))));
@@ -144,7 +167,7 @@ public class PatientHandlerUtils {
 	private void retrieveAskLookSymptoms(PatientAssessment patient, Resources resources, Map<String, String> reviewItemMap) throws ParseException {
 
 		// problem
-		patient.setProblem(reviewItemMap.get(resources.getString(R.string.ccm_ask_initial_assessment_problems_id)));
+		patient.setProblem(upperCaseConversion(reviewItemMap.get(resources.getString(R.string.ccm_ask_initial_assessment_problems_id))));
 		
 		// cough
 		patient.setCough(assessBooleanPatientSymptom(reviewItemMap.get(resources.getString(R.string.ccm_ask_initial_assessment_cough_id))));
@@ -198,7 +221,7 @@ public class PatientHandlerUtils {
 		patient.setCannotTreatProblem(assessBooleanPatientSymptom(reviewItemMap.get(resources.getString(R.string.ccm_ask_secondary_assessment_cannot_treat_problems_id))));
 
 		// 'cannot treat problems' details
-		patient.setCannotTreatProblemDetails(reviewItemMap.get(resources.getString(R.string.ccm_ask_secondary_assessment_cannot_treat_problems_details_id)));
+		patient.setCannotTreatProblemDetails(upperCaseConversion(reviewItemMap.get(resources.getString(R.string.ccm_ask_secondary_assessment_cannot_treat_problems_details_id))));
 	}
 
 	/**
@@ -228,7 +251,7 @@ public class PatientHandlerUtils {
 	 */
 	public Date assessDatePatientSymptom(String dateValue) throws ParseException {
 		if (dateValue != null) {
-			Date dateInstance = new SimpleDateFormat(DateDialogSetListener.DATE_TIME_CUSTOM_FORMAT, DateDialogSetListener.LOCALE)
+			Date dateInstance = new SimpleDateFormat(DateDialogSetListener.DATE_TIME_CUSTOM_FORMAT, LOCALE)
 										.parse(dateValue);
 			return dateInstance;
 		}
@@ -245,13 +268,30 @@ public class PatientHandlerUtils {
 	 * 
 	 * @return Integer
 	 */
-
 	private Integer assessIntegerPatientSymptom(String integerValue) {
 		Integer patientSymptom = null;
 		if (integerValue != null && !("".equalsIgnoreCase(integerValue))) {
 			patientSymptom = Integer.valueOf(integerValue);
 		}
 		return patientSymptom;
+	}
+
+	/**
+	 * Utility method to remove escape characters from
+	 * string content e.g. for tidying up treatment descriptions
+	 * before transferring to server
+	 * 
+	 * @param text
+	 * 
+	 * @return String (with escape characters removed)
+	 */
+	public static String removeEscapeCharacters(String text) {
+		// remove newline characters
+		String formatString = text.replace("\\n", "").replace("\n", "");
+		// remove multiple spaces between words
+		formatString = formatString.replaceAll("\\s+", " ");
+		
+		return formatString;		
 	}
 	
 }

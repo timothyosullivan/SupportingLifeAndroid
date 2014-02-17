@@ -1,8 +1,10 @@
 package ie.ucc.bis.supportinglife.domain;
 
+import ie.ucc.bis.supportinglife.helper.DateHandlerUtils;
 import ie.ucc.bis.supportinglife.rule.engine.Diagnostic;
 
 import java.io.Serializable;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -116,12 +118,12 @@ public class PatientAssessment implements Serializable {
 		setCannotTreatProblem(Boolean.valueOf(cannotTreatProblem));
 		setCannotTreatProblemDetails(cannotTreatProblemDetails);
 				
-//		try {
-//			setBirthDate(DateHandlerUtils.parseDate(birthDate));
-//			setVisitDate(DateHandlerUtils.parseDate(visitDate));
-//		} catch (ParseException e) {
-//			e.printStackTrace();
-//		}
+		try {
+			setBirthDate(DateHandlerUtils.parseDate(birthDate));
+			setVisitDate(DateHandlerUtils.parseDate(visitDate));
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
 		
 		setDiagnostics(new ArrayList<Diagnostic>());
 	}

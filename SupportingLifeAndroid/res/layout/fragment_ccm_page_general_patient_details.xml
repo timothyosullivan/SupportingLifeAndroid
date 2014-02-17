@@ -70,7 +70,41 @@
                 android:inputType="textCapWords"
                 android:enabled="false"
                 android:saveEnabled="false" />            
-                
+
+            <!-- ============================================================ -->
+            <!-- NATIONAL ID		 										  -->
+            <!-- ============================================================ -->
+
+            <TextView
+                style="@style/AssessmentFormLabel"
+                android:text="@string/ccm_general_patient_details_national_id_label" />
+
+            <EditText
+                android:id="@+id/ccm_general_patient_details_national_id"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:hint="@string/ccm_general_patient_details_national_id_hint"
+                android:inputType="textCapWords"
+                android:saveEnabled="false" />
+       
+            <!-- ============================================================ -->
+            <!-- NATIONAL HEALTH ID 										  -->
+            <!-- ============================================================ -->
+
+            <TextView
+                style="@style/AssessmentFormLabel"
+                android:text="@string/ccm_general_patient_details_national_health_id_label" />
+
+            <EditText
+                android:id="@+id/ccm_general_patient_details_national_health_id"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:hint="@string/ccm_general_patient_details_national_health_id_hint"
+                android:inputType="textCapWords"
+                android:saveEnabled="false" />
+            
             
             <!-- ============================================================ -->
             <!-- CHILD'S FIRST NAME 										  -->

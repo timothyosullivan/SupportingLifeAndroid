@@ -25,6 +25,8 @@ import android.support.v4.app.Fragment;
 public class GeneralPatientDetailsCcmPage extends AbstractPage {
     public static final String TODAY_DATE_DATA_KEY = "TODAY_DATE";
 	public static final String HEALTH_SURVEILLANCE_ASSISTANT_DATA_KEY = "HEALTH_SURVEILLANCE_ASSISTANT";
+	public static final String NATIONAL_ID_DATA_KEY = "NATIONAL_ID";
+	public static final String NATIONAL_HEALTH_ID_DATA_KEY = "NATIONAL_HEALTH_ID";
     public static final String FIRST_NAME_DATA_KEY = "FIRST_NAME";
     public static final String SURNAME_DATA_KEY = "SURNAME";
     public static final String DATE_OF_BIRTH_DATA_KEY = "DATE_OF_BIRTH";
@@ -76,6 +78,16 @@ public class GeneralPatientDetailsCcmPage extends AbstractPage {
     	reviewItemIdentifier = resources.getString(R.string.ccm_general_patient_details_hsa_user_id);
     	reviewItemLabel = resources.getString(R.string.ccm_general_patient_details_review_hsa_identifier);
     	reviewItems.add(new ReviewItem(reviewItemLabel, getPageData().getString(HEALTH_SURVEILLANCE_ASSISTANT_DATA_KEY), getKey(), -1, reviewItemIdentifier));
+
+    	// national id
+    	reviewItemIdentifier = resources.getString(R.string.ccm_general_patient_details_national_id);
+    	reviewItemLabel = resources.getString(R.string.ccm_general_patient_details_review_national_id);
+    	reviewItems.add(new ReviewItem(reviewItemLabel, getPageData().getString(NATIONAL_ID_DATA_KEY), getKey(), -1, reviewItemIdentifier));
+  
+    	// national health id
+    	reviewItemIdentifier = resources.getString(R.string.ccm_general_patient_details_national_health_id);
+    	reviewItemLabel = resources.getString(R.string.ccm_general_patient_details_review_national_health_id);
+    	reviewItems.add(new ReviewItem(reviewItemLabel, getPageData().getString(NATIONAL_HEALTH_ID_DATA_KEY), getKey(), -1, reviewItemIdentifier));
     	
     	// child's first name
     	reviewItemIdentifier = resources.getString(R.string.ccm_general_patient_details_child_first_name_id);
