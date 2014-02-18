@@ -42,7 +42,7 @@ public class ImciAssessmentClassificationsFragment extends ListFragment {
         super.onActivityCreated(savedInstanceState);
       
         // obtain a reference to the patient being dealt with...
-        setPatient(((AssessmentResultsActivity) getActivity()).getPatient());          
+        setPatient(((AssessmentResultsActivity) getActivity()).getPatientAssessment());          
         setClassificationAdapter(new ImciClassificationAdapter(this, new ArrayList<Diagnostic>(getPatient().getDiagnostics())));
         setListAdapter(getClassificationAdapter());
     }

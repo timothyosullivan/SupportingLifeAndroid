@@ -39,7 +39,7 @@ public class CcmAssessmentTreatmentsFragment extends ListFragment {
         super.onActivityCreated(savedInstanceState);
       
         // obtain a reference to the patient being dealt with...
-        setPatient(((AssessmentResultsActivity) getActivity()).getPatient());          
+        setPatient(((AssessmentResultsActivity) getActivity()).getPatientAssessment());          
         setCcmTreatmentAdapter(new CcmTreatmentAdapter(this, new ArrayList<Diagnostic>(getPatient().getDiagnostics())));
         setListAdapter(getCcmTreatmentAdapter());
     }

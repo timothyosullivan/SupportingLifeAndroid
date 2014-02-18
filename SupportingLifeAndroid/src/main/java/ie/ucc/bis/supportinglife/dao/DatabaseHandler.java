@@ -21,6 +21,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 	
 	// 'Patient' Table Columns
 	protected static final String TABLE_PATIENT_COLUMN_ID = "_id";
+	protected static final String TABLE_PATIENT_COLUMN_ASSESSMENT_ID = "assessment_id";
 	protected static final String TABLE_PATIENT_COLUMN_NATIONAL_ID = "national_id";
 	protected static final String TABLE_PATIENT_COLUMN_NATIONAL_HEALTH_ID = "national_health_id";
 	protected static final String TABLE_PATIENT_COLUMN_HSA_USER_ID = "hsa_user_id";
@@ -57,11 +58,13 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 	protected static final String TABLE_PATIENT_COLUMN_DIFFICULTY_SEEING= "difficulty_seeing";
 	protected static final String TABLE_PATIENT_COLUMN_DIFFICULTY_SEEING_DURATION = "difficulty_seeing_duration";
 	protected static final String TABLE_PATIENT_COLUMN_CANNOT_TREAT = "cannot_treat";		
-	protected static final String TABLE_PATIENT_COLUMN_CANNOT_TREAT_DETAILS = "cannot_treat_details";		
+	protected static final String TABLE_PATIENT_COLUMN_CANNOT_TREAT_DETAILS = "cannot_treat_details";
+	protected static final String TABLE_PATIENT_COLUMN_SYNCED = "synced";
 	
 	// Database creation SQL statement
 	private static final String DATABASE_CREATE = "CREATE TABLE "
 			+ TABLE_PATIENT + "(" 	+ TABLE_PATIENT_COLUMN_ID							+ " INTEGER PRIMARY KEY AUTOINCREMENT, " 
+									+ TABLE_PATIENT_COLUMN_ASSESSMENT_ID				+ " TEXT, "
 									+ TABLE_PATIENT_COLUMN_NATIONAL_ID 					+ " TEXT, "
 									+ TABLE_PATIENT_COLUMN_NATIONAL_HEALTH_ID 			+ " TEXT, "
 									+ TABLE_PATIENT_COLUMN_HSA_USER_ID 					+ " TEXT, "
@@ -98,7 +101,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 									+ TABLE_PATIENT_COLUMN_DIFFICULTY_SEEING			+ " TEXT, "
 									+ TABLE_PATIENT_COLUMN_DIFFICULTY_SEEING_DURATION	+ " INTEGER, "
 									+ TABLE_PATIENT_COLUMN_CANNOT_TREAT					+ " TEXT, "
-									+ TABLE_PATIENT_COLUMN_CANNOT_TREAT_DETAILS			+ " TEXT);";
+									+ TABLE_PATIENT_COLUMN_CANNOT_TREAT_DETAILS			+ " TEXT, "
+									+ TABLE_PATIENT_COLUMN_SYNCED						+ " TEXT);";
 
 	public DatabaseHandler(Context context) {
 		super(context, DATABASE_NAME, null, DATABASE_VERSION);

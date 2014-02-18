@@ -1,6 +1,8 @@
 package ie.ucc.bis.supportinglife.activity;
 
 import ie.ucc.bis.supportinglife.assessment.model.review.ReviewItem;
+import ie.ucc.bis.supportinglife.dao.PatientAssessmentDao;
+import ie.ucc.bis.supportinglife.dao.PatientAssessmentDaoImpl;
 import ie.ucc.bis.supportinglife.domain.PatientAssessment;
 import ie.ucc.bis.supportinglife.helper.PatientHandlerUtils;
 import ie.ucc.bis.supportinglife.rule.engine.ClassificationRuleEngine;
@@ -9,18 +11,19 @@ import ie.ucc.bis.supportinglife.ui.utilities.LoggerUtils;
 
 import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.List;
 
 import android.app.ActionBar;
 import android.app.ActionBar.Tab;
 import android.content.Context;
 import android.content.res.Resources;
 import android.os.Bundle;
+import android.provider.Settings.Secure;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.View;
-//import ie.ucc.bis.supportinglife.dao.PatientDao;
 
 /**
  * Class: AssessmentResultsActivity
@@ -38,11 +41,11 @@ public class AssessmentResultsActivity extends SupportingLifeBaseActivity {
 	private ViewPager ViewPager;
 	private TabsAdapter TabsAdapter;
 	private ArrayList<ReviewItem> reviewItems;
-	private PatientAssessment patient;
+	private PatientAssessment patientAssessment;
 	private ClassificationRuleEngine classificationRuleEngine;
 	private TreatmentRuleEngine treatmentRuleEngine;
 	
-//	private PatientDao patientDao;
+	private PatientAssessmentDao patientAssessmentDao;
 
 	/* 
 	 * Method: onCreate() 
@@ -53,8 +56,8 @@ public class AssessmentResultsActivity extends SupportingLifeBaseActivity {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-  //      setPatientDao(new PatientDao(this));
-  //      getPatientDao().open();
+        setPatientAssessmentDao(new PatientAssessmentDaoImpl(this));
+        getPatientAssessmentDao().open();
 	}
 	
 
@@ -243,7 +246,7 @@ public class AssessmentResultsActivity extends SupportingLifeBaseActivity {
 	
     	// constuct the patient instance
         try {
-        	setPatient((new PatientHandlerUtils()).populateCcmPatientDetails(resources, getReviewItems()));	
+        	setPatientAssessment((new PatientHandlerUtils()).populateCcmPatientDetails(resources, getReviewItems()));	
 		} catch (ParseException e) {
 			LoggerUtils.i(LOG_TAG, "Parse Exception thrown whilst constructing patient instance");
 			e.printStackTrace();
@@ -256,11 +259,15 @@ public class AssessmentResultsActivity extends SupportingLifeBaseActivity {
 	 */	
 	protected void recordPatientVisit() {
 
+		// obtain unique android id for the device
+		String android_device_id = Secure.getString(getApplicationContext().getContentResolver(),
+                Secure.ANDROID_ID); 
+		
 		// add the patient record to the DB
-//		getPatientDao().createPatient(getPatient());
+		getPatientAssessmentDao().createPatientAssessment(getPatientAssessment(), android_device_id);
 
 		// check patient has been added correctly
-//		List<Patient> patientsRetrieved = getPatientDao().getAllPatients();
+		List<PatientAssessment> patientsRetrieved = getPatientAssessmentDao().getAllNonSyncedPatientAssessments();
 
 		System.out.println("test");
 	}
@@ -301,13 +308,13 @@ public class AssessmentResultsActivity extends SupportingLifeBaseActivity {
     
     @Override
     protected void onResume() {
-   // 	getPatientDao().open();
+    	getPatientAssessmentDao().open();
     	super.onResume();
     }
 
     @Override
     protected void onPause() {
-    //	getPatientDao().close();
+    	getPatientAssessmentDao().close();
     	super.onPause();
     }
     
@@ -336,12 +343,12 @@ public class AssessmentResultsActivity extends SupportingLifeBaseActivity {
 		this.reviewItems = reviewItems;
 	}
 
-	public PatientAssessment getPatient() {
-		return patient;
+	public PatientAssessment getPatientAssessment() {
+		return patientAssessment;
 	}
 
-	protected void setPatient(PatientAssessment patient) {
-		this.patient = patient;
+	protected void setPatientAssessment(PatientAssessment patientAssessment) {
+		this.patientAssessment = patientAssessment;
 	}
 
 	public ClassificationRuleEngine getClassificationRuleEngine() {
@@ -359,14 +366,14 @@ public class AssessmentResultsActivity extends SupportingLifeBaseActivity {
 	public void setTreatmentRuleEngine(TreatmentRuleEngine treatmentRuleEngine) {
 		this.treatmentRuleEngine = treatmentRuleEngine;
 	}
-/*
-	protected PatientDao getPatientDao() {
-		return patientDao;
+
+	protected PatientAssessmentDao getPatientAssessmentDao() {
+		return patientAssessmentDao;
 	}
 
-	protected void setPatientDao(PatientDao patientDao) {
-		this.patientDao = patientDao;
+	protected void setPatientAssessmentDao(PatientAssessmentDao patientAssessmentDao) {
+		this.patientAssessmentDao = patientAssessmentDao;
 	}
-	*/
+
 }
 

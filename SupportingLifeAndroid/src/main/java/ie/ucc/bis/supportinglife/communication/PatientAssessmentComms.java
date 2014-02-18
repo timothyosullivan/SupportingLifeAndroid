@@ -18,6 +18,9 @@ public class PatientAssessmentComms implements Serializable {
 	 */
 	private static final long serialVersionUID = -3143569878394681227L;
 	
+	// device generated patient assessment id
+	private String deviceGeneratedAssessmentId;
+	
 	// General Patient Details
 	private String hsaUserId;
 	private String nationalId;
@@ -70,7 +73,7 @@ public class PatientAssessmentComms implements Serializable {
 	public PatientAssessmentComms() {
 	}
 	
-	public PatientAssessmentComms(String hsaUserId, String nationalId, String nationalHealthId, 
+	public PatientAssessmentComms(String deviceGeneratedAssessmentId, String hsaUserId, String nationalId, String nationalHealthId, 
 					String childFirstName, String childSurname, Date birthDate,
 					String gender, String caregiverName, String relationship, String physicalAddress,
 					String villageTa, Date visitDate, Boolean chestIndrawing, Integer breathsPerMinute,
@@ -82,6 +85,8 @@ public class PatientAssessmentComms implements Serializable {
 					Boolean redEye, Integer redEyeDuration, Boolean difficultySeeing,
 					Integer difficultySeeingDuration, Boolean cannotTreatProblem, 
 					String cannotTreatProblemDetails) {
+		
+		setDeviceGeneratedAssessmentId(deviceGeneratedAssessmentId);
 		
 		// General Patient Details
 		setHsaUserId(hsaUserId);
@@ -128,6 +133,14 @@ public class PatientAssessmentComms implements Serializable {
 		
 		setClassifications(new HashMap<String, String>());
 		setTreatments(new HashMap<String, String> ());
+	}
+
+	public String getDeviceGeneratedAssessmentId() {
+		return deviceGeneratedAssessmentId;
+	}
+
+	public void setDeviceGeneratedAssessmentId(String deviceGeneratedAssessmentId) {
+		this.deviceGeneratedAssessmentId = deviceGeneratedAssessmentId;
 	}
 
 	public String getHsaUserId() {

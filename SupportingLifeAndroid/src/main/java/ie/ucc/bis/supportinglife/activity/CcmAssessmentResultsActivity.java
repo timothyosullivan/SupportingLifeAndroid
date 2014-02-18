@@ -76,12 +76,12 @@ public class CcmAssessmentResultsActivity extends AssessmentResultsActivity {
         // resolve CCM classifications based on assessed symptoms        
         setClassificationRuleEngine(new ClassificationRuleEngine());
         getClassificationRuleEngine().readCcmClassificationRules((SupportingLifeBaseActivity) this);
-        getClassificationRuleEngine().determinePatientClassifications(this, getReviewItems(), getPatient(), getClassificationRuleEngine().getSystemCcmClassifications());
+        getClassificationRuleEngine().determinePatientClassifications(this, getReviewItems(), getPatientAssessment(), getClassificationRuleEngine().getSystemCcmClassifications());
         
         // identify CCM treatments
         setTreatmentRuleEngine(new TreatmentRuleEngine());
         getTreatmentRuleEngine().readCcmTreatmentRules((SupportingLifeBaseActivity) this);
-        getTreatmentRuleEngine().determineCcmTreatments(this, getReviewItems(), getPatient());
+        getTreatmentRuleEngine().determineCcmTreatments(this, getReviewItems(), getPatientAssessment());
  
         // record the patient visit in the DB
         recordPatientVisit();
@@ -90,7 +90,8 @@ public class CcmAssessmentResultsActivity extends AssessmentResultsActivity {
         // START
         	// instigate network communication to transmit patient record
 			task = new NetworkCommunicationAsyncTask();
-			task.execute(getPatient());
+			// TODO HERE WE WILL NEED TO RETRIEVE PATIENT ASSESSMENT FROM THE DB
+			task.execute(getPatientAssessment());
         // END
         
         // create a new Action bar and set title to strings.xml
@@ -186,7 +187,8 @@ public class CcmAssessmentResultsActivity extends AssessmentResultsActivity {
 		 */
 		private PatientAssessmentComms createPatientAssessmentCommsInstance(PatientAssessment patientAssessment) {
 			
-			PatientAssessmentComms patientTransmit = new PatientAssessmentComms(patientAssessment.getHsaUserId(), patientAssessment.getNationalId(), 
+			PatientAssessmentComms patientTransmit = new PatientAssessmentComms(
+					patientAssessment.getDeviceGeneratedAssessmentId(), patientAssessment.getHsaUserId(), patientAssessment.getNationalId(), 
 					patientAssessment.getNationalHealthId(), patientAssessment.getChildFirstName(), patientAssessment.getChildSurname(), 
 					patientAssessment.getBirthDate(), patientAssessment.getGender(), patientAssessment.getCaregiverName(), 
 					patientAssessment.getRelationship(), patientAssessment.getPhysicalAddress(), patientAssessment.getVillageTa(), 

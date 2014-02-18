@@ -22,7 +22,7 @@ public class PatientAssessment implements Serializable {
 	private static final long serialVersionUID = 7692081022011255176L;
 	
 	private int id;
-	
+	private String deviceGeneratedAssessmentId;
 	private String hsaUserId;
 	private String nationalId;
 	private String nationalHealthId;
@@ -72,7 +72,7 @@ public class PatientAssessment implements Serializable {
 		setDiagnostics(new ArrayList<Diagnostic>());
 	}
 	
-	public PatientAssessment(Integer id, String hsaUserId, String nationalId, String nationalHealthId, 
+	public PatientAssessment(Integer id, String deviceGeneratedAssessmentId, String hsaUserId, String nationalId, String nationalHealthId, 
 					String childFirstName, String childSurname, String birthDate,
 					String gender, String caregiverName, String relationship, String physicalAddress,
 					String villageTa, String visitDate, String chestIndrawing, Integer breathsPerMinute,
@@ -86,6 +86,7 @@ public class PatientAssessment implements Serializable {
 					String cannotTreatProblemDetails) {
 		
 		setId(id);
+		setDeviceGeneratedAssessmentId(deviceGeneratedAssessmentId);
 		setHsaUserId(hsaUserId);
 		setNationalId(nationalId);
 		setNationalHealthId(nationalHealthId);
@@ -134,6 +135,14 @@ public class PatientAssessment implements Serializable {
 
 	public void setId(Integer id) {
 		this.id = id;
+	}
+
+	public String getDeviceGeneratedAssessmentId() {
+		return deviceGeneratedAssessmentId;
+	}
+
+	public void setDeviceGeneratedAssessmentId(String deviceGeneratedAssessmentId) {
+		this.deviceGeneratedAssessmentId = deviceGeneratedAssessmentId;
 	}
 
 	public String getHsaUserId() {

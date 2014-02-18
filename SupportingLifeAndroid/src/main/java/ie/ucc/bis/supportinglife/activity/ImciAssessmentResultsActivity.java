@@ -53,17 +53,17 @@ public class ImciAssessmentResultsActivity extends AssessmentResultsActivity {
         setReviewItems((ArrayList<ReviewItem>) intent.getSerializableExtra(ImciAssessmentActivity.ASSESSMENT_REVIEW_ITEMS));
         
         // resolve imci classifications based on assessed symptoms
-        setPatient(new PatientAssessment());
+        setPatientAssessment(new PatientAssessment());
         
         // resolve IMCI classifications based on assessed symptoms        
         setClassificationRuleEngine(new ClassificationRuleEngine());
         getClassificationRuleEngine().readImciClassificationRules((SupportingLifeBaseActivity) this);
-        getClassificationRuleEngine().determinePatientClassifications(this, getReviewItems(), getPatient(), getClassificationRuleEngine().getSystemImciClassifications());
+        getClassificationRuleEngine().determinePatientClassifications(this, getReviewItems(), getPatientAssessment(), getClassificationRuleEngine().getSystemImciClassifications());
         
         // identify CCM treatments
         setTreatmentRuleEngine(new TreatmentRuleEngine());
         getTreatmentRuleEngine().readImciTreatmentRules((SupportingLifeBaseActivity) this);
-        getTreatmentRuleEngine().determineImciTreatments(this, getReviewItems(), getPatient());
+        getTreatmentRuleEngine().determineImciTreatments(this, getReviewItems(), getPatientAssessment());
  
         // create a new Action bar and set title to strings.xml
         final ActionBar bar = getActionBar();

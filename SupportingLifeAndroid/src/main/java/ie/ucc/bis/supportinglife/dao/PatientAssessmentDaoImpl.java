@@ -12,23 +12,25 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteStatement;
 
 /**
- * Class: PatientDao
+ * Class: PatientAssessmentDao
  * 
  * This class maintains the database connection and supports 
  * adding new patients and fetching all patients.
  * 
  * @author TOSullivan
  */
-public class PatientDao {
+public class PatientAssessmentDaoImpl implements PatientAssessmentDao {
 	
-	private final String LOG_TAG = "ie.ucc.bis.supportinglife.dao.PatientDao";
+	private final String LOG_TAG = "ie.ucc.bis.supportinglife.dao.PatientAssessmentDao";
 
 	// Database fields
 	private SQLiteDatabase database;
 	private DatabaseHandler databaseHandler;
 	private String[] allColumns = { DatabaseHandler.TABLE_PATIENT_COLUMN_ID,
+									DatabaseHandler.TABLE_PATIENT_COLUMN_ASSESSMENT_ID,
 									DatabaseHandler.TABLE_PATIENT_COLUMN_NATIONAL_ID,
 									DatabaseHandler.TABLE_PATIENT_COLUMN_NATIONAL_HEALTH_ID,
 									DatabaseHandler.TABLE_PATIENT_COLUMN_HSA_USER_ID,
@@ -65,22 +67,42 @@ public class PatientDao {
 									DatabaseHandler.TABLE_PATIENT_COLUMN_DIFFICULTY_SEEING,
 									DatabaseHandler.TABLE_PATIENT_COLUMN_DIFFICULTY_SEEING_DURATION,
 									DatabaseHandler.TABLE_PATIENT_COLUMN_CANNOT_TREAT,
-									DatabaseHandler.TABLE_PATIENT_COLUMN_CANNOT_TREAT_DETAILS};
+									DatabaseHandler.TABLE_PATIENT_COLUMN_CANNOT_TREAT_DETAILS,
+									DatabaseHandler.TABLE_PATIENT_COLUMN_SYNCED};
 
-	public PatientDao(Context context) {
+	public PatientAssessmentDaoImpl(Context context) {
 		setDatabaseHandler(new DatabaseHandler(context));
 	}
 
+	@Override
 	public void open() throws SQLException {
 		setDatabase(databaseHandler.getWritableDatabase());
 	}
 
+	@Override
 	public void close() {
 		getDatabaseHandler().close();
 	}
 
-	public PatientAssessment createPatient(PatientAssessment patientToAdd) {
+	/**
+	 * Responsible for adding 'PatientAssessment' record to the database on the 
+	 * android device
+	 * 
+	 * @param patientToAdd
+	 * @param android_device_id
+	 * 
+	 * @return
+	 */
+	@Override
+	public PatientAssessment createPatientAssessment(PatientAssessment patientToAdd, String android_device_id) {		
+
+		SQLiteStatement assessmentRowCountQuery = database.compileStatement("select count(*) from " + DatabaseHandler.TABLE_PATIENT);
+		long assessmentRowCount = assessmentRowCountQuery.simpleQueryForLong();
+		
+		LoggerUtils.i(LOG_TAG, "Current Patient Assessment Row Count: " + assessmentRowCount);
+
 		ContentValues values = new ContentValues();
+		values.put(DatabaseHandler.TABLE_PATIENT_COLUMN_ASSESSMENT_ID, android_device_id + "_" + Long.valueOf(assessmentRowCount).toString());
 		values.put(DatabaseHandler.TABLE_PATIENT_COLUMN_NATIONAL_ID, patientToAdd.getNationalId());
 		values.put(DatabaseHandler.TABLE_PATIENT_COLUMN_NATIONAL_HEALTH_ID, patientToAdd.getNationalHealthId());	
 		values.put(DatabaseHandler.TABLE_PATIENT_COLUMN_HSA_USER_ID, patientToAdd.getHsaUserId());		
@@ -116,6 +138,8 @@ public class PatientDao {
 		values.put(DatabaseHandler.TABLE_PATIENT_COLUMN_DIFFICULTY_SEEING_DURATION, patientToAdd.getDifficultySeeingDuration());		
 		values.put(DatabaseHandler.TABLE_PATIENT_COLUMN_CANNOT_TREAT, String.valueOf(patientToAdd.isCannotTreatProblem()));
 		values.put(DatabaseHandler.TABLE_PATIENT_COLUMN_CANNOT_TREAT_DETAILS, patientToAdd.getCannotTreatProblemDetails());	
+		values.put(DatabaseHandler.TABLE_PATIENT_COLUMN_SYNCED, Boolean.valueOf(false).toString());	
+		
 	
 		try {
 			values.put(DatabaseHandler.TABLE_PATIENT_COLUMN_BIRTH_DATE, getDatabaseHandler().formatDate(patientToAdd.getBirthDate()));	
@@ -138,20 +162,21 @@ public class PatientDao {
 		return patientAssessment;
 	}
 
-
-	public void deletePatient(PatientAssessment patient) {
+	@Override
+	public void deletePatientAssessment(PatientAssessment patient) {
 		long id = patient.getId();
 		System.out.println("Patient deleted with id: " + id);
 		getDatabase().delete(DatabaseHandler.TABLE_PATIENT, DatabaseHandler.TABLE_PATIENT_COLUMN_ID
 				+ " = " + id, null);
 	}
 
-	
-	public List<PatientAssessment> getAllPatients() {
+	@Override
+	public List<PatientAssessment> getAllNonSyncedPatientAssessments() {
 		List<PatientAssessment> patients = new ArrayList<PatientAssessment>();
 
 		Cursor cursor = database.query(DatabaseHandler.TABLE_PATIENT,
-				allColumns, null, null, null, null, null);
+				allColumns, DatabaseHandler.TABLE_PATIENT_COLUMN_SYNCED + " = '" + Boolean.valueOf(false) + "'", 
+				null, null, null, null);
 
 		cursor.moveToFirst();
 		while (!cursor.isAfterLast()) {
@@ -164,9 +189,27 @@ public class PatientDao {
 		return patients;
 	}
 	
+	@Override
+	public List<PatientAssessment> getAllPatientAssessments() {
+		List<PatientAssessment> patients = new ArrayList<PatientAssessment>();
+
+		Cursor cursor = database.query(DatabaseHandler.TABLE_PATIENT,
+				allColumns, "", null, null, null, null);
+
+		cursor.moveToFirst();
+		while (!cursor.isAfterLast()) {
+			PatientAssessment patient = cursorToPatientAssessment(cursor);
+			patients.add(patient);
+			cursor.moveToNext();
+		}
+		// make sure to close the cursor
+		cursor.close();
+		return patients;
+	}
+
 	private PatientAssessment cursorToPatientAssessment(Cursor cursor) {
 
-//		Param Line 1: 	Integer id, String hsaUserId, String nationalId, String nationalHealthId,
+//		Param Line 1: 	Integer id, String deviceGeneratedAssessmentId, String hsaUserId, String nationalId, String nationalHealthId,
 //		Param Line 2: 	String childFirstName, String childSurname, String birthDate,
 //		Param Line 3: 	String gender, String caregiverName, String relationship, String physicalAddress,
 //		Param Line 4: 	String villageTa, String visitDate, String chestIndrawing, Integer breathsPerMinute,
@@ -179,33 +222,37 @@ public class PatientDao {
 //		Param Line 11:	Integer difficultySeeingDuration, String cannotTreatProblem, 
 //		Param Line 12: 	String cannotTreatProblemDetails
 		
-		PatientAssessment patientAssessment = new PatientAssessment(cursor.getInt(0), cursor.getString(1), cursor.getString(2), cursor.getString(3),
-													cursor.getString(4), cursor.getString(5), cursor.getString(6),
-													cursor.getString(7), cursor.getString(8), cursor.getString(9), cursor.getString(10),
-													cursor.getString(11), cursor.getString(12), cursor.getString(13), cursor.getInt(14),
-													cursor.getString(15), cursor.getString(16), cursor.getString(17),
-													cursor.getString(18), cursor.getString(19), cursor.getString(20), cursor.getInt(21),
-													cursor.getString(22), cursor.getInt(23), cursor.getString(24), cursor.getString(25),
-													cursor.getInt(26), cursor.getString(27), cursor.getString(28),
-													cursor.getString(29), cursor.getString(30), cursor.getString(31),
-													cursor.getString(32), cursor.getInt(33), cursor.getString(34),
-													cursor.getInt(35), cursor.getString(36),
-													cursor.getString(37));
+		PatientAssessment patientAssessment = new PatientAssessment(cursor.getInt(0), cursor.getString(1), cursor.getString(2), cursor.getString(3), 
+													cursor.getString(4), cursor.getString(5), cursor.getString(6), cursor.getString(7),
+													cursor.getString(8), cursor.getString(9), cursor.getString(10), cursor.getString(11),
+													cursor.getString(12), cursor.getString(13), cursor.getString(14), cursor.getInt(15),
+													cursor.getString(16), cursor.getString(17), cursor.getString(18),
+													cursor.getString(19), cursor.getString(20), cursor.getString(21), cursor.getInt(22),
+													cursor.getString(23), cursor.getInt(24), cursor.getString(25), cursor.getString(26),
+													cursor.getInt(27), cursor.getString(28), cursor.getString(29),
+													cursor.getString(30), cursor.getString(31), cursor.getString(32),
+													cursor.getString(33), cursor.getInt(34), cursor.getString(35),
+													cursor.getInt(36), cursor.getString(37),
+													cursor.getString(38));
 		return patientAssessment;
 	}
 
+	@Override
 	public SQLiteDatabase getDatabase() {
 		return database;
 	}
 
+	@Override
 	public void setDatabase(SQLiteDatabase database) {
 		this.database = database;
 	}
 
+	@Override
 	public DatabaseHandler getDatabaseHandler() {
 		return databaseHandler;
 	}
-
+	
+	@Override
 	public void setDatabaseHandler(DatabaseHandler databaseHandler) {
 		this.databaseHandler = databaseHandler;
 	}
