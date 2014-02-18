@@ -12,6 +12,9 @@ import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
@@ -173,13 +176,13 @@ public abstract class SupportingLifeBaseActivity extends FragmentActivity {
 	}
 		
 	/**
-	 * Click Handler: Handle the click on the help button
+	 * Click Handler: Handle the click on the settings button
 	 * 
 	 * @param view View
 	 * @return void
 	 */
-	public void onClickHelp(View view) {
-		startActivity(new Intent(getApplicationContext(), HelpActivity.class));
+	public void onClickSettings(View view) {
+		startActivity(new Intent(getApplicationContext(), SettingsActivity.class));
 		
 		// configure the activity animation transition effect
 		overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
@@ -294,6 +297,27 @@ public abstract class SupportingLifeBaseActivity extends FragmentActivity {
 		((View) homeIcon.getParent()).setVisibility(View.GONE);
 	}
 
+	
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+	    // Inflate the menu items for use in the action bar
+	    MenuInflater inflater = getMenuInflater();
+	    inflater.inflate(R.menu.main_activity_actions, menu);
+	    return super.onCreateOptionsMenu(menu);
+	}
+	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+	    // Handle presses on the action bar items
+	    switch (item.getItemId()) {
+	        case R.id.dashboard_action_settings:
+	        	onClickSettings(item.getActionView());
+	            return true;
+	        default:
+	            return super.onOptionsItemSelected(item);
+	    }
+	}
+	
 	/**
 	 * Home Button or Back Button Click Handler
 	 * 

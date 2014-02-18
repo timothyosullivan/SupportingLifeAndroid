@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ============================================================ -->
+<!-- SETTINGS/PREFERENCES -->
+<!-- ============================================================ -->
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+    
+    <!-- ============================================================ -->
+    <!-- SYNC LOGO -->
+    <!-- ============================================================ -->
+
+	<PreferenceCategory android:title="First Category"
+	    android:key="first_category">
+
+		<CheckBoxPreference android:defaultValue="true"
+		    android:key="perform_updates"
+		    android:summary="Enable or disable data updates"
+		    android:title="Enable updates" />
+	    
+		<ListPreference android:key="language_selection"
+            android:title="Language Selection"
+            android:summary="Choose default language for app"
+            android:defaultValue="english"
+            android:entries="@array/languageSelection"
+            android:entryValues="@array/languageSelectionValues"/>
+	           
+    </PreferenceCategory>
+</PreferenceScreen>

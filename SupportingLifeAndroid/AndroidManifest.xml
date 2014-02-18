@@ -82,10 +82,10 @@
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name="ie.ucc.bis.supportinglife.activity.HelpActivity"
-            android:label="@string/activity_title_help"
+            android:name="ie.ucc.bis.supportinglife.activity.SettingsActivity"
+            android:label="@string/activity_title_settings"
             android:screenOrientation="portrait" >
-        </activity> 
+        </activity>
         <activity
             android:name="ie.ucc.bis.supportinglife.activity.VideoViewerActivity"
             android:label="@string/activity_title_video_viewer"

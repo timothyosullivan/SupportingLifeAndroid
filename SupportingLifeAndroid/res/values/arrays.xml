@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="languageSelection">
+        <item name="english">English</item>
+        <item name="tumbuka">Tumbuka</item>
+        <item name="chichewa">Chichewa</item>
+    </string-array>
+
+    <string-array name="languageSelectionValues">
+        <item name="english">english</item>
+        <item name="tumbuka">tumbuka</item>
+        <item name="chichewa">chichewa</item>
+    </string-array>
+    
+</resources>

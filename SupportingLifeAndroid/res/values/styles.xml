@@ -9,6 +9,7 @@
 		<item name="android:backgroundDimEnabled">false</item>
 		<item name="android:actionBarStyle">@style/ActionBar</item>
 		<item name="android:radioButtonStyle">@style/RadioButton</item>
+		<item name="android:actionOverflowButtonStyle">@style/ActionButtonOverflow</item>
 	</style>
     
     <!-- ============================================================ -->
@@ -26,6 +27,8 @@
 		<item name="android:titleTextStyle">@style/ActionBar.TextStyle</item>
         <!-- below line removes default application icon from action bar -->
 		<item name="android:icon">@android:color/transparent</item>
+		<item name="android:showDividers">beginning</item>
+		<item name="android:divider">@color/White</item>
 	</style>
 	    
     <!-- ============================================================ -->
@@ -37,6 +40,13 @@
 		<item name="android:background">@color/White</item>
 	</style>    
     
+    <!-- ============================================================ -->
+    <!-- ACTION BUTTON OVERFLOW STYLE -->
+    <!-- ============================================================ -->	
+	<style name="ActionButtonOverflow" parent="android:style/Widget.Holo.ActionButton.Overflow">
+    	<item name="android:color">@color/White</item>
+	</style>
+	
     <!-- ============================================================ -->
     <!-- ACTION BAR TEXT STYLE -->
     <!-- ============================================================ -->
