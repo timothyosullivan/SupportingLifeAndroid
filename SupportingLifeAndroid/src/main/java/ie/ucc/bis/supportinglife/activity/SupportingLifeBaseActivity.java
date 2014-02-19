@@ -2,15 +2,20 @@ package ie.ucc.bis.supportinglife.activity;
 
 import ie.ucc.bis.supportinglife.R;
 import ie.ucc.bis.supportinglife.assessment.model.listener.AssessmentExitDialogListener;
+
+import java.util.Locale;
+
 import android.app.ActionBar;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.FragmentActivity;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -41,6 +46,7 @@ import android.widget.Toast;
 public abstract class SupportingLifeBaseActivity extends FragmentActivity {
 	
 	public static final String EXIT_ASSESSMENT_DIALOG_TAG = "Exit Assessment";
+	public static final String LANGUAGE_SELECTION_KEY = "language_selection";
 	
 	/**
 	 * OnCreate method is called when the activity is first created.
@@ -224,6 +230,25 @@ public abstract class SupportingLifeBaseActivity extends FragmentActivity {
 		toast(msg);
 	}
 
+	/**
+	 * Utility method to configure the locale of the application
+	 * 
+	 * @param lang String
+	 * @return void
+	 */
+	public void setLocale(String lang) { 
+		Locale userLocale = new Locale(lang); 
+		
+		// ensure the fragment is attached - i.e. onAttach callback is invoked
+		if (getResources() != null) {
+			DisplayMetrics displayMetrics = getResources().getDisplayMetrics(); 
+			Configuration config = getResources().getConfiguration();
+
+			config.locale = userLocale; 
+			getResources().updateConfiguration(config, displayMetrics);
+		}
+	} 
+	
 	/**
 	 * Utility method (recursive) to add a touch listener to each non-EditText UI
 	 * component such that the keyboard is hidden once this component is touched.

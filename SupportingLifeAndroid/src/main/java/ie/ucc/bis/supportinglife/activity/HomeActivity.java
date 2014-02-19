@@ -2,7 +2,9 @@ package ie.ucc.bis.supportinglife.activity;
 
 import ie.ucc.bis.supportinglife.R;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.View;
 
 /**
@@ -32,6 +34,25 @@ public class HomeActivity extends SupportingLifeBaseActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_home);
 	}
+	
+	/**
+	 * onResume method is called when the activity will start interacting with the user.
+	 * 
+	 * At this point your activity is at the top of the activity stack, with user input going to it.
+	 * 
+	 * This method is always followed by onPause().
+	 *
+	 */
+	@Override
+	protected void onResume () {
+		super.onResume ();
+		
+		// localisation values needs to be picked up explicilty for HomeActivity
+        SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(this);
+        String lang = settings.getString(LANGUAGE_SELECTION_KEY, "");
+        setLocale(lang);
+	    setContentView(R.layout.activity_home);
+	}	
 	
 	/**
 	 * Click Handler: Handler the click of a dashboard button
