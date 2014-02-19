@@ -45,6 +45,7 @@ import android.widget.Toast;
  */
 public abstract class SupportingLifeBaseActivity extends FragmentActivity {
 	
+	protected static final String FEATURE_UNIMPLEMENTED = "Feature not yet implemented";
 	public static final String EXIT_ASSESSMENT_DIALOG_TAG = "Exit Assessment";
 	public static final String LANGUAGE_SELECTION_KEY = "language_selection";
 	
@@ -182,13 +183,39 @@ public abstract class SupportingLifeBaseActivity extends FragmentActivity {
 	}
 		
 	/**
-	 * Click Handler: Handle the click on the settings button
+	 * Click Handler: Handle the click on the 'Settings' Action Bar item
 	 * 
 	 * @param view View
 	 * @return void
 	 */
 	public void onClickSettings(View view) {
 		startActivity(new Intent(getApplicationContext(), SettingsActivity.class));
+		
+		// configure the activity animation transition effect
+		overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+	}
+	
+	/**
+	 * Click Handler: Handle the click on the 'Sync' Action Bar item
+	 * 
+	 * @param view View
+	 * @return void
+	 */
+	public void onClickSync(View view) {
+		startActivity(new Intent(getApplicationContext(), SyncActivity.class));
+		
+		// configure the activity animation transition effect
+		overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+	}
+	
+	/**
+	 * Click Handler: Handle the click on the 'Help' Action Bar item
+	 * 
+	 * @param view View
+	 * @return void
+	 */
+	public void onClickHelp(View view) {
+		startActivity(new Intent(getApplicationContext(), HelpActivity.class));
 		
 		// configure the activity animation transition effect
 		overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
@@ -337,6 +364,13 @@ public abstract class SupportingLifeBaseActivity extends FragmentActivity {
 	    switch (item.getItemId()) {
 	        case R.id.dashboard_action_settings:
 	        	onClickSettings(item.getActionView());
+	            return true;
+	        case R.id.dashboard_action_sync:
+	        	onClickSync(item.getActionView());
+	            return true;
+	        case R.id.dashboard_action_help:
+	        	toast(FEATURE_UNIMPLEMENTED);
+	        	// onClickHelp(item.getActionView());
 	            return true;
 	        default:
 	            return super.onOptionsItemSelected(item);

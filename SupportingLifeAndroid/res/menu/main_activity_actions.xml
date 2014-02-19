@@ -1,8 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android" >
 
+    <!-- ============================================================ -->
+    <!-- 'Settings' Menu Bar Option -->
+    <!-- ============================================================ -->
     <item
         android:id="@+id/dashboard_action_settings"
         android:title="@string/dashboard_action_settings"/>
+
+    <!-- ============================================================ -->
+    <!-- 'Sync' Menu Bar Option -->
+    <!-- ============================================================ -->
+    <item
+        android:id="@+id/dashboard_action_sync"
+        android:title="@string/dashboard_action_sync"/>
+    
+    <!-- ============================================================ -->
+    <!-- 'Help' Menu Bar Option -->
+    <!-- ============================================================ -->
+    <item
+        android:id="@+id/dashboard_action_help"
+        android:title="@string/dashboard_action_help"/>
     
 </menu>

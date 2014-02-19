@@ -87,6 +87,16 @@
             android:screenOrientation="portrait" >
         </activity>
         <activity
+            android:name="ie.ucc.bis.supportinglife.activity.SyncActivity"
+            android:label="@string/activity_title_sync"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="ie.ucc.bis.supportinglife.activity.HelpActivity"
+            android:label="@string/activity_title_help"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
             android:name="ie.ucc.bis.supportinglife.activity.VideoViewerActivity"
             android:label="@string/activity_title_video_viewer"
             android:screenOrientation="landscape" >

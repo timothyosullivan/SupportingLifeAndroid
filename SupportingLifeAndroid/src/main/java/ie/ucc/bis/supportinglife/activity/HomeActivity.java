@@ -14,8 +14,6 @@ import android.view.View;
  */
 
 public class HomeActivity extends SupportingLifeBaseActivity {
-
-	private static final String FEATURE_UNIMPLEMENTED = "Feature not yet implemented";
 	
 	/**
 	 * OnCreate method is called when the activity is first created.

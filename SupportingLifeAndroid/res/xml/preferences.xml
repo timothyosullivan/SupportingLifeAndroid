@@ -8,14 +8,9 @@
     <!-- SYNC LOGO -->
     <!-- ============================================================ -->
 
-	<PreferenceCategory android:title="First Category"
-	    android:key="first_category">
+	<PreferenceCategory android:title="Language"
+	    android:key="language">
 
-		<CheckBoxPreference android:defaultValue="true"
-		    android:key="perform_updates"
-		    android:summary="Enable or disable data updates"
-		    android:title="Enable updates" />
-	    
 		<ListPreference android:key="language_selection"
             android:title="Language Selection"
             android:summary="Choose default language for app"
