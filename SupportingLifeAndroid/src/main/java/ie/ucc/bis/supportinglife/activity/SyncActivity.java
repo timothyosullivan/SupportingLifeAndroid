@@ -6,10 +6,12 @@ import android.os.Bundle;
 
 /**
  * 
- * This is the Help activity in the Supporting LIFE application.
+ * This is the 'Patient Assessment' Synchronisation activity 
+ * of the Supporting LIFE application.
  * 
- * The purpose of the activity is to provide a help console for the
- * user to assist them in understanding terminology within IMCI and CCM
+ * The purpose of the activity is to provide an interface to 
+ * facilitate the user to sync/upload the patient assessment
+ * records held on the device database to the web server.
  * 
  * @author timothyosullivan
  *
@@ -28,7 +30,7 @@ public class SyncActivity extends SupportingLifeBaseActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
-		setContentView(R.layout.activity_help);		
+		setContentView(R.layout.activity_sync);		
 		setTitleFromActivityLabel(R.id.action_bar_title_text);
 	}
 }

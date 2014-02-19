@@ -263,4 +263,11 @@
 		<item name="android:textSize">12sp</item>
 		<item name="android:linksClickable">true</item>
 	</style>
+	
+    <!-- ============================================================ -->
+    <!-- SYNC SCREEN BUTTON TEXT STYLE -->
+    <!-- ============================================================ -->
+	<style name="SyncScreenTextAppearanceFinish" parent="android:TextAppearance.Medium">
+		<item name="android:textColor">@color/White</item>
+	</style>
 </resources>
