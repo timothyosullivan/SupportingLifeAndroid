@@ -1,12 +1,11 @@
 package ie.ucc.bis.supportinglife.activity;
 
 import ie.ucc.bis.supportinglife.assessment.model.review.ReviewItem;
-import ie.ucc.bis.supportinglife.dao.PatientAssessmentDao;
-import ie.ucc.bis.supportinglife.dao.PatientAssessmentDaoImpl;
 import ie.ucc.bis.supportinglife.domain.PatientAssessment;
 import ie.ucc.bis.supportinglife.helper.PatientHandlerUtils;
 import ie.ucc.bis.supportinglife.rule.engine.ClassificationRuleEngine;
 import ie.ucc.bis.supportinglife.rule.engine.TreatmentRuleEngine;
+import ie.ucc.bis.supportinglife.service.SupportingLifeService;
 import ie.ucc.bis.supportinglife.ui.utilities.LoggerUtils;
 
 import java.text.ParseException;
@@ -43,8 +42,7 @@ public class AssessmentResultsActivity extends SupportingLifeBaseActivity {
 	private PatientAssessment patientAssessment;
 	private ClassificationRuleEngine classificationRuleEngine;
 	private TreatmentRuleEngine treatmentRuleEngine;
-	
-	private PatientAssessmentDao patientAssessmentDao;
+	private SupportingLifeService supportingLifeService;
 
 	/* 
 	 * Method: onCreate() 
@@ -55,8 +53,10 @@ public class AssessmentResultsActivity extends SupportingLifeBaseActivity {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setPatientAssessmentDao(new PatientAssessmentDaoImpl(this));
-        getPatientAssessmentDao().open();
+        
+		// initialise SupportingLifeService
+        setSupportingLifeService(new SupportingLifeService(this));
+        getSupportingLifeService().open();
 	}
 	
 
@@ -263,7 +263,7 @@ public class AssessmentResultsActivity extends SupportingLifeBaseActivity {
                 Secure.ANDROID_ID); 
 		
 		// add the patient record to the DB
-		getPatientAssessmentDao().createPatientAssessment(getPatientAssessment(), android_device_id);
+		getSupportingLifeService().createPatientAssessment(getPatientAssessment(), android_device_id);
 
 		// check patient has been added correctly
 		// TODO - Add DB check and logger statement here
@@ -306,13 +306,13 @@ public class AssessmentResultsActivity extends SupportingLifeBaseActivity {
     
     @Override
     protected void onResume() {
-    	getPatientAssessmentDao().open();
+    	getSupportingLifeService().open();
     	super.onResume();
     }
 
     @Override
     protected void onPause() {
-    	getPatientAssessmentDao().close();
+    	getSupportingLifeService().close();
     	super.onPause();
     }
     
@@ -365,13 +365,12 @@ public class AssessmentResultsActivity extends SupportingLifeBaseActivity {
 		this.treatmentRuleEngine = treatmentRuleEngine;
 	}
 
-	protected PatientAssessmentDao getPatientAssessmentDao() {
-		return patientAssessmentDao;
+	public SupportingLifeService getSupportingLifeService() {
+		return supportingLifeService;
 	}
 
-	protected void setPatientAssessmentDao(PatientAssessmentDao patientAssessmentDao) {
-		this.patientAssessmentDao = patientAssessmentDao;
+	public void setSupportingLifeService(SupportingLifeService supportingLifeService) {
+		this.supportingLifeService = supportingLifeService;
 	}
-
 }
 

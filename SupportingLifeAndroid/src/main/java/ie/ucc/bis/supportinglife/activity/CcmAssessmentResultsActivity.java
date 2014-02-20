@@ -5,25 +5,13 @@ import ie.ucc.bis.supportinglife.assessment.ccm.ui.CcmAssessmentClassificationsF
 import ie.ucc.bis.supportinglife.assessment.ccm.ui.CcmAssessmentTreatmentsFragment;
 import ie.ucc.bis.supportinglife.assessment.model.review.ReviewItem;
 import ie.ucc.bis.supportinglife.assessment.ui.AssessmentResultsReviewFragment;
-import ie.ucc.bis.supportinglife.communication.PatientAssessmentComms;
-import ie.ucc.bis.supportinglife.domain.PatientAssessment;
-import ie.ucc.bis.supportinglife.helper.PatientHandlerUtils;
 import ie.ucc.bis.supportinglife.rule.engine.ClassificationRuleEngine;
-import ie.ucc.bis.supportinglife.rule.engine.Diagnostic;
-import ie.ucc.bis.supportinglife.rule.engine.TreatmentRecommendation;
 import ie.ucc.bis.supportinglife.rule.engine.TreatmentRuleEngine;
 
 import java.util.ArrayList;
 
-import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
-import org.springframework.http.converter.json.MappingJacksonHttpMessageConverter;
-import org.springframework.web.client.ResourceAccessException;
-import org.springframework.web.client.RestClientException;
-import org.springframework.web.client.RestTemplate;
-
 import android.app.ActionBar;
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.widget.BaseAdapter;
@@ -46,9 +34,6 @@ import android.widget.BaseAdapter;
  */
 public class CcmAssessmentResultsActivity extends AssessmentResultsActivity {
 
-	
-	private NetworkCommunicationAsyncTask task;
-	
 	/* 
 	 * Method: onCreate() 
 	 * 
@@ -85,15 +70,7 @@ public class CcmAssessmentResultsActivity extends AssessmentResultsActivity {
  
         // record the patient visit in the DB
         recordPatientVisit();
-        
-        // transmit the patient visit
-        // START
-        	// instigate network communication to transmit patient record
-			task = new NetworkCommunicationAsyncTask();
-			// TODO HERE WE WILL NEED TO RETRIEVE PATIENT ASSESSMENT FROM THE DB
-			task.execute(getPatientAssessment());
-        // END
-        
+                
         // create a new Action bar and set title to strings.xml
         final ActionBar bar = getActionBar();
         bar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
@@ -136,107 +113,6 @@ public class CcmAssessmentResultsActivity extends AssessmentResultsActivity {
 			// refresh adapter data set - gets view redrawn
 			((BaseAdapter) treatmentsFragment.getCcmTreatmentAdapter()).notifyDataSetChanged();
 		}
-	}
-	
-	private class NetworkCommunicationAsyncTask extends AsyncTask<PatientAssessment, Void, Long> {
-
-		private static final String AMAZON_WEB_SERVICE_URL = "http://supportinglife.elasticbeanstalk.com/patientvisits/add";
-		
-		@Override
-		protected Long doInBackground(PatientAssessment... params) {
-
-			RestTemplate restTemplate = new RestTemplate(new HttpComponentsClientHttpRequestFactory());
-			
-			PatientAssessment patientAssessment = (PatientAssessment) params[0];
-			
-			// construct the 'PatientAssessmentComms' instance in preparation
-			// from transmission across the network from the device to the web server
-			PatientAssessmentComms patientTransmit = createPatientAssessmentCommsInstance(patientAssessment);
-			
-			
-			try {
-				// The default timeout was resulting in the call to the 'restTemplate.postForObject(..)' method
-				// call sometimes returning a null object and sometimes returning a correctly populated object.
-				// Doubling the read timeout led to more reliability in obtaining a correctly populated object.
-				// default timeout is 60 * 1000
-				((HttpComponentsClientHttpRequestFactory)restTemplate.getRequestFactory()).setConnectTimeout(120 * 1000);
-				((HttpComponentsClientHttpRequestFactory)restTemplate.getRequestFactory()).setReadTimeout(120 * 1000);
-				restTemplate.getMessageConverters().add(new MappingJacksonHttpMessageConverter());
-				
-				Long patientId = restTemplate.postForObject(AMAZON_WEB_SERVICE_URL, patientTransmit, Long.class);
-				return patientId;
-			} catch (ResourceAccessException ex) {
-				System.out.println("OFF");
-				// TODO need to add logging capability to catch stack trace
-				ex.printStackTrace();
-			} catch (RestClientException ex) {
-				System.out.println("Error");
-				// TODO need to add logging capability to catch stack trace
-				ex.printStackTrace();
-			}
-			return null;
-		}
-
-		/**
-		 * Responsible for constructing the 'PatientAssessmentComms' instance in preparation
-		 * from transmission across the network from the device to the web server
-		 * 
-		 * @param patientAssessment
-		 * 
-		 * @return PatientAssessmentComms
-		 */
-		private PatientAssessmentComms createPatientAssessmentCommsInstance(PatientAssessment patientAssessment) {
-			
-			PatientAssessmentComms patientTransmit = new PatientAssessmentComms(
-					patientAssessment.getDeviceGeneratedAssessmentId(), patientAssessment.getHsaUserId(), patientAssessment.getNationalId(), 
-					patientAssessment.getNationalHealthId(), patientAssessment.getChildFirstName(), patientAssessment.getChildSurname(), 
-					patientAssessment.getBirthDate(), patientAssessment.getGender(), patientAssessment.getCaregiverName(), 
-					patientAssessment.getRelationship(), patientAssessment.getPhysicalAddress(), patientAssessment.getVillageTa(), 
-					patientAssessment.getVisitDate(), patientAssessment.isChestIndrawing(), patientAssessment.getBreathsPerMinute(),
-					patientAssessment.isSleepyUnconscious(), patientAssessment.isPalmarPallor(), patientAssessment.getMuacTapeColour(), 
-					patientAssessment.isSwellingBothFeet(), patientAssessment.getProblem(), patientAssessment.isCough(), patientAssessment.getCoughDuration(),
-					patientAssessment.isDiarrhoea(), patientAssessment.getDiarrhoeaDuration(), patientAssessment.isBloodInStool(), patientAssessment.isFever(),
-					patientAssessment.getFeverDuration(), patientAssessment.isConvulsions(), patientAssessment.isDifficultyDrinkingOrFeeding(),
-					patientAssessment.isUnableToDrinkOrFeed(), patientAssessment.isVomiting(), patientAssessment.isVomitsEverything(),
-					patientAssessment.isRedEye(), patientAssessment.getRedEyeDuration(), patientAssessment.isDifficultySeeing(),
-					patientAssessment.getDifficultySeeingDuration(), patientAssessment.isCannotTreatProblem(), 
-					patientAssessment.getCannotTreatProblemDetails());
-			
-			for (Diagnostic diagnostic : patientAssessment.getDiagnostics()) {
-				// extract classifications
-				if (diagnostic.getClassification().getIdentifier() != null) {
-					patientTransmit.getClassifications().put(diagnostic.getClassification().getIdentifier(), diagnostic.getClassification().getName());
-				}
-				
-				// extract treatments
-				for (TreatmentRecommendation treatmentRecommendation : diagnostic.getTreatmentRecommendations()) {
-					patientTransmit.getTreatments().put(treatmentRecommendation.getTreatmentIdentifier(), 
-							PatientHandlerUtils.removeEscapeCharacters(treatmentRecommendation.getTreatmentDescription()));
-				}
-				
-			}
-			return patientTransmit;
-		}
-
-		@Override
-		protected void onPostExecute(Long slPatientId) {
-			if (slPatientId != null) {
-				System.out.println("TEST PATIENT DETAILS");
-				System.out.println(slPatientId.longValue());
-			}
-			else {
-				System.out.println("COMMUNICATION ERROR!");
-			}
-		}
-
-		@Override
-		protected void onPreExecute() {
-		}
-
-		@Override
-		protected void onProgressUpdate(Void... values) {
-		}
-	}
-	
+	}	
 }
 

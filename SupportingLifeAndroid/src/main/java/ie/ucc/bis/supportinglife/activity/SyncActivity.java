@@ -2,12 +2,11 @@ package ie.ucc.bis.supportinglife.activity;
 
 import ie.ucc.bis.supportinglife.R;
 import ie.ucc.bis.supportinglife.communication.PatientAssessmentComms;
-import ie.ucc.bis.supportinglife.dao.PatientAssessmentDao;
-import ie.ucc.bis.supportinglife.dao.PatientAssessmentDaoImpl;
 import ie.ucc.bis.supportinglife.domain.PatientAssessment;
 import ie.ucc.bis.supportinglife.helper.PatientHandlerUtils;
 import ie.ucc.bis.supportinglife.rule.engine.Diagnostic;
 import ie.ucc.bis.supportinglife.rule.engine.TreatmentRecommendation;
+import ie.ucc.bis.supportinglife.service.SupportingLifeService;
 import ie.ucc.bis.supportinglife.ui.utilities.LoggerUtils;
 
 import java.util.ArrayList;
@@ -42,7 +41,7 @@ public class SyncActivity extends SupportingLifeBaseActivity {
 	private final String LOG_TAG = "ie.ucc.bis.supportinglife.activity.SyncActivity";
 	
 	private NetworkCommunicationAsyncTask networkCommsTask;
-	private PatientAssessmentDao patientAssessmentDao;
+	private SupportingLifeService supportingLifeService;
 	private Button syncButton;
 	
 	/**
@@ -60,9 +59,9 @@ public class SyncActivity extends SupportingLifeBaseActivity {
 		setContentView(R.layout.activity_sync);		
 		setTitleFromActivityLabel(R.id.action_bar_title_text);
 		
-		// initialise PatientAssessmentDao
-        setPatientAssessmentDao(new PatientAssessmentDaoImpl(this));
-        getPatientAssessmentDao().open();
+		// initialise SupportingLifeService
+        setSupportingLifeService(new SupportingLifeService(this));
+        getSupportingLifeService().open();
 		
 		// get a handle on the synchronisation button
 		setSyncButton((Button) findViewById(R.id.sync_button));
@@ -73,7 +72,7 @@ public class SyncActivity extends SupportingLifeBaseActivity {
             	LoggerUtils.i(LOG_TAG, "SyncButton: onClick -- Sync Button on Synchronisation Clicked!");
             	
             	// retrieve non-synced patient assessment from the DB
-        		List<PatientAssessment> nonSyncedPatientAssessments = getPatientAssessmentDao().getAllNonSyncedPatientAssessments();
+        		List<PatientAssessment> nonSyncedPatientAssessments = getSupportingLifeService().getAllNonSyncedPatientAssessments();
         		LoggerUtils.i(LOG_TAG, "SyncButton: onClick -- Number of non-synced patient assessments to be synced ~ " + nonSyncedPatientAssessments.size());
         		
         		// transmit non-synced patient assessments
@@ -85,13 +84,13 @@ public class SyncActivity extends SupportingLifeBaseActivity {
 
     @Override
     protected void onResume() {
-    	getPatientAssessmentDao().open();
+    	getSupportingLifeService().open();
     	super.onResume();
     }
     
     @Override
     protected void onPause() {
-    	getPatientAssessmentDao().close();
+    	getSupportingLifeService().close();
     	super.onPause();
     }
 	
@@ -206,12 +205,12 @@ public class SyncActivity extends SupportingLifeBaseActivity {
 		this.networkCommsTask = networkCommsTask;
 	}
 
-	public PatientAssessmentDao getPatientAssessmentDao() {
-		return patientAssessmentDao;
+	public SupportingLifeService getSupportingLifeService() {
+		return supportingLifeService;
 	}
 
-	public void setPatientAssessmentDao(PatientAssessmentDao patientAssessmentDao) {
-		this.patientAssessmentDao = patientAssessmentDao;
+	public void setSupportingLifeService(SupportingLifeService supportingLifeService) {
+		this.supportingLifeService = supportingLifeService;
 	}
 
 	public Button getSyncButton() {

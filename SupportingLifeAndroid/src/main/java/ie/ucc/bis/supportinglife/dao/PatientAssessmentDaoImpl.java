@@ -1,6 +1,7 @@
 package ie.ucc.bis.supportinglife.dao;
 
 import ie.ucc.bis.supportinglife.domain.PatientAssessment;
+import ie.ucc.bis.supportinglife.service.SupportingLifeService;
 import ie.ucc.bis.supportinglife.ui.utilities.LoggerUtils;
 
 import java.text.ParseException;
@@ -8,10 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import android.content.ContentValues;
-import android.content.Context;
 import android.database.Cursor;
-import android.database.SQLException;
-import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteStatement;
 
 /**
@@ -26,9 +24,6 @@ public class PatientAssessmentDaoImpl implements PatientAssessmentDao {
 	
 	private final String LOG_TAG = "ie.ucc.bis.supportinglife.dao.PatientAssessmentDao";
 
-	// Database fields
-	private SQLiteDatabase database;
-	private DatabaseHandler databaseHandler;
 	private String[] allColumns = { DatabaseHandler.TABLE_PATIENT_COLUMN_ID,
 									DatabaseHandler.TABLE_PATIENT_COLUMN_ASSESSMENT_ID,
 									DatabaseHandler.TABLE_PATIENT_COLUMN_NATIONAL_ID,
@@ -70,18 +65,7 @@ public class PatientAssessmentDaoImpl implements PatientAssessmentDao {
 									DatabaseHandler.TABLE_PATIENT_COLUMN_CANNOT_TREAT_DETAILS,
 									DatabaseHandler.TABLE_PATIENT_COLUMN_SYNCED};
 
-	public PatientAssessmentDaoImpl(Context context) {
-		setDatabaseHandler(new DatabaseHandler(context));
-	}
-
-	@Override
-	public void open() throws SQLException {
-		setDatabase(databaseHandler.getWritableDatabase());
-	}
-
-	@Override
-	public void close() {
-		getDatabaseHandler().close();
+	public PatientAssessmentDaoImpl() {
 	}
 
 	/**
@@ -94,9 +78,9 @@ public class PatientAssessmentDaoImpl implements PatientAssessmentDao {
 	 * @return
 	 */
 	@Override
-	public PatientAssessment createPatientAssessment(PatientAssessment patientToAdd, String android_device_id) {		
+	public PatientAssessment createPatientAssessment(PatientAssessment patientToAdd, String android_device_id, SupportingLifeService service) {		
 
-		SQLiteStatement assessmentRowCountQuery = database.compileStatement("select count(*) from " + DatabaseHandler.TABLE_PATIENT);
+		SQLiteStatement assessmentRowCountQuery = service.getDatabase().compileStatement("select count(*) from " + DatabaseHandler.TABLE_PATIENT);
 		long assessmentRowCount = assessmentRowCountQuery.simpleQueryForLong();
 		
 		LoggerUtils.i(LOG_TAG, "Current Patient Assessment Row Count: " + assessmentRowCount);
@@ -142,8 +126,8 @@ public class PatientAssessmentDaoImpl implements PatientAssessmentDao {
 		
 	
 		try {
-			values.put(DatabaseHandler.TABLE_PATIENT_COLUMN_BIRTH_DATE, getDatabaseHandler().formatDate(patientToAdd.getBirthDate()));	
-			values.put(DatabaseHandler.TABLE_PATIENT_COLUMN_VISIT_DATE, getDatabaseHandler().formatDate(patientToAdd.getVisitDate()));
+			values.put(DatabaseHandler.TABLE_PATIENT_COLUMN_BIRTH_DATE, service.getDatabaseHandler().formatDate(patientToAdd.getBirthDate()));	
+			values.put(DatabaseHandler.TABLE_PATIENT_COLUMN_VISIT_DATE, service.getDatabaseHandler().formatDate(patientToAdd.getVisitDate()));
 		} catch (ParseException e) {
 			LoggerUtils.i(LOG_TAG, "Parse Exception thrown whilst extracting patient assessment dates");
 			e.printStackTrace();
@@ -151,9 +135,9 @@ public class PatientAssessmentDaoImpl implements PatientAssessmentDao {
 		
 		
 		// add the patient row
-		long insertId = database.insert(DatabaseHandler.TABLE_PATIENT, null, values);
+		long insertId = service.getDatabase().insert(DatabaseHandler.TABLE_PATIENT, null, values);
 		
-		Cursor cursor = database.query(DatabaseHandler.TABLE_PATIENT, allColumns, 
+		Cursor cursor = service.getDatabase().query(DatabaseHandler.TABLE_PATIENT, allColumns, 
 										DatabaseHandler.TABLE_PATIENT_COLUMN_ID + " = " + insertId, 
 										null, null, null, null);
 		cursor.moveToFirst();
@@ -163,18 +147,18 @@ public class PatientAssessmentDaoImpl implements PatientAssessmentDao {
 	}
 
 	@Override
-	public void deletePatientAssessment(PatientAssessment patient) {
+	public void deletePatientAssessment(PatientAssessment patient, SupportingLifeService service) {
 		long id = patient.getId();
 		System.out.println("Patient deleted with id: " + id);
-		getDatabase().delete(DatabaseHandler.TABLE_PATIENT, DatabaseHandler.TABLE_PATIENT_COLUMN_ID
+		service.getDatabase().delete(DatabaseHandler.TABLE_PATIENT, DatabaseHandler.TABLE_PATIENT_COLUMN_ID
 				+ " = " + id, null);
 	}
 
 	@Override
-	public List<PatientAssessment> getAllNonSyncedPatientAssessments() {
+	public List<PatientAssessment> getAllNonSyncedPatientAssessments(SupportingLifeService service) {
 		List<PatientAssessment> patients = new ArrayList<PatientAssessment>();
 
-		Cursor cursor = database.query(DatabaseHandler.TABLE_PATIENT,
+		Cursor cursor = service.getDatabase().query(DatabaseHandler.TABLE_PATIENT,
 				allColumns, DatabaseHandler.TABLE_PATIENT_COLUMN_SYNCED + " = '" + Boolean.valueOf(false) + "'", 
 				null, null, null, null);
 
@@ -190,10 +174,10 @@ public class PatientAssessmentDaoImpl implements PatientAssessmentDao {
 	}
 	
 	@Override
-	public List<PatientAssessment> getAllPatientAssessments() {
+	public List<PatientAssessment> getAllPatientAssessments(SupportingLifeService service) {
 		List<PatientAssessment> patients = new ArrayList<PatientAssessment>();
 
-		Cursor cursor = database.query(DatabaseHandler.TABLE_PATIENT,
+		Cursor cursor = service.getDatabase().query(DatabaseHandler.TABLE_PATIENT,
 				allColumns, "", null, null, null, null);
 
 		cursor.moveToFirst();
@@ -235,25 +219,5 @@ public class PatientAssessmentDaoImpl implements PatientAssessmentDao {
 													cursor.getInt(36), cursor.getString(37),
 													cursor.getString(38));
 		return patientAssessment;
-	}
-
-	@Override
-	public SQLiteDatabase getDatabase() {
-		return database;
-	}
-
-	@Override
-	public void setDatabase(SQLiteDatabase database) {
-		this.database = database;
-	}
-
-	@Override
-	public DatabaseHandler getDatabaseHandler() {
-		return databaseHandler;
-	}
-	
-	@Override
-	public void setDatabaseHandler(DatabaseHandler databaseHandler) {
-		this.databaseHandler = databaseHandler;
 	}
 } 
