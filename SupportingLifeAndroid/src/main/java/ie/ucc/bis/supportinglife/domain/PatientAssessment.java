@@ -87,9 +87,9 @@ public class PatientAssessment implements Serializable {
 		
 		setId(id);
 		setDeviceGeneratedAssessmentId(deviceGeneratedAssessmentId);
-		setHsaUserId(hsaUserId);
 		setNationalId(nationalId);
 		setNationalHealthId(nationalHealthId);
+		setHsaUserId(hsaUserId);
 		setChildFirstName(childFirstName);
 		setChildSurname(childSurname);
 		setGender(gender);
@@ -102,6 +102,10 @@ public class PatientAssessment implements Serializable {
 		setSleepyUnconscious(Boolean.valueOf(sleepyUnconscious));
 		setPalmarPallor(Boolean.valueOf(palmarPallor));
 		setMuacTapeColour(muacTapeColour);
+		setSwellingBothFeet(Boolean.valueOf(swellingBothFeet));
+		setProblem(problem);
+		setCough(Boolean.valueOf(cough));
+		setCoughDuration(coughDuration);		
 		setDiarrhoea(Boolean.valueOf(diarrhoea));
 		setDiarrhoeaDuration(diarrhoeaDuration);
 		setBloodInStool(Boolean.valueOf(bloodInStool));

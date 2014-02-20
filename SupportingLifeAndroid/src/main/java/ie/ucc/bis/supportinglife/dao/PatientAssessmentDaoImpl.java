@@ -193,21 +193,21 @@ public class PatientAssessmentDaoImpl implements PatientAssessmentDao {
 
 	private PatientAssessment cursorToPatientAssessment(Cursor cursor) {
 
-//		Param Line 1: 	Integer id, String deviceGeneratedAssessmentId, String hsaUserId, String nationalId, String nationalHealthId,
-//		Param Line 2: 	String childFirstName, String childSurname, String birthDate,
-//		Param Line 3: 	String gender, String caregiverName, String relationship, String physicalAddress,
-//		Param Line 4: 	String villageTa, String visitDate, String chestIndrawing, Integer breathsPerMinute,
-//		Param Line 5: 	String sleepyUnconscious, String palmarPallor, String muacTapeColour, 
-//		Param Line 6: 	String swellingBothFeet, String problem, String cough, Integer coughDuration,
-//		Param Line 7: 	String diarrhoea, Integer diarrhoeaDuration, String bloodInStool, String fever,
-//		Param Line 8: 	Integer feverDuration, String convulsions, String difficultyDrinkingOrFeeding,
-//		Param Line 9: 	String unableToDrinkOrFeed, String vomiting, String vomitsEverything,
-//		Param Line 10: 	String redEye, Integer redEyeDuration, String difficultySeeing,
-//		Param Line 11:	Integer difficultySeeingDuration, String cannotTreatProblem, 
-//		Param Line 12: 	String cannotTreatProblemDetails
+//		Param Line 1: 	Integer id (0), String deviceGeneratedAssessmentId (1), String nationalId (2), String nationalHealthId (3), String nationalHealthId (4),
+//		Param Line 2: 	String childFirstName (5), String childSurname (6), String birthDate (7),
+//		Param Line 3: 	String gender (8), String caregiverName (9), String relationship (10), String physicalAddress (11),
+//		Param Line 4: 	String villageTa (12), String visitDate (13), String chestIndrawing (14), Integer breathsPerMinute (15),
+//		Param Line 5: 	String sleepyUnconscious (16), String palmarPallor (17), String muacTapeColour (18), 
+//		Param Line 6: 	String swellingBothFeet (19), String problem (20), String cough (21), Integer coughDuration (22),
+//		Param Line 7: 	String diarrhoea (23), Integer diarrhoeaDuration (24), String bloodInStool (25), String fever (26),
+//		Param Line 8: 	Integer feverDuration (27), String convulsions (28), String difficultyDrinkingOrFeeding (29),
+//		Param Line 9: 	String unableToDrinkOrFeed (30), String vomiting (31), String vomitsEverything (32),
+//		Param Line 10: 	String redEye (33), Integer redEyeDuration (34), String difficultySeeing (35),
+//		Param Line 11:	Integer difficultySeeingDuration (36), String cannotTreatProblem (37), 
+//		Param Line 12: 	String cannotTreatProblemDetails (38)
 		
-		PatientAssessment patientAssessment = new PatientAssessment(cursor.getInt(0), cursor.getString(1), cursor.getString(2), cursor.getString(3), 
-													cursor.getString(4), cursor.getString(5), cursor.getString(6), cursor.getString(7),
+		PatientAssessment patientAssessment = new PatientAssessment(cursor.getInt(0), cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getString(4), 
+													cursor.getString(5), cursor.getString(6), cursor.getString(7),
 													cursor.getString(8), cursor.getString(9), cursor.getString(10), cursor.getString(11),
 													cursor.getString(12), cursor.getString(13), cursor.getString(14), cursor.getInt(15),
 													cursor.getString(16), cursor.getString(17), cursor.getString(18),
