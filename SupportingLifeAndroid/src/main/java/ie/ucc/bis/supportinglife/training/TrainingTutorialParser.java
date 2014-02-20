@@ -24,6 +24,10 @@ import android.content.res.XmlResourceParser;
 
 public class TrainingTutorialParser {
 
+	private static final String ENGLISH_LANGUAGE = "en";
+	private static final String CHICHEWA_LANGUAGE = "ny";
+	private static final String TUMBUKA_LANGUAGE = "tu";
+	
 	private static final String TUTORIAL_ELEMENT = "Tutorial";
 	private static final String TUTORIAL_TITLE = "Title";
 	private static final String TUTORIAL_TYPE = "Type";
@@ -52,14 +56,27 @@ public class TrainingTutorialParser {
 	 * Responsible for parsing xml-based training tutorials
 	 * 
 	 * @param supportingLifeBaseActivity 
+	 * @param languageSelected 
 	 * 
 	 */
-	public void parseTrainingTutorials(SupportingLifeBaseActivity supportingLifeBaseActivity) {
+	public void parseTrainingTutorials(SupportingLifeBaseActivity supportingLifeBaseActivity, String languageSelected) {
 		try {
 			String elemName = null;
 			Tutorial tutorial = null;
+			XmlResourceParser xmlParser = null;
 
-			XmlResourceParser xmlParser = supportingLifeBaseActivity.getResources().getXml(R.xml.training_tutorials);
+			if (languageSelected.equalsIgnoreCase(ENGLISH_LANGUAGE)) {
+				xmlParser = supportingLifeBaseActivity.getResources().getXml(R.xml.training_tutorials_en);
+			}
+			else if  (languageSelected.equalsIgnoreCase(CHICHEWA_LANGUAGE)) {
+				xmlParser = supportingLifeBaseActivity.getResources().getXml(R.xml.training_tutorials_ny);
+			}
+			else if  (languageSelected.equalsIgnoreCase(TUMBUKA_LANGUAGE)) {
+				xmlParser = supportingLifeBaseActivity.getResources().getXml(R.xml.training_tutorials_tu);
+			}
+			else {
+				xmlParser = supportingLifeBaseActivity.getResources().getXml(R.xml.training_tutorials_en);
+			}
 			
 			int eventType = xmlParser.next();
 			

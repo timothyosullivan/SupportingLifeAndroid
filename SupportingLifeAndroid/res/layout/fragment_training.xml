@@ -60,7 +60,7 @@
 				<TextView
 				    android:id="@+id/training_tutorial_title_label"
 				    style="@style/TrainingLabel"
-					android:layout_width="wrap_content"
+					android:layout_width="120dp"
 					android:layout_height="match_parent"
 					android:text="@string/training_tutorial_title" />
 				
@@ -88,7 +88,7 @@
 				<TextView
 				    android:id="@+id/training_tutorial_type_label"
 				    style="@style/TrainingLabel"
-					android:layout_width="wrap_content"
+					android:layout_width="120dp"
 					android:layout_height="match_parent"
 					android:text="@string/training_tutorial_type" />
 				
@@ -116,7 +116,7 @@
 				<TextView
 				    android:id="@+id/training_tutorial_availability_label"
 				    style="@style/TrainingLabel"
-					android:layout_width="wrap_content"
+					android:layout_width="120dp"
 					android:layout_height="match_parent"
 					android:text="@string/training_tutorial_availability" />
 				
@@ -144,7 +144,7 @@
 				<TextView
 				    android:id="@+id/training_tutorial_description_label"
 				    style="@style/TrainingLabel"
-					android:layout_width="wrap_content"
+					android:layout_width="120dp"
 					android:layout_height="match_parent"
 					android:text="@string/training_tutorial_description" />
 				
@@ -181,7 +181,7 @@
 				<TextView
 				    android:id="@+id/training_tutorial_created_date_label"
 				    style="@style/TrainingLabel"
-					android:layout_width="wrap_content"
+					android:layout_width="120dp"
 					android:layout_height="match_parent"
 					android:text="@string/training_tutorial_created_date" />
 				
@@ -209,7 +209,7 @@
 				<TextView
 				    android:id="@+id/training_tutorial_created_by_label"
 				    style="@style/TrainingLabel"
-					android:layout_width="wrap_content"
+					android:layout_width="120dp"
 					android:layout_height="match_parent"
 					android:text="@string/training_tutorial_created_by" />
 				

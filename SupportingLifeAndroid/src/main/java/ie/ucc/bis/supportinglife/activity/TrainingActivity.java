@@ -3,7 +3,9 @@ package ie.ucc.bis.supportinglife.activity;
 import ie.ucc.bis.supportinglife.R;
 import ie.ucc.bis.supportinglife.training.TrainingTutorialParser;
 import ie.ucc.bis.supportinglife.training.ui.TrainingPagerAdapter;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.view.ViewPager;
 
 /**
@@ -43,15 +45,8 @@ public class TrainingActivity extends SupportingLifeBaseActivity {
 		setContentView(R.layout.activity_training);	
 		setTitleFromActivityLabel(R.id.action_bar_title_text);
 		
-		// parse training tutorial details
-		setTrainingTutorialParser(new TrainingTutorialParser());
-		getTrainingTutorialParser().parseTrainingTutorials(this);
-		
-		// determine the initial page to be shown
-		setInitialPageLocation(getTrainingTutorialParser().getTutorials().size() * LOOPS / 2);
-		
-		// configure PagerAdapter for Training Screen
-		setTrainingPagerAdapter(new TrainingPagerAdapter(this, getSupportFragmentManager(), getTrainingTutorialParser().getTutorials()));
+		// ascertain locale of user and parse appropriate training content
+		configureTrainingPagerAdapter();
 		
         // configure ViewPager for Training Screen
         setTrainingViewPager((ViewPager) findViewById(R.id.training_view_pager));
@@ -74,6 +69,45 @@ public class TrainingActivity extends SupportingLifeBaseActivity {
 		// keyboard when an EditText is not in focus
 		 addSoftKeyboardHandling(findViewById(R.id.training_tutorials));
 	}
+
+	/**
+	 * Responsible for ascertaining locale of user and pointing training parser
+	 * to appropriate xml content for constructing screen
+	 * 
+	 */
+	private void configureTrainingPagerAdapter() {
+		
+		// localisation values needs to be picked up explicilty for TrainingActivity
+		// due to use of XML parsed content
+        SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(this);
+        String languageSelected = settings.getString(LANGUAGE_SELECTION_KEY, "");
+           
+		// parse training tutorial details
+		setTrainingTutorialParser(new TrainingTutorialParser());
+		getTrainingTutorialParser().parseTrainingTutorials(this, languageSelected);
+		
+		// determine the initial page to be shown
+		setInitialPageLocation(getTrainingTutorialParser().getTutorials().size() * LOOPS / 2);
+		
+		// configure PagerAdapter for Training Screen
+		setTrainingPagerAdapter(new TrainingPagerAdapter(this, getSupportFragmentManager(), getTrainingTutorialParser().getTutorials()));
+	}
+	
+	/**
+	 * onResume method is called when the activity will start interacting with the user.
+	 * 
+	 * At this point your activity is at the top of the activity stack, with user input going to it.
+	 * 
+	 * This method is always followed by onPause().
+	 *
+	 */
+	@Override
+	protected void onResume () {
+		super.onResume ();
+		
+		// ascertain locale of user and parse appropriate training content
+		configureTrainingPagerAdapter(); 
+	}	
 	
 	/**
 	 * Getter Method: getTrainingViewPager()

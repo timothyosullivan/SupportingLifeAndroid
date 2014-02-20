@@ -8,32 +8,32 @@
     <!-- ============================================================ -->
     <!-- DASHBOARD -->
     <!-- ============================================================ -->
-	<string name="dashboard_user_profile_button">Profile_T</string>
-	<string name="dashboard_about_button">ABT</string>
-	<string name="dashboard_imci_assessment_button">IMCI_T</string>
-	<string name="dashboard_ccm_assessment_button">CCM_T</string>
-	<string name="dashboard_training_button">Training_T</string>
-	<string name="dashboard_search_button">Search_T</string>
+	<string name="dashboard_user_profile_button">Vya Wakujula</string>
+	<string name="dashboard_about_button">Vya SL</string>
+	<string name="dashboard_imci_assessment_button">IMCI</string>
+	<string name="dashboard_ccm_assessment_button">CCM</string>
+	<string name="dashboard_training_button">Visambizgo</string>
+	<string name="dashboard_search_button">Kupenja</string>
 	
 	<!-- ============================================================ -->
     <!-- TRAINING SCREEN -->
     <!-- ============================================================ -->
 
-	<string name="training_tutorial_title">Title_T:</string>
-	<string name="training_tutorial_type">Tutorial Type_T:</string>
-	<string name="training_tutorial_availability">Availability_T:</string>
-	<string name="training_tutorial_description">Description_T:</string>
-	<string name="training_tutorial_Treated_date">Created Date_T:</string>
-	<string name="training_tutorial_Treated_by">Created By_T:</string>
+	<string name="training_tutorial_title">Mutu wachisambizgo:</string>
+	<string name="training_tutorial_type">Mtundu wachisambizgo:</string>
+	<string name="training_tutorial_availability">Kasangikiro kachisambizgo:</string>
+	<string name="training_tutorial_description">Kawilo kachisambizgo:</string>
+	<string name="training_tutorial_created_date">Dazi ilo chisambizgo chikapangika:</string>
+	<string name="training_tutorial_created_by">Munthu uyo wakapanga chisambizgo:</string>
  
     <!-- ============================================================ -->
     <!-- ABOUT SCREEN -->
     <!-- ============================================================ -->
-	<string name="about_version_label">Version_T</string>
-	<string name="about_version_value">2.0.0 (beta release_T)</string>
-	<string name="about_release_date_label">Release Date_T</string>
-	<string name="about_release_date_value">March 2014_T</string>
-	<string name="about_developer_label">Lead Developer_T</string>
-	<string name="about_project_label">Project Details_T</string>
+	<string name="about_version_label">Kumasulira</string>
+	<string name="about_version_value">2.0.0 (kuyezgererapo)</string>
+	<string name="about_release_date_label">Dazi Lakufumiskira</string>
+	<string name="about_release_date_value">March 2014</string>
+	<string name="about_developer_label">Wakunozga</string>
+	<string name="about_project_label">Vinandi Vya Sikimu</string>
 
 </resources>

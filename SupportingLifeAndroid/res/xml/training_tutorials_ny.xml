@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ============================================================ -->
+<!-- TRAINING TUTORIALS 										  -->
+<!-- ============================================================ -->
+
+<!-- ============================================================ -->
+<!-- INTERNATIONALISATION: CHICHEWA LANGUAGE RESOURCES 			  -->
+<!-- ============================================================ -->
+
+<Tutorials>
+	<!-- ============================================================ -->
+	<!-- TUTORIAL (1)				 								  -->
+	<!-- ============================================================ -->
+	<!-- ============================================================ -->
+	<!-- Title: Chest Indrawing (IMCI)	 		  					  -->
+	<!-- ============================================================ -->
+	<Tutorial>
+		<Title>Kulowa Nkati Pachifuwa (IMCI)</Title>
+		<Type>Kanema</Type>
+		<Availability>Osalumukizidwa</Availability>
+		<CreatedDate>Januwale 2014</CreatedDate>
+		<CreatedBy>WHO / USAID</CreatedBy>
+		<Description>Kanemay u akusonyeza mwana amene alindivuto lolowa pachifuwa.</Description>
+		<TitleImageName>@drawable/im_training_general_tutorial_button</TitleImageName>
+		<VideoName>chest_indrawing_imci</VideoName>
+	</Tutorial>
+	
+	<!-- ============================================================ -->
+	<!-- TUTORIAL (2)				 								  -->
+	<!-- ============================================================ -->
+	<!-- ============================================================ -->
+	<!-- Title: Lethargic or Unconscious (IMCI)	  		              -->
+	<!-- ============================================================ -->
+	<Tutorial>
+		<Title>Mwaulesi Kapena Kukomoka (IMCI)</Title>
+		<Type>Kanema</Type>
+		<Availability>Osalumukizidwa</Availability>
+		<CreatedDate>Januwale 2014</CreatedDate>
+		<CreatedBy>WHO / USAID</CreatedBy>
+		<Description>Kanemayu akuonetsa mwana wautyopi. Mwanayu akusinza pamene ayenera kukhala atadzuka, iyeyu akulephera kuyang'ana  amayi ake pamene akulanhura.</Description>
+		<TitleImageName>@drawable/im_training_general_tutorial_button</TitleImageName>
+		<VideoName>lethargic_or_unconscious_imci</VideoName>
+	</Tutorial>
+	
+	<!-- ============================================================ -->
+	<!-- TUTORIAL (3)				 								  -->
+	<!-- ============================================================ -->
+	<!-- ============================================================ -->
+	<!-- Title: Stridor (IMCI)		  		  						  -->
+	<!-- ============================================================ -->
+	<Tutorial>
+		<Title>Phokoso Lomveka Popuma Kaamba Ka Vuto Mmapapo (IMCI)</Title>
+		<Type>Kanema</Type>
+		<Availability>Osalumukizidwa</Availability>
+		<CreatedDate>Januwale 2014</CreatedDate>
+		<CreatedBy>WHO / USAID</CreatedBy>
+		<Description>Kanemayu akuonetsa mwana amene ali ndi vuto lopuma. Mwanayu kapumidwe kake ndikaphokoso.</Description>
+		<TitleImageName>@drawable/im_training_general_tutorial_button</TitleImageName>
+		<VideoName>stridor_imci</VideoName>
+	</Tutorial>
+	
+	<!-- ============================================================ -->
+	<!-- TUTORIAL (4)				 								  -->
+	<!-- ============================================================ -->
+	<!-- ============================================================ -->
+	<!-- Title: Skin Pinch (IMCI)			  		  				  -->
+	<!-- ============================================================ -->
+	<Tutorial>
+		<Title>Skin Pinch (IMCI)</Title>
+		<Type>Kanema</Type>
+		<Availability>Osalumukizidwa</Availability>
+		<CreatedDate>Januwale 2014</CreatedDate>
+		<CreatedBy>WHO / USAID</CreatedBy>
+		<Description>Kanemayu akutsonyeza mmene mungapangire.</Description>
+		<TitleImageName>@drawable/im_training_general_tutorial_button</TitleImageName>
+		<VideoName>skin_pinch_imci</VideoName>
+	</Tutorial>
+	
+	<!-- ============================================================ -->
+	<!-- TUTORIAL (5)				 								  -->
+	<!-- ============================================================ -->
+	<!-- ============================================================ -->
+	<!-- Title: Stiff Neck (IMCI)  		  							  -->
+	<!-- ============================================================ -->
+	<Tutorial>
+		<Title>Limba Khosi (IMCI)</Title>
+		<Type>Kanema</Type>
+		<Availability>Osalumukizidwa</Availability>
+		<CreatedDate>Januwale 2014</CreatedDate>
+		<CreatedBy>WHO / USAID</CreatedBy>
+		<Description>Kanemayu akutsonyeza  mmene mungayezere mwana amene alindi khosi lolimba.</Description>
+		<TitleImageName>@drawable/im_training_general_tutorial_button</TitleImageName>
+		<VideoName>stiff_neck_imci</VideoName>
+	</Tutorial>
+</Tutorials>

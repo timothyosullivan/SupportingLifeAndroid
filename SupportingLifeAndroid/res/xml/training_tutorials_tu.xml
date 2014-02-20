@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ============================================================ -->
+<!-- TRAINING TUTORIALS 										  -->
+<!-- ============================================================ -->
+
+<!-- ============================================================ -->
+<!-- INTERNATIONALISATION: TUMBUKA LANGUAGE RESOURCES 			  -->
+<!-- ============================================================ -->
+<Tutorials>
+	<!-- ============================================================ -->
+	<!-- TUTORIAL (1)				 								  -->
+	<!-- ============================================================ -->
+	<!-- ============================================================ -->
+	<!-- Title: Chest Indrawing (IMCI)	 		  					  -->
+	<!-- ============================================================ -->
+	<Tutorial>
+		<Title>Suzgo Lakunjizga Mvuchi (IMCI)</Title>
+		<Type>Kanema</Type>
+		<Availability>Offline</Availability>
+		<CreatedDate>Janyuwale 2014</CreatedDate>
+		<CreatedBy>WHO / USAID</CreatedBy>
+		<Description>Kanema uyu wakulongola mwana wali na suzgo pakuthuta. Suzgo ili likuoneka para munthu wakusuzgika kunjizga mvuchi mkati kuluska nyengo zose.</Description>
+		<TitleImageName>@drawable/im_training_general_tutorial_button</TitleImageName>
+		<VideoName>chest_indrawing_imci</VideoName>
+	</Tutorial>
+	
+	<!-- ============================================================ -->
+	<!-- TUTORIAL (2)				 								  -->
+	<!-- ============================================================ -->
+	<!-- ============================================================ -->
+	<!-- Title: Lethargic or Unconscious (IMCI)	  		              -->
+	<!-- ============================================================ -->
+	<Tutorial>
+		<Title>Mwaukata Panji Mwakukomoka (IMCI)</Title>
+		<Type>Kanema</Type>
+		<Availability>Offline</Availability>
+		<CreatedDate>Janyuwale 2014</CreatedDate>
+		<CreatedBy>WHO / USAID</CreatedBy>
+		<Description>Kanema uyu wakulongora mwana uyo wanasuzgo laukata panji lachikomokere. Mwana uyu wakuoneka wa tulo apo wakwenera kuwa nthena yayi, wakutondeka kuwabeka anyina apo wakumuyoyeska.</Description>
+		<TitleImageName>@drawable/im_training_general_tutorial_button</TitleImageName>
+		<VideoName>lethargic_or_unconscious_imci</VideoName>
+	</Tutorial>
+	
+	<!-- ============================================================ -->
+	<!-- TUTORIAL (3)				 								  -->
+	<!-- ============================================================ -->
+	<!-- ============================================================ -->
+	<!-- Title: Stridor (IMCI)		  		  						  -->
+	<!-- ============================================================ -->
+	<Tutorial>
+		<Title>Chiwawa icho chikupulikikwa pala munthu wakuthuta chifukwa cha suzgo mumaphapo (IMCI)</Title>
+		<Type>Kanema</Type>
+		<Availability>Offline</Availability>
+		<CreatedDate>Janyuwale 2014</CreatedDate>
+		<CreatedBy>WHO / USAID</CreatedBy>
+		<Description>Kanema uyu wakulongola mwana uyo wanasuzgo la mmaphapo. Mwana uyu kathutilo kake nkhachiwawa pala  wakuthutira mkati.</Description>
+		<TitleImageName>@drawable/im_training_general_tutorial_button</TitleImageName>
+		<VideoName>stridor_imci</VideoName>
+	</Tutorial>
+	
+	<!-- ============================================================ -->
+	<!-- TUTORIAL (4)				 								  -->
+	<!-- ============================================================ -->
+	<!-- ============================================================ -->
+	<!-- Title: Skin Pinch (IMCI)			  		  				  -->
+	<!-- ============================================================ -->
+	<Tutorial>
+		<Title>Kusina Chikumba (IMCI)</Title>
+		<Type>Kanema</Type>
+		<Availability>Offline</Availability>
+		<CreatedDate>Janyuwale 2014</CreatedDate>
+		<CreatedBy>WHO / USAID</CreatedBy>
+		<Description>Kanema uyu wakulongola kalasiro. Wawkulongola kalasiro kakwenerera, kuwerera kwakwenerera na pachokopachoko..</Description>
+		<TitleImageName>@drawable/im_training_general_tutorial_button</TitleImageName>
+		<VideoName>skin_pinch_imci</VideoName>
+	</Tutorial>
+	
+	<!-- ============================================================ -->
+	<!-- TUTORIAL (5)				 								  -->
+	<!-- ============================================================ -->
+	<!-- ============================================================ -->
+	<!-- Title: Stiff Neck (IMCI)  		  							  -->
+	<!-- ============================================================ -->
+	<Tutorial>
+		<Title>Singo Linonono (IMCI)</Title>
+		<Type>Kanema</Type>
+		<Availability>Offline</Availability>
+		<CreatedDate>Janyuwale 2014</CreatedDate>
+		<CreatedBy>WHO / USAID</CreatedBy>
+		<Description>Kanema uyu wakulongola umo tingamupimira mwana wasuzgo la singo.</Description>
+		<TitleImageName>@drawable/im_training_general_tutorial_button</TitleImageName>
+		<VideoName>stiff_neck_imci</VideoName>
+	</Tutorial>
+</Tutorials>

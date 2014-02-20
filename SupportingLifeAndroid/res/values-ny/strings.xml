@@ -8,32 +8,32 @@
     <!-- ============================================================ -->
     <!-- DASHBOARD -->
     <!-- ============================================================ -->
-	<string name="dashboard_user_profile_button">Profile_C</string>
-	<string name="dashboard_about_button">ABC</string>
-	<string name="dashboard_imci_assessment_button">IMCI_C</string>
-	<string name="dashboard_ccm_assessment_button">CCM_C</string>
-	<string name="dashboard_training_button">Training_C</string>
-	<string name="dashboard_search_button">Search_C</string>
+	<string name="dashboard_user_profile_button">Za Ostegula</string>
+	<string name="dashboard_about_button">Pafupifupi</string>
+	<string name="dashboard_imci_assessment_button">IMCI</string>
+	<string name="dashboard_ccm_assessment_button">CCM</string>
+	<string name="dashboard_training_button">Ziphunziso</string>
+	<string name="dashboard_search_button">Fufuzani</string>
 
 	<!-- ============================================================ -->
     <!-- TRAINING SCREEN -->
     <!-- ============================================================ -->
 
-	<string name="training_tutorial_title">Title_C:</string>
-	<string name="training_tutorial_type">Tutorial Type_C:</string>
-	<string name="training_tutorial_availability">Availability_C:</string>
-	<string name="training_tutorial_description">Description_C:</string>
-	<string name="training_tutorial_created_date">Created Date_C:</string>
-	<string name="training_tutorial_created_by">Created By_C:</string>
+	<string name="training_tutorial_title">Mutu wa phunziro:</string>
+	<string name="training_tutorial_type">Mtundu wa phunziro:</string>
+	<string name="training_tutorial_availability">Kapezekeredwe ka phunziro:</string>
+	<string name="training_tutorial_description">Za phunziro:</string>
+	<string name="training_tutorial_created_date">Tsiku lomwe phunziro linapangidwira:</string>
+	<string name="training_tutorial_created_by">Amene analemba phunziro:</string>
  
     <!-- ============================================================ -->
     <!-- ABOUT SCREEN -->
     <!-- ============================================================ -->
-	<string name="about_version_label">Version_C</string>
-	<string name="about_version_value">2.0.0 (beta release_C)</string>
-	<string name="about_release_date_label">Release Date_C</string>
-	<string name="about_release_date_value">March 2014_C</string>
-	<string name="about_developer_label">Lead Developer_C</string>
-	<string name="about_project_label">Project Details_C</string>
+	<string name="about_version_label">Version</string>
+	<string name="about_version_value">2.0.0 (beta release)</string>
+	<string name="about_release_date_label">Tsiku Lotulutsira</string>
+	<string name="about_release_date_value">March 2014</string>
+	<string name="about_developer_label">Olemba</string>
+	<string name="about_project_label">Zambiri za sikimu</string>
 
 </resources>
