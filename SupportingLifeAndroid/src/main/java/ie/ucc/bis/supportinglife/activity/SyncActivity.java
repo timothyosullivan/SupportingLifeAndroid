@@ -2,6 +2,7 @@ package ie.ucc.bis.supportinglife.activity;
 
 import ie.ucc.bis.supportinglife.R;
 import ie.ucc.bis.supportinglife.communication.PatientAssessmentComms;
+import ie.ucc.bis.supportinglife.communication.PatientAssessmentResponseComms;
 import ie.ucc.bis.supportinglife.domain.PatientAssessment;
 import ie.ucc.bis.supportinglife.helper.PatientHandlerUtils;
 import ie.ucc.bis.supportinglife.rule.engine.Diagnostic;
@@ -94,14 +95,14 @@ public class SyncActivity extends SupportingLifeBaseActivity {
     	super.onPause();
     }
 	
-	private class NetworkCommunicationAsyncTask extends AsyncTask<PatientAssessment, Void, List<Long>> {
+	private class NetworkCommunicationAsyncTask extends AsyncTask<PatientAssessment, Void, List<PatientAssessmentResponseComms>> {
 
 		private static final String AMAZON_WEB_SERVICE_URL = "http://supportinglife.elasticbeanstalk.com/patientvisits/add";
 		
 		@Override
-		protected List<Long> doInBackground(PatientAssessment... params) {
+		protected List<PatientAssessmentResponseComms> doInBackground(PatientAssessment... params) {
 
-			List<Long> addedPatients = new ArrayList<Long>();
+			List<PatientAssessmentResponseComms> addedPatientAssessments = new ArrayList<PatientAssessmentResponseComms>();
 			
 			RestTemplate restTemplate = new RestTemplate(new HttpComponentsClientHttpRequestFactory());
 
@@ -120,8 +121,8 @@ public class SyncActivity extends SupportingLifeBaseActivity {
 					((HttpComponentsClientHttpRequestFactory)restTemplate.getRequestFactory()).setReadTimeout(120 * 1000);
 					restTemplate.getMessageConverters().add(new MappingJacksonHttpMessageConverter());
 				
-					Long patientId = restTemplate.postForObject(AMAZON_WEB_SERVICE_URL, patientTransmit, Long.class);
-					addedPatients.add(patientId);
+					PatientAssessmentResponseComms assessmentResponse = restTemplate.postForObject(AMAZON_WEB_SERVICE_URL, patientTransmit, PatientAssessmentResponseComms.class);
+					addedPatientAssessments.add(assessmentResponse);
 				} catch (ResourceAccessException ex) {
 					LoggerUtils.i(LOG_TAG, "NetworkCommunicationAsyncTask: doInBackground -- ResourceAccessException");
 					LoggerUtils.i(LOG_TAG, "NetworkCommunicationAsyncTask: doInBackground -- " + ex.getMessage());
@@ -130,7 +131,7 @@ public class SyncActivity extends SupportingLifeBaseActivity {
 					LoggerUtils.i(LOG_TAG, "NetworkCommunicationAsyncTask: doInBackground -- " + ex.getMessage());
 				}
 			}
-			return addedPatients;
+			return addedPatientAssessments;
 		}
 
 		/**
@@ -173,14 +174,13 @@ public class SyncActivity extends SupportingLifeBaseActivity {
 			}
 			return patientTransmit;
 		}
-
+		
 		@Override
-		protected void onPostExecute(List<Long> addedPatients) {
+		protected void onPostExecute(List<PatientAssessmentResponseComms> addedPatientAssessments) {
 			
-			for (Long slPatientId : addedPatients) {
-				if (slPatientId != null) {
-					LoggerUtils.i(LOG_TAG, "NetworkCommunicationAsyncTask: onPostExecute -- Patient ID");
-					LoggerUtils.i(LOG_TAG, "NetworkCommunicationAsyncTask: onPostExecute -- " + slPatientId.longValue());
+			for (PatientAssessmentResponseComms patientAssessment : addedPatientAssessments) {
+				if (patientAssessment != null) {
+					generateAssessmentResponseDebugOutput(patientAssessment);
 				}
 				else {
 				LoggerUtils.i(LOG_TAG, "NetworkCommunicationAsyncTask: onPostExecute -- COMMUNICATION ERROR!");
@@ -195,6 +195,33 @@ public class SyncActivity extends SupportingLifeBaseActivity {
 		@Override
 		protected void onProgressUpdate(Void... values) {
 		}
+		
+		/**
+		 * Produces debug output of the patient assessment response received from
+		 * the server
+		 * 
+		 * @param patientAssessment
+		 */
+		private void generateAssessmentResponseDebugOutput(PatientAssessmentResponseComms patientAssessment) {
+			
+			LoggerUtils.i(LOG_TAG, "===================================================================================");
+			LoggerUtils.i(LOG_TAG, "NetworkCommunicationAsyncTask: onPostExecute -- PATIENT ASSESSMENT RESPONSE SUCCESS");
+			LoggerUtils.i(LOG_TAG, "NetworkCommunicationAsyncTask: onPostExecute -- Device Generated Assessment ID");
+			LoggerUtils.i(LOG_TAG, "NetworkCommunicationAsyncTask: onPostExecute -- " + patientAssessment.getDeviceGeneratedAssessmentId());
+			LoggerUtils.i(LOG_TAG, "NetworkCommunicationAsyncTask: onPostExecute -- Patient Visit ID");
+			LoggerUtils.i(LOG_TAG, "NetworkCommunicationAsyncTask: onPostExecute -- " + patientAssessment.getPatientVisitId());
+			LoggerUtils.i(LOG_TAG, "NetworkCommunicationAsyncTask: onPostExecute -- Patient ID");
+			LoggerUtils.i(LOG_TAG, "NetworkCommunicationAsyncTask: onPostExecute -- " + patientAssessment.getPatientId());			
+			LoggerUtils.i(LOG_TAG, "NetworkCommunicationAsyncTask: onPostExecute -- National ID");
+			LoggerUtils.i(LOG_TAG, "NetworkCommunicationAsyncTask: onPostExecute -- " + patientAssessment.getNationalId());
+			LoggerUtils.i(LOG_TAG, "NetworkCommunicationAsyncTask: onPostExecute -- National Health ID");
+			LoggerUtils.i(LOG_TAG, "NetworkCommunicationAsyncTask: onPostExecute -- " + patientAssessment.getNationalHealthId());
+			LoggerUtils.i(LOG_TAG, "NetworkCommunicationAsyncTask: onPostExecute -- Child First Name");
+			LoggerUtils.i(LOG_TAG, "NetworkCommunicationAsyncTask: onPostExecute -- " + patientAssessment.getChildFirstName());
+			LoggerUtils.i(LOG_TAG, "NetworkCommunicationAsyncTask: onPostExecute -- Child Surname");
+			LoggerUtils.i(LOG_TAG, "NetworkCommunicationAsyncTask: onPostExecute -- " + patientAssessment.getChildSurname());
+		}
+		
 	} // end of inner class 'NetworkCommunicationAsyncTask'
 
 	public NetworkCommunicationAsyncTask getNetworkCommsTask() {
