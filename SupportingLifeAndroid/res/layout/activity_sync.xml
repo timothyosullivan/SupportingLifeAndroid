@@ -2,25 +2,39 @@
 <!-- ============================================================ -->
 <!-- SYNC SCREEN -->
 <!-- ============================================================ -->
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical" >
+	
+    <TextView android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+		android:text="@string/language_preference_category"
+		style="?android:attr/listSeparatorTextViewStyle"
+		android:layout_marginLeft="20dp"
+		android:layout_marginRight="20dp" />
+
+				<TextView
+				    android:id="@+id/training_tutorial_title_label"
+				    style="?android:attr/listSeparatorTextViewStyle"
+		android:layout_marginLeft="20dp"
+		android:layout_marginRight="20dp"
+					android:layout_width="fill_parent"
+					android:layout_height="wrap_content"
+					android:text="@string/language_list_preference_summary" />
 		
 	<!-- ============================================================ -->
 	<!-- SYNCHRONISATION BUTTON -->
 	<!-- ============================================================ -->
-
+	
 	<Button
 		android:id="@+id/sync_button"
 		style="@style/SyncScreenTextAppearanceFinish" 
-		android:layout_width="match_parent"
+		android:layout_width="fill_parent"
 		android:layout_height="wrap_content"
-		android:layout_marginLeft="16dp"
-		android:layout_marginRight="16dp"
-		android:layout_centerVertical="true"
-       	android:layout_centerHorizontal="true"
+		android:layout_marginLeft="20dp"
+		android:layout_marginRight="20dp"
 		android:background="@drawable/synchronisation_button"
 		android:text="@string/sync_screen_sync_button"/>
  
-</RelativeLayout>
+</LinearLayout>

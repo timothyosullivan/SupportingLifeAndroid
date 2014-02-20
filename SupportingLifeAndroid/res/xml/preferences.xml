@@ -8,12 +8,12 @@
     <!-- SYNC LOGO -->
     <!-- ============================================================ -->
 
-	<PreferenceCategory android:title="Language"
+	<PreferenceCategory android:title="@string/language_preference_category"
 	    android:key="language">
 
 		<ListPreference android:key="language_selection"
-            android:title="Language Selection"
-            android:summary="Choose default language for app"
+            android:title="@string/language_list_preference_title"
+            android:summary="@string/language_list_preference_summary"
             android:defaultValue="en"
             android:entries="@array/languageSelection"
             android:entryValues="@array/languageSelectionValues"/>

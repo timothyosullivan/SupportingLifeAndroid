@@ -558,6 +558,13 @@
 	<string name="supporting_life_tree_image">Supporting Life Tree Image</string>
  
     <!-- ============================================================ -->
+    <!-- SETTINGS SCREEN -->
+    <!-- ============================================================ -->
+	<string name="language_preference_category">Language</string>
+	<string name="language_list_preference_title">Language Selection</string>
+	<string name="language_list_preference_summary">Choose default language for app</string>
+	
+    <!-- ============================================================ -->
     <!-- SYNC SCREEN -->
     <!-- ============================================================ -->
 	<string name="sync_screen_sync_button">Sync Now</string>
