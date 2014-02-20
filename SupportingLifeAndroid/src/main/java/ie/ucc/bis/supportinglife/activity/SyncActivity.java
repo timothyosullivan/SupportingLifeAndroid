@@ -10,6 +10,7 @@ import ie.ucc.bis.supportinglife.rule.engine.TreatmentRecommendation;
 import ie.ucc.bis.supportinglife.service.SupportingLifeService;
 import ie.ucc.bis.supportinglife.ui.utilities.LoggerUtils;
 
+import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,8 +20,12 @@ import org.springframework.web.client.ResourceAccessException;
 import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 
+import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 import android.view.View;
 import android.widget.Button;
 
@@ -44,6 +49,7 @@ public class SyncActivity extends SupportingLifeBaseActivity {
 	private NetworkCommunicationAsyncTask networkCommsTask;
 	private SupportingLifeService supportingLifeService;
 	private Button syncButton;
+	private ProgressDialog progressDialog;
 	
 	/**
 	 * onCreate method
@@ -71,16 +77,80 @@ public class SyncActivity extends SupportingLifeBaseActivity {
 		getSyncButton().setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
             	LoggerUtils.i(LOG_TAG, "SyncButton: onClick -- Sync Button on Synchronisation Clicked!");
-            	
+            	           	
             	// retrieve non-synced patient assessment from the DB
         		List<PatientAssessment> nonSyncedPatientAssessments = getSupportingLifeService().getAllNonSyncedPatientAssessments();
         		LoggerUtils.i(LOG_TAG, "SyncButton: onClick -- Number of non-synced patient assessments to be synced ~ " + nonSyncedPatientAssessments.size());
+            	
+            	///////////// TEMP START
+
+                setProgressDialog(new ProgressDialog(SyncActivity.this));          
+                getProgressDialog().setMessage("Syncing Patient Assessments....");
+                getProgressDialog().setTitle("Please Wait..");
+                getProgressDialog().setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
+                getProgressDialog().setProgress(0);
+                getProgressDialog().setMax(30);
+ //               getProgressDialog().setMax(nonSyncedPatientAssessments.size());
+                getProgressDialog().show();
+ 
+                final IncomingMessageHandler handler = new IncomingMessageHandler(getProgressDialog());
+                
+                new Thread(new Runnable() {
+                    @Override
+                     public void run() {
+                    	
+                		// Looper is used to run a message loop for a thread.  Threads by default do
+                		// not have a message loop associated with them; to create one, call
+                		// prepare() in the thread that is to run the loop, and then
+                		// loop() to have it process messages until the loop is stopped
+                		Looper.prepare();                     	
+                		
+                    	try {
+                    		while (getProgressDialog().getProgress() <= getProgressDialog().getMax()) {
+                    			Thread.sleep(1000);
+                    			handler.sendMessage(handler.obtainMessage());
+                             			
+                    			if(getProgressDialog().getProgress() == getProgressDialog().getMax()) {
+                    				getProgressDialog().dismiss();
+                    			}
+                    		}
+                    		Looper.loop(); 
+                    	} catch(InterruptedException interruptException) {
+                    		LoggerUtils.i(LOG_TAG, "SyncButton: onClick -- Interrupt Exception Thrown!");
+                    		LoggerUtils.i(LOG_TAG, "SyncButton: onClick -- Interrupt Exception Details: " + interruptException.getMessage());
+                    	}
+                     }
+               }).start(); 
+	
+            	///////////// TEMP END
         		
         		// transmit non-synced patient assessments
         		setNetworkCommsTask(new NetworkCommunicationAsyncTask());
        			getNetworkCommsTask().execute(nonSyncedPatientAssessments.toArray(new PatientAssessment[nonSyncedPatientAssessments.size()]));
             }
         });	
+	}
+	
+	private static class IncomingMessageHandler extends Handler {
+	    private final WeakReference<ProgressDialog> dialog; 
+
+	    public IncomingMessageHandler(ProgressDialog progressDialog) {
+	    	dialog = new WeakReference<ProgressDialog>(progressDialog);
+	    }
+	    
+	    @Override
+	    public void handleMessage(Message msg)
+	    {
+	    	super.handleMessage(msg);
+	    	ProgressDialog pDialog = getDialog().get();
+	    	if (pDialog != null) {
+	    		pDialog.incrementProgressBy(5);
+	    	}
+	    }
+
+		public WeakReference<ProgressDialog> getDialog() {
+			return dialog;
+		}
 	}
 
     @Override
@@ -246,6 +316,14 @@ public class SyncActivity extends SupportingLifeBaseActivity {
 
 	public void setSyncButton(Button syncButton) {
 		this.syncButton = syncButton;
+	}
+
+	public ProgressDialog getProgressDialog() {
+		return progressDialog;
+	}
+
+	public void setProgressDialog(ProgressDialog progressDialog) {
+		this.progressDialog = progressDialog;
 	}
 	
 } // end of SyncActivity class
