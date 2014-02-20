@@ -72,7 +72,7 @@ public class PatientAssessment implements Serializable {
 		setDiagnostics(new ArrayList<Diagnostic>());
 	}
 	
-	public PatientAssessment(Integer id, String deviceGeneratedAssessmentId, String hsaUserId, String nationalId, String nationalHealthId, 
+	public PatientAssessment(Integer id, String deviceGeneratedAssessmentId, String nationalId, String nationalHealthId, String hsaUserId, 
 					String childFirstName, String childSurname, String birthDate,
 					String gender, String caregiverName, String relationship, String physicalAddress,
 					String villageTa, String visitDate, String chestIndrawing, Integer breathsPerMinute,

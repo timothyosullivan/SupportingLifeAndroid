@@ -11,7 +11,6 @@ import ie.ucc.bis.supportinglife.ui.utilities.LoggerUtils;
 
 import java.text.ParseException;
 import java.util.ArrayList;
-import java.util.List;
 
 import android.app.ActionBar;
 import android.app.ActionBar.Tab;
@@ -36,7 +35,7 @@ import android.view.View;
  */
 public class AssessmentResultsActivity extends SupportingLifeBaseActivity {
 	
-	private final String LOG_TAG = "ie.ucc.bis.supportinglife.activity.CcmAssessmentResultsActivity";
+	private final String LOG_TAG = "ie.ucc.bis.supportinglife.activity.AssessmentResultsActivity";
 	
 	private ViewPager ViewPager;
 	private TabsAdapter TabsAdapter;
@@ -267,9 +266,8 @@ public class AssessmentResultsActivity extends SupportingLifeBaseActivity {
 		getPatientAssessmentDao().createPatientAssessment(getPatientAssessment(), android_device_id);
 
 		// check patient has been added correctly
-		List<PatientAssessment> patientsRetrieved = getPatientAssessmentDao().getAllNonSyncedPatientAssessments();
+		// TODO - Add DB check and logger statement here
 
-		System.out.println("test");
 	}
 	
 	
