@@ -206,17 +206,17 @@ public class PatientAssessmentDaoImpl implements PatientAssessmentDao {
 //		Param Line 11:	Integer difficultySeeingDuration (36), String cannotTreatProblem (37), 
 //		Param Line 12: 	String cannotTreatProblemDetails (38)
 		
-		PatientAssessment patientAssessment = new PatientAssessment(cursor.getInt(0), cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getString(4), 
+		PatientAssessment patientAssessment = new PatientAssessment(DaoUtilities.readInt(cursor, 0), cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getString(4), 
 													cursor.getString(5), cursor.getString(6), cursor.getString(7),
 													cursor.getString(8), cursor.getString(9), cursor.getString(10), cursor.getString(11),
-													cursor.getString(12), cursor.getString(13), cursor.getString(14), cursor.getInt(15),
+													cursor.getString(12), cursor.getString(13), cursor.getString(14), DaoUtilities.readInt(cursor, 15),
 													cursor.getString(16), cursor.getString(17), cursor.getString(18),
-													cursor.getString(19), cursor.getString(20), cursor.getString(21), cursor.getInt(22),
-													cursor.getString(23), cursor.getInt(24), cursor.getString(25), cursor.getString(26),
-													cursor.getInt(27), cursor.getString(28), cursor.getString(29),
+													cursor.getString(19), cursor.getString(20), cursor.getString(21), DaoUtilities.readInt(cursor, 22),
+													cursor.getString(23), DaoUtilities.readInt(cursor, 24), cursor.getString(25), cursor.getString(26),
+													DaoUtilities.readInt(cursor, 27), cursor.getString(28), cursor.getString(29),
 													cursor.getString(30), cursor.getString(31), cursor.getString(32),
-													cursor.getString(33), cursor.getInt(34), cursor.getString(35),
-													cursor.getInt(36), cursor.getString(37),
+													cursor.getString(33), DaoUtilities.readInt(cursor, 34), cursor.getString(35),
+													DaoUtilities.readInt(cursor, 36), cursor.getString(37),
 													cursor.getString(38));
 		return patientAssessment;
 	}
