@@ -220,4 +220,16 @@ public class PatientAssessmentDaoImpl implements PatientAssessmentDao {
 													cursor.getString(38));
 		return patientAssessment;
 	}
+
+	public int setPatientAssessmentToSynced(String deviceGeneratedAssessmentId, SupportingLifeService service) {
+		
+		ContentValues values = new ContentValues();
+		values.put(DatabaseHandler.TABLE_PATIENT_COLUMN_SYNCED, "true");
+		
+		int rowCount = service.getDatabase().update(DatabaseHandler.TABLE_PATIENT, values, 
+				DatabaseHandler.TABLE_PATIENT_COLUMN_ASSESSMENT_ID + " = '" + deviceGeneratedAssessmentId + "'", 
+				null);
+		
+		return rowCount;
+	}
 } 

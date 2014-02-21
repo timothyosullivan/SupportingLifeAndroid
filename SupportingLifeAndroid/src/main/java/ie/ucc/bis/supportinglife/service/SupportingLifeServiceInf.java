@@ -24,7 +24,7 @@ public interface SupportingLifeServiceInf {
 	public void deletePatientAssessment(PatientAssessment patient);
 	public List<PatientAssessment> getAllNonSyncedPatientAssessments();
 	public List<PatientAssessment> getAllPatientAssessments();
-	
+	public int setPatientAssessmentToSynced(String deviceGeneratedAssessmentId);
 	
 	/*******************************************************************************/
 	/***********************GENERAL DATABASE MANAGEMENT*****************************/

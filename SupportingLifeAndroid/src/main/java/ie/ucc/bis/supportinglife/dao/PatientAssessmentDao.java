@@ -11,4 +11,5 @@ public interface PatientAssessmentDao {
 	public void deletePatientAssessment(PatientAssessment patient, SupportingLifeService service);
 	public List<PatientAssessment> getAllNonSyncedPatientAssessments(SupportingLifeService service);
 	public List<PatientAssessment> getAllPatientAssessments(SupportingLifeService service);
+	public int setPatientAssessmentToSynced(String deviceGeneratedAssessmentId, SupportingLifeService service);
 }

@@ -251,6 +251,17 @@ public class SyncActivity extends SupportingLifeBaseActivity {
 			for (PatientAssessmentResponseComms patientAssessment : addedPatientAssessments) {
 				if (patientAssessment != null) {
 					generateAssessmentResponseDebugOutput(patientAssessment);
+					
+					// update the sync column for the patient record to indicate that it has 
+					// now been synchronised
+					int rowCount = getSupportingLifeService().setPatientAssessmentToSynced(patientAssessment.getDeviceGeneratedAssessmentId());
+					if (rowCount == 1) {
+						LoggerUtils.i(LOG_TAG, "NetworkCommunicationAsyncTask: onPostExecute -- Single Patient Record Synced Succesfully ~ " 
+								+ patientAssessment.getDeviceGeneratedAssessmentId());
+					}
+					else {
+						LoggerUtils.i(LOG_TAG, "NetworkCommunicationAsyncTask: onPostExecute -- EXPECTED PATIENT RECORD ROW TO BE SYNCED!!!!");
+					}
 				}
 				else {
 				LoggerUtils.i(LOG_TAG, "NetworkCommunicationAsyncTask: onPostExecute -- COMMUNICATION ERROR!");

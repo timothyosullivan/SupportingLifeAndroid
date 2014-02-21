@@ -58,6 +58,10 @@ public class SupportingLifeService implements SupportingLifeServiceInf {
 	public List<PatientAssessment> getAllPatientAssessments() {
 		return getPatientAssessmentDaoImpl().getAllPatientAssessments(this);
 	}
+
+	public int setPatientAssessmentToSynced(String deviceGeneratedAssessmentId) {
+		return getPatientAssessmentDaoImpl().setPatientAssessmentToSynced(deviceGeneratedAssessmentId, this);	
+	}
 	
 	/*******************************************************************************/
 	/***********************GENERAL DATABASE MANAGEMENT*****************************/
