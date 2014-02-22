@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface PatientAssessmentDao {
 	
-	public PatientAssessment createPatientAssessment(PatientAssessment patientToAdd, String android_device_id, SupportingLifeService service);
+	public PatientAssessment createPatientAssessment(PatientAssessment patientToAdd, String uniquePatientAssessmentIdentifier, SupportingLifeService service);
 	public void deletePatientAssessment(PatientAssessment patient, SupportingLifeService service);
 	public List<PatientAssessment> getAllNonSyncedPatientAssessments(SupportingLifeService service);
 	public List<PatientAssessment> getAllPatientAssessments(SupportingLifeService service);

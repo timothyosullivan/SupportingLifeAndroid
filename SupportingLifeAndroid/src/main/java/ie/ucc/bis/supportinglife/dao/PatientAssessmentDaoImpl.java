@@ -73,20 +73,18 @@ public class PatientAssessmentDaoImpl implements PatientAssessmentDao {
 	 * android device
 	 * 
 	 * @param patientToAdd
-	 * @param android_device_id
+	 * @param uniquePatientAssessmentIdentifier
 	 * 
 	 * @return
 	 */
 	@Override
-	public PatientAssessment createPatientAssessment(PatientAssessment patientToAdd, String android_device_id, SupportingLifeService service) {		
+	public PatientAssessment createPatientAssessment(PatientAssessment patientToAdd, String uniquePatientAssessmentIdentifier, SupportingLifeService service) {		
 
-		SQLiteStatement assessmentRowCountQuery = service.getDatabase().compileStatement("select count(*) from " + DatabaseHandler.TABLE_PATIENT);
-		long assessmentRowCount = assessmentRowCountQuery.simpleQueryForLong();
-		
-		LoggerUtils.i(LOG_TAG, "Current Patient Assessment Row Count: " + assessmentRowCount);
+		// show the number of patient assessments in debug logger
+		debugOutputShowPatientAssessmentCount(service);
 
 		ContentValues values = new ContentValues();
-		values.put(DatabaseHandler.TABLE_PATIENT_COLUMN_ASSESSMENT_ID, android_device_id + "_" + Long.valueOf(assessmentRowCount).toString());
+		values.put(DatabaseHandler.TABLE_PATIENT_COLUMN_ASSESSMENT_ID, uniquePatientAssessmentIdentifier);
 		values.put(DatabaseHandler.TABLE_PATIENT_COLUMN_NATIONAL_ID, patientToAdd.getNationalId());
 		values.put(DatabaseHandler.TABLE_PATIENT_COLUMN_NATIONAL_HEALTH_ID, patientToAdd.getNationalHealthId());	
 		values.put(DatabaseHandler.TABLE_PATIENT_COLUMN_HSA_USER_ID, patientToAdd.getHsaUserId());		
@@ -137,13 +135,31 @@ public class PatientAssessmentDaoImpl implements PatientAssessmentDao {
 		// add the patient row
 		long insertId = service.getDatabase().insert(DatabaseHandler.TABLE_PATIENT, null, values);
 		
+		LoggerUtils.i(LOG_TAG, "Patient Assessment Record Added: " + insertId);
+		
 		Cursor cursor = service.getDatabase().query(DatabaseHandler.TABLE_PATIENT, allColumns, 
 										DatabaseHandler.TABLE_PATIENT_COLUMN_ID + " = " + insertId, 
 										null, null, null, null);
 		cursor.moveToFirst();
 		PatientAssessment patientAssessment = cursorToPatientAssessment(cursor);
 		cursor.close();
+		
+		// show the number of patient assessments in debug logger
+		debugOutputShowPatientAssessmentCount(service);
+		
 		return patientAssessment;
+	}
+
+	/**
+	 * Show the number of patient assessments in debug logger
+	 * 
+	 * @param service
+	 */
+	private void debugOutputShowPatientAssessmentCount(SupportingLifeService service) {
+		SQLiteStatement assessmentRowCountQuery = service.getDatabase().compileStatement("select count(*) from " + DatabaseHandler.TABLE_PATIENT);
+		long assessmentRowCount = assessmentRowCountQuery.simpleQueryForLong();
+		
+		LoggerUtils.i(LOG_TAG, "Current Patient Assessment Row Count: " + assessmentRowCount);
 	}
 
 	@Override

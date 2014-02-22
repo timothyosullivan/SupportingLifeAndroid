@@ -41,7 +41,13 @@ public class SupportingLifeService implements SupportingLifeServiceInf {
 	/*******************************************************************************/
 	@Override
 	public PatientAssessment createPatientAssessment(PatientAssessment patientToAdd, String android_device_id) {
-		return getPatientAssessmentDaoImpl().createPatientAssessment(patientToAdd, android_device_id, this);
+		
+		// the combination of the the 'unique android id'  and the current time in ms will
+		// allow the device to create a unique 'patient assessment identifier'
+		long timestamp = System.currentTimeMillis();
+		String uniquePatientAssessmentIdentifier = android_device_id + "_" + timestamp;
+		
+		return getPatientAssessmentDaoImpl().createPatientAssessment(patientToAdd, uniquePatientAssessmentIdentifier, this);
 	}
 
 	@Override
