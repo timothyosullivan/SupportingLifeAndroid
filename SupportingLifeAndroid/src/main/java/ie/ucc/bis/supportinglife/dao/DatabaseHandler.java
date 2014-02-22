@@ -27,6 +27,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		// create classification table
 		ClassificationTable.onCreate(database);
 		// create treatment table
+		TreatmentTable.onCreate(database);
 	}
 
 	
@@ -37,6 +38,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		// upgrade classification table
 		ClassificationTable.onUpgrade(database, oldVersion, newVersion);
 		// create treatment table
+		TreatmentTable.onUpgrade(database, oldVersion, newVersion);
 	}
 	
 	/**

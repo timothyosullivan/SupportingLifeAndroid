@@ -6,6 +6,8 @@ import ie.ucc.bis.supportinglife.dao.ClassificationDaoImpl;
 import ie.ucc.bis.supportinglife.dao.DatabaseHandler;
 import ie.ucc.bis.supportinglife.dao.PatientAssessmentDao;
 import ie.ucc.bis.supportinglife.dao.PatientAssessmentDaoImpl;
+import ie.ucc.bis.supportinglife.dao.TreatmentDao;
+import ie.ucc.bis.supportinglife.dao.TreatmentDaoImpl;
 import ie.ucc.bis.supportinglife.domain.PatientAssessment;
 import ie.ucc.bis.supportinglife.ui.utilities.LoggerUtils;
 
@@ -30,6 +32,7 @@ public class SupportingLifeService implements SupportingLifeServiceInf {
 	// DAOs
 	private PatientAssessmentDao patientAssessmentDao;
 	private ClassificationDao classificationDao;
+	private TreatmentDao treatmentDao;
 	
 	// Database fields
 	private SQLiteDatabase database;
@@ -44,6 +47,7 @@ public class SupportingLifeService implements SupportingLifeServiceInf {
 		setDatabaseHandler(new DatabaseHandler(context));
 		setPatientAssessmentDao(new PatientAssessmentDaoImpl());
 		setClassificationDao(new ClassificationDaoImpl());
+		setTreatmentDao(new TreatmentDaoImpl());
 	}
 	
 	/*******************************************************************************/
@@ -66,6 +70,9 @@ public class SupportingLifeService implements SupportingLifeServiceInf {
 			
 			// now add the associated 'patient assessment' classifications
 			getClassificationDao().createPatientClassifications(patientToAdd, uniquePatientAssessmentIdentifier, this);
+			
+			// now add the associated 'patient assessment' treatments
+			getTreatmentDao().createPatientTreatments(patientToAdd, uniquePatientAssessmentIdentifier, this);
 			
 			// commit the transaction
 			getDatabase().setTransactionSuccessful();
@@ -91,8 +98,15 @@ public class SupportingLifeService implements SupportingLifeServiceInf {
 		// 1. pull back all non-synced records from the 'patient assessment' table
 		patientAssessmentComms = getPatientAssessmentDao().getAllNonSyncedPatientAssessmentComms(this);
 		
-		// 2. For the patient assessments pulled back, pull back the associated classifications
-		getClassificationDao().populatePatientClassifications(patientAssessmentComms, this);
+		// only need to pull back classifications and treatments if there are 
+		// patients assessments requiring syncing
+		if (patientAssessmentComms.size() > 0) {		
+			// 2. For the patient assessments pulled back, pull back the associated classifications
+			getClassificationDao().populatePatientClassifications(patientAssessmentComms, this);
+			
+			// 3. For the patient assessments pulled back, pull back the associated classifications
+			getTreatmentDao().populatePatientTreatments(patientAssessmentComms, this);
+		}
 		
 		return patientAssessmentComms;
 	}
@@ -133,6 +147,14 @@ public class SupportingLifeService implements SupportingLifeServiceInf {
 
 	public void setClassificationDao(ClassificationDao classificationDao) {
 		this.classificationDao = classificationDao;
+	}
+
+	public TreatmentDao getTreatmentDao() {
+		return treatmentDao;
+	}
+
+	public void setTreatmentDao(TreatmentDao treatmentDao) {
+		this.treatmentDao = treatmentDao;
 	}
 
 	@Override

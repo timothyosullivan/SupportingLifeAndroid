@@ -13,15 +13,6 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteStatement;
 
-/**
- * Class: ClassificationDao
- * 
- * This class maintains the database connection and supports 
- * adding new classifications and fetching classifications related
- * to patient assessments.
- * 
- * @author TOSullivan
- */
 public class ClassificationDaoImpl implements ClassificationDao {
 	
 	private final String LOG_TAG = "ie.ucc.bis.supportinglife.dao.ClassificationDaoImpl";
@@ -31,14 +22,7 @@ public class ClassificationDaoImpl implements ClassificationDao {
 									ClassificationTable.COLUMN_CLASSIFICATION_IDENTIFIER,
 									ClassificationTable.COLUMN_CLASSIFICATION_NAME};
 
-	public ClassificationDaoImpl() {
-	}
-
-	protected static final String COLUMN_ID = "_id";
-	protected static final String COLUMN_ASSESSMENT_ID = "assessment_id";
-	protected static final String COLUMN_CLASSIFICATION_IDENTIFIER = "identifier";
-	protected static final String COLUMN_CLASSIFICATION_NAME = "name";
-	
+	public ClassificationDaoImpl() {}
 	
 	/**
 	 * Responsible for adding 'Classification' record to the database on the 
@@ -101,14 +85,15 @@ public class ClassificationDaoImpl implements ClassificationDao {
 			while (!cursor.isAfterLast()) {
 				ClassificationAssessment classificationAssessment = cursorToClassificationAssessment(cursor);
 				
-				// create a diagnostic element to hold this classification
+				// capture this classification
 				patientAssessmentComm.getClassifications().put(classificationAssessment.getClassificationIdentifier(), classificationAssessment.getClassificationName());
 				cursor.moveToNext();
 			}
 		}
 		
-		// make sure to close the cursor
-		cursor.close();
+		if (cursor != null) {
+			cursor.close();
+		}
 	}
 	
 	private ClassificationAssessment cursorToClassificationAssessment(Cursor cursor) {
