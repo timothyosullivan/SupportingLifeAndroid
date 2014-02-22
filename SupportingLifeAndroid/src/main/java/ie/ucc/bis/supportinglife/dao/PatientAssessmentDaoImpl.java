@@ -16,54 +16,55 @@ import android.database.sqlite.SQLiteStatement;
  * Class: PatientAssessmentDao
  * 
  * This class maintains the database connection and supports 
- * adding new patients and fetching all patients.
+ * adding new patient assessments and fetching all patient
+ * assessments.
  * 
  * @author TOSullivan
  */
 public class PatientAssessmentDaoImpl implements PatientAssessmentDao {
 	
-	private final String LOG_TAG = "ie.ucc.bis.supportinglife.dao.PatientAssessmentDao";
+	private final String LOG_TAG = "ie.ucc.bis.supportinglife.dao.PatientAssessmentDaoImpl";
 
-	private String[] allColumns = { DatabaseHandler.TABLE_PATIENT_COLUMN_ID,
-									DatabaseHandler.TABLE_PATIENT_COLUMN_ASSESSMENT_ID,
-									DatabaseHandler.TABLE_PATIENT_COLUMN_NATIONAL_ID,
-									DatabaseHandler.TABLE_PATIENT_COLUMN_NATIONAL_HEALTH_ID,
-									DatabaseHandler.TABLE_PATIENT_COLUMN_HSA_USER_ID,
-									DatabaseHandler.TABLE_PATIENT_COLUMN_CHILD_FIRST_NAME,
-									DatabaseHandler.TABLE_PATIENT_COLUMN_CHILD_SURNAME,
-									DatabaseHandler.TABLE_PATIENT_COLUMN_BIRTH_DATE,						
-									DatabaseHandler.TABLE_PATIENT_COLUMN_GENDER,
-									DatabaseHandler.TABLE_PATIENT_COLUMN_CAREGIVER_NAME,
-									DatabaseHandler.TABLE_PATIENT_COLUMN_RELATIONSHIP,
-									DatabaseHandler.TABLE_PATIENT_COLUMN_PHYSICAL_ADDRESS,
-									DatabaseHandler.TABLE_PATIENT_COLUMN_VILLAGE_TA,
-									DatabaseHandler.TABLE_PATIENT_COLUMN_VISIT_DATE,
-									DatabaseHandler.TABLE_PATIENT_COLUMN_CHEST_INDRAWING,
-									DatabaseHandler.TABLE_PATIENT_COLUMN_BREATHS_PER_MINUTE,
-									DatabaseHandler.TABLE_PATIENT_COLUMN_SLEEPY_UNCONSCIOUS,
-									DatabaseHandler.TABLE_PATIENT_COLUMN_PALMAR_PALLOR,
-									DatabaseHandler.TABLE_PATIENT_COLUMN_MUAC_TAPE_COLOUR,
-									DatabaseHandler.TABLE_PATIENT_COLUMN_SWELLING_BOTH_FEET,
-									DatabaseHandler.TABLE_PATIENT_COLUMN_PROBLEM,
-									DatabaseHandler.TABLE_PATIENT_COLUMN_COUGH,
-									DatabaseHandler.TABLE_PATIENT_COLUMN_COUGH_DURATION,
-									DatabaseHandler.TABLE_PATIENT_COLUMN_DIARRHOEA,
-									DatabaseHandler.TABLE_PATIENT_COLUMN_DIARRHOEA_DURATION,
-									DatabaseHandler.TABLE_PATIENT_COLUMN_BLOOD_IN_STOOL,
-									DatabaseHandler.TABLE_PATIENT_COLUMN_FEVER,
-									DatabaseHandler.TABLE_PATIENT_COLUMN_FEVER_DURATION,
-									DatabaseHandler.TABLE_PATIENT_COLUMN_CONVULSIONS,
-									DatabaseHandler.TABLE_PATIENT_COLUMN_DIFFICULTY_DRINKING,
-									DatabaseHandler.TABLE_PATIENT_COLUMN_UNABLE_TO_DRINK,
-									DatabaseHandler.TABLE_PATIENT_COLUMN_VOMITING,
-									DatabaseHandler.TABLE_PATIENT_COLUMN_VOMITS_EVERYTHING,
-									DatabaseHandler.TABLE_PATIENT_COLUMN_RED_EYE,
-									DatabaseHandler.TABLE_PATIENT_COLUMN_RED_EYE_DURATION,
-									DatabaseHandler.TABLE_PATIENT_COLUMN_DIFFICULTY_SEEING,
-									DatabaseHandler.TABLE_PATIENT_COLUMN_DIFFICULTY_SEEING_DURATION,
-									DatabaseHandler.TABLE_PATIENT_COLUMN_CANNOT_TREAT,
-									DatabaseHandler.TABLE_PATIENT_COLUMN_CANNOT_TREAT_DETAILS,
-									DatabaseHandler.TABLE_PATIENT_COLUMN_SYNCED};
+	private String[] allColumns = { PatientAssessmentTable.TABLE_PATIENT_COLUMN_ID,
+									PatientAssessmentTable.TABLE_PATIENT_COLUMN_ASSESSMENT_ID,
+									PatientAssessmentTable.TABLE_PATIENT_COLUMN_NATIONAL_ID,
+									PatientAssessmentTable.TABLE_PATIENT_COLUMN_NATIONAL_HEALTH_ID,
+									PatientAssessmentTable.TABLE_PATIENT_COLUMN_HSA_USER_ID,
+									PatientAssessmentTable.TABLE_PATIENT_COLUMN_CHILD_FIRST_NAME,
+									PatientAssessmentTable.TABLE_PATIENT_COLUMN_CHILD_SURNAME,
+									PatientAssessmentTable.TABLE_PATIENT_COLUMN_BIRTH_DATE,						
+									PatientAssessmentTable.TABLE_PATIENT_COLUMN_GENDER,
+									PatientAssessmentTable.TABLE_PATIENT_COLUMN_CAREGIVER_NAME,
+									PatientAssessmentTable.TABLE_PATIENT_COLUMN_RELATIONSHIP,
+									PatientAssessmentTable.TABLE_PATIENT_COLUMN_PHYSICAL_ADDRESS,
+									PatientAssessmentTable.TABLE_PATIENT_COLUMN_VILLAGE_TA,
+									PatientAssessmentTable.TABLE_PATIENT_COLUMN_VISIT_DATE,
+									PatientAssessmentTable.TABLE_PATIENT_COLUMN_CHEST_INDRAWING,
+									PatientAssessmentTable.TABLE_PATIENT_COLUMN_BREATHS_PER_MINUTE,
+									PatientAssessmentTable.TABLE_PATIENT_COLUMN_SLEEPY_UNCONSCIOUS,
+									PatientAssessmentTable.TABLE_PATIENT_COLUMN_PALMAR_PALLOR,
+									PatientAssessmentTable.TABLE_PATIENT_COLUMN_MUAC_TAPE_COLOUR,
+									PatientAssessmentTable.TABLE_PATIENT_COLUMN_SWELLING_BOTH_FEET,
+									PatientAssessmentTable.TABLE_PATIENT_COLUMN_PROBLEM,
+									PatientAssessmentTable.TABLE_PATIENT_COLUMN_COUGH,
+									PatientAssessmentTable.TABLE_PATIENT_COLUMN_COUGH_DURATION,
+									PatientAssessmentTable.TABLE_PATIENT_COLUMN_DIARRHOEA,
+									PatientAssessmentTable.TABLE_PATIENT_COLUMN_DIARRHOEA_DURATION,
+									PatientAssessmentTable.TABLE_PATIENT_COLUMN_BLOOD_IN_STOOL,
+									PatientAssessmentTable.TABLE_PATIENT_COLUMN_FEVER,
+									PatientAssessmentTable.TABLE_PATIENT_COLUMN_FEVER_DURATION,
+									PatientAssessmentTable.TABLE_PATIENT_COLUMN_CONVULSIONS,
+									PatientAssessmentTable.TABLE_PATIENT_COLUMN_DIFFICULTY_DRINKING,
+									PatientAssessmentTable.TABLE_PATIENT_COLUMN_UNABLE_TO_DRINK,
+									PatientAssessmentTable.TABLE_PATIENT_COLUMN_VOMITING,
+									PatientAssessmentTable.TABLE_PATIENT_COLUMN_VOMITS_EVERYTHING,
+									PatientAssessmentTable.TABLE_PATIENT_COLUMN_RED_EYE,
+									PatientAssessmentTable.TABLE_PATIENT_COLUMN_RED_EYE_DURATION,
+									PatientAssessmentTable.TABLE_PATIENT_COLUMN_DIFFICULTY_SEEING,
+									PatientAssessmentTable.TABLE_PATIENT_COLUMN_DIFFICULTY_SEEING_DURATION,
+									PatientAssessmentTable.TABLE_PATIENT_COLUMN_CANNOT_TREAT,
+									PatientAssessmentTable.TABLE_PATIENT_COLUMN_CANNOT_TREAT_DETAILS,
+									PatientAssessmentTable.TABLE_PATIENT_COLUMN_SYNCED};
 
 	public PatientAssessmentDaoImpl() {
 	}
@@ -84,48 +85,48 @@ public class PatientAssessmentDaoImpl implements PatientAssessmentDao {
 		debugOutputShowPatientAssessmentCount(service);
 
 		ContentValues values = new ContentValues();
-		values.put(DatabaseHandler.TABLE_PATIENT_COLUMN_ASSESSMENT_ID, uniquePatientAssessmentIdentifier);
-		values.put(DatabaseHandler.TABLE_PATIENT_COLUMN_NATIONAL_ID, patientToAdd.getNationalId());
-		values.put(DatabaseHandler.TABLE_PATIENT_COLUMN_NATIONAL_HEALTH_ID, patientToAdd.getNationalHealthId());	
-		values.put(DatabaseHandler.TABLE_PATIENT_COLUMN_HSA_USER_ID, patientToAdd.getHsaUserId());		
-		values.put(DatabaseHandler.TABLE_PATIENT_COLUMN_CHILD_FIRST_NAME, patientToAdd.getChildFirstName());					
-		values.put(DatabaseHandler.TABLE_PATIENT_COLUMN_CHILD_SURNAME, patientToAdd.getChildSurname());						
-		values.put(DatabaseHandler.TABLE_PATIENT_COLUMN_GENDER, patientToAdd.getGender());
-		values.put(DatabaseHandler.TABLE_PATIENT_COLUMN_CAREGIVER_NAME, patientToAdd.getCaregiverName());
-		values.put(DatabaseHandler.TABLE_PATIENT_COLUMN_RELATIONSHIP, patientToAdd.getRelationship());
-		values.put(DatabaseHandler.TABLE_PATIENT_COLUMN_PHYSICAL_ADDRESS, patientToAdd.getPhysicalAddress());	
-		values.put(DatabaseHandler.TABLE_PATIENT_COLUMN_VILLAGE_TA, patientToAdd.getVillageTa());							
-		values.put(DatabaseHandler.TABLE_PATIENT_COLUMN_CHEST_INDRAWING, String.valueOf(patientToAdd.isChestIndrawing()));
-		values.put(DatabaseHandler.TABLE_PATIENT_COLUMN_BREATHS_PER_MINUTE, patientToAdd.getBreathsPerMinute());
-		values.put(DatabaseHandler.TABLE_PATIENT_COLUMN_SLEEPY_UNCONSCIOUS, String.valueOf(patientToAdd.isSleepyUnconscious()));
-		values.put(DatabaseHandler.TABLE_PATIENT_COLUMN_PALMAR_PALLOR, String.valueOf(patientToAdd.isPalmarPallor()));
-		values.put(DatabaseHandler.TABLE_PATIENT_COLUMN_MUAC_TAPE_COLOUR, patientToAdd.getMuacTapeColour());
-		values.put(DatabaseHandler.TABLE_PATIENT_COLUMN_SWELLING_BOTH_FEET, String.valueOf(patientToAdd.isSwellingBothFeet()));
-		values.put(DatabaseHandler.TABLE_PATIENT_COLUMN_PROBLEM, patientToAdd.getProblem());
-		values.put(DatabaseHandler.TABLE_PATIENT_COLUMN_COUGH, String.valueOf(patientToAdd.isCough()));
-		values.put(DatabaseHandler.TABLE_PATIENT_COLUMN_COUGH_DURATION, patientToAdd.getCoughDuration());
-		values.put(DatabaseHandler.TABLE_PATIENT_COLUMN_DIARRHOEA, String.valueOf(patientToAdd.isDiarrhoea()));
-		values.put(DatabaseHandler.TABLE_PATIENT_COLUMN_DIARRHOEA_DURATION, patientToAdd.getDiarrhoeaDuration());
-		values.put(DatabaseHandler.TABLE_PATIENT_COLUMN_BLOOD_IN_STOOL, String.valueOf(patientToAdd.isBloodInStool()));
-		values.put(DatabaseHandler.TABLE_PATIENT_COLUMN_FEVER, String.valueOf(patientToAdd.isFever()));
-		values.put(DatabaseHandler.TABLE_PATIENT_COLUMN_FEVER_DURATION, patientToAdd.getFeverDuration());
-		values.put(DatabaseHandler.TABLE_PATIENT_COLUMN_CONVULSIONS, String.valueOf(patientToAdd.isConvulsions()));
-		values.put(DatabaseHandler.TABLE_PATIENT_COLUMN_DIFFICULTY_DRINKING, String.valueOf(patientToAdd.isDifficultyDrinkingOrFeeding()));
-		values.put(DatabaseHandler.TABLE_PATIENT_COLUMN_UNABLE_TO_DRINK, String.valueOf(patientToAdd.isUnableToDrinkOrFeed()));
-		values.put(DatabaseHandler.TABLE_PATIENT_COLUMN_VOMITING, String.valueOf(patientToAdd.isVomiting()));
-		values.put(DatabaseHandler.TABLE_PATIENT_COLUMN_VOMITS_EVERYTHING, String.valueOf(patientToAdd.isVomitsEverything()));
-		values.put(DatabaseHandler.TABLE_PATIENT_COLUMN_RED_EYE, String.valueOf(patientToAdd.isRedEye()));
-		values.put(DatabaseHandler.TABLE_PATIENT_COLUMN_RED_EYE_DURATION, patientToAdd.getRedEyeDuration());	
-		values.put(DatabaseHandler.TABLE_PATIENT_COLUMN_DIFFICULTY_SEEING, String.valueOf(patientToAdd.isDifficultySeeing()));
-		values.put(DatabaseHandler.TABLE_PATIENT_COLUMN_DIFFICULTY_SEEING_DURATION, patientToAdd.getDifficultySeeingDuration());		
-		values.put(DatabaseHandler.TABLE_PATIENT_COLUMN_CANNOT_TREAT, String.valueOf(patientToAdd.isCannotTreatProblem()));
-		values.put(DatabaseHandler.TABLE_PATIENT_COLUMN_CANNOT_TREAT_DETAILS, patientToAdd.getCannotTreatProblemDetails());	
-		values.put(DatabaseHandler.TABLE_PATIENT_COLUMN_SYNCED, Boolean.valueOf(false).toString());	
+		values.put(PatientAssessmentTable.TABLE_PATIENT_COLUMN_ASSESSMENT_ID, uniquePatientAssessmentIdentifier);
+		values.put(PatientAssessmentTable.TABLE_PATIENT_COLUMN_NATIONAL_ID, patientToAdd.getNationalId());
+		values.put(PatientAssessmentTable.TABLE_PATIENT_COLUMN_NATIONAL_HEALTH_ID, patientToAdd.getNationalHealthId());	
+		values.put(PatientAssessmentTable.TABLE_PATIENT_COLUMN_HSA_USER_ID, patientToAdd.getHsaUserId());		
+		values.put(PatientAssessmentTable.TABLE_PATIENT_COLUMN_CHILD_FIRST_NAME, patientToAdd.getChildFirstName());					
+		values.put(PatientAssessmentTable.TABLE_PATIENT_COLUMN_CHILD_SURNAME, patientToAdd.getChildSurname());						
+		values.put(PatientAssessmentTable.TABLE_PATIENT_COLUMN_GENDER, patientToAdd.getGender());
+		values.put(PatientAssessmentTable.TABLE_PATIENT_COLUMN_CAREGIVER_NAME, patientToAdd.getCaregiverName());
+		values.put(PatientAssessmentTable.TABLE_PATIENT_COLUMN_RELATIONSHIP, patientToAdd.getRelationship());
+		values.put(PatientAssessmentTable.TABLE_PATIENT_COLUMN_PHYSICAL_ADDRESS, patientToAdd.getPhysicalAddress());	
+		values.put(PatientAssessmentTable.TABLE_PATIENT_COLUMN_VILLAGE_TA, patientToAdd.getVillageTa());							
+		values.put(PatientAssessmentTable.TABLE_PATIENT_COLUMN_CHEST_INDRAWING, String.valueOf(patientToAdd.isChestIndrawing()));
+		values.put(PatientAssessmentTable.TABLE_PATIENT_COLUMN_BREATHS_PER_MINUTE, patientToAdd.getBreathsPerMinute());
+		values.put(PatientAssessmentTable.TABLE_PATIENT_COLUMN_SLEEPY_UNCONSCIOUS, String.valueOf(patientToAdd.isSleepyUnconscious()));
+		values.put(PatientAssessmentTable.TABLE_PATIENT_COLUMN_PALMAR_PALLOR, String.valueOf(patientToAdd.isPalmarPallor()));
+		values.put(PatientAssessmentTable.TABLE_PATIENT_COLUMN_MUAC_TAPE_COLOUR, patientToAdd.getMuacTapeColour());
+		values.put(PatientAssessmentTable.TABLE_PATIENT_COLUMN_SWELLING_BOTH_FEET, String.valueOf(patientToAdd.isSwellingBothFeet()));
+		values.put(PatientAssessmentTable.TABLE_PATIENT_COLUMN_PROBLEM, patientToAdd.getProblem());
+		values.put(PatientAssessmentTable.TABLE_PATIENT_COLUMN_COUGH, String.valueOf(patientToAdd.isCough()));
+		values.put(PatientAssessmentTable.TABLE_PATIENT_COLUMN_COUGH_DURATION, patientToAdd.getCoughDuration());
+		values.put(PatientAssessmentTable.TABLE_PATIENT_COLUMN_DIARRHOEA, String.valueOf(patientToAdd.isDiarrhoea()));
+		values.put(PatientAssessmentTable.TABLE_PATIENT_COLUMN_DIARRHOEA_DURATION, patientToAdd.getDiarrhoeaDuration());
+		values.put(PatientAssessmentTable.TABLE_PATIENT_COLUMN_BLOOD_IN_STOOL, String.valueOf(patientToAdd.isBloodInStool()));
+		values.put(PatientAssessmentTable.TABLE_PATIENT_COLUMN_FEVER, String.valueOf(patientToAdd.isFever()));
+		values.put(PatientAssessmentTable.TABLE_PATIENT_COLUMN_FEVER_DURATION, patientToAdd.getFeverDuration());
+		values.put(PatientAssessmentTable.TABLE_PATIENT_COLUMN_CONVULSIONS, String.valueOf(patientToAdd.isConvulsions()));
+		values.put(PatientAssessmentTable.TABLE_PATIENT_COLUMN_DIFFICULTY_DRINKING, String.valueOf(patientToAdd.isDifficultyDrinkingOrFeeding()));
+		values.put(PatientAssessmentTable.TABLE_PATIENT_COLUMN_UNABLE_TO_DRINK, String.valueOf(patientToAdd.isUnableToDrinkOrFeed()));
+		values.put(PatientAssessmentTable.TABLE_PATIENT_COLUMN_VOMITING, String.valueOf(patientToAdd.isVomiting()));
+		values.put(PatientAssessmentTable.TABLE_PATIENT_COLUMN_VOMITS_EVERYTHING, String.valueOf(patientToAdd.isVomitsEverything()));
+		values.put(PatientAssessmentTable.TABLE_PATIENT_COLUMN_RED_EYE, String.valueOf(patientToAdd.isRedEye()));
+		values.put(PatientAssessmentTable.TABLE_PATIENT_COLUMN_RED_EYE_DURATION, patientToAdd.getRedEyeDuration());	
+		values.put(PatientAssessmentTable.TABLE_PATIENT_COLUMN_DIFFICULTY_SEEING, String.valueOf(patientToAdd.isDifficultySeeing()));
+		values.put(PatientAssessmentTable.TABLE_PATIENT_COLUMN_DIFFICULTY_SEEING_DURATION, patientToAdd.getDifficultySeeingDuration());		
+		values.put(PatientAssessmentTable.TABLE_PATIENT_COLUMN_CANNOT_TREAT, String.valueOf(patientToAdd.isCannotTreatProblem()));
+		values.put(PatientAssessmentTable.TABLE_PATIENT_COLUMN_CANNOT_TREAT_DETAILS, patientToAdd.getCannotTreatProblemDetails());	
+		values.put(PatientAssessmentTable.TABLE_PATIENT_COLUMN_SYNCED, Boolean.valueOf(false).toString());	
 		
 	
 		try {
-			values.put(DatabaseHandler.TABLE_PATIENT_COLUMN_BIRTH_DATE, service.getDatabaseHandler().formatDate(patientToAdd.getBirthDate()));	
-			values.put(DatabaseHandler.TABLE_PATIENT_COLUMN_VISIT_DATE, service.getDatabaseHandler().formatDate(patientToAdd.getVisitDate()));
+			values.put(PatientAssessmentTable.TABLE_PATIENT_COLUMN_BIRTH_DATE, service.getDatabaseHandler().formatDate(patientToAdd.getBirthDate()));	
+			values.put(PatientAssessmentTable.TABLE_PATIENT_COLUMN_VISIT_DATE, service.getDatabaseHandler().formatDate(patientToAdd.getVisitDate()));
 		} catch (ParseException e) {
 			LoggerUtils.i(LOG_TAG, "Parse Exception thrown whilst extracting patient assessment dates");
 			e.printStackTrace();
@@ -133,12 +134,12 @@ public class PatientAssessmentDaoImpl implements PatientAssessmentDao {
 		
 		
 		// add the patient row
-		long insertId = service.getDatabase().insert(DatabaseHandler.TABLE_PATIENT, null, values);
+		long insertId = service.getDatabase().insert(PatientAssessmentTable.TABLE_PATIENT, null, values);
 		
 		LoggerUtils.i(LOG_TAG, "Patient Assessment Record Added: " + insertId);
 		
-		Cursor cursor = service.getDatabase().query(DatabaseHandler.TABLE_PATIENT, allColumns, 
-										DatabaseHandler.TABLE_PATIENT_COLUMN_ID + " = " + insertId, 
+		Cursor cursor = service.getDatabase().query(PatientAssessmentTable.TABLE_PATIENT, allColumns, 
+										PatientAssessmentTable.TABLE_PATIENT_COLUMN_ID + " = " + insertId, 
 										null, null, null, null);
 		cursor.moveToFirst();
 		PatientAssessment patientAssessment = cursorToPatientAssessment(cursor);
@@ -156,7 +157,7 @@ public class PatientAssessmentDaoImpl implements PatientAssessmentDao {
 	 * @param service
 	 */
 	private void debugOutputShowPatientAssessmentCount(SupportingLifeService service) {
-		SQLiteStatement assessmentRowCountQuery = service.getDatabase().compileStatement("select count(*) from " + DatabaseHandler.TABLE_PATIENT);
+		SQLiteStatement assessmentRowCountQuery = service.getDatabase().compileStatement("select count(*) from " + PatientAssessmentTable.TABLE_PATIENT);
 		long assessmentRowCount = assessmentRowCountQuery.simpleQueryForLong();
 		
 		LoggerUtils.i(LOG_TAG, "Current Patient Assessment Row Count: " + assessmentRowCount);
@@ -166,7 +167,7 @@ public class PatientAssessmentDaoImpl implements PatientAssessmentDao {
 	public void deletePatientAssessment(PatientAssessment patient, SupportingLifeService service) {
 		long id = patient.getId();
 		System.out.println("Patient deleted with id: " + id);
-		service.getDatabase().delete(DatabaseHandler.TABLE_PATIENT, DatabaseHandler.TABLE_PATIENT_COLUMN_ID
+		service.getDatabase().delete(PatientAssessmentTable.TABLE_PATIENT, PatientAssessmentTable.TABLE_PATIENT_COLUMN_ID
 				+ " = " + id, null);
 	}
 
@@ -174,8 +175,8 @@ public class PatientAssessmentDaoImpl implements PatientAssessmentDao {
 	public List<PatientAssessment> getAllNonSyncedPatientAssessments(SupportingLifeService service) {
 		List<PatientAssessment> patients = new ArrayList<PatientAssessment>();
 
-		Cursor cursor = service.getDatabase().query(DatabaseHandler.TABLE_PATIENT,
-				allColumns, DatabaseHandler.TABLE_PATIENT_COLUMN_SYNCED + " = '" + Boolean.valueOf(false) + "'", 
+		Cursor cursor = service.getDatabase().query(PatientAssessmentTable.TABLE_PATIENT,
+				allColumns, PatientAssessmentTable.TABLE_PATIENT_COLUMN_SYNCED + " = '" + Boolean.valueOf(false) + "'", 
 				null, null, null, null);
 
 		cursor.moveToFirst();
@@ -193,7 +194,7 @@ public class PatientAssessmentDaoImpl implements PatientAssessmentDao {
 	public List<PatientAssessment> getAllPatientAssessments(SupportingLifeService service) {
 		List<PatientAssessment> patients = new ArrayList<PatientAssessment>();
 
-		Cursor cursor = service.getDatabase().query(DatabaseHandler.TABLE_PATIENT,
+		Cursor cursor = service.getDatabase().query(PatientAssessmentTable.TABLE_PATIENT,
 				allColumns, "", null, null, null, null);
 
 		cursor.moveToFirst();
@@ -240,10 +241,10 @@ public class PatientAssessmentDaoImpl implements PatientAssessmentDao {
 	public int setPatientAssessmentToSynced(String deviceGeneratedAssessmentId, SupportingLifeService service) {
 		
 		ContentValues values = new ContentValues();
-		values.put(DatabaseHandler.TABLE_PATIENT_COLUMN_SYNCED, "true");
+		values.put(PatientAssessmentTable.TABLE_PATIENT_COLUMN_SYNCED, "true");
 		
-		int rowCount = service.getDatabase().update(DatabaseHandler.TABLE_PATIENT, values, 
-				DatabaseHandler.TABLE_PATIENT_COLUMN_ASSESSMENT_ID + " = '" + deviceGeneratedAssessmentId + "'", 
+		int rowCount = service.getDatabase().update(PatientAssessmentTable.TABLE_PATIENT, values, 
+				PatientAssessmentTable.TABLE_PATIENT_COLUMN_ASSESSMENT_ID + " = '" + deviceGeneratedAssessmentId + "'", 
 				null);
 		
 		return rowCount;

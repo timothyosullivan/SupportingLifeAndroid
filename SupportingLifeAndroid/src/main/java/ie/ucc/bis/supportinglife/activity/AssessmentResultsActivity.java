@@ -264,10 +264,6 @@ public class AssessmentResultsActivity extends SupportingLifeBaseActivity {
 		
 		// add the patient record to the DB
 		getSupportingLifeService().createPatientAssessment(getPatientAssessment(), android_device_id);
-
-		// check patient has been added correctly
-		// TODO - Add DB check and logger statement here
-
 	}
 	
 	
