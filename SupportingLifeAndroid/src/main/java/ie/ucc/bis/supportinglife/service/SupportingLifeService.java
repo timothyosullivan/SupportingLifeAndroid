@@ -7,6 +7,7 @@ import ie.ucc.bis.supportinglife.dao.DatabaseHandler;
 import ie.ucc.bis.supportinglife.dao.PatientAssessmentDao;
 import ie.ucc.bis.supportinglife.dao.PatientAssessmentDaoImpl;
 import ie.ucc.bis.supportinglife.domain.PatientAssessment;
+import ie.ucc.bis.supportinglife.ui.utilities.LoggerUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,6 +24,8 @@ import android.database.sqlite.SQLiteDatabase;
  *
  */
 public class SupportingLifeService implements SupportingLifeServiceInf {
+	
+	private final String LOG_TAG = "ie.ucc.bis.supportinglife.service.SupportingLifeService";
 
 	// DAOs
 	private PatientAssessmentDao patientAssessmentDao;
@@ -49,19 +52,31 @@ public class SupportingLifeService implements SupportingLifeServiceInf {
 	@Override
 	public void createPatientAssessment(PatientAssessment patientToAdd, String android_device_id) {
 		
-		// the combination of the the 'unique android id'  and the current time in ms will
-		// allow the device to create a unique 'patient assessment identifier'
-		long timestamp = System.currentTimeMillis();
-		String uniquePatientAssessmentIdentifier = android_device_id + "_" + timestamp;
+		// updating multiple tables so wrap in a transaction
+		getDatabase().beginTransaction();
 		
-		// add the patient assessment
-		getPatientAssessmentDao().createPatientAssessmentComms(patientToAdd, uniquePatientAssessmentIdentifier, this);
-		
-		// now add the associated 'patient assessment' classifications
-		getClassificationDao().createPatientClassifications(patientToAdd, uniquePatientAssessmentIdentifier, this);
-		
-		// now add the associated 'patient assessment' treatments
-		
+		try {
+			// the combination of the the 'unique android id'  and the current time in ms will
+			// allow the device to create a unique 'patient assessment identifier'
+			long timestamp = System.currentTimeMillis();
+			String uniquePatientAssessmentIdentifier = android_device_id + "_" + timestamp;
+			
+			// add the patient assessment
+			getPatientAssessmentDao().createPatientAssessmentComms(patientToAdd, uniquePatientAssessmentIdentifier, this);
+			
+			// now add the associated 'patient assessment' classifications
+			getClassificationDao().createPatientClassifications(patientToAdd, uniquePatientAssessmentIdentifier, this);
+			
+			// commit the transaction
+			getDatabase().setTransactionSuccessful();
+		} catch (Exception ex) {
+			LoggerUtils.i(LOG_TAG, "SupportingLifeService: createPatientAssessment -- Exception");
+			LoggerUtils.i(LOG_TAG, "SupportingLifeService: createPatientAssessment -- " + ex.getMessage());
+		}
+		finally {
+			// end the database transaction
+			getDatabase().endTransaction();
+		}		
 	}
 
 	@Override
