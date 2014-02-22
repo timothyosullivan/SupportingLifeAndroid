@@ -165,7 +165,7 @@ public abstract class SupportingLifeBaseActivity extends FragmentActivity {
 	 */
 	public void goHome(Context context) {
 		final Intent intent = new Intent(context, HomeActivity.class);
-		intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+		intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK |Intent.FLAG_ACTIVITY_CLEAR_TOP);
 		context.startActivity(intent);
 		
 		// configure the activity animation transition effect

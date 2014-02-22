@@ -2,8 +2,8 @@ package ie.ucc.bis.supportinglife.assessment.ui;
 
 import ie.ucc.bis.supportinglife.R;
 import ie.ucc.bis.supportinglife.activity.AssessmentResultsActivity;
-import ie.ucc.bis.supportinglife.assessment.imci.model.review.ReviewAssessmentAdapter;
 import ie.ucc.bis.supportinglife.assessment.imci.ui.ReviewListFragment;
+import ie.ucc.bis.supportinglife.assessment.model.review.ReviewAssessmentAdapter;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;

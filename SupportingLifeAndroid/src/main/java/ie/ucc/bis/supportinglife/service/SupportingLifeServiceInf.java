@@ -1,9 +1,11 @@
 package ie.ucc.bis.supportinglife.service;
 
-import java.util.List;
-
+import ie.ucc.bis.supportinglife.communication.PatientAssessmentComms;
 import ie.ucc.bis.supportinglife.dao.DatabaseHandler;
 import ie.ucc.bis.supportinglife.domain.PatientAssessment;
+
+import java.util.List;
+
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 
@@ -20,10 +22,10 @@ public interface SupportingLifeServiceInf {
 	/*******************************************************************************/
 	/*******************************PATIENT ASSESSMENTS*****************************/
 	/*******************************************************************************/
-	public PatientAssessment createPatientAssessment(PatientAssessment patientToAdd, String android_device_id);
+	public void createPatientAssessment(PatientAssessment patientToAdd, String android_device_id);
 	public void deletePatientAssessment(PatientAssessment patient);
-	public List<PatientAssessment> getAllNonSyncedPatientAssessments();
-	public List<PatientAssessment> getAllPatientAssessments();
+	public List<PatientAssessmentComms> getAllNonSyncedPatientAssessmentComms();
+	public List<PatientAssessmentComms> getAllPatientAssessmentComms();
 	public int setPatientAssessmentToSynced(String deviceGeneratedAssessmentId);
 	
 	/*******************************************************************************/

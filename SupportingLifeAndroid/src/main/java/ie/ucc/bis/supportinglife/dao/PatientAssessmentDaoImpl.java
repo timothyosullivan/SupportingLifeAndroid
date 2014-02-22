@@ -1,5 +1,6 @@
 package ie.ucc.bis.supportinglife.dao;
 
+import ie.ucc.bis.supportinglife.communication.PatientAssessmentComms;
 import ie.ucc.bis.supportinglife.domain.PatientAssessment;
 import ie.ucc.bis.supportinglife.service.SupportingLifeService;
 import ie.ucc.bis.supportinglife.ui.utilities.LoggerUtils;
@@ -79,7 +80,7 @@ public class PatientAssessmentDaoImpl implements PatientAssessmentDao {
 	 * @return
 	 */
 	@Override
-	public PatientAssessment createPatientAssessment(PatientAssessment patientToAdd, String uniquePatientAssessmentIdentifier, SupportingLifeService service) {		
+	public PatientAssessmentComms createPatientAssessmentComms(PatientAssessment patientToAdd, String uniquePatientAssessmentIdentifier, SupportingLifeService service) {		
 
 		// show the number of patient assessments in debug logger
 		debugOutputShowPatientAssessmentCount(service);
@@ -142,13 +143,13 @@ public class PatientAssessmentDaoImpl implements PatientAssessmentDao {
 										PatientAssessmentTable.COLUMN_ID + " = " + insertId, 
 										null, null, null, null);
 		cursor.moveToFirst();
-		PatientAssessment patientAssessment = cursorToPatientAssessment(cursor);
+		PatientAssessmentComms patientAssessmentComms = cursorToPatientAssessmentComms(cursor);
 		cursor.close();
 		
 		// show the number of patient assessments in debug logger
 		debugOutputShowPatientAssessmentCount(service);
 		
-		return patientAssessment;
+		return patientAssessmentComms;
 	}
 
 	/**
@@ -172,8 +173,8 @@ public class PatientAssessmentDaoImpl implements PatientAssessmentDao {
 	}
 
 	@Override
-	public List<PatientAssessment> getAllNonSyncedPatientAssessments(SupportingLifeService service) {
-		List<PatientAssessment> patients = new ArrayList<PatientAssessment>();
+	public List<PatientAssessmentComms> getAllNonSyncedPatientAssessmentComms(SupportingLifeService service) {
+		List<PatientAssessmentComms> patientComms = new ArrayList<PatientAssessmentComms>();
 
 		Cursor cursor = service.getDatabase().query(PatientAssessmentTable.TABLE_PATIENT_ASSESSMENT,
 				allColumns, PatientAssessmentTable.COLUMN_SYNCED + " = '" + Boolean.valueOf(false) + "'", 
@@ -181,34 +182,34 @@ public class PatientAssessmentDaoImpl implements PatientAssessmentDao {
 
 		cursor.moveToFirst();
 		while (!cursor.isAfterLast()) {
-			PatientAssessment patient = cursorToPatientAssessment(cursor);
-			patients.add(patient);
+			PatientAssessmentComms patientComm = cursorToPatientAssessmentComms(cursor);
+			patientComms.add(patientComm);
 			cursor.moveToNext();
 		}
 		// make sure to close the cursor
 		cursor.close();
-		return patients;
+		return patientComms;
 	}
 	
 	@Override
-	public List<PatientAssessment> getAllPatientAssessments(SupportingLifeService service) {
-		List<PatientAssessment> patients = new ArrayList<PatientAssessment>();
+	public List<PatientAssessmentComms> getAllPatientAssessments(SupportingLifeService service) {
+		List<PatientAssessmentComms> patientComms = new ArrayList<PatientAssessmentComms>();
 
 		Cursor cursor = service.getDatabase().query(PatientAssessmentTable.TABLE_PATIENT_ASSESSMENT,
 				allColumns, "", null, null, null, null);
 
 		cursor.moveToFirst();
 		while (!cursor.isAfterLast()) {
-			PatientAssessment patient = cursorToPatientAssessment(cursor);
-			patients.add(patient);
+			PatientAssessmentComms patientComm = cursorToPatientAssessmentComms(cursor);
+			patientComms.add(patientComm);
 			cursor.moveToNext();
 		}
 		// make sure to close the cursor
 		cursor.close();
-		return patients;
+		return patientComms;
 	}
 
-	private PatientAssessment cursorToPatientAssessment(Cursor cursor) {
+	private PatientAssessmentComms cursorToPatientAssessmentComms(Cursor cursor) {
 
 //		Param Line 1: 	Integer id (0), String deviceGeneratedAssessmentId (1), String nationalId (2), String nationalHealthId (3), String nationalHealthId (4),
 //		Param Line 2: 	String childFirstName (5), String childSurname (6), String birthDate (7),
@@ -223,7 +224,7 @@ public class PatientAssessmentDaoImpl implements PatientAssessmentDao {
 //		Param Line 11:	Integer difficultySeeingDuration (36), String cannotTreatProblem (37), 
 //		Param Line 12: 	String cannotTreatProblemDetails (38)
 		
-		PatientAssessment patientAssessment = new PatientAssessment(DaoUtilities.readInt(cursor, 0), cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getString(4), 
+		PatientAssessmentComms patientAssessmentComms = new PatientAssessmentComms(DaoUtilities.readInt(cursor, 0), cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getString(4), 
 													cursor.getString(5), cursor.getString(6), cursor.getString(7),
 													cursor.getString(8), cursor.getString(9), cursor.getString(10), cursor.getString(11),
 													cursor.getString(12), cursor.getString(13), cursor.getString(14), DaoUtilities.readInt(cursor, 15),
@@ -235,7 +236,8 @@ public class PatientAssessmentDaoImpl implements PatientAssessmentDao {
 													cursor.getString(33), DaoUtilities.readInt(cursor, 34), cursor.getString(35),
 													DaoUtilities.readInt(cursor, 36), cursor.getString(37),
 													cursor.getString(38));
-		return patientAssessment;
+		
+		return patientAssessmentComms;
 	}
 
 	public int setPatientAssessmentToSynced(String deviceGeneratedAssessmentId, SupportingLifeService service) {

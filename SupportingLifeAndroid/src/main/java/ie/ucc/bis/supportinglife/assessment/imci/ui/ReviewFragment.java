@@ -1,10 +1,10 @@
 package ie.ucc.bis.supportinglife.assessment.imci.ui;
 
 import ie.ucc.bis.supportinglife.R;
-import ie.ucc.bis.supportinglife.assessment.imci.model.review.ReviewAssessmentAdapter;
 import ie.ucc.bis.supportinglife.assessment.model.AbstractModel;
 import ie.ucc.bis.supportinglife.assessment.model.AbstractPage;
 import ie.ucc.bis.supportinglife.assessment.model.ModelCallbacks;
+import ie.ucc.bis.supportinglife.assessment.model.review.ReviewAssessmentAdapter;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.LayoutInflater;

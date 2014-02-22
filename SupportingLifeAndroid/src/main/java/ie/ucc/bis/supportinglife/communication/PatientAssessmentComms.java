@@ -1,8 +1,11 @@
 package ie.ucc.bis.supportinglife.communication;
 
 import java.io.Serializable;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 
@@ -12,15 +15,20 @@ import java.util.Map;
  */
 
 public class PatientAssessmentComms implements Serializable {
-	
+
+	public static final String DATE_TIME_CUSTOM_FORMAT = "dd MMMM yyyy";
+	public static final Locale LOCALE = Locale.UK;
+
 	/**
 	 * Generated Serial ID
 	 */
 	private static final long serialVersionUID = -3143569878394681227L;
-	
+
+	private int id;
+
 	// device generated patient assessment id
 	private String deviceGeneratedAssessmentId;
-	
+
 	// General Patient Details
 	private String hsaUserId;
 	private String nationalId;
@@ -34,7 +42,7 @@ public class PatientAssessmentComms implements Serializable {
 	private String physicalAddress;
 	private String villageTa;
 	private Date visitDate;	
-	
+
 	// Look Symptoms
 	private boolean chestIndrawing;
 	private Integer breathsPerMinute;
@@ -42,7 +50,7 @@ public class PatientAssessmentComms implements Serializable {
 	private boolean palmarPallor;	
 	private String muacTapeColour;	
 	private boolean swellingBothFeet;	
-	
+
 	// Ask Look Symptoms
 	private String problem;
 	private boolean cough;	
@@ -63,76 +71,95 @@ public class PatientAssessmentComms implements Serializable {
 	private Integer difficultySeeingDuration;
 	private boolean cannotTreatProblem;
 	private String cannotTreatProblemDetails;
-	
+
 	// classifications
 	private Map<String, String> classifications;
-	
+
 	// treatments
 	private Map<String, String> treatments;
-	
-	public PatientAssessmentComms() {
-	}
-	
-	public PatientAssessmentComms(String deviceGeneratedAssessmentId, String hsaUserId, String nationalId, String nationalHealthId, 
-					String childFirstName, String childSurname, Date birthDate,
-					String gender, String caregiverName, String relationship, String physicalAddress,
-					String villageTa, Date visitDate, Boolean chestIndrawing, Integer breathsPerMinute,
-					Boolean sleepyUnconscious, Boolean palmarPallor, String muacTapeColour, 
-					Boolean swellingBothFeet, String problem, Boolean cough, Integer coughDuration,
-					Boolean diarrhoea, Integer diarrhoeaDuration, Boolean bloodInStool, Boolean fever,
-					Integer feverDuration, Boolean convulsions, Boolean difficultyDrinkingOrFeeding,
-					Boolean unableToDrinkOrFeed, Boolean vomiting, Boolean vomitsEverything,
-					Boolean redEye, Integer redEyeDuration, Boolean difficultySeeing,
-					Integer difficultySeeingDuration, Boolean cannotTreatProblem, 
-					String cannotTreatProblemDetails) {
-		
+
+	public PatientAssessmentComms() {}
+
+	public PatientAssessmentComms(Integer id, String deviceGeneratedAssessmentId, String nationalId, String nationalHealthId, String hsaUserId, 
+			String childFirstName, String childSurname, String birthDate,
+			String gender, String caregiverName, String relationship, String physicalAddress,
+			String villageTa, String visitDate, String chestIndrawing, Integer breathsPerMinute,
+			String sleepyUnconscious, String palmarPallor, String muacTapeColour, 
+			String swellingBothFeet, String problem, String cough, Integer coughDuration,
+			String diarrhoea, Integer diarrhoeaDuration, String bloodInStool, String fever,
+			Integer feverDuration, String convulsions, String difficultyDrinkingOrFeeding,
+			String unableToDrinkOrFeed, String vomiting, String vomitsEverything,
+			String redEye, Integer redEyeDuration, String difficultySeeing,
+			Integer difficultySeeingDuration, String cannotTreatProblem, 
+			String cannotTreatProblemDetails) {
+
+		setId(id);
 		setDeviceGeneratedAssessmentId(deviceGeneratedAssessmentId);
-		
-		// General Patient Details
-		setHsaUserId(hsaUserId);
 		setNationalId(nationalId);
 		setNationalHealthId(nationalHealthId);
+		setHsaUserId(hsaUserId);
 		setChildFirstName(childFirstName);
 		setChildSurname(childSurname);
-		setBirthDate(birthDate);
 		setGender(gender);
 		setCaregiverName(caregiverName);
 		setRelationship(relationship);
 		setPhysicalAddress(physicalAddress);
 		setVillageTa(villageTa);
-		setVisitDate(visitDate);
-		
-		// Look Symptoms
-		setChestIndrawing(chestIndrawing);
+		setChestIndrawing(Boolean.valueOf(chestIndrawing));
 		setBreathsPerMinute(breathsPerMinute);
-		setSleepyUnconscious(sleepyUnconscious);
-		setPalmarPallor(palmarPallor);
+		setSleepyUnconscious(Boolean.valueOf(sleepyUnconscious));
+		setPalmarPallor(Boolean.valueOf(palmarPallor));
 		setMuacTapeColour(muacTapeColour);
-		setSwellingBothFeet(swellingBothFeet);
-		
-		// Ask Look Symptoms
+		setSwellingBothFeet(Boolean.valueOf(swellingBothFeet));
 		setProblem(problem);
-		setCough(cough);
-		setCoughDuration(coughDuration);
-		setDiarrhoea(diarrhoea);
+		setCough(Boolean.valueOf(cough));
+		setCoughDuration(coughDuration);		
+		setDiarrhoea(Boolean.valueOf(diarrhoea));
 		setDiarrhoeaDuration(diarrhoeaDuration);
-		setBloodInStool(bloodInStool);
-		setFever(fever);
+		setBloodInStool(Boolean.valueOf(bloodInStool));
+		setFever(Boolean.valueOf(fever));
 		setFeverDuration(feverDuration);
-		setConvulsions(convulsions);
-		setDifficultyDrinkingOrFeeding(difficultyDrinkingOrFeeding);
-		setUnableToDrinkOrFeed(unableToDrinkOrFeed);
-		setVomiting(vomiting);
-		setVomitsEverything(vomitsEverything);
-		setRedEye(redEye);
+		setConvulsions(Boolean.valueOf(convulsions));
+		setDifficultyDrinkingOrFeeding(Boolean.valueOf(difficultyDrinkingOrFeeding));
+		setUnableToDrinkOrFeed(Boolean.valueOf(unableToDrinkOrFeed));
+		setVomiting(Boolean.valueOf(vomiting));
+		setVomitsEverything(Boolean.valueOf(vomitsEverything));
+		setRedEye(Boolean.valueOf(redEye));
 		setRedEyeDuration(redEyeDuration);
-		setDifficultySeeing(difficultySeeing);
+		setDifficultySeeing(Boolean.valueOf(difficultySeeing));
 		setDifficultySeeingDuration(difficultySeeingDuration);
-		setCannotTreatProblem(cannotTreatProblem);
+		setCannotTreatProblem(Boolean.valueOf(cannotTreatProblem));
 		setCannotTreatProblemDetails(cannotTreatProblemDetails);
-		
+
+		try {
+			setBirthDate(parseDate(birthDate));
+			setVisitDate(parseDate(visitDate));
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+
 		setClassifications(new HashMap<String, String>());
-		setTreatments(new HashMap<String, String> ());
+		setTreatments(new HashMap<String, String>());
+	}
+
+	public Date parseDate(String dateValue) throws ParseException {
+		if (dateValue != null) {
+			Date dateInstance = new SimpleDateFormat(DATE_TIME_CUSTOM_FORMAT, LOCALE)
+			.parse(dateValue);
+			return dateInstance;
+		}
+		else {
+			return null;
+		}
+	}
+
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 	public String getDeviceGeneratedAssessmentId() {

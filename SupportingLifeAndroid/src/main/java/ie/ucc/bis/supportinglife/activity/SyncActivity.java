@@ -3,10 +3,6 @@ package ie.ucc.bis.supportinglife.activity;
 import ie.ucc.bis.supportinglife.R;
 import ie.ucc.bis.supportinglife.communication.PatientAssessmentComms;
 import ie.ucc.bis.supportinglife.communication.PatientAssessmentResponseComms;
-import ie.ucc.bis.supportinglife.domain.PatientAssessment;
-import ie.ucc.bis.supportinglife.helper.PatientHandlerUtils;
-import ie.ucc.bis.supportinglife.rule.engine.Diagnostic;
-import ie.ucc.bis.supportinglife.rule.engine.TreatmentRecommendation;
 import ie.ucc.bis.supportinglife.service.SupportingLifeService;
 import ie.ucc.bis.supportinglife.ui.utilities.LoggerUtils;
 
@@ -79,8 +75,8 @@ public class SyncActivity extends SupportingLifeBaseActivity {
             	LoggerUtils.i(LOG_TAG, "SyncButton: onClick -- Sync Button on Synchronisation Clicked!");
             	           	
             	// retrieve non-synced patient assessment from the DB
-        		List<PatientAssessment> nonSyncedPatientAssessments = getSupportingLifeService().getAllNonSyncedPatientAssessments();
-        		LoggerUtils.i(LOG_TAG, "SyncButton: onClick -- Number of non-synced patient assessments to be synced ~ " + nonSyncedPatientAssessments.size());
+        		List<PatientAssessmentComms> nonSyncedPatientAssessmentComms = getSupportingLifeService().getAllNonSyncedPatientAssessmentComms();
+        		LoggerUtils.i(LOG_TAG, "SyncButton: onClick -- Number of non-synced patient assessments to be synced ~ " + nonSyncedPatientAssessmentComms.size());
             	
             	///////////// TEMP START
 
@@ -126,7 +122,7 @@ public class SyncActivity extends SupportingLifeBaseActivity {
         		
         		// transmit non-synced patient assessments
         		setNetworkCommsTask(new NetworkCommunicationAsyncTask());
-       			getNetworkCommsTask().execute(nonSyncedPatientAssessments.toArray(new PatientAssessment[nonSyncedPatientAssessments.size()]));
+       			getNetworkCommsTask().execute(nonSyncedPatientAssessmentComms.toArray(new PatientAssessmentComms[nonSyncedPatientAssessmentComms.size()]));
             }
         });	
 	}
@@ -165,22 +161,19 @@ public class SyncActivity extends SupportingLifeBaseActivity {
     	super.onPause();
     }
 	
-	private class NetworkCommunicationAsyncTask extends AsyncTask<PatientAssessment, Void, List<PatientAssessmentResponseComms>> {
+	private class NetworkCommunicationAsyncTask extends AsyncTask<PatientAssessmentComms, Void, List<PatientAssessmentResponseComms>> {
 
 		private static final String AMAZON_WEB_SERVICE_URL = "http://supportinglife.elasticbeanstalk.com/patientvisits/add";
 		
 		@Override
-		protected List<PatientAssessmentResponseComms> doInBackground(PatientAssessment... params) {
+		protected List<PatientAssessmentResponseComms> doInBackground(PatientAssessmentComms... params) {
 
 			List<PatientAssessmentResponseComms> addedPatientAssessments = new ArrayList<PatientAssessmentResponseComms>();
 			
 			RestTemplate restTemplate = new RestTemplate(new HttpComponentsClientHttpRequestFactory());
 
 			
-			for (PatientAssessment patientAssessment : params) {
-				// construct the 'PatientAssessmentComms' instance in preparation
-				// from transmission across the network from the device to the web server
-				PatientAssessmentComms patientTransmit = createPatientAssessmentCommsInstance(patientAssessment);
+			for (PatientAssessmentComms patientAssessmentComm : params) {
 			
 				try {
 					// The default timeout was resulting in the call to the 'restTemplate.postForObject(..)' method
@@ -191,7 +184,7 @@ public class SyncActivity extends SupportingLifeBaseActivity {
 					((HttpComponentsClientHttpRequestFactory)restTemplate.getRequestFactory()).setReadTimeout(120 * 1000);
 					restTemplate.getMessageConverters().add(new MappingJacksonHttpMessageConverter());
 				
-					PatientAssessmentResponseComms assessmentResponse = restTemplate.postForObject(AMAZON_WEB_SERVICE_URL, patientTransmit, PatientAssessmentResponseComms.class);
+					PatientAssessmentResponseComms assessmentResponse = restTemplate.postForObject(AMAZON_WEB_SERVICE_URL, patientAssessmentComm, PatientAssessmentResponseComms.class);
 					addedPatientAssessments.add(assessmentResponse);
 				} catch (ResourceAccessException ex) {
 					LoggerUtils.i(LOG_TAG, "NetworkCommunicationAsyncTask: doInBackground -- ResourceAccessException");
@@ -202,47 +195,6 @@ public class SyncActivity extends SupportingLifeBaseActivity {
 				}
 			}
 			return addedPatientAssessments;
-		}
-
-		/**
-		 * Responsible for constructing the 'PatientAssessmentComms' instance in preparation
-		 * from transmission across the network from the device to the web server
-		 * 
-		 * @param patientAssessment
-		 * 
-		 * @return PatientAssessmentComms
-		 */
-		private PatientAssessmentComms createPatientAssessmentCommsInstance(PatientAssessment patientAssessment) {
-			
-			PatientAssessmentComms patientTransmit = new PatientAssessmentComms(
-					patientAssessment.getDeviceGeneratedAssessmentId(), patientAssessment.getHsaUserId(), patientAssessment.getNationalId(), 
-					patientAssessment.getNationalHealthId(), patientAssessment.getChildFirstName(), patientAssessment.getChildSurname(), 
-					patientAssessment.getBirthDate(), patientAssessment.getGender(), patientAssessment.getCaregiverName(), 
-					patientAssessment.getRelationship(), patientAssessment.getPhysicalAddress(), patientAssessment.getVillageTa(), 
-					patientAssessment.getVisitDate(), patientAssessment.isChestIndrawing(), patientAssessment.getBreathsPerMinute(),
-					patientAssessment.isSleepyUnconscious(), patientAssessment.isPalmarPallor(), patientAssessment.getMuacTapeColour(), 
-					patientAssessment.isSwellingBothFeet(), patientAssessment.getProblem(), patientAssessment.isCough(), patientAssessment.getCoughDuration(),
-					patientAssessment.isDiarrhoea(), patientAssessment.getDiarrhoeaDuration(), patientAssessment.isBloodInStool(), patientAssessment.isFever(),
-					patientAssessment.getFeverDuration(), patientAssessment.isConvulsions(), patientAssessment.isDifficultyDrinkingOrFeeding(),
-					patientAssessment.isUnableToDrinkOrFeed(), patientAssessment.isVomiting(), patientAssessment.isVomitsEverything(),
-					patientAssessment.isRedEye(), patientAssessment.getRedEyeDuration(), patientAssessment.isDifficultySeeing(),
-					patientAssessment.getDifficultySeeingDuration(), patientAssessment.isCannotTreatProblem(), 
-					patientAssessment.getCannotTreatProblemDetails());
-			
-			for (Diagnostic diagnostic : patientAssessment.getDiagnostics()) {
-				// extract classifications
-				if (diagnostic.getClassification().getIdentifier() != null) {
-					patientTransmit.getClassifications().put(diagnostic.getClassification().getIdentifier(), diagnostic.getClassification().getName());
-				}
-				
-				// extract treatments
-				for (TreatmentRecommendation treatmentRecommendation : diagnostic.getTreatmentRecommendations()) {
-					patientTransmit.getTreatments().put(treatmentRecommendation.getTreatmentIdentifier(), 
-							PatientHandlerUtils.removeEscapeCharacters(treatmentRecommendation.getTreatmentDescription()));
-				}
-				
-			}
-			return patientTransmit;
 		}
 		
 		@Override

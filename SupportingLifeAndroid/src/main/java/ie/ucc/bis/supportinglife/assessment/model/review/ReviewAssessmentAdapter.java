@@ -1,8 +1,7 @@
-package ie.ucc.bis.supportinglife.assessment.imci.model.review;
+package ie.ucc.bis.supportinglife.assessment.model.review;
 
 import ie.ucc.bis.supportinglife.R;
 import ie.ucc.bis.supportinglife.assessment.imci.ui.ReviewListFragment;
-import ie.ucc.bis.supportinglife.assessment.model.review.ReviewItem;
 
 import java.util.ArrayList;
 import java.util.List;
