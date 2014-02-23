@@ -9,19 +9,19 @@
 	
     <TextView android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-		android:text="@string/language_preference_category"
+		android:text="@string/synchronisation_category"
 		style="?android:attr/listSeparatorTextViewStyle"
 		android:layout_marginLeft="20dp"
 		android:layout_marginRight="20dp" />
-
-				<TextView
-				    android:id="@+id/training_tutorial_title_label"
-				    style="?android:attr/listSeparatorTextViewStyle"
+ 
+	<TextView
+		android:id="@+id/training_tutorial_title_label"
+		style="?android:attr/listSeparatorTextViewStyle"
 		android:layout_marginLeft="20dp"
 		android:layout_marginRight="20dp"
-					android:layout_width="fill_parent"
-					android:layout_height="wrap_content"
-					android:text="@string/language_list_preference_summary" />
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:text="@string/sync_now_instruction" />
 		
 	<!-- ============================================================ -->
 	<!-- SYNCHRONISATION BUTTON -->

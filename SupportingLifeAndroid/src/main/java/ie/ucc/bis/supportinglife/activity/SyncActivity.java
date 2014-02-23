@@ -79,7 +79,7 @@ public class SyncActivity extends SupportingLifeBaseActivity {
         		LoggerUtils.i(LOG_TAG, "SyncButton: onClick -- Number of non-synced patient assessments to be synced ~ " + nonSyncedPatientAssessmentComms.size());
             	
             	///////////// TEMP START
-
+/*
                 setProgressDialog(new ProgressDialog(SyncActivity.this));          
                 getProgressDialog().setMessage("Syncing Patient Assessments....");
                 getProgressDialog().setTitle("Please Wait..");
@@ -119,7 +119,7 @@ public class SyncActivity extends SupportingLifeBaseActivity {
                }).start(); 
 	
             	///////////// TEMP END
-        		
+*/        		
         		// transmit non-synced patient assessments
         		setNetworkCommsTask(new NetworkCommunicationAsyncTask());
        			getNetworkCommsTask().execute(nonSyncedPatientAssessmentComms.toArray(new PatientAssessmentComms[nonSyncedPatientAssessmentComms.size()]));

@@ -88,7 +88,6 @@
         </activity>
         <activity
             android:name="ie.ucc.bis.supportinglife.activity.SyncActivity"
-            android:label="@string/activity_title_sync"
             android:screenOrientation="portrait" >
         </activity>
         <activity
