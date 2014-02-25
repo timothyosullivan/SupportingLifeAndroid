@@ -34,6 +34,7 @@
 				android:gravity="top|left"
 				android:inputType="textMultiLine"
 				android:lines="3"
+				android:maxLength="250"
 				android:saveEnabled="false"
 				android:scrollHorizontally="false"
 				android:hint="@string/ccm_ask_initial_assessment_problems_hint" />
@@ -98,6 +99,7 @@
 			                android:layout_height="wrap_content"
 			                android:layout_marginBottom="10dp"
 			                android:inputType="number"
+			                android:maxLength="3"
 			                android:hint="@string/ccm_ask_initial_assessment_cough_duration_hint"/>
 				</LinearLayout>
 
@@ -154,6 +156,7 @@
 			                android:layout_height="wrap_content"
 			                android:layout_marginBottom="10dp"
 			                android:inputType="number"
+			                android:maxLength="3"
 			                android:hint="@string/ccm_ask_initial_assessment_diarrhoea_duration_hint"/>
 				</LinearLayout>
 
@@ -242,6 +245,7 @@
 			                android:layout_height="wrap_content"
 			                android:layout_marginBottom="10dp"
 			                android:inputType="number"
+			                android:maxLength="3"
 			                android:hint="@string/ccm_ask_initial_assessment_fever_duration_hint"/>
 				</LinearLayout>
 				

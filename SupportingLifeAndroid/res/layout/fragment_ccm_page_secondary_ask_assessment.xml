@@ -146,7 +146,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
                     android:hint="@string/ccm_ask_secondary_assessment_red_eyes_duration_hint"
-                    android:inputType="number" />
+                    android:inputType="number"
+                    android:maxLength="3" />
             </LinearLayout>
 
             <!-- ============================================================ -->
@@ -206,7 +207,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
                     android:hint="@string/ccm_ask_secondary_assessment_seeing_difficulty_duration_hint"
-                    android:inputType="number" />
+                    android:inputType="number"
+                    android:maxLength="3" />
             </LinearLayout>
 
             <!-- ============================================================ -->
@@ -269,6 +271,7 @@
                     android:hint="@string/ccm_ask_secondary_assessment_cannot_treat_problems_details_hint"
                     android:inputType="textMultiLine"
                     android:lines="3"
+                    android:maxLength="800"
                     android:saveEnabled="false"
                     android:scrollHorizontally="false" />
             </LinearLayout>

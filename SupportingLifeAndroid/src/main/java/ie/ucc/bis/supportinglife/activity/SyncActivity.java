@@ -7,7 +7,6 @@ import ie.ucc.bis.supportinglife.service.SupportingLifeService;
 import ie.ucc.bis.supportinglife.ui.utilities.LoggerUtils;
 
 import java.lang.ref.WeakReference;
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
@@ -25,6 +24,7 @@ import android.os.Message;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
 
 /**
@@ -49,6 +49,8 @@ public class SyncActivity extends SupportingLifeBaseActivity {
 	private ProgressDialog progressDialog;
 	
 	private ProgressBar circularProgressBar;
+	private ProgressBar horizontalProgressBar;
+	private TextView circularProgressBarText;
 	
 	/**
 	 * onCreate method
@@ -65,10 +67,8 @@ public class SyncActivity extends SupportingLifeBaseActivity {
 		setContentView(R.layout.activity_sync);		
 		setTitleFromActivityLabel(R.id.action_bar_title_text);
 		
-		// ensure circular progress bar is not initially shown to user 
-		// until sync button click event
-		setCircularProgressBar((ProgressBar) findViewById(R.id.circularProgressBar));
-		getCircularProgressBar().setVisibility(View.GONE);
+		// configure visibility of circular & horizontal progress bars
+		initialiseProgressBars();
 		
 		// initialise SupportingLifeService
         setSupportingLifeService(new SupportingLifeService(this));
@@ -84,9 +84,8 @@ public class SyncActivity extends SupportingLifeBaseActivity {
             	
             	// show circular progress bar until connection established
             	getCircularProgressBar().setVisibility(View.VISIBLE);
+            	getCircularProgressBarText().setVisibility(View.VISIBLE);
             	           	
-            	getCircularProgressBar().setProgress(0);
-            	getCircularProgressBar().setMax(30);
             	// retrieve non-synced patient assessment from the DB
         		List<PatientAssessmentComms> nonSyncedPatientAssessmentComms = getSupportingLifeService().getAllNonSyncedPatientAssessmentComms();
         		LoggerUtils.i(LOG_TAG, "SyncButton: onClick -- Number of non-synced patient assessments to be synced ~ " + nonSyncedPatientAssessmentComms.size());
@@ -174,18 +173,13 @@ public class SyncActivity extends SupportingLifeBaseActivity {
     	super.onPause();
     }
 	
-	private class NetworkCommunicationAsyncTask extends AsyncTask<PatientAssessmentComms, Void, List<PatientAssessmentResponseComms>> {
+	private class NetworkCommunicationAsyncTask extends AsyncTask<PatientAssessmentComms, PatientAssessmentResponseComms, Boolean> {
 
 		private static final String AMAZON_WEB_SERVICE_URL = "http://supportinglife.elasticbeanstalk.com/patientvisits/add";
 		
 		@Override
-		protected List<PatientAssessmentResponseComms> doInBackground(PatientAssessmentComms... params) {
-
-			List<PatientAssessmentResponseComms> addedPatientAssessments = new ArrayList<PatientAssessmentResponseComms>();
-			
-			RestTemplate restTemplate = new RestTemplate(new HttpComponentsClientHttpRequestFactory());
-
-			
+		protected Boolean doInBackground(PatientAssessmentComms... params) {		
+			RestTemplate restTemplate = new RestTemplate(new HttpComponentsClientHttpRequestFactory());		
 			for (PatientAssessmentComms patientAssessmentComm : params) {
 			
 				try {
@@ -198,7 +192,8 @@ public class SyncActivity extends SupportingLifeBaseActivity {
 					restTemplate.getMessageConverters().add(new MappingJacksonHttpMessageConverter());
 				
 					PatientAssessmentResponseComms assessmentResponse = restTemplate.postForObject(AMAZON_WEB_SERVICE_URL, patientAssessmentComm, PatientAssessmentResponseComms.class);
-					addedPatientAssessments.add(assessmentResponse);
+					
+					publishProgress(assessmentResponse);
 				} catch (ResourceAccessException ex) {
 					LoggerUtils.i(LOG_TAG, "NetworkCommunicationAsyncTask: doInBackground -- ResourceAccessException");
 					LoggerUtils.i(LOG_TAG, "NetworkCommunicationAsyncTask: doInBackground -- " + ex.getMessage());
@@ -207,43 +202,32 @@ public class SyncActivity extends SupportingLifeBaseActivity {
 					LoggerUtils.i(LOG_TAG, "NetworkCommunicationAsyncTask: doInBackground -- " + ex.getMessage());
 				}
 			}
-			return addedPatientAssessments;
+			return true;
 		}
 		
 		@Override
-		protected void onPostExecute(List<PatientAssessmentResponseComms> addedPatientAssessments) {
-			
-			for (PatientAssessmentResponseComms patientAssessment : addedPatientAssessments) {
-				if (patientAssessment != null) {
-					generateAssessmentResponseDebugOutput(patientAssessment);
-					
-					// update the sync column for the patient record to indicate that it has 
-					// now been synchronised
-					int rowCount = getSupportingLifeService().setPatientAssessmentToSynced(patientAssessment.getDeviceGeneratedAssessmentId());
-					if (rowCount == 1) {
-						LoggerUtils.i(LOG_TAG, "NetworkCommunicationAsyncTask: onPostExecute -- Single Patient Record Synced Succesfully ~ " 
-								+ patientAssessment.getDeviceGeneratedAssessmentId());
-					}
-					else {
-						LoggerUtils.i(LOG_TAG, "NetworkCommunicationAsyncTask: onPostExecute -- EXPECTED PATIENT RECORD ROW TO BE SYNCED!!!!");
-					}
-				}
-				else {
-				LoggerUtils.i(LOG_TAG, "NetworkCommunicationAsyncTask: onPostExecute -- COMMUNICATION ERROR!");
-				}
+		protected void onPostExecute(Boolean success) {
+			if (success) {
+				LoggerUtils.i(LOG_TAG, "NetworkCommunicationAsyncTask: onPostExecute -- PATIENT SYNCING SUCCESSFUL");
+			}
+			else {
+				LoggerUtils.i(LOG_TAG, "NetworkCommunicationAsyncTask: onPostExecute -- PATIENT SYNCING UNSUCCESSFUL!");
 			}
 		}
 
 		@Override
 		protected void onPreExecute() {
-        	// show circular progress bar until connection established
-   //     	getCircularProgressBar().setVisibility(View.GONE);
 		}
 
 		@Override
-		protected void onProgressUpdate(Void... values) {
+		protected void onProgressUpdate(PatientAssessmentResponseComms... values) {	
+        	// connection established so remove circular progress bar
+        	getCircularProgressBar().setVisibility(View.GONE);
+        	getCircularProgressBarText().setVisibility(View.GONE);
+			
+			generateAssessmentResponseDebugOutput(values[0]);
 		}
-		
+				
 		/**
 		 * Produces debug output of the patient assessment response received from
 		 * the server
@@ -272,6 +256,20 @@ public class SyncActivity extends SupportingLifeBaseActivity {
 		
 	} // end of inner class 'NetworkCommunicationAsyncTask'
 
+	/**
+	 * Obtain handles on circular & horizontal progress bars and
+	 * configure their initial visibility
+	 * 
+	 */
+	private void initialiseProgressBars() {
+		setCircularProgressBar((ProgressBar) findViewById(R.id.circular_progress_bar));
+		getCircularProgressBar().setVisibility(View.GONE);
+		setCircularProgressBarText((TextView) findViewById(R.id.circular_progress_bar_text));
+		getCircularProgressBarText().setVisibility(View.GONE);
+		setHorizontalProgressBar((ProgressBar) findViewById(R.id.horizontal_progress_bar));
+		getHorizontalProgressBar().setVisibility(View.GONE);
+	}
+	
 	public NetworkCommunicationAsyncTask getNetworkCommsTask() {
 		return networkCommsTask;
 	}
@@ -302,6 +300,22 @@ public class SyncActivity extends SupportingLifeBaseActivity {
 
 	public void setCircularProgressBar(ProgressBar circularProgressBar) {
 		this.circularProgressBar = circularProgressBar;
+	}
+
+	public ProgressBar getHorizontalProgressBar() {
+		return horizontalProgressBar;
+	}
+
+	public void setHorizontalProgressBar(ProgressBar horizontalProgressBar) {
+		this.horizontalProgressBar = horizontalProgressBar;
+	}
+
+	public TextView getCircularProgressBarText() {
+		return circularProgressBarText;
+	}
+
+	public void setCircularProgressBarText(TextView circularProgressBarText) {
+		this.circularProgressBarText = circularProgressBarText;
 	}
 
 	public ProgressDialog getProgressDialog() {

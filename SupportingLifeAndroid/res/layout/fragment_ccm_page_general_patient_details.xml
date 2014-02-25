@@ -86,6 +86,7 @@
                 android:layout_marginBottom="10dp"
                 android:hint="@string/ccm_general_patient_details_national_id_hint"
                 android:inputType="textCapWords"
+                android:maxLength="8"
                 android:saveEnabled="false" />
        
             <!-- ============================================================ -->
@@ -103,6 +104,7 @@
                 android:layout_marginBottom="10dp"
                 android:hint="@string/ccm_general_patient_details_national_health_id_hint"
                 android:inputType="textCapWords"
+                android:maxLength="8"
                 android:saveEnabled="false" />
             
             
@@ -121,6 +123,7 @@
                 android:layout_marginBottom="10dp"
                 android:hint="@string/ccm_general_patient_details_first_name_hint"
                 android:inputType="textCapWords"
+                android:maxLength="40"
                 android:saveEnabled="false" />
 
             <!-- ============================================================ -->
@@ -138,6 +141,7 @@
                 android:layout_marginBottom="10dp"
                 android:hint="@string/ccm_general_patient_details_surname_hint"
                 android:inputType="textCapWords"
+                android:maxLength="40"
                 android:saveEnabled="false" />
 
             <!-- ============================================================ -->
@@ -202,6 +206,7 @@
                 android:layout_marginBottom="10dp"
                 android:hint="@string/ccm_general_patient_details_caregiver_hint"
                 android:inputType="textCapWords"
+                android:maxLength="80"
                 android:saveEnabled="false" />
 
 			<!-- ============================================================ -->
@@ -268,6 +273,7 @@
 			                android:layout_height="wrap_content"
 			                android:layout_marginBottom="10dp"
 			                android:inputType="textCapWords"
+			                android:maxLength="40"
 			                android:hint="@string/ccm_general_patient_details_relationship_specified_hint"/>
 				</LinearLayout>
 			
@@ -289,6 +295,7 @@
 	                android:lines="3"
 	                android:saveEnabled="false"
 	                android:scrollHorizontally="false"
+	                android:maxLength="200"
 	                android:hint="@string/ccm_general_patient_details_physical_address_hint" />
 	            
 	
@@ -307,6 +314,7 @@
 	                android:layout_marginBottom="10dp"
 	                android:inputType="textCapWords"
 	                android:saveEnabled="false"
+	                android:maxLength="40"
 	                android:hint="@string/ccm_general_patient_details_village_hint"/>
 			</LinearLayout> <!-- end of relationship animated view -->
         </LinearLayout>
