@@ -158,6 +158,8 @@ public class SyncActivity extends SupportingLifeBaseActivity {
 				LoggerUtils.i(LOG_TAG, "NetworkCommunicationAsyncTask: onPostExecute -- PATIENT SYNCING OPERATION UNSUCCESSFUL!");
 			}
 			
+			// remove horizontal progress bar from view
+			getHorizontalProgressBar().setVisibility(View.GONE);
 			// re-enable sync button
 			getSyncButton().setEnabled(true);
 		}

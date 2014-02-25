@@ -270,4 +270,11 @@
 	<style name="SyncScreenTextAppearanceFinish" parent="android:TextAppearance.Medium">
 		<item name="android:textColor">@color/White</item>
 	</style>
+	
+    <!-- ============================================================ -->
+    <!-- SYNC SCREEN BUTTON TEXT STYLE -->
+    <!-- ============================================================ -->
+	<style name="SyncScreenHorizontalProgressBar" parent="@android:style/Widget.ProgressBar.Horizontal">
+		<item name="android:progressDrawable">@drawable/horizontal_progress_bar</item>
+	</style>
 </resources>

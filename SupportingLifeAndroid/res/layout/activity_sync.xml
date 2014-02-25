@@ -22,7 +22,7 @@
 	<Button android:id="@+id/sync_button"
 	    style="@style/SyncScreenTextAppearanceFinish"
 	    android:layout_width="wrap_content"
-	    android:layout_height="65dp"
+	    android:layout_height="35dp"
 	    android:layout_alignParentLeft="true"
 	    android:layout_below="@+id/synchronisation_category"
 	    android:layout_marginLeft="20dp"
@@ -36,11 +36,12 @@
     <ProgressBar android:id="@+id/circular_progress_bar"
         style="?android:attr/progressBarStyle"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/circular_progress_bar_text"
-        android:layout_alignTop="@+id/sync_button"
-        android:layout_marginLeft="40dp"
-        android:indeterminateDrawable="@drawable/circular_progress_bar" />
+        android:layout_height="wrap_content" 
+        android:layout_alignBottom="@+id/sync_button" 
+        android:layout_alignLeft="@+id/circular_progress_bar_text" 
+        android:layout_alignTop="@+id/sync_button" 
+        android:layout_marginLeft="40dp" 
+        android:indeterminateDrawable="@drawable/circular_progress_bar"/>
 
 	<!-- ============================================================ -->
     <!-- CIRCULAR PROGRESS BAR TEXT -->
@@ -59,12 +60,14 @@
     
 	<!-- ============================================================ -->
     <!-- HORIZONTAL PROGRESS BAR -->
-    <!-- ============================================================ -->    
-	<ProgressBar android:id="@+id/horizontal_progress_bar"
-		style="?android:attr/progressBarStyleHorizontal"
-		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
-		android:layout_below="@+id/sync_button"
-		android:layout_margin="10dp" />
+    <!-- ============================================================ -->
+	<ProgressBar android:id="@+id/horizontal_progress_bar" 
+	    style="@style/SyncScreenHorizontalProgressBar"
+	    android:layout_width="match_parent" 
+	    android:layout_height="wrap_content" 
+	    android:layout_below="@+id/sync_button" 
+	    android:layout_marginTop="20dp"
+	    android:layout_marginLeft="20dp"
+	    android:layout_marginRight="20dp"/>
     
 </RelativeLayout>
