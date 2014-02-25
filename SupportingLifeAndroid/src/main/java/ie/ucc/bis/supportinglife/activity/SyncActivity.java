@@ -6,7 +6,6 @@ import ie.ucc.bis.supportinglife.communication.PatientAssessmentResponseComms;
 import ie.ucc.bis.supportinglife.service.SupportingLifeService;
 import ie.ucc.bis.supportinglife.ui.utilities.LoggerUtils;
 
-import java.lang.ref.WeakReference;
 import java.util.List;
 
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
@@ -15,12 +14,8 @@ import org.springframework.web.client.ResourceAccessException;
 import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 
-import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
@@ -46,11 +41,11 @@ public class SyncActivity extends SupportingLifeBaseActivity {
 	private NetworkCommunicationAsyncTask networkCommsTask;
 	private SupportingLifeService supportingLifeService;
 	private Button syncButton;
-	private ProgressDialog progressDialog;
 	
 	private ProgressBar circularProgressBar;
 	private ProgressBar horizontalProgressBar;
 	private TextView circularProgressBarText;
+	private int progressCounter;
 	
 	/**
 	 * onCreate method
@@ -82,6 +77,9 @@ public class SyncActivity extends SupportingLifeBaseActivity {
             public void onClick(View view) {
             	LoggerUtils.i(LOG_TAG, "SyncButton: onClick -- Sync Button on Synchronisation Clicked!");
             	
+            	// disable sync button until syncing operation complete to avoid repeat clicking by John
+            	getSyncButton().setEnabled(false);
+            	
             	// show circular progress bar until connection established
             	getCircularProgressBar().setVisibility(View.VISIBLE);
             	getCircularProgressBarText().setVisibility(View.VISIBLE);
@@ -89,78 +87,24 @@ public class SyncActivity extends SupportingLifeBaseActivity {
             	// retrieve non-synced patient assessment from the DB
         		List<PatientAssessmentComms> nonSyncedPatientAssessmentComms = getSupportingLifeService().getAllNonSyncedPatientAssessmentComms();
         		LoggerUtils.i(LOG_TAG, "SyncButton: onClick -- Number of non-synced patient assessments to be synced ~ " + nonSyncedPatientAssessmentComms.size());
-            	
-            	///////////// TEMP START
-
-                setProgressDialog(new ProgressDialog(SyncActivity.this));          
-                getProgressDialog().setMessage("Syncing Patient Assessments....");
-                getProgressDialog().setTitle("Please Wait..");
-                getProgressDialog().setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
-                getProgressDialog().setProgress(0);
-                getProgressDialog().setMax(30);
-                getProgressDialog().setMax(nonSyncedPatientAssessmentComms.size());
-                getProgressDialog().show();
- 
-                final IncomingMessageHandler handler = new IncomingMessageHandler(getProgressDialog());
-                
-                new Thread(new Runnable() {
-                    @Override
-                     public void run() {
-                    	
-                		// Looper is used to run a message loop for a thread.  Threads by default do
-                		// not have a message loop associated with them; to create one, call
-                		// prepare() in the thread that is to run the loop, and then
-                		// loop() to have it process messages until the loop is stopped
-                		Looper.prepare();                     	
-                		
-                    	try {
-                    		while (getProgressDialog().getProgress() <= getProgressDialog().getMax()) {
-                    			Thread.sleep(1000);
-                    			handler.sendMessage(handler.obtainMessage());
-                             			
-                    			if(getProgressDialog().getProgress() == getProgressDialog().getMax()) {
-                    				getProgressDialog().dismiss();
-                    			}
-                    		}
-                    		Looper.loop(); 
-                    	} catch(InterruptedException interruptException) {
-                    		LoggerUtils.i(LOG_TAG, "SyncButton: onClick -- Interrupt Exception Thrown!");
-                    		LoggerUtils.i(LOG_TAG, "SyncButton: onClick -- Interrupt Exception Details: " + interruptException.getMessage());
-                    	}
-                     }
-               }).start(); 
-	
-            	///////////// TEMP END
-       		
+            	       		
         		// transmit non-synced patient assessments
-        		setNetworkCommsTask(new NetworkCommunicationAsyncTask());
-       			getNetworkCommsTask().execute(nonSyncedPatientAssessmentComms.toArray(new PatientAssessmentComms[nonSyncedPatientAssessmentComms.size()]));
+        		if (nonSyncedPatientAssessmentComms.size() != 0) {
+        			setNetworkCommsTask(new NetworkCommunicationAsyncTask());
+        			getHorizontalProgressBar().setMax(nonSyncedPatientAssessmentComms.size());
+        			getNetworkCommsTask().execute(nonSyncedPatientAssessmentComms.toArray(new PatientAssessmentComms[nonSyncedPatientAssessmentComms.size()]));
+        		}
+        		else {
+                	// not records to sync so remove circular progress bar
+                	getCircularProgressBar().setVisibility(View.GONE);
+                	getCircularProgressBarText().setVisibility(View.GONE);
+                	// re-enable sync button
+                	getSyncButton().setEnabled(true);
+        		}
             }
         });	
 	}
 	
-	private static class IncomingMessageHandler extends Handler {
-	    private final WeakReference<ProgressDialog> dialog; 
-
-	    public IncomingMessageHandler(ProgressDialog progressDialog) {
-	    	dialog = new WeakReference<ProgressDialog>(progressDialog);
-	    }
-	    
-	    @Override
-	    public void handleMessage(Message msg)
-	    {
-	    	super.handleMessage(msg);
-	    	ProgressDialog pDialog = getDialog().get();
-	    	if (pDialog != null) {
-	    		pDialog.incrementProgressBy(5);
-	    	}
-	    }
-
-		public WeakReference<ProgressDialog> getDialog() {
-			return dialog;
-		}
-	}
-
     @Override
     protected void onResume() {
     	getSupportingLifeService().open();
@@ -208,15 +152,19 @@ public class SyncActivity extends SupportingLifeBaseActivity {
 		@Override
 		protected void onPostExecute(Boolean success) {
 			if (success) {
-				LoggerUtils.i(LOG_TAG, "NetworkCommunicationAsyncTask: onPostExecute -- PATIENT SYNCING SUCCESSFUL");
+				LoggerUtils.i(LOG_TAG, "NetworkCommunicationAsyncTask: onPostExecute -- PATIENT SYNCING OPERATION SUCCESSFUL");
 			}
 			else {
-				LoggerUtils.i(LOG_TAG, "NetworkCommunicationAsyncTask: onPostExecute -- PATIENT SYNCING UNSUCCESSFUL!");
+				LoggerUtils.i(LOG_TAG, "NetworkCommunicationAsyncTask: onPostExecute -- PATIENT SYNCING OPERATION UNSUCCESSFUL!");
 			}
+			
+			// re-enable sync button
+			getSyncButton().setEnabled(true);
 		}
 
 		@Override
 		protected void onPreExecute() {
+			setProgressCounter(0);
 		}
 
 		@Override
@@ -224,7 +172,23 @@ public class SyncActivity extends SupportingLifeBaseActivity {
         	// connection established so remove circular progress bar
         	getCircularProgressBar().setVisibility(View.GONE);
         	getCircularProgressBarText().setVisibility(View.GONE);
+        	
+        	getHorizontalProgressBar().setVisibility(View.VISIBLE);
+        	setProgressCounter(getProgressCounter() + 1);
+        	getHorizontalProgressBar().setProgress(getProgressCounter());
+        	
 			
+			// update the sync column for the patient record to indicate that it has 
+			// now been synchronised
+	//		int rowCount = getSupportingLifeService().setPatientAssessmentToSynced(values[0].getDeviceGeneratedAssessmentId());
+	//		if (rowCount == 1) {
+	//			LoggerUtils.i(LOG_TAG, "NetworkCommunicationAsyncTask: onPostExecute -- Single Patient Record Synced Succesfully ~ " 
+	//					+ values[0].getDeviceGeneratedAssessmentId());
+	//		}
+	//		else {
+	//			LoggerUtils.i(LOG_TAG, "NetworkCommunicationAsyncTask: onPostExecute -- EXPECTED PATIENT RECORD ROW TO BE SYNCED!!!!");
+	//		}
+        	
 			generateAssessmentResponseDebugOutput(values[0]);
 		}
 				
@@ -318,12 +282,12 @@ public class SyncActivity extends SupportingLifeBaseActivity {
 		this.circularProgressBarText = circularProgressBarText;
 	}
 
-	public ProgressDialog getProgressDialog() {
-		return progressDialog;
+	public int getProgressCounter() {
+		return progressCounter;
 	}
 
-	public void setProgressDialog(ProgressDialog progressDialog) {
-		this.progressDialog = progressDialog;
+	public void setProgressCounter(int progressCounter) {
+		this.progressCounter = progressCounter;
 	}
-	
+
 } // end of SyncActivity class

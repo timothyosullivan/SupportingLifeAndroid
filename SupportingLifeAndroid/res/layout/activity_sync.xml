@@ -64,7 +64,7 @@
 		style="?android:attr/progressBarStyleHorizontal"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
-		android:layout_below="@+id/circular_progress_bar_text"
+		android:layout_below="@+id/sync_button"
 		android:layout_margin="10dp" />
     
 </RelativeLayout>
