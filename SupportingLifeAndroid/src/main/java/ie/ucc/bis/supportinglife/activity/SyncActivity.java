@@ -24,6 +24,7 @@ import android.os.Looper;
 import android.os.Message;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ProgressBar;
 
 
 /**
@@ -47,6 +48,8 @@ public class SyncActivity extends SupportingLifeBaseActivity {
 	private Button syncButton;
 	private ProgressDialog progressDialog;
 	
+	private ProgressBar circularProgressBar;
+	
 	/**
 	 * onCreate method
 	 * 
@@ -62,6 +65,11 @@ public class SyncActivity extends SupportingLifeBaseActivity {
 		setContentView(R.layout.activity_sync);		
 		setTitleFromActivityLabel(R.id.action_bar_title_text);
 		
+		// ensure circular progress bar is not initially shown to user 
+		// until sync button click event
+		setCircularProgressBar((ProgressBar) findViewById(R.id.circularProgressBar));
+		getCircularProgressBar().setVisibility(View.GONE);
+		
 		// initialise SupportingLifeService
         setSupportingLifeService(new SupportingLifeService(this));
         getSupportingLifeService().open();
@@ -73,20 +81,25 @@ public class SyncActivity extends SupportingLifeBaseActivity {
 		getSyncButton().setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
             	LoggerUtils.i(LOG_TAG, "SyncButton: onClick -- Sync Button on Synchronisation Clicked!");
+            	
+            	// show circular progress bar until connection established
+            	getCircularProgressBar().setVisibility(View.VISIBLE);
             	           	
+            	getCircularProgressBar().setProgress(0);
+            	getCircularProgressBar().setMax(30);
             	// retrieve non-synced patient assessment from the DB
         		List<PatientAssessmentComms> nonSyncedPatientAssessmentComms = getSupportingLifeService().getAllNonSyncedPatientAssessmentComms();
         		LoggerUtils.i(LOG_TAG, "SyncButton: onClick -- Number of non-synced patient assessments to be synced ~ " + nonSyncedPatientAssessmentComms.size());
             	
             	///////////// TEMP START
-/*
+
                 setProgressDialog(new ProgressDialog(SyncActivity.this));          
                 getProgressDialog().setMessage("Syncing Patient Assessments....");
                 getProgressDialog().setTitle("Please Wait..");
                 getProgressDialog().setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
                 getProgressDialog().setProgress(0);
                 getProgressDialog().setMax(30);
- //               getProgressDialog().setMax(nonSyncedPatientAssessments.size());
+                getProgressDialog().setMax(nonSyncedPatientAssessmentComms.size());
                 getProgressDialog().show();
  
                 final IncomingMessageHandler handler = new IncomingMessageHandler(getProgressDialog());
@@ -119,7 +132,7 @@ public class SyncActivity extends SupportingLifeBaseActivity {
                }).start(); 
 	
             	///////////// TEMP END
-*/        		
+       		
         		// transmit non-synced patient assessments
         		setNetworkCommsTask(new NetworkCommunicationAsyncTask());
        			getNetworkCommsTask().execute(nonSyncedPatientAssessmentComms.toArray(new PatientAssessmentComms[nonSyncedPatientAssessmentComms.size()]));
@@ -223,6 +236,8 @@ public class SyncActivity extends SupportingLifeBaseActivity {
 
 		@Override
 		protected void onPreExecute() {
+        	// show circular progress bar until connection established
+   //     	getCircularProgressBar().setVisibility(View.GONE);
 		}
 
 		@Override
@@ -279,6 +294,14 @@ public class SyncActivity extends SupportingLifeBaseActivity {
 
 	public void setSyncButton(Button syncButton) {
 		this.syncButton = syncButton;
+	}
+
+	public ProgressBar getCircularProgressBar() {
+		return circularProgressBar;
+	}
+
+	public void setCircularProgressBar(ProgressBar circularProgressBar) {
+		this.circularProgressBar = circularProgressBar;
 	}
 
 	public ProgressDialog getProgressDialog() {

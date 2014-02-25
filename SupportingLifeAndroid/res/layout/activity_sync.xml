@@ -2,39 +2,41 @@
 <!-- ============================================================ -->
 <!-- SYNC SCREEN -->
 <!-- ============================================================ -->
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:orientation="vertical" >
+<RelativeLayout android:layout_width="fill_parent"
+    android:layout_height="fill_parent" xmlns:android="http://schemas.android.com/apk/res/android">
 	
-    <TextView android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-		android:text="@string/synchronisation_category"
-		style="?android:attr/listSeparatorTextViewStyle"
-		android:layout_marginLeft="20dp"
-		android:layout_marginRight="20dp" />
- 
-	<TextView
-		android:id="@+id/training_tutorial_title_label"
-		style="?android:attr/listSeparatorTextViewStyle"
-		android:layout_marginLeft="20dp"
-		android:layout_marginRight="20dp"
-		android:layout_width="fill_parent"
-		android:layout_height="wrap_content"
-		android:text="@string/sync_now_instruction" />
-		
+	<TextView android:id="@+id/synchronisation_category" 
+	    	style="?android:attr/listSeparatorTextViewStyle" 
+	    	android:layout_width="fill_parent" 
+	    	android:layout_height="wrap_content" 
+	    	android:layout_alignParentTop="true" 
+	    	android:layout_centerHorizontal="true" 
+	    	android:text="@string/synchronisation_category"/>
+	
 	<!-- ============================================================ -->
 	<!-- SYNCHRONISATION BUTTON -->
 	<!-- ============================================================ -->
+	<Button android:id="@+id/sync_button"
+	    style="@style/SyncScreenTextAppearanceFinish"
+	    android:layout_width="wrap_content" 
+	    android:layout_height="wrap_content"
+	    android:layout_alignParentLeft="true" 
+	    android:layout_below="@+id/synchronisation_category"
+	    android:layout_marginTop="5dp"
+	    android:layout_marginLeft="20dp"
+	    android:background="@drawable/synchronisation_button"
+	    android:text="@string/sync_now_instruction"/>
 	
-	<Button
-		android:id="@+id/sync_button"
-		style="@style/SyncScreenTextAppearanceFinish" 
-		android:layout_width="fill_parent"
-		android:layout_height="wrap_content"
-		android:layout_marginLeft="20dp"
-		android:layout_marginRight="20dp"
-		android:background="@drawable/synchronisation_button"
-		android:text="@string/sync_screen_sync_button"/>
+	<!-- ============================================================ -->
+	<!-- CIRCULAR PROGRESS BAR -->
+	<!-- ============================================================ -->
+	<ProgressBar android:id="@+id/circularProgressBar"
+	    style="?android:attr/progressBarStyle"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_alignParentRight="true"
+	    android:layout_alignTop="@+id/sync_button"
+	    android:layout_marginTop="3dp"
+	    android:layout_marginRight="48dp"/>
  
-</LinearLayout>
+</RelativeLayout>
