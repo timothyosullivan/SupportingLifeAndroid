@@ -277,4 +277,21 @@
 	<style name="SyncScreenHorizontalProgressBar" parent="@android:style/Widget.ProgressBar.Horizontal">
 		<item name="android:progressDrawable">@drawable/horizontal_progress_bar</item>
 	</style>
+	
+    <!-- ============================================================ -->
+    <!-- SYNC SCREEN TEXT STYLE -->
+    <!-- ============================================================ -->
+	<style name="SynchronisationScreenText">
+		<item name="android:layout_width">match_parent</item>
+		<item name="android:layout_height">wrap_content</item>
+		<item name="android:layout_marginBottom">3dp</item>
+		<item name="android:textColor">@color/LightCoral</item>
+		<item name="android:textStyle">bold</item>
+		<item name="android:paddingLeft">4dp</item>
+		<item name="android:paddingRight">6dp</item>
+		<item name="android:paddingTop">10dp</item>
+		<item name="android:textSize">18sp</item>
+		<item name="android:enabled">false</item>
+	</style>	
+	
 </resources>

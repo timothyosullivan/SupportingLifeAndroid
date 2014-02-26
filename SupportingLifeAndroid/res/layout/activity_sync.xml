@@ -15,21 +15,49 @@
 	    	android:layout_alignParentTop="true" 
 	    	android:layout_centerHorizontal="true" 
 	    	android:text="@string/sync_screen_synchronisation_category"/>
+
+	<!-- ============================================================ -->
+	<!-- RECORDS REQUIRING SYNCING INFORMATION TEXT -->
+	<!-- ============================================================ -->
+	<TextView
+	    android:id="@+id/synchronisation_records_label"
+	    style="@style/SynchronisationScreenText"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_alignLeft="@+id/sync_button"
+	    android:layout_below="@+id/synchronisation_category"
+	    android:paddingLeft="3dp"
+	    android:text="@string/sync_screen_synchronisation_info" />
 	
+	<!-- ============================================================ -->
+	<!-- RECORDS REQUIRING SYNCING DATA -->
+	<!-- ============================================================ -->
+	<TextView
+	    android:id="@+id/sync_records_outstanding"
+	    style="@style/SynchronisationScreenText"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_above="@+id/sync_button"
+	    android:layout_alignRight="@+id/circular_progress_bar_text"
+	    android:layout_toRightOf="@+id/synchronisation_records_label"
+	    android:paddingLeft="20dp" />
+
 	<!-- ============================================================ -->
 	<!-- SYNCHRONISATION BUTTON -->
 	<!-- ============================================================ -->
 	<Button android:id="@+id/sync_button"
 	    style="@style/SyncScreenTextAppearanceFinish"
 	    android:layout_width="wrap_content"
-	    android:layout_height="35dp"
+	    android:layout_height="wrap_content"
 	    android:layout_alignParentLeft="true"
-	    android:layout_below="@+id/synchronisation_category"
+	    android:layout_below="@+id/synchronisation_records_label"
+	    android:gravity="center_vertical|center_horizontal"
 	    android:layout_marginLeft="20dp"
 	    android:layout_marginTop="10dp"
 	    android:background="@drawable/synchronisation_button"
 	    android:text="@string/sync_screen_sync_now_instruction" />
 	
+		
 	<!-- ============================================================ -->
 	<!-- CIRCULAR PROGRESS BAR -->
 	<!-- ============================================================ -->
@@ -69,5 +97,6 @@
 	    android:layout_marginTop="20dp"
 	    android:layout_marginLeft="20dp"
 	    android:layout_marginRight="20dp"/>
-    
+
+		   
 </RelativeLayout>

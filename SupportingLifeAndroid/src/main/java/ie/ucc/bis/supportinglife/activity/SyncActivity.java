@@ -40,8 +40,9 @@ public class SyncActivity extends SupportingLifeBaseActivity {
 	
 	private NetworkCommunicationAsyncTask networkCommsTask;
 	private SupportingLifeService supportingLifeService;
-	private Button syncButton;
 	
+	private TextView syncRecordsRequired;
+	private Button syncButton;
 	private ProgressBar circularProgressBar;
 	private ProgressBar horizontalProgressBar;
 	private TextView circularProgressBarText;
@@ -68,7 +69,11 @@ public class SyncActivity extends SupportingLifeBaseActivity {
 		// initialise SupportingLifeService
         setSupportingLifeService(new SupportingLifeService(this));
         getSupportingLifeService().open();
-		
+        
+		setSyncRecordsRequired((TextView) findViewById(R.id.sync_records_outstanding));
+        // determine the number of records requiring sync
+		updateSyncRecordCountDisplay();
+        
 		// get a handle on the synchronisation button
 		setSyncButton((Button) findViewById(R.id.sync_button));
 		
@@ -83,11 +88,10 @@ public class SyncActivity extends SupportingLifeBaseActivity {
             	// show circular progress bar until connection established
             	getCircularProgressBar().setVisibility(View.VISIBLE);
             	getCircularProgressBarText().setVisibility(View.VISIBLE);
-            	           	
-            	// retrieve non-synced patient assessment from the DB
+            	           	            	       		
         		List<PatientAssessmentComms> nonSyncedPatientAssessmentComms = getSupportingLifeService().getAllNonSyncedPatientAssessmentComms();
         		LoggerUtils.i(LOG_TAG, "SyncButton: onClick -- Number of non-synced patient assessments to be synced ~ " + nonSyncedPatientAssessmentComms.size());
-            	       		
+            	
         		// transmit non-synced patient assessments
         		if (nonSyncedPatientAssessmentComms.size() != 0) {
         			setNetworkCommsTask(new NetworkCommunicationAsyncTask());
@@ -160,6 +164,10 @@ public class SyncActivity extends SupportingLifeBaseActivity {
 			
 			// remove horizontal progress bar from view
 			getHorizontalProgressBar().setVisibility(View.GONE);
+			
+	        // update the display of the number of records requiring sync
+			updateSyncRecordCountDisplay();	
+			
 			// re-enable sync button
 			getSyncButton().setEnabled(true);
 		}
@@ -236,6 +244,18 @@ public class SyncActivity extends SupportingLifeBaseActivity {
 		getHorizontalProgressBar().setVisibility(View.GONE);
 	}
 	
+	/**
+	 * Update the display on screen indicating the number of
+	 * records requiring synchronisation
+	 * 
+	 */
+	private void updateSyncRecordCountDisplay() {
+		int recordsToSync = getSupportingLifeService().getAllNonSyncedPatientAssessmentComms().size();
+		if (getSyncRecordsRequired() != null) {
+			getSyncRecordsRequired().setText(Integer.valueOf(recordsToSync).toString());
+		}
+	}
+	
 	public NetworkCommunicationAsyncTask getNetworkCommsTask() {
 		return networkCommsTask;
 	}
@@ -250,6 +270,14 @@ public class SyncActivity extends SupportingLifeBaseActivity {
 
 	public void setSupportingLifeService(SupportingLifeService supportingLifeService) {
 		this.supportingLifeService = supportingLifeService;
+	}
+
+	public TextView getSyncRecordsRequired() {
+		return syncRecordsRequired;
+	}
+
+	public void setSyncRecordsRequired(TextView syncRecordsRequired) {
+		this.syncRecordsRequired = syncRecordsRequired;
 	}
 
 	public Button getSyncButton() {

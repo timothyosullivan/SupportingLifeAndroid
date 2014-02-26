@@ -39,7 +39,7 @@
 		<CreatedBy>WHO / USAID</CreatedBy>
 		<Description>Kanemayu akuonetsa mwana wautyopi. Mwanayu akusinza pamene ayenera kukhala atadzuka, iyeyu akulephera kuyang'ana  amayi ake pamene akulanhura.</Description>
 		<TitleImageName>@drawable/im_training_general_tutorial_button</TitleImageName>
-		<VideoName>lethargic_or_unconscious_imci</VideoName>
+		<VideoName>chest_indrawing_imci</VideoName>
 	</Tutorial>
 	
 	<!-- ============================================================ -->
@@ -56,7 +56,7 @@
 		<CreatedBy>WHO / USAID</CreatedBy>
 		<Description>Kanemayu akuonetsa mwana amene ali ndi vuto lopuma. Mwanayu kapumidwe kake ndikaphokoso.</Description>
 		<TitleImageName>@drawable/im_training_general_tutorial_button</TitleImageName>
-		<VideoName>stridor_imci</VideoName>
+		<VideoName>chest_indrawing_imci</VideoName>
 	</Tutorial>
 	
 	<!-- ============================================================ -->
@@ -73,7 +73,7 @@
 		<CreatedBy>WHO / USAID</CreatedBy>
 		<Description>Kanemayu akutsonyeza mmene mungapangire.</Description>
 		<TitleImageName>@drawable/im_training_general_tutorial_button</TitleImageName>
-		<VideoName>skin_pinch_imci</VideoName>
+		<VideoName>chest_indrawing_imci</VideoName>
 	</Tutorial>
 	
 	<!-- ============================================================ -->
@@ -90,6 +90,6 @@
 		<CreatedBy>WHO / USAID</CreatedBy>
 		<Description>Kanemayu akutsonyeza  mmene mungayezere mwana amene alindi khosi lolimba.</Description>
 		<TitleImageName>@drawable/im_training_general_tutorial_button</TitleImageName>
-		<VideoName>stiff_neck_imci</VideoName>
+		<VideoName>chest_indrawing_imci</VideoName>
 	</Tutorial>
 </Tutorials>

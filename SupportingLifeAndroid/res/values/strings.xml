@@ -568,6 +568,7 @@
     <!-- ============================================================ -->
 	<string name="sync_screen_sync_button">Sync Now</string>
 	<string name="sync_screen_synchronisation_category">Synchronisation</string>
+	<string name="sync_screen_synchronisation_info">Patient Visits to be Synced: </string>
 	<string name="sync_screen_sync_now_instruction">Sync Now</string>
 	<string name="sync_screen_circular_progress_bar_text">obtaining connection&#8230;</string>
 	

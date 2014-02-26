@@ -35,7 +35,7 @@
 		<CreatedBy>WHO / USAID</CreatedBy>
 		<Description>This video shows a lethargic or unconscious child. The  video shows how the child is drowsy when they should be awake. The video shows how the child does not look at the mother, or at your face when you talk.</Description>
 		<TitleImageName>@drawable/im_training_general_tutorial_button</TitleImageName>
-		<VideoName>lethargic_or_unconscious_imci</VideoName>
+		<VideoName>chest_indrawing_imci</VideoName>
 	</Tutorial>
 	
 	<!-- ============================================================ -->
@@ -52,7 +52,7 @@
 		<CreatedBy>WHO / USAID</CreatedBy>
 		<Description>This video shows a child with Stridor. The  video illustrates how a child's breathing is noisy when breathing in.</Description>
 		<TitleImageName>@drawable/im_training_general_tutorial_button</TitleImageName>
-		<VideoName>stridor_imci</VideoName>
+		<VideoName>chest_indrawing_imci</VideoName>
 	</Tutorial>
 	
 	<!-- ============================================================ -->
@@ -69,7 +69,7 @@
 		<CreatedBy>WHO / USAID</CreatedBy>
 		<Description>This videos shows how to perform a skin pinch. It shows a normal, immediate return to normal and a slow return.</Description>
 		<TitleImageName>@drawable/im_training_general_tutorial_button</TitleImageName>
-		<VideoName>skin_pinch_imci</VideoName>
+		<VideoName>chest_indrawing_imci</VideoName>
 	</Tutorial>
 	
 	<!-- ============================================================ -->
@@ -86,6 +86,6 @@
 		<CreatedBy>WHO / USAID</CreatedBy>
 		<Description>This video shows how to examine a child for a stiff neck.</Description>
 		<TitleImageName>@drawable/im_training_general_tutorial_button</TitleImageName>
-		<VideoName>stiff_neck_imci</VideoName>
+		<VideoName>chest_indrawing_imci</VideoName>
 	</Tutorial>
 </Tutorials>
