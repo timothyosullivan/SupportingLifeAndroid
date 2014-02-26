@@ -41,11 +41,14 @@ public class SyncActivity extends SupportingLifeBaseActivity {
 	private NetworkCommunicationAsyncTask networkCommsTask;
 	private SupportingLifeService supportingLifeService;
 	
-	private TextView syncRecordsRequired;
+	private TextView syncRecordsRequiredTextView;
 	private Button syncButton;
 	private ProgressBar circularProgressBar;
-	private ProgressBar horizontalProgressBar;
 	private TextView circularProgressBarText;
+	private ProgressBar horizontalProgressBar;
+	private TextView horizontalProgressBarTextView;
+	
+	private Integer unsyncedRecords;
 	private int progressCounter;
 	
 	/**
@@ -70,12 +73,17 @@ public class SyncActivity extends SupportingLifeBaseActivity {
         setSupportingLifeService(new SupportingLifeService(this));
         getSupportingLifeService().open();
         
-		setSyncRecordsRequired((TextView) findViewById(R.id.sync_records_outstanding));
+		setSyncRecordsRequiredTextView((TextView) findViewById(R.id.sync_records_outstanding));
         // determine the number of records requiring sync
 		updateSyncRecordCountDisplay();
         
 		// get a handle on the synchronisation button
 		setSyncButton((Button) findViewById(R.id.sync_button));
+		
+		// get a handle on the horizontal progress counter
+		setHorizontalProgressBarTextView((TextView) findViewById(R.id.horizontal_progress_update_text));
+		getHorizontalProgressBarTextView().setVisibility(View.GONE);
+		
 		
 		// add click listener to the 'Sync' button
 		getSyncButton().setOnClickListener(new View.OnClickListener() {
@@ -163,7 +171,8 @@ public class SyncActivity extends SupportingLifeBaseActivity {
 			}
 			
 			// remove horizontal progress bar from view
-			getHorizontalProgressBar().setVisibility(View.GONE);
+			getHorizontalProgressBar().setVisibility(View.GONE);		
+			getHorizontalProgressBarTextView().setVisibility(View.GONE);
 			
 	        // update the display of the number of records requiring sync
 			updateSyncRecordCountDisplay();	
@@ -174,7 +183,9 @@ public class SyncActivity extends SupportingLifeBaseActivity {
 
 		@Override
 		protected void onPreExecute() {
+			getHorizontalProgressBarTextView().setVisibility(View.VISIBLE);
 			setProgressCounter(0);
+			updateHorizontalProgressText(0);
 		}
 
 		@Override
@@ -184,20 +195,21 @@ public class SyncActivity extends SupportingLifeBaseActivity {
         	getCircularProgressBarText().setVisibility(View.GONE);
         	
         	getHorizontalProgressBar().setVisibility(View.VISIBLE);
+        	getHorizontalProgressBarTextView().setVisibility(View.VISIBLE);
         	setProgressCounter(getProgressCounter() + 1);
-        	getHorizontalProgressBar().setProgress(getProgressCounter());
-        	
-			
+        	getHorizontalProgressBar().setProgress(getProgressCounter());     	
+        	updateHorizontalProgressText(getProgressCounter());
+        				
 			// update the sync column for the patient record to indicate that it has 
 			// now been synchronised
-	//		int rowCount = getSupportingLifeService().setPatientAssessmentToSynced(values[0].getDeviceGeneratedAssessmentId());
-	//		if (rowCount == 1) {
-	//			LoggerUtils.i(LOG_TAG, "NetworkCommunicationAsyncTask: onPostExecute -- Single Patient Record Synced Succesfully ~ " 
-	//					+ values[0].getDeviceGeneratedAssessmentId());
-	//		}
-	//		else {
-	//			LoggerUtils.i(LOG_TAG, "NetworkCommunicationAsyncTask: onPostExecute -- EXPECTED PATIENT RECORD ROW TO BE SYNCED!!!!");
-	//		}
+			int rowCount = getSupportingLifeService().setPatientAssessmentToSynced(values[0].getDeviceGeneratedAssessmentId());
+			if (rowCount == 1) {
+				LoggerUtils.i(LOG_TAG, "NetworkCommunicationAsyncTask: onPostExecute -- Single Patient Record Synced Succesfully ~ " 
+						+ values[0].getDeviceGeneratedAssessmentId());
+			}
+			else {
+				LoggerUtils.i(LOG_TAG, "NetworkCommunicationAsyncTask: onPostExecute -- EXPECTED PATIENT RECORD ROW TO BE SYNCED!!!!");
+			}
         	
 			generateAssessmentResponseDebugOutput(values[0]);
 		}
@@ -250,9 +262,24 @@ public class SyncActivity extends SupportingLifeBaseActivity {
 	 * 
 	 */
 	private void updateSyncRecordCountDisplay() {
-		int recordsToSync = getSupportingLifeService().getAllNonSyncedPatientAssessmentComms().size();
-		if (getSyncRecordsRequired() != null) {
-			getSyncRecordsRequired().setText(Integer.valueOf(recordsToSync).toString());
+		// firstly retrieve the record count if we don't have this value
+		setUnsyncedRecords(getSupportingLifeService().getAllNonSyncedPatientAssessmentComms().size());
+		
+		// update the text view
+		if (getSyncRecordsRequiredTextView() != null) {
+				getSyncRecordsRequiredTextView().setText(getUnsyncedRecords().toString());
+		}
+	}
+	
+	/**
+	 * Update the display on screen indicating the number of
+	 * records which have so far been synced i.e. capture the
+	 * progress of the horizontal progress bar
+	 * 
+	 */
+	private void updateHorizontalProgressText(int currentSyncCount) {
+		if (getHorizontalProgressBarTextView() != null) {
+			getHorizontalProgressBarTextView().setText(Integer.valueOf(currentSyncCount).toString() + "\\" + getUnsyncedRecords().toString());
 		}
 	}
 	
@@ -272,12 +299,12 @@ public class SyncActivity extends SupportingLifeBaseActivity {
 		this.supportingLifeService = supportingLifeService;
 	}
 
-	public TextView getSyncRecordsRequired() {
-		return syncRecordsRequired;
+	public TextView getSyncRecordsRequiredTextView() {
+		return syncRecordsRequiredTextView;
 	}
 
-	public void setSyncRecordsRequired(TextView syncRecordsRequired) {
-		this.syncRecordsRequired = syncRecordsRequired;
+	public void setSyncRecordsRequiredTextView(TextView syncRecordsRequiredTextView) {
+		this.syncRecordsRequiredTextView = syncRecordsRequiredTextView;
 	}
 
 	public Button getSyncButton() {
@@ -310,6 +337,22 @@ public class SyncActivity extends SupportingLifeBaseActivity {
 
 	public void setCircularProgressBarText(TextView circularProgressBarText) {
 		this.circularProgressBarText = circularProgressBarText;
+	}
+
+	public TextView getHorizontalProgressBarTextView() {
+		return horizontalProgressBarTextView;
+	}
+
+	public void setHorizontalProgressBarTextView(TextView horizontalProgressBarTextView) {
+		this.horizontalProgressBarTextView = horizontalProgressBarTextView;
+	}
+
+	public Integer getUnsyncedRecords() {
+		return unsyncedRecords;
+	}
+
+	public void setUnsyncedRecords(Integer unsyncedRecords) {
+		this.unsyncedRecords = unsyncedRecords;
 	}
 
 	public int getProgressCounter() {

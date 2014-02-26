@@ -98,5 +98,16 @@
 	    android:layout_marginLeft="20dp"
 	    android:layout_marginRight="20dp"/>
 
+	<!-- ============================================================ -->
+	<!-- HORIZONTAL PROGRESS TEXTVIEW COUNT -->
+	<!-- ============================================================ -->
+
+	<TextView
+	    android:id="@+id/horizontal_progress_update_text"
+	    style="@style/SynchronisationScreenText"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_below="@+id/horizontal_progress_bar"
+	    android:layout_centerHorizontal="true" />
 		   
 </RelativeLayout>
