@@ -183,6 +183,7 @@ public class SyncActivity extends SupportingLifeBaseActivity {
 
 		@Override
 		protected void onPreExecute() {
+			getHorizontalProgressBar().setVisibility(View.VISIBLE);
 			getHorizontalProgressBarTextView().setVisibility(View.VISIBLE);
 			setProgressCounter(0);
 			updateHorizontalProgressText(0);
@@ -229,15 +230,7 @@ public class SyncActivity extends SupportingLifeBaseActivity {
 			LoggerUtils.i(LOG_TAG, "NetworkCommunicationAsyncTask: onPostExecute -- Patient Visit ID");
 			LoggerUtils.i(LOG_TAG, "NetworkCommunicationAsyncTask: onPostExecute -- " + patientAssessment.getPatientVisitId());
 			LoggerUtils.i(LOG_TAG, "NetworkCommunicationAsyncTask: onPostExecute -- Patient ID");
-			LoggerUtils.i(LOG_TAG, "NetworkCommunicationAsyncTask: onPostExecute -- " + patientAssessment.getPatientId());			
-			LoggerUtils.i(LOG_TAG, "NetworkCommunicationAsyncTask: onPostExecute -- National ID");
-			LoggerUtils.i(LOG_TAG, "NetworkCommunicationAsyncTask: onPostExecute -- " + patientAssessment.getNationalId());
-			LoggerUtils.i(LOG_TAG, "NetworkCommunicationAsyncTask: onPostExecute -- National Health ID");
-			LoggerUtils.i(LOG_TAG, "NetworkCommunicationAsyncTask: onPostExecute -- " + patientAssessment.getNationalHealthId());
-			LoggerUtils.i(LOG_TAG, "NetworkCommunicationAsyncTask: onPostExecute -- Child First Name");
-			LoggerUtils.i(LOG_TAG, "NetworkCommunicationAsyncTask: onPostExecute -- " + patientAssessment.getChildFirstName());
-			LoggerUtils.i(LOG_TAG, "NetworkCommunicationAsyncTask: onPostExecute -- Child Surname");
-			LoggerUtils.i(LOG_TAG, "NetworkCommunicationAsyncTask: onPostExecute -- " + patientAssessment.getChildSurname());
+			LoggerUtils.i(LOG_TAG, "NetworkCommunicationAsyncTask: onPostExecute -- " + patientAssessment.getPatientId());
 		}
 		
 	} // end of inner class 'NetworkCommunicationAsyncTask'

@@ -40,11 +40,6 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="ie.ucc.bis.supportinglife.activity.RecordPatientDetailsActivity"
-            android:label="@string/activity_title_record_patient_details"
-            android:screenOrientation="portrait" >
-        </activity>
-        <activity
             android:name="ie.ucc.bis.supportinglife.activity.ImciAssessmentActivity"
             android:label="@string/activity_title_record_imci_assessment"
             android:screenOrientation="portrait"
@@ -65,11 +60,6 @@
             android:name="ie.ucc.bis.supportinglife.activity.CcmAssessmentResultsActivity"
             android:label="@string/activity_title_ccm_assessment_results"
             android:screenOrientation="portrait">
-        </activity>
-        <activity
-            android:name="ie.ucc.bis.supportinglife.activity.SubmitPatientRecordActivity"
-            android:label="@string/activity_title_submit_patient_record"
-            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name="ie.ucc.bis.supportinglife.activity.AboutActivity"

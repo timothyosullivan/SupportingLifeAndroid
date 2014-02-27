@@ -164,7 +164,7 @@ public class InitialAskCcmPage extends AbstractPage {
     	reviewItems.add(new ReviewItem(reviewItemLabel, reviewItemValue, reviewItemSymptomId, getKey(), -1, reviewItemIdentifier));
     	
     	// unable to drink of feed
-    	reviewItemIdentifier = resources.getString(R.string.ccm_ask_initial_assessment_review_unable_to_drink_or_feed);
+    	reviewItemIdentifier = resources.getString(R.string.ccm_ask_initial_assessment_unable_to_drink_or_feed_id);
     	reviewItemLabel = resources.getString(R.string.ccm_ask_initial_assessment_review_unable_to_drink_or_feed);
     	reviewItemValue = getPageData().getString(UNABLE_TO_DRINK_OR_FEED_DATA_KEY + RadioGroupListener.RADIO_BUTTON_TEXT_DATA_KEY);
     	reviewItemSymptomId = resources.getString(R.string.ccm_ask_initial_assessment_unable_to_drink_or_feed_symptom_id);
