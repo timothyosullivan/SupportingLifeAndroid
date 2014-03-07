@@ -159,10 +159,11 @@
 	                android:layout_marginBottom="10dp"
 	                android:gravity="top|left"
 	                android:inputType="textMultiLine"
-	                android:lines="5"
+	                android:minLines="5"
 	                android:background="#00000000"
 	                android:focusable="false"
-					android:enabled="false" />
+					android:enabled="false"
+					/>
 			</LinearLayout>	    
 	
 		    <ImageView

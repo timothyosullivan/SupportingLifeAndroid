@@ -53,7 +53,7 @@
 		<Availability>Offline</Availability>
 		<CreatedDate>Janyuwale 2014</CreatedDate>
 		<CreatedBy>WHO / USAID</CreatedBy>
-		<Description>Kanema uyu wakulongola mwana uyo wanasuzgo la mmaphapo. Mwana uyu kathutilo kake nkhachiwawa pala  wakuthutira mkati.</Description>
+		<Description>Kanema uyu wakulongola mwana uyo wanasuzgo la mmaphapo. Mwana uyu kathutilo kake nkhachiwawa pala wakuthutira mkati.</Description>
 		<TitleImageName>@drawable/im_training_general_tutorial_button</TitleImageName>
 		<VideoName>chest_indrawing_imci</VideoName>
 	</Tutorial>
@@ -70,7 +70,7 @@
 		<Availability>Offline</Availability>
 		<CreatedDate>Janyuwale 2014</CreatedDate>
 		<CreatedBy>WHO / USAID</CreatedBy>
-		<Description>Kanema uyu wakulongola kalasiro. Wawkulongola kalasiro kakwenerera, kuwerera kwakwenerera na pachokopachoko..</Description>
+		<Description>Kanema uyu wakulongola kalasiro. Wawkulongola kalasiro kakwenerera, kuwerera kwakwenerera na pachokopachoko.</Description>
 		<TitleImageName>@drawable/im_training_general_tutorial_button</TitleImageName>
 		<VideoName>chest_indrawing_imci</VideoName>
 	</Tutorial>
